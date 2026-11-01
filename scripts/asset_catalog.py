@@ -518,7 +518,11 @@ def main():
     char_style = STYLE_CHAR.replace("centered with generous empty margin, ", "")
     sets = []
     for room in ["yatak", "mutfak", "banyo", "salon", "bahce", "hepsi"]:
-        sets += sheets([(c, en) for c, r, _w, _f, _tr, en, _l in ITEMS_ALL if r == room], 9, 3, item_style, "esya_" + room)
+        # Eski sayfalar sabit kalsın (zaten üretildi): sadece ilk eşya listesi.
+        sets += sheets([(c, en) for c, r, _w, _f, _tr, en in ITEMS if r == room], 9, 3, item_style, "esya_" + room)
+    # Çeşit aileleri ayrı, yeni sayfalarda.
+    for room in ["yatak", "mutfak", "banyo", "salon", "bahce", "hepsi"]:
+        sets += sheets([(c, en) for c, r, _w, _f, _tr, en, _l in VAR_ROWS if r == room], 9, 3, item_style, "cesit_" + room)
     sets += sheets([(c, "a cute " + en.removeprefix("a ")) for c, _w, _tr, en in CHARACTERS], 4, 4, char_style, "karakter")
     sets += sheets([(c, en) for c, _w, _tr, en in PETS], 6, 3, STYLE_PET.replace("centered with generous empty margin, ", ""), "hayvan")
     sets += sheets([(c, en) for c, _tr, en, st in UI if st is STYLE_UI], 9, 3, STYLE_UI.replace("the symbol fills about 80 percent of the canvas and is perfectly centered, ", ""), "buton")
@@ -597,8 +601,16 @@ aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya
 - Kalite: tekli istek her eşyayı daha büyük ve detaylı çizer. Önemli eşyalar (yatak, kanepe, karakterler) için tekli,
   küçük eşyalar ve kelime resimleri için toplu üretim iyi bir denge.
 """)
-    for code, cs, text in sets:
-        out.append(f"### `{code}` — {len(cs)} görsel: {', '.join(cs)}\n")
+    new_sets = [x for x in sets if x[0].startswith("set_cesit_")]
+    old_sets = [x for x in sets if not x[0].startswith("set_cesit_")]
+    out.append(f"\n### 🆕 YENİ sayfalar: çeşit aileleri ({len(new_sets)} istek)\n")
+    out.append("Bunlar yeni eklendi, henüz üretilmedi. Her ailede ilk 2 çeşit bedava, diğerleri oyunda okuma sorusuyla açılır.\n")
+    for code, cs, text in new_sets:
+        out.append(f"#### `{code}` — {len(cs)} görsel: {', '.join(cs)}\n")
+        out.append("```\n" + text + "\n```\n")
+    out.append(f"\n### ✅ Önceki sayfalar ({len(old_sets)} istek) — zaten üretildi, tekrar üretmeyin\n")
+    for code, cs, text in old_sets:
+        out.append(f"#### `{code}` — {len(cs)} görsel: {', '.join(cs)}\n")
         out.append("```\n" + text + "\n```\n")
     out.append("\n# Tekli istekler\n")
 

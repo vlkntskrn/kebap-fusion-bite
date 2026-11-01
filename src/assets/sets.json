@@ -27,57 +27,7 @@
   "oyuncaksandigi",
   "unicorn",
   "oyuncakev",
-  "yazitahtasi",
-  "v_yatak_01",
-  "v_yatak_02",
-  "v_yatak_03"
- ],
- "set_esya_yatak_04": [
-  "v_yatak_04",
-  "v_yatak_05",
-  "v_yatak_06",
-  "v_yatak_07",
-  "v_yatak_08",
-  "v_dolap_01",
-  "v_dolap_02",
-  "v_dolap_03",
-  "v_dolap_04"
- ],
- "set_esya_yatak_05": [
-  "v_dolap_05",
-  "v_dolap_06",
-  "v_makyaj_01",
-  "v_makyaj_02",
-  "v_makyaj_03",
-  "v_makyaj_04",
-  "v_makyaj_05",
-  "v_makyaj_06",
-  "v_masa_01"
- ],
- "set_esya_yatak_06": [
-  "v_masa_02",
-  "v_masa_03",
-  "v_masa_04",
-  "v_masa_05",
-  "v_oturak_01",
-  "v_oturak_02",
-  "v_oturak_03",
-  "v_oturak_04",
-  "v_oturak_05"
- ],
- "set_esya_yatak_07": [
-  "v_oturak_06",
-  "v_oyuncak_01",
-  "v_oyuncak_02",
-  "v_oyuncak_03",
-  "v_oyuncak_04",
-  "v_oyuncak_05",
-  "v_oyuncak_06",
-  "v_oyuncak_07",
-  "v_oyuncak_08"
- ],
- "set_esya_yatak_08": [
-  "v_oyuncak_09"
+  "yazitahtasi"
  ],
  "set_esya_mutfak_01": [
   "retrobuzdolabi",
@@ -115,77 +65,7 @@
  "set_esya_mutfak_04": [
   "cilek",
   "sut",
-  "saksiotlar",
-  "buzdolabi_01",
-  "buzdolabi_02",
-  "buzdolabi_03",
-  "buzdolabi_04",
-  "buzdolabi_05",
-  "buzdolabi_06"
- ],
- "set_esya_mutfak_05": [
-  "buzdolabi_07",
-  "buzdolabi_08",
-  "v_ocak_01",
-  "v_ocak_02",
-  "v_ocak_03",
-  "v_ocak_04",
-  "v_ocak_05",
-  "v_ocak_06",
-  "v_tezgah_01"
- ],
- "set_esya_mutfak_06": [
-  "v_tezgah_02",
-  "v_tezgah_03",
-  "v_tezgah_04",
-  "v_tezgah_05",
-  "v_tezgah_06",
-  "v_masa_mutfak_01",
-  "v_masa_mutfak_02",
-  "v_masa_mutfak_03",
-  "v_masa_mutfak_04"
- ],
- "set_esya_mutfak_07": [
-  "v_masa_mutfak_05",
-  "v_sandalye_01",
-  "v_sandalye_02",
-  "v_sandalye_03",
-  "v_sandalye_04",
-  "v_sandalye_05",
-  "v_sandalye_06",
-  "v_alet_01",
-  "v_alet_02"
- ],
- "set_esya_mutfak_08": [
-  "v_alet_03",
-  "v_alet_04",
-  "v_alet_05",
-  "v_alet_06",
-  "v_alet_07",
-  "v_alet_08",
-  "v_alet_09",
-  "v_alet_10",
-  "v_yemek_01"
- ],
- "set_esya_mutfak_09": [
-  "v_yemek_02",
-  "v_yemek_03",
-  "v_yemek_04",
-  "v_yemek_05",
-  "v_yemek_06",
-  "v_yemek_07",
-  "v_yemek_08",
-  "v_yemek_09",
-  "v_yemek_10"
- ],
- "set_esya_mutfak_10": [
-  "v_yemek_11",
-  "v_yemek_12",
-  "v_tabak_01",
-  "v_tabak_02",
-  "v_tabak_03",
-  "v_tabak_04",
-  "v_tabak_05"
+  "saksiotlar"
  ],
  "set_esya_banyo_01": [
   "kuvet",
@@ -204,43 +84,7 @@
   "ordek",
   "dissfircasi",
   "sabunluk",
-  "paspas",
-  "v_kuvet_01",
-  "v_kuvet_02",
-  "v_kuvet_03"
- ],
- "set_esya_banyo_03": [
-  "v_kuvet_04",
-  "v_kuvet_05",
-  "v_kuvet_06",
-  "v_lavabo_01",
-  "v_lavabo_02",
-  "v_lavabo_03",
-  "v_lavabo_04",
-  "v_lavabo_05",
-  "v_lavabo_06"
- ],
- "set_esya_banyo_04": [
-  "v_dus_01",
-  "v_dus_02",
-  "v_dus_03",
-  "v_dus_04",
-  "v_tuvalet_01",
-  "v_tuvalet_02",
-  "v_tuvalet_03",
-  "v_tuvalet_04",
-  "v_banyo_aksesuar_01"
- ],
- "set_esya_banyo_05": [
-  "v_banyo_aksesuar_02",
-  "v_banyo_aksesuar_03",
-  "v_banyo_aksesuar_04",
-  "v_banyo_aksesuar_05",
-  "v_banyo_aksesuar_06",
-  "v_banyo_aksesuar_07",
-  "v_banyo_aksesuar_08",
-  "v_banyo_aksesuar_09",
-  "v_banyo_aksesuar_10"
+  "paspas"
  ],
  "set_esya_salon_01": [
   "kanepe",
@@ -256,43 +100,7 @@
  "set_esya_salon_02": [
   "piyano",
   "somine",
-  "kuskafesi",
-  "v_kanepe_01",
-  "v_kanepe_02",
-  "v_kanepe_03",
-  "v_kanepe_04",
-  "v_kanepe_05",
-  "v_kanepe_06"
- ],
- "set_esya_salon_03": [
-  "v_kanepe_07",
-  "v_kanepe_08",
-  "v_koltuk_01",
-  "v_koltuk_02",
-  "v_koltuk_03",
-  "v_koltuk_04",
-  "v_koltuk_05",
-  "v_koltuk_06",
-  "v_tv_01"
- ],
- "set_esya_salon_04": [
-  "v_tv_02",
-  "v_tv_03",
-  "v_tv_04",
-  "v_tv_05",
-  "v_sehpa_01",
-  "v_sehpa_02",
-  "v_sehpa_03",
-  "v_sehpa_04",
-  "v_sehpa_05"
- ],
- "set_esya_salon_05": [
-  "v_muzik_01",
-  "v_muzik_02",
-  "v_muzik_03",
-  "v_muzik_04",
-  "v_muzik_05",
-  "v_muzik_06"
+  "kuskafesi"
  ],
  "set_esya_bahce_01": [
   "sezlong",
@@ -317,42 +125,7 @@
   "gokkusagi"
  ],
  "set_esya_bahce_03": [
-  "piknik",
-  "v_havuz_oyuncak_01",
-  "v_havuz_oyuncak_02",
-  "v_havuz_oyuncak_03",
-  "v_havuz_oyuncak_04",
-  "v_havuz_oyuncak_05",
-  "v_havuz_oyuncak_06",
-  "v_havuz_oyuncak_07",
-  "v_havuz_oyuncak_08"
- ],
- "set_esya_bahce_04": [
-  "v_bahce_mobilya_01",
-  "v_bahce_mobilya_02",
-  "v_bahce_mobilya_03",
-  "v_bahce_mobilya_04",
-  "v_bahce_mobilya_05",
-  "v_bahce_mobilya_06",
-  "v_bahce_mobilya_07",
-  "v_oyun_parki_01",
-  "v_oyun_parki_02"
- ],
- "set_esya_bahce_05": [
-  "v_oyun_parki_03",
-  "v_oyun_parki_04",
-  "v_oyun_parki_05",
-  "v_oyun_parki_06",
-  "v_bahce_bitki_01",
-  "v_bahce_bitki_02",
-  "v_bahce_bitki_03",
-  "v_bahce_bitki_04",
-  "v_bahce_bitki_05"
- ],
- "set_esya_bahce_06": [
-  "v_bahce_bitki_06",
-  "v_bahce_bitki_07",
-  "v_bahce_bitki_08"
+  "piknik"
  ],
  "set_esya_hepsi_01": [
   "yuvarlakhali",
@@ -391,58 +164,293 @@
   "top",
   "kalpbalon",
   "dondurma",
-  "cadir",
+  "cadir"
+ ],
+ "set_cesit_yatak_01": [
+  "v_yatak_01",
+  "v_yatak_02",
+  "v_yatak_03",
+  "v_yatak_04",
+  "v_yatak_05",
+  "v_yatak_06",
+  "v_yatak_07",
+  "v_yatak_08",
+  "v_dolap_01"
+ ],
+ "set_cesit_yatak_02": [
+  "v_dolap_02",
+  "v_dolap_03",
+  "v_dolap_04",
+  "v_dolap_05",
+  "v_dolap_06",
+  "v_makyaj_01",
+  "v_makyaj_02",
+  "v_makyaj_03",
+  "v_makyaj_04"
+ ],
+ "set_cesit_yatak_03": [
+  "v_makyaj_05",
+  "v_makyaj_06",
+  "v_masa_01",
+  "v_masa_02",
+  "v_masa_03",
+  "v_masa_04",
+  "v_masa_05",
+  "v_oturak_01",
+  "v_oturak_02"
+ ],
+ "set_cesit_yatak_04": [
+  "v_oturak_03",
+  "v_oturak_04",
+  "v_oturak_05",
+  "v_oturak_06",
+  "v_oyuncak_01",
+  "v_oyuncak_02",
+  "v_oyuncak_03",
+  "v_oyuncak_04",
+  "v_oyuncak_05"
+ ],
+ "set_cesit_yatak_05": [
+  "v_oyuncak_06",
+  "v_oyuncak_07",
+  "v_oyuncak_08",
+  "v_oyuncak_09"
+ ],
+ "set_cesit_mutfak_01": [
+  "buzdolabi_01",
+  "buzdolabi_02",
+  "buzdolabi_03",
+  "buzdolabi_04",
+  "buzdolabi_05",
+  "buzdolabi_06",
+  "buzdolabi_07",
+  "buzdolabi_08",
+  "v_ocak_01"
+ ],
+ "set_cesit_mutfak_02": [
+  "v_ocak_02",
+  "v_ocak_03",
+  "v_ocak_04",
+  "v_ocak_05",
+  "v_ocak_06",
+  "v_tezgah_01",
+  "v_tezgah_02",
+  "v_tezgah_03",
+  "v_tezgah_04"
+ ],
+ "set_cesit_mutfak_03": [
+  "v_tezgah_05",
+  "v_tezgah_06",
+  "v_masa_mutfak_01",
+  "v_masa_mutfak_02",
+  "v_masa_mutfak_03",
+  "v_masa_mutfak_04",
+  "v_masa_mutfak_05",
+  "v_sandalye_01",
+  "v_sandalye_02"
+ ],
+ "set_cesit_mutfak_04": [
+  "v_sandalye_03",
+  "v_sandalye_04",
+  "v_sandalye_05",
+  "v_sandalye_06",
+  "v_alet_01",
+  "v_alet_02",
+  "v_alet_03",
+  "v_alet_04",
+  "v_alet_05"
+ ],
+ "set_cesit_mutfak_05": [
+  "v_alet_06",
+  "v_alet_07",
+  "v_alet_08",
+  "v_alet_09",
+  "v_alet_10",
+  "v_yemek_01",
+  "v_yemek_02",
+  "v_yemek_03",
+  "v_yemek_04"
+ ],
+ "set_cesit_mutfak_06": [
+  "v_yemek_05",
+  "v_yemek_06",
+  "v_yemek_07",
+  "v_yemek_08",
+  "v_yemek_09",
+  "v_yemek_10",
+  "v_yemek_11",
+  "v_yemek_12",
+  "v_tabak_01"
+ ],
+ "set_cesit_mutfak_07": [
+  "v_tabak_02",
+  "v_tabak_03",
+  "v_tabak_04",
+  "v_tabak_05"
+ ],
+ "set_cesit_banyo_01": [
+  "v_kuvet_01",
+  "v_kuvet_02",
+  "v_kuvet_03",
+  "v_kuvet_04",
+  "v_kuvet_05",
+  "v_kuvet_06",
+  "v_lavabo_01",
+  "v_lavabo_02",
+  "v_lavabo_03"
+ ],
+ "set_cesit_banyo_02": [
+  "v_lavabo_04",
+  "v_lavabo_05",
+  "v_lavabo_06",
+  "v_dus_01",
+  "v_dus_02",
+  "v_dus_03",
+  "v_dus_04",
+  "v_tuvalet_01",
+  "v_tuvalet_02"
+ ],
+ "set_cesit_banyo_03": [
+  "v_tuvalet_03",
+  "v_tuvalet_04",
+  "v_banyo_aksesuar_01",
+  "v_banyo_aksesuar_02",
+  "v_banyo_aksesuar_03",
+  "v_banyo_aksesuar_04",
+  "v_banyo_aksesuar_05",
+  "v_banyo_aksesuar_06",
+  "v_banyo_aksesuar_07"
+ ],
+ "set_cesit_banyo_04": [
+  "v_banyo_aksesuar_08",
+  "v_banyo_aksesuar_09",
+  "v_banyo_aksesuar_10"
+ ],
+ "set_cesit_salon_01": [
+  "v_kanepe_01",
+  "v_kanepe_02",
+  "v_kanepe_03",
+  "v_kanepe_04",
+  "v_kanepe_05",
+  "v_kanepe_06",
+  "v_kanepe_07",
+  "v_kanepe_08",
+  "v_koltuk_01"
+ ],
+ "set_cesit_salon_02": [
+  "v_koltuk_02",
+  "v_koltuk_03",
+  "v_koltuk_04",
+  "v_koltuk_05",
+  "v_koltuk_06",
+  "v_tv_01",
+  "v_tv_02",
+  "v_tv_03",
+  "v_tv_04"
+ ],
+ "set_cesit_salon_03": [
+  "v_tv_05",
+  "v_sehpa_01",
+  "v_sehpa_02",
+  "v_sehpa_03",
+  "v_sehpa_04",
+  "v_sehpa_05",
+  "v_muzik_01",
+  "v_muzik_02",
+  "v_muzik_03"
+ ],
+ "set_cesit_salon_04": [
+  "v_muzik_04",
+  "v_muzik_05",
+  "v_muzik_06"
+ ],
+ "set_cesit_bahce_01": [
+  "v_havuz_oyuncak_01",
+  "v_havuz_oyuncak_02",
+  "v_havuz_oyuncak_03",
+  "v_havuz_oyuncak_04",
+  "v_havuz_oyuncak_05",
+  "v_havuz_oyuncak_06",
+  "v_havuz_oyuncak_07",
+  "v_havuz_oyuncak_08",
+  "v_bahce_mobilya_01"
+ ],
+ "set_cesit_bahce_02": [
+  "v_bahce_mobilya_02",
+  "v_bahce_mobilya_03",
+  "v_bahce_mobilya_04",
+  "v_bahce_mobilya_05",
+  "v_bahce_mobilya_06",
+  "v_bahce_mobilya_07",
+  "v_oyun_parki_01",
+  "v_oyun_parki_02",
+  "v_oyun_parki_03"
+ ],
+ "set_cesit_bahce_03": [
+  "v_oyun_parki_04",
+  "v_oyun_parki_05",
+  "v_oyun_parki_06",
+  "v_bahce_bitki_01",
+  "v_bahce_bitki_02",
+  "v_bahce_bitki_03",
+  "v_bahce_bitki_04",
+  "v_bahce_bitki_05",
+  "v_bahce_bitki_06"
+ ],
+ "set_cesit_bahce_04": [
+  "v_bahce_bitki_07",
+  "v_bahce_bitki_08"
+ ],
+ "set_cesit_hepsi_01": [
   "v_lamba_01",
   "v_lamba_02",
   "v_lamba_03",
   "v_lamba_04",
-  "v_lamba_05"
- ],
- "set_esya_hepsi_05": [
+  "v_lamba_05",
   "v_lamba_06",
   "v_hali_01",
   "v_hali_02",
-  "v_hali_03",
+  "v_hali_03"
+ ],
+ "set_cesit_hepsi_02": [
   "v_hali_04",
   "v_hali_05",
   "v_hali_06",
   "v_hali_07",
-  "v_raf_01"
- ],
- "set_esya_hepsi_06": [
+  "v_raf_01",
   "v_raf_02",
   "v_raf_03",
   "v_raf_04",
-  "v_raf_05",
+  "v_raf_05"
+ ],
+ "set_cesit_hepsi_03": [
   "v_ayna_01",
   "v_ayna_02",
   "v_ayna_03",
   "v_ayna_04",
-  "v_ayna_05"
- ],
- "set_esya_hepsi_07": [
+  "v_ayna_05",
   "v_bitki_01",
   "v_bitki_02",
   "v_bitki_03",
-  "v_bitki_04",
+  "v_bitki_04"
+ ],
+ "set_cesit_hepsi_04": [
   "v_bitki_05",
   "v_bitki_06",
   "v_bitki_07",
   "v_bitki_08",
-  "v_bitki_09"
- ],
- "set_esya_hepsi_08": [
+  "v_bitki_09",
   "v_tablo_01",
   "v_tablo_02",
   "v_tablo_03",
-  "v_tablo_04",
+  "v_tablo_04"
+ ],
+ "set_cesit_hepsi_05": [
   "v_tablo_05",
   "v_tablo_06",
   "v_tablo_07",
   "v_evcil_esya_01",
-  "v_evcil_esya_02"
- ],
- "set_esya_hepsi_09": [
+  "v_evcil_esya_02",
   "v_evcil_esya_03",
   "v_evcil_esya_04",
   "v_evcil_esya_05",
