@@ -267,7 +267,7 @@ export function showHouse(back: () => void) {
     const f = FRIENDS[id];
     if (f) return dollSvg(f.look, 'doll', { bg: false });
     const img = itemImage(id);
-    if (img) return `<img src="${img}" alt="" draggable="false"/>`;
+    if (img) return `<img src="${img}" alt="" loading="lazy" decoding="async" draggable="false"/>`;
     const t = THINGS[id];
     return `<svg viewBox="${t.vb}">${t.svg}</svg>`;
   };

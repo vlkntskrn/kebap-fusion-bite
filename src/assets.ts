@@ -11,7 +11,7 @@ export function img(id: string): string | undefined {
 /** Görsel varsa <img>, yoksa verilen yedek HTML. */
 export function imgTag(id: string, fallback: string, cls = 'ui-img'): string {
   const u = img(id);
-  return u ? `<img class="${cls}" src="${u}" alt="" draggable="false"/>` : fallback;
+  return u ? `<img class="${cls}" src="${u}" alt="" loading="lazy" decoding="async" draggable="false"/>` : fallback;
 }
 
 const TR: Record<string, string> = { ç: 'c', ğ: 'g', ı: 'i', ö: 'o', ş: 's', ü: 'u' };

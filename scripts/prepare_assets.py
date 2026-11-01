@@ -77,9 +77,9 @@ def save_item(name: str, img: Image.Image) -> Path:
     box = img.getbbox()
     if box:
         img = img.crop(box)
-    img.thumbnail((512, 512), Image.LANCZOS)
-    dest = OUT / f"{name}.png"
-    img.save(dest, optimize=True)
+    img.thumbnail((448, 448), Image.LANCZOS)
+    dest = OUT / f"{name}.webp"
+    img.save(dest, "WEBP", quality=84, method=6)
     return dest
 
 
@@ -127,8 +127,24 @@ def split_sheet(set_code: str, src: Path):
                         if 0 <= nx < gw and 0 <= ny < gh and dil[ny][nx] and not seen[ny][nx]:
                             seen[ny][nx] = True
                             q.append((nx, ny))
-                if n > gw * gh * 0.004:
-                    boxes.append(((x0 - R) * step, (y0 - R) * step, min(w, (x1 + R + 1) * step), min(h, (y1 + R + 1) * step)))
+                if n > gw * gh * 0.0008:
+                    boxes.append(((x0 - R) * step, (y0 - R) * step, min(w, (x1 + R + 1) * step), min(h, (y1 + R + 1) * step), n))
+    # Fazla parça varsa: küçük parçaları (yıldız, parıltı, nota) en yakın büyük eşyaya kat.
+    k = len(codes)
+    if len(boxes) > k:
+        big = sorted(boxes, key=lambda b: -b[4])[:k]
+        small_ok = all(b[4] < 0.45 * min(x[4] for x in big) for b in boxes if b not in big)
+        if small_ok:
+            merged = [list(b[:4]) for b in big]
+            for b in boxes:
+                if b in big:
+                    continue
+                cx, cy = (b[0] + b[2]) / 2, (b[1] + b[3]) / 2
+                j = min(range(k), key=lambda i: ((merged[i][0] + merged[i][2]) / 2 - cx) ** 2 + ((merged[i][1] + merged[i][3]) / 2 - cy) ** 2)
+                m = merged[j]
+                merged[j] = [min(m[0], b[0]), min(m[1], b[1]), max(m[2], b[2]), max(m[3], b[3])]
+            boxes = [tuple(m) for m in merged]
+    boxes = [b[:4] for b in boxes]
     # Satır satır, soldan sağa sırala.
     boxes.sort(key=lambda b: (b[1] + b[3]) / 2)
     rows, row = [], []
@@ -185,9 +201,9 @@ def prepare(name: str, src: Path):
     box = img.getbbox()
     if box:
         img = img.crop(box)
-    img.thumbnail((512, 512), Image.LANCZOS)
-    dest = OUT / f"{name}.png"
-    img.save(dest, optimize=True)
+    img.thumbnail((448, 448), Image.LANCZOS)
+    dest = OUT / f"{name}.webp"
+    img.save(dest, "WEBP", quality=84, method=6)
     return dest
 
 

@@ -2355,3 +2355,34 @@ body {
 .challenge {
   z-index: 5000;
 }
+.mode .ui-img {
+  width: 38px;
+  height: 38px;
+}
+.room-tab .ui-img,
+.cat .ui-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+@media (orientation: landscape) {
+  .home-left {
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+}
+@media (orientation: landscape) {
+  .home .notice {
+    font-size: 11px;
+    padding: 5px 8px;
+    line-height: 1.25;
+  }
+  .home .title h1 {
+    font-size: 22px;
+  }
+  .home .known span {
+    width: 26px;
+    height: 26px;
+    font-size: 17px;
+  }
+}
