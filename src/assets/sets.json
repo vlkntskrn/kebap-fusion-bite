@@ -1,0 +1,425 @@
+{
+ "set_esya_yatak_01": [
+  "yatak",
+  "yuvarlakyatak",
+  "cibinlikliyatak",
+  "ranza",
+  "besik",
+  "dolap",
+  "kiyafetaski",
+  "sifonyer",
+  "makyaj"
+ ],
+ "set_esya_yatak_02": [
+  "kozmetik",
+  "koltuk",
+  "armut",
+  "cicekminder",
+  "ayihali",
+  "bilgisayar",
+  "calismamasasi",
+  "aynadalga",
+  "boyaynasi"
+ ],
+ "set_esya_yatak_03": [
+  "komodin",
+  "gecelambasi",
+  "oyuncaksandigi",
+  "unicorn",
+  "oyuncakev",
+  "yazitahtasi"
+ ],
+ "set_esya_mutfak_01": [
+  "retrobuzdolabi",
+  "buzdolabi",
+  "tezgah",
+  "ocak",
+  "firin",
+  "lavabo",
+  "mikrodalga",
+  "tost",
+  "kahve"
+ ],
+ "set_esya_mutfak_02": [
+  "blender",
+  "mikser",
+  "kettle",
+  "caydanlik",
+  "rafkupa",
+  "tabakdolabi",
+  "kasiklik",
+  "masa",
+  "yuvarlakmasa"
+ ],
+ "set_esya_mutfak_03": [
+  "sandalye",
+  "tabure",
+  "mamasandalyesi",
+  "meyve",
+  "ekmek",
+  "kurabiye",
+  "pizza",
+  "hamburger",
+  "salata"
+ ],
+ "set_esya_mutfak_04": [
+  "cilek",
+  "sut",
+  "saksiotlar"
+ ],
+ "set_esya_banyo_01": [
+  "kuvet",
+  "jakuzi",
+  "duskabini",
+  "banyolavabo",
+  "tuvalet",
+  "camasir",
+  "sampuan",
+  "sepet",
+  "havlu"
+ ],
+ "set_esya_banyo_02": [
+  "bornoz",
+  "ayna",
+  "ordek",
+  "dissfircasi",
+  "sabunluk",
+  "paspas"
+ ],
+ "set_esya_salon_01": [
+  "kanepe",
+  "kosekanepe",
+  "berjer",
+  "tv",
+  "tvunitesi",
+  "sehpa",
+  "oyunrafi",
+  "kediagaci",
+  "akvaryum"
+ ],
+ "set_esya_salon_02": [
+  "piyano",
+  "somine",
+  "kuskafesi"
+ ],
+ "set_esya_bahce_01": [
+  "sezlong",
+  "semsiye",
+  "flamingo",
+  "simit",
+  "palmiye",
+  "buzkutusu",
+  "kaydirak",
+  "salincak",
+  "trambolin"
+ ],
+ "set_esya_bahce_02": [
+  "kumkovasi",
+  "mangal",
+  "cicektarhi",
+  "agac",
+  "cit",
+  "kopekkulubesi",
+  "bisiklet",
+  "limonatastandi",
+  "gokkusagi"
+ ],
+ "set_esya_bahce_03": [
+  "piknik"
+ ],
+ "set_esya_hepsi_01": [
+  "yuvarlakhali",
+  "kitaplik",
+  "duvarrafi",
+  "fotoipi",
+  "perde",
+  "kedipostu",
+  "pasta",
+  "limonata",
+  "copkutusu"
+ ],
+ "set_esya_hepsi_02": [
+  "robot",
+  "abajur",
+  "lambader",
+  "puf",
+  "buyukbitki",
+  "bitki",
+  "sarkitbitki",
+  "kaktus",
+  "kediyatagi"
+ ],
+ "set_esya_hepsi_03": [
+  "oyunkonsolu",
+  "vazo",
+  "duvarsaati",
+  "disko",
+  "sarkit",
+  "perilamba",
+  "tablo",
+  "cerceve",
+  "ayi"
+ ],
+ "set_esya_hepsi_04": [
+  "top",
+  "kalpbalon",
+  "dondurma",
+  "cadir"
+ ],
+ "set_karakter_01": [
+  "kiz1",
+  "kiz2",
+  "kiz3",
+  "kiz4"
+ ],
+ "set_karakter_02": [
+  "kiz5",
+  "kiz6",
+  "kiz7",
+  "oglan1"
+ ],
+ "set_karakter_03": [
+  "oglan2",
+  "oglan3",
+  "bebek1",
+  "bebek2"
+ ],
+ "set_karakter_04": [
+  "anne",
+  "baba",
+  "nine",
+  "dede"
+ ],
+ "set_karakter_05": [
+  "ogretmen"
+ ],
+ "set_hayvan_01": [
+  "kedi",
+  "kedi2",
+  "kedi3",
+  "kopek",
+  "kopek2",
+  "tavsan"
+ ],
+ "set_hayvan_02": [
+  "hamster",
+  "papagan",
+  "kaplumbaga",
+  "ordekyavrusu",
+  "midilli",
+  "panda"
+ ],
+ "set_buton_01": [
+  "ui_geri",
+  "ui_hoparlor",
+  "ui_basla",
+  "ui_anasayfa",
+  "ui_tekrar",
+  "ui_hediye",
+  "ui_yildiz",
+  "ui_album",
+  "ui_birlestir"
+ ],
+ "set_buton_02": [
+  "ui_dogru",
+  "ui_cop",
+  "ui_oda_yatak",
+  "ui_oda_mutfak",
+  "ui_oda_banyo",
+  "ui_oda_salon",
+  "ui_oda_havuz",
+  "ui_mod_tasi",
+  "ui_mod_boya"
+ ],
+ "set_buton_03": [
+  "ui_mod_tasarla",
+  "ui_kat_kiyafet",
+  "ui_kat_sac",
+  "ui_kat_ten",
+  "ui_kat_taki",
+  "ui_kat_elde",
+  "ui_kat_ayakkabi",
+  "ui_kat_hayvan",
+  "ui_kat_fon"
+ ],
+ "set_buton_04": [
+  "ui_duvar",
+  "ui_zemin",
+  "ui_pencere"
+ ],
+ "set_kart_01": [
+  "ui_oyun_sesibul",
+  "ui_oyun_birlestir",
+  "ui_oyun_kelimekur",
+  "ui_oyun_oku"
+ ],
+ "set_kart_02": [
+  "ui_sahne",
+  "ui_ev",
+  "ui_giydir",
+  "ui_boyama"
+ ],
+ "set_kelime_01": [
+  "kelime_at",
+  "kelime_et",
+  "kelime_ana",
+  "kelime_anne",
+  "kelime_ata",
+  "kelime_nine",
+  "kelime_nene",
+  "kelime_nane",
+  "kelime_tane"
+ ],
+ "set_kelime_02": [
+  "kelime_anten",
+  "kelime_tente",
+  "kelime_inat",
+  "kelime_tat",
+  "kelime_net",
+  "kelime_el",
+  "kelime_lale",
+  "kelime_kale",
+  "kelime_kalem"
+ ],
+ "set_kelime_03": [
+  "kelime_elma",
+  "kelime_ekmek",
+  "kelime_kek",
+  "kelime_kalkan",
+  "kelime_kedi",
+  "kelime_etek",
+  "kelime_inek",
+  "kelime_kanat",
+  "kelime_ekin"
+ ],
+ "set_kelime_04": [
+  "kelime_tekne",
+  "kelime_iki",
+  "kelime_tilki",
+  "kelime_lamba",
+  "kelime_ayna",
+  "kelime_ay",
+  "kelime_ayi",
+  "kelime_un",
+  "kelime_mum"
+ ],
+ "set_kelime_05": [
+  "kelime_muz",
+  "kelime_limon",
+  "kelime_yumurta",
+  "kelime_oyun",
+  "kelime_mutlu",
+  "kelime_yatak",
+  "kelime_kayik",
+  "kelime_koltuk",
+  "kelime_kutu"
+ ],
+ "set_kelime_06": [
+  "kelime_maymun",
+  "kelime_kum",
+  "kelime_okul",
+  "kelime_balik",
+  "kelime_balon",
+  "kelime_bal",
+  "kelime_araba",
+  "kelime_ordek",
+  "kelime_dede"
+ ],
+ "set_kelime_07": [
+  "kelime_saat",
+  "kelime_su",
+  "kelime_simit",
+  "kelime_armut",
+  "kelime_domates",
+  "kelime_sari",
+  "kelime_ari",
+  "kelime_burun",
+  "kelime_bebek"
+ ],
+ "set_kelime_08": [
+  "kelime_dondurma",
+  "kelime_kirmizi",
+  "kelime_yildiz",
+  "kelime_balina",
+  "kelime_kitap",
+  "kelime_top",
+  "kelime_tuz",
+  "kelime_goz",
+  "kelime_gunes"
+ ],
+ "set_kelime_09": [
+  "kelime_cicek",
+  "kelime_canta",
+  "kelime_sapka",
+  "kelime_kus",
+  "kelime_kopek",
+  "kelime_ceket",
+  "kelime_pasta",
+  "kelime_gemi",
+  "kelime_patates"
+ ],
+ "set_kelime_10": [
+  "kelime_peynir",
+  "kelime_gol",
+  "kelime_semsiye",
+  "kelime_corap",
+  "kelime_bocek",
+  "kelime_ucak",
+  "kelime_ev",
+  "kelime_havuc",
+  "kelime_fil"
+ ],
+ "set_kelime_11": [
+  "kelime_horoz",
+  "kelime_dag",
+  "kelime_agac",
+  "kelime_fare",
+  "kelime_zurafa",
+  "kelime_hediye",
+  "kelime_havuz",
+  "kelime_otobus",
+  "kelime_tavsan"
+ ],
+ "set_kelime_12": [
+  "kelime_tavuk",
+  "kelime_kaplumbaga"
+ ],
+ "set_cikartma_01": [
+  "cikartma_01",
+  "cikartma_02",
+  "cikartma_03",
+  "cikartma_04",
+  "cikartma_05",
+  "cikartma_06",
+  "cikartma_07",
+  "cikartma_08",
+  "cikartma_09"
+ ],
+ "set_cikartma_02": [
+  "cikartma_10",
+  "cikartma_11",
+  "cikartma_12",
+  "cikartma_13",
+  "cikartma_14",
+  "cikartma_15",
+  "cikartma_16",
+  "cikartma_17",
+  "cikartma_18"
+ ],
+ "set_cikartma_03": [
+  "cikartma_19",
+  "cikartma_20",
+  "cikartma_21",
+  "cikartma_22",
+  "cikartma_23",
+  "cikartma_24",
+  "cikartma_25",
+  "cikartma_26",
+  "cikartma_27"
+ ],
+ "set_cikartma_04": [
+  "cikartma_28",
+  "cikartma_29",
+  "cikartma_30"
+ ]
+}

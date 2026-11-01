@@ -39,6 +39,303 @@ Toplam **131 eşya**, **17 karakter**, **12 evcil hayvan**, **38 buton/simge**, 
    Benim çizdiğim aynı adlı eşya varsa, Firefly görseli onun yerine geçer.
 
 
+## Toplu üretim: çıkartma sayfaları (47 istek)
+
+Görselleri tek tek üretmek yerine **bir istekte 9 tane** (karakterlerde 4) üretebilirsiniz. Firefly hepsini aynı resimde,
+aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya doğru kodu veririm.
+
+- Ayarlar aynı: **Square (1:1)**, **Art**, **Style reference** yüklü.
+- Firefly bazen sırayı ya da sayıyı tutturamaz. Sayfada eksik, birleşik ya da fazla parça varsa yine yükleyin,
+  kesip hangisinin ne olduğunu ben bakarak adlandırırım. Beğenmediğiniz tek parçayı aşağıdaki tekli istekle yeniden üretebilirsiniz.
+- Kalite: tekli istek her eşyayı daha büyük ve detaylı çizer. Önemli eşyalar (yatak, kanepe, karakterler) için tekli,
+  küçük eşyalar ve kelime resimleri için toplu üretim iyi bir denge.
+
+### `set_esya_yatak_01` — 9 görsel: yatak, yuvarlakyatak, cibinlikliyatak, ranza, besik, dolap, kiyafetaski, sifonyer, makyaj
+
+```
+set_esya_yatak_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a single bed with a wooden headboard, pink blanket with tiny flower pattern and two white pillows; 2) a round bed with a rainbow arch headboard, lilac blanket and fluffy white pillows; 3) a princess canopy bed with sheer pink curtains tied with bows and a heart pillow; 4) a white bunk bed with a small ladder, mint and pink blankets; 5) a white baby crib with a little star mobile above it; 6) a tall pastel pink wardrobe with two doors and round knobs; 7) an open clothes rack with colorful hanging shirts and dresses and two drawers below; 8) a cream chest of drawers with three drawers and gold handles; 9) a vanity table with a big mirror surrounded by round light bulbs, a hair brush and lipsticks. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_yatak_02` — 9 görsel: kozmetik, koltuk, armut, cicekminder, ayihali, bilgisayar, calismamasasi, aynadalga, boyaynasi
+
+```
+set_esya_yatak_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a small glass-door mini fridge full of pastel skincare bottles; 2) a hanging egg chair with a white cushion and a heart pillow, hanging rope on top; 3) a soft lilac bean bag chair; 4) a flower shaped floor cushion in cream and butter yellow; 5) a fluffy rug shaped like a cute teddy bear face, seen from above; 6) a lilac desk with a computer monitor, keyboard and a game controller; 7) a wooden study desk with a desk lamp, pencil cup and a stack of books; 8) a wall mirror with a wavy lilac frame; 9) a tall standing full-length mirror with a wooden frame. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_yatak_03` — 6 görsel: komodin, gecelambasi, oyuncaksandigi, unicorn, oyuncakev, yazitahtasi
+
+```
+set_esya_yatak_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 6 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a small bedside table with a mushroom lamp on top; 2) a moon shaped night light glowing softly; 3) an open toy chest with a ball, a teddy and blocks peeking out; 4) a plush unicorn toy with a rainbow mane; 5) a small toy dollhouse with a pink roof; 6) a standing chalkboard easel with colorful chalk doodles of a sun and a heart. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_mutfak_01` — 9 görsel: retrobuzdolabi, buzdolabi, tezgah, ocak, firin, lavabo, mikrodalga, tost, kahve
+
+```
+set_esya_mutfak_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a retro rounded fridge in peach color with a silver handle and cute magnets; 2) a mint green two-door fridge with sticky notes and magnets; 3) a kitchen counter with a sink, a stove top and an oven, cream cabinets with round knobs; 4) a small cooking stove with an oven and a pink pot on top; 5) a built-in oven with a glass door and a tray of cookies inside; 6) a kitchen sink cabinet with a silver faucet; 7) a lilac microwave oven; 8) a pastel blue toaster with a smiling face and two toast slices popping up; 9) a yellow drip coffee machine with a glass coffee pot. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_mutfak_02` — 9 görsel: blender, mikser, kettle, caydanlik, rafkupa, tabakdolabi, kasiklik, masa, yuvarlakmasa
+
+```
+set_esya_mutfak_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a blender with a pink strawberry smoothie inside; 2) a stand mixer in mint color with a mixing bowl; 3) an electric kettle in cream color; 4) a pink teapot with a lid; 5) a wall shelf with pink bowls and white mugs; 6) a glass-door kitchen cabinet with stacked plates and cups; 7) a hanging rail with a spatula, a fork, a whisk and a wooden spoon; 8) a small wooden dining table; 9) a round white table with a vase of tulips. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_mutfak_03` — 9 görsel: sandalye, tabure, mamasandalyesi, meyve, ekmek, kurabiye, pizza, hamburger, salata
+
+```
+set_esya_mutfak_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a wooden chair with a yellow cushion; 2) a wooden bar stool with a pink cushion; 3) a baby high chair in mint color; 4) a fruit bowl with an apple, an orange and bananas; 5) a woven basket with bread rolls and a baguette; 6) a glass cookie jar full of round cookies; 7) a cute round pizza with cheese and tomato slices; 8) a cute hamburger; 9) a bowl of green salad with tomatoes. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_mutfak_04` — 3 görsel: cilek, sut, saksiotlar
+
+```
+set_esya_mutfak_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 3 completely separate items arranged in a neat 1 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a small basket of red strawberries; 2) a milk carton with a small cow face, no letters; 3) three small pots with basil and mint herbs. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_banyo_01` — 9 görsel: kuvet, jakuzi, duskabini, banyolavabo, tuvalet, camasir, sampuan, sepet, havlu
+
+```
+set_esya_banyo_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a white bathtub with golden feet full of bubbles; 2) a round wooden hot tub with blue water; 3) a glass shower cabin with a silver shower head; 4) a bathroom sink with an oval mirror and a small cabinet; 5) a white toilet; 6) a white washing machine with a round door; 7) a bathroom shelf with colorful shampoo and soap bottles without letters; 8) a blue laundry basket with towels; 9) a towel rack with a pink striped towel. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_banyo_02` — 6 görsel: bornoz, ayna, ordek, dissfircasi, sabunluk, paspas
+
+```
+set_esya_banyo_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 6 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a fluffy pink bathrobe hanging on a hook; 2) a round wall mirror with a wooden frame; 3) a yellow rubber duck toy; 4) a cup with two toothbrushes and toothpaste; 5) a soap dispenser bottle in lilac; 6) a fluffy blue bath mat, seen from above. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_salon_01` — 9 görsel: kanepe, kosekanepe, berjer, tv, tvunitesi, sehpa, oyunrafi, kediagaci, akvaryum
+
+```
+set_esya_salon_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a lilac three-seat sofa with a yellow pillow; 2) a cream L-shaped sectional sofa with pastel pillows; 3) a cozy round armchair in mint color; 4) a flat television on a small wooden stand; 5) a low wooden TV cabinet with books and a plant; 6) a round white coffee table with a cup of tea; 7) a shelf full of toys, balls and building blocks; 8) a cat tree scratching post with platforms; 9) a small fish tank with two orange fish and plants. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_salon_02` — 3 görsel: piyano, somine, kuskafesi
+
+```
+set_esya_salon_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 3 completely separate items arranged in a neat 1 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a white upright piano; 2) a cozy fireplace with a warm fire and stockings; 3) a white bird cage with a small yellow bird inside. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_bahce_01` — 9 görsel: sezlong, semsiye, flamingo, simit, palmiye, buzkutusu, kaydirak, salincak, trambolin
+
+```
+set_esya_bahce_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a wooden beach deck chair with pink fabric; 2) a white and pink beach umbrella standing on a pole; 3) an inflatable pink flamingo pool float; 4) a striped inflatable swim ring; 5) a palm tree with coconuts; 6) a yellow picnic cooler box; 7) a small pastel playground slide; 8) a wooden garden swing with ropes and flowers; 9) a round trampoline with a safety net in pastel colors. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_bahce_02` — 9 görsel: kumkovasi, mangal, cicektarhi, agac, cit, kopekkulubesi, bisiklet, limonatastandi, gokkusagi
+
+```
+set_esya_bahce_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a sand bucket with a little shovel; 2) a small round barbecue grill; 3) a wooden flower box full of colorful tulips and daisies; 4) a round fluffy green tree with apples; 5) a short white picket fence section; 6) a red wooden dog house; 7) a pastel kids bicycle with a basket of flowers; 8) a wooden lemonade stand with a striped awning, no letters; 9) a pastel rainbow arch with fluffy clouds at both ends. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_bahce_03` — 1 görsel: piknik
+
+```
+set_esya_bahce_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 1 completely separate items arranged in a neat 1 by 1 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a red and white checkered picnic blanket with a basket, seen from above. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_hepsi_01` — 9 görsel: yuvarlakhali, kitaplik, duvarrafi, fotoipi, perde, kedipostu, pasta, limonata, copkutusu
+
+```
+set_esya_hepsi_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a round fluffy white rug, seen from above; 2) a bookshelf with colorful books, a small plant and a toy; 3) a floating wall shelf with tiny plants, a candle and a photo frame; 4) a string with clothespins holding instant photos and tiny fairy lights; 5) a pair of soft pink curtains with a curtain rod, tied with bows; 6) a framed poster with a cute smiling cat illustration; 7) a strawberry layer cake with one candle; 8) a glass jug of pink lemonade with lemon slices; 9) a pastel pedal trash bin. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_hepsi_02` — 9 görsel: robot, abajur, lambader, puf, buyukbitki, bitki, sarkitbitki, kaktus, kediyatagi
+
+```
+set_esya_hepsi_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a round robot vacuum cleaner; 2) a small table lamp with a pink shade; 3) a tall floor lamp with a cream shade; 4) an orange round pouf; 5) a tall leafy monstera plant in a white pot; 6) a small potted plant in a terracotta pot; 7) a hanging plant in a macrame holder; 8) a small cactus with a pink flower in an orange pot; 9) a round pink pet bed. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_hepsi_03` — 9 görsel: oyunkonsolu, vazo, duvarsaati, disko, sarkit, perilamba, tablo, cerceve, ayi
+
+```
+set_esya_hepsi_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a game console with two controllers; 2) a glass vase with pink tulips; 3) a round wall clock shaped like a cat face, without numbers; 4) a lilac disco ball hanging from a string; 5) a hanging pendant ceiling lamp with a cream shade; 6) a string of warm fairy lights hanging in a gentle curve; 7) a framed painting of flowers and a heart; 8) a framed painting of green hills and a sun; 9) a soft brown teddy bear sitting. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_esya_hepsi_04` — 4 görsel: top, kalpbalon, dondurma, cadir
+
+```
+set_esya_hepsi_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a red and white beach ball; 2) a pink heart shaped balloon on a string; 3) an ice cream cone with pink and vanilla scoops; 4) a cream teepee play tent with bunting flags. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `set_karakter_01` — 4 görsel: kiz1, kiz2, kiz3, kiz4
+
+```
+set_karakter_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 1 by 4 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute little girl with a long lavender braid, light skin, wearing a pink hoodie, light blue jeans and white sneakers; 2) a cute little girl with big curly black hair in a puff with a yellow bow, dark brown skin, wearing a yellow dress and pink sandals; 3) a cute little girl with a short pink bob haircut, fair skin, wearing a star print t-shirt, a lilac skirt and white boots; 4) a cute little girl with two blonde space buns, light skin, wearing mint overalls with a white shirt and yellow shoes. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, standing straight and facing the viewer, arms relaxed slightly away from the body, feet together on the same level, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_karakter_02` — 4 görsel: kiz5, kiz6, kiz7, oglan1
+
+```
+set_karakter_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 1 by 4 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute little girl with long wavy red hair and freckles, wearing a green dress with a white collar and red shoes; 2) a cute little girl princess with long brown hair and a small golden tiara, medium tan skin, wearing a puffy lilac ball gown; 3) a cute little girl pop star with a high purple ponytail, light skin, wearing a sparkly silver jacket, a pink skirt and holding nothing; 4) a cute little boy with short brown hair, light skin, wearing a blue sweater, khaki shorts and sneakers. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, standing straight and facing the viewer, arms relaxed slightly away from the body, feet together on the same level, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_karakter_03` — 4 görsel: oglan2, oglan3, bebek1, bebek2
+
+```
+set_karakter_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 1 by 4 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute little boy with short black curly hair, dark brown skin, wearing a green t-shirt with a dinosaur, jeans and orange sneakers; 2) a cute little boy with straight black hair and a backwards yellow cap, light tan skin, wearing a striped shirt and shorts; 3) a cute cute baby with a tiny curl of hair, wearing a pastel yellow onesie, sitting; 4) a cute cute baby girl with a pink headband, wearing a pink onesie, sitting. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, standing straight and facing the viewer, arms relaxed slightly away from the body, feet together on the same level, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_karakter_04` — 4 görsel: anne, baba, nine, dede
+
+```
+set_karakter_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 1 by 4 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute young mother with long brown hair, light skin, wearing a green dress and white sneakers; 2) a cute young father with short black hair and a short beard, light tan skin, wearing a blue striped shirt and jeans; 3) a cute kind grandmother with grey hair in a bun and round glasses, wearing a lilac cardigan and a long skirt; 4) a cute kind grandfather with white hair, a white mustache and glasses, wearing a brown vest and trousers. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, standing straight and facing the viewer, arms relaxed slightly away from the body, feet together on the same level, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_karakter_05` — 1 görsel: ogretmen
+
+```
+set_karakter_05 — 2D flat vector cartoon sticker sheet, NOT a photo: 1 completely separate items arranged in a neat 1 by 1 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute friendly young teacher with a brown ponytail, wearing a yellow sweater and blue skirt. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, standing straight and facing the viewer, arms relaxed slightly away from the body, feet together on the same level, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_hayvan_01` — 6 görsel: kedi, kedi2, kedi3, kopek, kopek2, tavsan
+
+```
+set_hayvan_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 6 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) an orange tabby kitten; 2) a fluffy white kitten with a pink bow; 3) a grey kitten with stripes; 4) a light brown puppy with floppy ears; 5) a white puppy with black spots; 6) a white bunny with long ears. Cute 2D chibi animal for a children's dollhouse game, flat vector art style with very soft gentle shading, big head, small rounded body, simple black oval eyes with a tiny white highlight, rosy cheeks, clean thick dark navy outline (#3D3553), soft pastel colors, full body visible, sitting and facing the viewer, no floor, no cast shadow, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_hayvan_02` — 6 görsel: hamster, papagan, kaplumbaga, ordekyavrusu, midilli, panda
+
+```
+set_hayvan_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 6 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a round golden hamster; 2) a small green and yellow parrot; 3) a little green turtle; 4) a fluffy yellow duckling; 5) a little pastel pony with a rainbow mane; 6) a baby panda. Cute 2D chibi animal for a children's dollhouse game, flat vector art style with very soft gentle shading, big head, small rounded body, simple black oval eyes with a tiny white highlight, rosy cheeks, clean thick dark navy outline (#3D3553), soft pastel colors, full body visible, sitting and facing the viewer, no floor, no cast shadow, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_buton_01` — 9 görsel: ui_geri, ui_hoparlor, ui_basla, ui_anasayfa, ui_tekrar, ui_hediye, ui_yildiz, ui_album, ui_birlestir
+
+```
+set_buton_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a rounded arrow pointing left; 2) a cute speaker with sound waves; 3) a big green play triangle; 4) a small cute house; 5) a circular arrow going around; 6) a pink gift box with a big golden bow; 7) a shiny golden star with a cute face; 8) a sticker album book with hearts and stars on the cover; 9) two links of a chain joining together with a sparkle. Cute game button icon for a children's app, one bold simple symbol, flat vector art style with soft glossy shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), bright cheerful pastel colors, front view, no button background, no text, no letters, no numbers, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_buton_02` — 9 görsel: ui_dogru, ui_cop, ui_oda_yatak, ui_oda_mutfak, ui_oda_banyo, ui_oda_salon, ui_oda_havuz, ui_mod_tasi, ui_mod_boya
+
+```
+set_buton_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a happy thumbs up hand; 2) a cute small trash bin; 3) a small cute bed; 4) a small cute cooking pot on a stove with steam; 5) a small cute bathtub with bubbles; 6) a small cute sofa; 7) a small swimming pool with a pink flamingo float; 8) a cute open hand with four little arrows around it; 9) a paintbrush with a pink paint drop. Cute game button icon for a children's app, one bold simple symbol, flat vector art style with soft glossy shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), bright cheerful pastel colors, front view, no button background, no text, no letters, no numbers, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_buton_03` — 9 görsel: ui_mod_tasarla, ui_kat_kiyafet, ui_kat_sac, ui_kat_ten, ui_kat_taki, ui_kat_elde, ui_kat_ayakkabi, ui_kat_hayvan, ui_kat_fon
+
+```
+set_buton_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a wallpaper roll and a paint roller; 2) a pink dress; 3) a long purple braided hairstyle on its own, no face; 4) three round face shapes in light, medium and dark skin tones; 5) a golden tiara with pink gems; 6) a pink microphone; 7) a pair of pink ballet shoes; 8) a cute cat face; 9) a tiny stage with curtains and a star. Cute game button icon for a children's app, one bold simple symbol, flat vector art style with soft glossy shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), bright cheerful pastel colors, front view, no button background, no text, no letters, no numbers, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_buton_04` — 3 görsel: ui_duvar, ui_zemin, ui_pencere
+
+```
+set_buton_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 3 completely separate items arranged in a neat 1 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a piece of wallpaper with little hearts; 2) a square of wooden floor planks; 3) a window with a sun and a cloud outside. Cute game button icon for a children's app, one bold simple symbol, flat vector art style with soft glossy shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), bright cheerful pastel colors, front view, no button background, no text, no letters, no numbers, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kart_01` — 4 görsel: ui_oyun_sesibul, ui_oyun_birlestir, ui_oyun_kelimekur, ui_oyun_oku
+
+```
+set_kart_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 2 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a big cute cartoon ear with sound waves and a few floating musical notes; 2) two cute rounded toy blocks snapping together with a sparkle in the middle; 3) three colorful puzzle pieces fitting together with little stars; 4) an open storybook with a rainbow and stars coming out of it. Cute illustration for a children's game menu card, a small cheerful scene, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, no text, no letters, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kart_02` — 4 görsel: ui_sahne, ui_ev, ui_giydir, ui_boyama
+
+```
+set_kart_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 2 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a small theater stage with purple curtains, a golden crown and a microphone in spotlight; 2) a cute pastel pink two-storey house with a heart window and flowers; 3) a pastel dress on a hanger next to a little crown and a bow; 4) a paint palette with colorful paint blobs and a brush. Cute illustration for a children's game menu card, a small cheerful scene, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, no text, no letters, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kelime_01` — 9 görsel: kelime_at, kelime_et, kelime_ana, kelime_anne, kelime_ata, kelime_nine, kelime_nene, kelime_nane, kelime_tane
+
+```
+set_kelime_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute horse; 2) a piece of steak meat; 3) a smiling mother hugging her child; 4) a smiling mother hugging her little daughter; 5) a kind old grandfather with a cane; 6) a kind grandmother with grey hair in a bun; 7) a kind grandmother knitting; 8) a sprig of fresh mint leaves; 9) a single bean. Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, front view, no text, no letters, no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kelime_02` — 9 görsel: kelime_anten, kelime_tente, kelime_inat, kelime_tat, kelime_net, kelime_el, kelime_lale, kelime_kale, kelime_kalem
+
+```
+set_kelime_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a TV antenna on a little roof; 2) a striped awning over a small shop window; 3) a little girl pouting with crossed arms; 4) a child happily licking a lollipop; 5) a soccer goal net; 6) an open waving hand; 7) a red tulip; 8) a fairy tale castle; 9) a yellow pencil. Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, front view, no text, no letters, no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kelime_03` — 9 görsel: kelime_elma, kelime_ekmek, kelime_kek, kelime_kalkan, kelime_kedi, kelime_etek, kelime_inek, kelime_kanat, kelime_ekin
+
+```
+set_kelime_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a red apple; 2) a loaf of bread; 3) a cupcake; 4) a knight's shield; 5) a cat; 6) a pink skirt; 7) a cow; 8) a pair of feathered wings; 9) a field of golden wheat. Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, front view, no text, no letters, no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kelime_04` — 9 görsel: kelime_tekne, kelime_iki, kelime_tilki, kelime_lamba, kelime_ayna, kelime_ay, kelime_ayi, kelime_un, kelime_mum
+
+```
+set_kelime_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a small boat; 2) two red apples side by side; 3) a fox; 4) a table lamp; 5) a hand mirror; 6) a crescent moon; 7) a bear; 8) a bag of flour; 9) a lit candle. Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, front view, no text, no letters, no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kelime_05` — 9 görsel: kelime_muz, kelime_limon, kelime_yumurta, kelime_oyun, kelime_mutlu, kelime_yatak, kelime_kayik, kelime_koltuk, kelime_kutu
+
+```
+set_kelime_05 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a banana; 2) a lemon; 3) an egg; 4) a pair of dice and a board game; 5) a very happy smiling child; 6) a bed; 7) a small rowing boat; 8) an armchair; 9) a cardboard box. Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, front view, no text, no letters, no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kelime_06` — 9 görsel: kelime_maymun, kelime_kum, kelime_okul, kelime_balik, kelime_balon, kelime_bal, kelime_araba, kelime_ordek, kelime_dede
+
+```
+set_kelime_06 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a monkey; 2) a pile of sand with a bucket; 3) a school building; 4) a fish; 5) a balloon; 6) a honey pot; 7) a car; 8) a duck; 9) a grandfather with a white mustache. Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, front view, no text, no letters, no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kelime_07` — 9 görsel: kelime_saat, kelime_su, kelime_simit, kelime_armut, kelime_domates, kelime_sari, kelime_ari, kelime_burun, kelime_bebek
+
+```
+set_kelime_07 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) an alarm clock; 2) a glass of water; 3) a Turkish sesame bagel ring; 4) a pear; 5) a tomato; 6) a yellow paint splash; 7) a bee; 8) a cute nose; 9) a baby. Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, front view, no text, no letters, no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kelime_08` — 9 görsel: kelime_dondurma, kelime_kirmizi, kelime_yildiz, kelime_balina, kelime_kitap, kelime_top, kelime_tuz, kelime_goz, kelime_gunes
+
+```
+set_kelime_08 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) an ice cream cone; 2) a red paint splash; 3) a star; 4) a whale; 5) a book; 6) a ball; 7) a salt shaker; 8) a big eye; 9) a smiling sun. Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, front view, no text, no letters, no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kelime_09` — 9 görsel: kelime_cicek, kelime_canta, kelime_sapka, kelime_kus, kelime_kopek, kelime_ceket, kelime_pasta, kelime_gemi, kelime_patates
+
+```
+set_kelime_09 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a flower; 2) a backpack; 3) a sun hat; 4) a little bird; 5) a dog; 6) a jacket; 7) a birthday cake; 8) a ship; 9) a potato. Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, front view, no text, no letters, no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kelime_10` — 9 görsel: kelime_peynir, kelime_gol, kelime_semsiye, kelime_corap, kelime_bocek, kelime_ucak, kelime_ev, kelime_havuc, kelime_fil
+
+```
+set_kelime_10 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a piece of cheese; 2) a small lake with ducks; 3) an umbrella; 4) a pair of socks; 5) a ladybug; 6) an airplane; 7) a house; 8) a carrot; 9) an elephant. Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, front view, no text, no letters, no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kelime_11` — 9 görsel: kelime_horoz, kelime_dag, kelime_agac, kelime_fare, kelime_zurafa, kelime_hediye, kelime_havuz, kelime_otobus, kelime_tavsan
+
+```
+set_kelime_11 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a rooster; 2) a mountain; 3) a tree; 4) a mouse; 5) a giraffe; 6) a gift box; 7) a swimming pool; 8) a bus; 9) a rabbit. Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, front view, no text, no letters, no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_kelime_12` — 2 görsel: kelime_tavuk, kelime_kaplumbaga
+
+```
+set_kelime_12 — 2D flat vector cartoon sticker sheet, NOT a photo: 2 completely separate items arranged in a neat 1 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a hen; 2) a turtle. Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, front view, no text, no letters, no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `set_cikartma_01` — 9 görsel: cikartma_01, cikartma_02, cikartma_03, cikartma_04, cikartma_05, cikartma_06, cikartma_07, cikartma_08, cikartma_09
+
+```
+set_cikartma_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a unicorn; 2) a panda; 3) a butterfly; 4) a ladybug; 5) a tropical fish; 6) a lion; 7) a frog; 8) an octopus; 9) a fox. Cute kawaii die-cut sticker for a children's sticker album, flat vector art style with soft shading, big shiny eyes if it is a creature, clean thick dark navy outline (#3D3553) and a thick white sticker border around the whole shape, bright pastel colors, no text, no logo, no watermark, plain solid light grey background (#EEEEEE).
+```
+
+### `set_cikartma_02` — 9 görsel: cikartma_10, cikartma_11, cikartma_12, cikartma_13, cikartma_14, cikartma_15, cikartma_16, cikartma_17, cikartma_18
+
+```
+set_cikartma_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a koala; 2) a penguin; 3) an owl; 4) a bee; 5) a turtle; 6) a baby dinosaur; 7) a rainbow; 8) a sunflower; 9) a strawberry. Cute kawaii die-cut sticker for a children's sticker album, flat vector art style with soft shading, big shiny eyes if it is a creature, clean thick dark navy outline (#3D3553) and a thick white sticker border around the whole shape, bright pastel colors, no text, no logo, no watermark, plain solid light grey background (#EEEEEE).
+```
+
+### `set_cikartma_03` — 9 görsel: cikartma_19, cikartma_20, cikartma_21, cikartma_22, cikartma_23, cikartma_24, cikartma_25, cikartma_26, cikartma_27
+
+```
+set_cikartma_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a watermelon slice; 2) a rocket; 3) a balloon; 4) a teddy bear; 5) a pink bow; 6) a lollipop; 7) a shooting star; 8) a dolphin; 9) a giraffe. Cute kawaii die-cut sticker for a children's sticker album, flat vector art style with soft shading, big shiny eyes if it is a creature, clean thick dark navy outline (#3D3553) and a thick white sticker border around the whole shape, bright pastel colors, no text, no logo, no watermark, plain solid light grey background (#EEEEEE).
+```
+
+### `set_cikartma_04` — 3 görsel: cikartma_28, cikartma_29, cikartma_30
+
+```
+set_cikartma_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 3 completely separate items arranged in a neat 1 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a bunny; 2) a whale; 3) a cherry blossom. Cute kawaii die-cut sticker for a children's sticker album, flat vector art style with soft shading, big shiny eyes if it is a creature, clean thick dark navy outline (#3D3553) and a thick white sticker border around the whole shape, bright pastel colors, no text, no logo, no watermark, plain solid light grey background (#EEEEEE).
+```
+
+
+# Tekli istekler
+
+
 ## Eşyalar: Yatak odası (24)
 
 ### `yatak` — Tek kişilik yatak

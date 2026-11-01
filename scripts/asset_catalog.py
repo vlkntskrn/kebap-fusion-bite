@@ -338,6 +338,26 @@ BACKGROUNDS = [
 ]
 
 
+# ------------------------------------------------------------ toplu üretim
+SHEET_LEAD = ("2D flat vector cartoon sticker sheet, NOT a photo: {n} completely separate items arranged in a neat {grid} grid "
+              "with wide empty white space between them, every item fully visible, none of the items touching or overlapping, "
+              "all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: ")
+
+
+def sheets(entries, size, cols, style, prefix):
+    """entries: [(kod, tarif)] -> [(set_kodu, [kodlar], istek)]"""
+    out = []
+    for i in range(0, len(entries), size):
+        chunk = entries[i:i + size]
+        rows = (len(chunk) + cols - 1) // cols
+        grid = f"{rows} by {cols}" if rows > 1 else f"1 by {len(chunk)}"
+        items = "; ".join(f"{k + 1}) {en}" for k, (_c, en) in enumerate(chunk))
+        code = f"set_{prefix}_{i // size + 1:02d}"
+        text = f"{code} — " + SHEET_LEAD.format(n=len(chunk), grid=grid) + items + ". " + style
+        out.append((code, [c for c, _ in chunk], text))
+    return out
+
+
 ROOM_TR = {"yatak": "Yatak odası", "mutfak": "Mutfak", "banyo": "Banyo", "salon": "Salon", "bahce": "Bahçe ve havuz", "hepsi": "Her odada"}
 ROOM_GAME = {"yatak": ["yatak"], "mutfak": ["mutfak"], "banyo": ["banyo"], "salon": ["salon"], "bahce": ["havuz"], "hepsi": None}
 
@@ -362,7 +382,20 @@ def main():
     codes = ([i[0] for i in ITEMS] + [c[0] for c in CHARACTERS] + [p[0] for p in PETS] + [u[0] for u in UI]
              + [word_code(w) for w in words] + [f"cikartma_{i + 1:02d}" for i in range(len(STICKERS))] + [b[0] for b in BACKGROUNDS] + ["uygulama_ikonu"])
     assert len(codes) == len(set(codes)), "tekrarlanan kod"
+    item_style = STYLE_ITEM.replace("one single isolated object, the whole object fully visible and centered with generous empty margin around it, ", "")
+    char_style = STYLE_CHAR.replace("centered with generous empty margin, ", "")
+    sets = []
+    for room in ["yatak", "mutfak", "banyo", "salon", "bahce", "hepsi"]:
+        sets += sheets([(c, en) for c, r, _w, _f, _tr, en in ITEMS if r == room], 9, 3, item_style, "esya_" + room)
+    sets += sheets([(c, "a cute " + en.removeprefix("a ")) for c, _w, _tr, en in CHARACTERS], 4, 4, char_style, "karakter")
+    sets += sheets([(c, en) for c, _w, _tr, en in PETS], 6, 3, STYLE_PET.replace("centered with generous empty margin, ", ""), "hayvan")
+    sets += sheets([(c, en) for c, _tr, en, st in UI if st is STYLE_UI], 9, 3, STYLE_UI.replace("the symbol fills about 80 percent of the canvas and is perfectly centered, ", ""), "buton")
+    sets += sheets([(c, en) for c, _tr, en, st in UI if st is STYLE_CARD], 4, 2, STYLE_CARD.replace("centered composition with empty margin, ", ""), "kart")
+    sets += sheets([(word_code(w), WORD_EN[w]) for w in words], 9, 3, STYLE_WORD.replace("centered with generous empty margin, ", ""), "kelime")
+    sets += sheets([(f"cikartma_{i + 1:02d}", en) for i, en in enumerate(STICKERS)], 9, 3, STYLE_STICKER.replace("centered, ", ""), "cikartma")
+    codes += [code for code, _c, _t in sets]
     (ROOT / "src" / "assets" / "codes.json").write_text(json.dumps(sorted(codes)) + "\n")
+    (ROOT / "src" / "assets" / "sets.json").write_text(json.dumps({code: cs for code, cs, _t in sets}, indent=1) + "\n")
 
     catalog = []
     for code, room, w, flat, _tr, _en in ITEMS:
@@ -417,6 +450,23 @@ def main():
 3. Eşya kendi odasının çekmecesinde, karakter ve hayvanlar her odada hemen görünür.
    Benim çizdiğim aynı adlı eşya varsa, Firefly görseli onun yerine geçer.
 """)
+
+    out.append(f"""
+## Toplu üretim: çıkartma sayfaları ({len(sets)} istek)
+
+Görselleri tek tek üretmek yerine **bir istekte 9 tane** (karakterlerde 4) üretebilirsiniz. Firefly hepsini aynı resimde,
+aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya doğru kodu veririm.
+
+- Ayarlar aynı: **Square (1:1)**, **Art**, **Style reference** yüklü.
+- Firefly bazen sırayı ya da sayıyı tutturamaz. Sayfada eksik, birleşik ya da fazla parça varsa yine yükleyin,
+  kesip hangisinin ne olduğunu ben bakarak adlandırırım. Beğenmediğiniz tek parçayı aşağıdaki tekli istekle yeniden üretebilirsiniz.
+- Kalite: tekli istek her eşyayı daha büyük ve detaylı çizer. Önemli eşyalar (yatak, kanepe, karakterler) için tekli,
+  küçük eşyalar ve kelime resimleri için toplu üretim iyi bir denge.
+""")
+    for code, cs, text in sets:
+        out.append(f"### `{code}` — {len(cs)} görsel: {', '.join(cs)}\n")
+        out.append("```\n" + text + "\n```\n")
+    out.append("\n# Tekli istekler\n")
 
     def section(title, rows, style):
         out.append(f"\n## {title}\n")
