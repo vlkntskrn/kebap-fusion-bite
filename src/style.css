@@ -2546,3 +2546,30 @@ body {
   border: 3px solid var(--line);
   background: #fff;
 }
+
+.thing {
+  transform-origin: 50% 100%;
+}
+.item-tools {
+  position: absolute;
+  z-index: 3002;
+  display: flex;
+  gap: 4px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 4px;
+  box-shadow: 0 4px 0 var(--line), 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+.item-tools button {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #fff4c7;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.item-tools button[data-tool='reset'] {
+  font-size: 13px;
+  background: #f1ece4;
+}

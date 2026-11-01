@@ -203,6 +203,10 @@ interface Inst {
   on?: boolean;
   /** Boyanmış ana renk. */
   c?: string;
+  /** Aynalanmış (sağa/sola bakıyor). */
+  fl?: boolean;
+  /** Döndürme açısı (derece). */
+  r?: number;
 }
 
 function house(): Record<string, Inst[]> {
@@ -307,7 +311,53 @@ export function showHouse(back: () => void) {
     el.style.left = `${inst.x / WORLD}%`;
     el.style.top = `${inst.y}%`;
     el.style.zIndex = String(THINGS[inst.id]?.flat ? 1 : 10 + Math.round(inst.y * 10));
+    // Alt-orta noktası etrafında döner; aynalama sadece içeriği çevirir.
+    el.style.transform = `translate(-50%,-100%) rotate(${inst.r ?? 0}deg)${inst.fl ? ' scaleX(-1)' : ''}`;
   };
+
+  /* ---- seçili eşya: aynala / döndür / sil düğmeleri */
+  let selected: { el: HTMLElement; inst: Inst } | null = null;
+  const tools = document.createElement('div');
+  tools.className = 'item-tools hidden';
+  tools.innerHTML = `<button data-tool="flip" aria-label="Aynala">⇋</button><button data-tool="left" aria-label="Sola döndür">↺</button><button data-tool="right" aria-label="Sağa döndür">↻</button><button data-tool="reset" aria-label="Düzelt">⟲0</button>`;
+  const hideTools = () => {
+    selected = null;
+    tools.classList.add('hidden');
+  };
+  const showTools = (el: HTMLElement, inst: Inst) => {
+    selected = { el, inst };
+    tools.classList.remove('hidden');
+    positionTools();
+  };
+  const positionTools = () => {
+    if (!selected) return;
+    const r = selected.el.getBoundingClientRect();
+    const rr = roomEl.getBoundingClientRect();
+    const x = Math.max(4, Math.min(rr.width - tools.offsetWidth - 4, r.left + r.width / 2 - rr.left - tools.offsetWidth / 2));
+    const y = Math.max(4, r.top - rr.top - tools.offsetHeight - 6);
+    tools.style.left = `${x}px`;
+    tools.style.top = `${y}px`;
+  };
+  tools.addEventListener('pointerdown', (e) => e.stopPropagation());
+  tools.addEventListener('click', (e) => {
+    const b = (e.target as Element).closest<HTMLElement>('[data-tool]');
+    if (!b || !selected) return;
+    const { el, inst } = selected;
+    const t = b.dataset.tool;
+    if (t === 'flip') inst.fl = !inst.fl;
+    else if (t === 'left') inst.r = ((inst.r ?? 0) - 15) % 360;
+    else if (t === 'right') inst.r = ((inst.r ?? 0) + 15) % 360;
+    else {
+      inst.r = 0;
+      inst.fl = false;
+    }
+    if (!inst.r) delete inst.r;
+    if (!inst.fl) delete inst.fl;
+    place(el, inst);
+    positionTools();
+    commit();
+    sfx.tap();
+  });
 
   const renderBg = () => (root.querySelector('.room-bg-wrap')!.innerHTML = roomBg(current, style(current)));
 
@@ -340,6 +390,7 @@ export function showHouse(back: () => void) {
   };
 
   const renderLayer = () => {
+    hideTools();
     layer.innerHTML = list().map(thingHtml).join('');
     layer.querySelectorAll<HTMLElement>('.thing').forEach((el) => place(el, list().find((i) => i.u === Number(el.dataset.u))!));
   };
@@ -382,6 +433,7 @@ export function showHouse(back: () => void) {
 
   /* ---- sürükle-bırak */
   const world = root.querySelector<HTMLElement>('.world')!;
+  roomEl.appendChild(tools);
   const toPct = (cx: number, cy: number) => {
     const r = world.getBoundingClientRect();
     return { x: ((cx - r.left) / r.width) * 100 * WORLD, y: ((cy - r.top) / r.height) * 100 };
@@ -396,6 +448,7 @@ export function showHouse(back: () => void) {
     const tx = W < roomEl.clientWidth ? (roomEl.clientWidth - W) / 2 : -panX;
     const ty = (roomEl.clientHeight * (1 - zoom)) / 2;
     world.style.transform = `translate(${tx}px, ${ty}px) scale(${zoom})`;
+    positionTools();
   };
   const centerPan = () => setPan(maxPan() / 2);
   /** Yakınlaştırma: ekranın ortası sabit kalır. */
@@ -439,6 +492,7 @@ export function showHouse(back: () => void) {
       const p = toPct(e.clientX, e.clientY);
       if (!moved && Math.hypot(p.x - start.x, p.y - start.y) > 2) moved = true;
       if (!moved) return;
+      if (selected) hideTools();
       inst.x = Math.max(2, Math.min(100 * WORLD - 2, p.x - off.x));
       const [y0, y1] = yRange(inst.id);
       inst.y = Math.max(y0, Math.min(y1, p.y - off.y));
@@ -468,6 +522,7 @@ export function showHouse(back: () => void) {
   }
 
   function tap(el: HTMLElement, inst: Inst) {
+    if (mode === 'tasi') showTools(el, inst);
     const isChar = inst.id === 'bebek' || !!FRIENDS[inst.id] || isCharAsset(inst.id);
     if (mode === 'boya' && !isChar) {
       const t = THINGS[inst.id];
@@ -513,7 +568,8 @@ export function showHouse(back: () => void) {
   const touches = new Map<number, number[]>();
   let pinch: { d: number; z: number } | null = null;
   roomEl.addEventListener('pointerdown', (ev) => {
-    if ((ev.target as Element).closest('.thing, .zoom-btns')) return;
+    if ((ev.target as Element).closest('.thing, .zoom-btns, .item-tools')) return;
+    hideTools();
     touches.set(ev.pointerId, [ev.clientX, ev.clientY]);
     if (touches.size === 2) {
       const [a, b] = [...touches.values()];
