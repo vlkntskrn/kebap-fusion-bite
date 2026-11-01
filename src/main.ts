@@ -91,6 +91,7 @@ function showHome(greet = false) {
         ${talkBtn('merhaba')}
         <button class="pill btn-album" data-act="album">🎁 ${progress.stickers.length}/${STICKERS.length}</button>
       </header>
+      <div class="home-left">
       <div class="title">
         <h1>${genitive(progress.name)}<br/><span>Okuma Oyunu</span></h1>
         <div class="known">${progress.known.map((l) => `<span class="${isVowel(l) ? 'v' : 'c'}">${l}</span>`).join('')}</div>
@@ -105,6 +106,7 @@ function showHome(greet = false) {
         <span class="sb-text">👑 ${genitive(progress.name)} Sahnesi<small>👗 🎨 ${pendingGifts() > 0 ? `<b class="gift-badge">🎁 ${pendingGifts()}</b>` : ''}</small></span>
       </button>
       <button class="house-banner" data-act="house"><span class="hb-icon">🏠</span><span class="sb-text">${houseTitle()}<small>🛏️ 🍳 🛁 🛋️</small></span></button>
+      </div>
       <div class="games">
         ${GAMES.map((g) => {
           const ready = items[g.kind]().length >= MIN[g.kind];
@@ -165,10 +167,9 @@ function gameShell(talkId: TalkId, body: string): HTMLElement {
   const r = run!;
   const dots = Array.from({ length: ROUND }, (_, i) => `<i class="${i < r.index ? 'done' : i === r.index ? 'now' : ''}"></i>`).join('');
   const root = show(`
-    <div class="screen game">
-      <header class="bar"><button class="round-btn" data-act="home">⬅</button><div class="dots">${dots}</div><div class="pill">⭐ ${progress.stars}</div></header>
-      <div class="prompt-row">${talkBtn(talkId)}</div>
-      ${body}
+    <div class="screen game game-${r.kind}">
+      <header class="bar"><button class="round-btn" data-act="home">⬅</button><div class="dots">${dots}</div><div class="prompt-row">${talkBtn(talkId)}</div><div class="pill">⭐ ${progress.stars}</div></header>
+      <div class="game-body">${body}</div>
     </div>`);
   bindTalkButtons(root);
   on(root, 'home', () => {
@@ -375,8 +376,8 @@ function qKur() {
   const root = gameShell(
     'kur',
     `<button class="picture" data-act="listen">${w.emoji}<span>🔊</span></button>
-     <div class="slots">${w.syllables.map(() => `<span class="slot"></span>`).join('')}</div>
-     <div class="tiles">${tiles.map((s, i) => `<button class="card tile" data-act="tile" data-i="${i}" data-v="${s}">${colored(s)}</button>`).join('')}</div>`,
+     <div class="kur-side"><div class="slots">${w.syllables.map(() => `<span class="slot"></span>`).join('')}</div>
+     <div class="tiles">${tiles.map((s, i) => `<button class="card tile" data-act="tile" data-i="${i}" data-v="${s}">${colored(s)}</button>`).join('')}</div></div>`,
   );
   const say = () => play(key.word(w.text));
   on(root, 'listen', (el) => {
@@ -430,13 +431,13 @@ function qOku() {
   const sylHtml = w.syllables.map((s, i) => `<button class="syl-chip ${i % 2 ? 'alt' : ''}" data-act="syl" data-v="${s}">${colored(s)}</button>`).join('');
   const root = gameShell(
     'oku',
-    `<div class="read-word">${sylHtml}</div>
-     <div class="reveal hidden"><span class="emoji">${w.emoji}</span></div>
-     <button class="big-btn sky" data-act="check">🔊</button>
+    `<div class="oku-word"><div class="read-word">${sylHtml}</div>
+     <div class="reveal hidden"><span class="emoji">${w.emoji}</span></div></div>
+     <div class="oku-side"><button class="big-btn sky" data-act="check">🔊</button>
      <div class="self hidden">
        <button class="big-btn mint" data-act="ok">😊 👍</button>
        <button class="big-btn ghost" data-act="again">🔁</button>
-     </div>`,
+     </div></div>`,
   );
   on(root, 'syl', (el) => {
     bounce(el);
@@ -524,6 +525,7 @@ function showGate() {
       <input class="gate-input" inputmode="numeric" pattern="[0-9]*" maxlength="2" autocomplete="off" />
       <button class="big-btn sky" data-act="go">Gir</button>
     </div>`);
+  document.body.classList.add('allow-portrait');
   const input = root.querySelector<HTMLInputElement>('input')!;
   on(root, 'home', () => showHome());
   const go = () => {
@@ -644,6 +646,7 @@ function showParent() {
       </section>
     </div>`);
 
+  document.body.classList.add('allow-portrait');
   on(root, 'home', async () => {
     if (activeRec) await finishRecording();
     releaseMic();
@@ -757,4 +760,12 @@ function showParent() {
 /* ---------------------------------------------------------------- boot */
 
 void navigator.storage?.persist?.().catch(() => {});
+
+// iPhone'da iki parmakla yakınlaştırma ve çift dokunma zoom'u kapalı: çocuk yanlışlıkla
+// ekranı büyütüp geri küçültemiyordu.
+for (const ev of ['gesturestart', 'gesturechange', 'gestureend']) document.addEventListener(ev, (e) => e.preventDefault(), { passive: false });
+document.addEventListener('touchmove', (e) => {
+  if (e.touches.length > 1) e.preventDefault();
+}, { passive: false });
+document.addEventListener('dblclick', (e) => e.preventDefault(), { passive: false });
 initVoices().then(showSplash);

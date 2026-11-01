@@ -8,7 +8,8 @@ import { show, on, talkBtn } from './ui';
 import { sfx } from './sfx';
 import { dollSvg, currentLook, shade } from './stage';
 import { genitive, TalkId } from './content';
-import { THINGS, colorize } from './house-items';
+import { THINGS, colorize, itemImage, extraItemsFor } from './house-items';
+import { roomIcon, MODE_ICONS } from './icons';
 
 type RoomId = 'yatak' | 'mutfak' | 'banyo' | 'salon' | 'havuz';
 type Mode = 'tasi' | 'boya' | 'tasarla';
@@ -227,13 +228,13 @@ export function showHouse(back: () => void) {
   const root = show(`
     <div class="screen house">
       <header class="bar"><button class="round-btn" data-act="back">⬅</button>
-        <div class="room-tabs">${ROOMS.map((r) => `<button class="room-tab" data-room="${r.id}">${r.icon}</button>`).join('')}</div>
+        <div class="room-tabs">${ROOMS.map((r) => `<button class="room-tab" data-room="${r.id}">${roomIcon(r.id)}</button>`).join('')}</div>
         ${talkBtn('oda')}</header>
       <div class="room"><div class="room-bg-wrap"></div><div class="layer"></div></div>
       <div class="modes">
-        <button class="mode" data-mode="tasi">✋</button>
-        <button class="mode" data-mode="boya">🖌️</button>
-        <button class="mode" data-mode="tasarla">🎨</button>
+        <button class="mode" data-mode="tasi">${MODE_ICONS.tasi}</button>
+        <button class="mode" data-mode="boya">${MODE_ICONS.boya}</button>
+        <button class="mode" data-mode="tasarla">${MODE_ICONS.tasarla}</button>
       </div>
       <div class="drawer"><div class="drawer-items"></div><div class="trash">🗑️</div></div>
       <div class="design hidden"></div>
@@ -255,12 +256,16 @@ export function showHouse(back: () => void) {
     if (f) return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${f.w}%">${dollSvg(f.look, 'doll', { bg: false })}</div>`;
     const t = THINGS[inst.id];
     if (!t) return '';
+    const img = itemImage(inst.id);
+    if (img) return `<div class="thing img-thing ${t.bob ? 'bob' : ''}" data-u="${inst.u}" style="--w:${t.w}%"><img src="${img}" alt="" draggable="false"/></div>`;
     return `<div class="thing ${inst.on ? 'on' : ''} ${t.bob ? 'bob' : ''}" data-u="${inst.u}" style="--w:${t.w}%;${inst.c ? `--c:${inst.c}` : ''}"><svg viewBox="${t.vb}" xmlns="http://www.w3.org/2000/svg">${OL}<g filter="url(#tol)">${colorize(t)}</g></svg></div>`;
   };
 
   const thumb = (id: string) => {
     const f = FRIENDS[id];
     if (f) return dollSvg(f.look, 'doll', { bg: false });
+    const img = itemImage(id);
+    if (img) return `<img src="${img}" alt="" draggable="false"/>`;
     const t = THINGS[id];
     return `<svg viewBox="${t.vb}">${t.svg}</svg>`;
   };
@@ -277,7 +282,7 @@ export function showHouse(back: () => void) {
     drawerItems.innerHTML =
       mode === 'boya'
         ? PALETTE.map((c) => `<button class="sw ${c === brush ? 'on' : ''}" data-color="${c}" style="background:${c}"></button>`).join('')
-        : [...room().tray, ...COMMON].map((id) => `<button class="drawer-item" data-id="${id}">${thumb(id)}</button>`).join('');
+        : [...room().tray, ...extraItemsFor(current), ...COMMON].map((id) => `<button class="drawer-item" data-id="${id}">${thumb(id)}</button>`).join('');
     drawerItems.scrollLeft = 0;
     drawer.classList.toggle('paint', mode === 'boya');
   };
@@ -342,7 +347,12 @@ export function showHouse(back: () => void) {
     const r = roomEl.getBoundingClientRect();
     return { x: ((cx - r.left) / r.width) * 100, y: ((cy - r.top) / r.height) * 100 };
   };
-  const overDrawer = (cy: number) => mode === 'tasi' && cy > drawer.getBoundingClientRect().top;
+  const overDrawer = (cx: number, cy: number) => {
+    if (mode !== 'tasi') return false;
+    const r = drawer.getBoundingClientRect();
+    return cx >= r.left && cx <= r.right && cy >= r.top && cy <= r.bottom;
+  };
+  const landscape = () => window.innerWidth > window.innerHeight;
 
   function drag(el: HTMLElement, inst: Inst, ev: PointerEvent, fresh: boolean) {
     ev.preventDefault();
@@ -357,7 +367,7 @@ export function showHouse(back: () => void) {
       inst.x = Math.max(2, Math.min(98, p.x - off.x));
       inst.y = Math.max(8, Math.min(100, p.y - off.y));
       place(el, inst);
-      drawer.classList.toggle('drop', overDrawer(e.clientY));
+      drawer.classList.toggle('drop', overDrawer(e.clientX, e.clientY));
     };
     const up = (e: PointerEvent) => {
       window.removeEventListener('pointermove', move);
@@ -366,7 +376,7 @@ export function showHouse(back: () => void) {
       el.classList.remove('dragging');
       drawer.classList.remove('drop');
       if (!moved) return tap(el, inst);
-      if (overDrawer(e.clientY) && inst.id !== 'bebek') {
+      if (overDrawer(e.clientX, e.clientY) && inst.id !== 'bebek') {
         house()[current] = list().filter((i) => i !== inst);
         el.animate([{ transform: 'translate(-50%,-100%) scale(1)', opacity: 1 }, { transform: 'translate(-50%,-100%) scale(0.2)', opacity: 0 }], { duration: 250 }).finished.then(() => el.remove());
         sfx.soft();
@@ -384,7 +394,7 @@ export function showHouse(back: () => void) {
     const isChar = inst.id === 'bebek' || !!FRIENDS[inst.id];
     if (mode === 'boya' && !isChar) {
       const t = THINGS[inst.id];
-      if (t?.main) {
+      if (t?.main && !itemImage(inst.id)) {
         inst.c = brush;
         el.style.setProperty('--c', brush);
         commit();
@@ -434,9 +444,13 @@ export function showHouse(back: () => void) {
     if (!b) return;
     const startY = ev.clientY;
     const startX = ev.clientX;
-    // Çekmece yatay kayar: yukarı doğru çekilince eşya odaya çıkar.
+    // Çekmece kaydırılabilir; odaya doğru çekilince eşya odaya çıkar.
     const pull = (e: PointerEvent) => {
-      if (startY - e.clientY > 14 && Math.abs(startY - e.clientY) > Math.abs(e.clientX - startX)) {
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      // Dikeyde çekmece altta: yukarı çek. Yatayda çekmece sağda: sola, odaya doğru çek.
+      const out = landscape() ? dx < -14 && Math.abs(dx) > Math.abs(dy) : dy < -14 && Math.abs(dy) > Math.abs(dx);
+      if (out) {
         cleanup();
         const p = toPct(e.clientX, e.clientY);
         const [node, inst] = addInst(b.dataset.id!, p.x, Math.min(100, p.y + 6));
@@ -477,7 +491,7 @@ export function showHouse(back: () => void) {
       mode = b.dataset.mode as Mode;
       sfx.tap();
       render();
-      void talk(mode === 'tasi' ? 'oda' : mode === 'boya' ? 'esyaBoya' : 'tasarla');
+      void talk(mode === 'tasi' ? 'mod_tasi' : mode === 'boya' ? 'esyaBoya' : 'tasarla');
     }),
   );
 

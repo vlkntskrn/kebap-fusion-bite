@@ -1624,3 +1624,512 @@ button {
     0 0 0 3px #fff,
     0 0 0 6px var(--ink);
 }
+
+/* ================================================== v6: yatay ekran, zoom, simgeler */
+
+/* İki parmakla yakınlaştırma ve çift dokunma zoom'u kapalı (kaydırma serbest). */
+html,
+body {
+  touch-action: pan-x pan-y;
+  -webkit-text-size-adjust: 100%;
+}
+
+.home-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.game-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+}
+.kur-side,
+.oku-side,
+.oku-word {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.game .bar .prompt-row .talk-btn {
+  width: 52px;
+  height: 52px;
+  font-size: 24px;
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.room-tab,
+.cat,
+.mode {
+  display: grid;
+  place-items: center;
+  padding: 5px;
+}
+.mode .icon {
+  width: 36px;
+  height: 36px;
+}
+.img-thing img,
+.drawer-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: auto;
+  -webkit-user-drag: none;
+}
+.drawer-item img {
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Telefon dik tutulunca "yan çevir" uyarısı (ebeveyn paneli hariç). */
+.rotate-hint {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: var(--bg);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.rotate-phone {
+  font-size: 110px;
+  animation: rotate-phone 2.2s ease-in-out infinite;
+}
+.rotate-arrow {
+  font-size: 64px;
+  color: var(--sky-d);
+  font-weight: 700;
+}
+@keyframes rotate-phone {
+  0%,
+  25% {
+    transform: rotate(0);
+  }
+  60%,
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+@media (orientation: portrait) and (max-width: 900px) {
+  body:not(.allow-portrait) .rotate-hint {
+    display: flex;
+  }
+}
+
+@media (orientation: landscape) {
+  #app {
+    max-width: none;
+  }
+  .screen {
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+    gap: 8px;
+    padding: calc(env(safe-area-inset-top) + 8px) calc(env(safe-area-inset-right) + 14px) calc(env(safe-area-inset-bottom) + 8px) calc(env(safe-area-inset-left) + 14px);
+  }
+  .parent,
+  .gate {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .round-btn,
+  .talk-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+  .pill {
+    padding: 5px 12px;
+    font-size: 16px;
+  }
+
+  /* ana sayfa: solda başlık ve büyük düğmeler, sağda 4 oyun */
+  .home {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    column-gap: 16px;
+  }
+  .home .bar {
+    grid-column: 1 / -1;
+  }
+  .home-left {
+    grid-column: 1;
+    grid-row: 2;
+    gap: 10px;
+    justify-content: center;
+    min-height: 0;
+  }
+  .home .games {
+    grid-column: 2;
+    grid-row: 2 / 4;
+    align-content: center;
+    gap: 10px;
+  }
+  .home .parent-btn {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0;
+    padding: 6px 14px;
+  }
+  .title h1 {
+    font-size: 26px;
+    margin: 0 0 4px;
+  }
+  .title h1 br {
+    display: none;
+  }
+  .title h1 span {
+    margin-left: 6px;
+  }
+  .title h1 span {
+    font-size: 18px;
+  }
+  .known span {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+  .notice {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+  .stage-banner,
+  .house-banner {
+    padding: 6px 12px 6px 6px;
+  }
+  .sb-doll {
+    width: 44px;
+  }
+  .home-left {
+    gap: 8px;
+  }
+  .hb-icon {
+    font-size: 40px;
+    width: 52px;
+  }
+  .sb-text {
+    font-size: 19px;
+  }
+  .sb-text small {
+    font-size: 20px;
+  }
+  .game-card {
+    min-height: calc((100dvh - 110px) / 2);
+    padding: 8px;
+  }
+  .g-icon {
+    font-size: min(8dvh, 40px);
+  }
+  .g-title {
+    font-size: 20px;
+  }
+
+  /* oyunlar: içerik yan yana */
+  .game-body {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+  .speaker {
+    width: min(26dvh, 110px);
+    height: min(26dvh, 110px);
+    font-size: min(12dvh, 50px);
+    flex-shrink: 0;
+  }
+  .game-bul .choices {
+    grid-template-columns: repeat(3, min(32dvh, 170px));
+    margin: 0;
+  }
+  .card.letter {
+    font-size: min(20dvh, 84px);
+  }
+  .pair {
+    margin: 0;
+  }
+  .pair .card {
+    width: min(34dvh, 140px);
+  }
+  .merged-card {
+    margin: 0;
+    font-size: min(22dvh, 96px);
+  }
+  .game-birlestir .big-btn {
+    width: auto;
+    padding: 14px 28px;
+  }
+  .quiz {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+  .quiz .choices {
+    grid-template-columns: repeat(2, min(38dvh, 200px));
+    margin: 0;
+  }
+  .card.syl {
+    font-size: min(16dvh, 64px);
+  }
+  .picture {
+    width: min(44dvh, 190px);
+    height: min(44dvh, 190px);
+    font-size: min(24dvh, 100px);
+    flex-shrink: 0;
+  }
+  .slot {
+    height: min(20dvh, 90px);
+    font-size: min(12dvh, 52px);
+  }
+  .card.tile {
+    font-size: min(11dvh, 50px);
+  }
+  .oku-word {
+    align-items: center;
+  }
+  .read-word {
+    margin: 0;
+  }
+  .syl-chip {
+    font-size: min(17dvh, 76px);
+  }
+  .reveal {
+    font-size: min(22dvh, 100px);
+  }
+  .oku-side {
+    width: min(40%, 260px);
+  }
+
+  /* giydirme: solda bebek, sağda seçenekler */
+  .dress {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto auto minmax(0, 1fr);
+    column-gap: 16px;
+    row-gap: 6px;
+  }
+  .dress .bar {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .dress .doll-wrap {
+    grid-column: 1;
+    grid-row: 1 / 5;
+    width: auto;
+    height: calc(100dvh - 20px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    aspect-ratio: 300 / 480;
+    align-self: center;
+  }
+  .dress .cats,
+  .dress .items,
+  .dress .swatches {
+    grid-column: 2;
+    justify-content: flex-start;
+  }
+  .dress .item {
+    width: 64px;
+    min-height: 64px;
+  }
+  .dress .sw {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* ev: solda oda, sağda odalar, modlar ve çekmece */
+  .house {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 1fr);
+    column-gap: 12px;
+  }
+  .house .room {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    height: calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    width: auto;
+    align-self: center;
+  }
+  .house .bar {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .house .modes {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .house .mode {
+    height: 44px;
+  }
+  .house .drawer,
+  .house .design {
+    grid-column: 2;
+    grid-row: 3;
+    min-height: 0;
+    overflow-y: auto;
+  }
+  .house .drawer {
+    flex-direction: column;
+  }
+  .house .drawer-items {
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: auto;
+    align-content: flex-start;
+    touch-action: pan-y;
+  }
+  .house .drawer-item {
+    flex: 0 0 60px;
+    height: 60px;
+    touch-action: pan-y;
+  }
+  .house .trash {
+    border-left: 0;
+    border-top: 2px dashed var(--line);
+    padding: 4px 0 0;
+    font-size: 24px;
+  }
+  .house .design {
+    gap: 4px;
+    padding: 8px;
+  }
+  .house .dz {
+    width: 56px;
+    height: 32px;
+  }
+  .house .dz[data-sw] {
+    width: 32px;
+  }
+
+  /* konser: solda bebek, sağda sözler */
+  .concert {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    column-gap: 20px;
+  }
+  .concert-doll {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    margin: 0;
+    width: auto;
+    height: calc(100dvh - 24px);
+    aspect-ratio: 300 / 480;
+    align-self: center;
+  }
+  .lyrics,
+  .crowd,
+  .concert-end {
+    grid-column: 2;
+  }
+  .crowd {
+    margin: 0;
+  }
+
+  /* boyama */
+  .pages {
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+  }
+  .page-thumb {
+    height: calc((100dvh - 100px) / 2);
+    aspect-ratio: 1;
+  }
+  .page-thumb .paint {
+    height: 100%;
+    width: auto;
+  }
+  .paint-screen {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    column-gap: 16px;
+  }
+  .paint-screen .bar {
+    grid-column: 2;
+  }
+  .paint-screen .canvas {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    height: calc(100dvh - 20px);
+    aspect-ratio: 1;
+    width: auto;
+    align-self: center;
+  }
+  .paint-screen .canvas .paint {
+    height: 100%;
+    width: auto;
+  }
+  .paint-screen .swatches {
+    grid-column: 2;
+    align-content: center;
+  }
+
+  /* sahne menüsü, hediye, bitiş, açılış, albüm */
+  .stage-card {
+    height: calc(100dvh - 140px);
+    min-height: 0;
+  }
+  .stage-card .doll {
+    height: 100%;
+    width: auto;
+  }
+  .gift-options {
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    margin: 0;
+  }
+  .gift-option .doll {
+    height: calc(100dvh - 110px);
+    width: auto;
+  }
+  .gift-title {
+    font-size: 36px;
+  }
+  .finish {
+    gap: 6px;
+  }
+  .finish h1 {
+    font-size: 32px;
+  }
+  .stars {
+    font-size: 26px;
+  }
+  .new-sticker {
+    font-size: 64px;
+  }
+  .gift-btn.big {
+    width: 90px;
+    height: 90px;
+    font-size: 54px;
+  }
+  .finish .row {
+    width: min(100%, 420px);
+  }
+  .splash {
+    flex-direction: row;
+    gap: 40px;
+  }
+  .splash-doll {
+    width: auto;
+    height: 80dvh;
+    aspect-ratio: 300 / 480;
+  }
+  .album {
+    grid-template-columns: repeat(10, 1fr);
+  }
+  .rec-row .mini {
+    height: 40px;
+  }
+}

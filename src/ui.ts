@@ -11,6 +11,7 @@ export function h(html: string): HTMLElement {
 
 export function show(html: string): HTMLElement {
   stopVoice();
+  document.body.classList.remove('allow-portrait');
   const el = h(html);
   app.replaceChildren(el);
   window.scrollTo(0, 0);

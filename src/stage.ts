@@ -7,6 +7,8 @@ import { progress, commit } from './state';
 import { talk, bindTalkButtons } from './talk';
 import { show, on, wiggle, bounce, confetti, talkBtn, h } from './ui';
 import { buildSong, playSong, SongHandle } from './music';
+import { CAT_ICONS } from './icons';
+import type { TalkId } from './content';
 import { stopVoice, wait } from './voice';
 import { sfx } from './sfx';
 
@@ -370,7 +372,7 @@ function showDressUp() {
     <div class="screen dress">
       <header class="bar"><button class="round-btn" data-act="back">⬅</button><div class="pill">⭐ ${progress.stars}</div>${talkBtn('giydir')}</header>
       <div class="doll-wrap" data-act="doll"></div>
-      <div class="cats">${CATS.map((c) => `<button class="cat" data-act="cat" data-c="${c.id}">${c.icon}</button>`).join('')}</div>
+      <div class="cats">${CATS.map((c) => `<button class="cat" data-act="cat" data-c="${c.id}">${CAT_ICONS[c.id] ?? c.icon}</button>`).join('')}</div>
       <div class="items"></div>
       <div class="swatches"></div>
     </div>`);
@@ -403,6 +405,7 @@ function showDressUp() {
       sfx.tap();
       cat = CATS.find((c) => c.id === b.dataset.c)!;
       renderPicker();
+      void talk(`kat_${cat.id}` as TalkId);
     }),
   );
   itemsEl.addEventListener('click', (e) => {
@@ -438,6 +441,7 @@ function showDressUp() {
       cat = CATS.find((c) => c.id === part)!;
       sfx.tap();
       renderPicker();
+      void talk(`kat_${cat.id}` as TalkId);
       wrap.querySelectorAll(`[data-part="${part}"]`).forEach((g) => g.animate([{ opacity: 1 }, { opacity: 0.4 }, { opacity: 1 }], { duration: 400 }));
       root.querySelector('.swatches')?.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.05)' }, { transform: 'scale(1)' }], { duration: 400 });
       return;
