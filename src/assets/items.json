@@ -1,31 +1,35 @@
 [
  {
   "id": "yatak",
-  "w": 46,
+  "w": 34.21,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.733
  },
  {
   "id": "yuvarlakyatak",
-  "w": 46,
+  "w": 36.36,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.843
  },
  {
   "id": "cibinlikliyatak",
-  "w": 46,
+  "w": 49.65,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.067
  },
  {
   "id": "ranza",
-  "w": 40,
+  "w": 41.45,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.11
  },
  {
   "id": "besik",
@@ -36,646 +40,770 @@
  },
  {
   "id": "dolap",
-  "w": 22,
+  "w": 29.47,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.703
  },
  {
   "id": "kiyafetaski",
-  "w": 26,
+  "w": 47.28,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.884
  },
  {
   "id": "sifonyer",
-  "w": 24,
+  "w": 26.23,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.957,
+  "top": 0.125
  },
  {
   "id": "makyaj",
-  "w": 32,
+  "w": 30.76,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.269,
+  "top": 0.6
  },
  {
   "id": "kozmetik",
-  "w": 16,
+  "w": 14.08,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.188,
+  "top": 0.078
  },
  {
   "id": "koltuk",
-  "w": 22,
+  "w": 36.47,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.376
  },
  {
   "id": "armut",
-  "w": 18,
+  "w": 21.89,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.891
  },
  {
   "id": "cicekminder",
-  "w": 14,
+  "w": 16.73,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.685
  },
  {
   "id": "ayihali",
-  "w": 40,
+  "w": 41.81,
   "rooms": [
    "yatak"
   ],
-  "flat": true
+  "flat": true,
+  "ar": 0.679
  },
  {
   "id": "yuvarlakhali",
-  "w": 40,
-  "flat": true
+  "w": 44.6,
+  "flat": true,
+  "ar": 0.996
  },
  {
   "id": "bilgisayar",
-  "w": 36,
+  "w": 37.3,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.897,
+  "top": 0.468
  },
  {
   "id": "calismamasasi",
-  "w": 34,
+  "w": 33.25,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.922,
+  "top": 0.462
  },
  {
   "id": "kitaplik",
-  "w": 24
+  "w": 41.49,
+  "ar": 0.806,
+  "top": 0.043
  },
  {
   "id": "aynadalga",
-  "w": 16,
+  "w": 13.04,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.497
  },
  {
   "id": "boyaynasi",
-  "w": 14,
+  "w": 24.7,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.806
  },
  {
   "id": "komodin",
-  "w": 14,
+  "w": 17.05,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.389,
+  "top": 0.425
  },
  {
   "id": "gecelambasi",
-  "w": 8,
+  "w": 5.59,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.097
  },
  {
   "id": "oyuncaksandigi",
-  "w": 20,
+  "w": 17.65,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.948,
+  "top": 0.085
  },
  {
   "id": "unicorn",
-  "w": 10,
+  "w": 7.77,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.256
  },
  {
   "id": "oyuncakev",
-  "w": 18,
+  "w": 18.67,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.045
  },
  {
   "id": "yazitahtasi",
-  "w": 16,
+  "w": 25.91,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.183
  },
  {
   "id": "duvarrafi",
-  "w": 28
+  "w": 19.51,
+  "ar": 0.542
  },
  {
   "id": "fotoipi",
-  "w": 30
+  "w": 33.45,
+  "ar": 0.208
  },
  {
   "id": "perde",
-  "w": 34
+  "w": 43.52,
+  "ar": 1.281
  },
  {
   "id": "kedipostu",
-  "w": 16
+  "w": 12.78,
+  "ar": 1.2
  },
  {
   "id": "retrobuzdolabi",
-  "w": 22,
+  "w": 31.16,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.476
  },
  {
   "id": "buzdolabi",
-  "w": 22,
+  "w": 33.01,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.478
  },
  {
   "id": "tezgah",
-  "w": 46,
+  "w": 54.92,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.558,
+  "top": 0.244
  },
  {
   "id": "ocak",
-  "w": 26,
+  "w": 18.44,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.436
  },
  {
   "id": "firin",
-  "w": 24,
+  "w": 16.96,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.48,
+  "top": 0.251
  },
  {
   "id": "lavabo",
-  "w": 30,
+  "w": 23.26,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.198,
+  "top": 0.342
  },
  {
   "id": "mikrodalga",
-  "w": 20,
+  "w": 10.45,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.8
  },
  {
   "id": "tost",
-  "w": 12,
+  "w": 5.8,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.057
  },
  {
   "id": "kahve",
-  "w": 12,
+  "w": 6.9,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.374
  },
  {
   "id": "blender",
-  "w": 9,
+  "w": 6.75,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.57
  },
  {
   "id": "mikser",
-  "w": 12,
+  "w": 9.39,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.009
  },
  {
   "id": "kettle",
-  "w": 10,
+  "w": 6.74,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.076
  },
  {
   "id": "caydanlik",
-  "w": 12,
+  "w": 7.75,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.791
  },
  {
   "id": "rafkupa",
-  "w": 32,
+  "w": 19.51,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.542
  },
  {
   "id": "tabakdolabi",
-  "w": 26,
+  "w": 29.6,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.847
  },
  {
   "id": "kasiklik",
-  "w": 24,
+  "w": 16.73,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.751
  },
  {
   "id": "masa",
-  "w": 34,
+  "w": 35.82,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.584,
+  "top": 0.128
  },
  {
   "id": "yuvarlakmasa",
-  "w": 28,
+  "w": 20.52,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.291,
+  "top": 0.474
  },
  {
   "id": "sandalye",
-  "w": 12,
+  "w": 16.63,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.509
  },
  {
   "id": "tabure",
-  "w": 10,
+  "w": 13.32,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.569
  },
  {
   "id": "mamasandalyesi",
-  "w": 14,
+  "w": 17.18,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.623
  },
  {
   "id": "meyve",
-  "w": 14,
+  "w": 8.36,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.827
  },
  {
   "id": "ekmek",
-  "w": 12,
+  "w": 8.36,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.068
  },
  {
   "id": "pasta",
-  "w": 13
+  "w": 5.63,
+  "ar": 1.09
  },
  {
   "id": "kurabiye",
-  "w": 9,
+  "w": 4.57,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.462
  },
  {
   "id": "pizza",
-  "w": 12,
+  "w": 8.92,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.0
  },
  {
   "id": "hamburger",
-  "w": 9,
+  "w": 3.9,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.958
  },
  {
   "id": "salata",
-  "w": 12,
+  "w": 7.25,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.743
  },
  {
   "id": "cilek",
-  "w": 9,
+  "w": 6.69,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.065
  },
  {
   "id": "sut",
-  "w": 6,
+  "w": 4.57,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.343
  },
  {
   "id": "limonata",
-  "w": 8
+  "w": 6.52,
+  "ar": 1.112
  },
  {
   "id": "copkutusu",
-  "w": 12
+  "w": 9.02,
+  "ar": 1.391
  },
  {
   "id": "saksiotlar",
-  "w": 16,
+  "w": 11.15,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.642
  },
  {
   "id": "kuvet",
-  "w": 48,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "jakuzi",
-  "w": 42,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "duskabini",
-  "w": 26,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "banyolavabo",
-  "w": 22,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "tuvalet",
-  "w": 18,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "camasir",
-  "w": 22,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "sampuan",
-  "w": 26,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "sepet",
-  "w": 14,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "robot",
-  "w": 14
- },
- {
-  "id": "havlu",
-  "w": 16,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "bornoz",
-  "w": 12,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "ayna",
-  "w": 16,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "ordek",
-  "w": 9,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "dissfircasi",
-  "w": 7,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "sabunluk",
-  "w": 6,
-  "rooms": [
-   "banyo"
-  ]
- },
- {
-  "id": "paspas",
-  "w": 30,
+  "w": 33.89,
   "rooms": [
    "banyo"
   ],
-  "flat": true
+  "ar": 0.699
+ },
+ {
+  "id": "jakuzi",
+  "w": 35.9,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 0.738
+ },
+ {
+  "id": "duskabini",
+  "w": 39.2,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 1.422
+ },
+ {
+  "id": "banyolavabo",
+  "w": 24.05,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 1.738,
+  "top": 0.6
+ },
+ {
+  "id": "tuvalet",
+  "w": 16.17,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 1.379
+ },
+ {
+  "id": "camasir",
+  "w": 16.08,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 1.473,
+  "top": 0.077
+ },
+ {
+  "id": "sampuan",
+  "w": 16.73,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 1.26
+ },
+ {
+  "id": "sepet",
+  "w": 14.92,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 0.934
+ },
+ {
+  "id": "robot",
+  "w": 9.76,
+  "ar": 0.74
+ },
+ {
+  "id": "havlu",
+  "w": 16.73,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 0.838
+ },
+ {
+  "id": "bornoz",
+  "w": 15.49,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 1.8
+ },
+ {
+  "id": "ayna",
+  "w": 16.73,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 0.997
+ },
+ {
+  "id": "ordek",
+  "w": 3.9,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 1.022
+ },
+ {
+  "id": "dissfircasi",
+  "w": 4.04,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 1.378
+ },
+ {
+  "id": "sabunluk",
+  "w": 2.75,
+  "rooms": [
+   "banyo"
+  ],
+  "ar": 1.821
+ },
+ {
+  "id": "paspas",
+  "w": 22.3,
+  "rooms": [
+   "banyo"
+  ],
+  "flat": true,
+  "ar": 0.781
  },
  {
   "id": "kanepe",
-  "w": 48,
+  "w": 51.38,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.461
  },
  {
   "id": "kosekanepe",
-  "w": 52,
+  "w": 59.65,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.397
  },
  {
   "id": "berjer",
-  "w": 22,
+  "w": 26.1,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.961
  },
  {
   "id": "tv",
-  "w": 32,
+  "w": 28.44,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.98
  },
  {
   "id": "tvunitesi",
-  "w": 34,
+  "w": 32.03,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.609,
+  "top": 0.4
  },
  {
   "id": "sehpa",
-  "w": 26,
+  "w": 19.1,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.657,
+  "top": 0.189
  },
  {
   "id": "abajur",
-  "w": 10
+  "w": 8.82,
+  "ar": 1.579
  },
  {
   "id": "lambader",
-  "w": 13
+  "w": 15.86,
+  "ar": 2.812
  },
  {
   "id": "puf",
-  "w": 12
+  "w": 13.57,
+  "ar": 0.863,
+  "top": 0.195
  },
  {
   "id": "buyukbitki",
-  "w": 18
+  "w": 18.86,
+  "ar": 1.773
  },
  {
   "id": "bitki",
-  "w": 15
+  "w": 8.45,
+  "ar": 1.485
  },
  {
   "id": "sarkitbitki",
-  "w": 16
+  "w": 10.5,
+  "ar": 1.858
  },
  {
   "id": "kaktus",
-  "w": 10
+  "w": 5.51,
+  "ar": 1.771
  },
  {
   "id": "oyunrafi",
-  "w": 30,
+  "w": 50.85,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.548,
+  "top": 0.03
  },
  {
   "id": "kediyatagi",
-  "w": 18
+  "w": 16.73,
+  "ar": 0.66
  },
  {
   "id": "kediagaci",
-  "w": 18,
+  "w": 35.53,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 1.177
  },
  {
   "id": "akvaryum",
-  "w": 24,
+  "w": 13.87,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.804
  },
  {
   "id": "piyano",
-  "w": 32,
+  "w": 41.95,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.864,
+  "top": 0.053
  },
  {
   "id": "somine",
-  "w": 34,
+  "w": 39.61,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.844,
+  "top": 0.03
  },
  {
   "id": "oyunkonsolu",
-  "w": 12
+  "w": 9.76,
+  "ar": 0.801
  },
  {
   "id": "vazo",
-  "w": 9
+  "w": 5.29,
+  "ar": 1.844
  },
  {
   "id": "duvarsaati",
-  "w": 10
+  "w": 9.04,
+  "ar": 1.08
  },
  {
   "id": "kuskafesi",
-  "w": 14,
+  "w": 13.17,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 1.481
  },
  {
   "id": "disko",
-  "w": 14
+  "w": 13.35,
+  "ar": 1.461
  },
  {
   "id": "sarkit",
-  "w": 12
+  "w": 12.03,
+  "ar": 1.391
  },
  {
   "id": "perilamba",
-  "w": 60
+  "w": 55.75,
+  "ar": 0.528
  },
  {
   "id": "tablo",
-  "w": 18
+  "w": 16.73,
+  "ar": 1.028
  },
  {
   "id": "cerceve",
-  "w": 18
+  "w": 16.73,
+  "ar": 1.005
  },
  {
   "id": "ayi",
-  "w": 12
+  "w": 9.08,
+  "ar": 1.229
  },
  {
   "id": "top",
@@ -683,38 +811,43 @@
  },
  {
   "id": "sezlong",
-  "w": 24,
+  "w": 24.59,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.907
  },
  {
   "id": "semsiye",
-  "w": 34,
+  "w": 56.0,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 1.095
  },
  {
   "id": "flamingo",
-  "w": 22,
+  "w": 22.01,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 1.013
  },
  {
   "id": "simit",
-  "w": 15,
+  "w": 22.3,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.602
  },
  {
   "id": "palmiye",
-  "w": 26,
+  "w": 83.48,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 1.169
  },
  {
   "id": "kalpbalon",
@@ -722,10 +855,11 @@
  },
  {
   "id": "buzkutusu",
-  "w": 14,
+  "w": 11.84,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.941
  },
  {
   "id": "dondurma",
@@ -733,73 +867,83 @@
  },
  {
   "id": "kaydirak",
-  "w": 30,
+  "w": 55.68,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.751
  },
  {
   "id": "salincak",
-  "w": 30,
+  "w": 50.25,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 1.109
  },
  {
   "id": "trambolin",
-  "w": 34,
+  "w": 31.72,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 1.054
  },
  {
   "id": "kumkovasi",
-  "w": 8,
+  "w": 4.95,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 1.409
  },
  {
   "id": "mangal",
-  "w": 18,
+  "w": 21.17,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 1.317
  },
  {
   "id": "cicektarhi",
-  "w": 30,
+  "w": 33.45,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.773
  },
  {
   "id": "agac",
-  "w": 34,
+  "w": 77.07,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 1.085
  },
  {
   "id": "cit",
-  "w": 40,
+  "w": 37.72,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.739
  },
  {
   "id": "kopekkulubesi",
-  "w": 22,
+  "w": 29.06,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.863
  },
  {
   "id": "bisiklet",
-  "w": 26,
+  "w": 29.94,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.745
  },
  {
   "id": "cadir",
@@ -807,163 +951,189 @@
  },
  {
   "id": "limonatastandi",
-  "w": 32,
+  "w": 51.35,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.977,
+  "top": 0.096
  },
  {
   "id": "gokkusagi",
-  "w": 40,
+  "w": 67.88,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.616
  },
  {
   "id": "piknik",
-  "w": 34,
+  "w": 50.17,
   "rooms": [
    "havuz"
   ],
-  "flat": true
+  "flat": true,
+  "ar": 0.849
  },
  {
   "id": "v_yatak_01",
-  "w": 46,
+  "w": 39.66,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.668
  },
  {
   "id": "v_yatak_02",
-  "w": 46,
+  "w": 41.85,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.633
  },
  {
   "id": "v_yatak_03",
-  "w": 46,
+  "w": 36.79,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.72
  },
  {
   "id": "v_yatak_04",
-  "w": 46,
+  "w": 36.5,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.726
  },
  {
   "id": "v_yatak_05",
-  "w": 46,
+  "w": 29.13,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.909
  },
  {
   "id": "v_yatak_06",
-  "w": 46,
+  "w": 42.93,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.519
  },
  {
   "id": "v_yatak_07",
-  "w": 46,
+  "w": 55.46,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.754
  },
  {
   "id": "v_yatak_08",
-  "w": 46,
+  "w": 57.89,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.867
  },
  {
   "id": "v_dolap_01",
-  "w": 24,
+  "w": 38.22,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.276
  },
  {
   "id": "v_dolap_02",
-  "w": 24,
+  "w": 37.6,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.297
  },
  {
   "id": "v_dolap_03",
-  "w": 24,
+  "w": 36.46,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.338
  },
  {
   "id": "v_dolap_04",
-  "w": 24,
+  "w": 35.99,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.355
  },
  {
   "id": "v_dolap_05",
-  "w": 24,
+  "w": 35.06,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.391
  },
  {
   "id": "v_dolap_06",
-  "w": 24,
+  "w": 36.5,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.336
  },
  {
   "id": "v_makyaj_01",
-  "w": 30,
+  "w": 28.07,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.39,
+  "top": 0.553
  },
  {
   "id": "v_makyaj_02",
-  "w": 30,
+  "w": 30.19,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 1.292,
+  "top": 0.53
  },
  {
   "id": "v_makyaj_03",
-  "w": 30,
+  "w": 30.18,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.293,
+  "top": 0.534
  },
  {
   "id": "v_makyaj_04",
-  "w": 30,
+  "w": 30.71,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.271,
+  "top": 0.572
  },
  {
   "id": "v_makyaj_05",
@@ -975,524 +1145,618 @@
  },
  {
   "id": "v_makyaj_06",
-  "w": 30,
+  "w": 28.46,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.371,
+  "top": 0.586
  },
  {
   "id": "v_masa_01",
-  "w": 32,
+  "w": 44.58,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.688,
+  "top": 0.109
  },
  {
   "id": "v_masa_02",
-  "w": 32,
+  "w": 31.78,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.965,
+  "top": 0.468
  },
  {
   "id": "v_masa_03",
-  "w": 32,
+  "w": 34.5,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.889,
+  "top": 0.45
  },
  {
   "id": "v_masa_04",
-  "w": 32,
+  "w": 33.1,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.926,
+  "top": 0.479
  },
  {
   "id": "v_masa_05",
-  "w": 32,
+  "w": 41.3,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.742,
+  "top": 0.359
  },
  {
   "id": "v_oturak_01",
-  "w": 18,
+  "w": 13.71,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.813,
+  "top": 0.163
  },
  {
   "id": "v_oturak_02",
-  "w": 18,
+  "w": 21.51,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.907
  },
  {
   "id": "v_oturak_03",
-  "w": 18,
+  "w": 23.09,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.845
  },
  {
   "id": "v_oturak_04",
-  "w": 18,
+  "w": 38.21,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.313
  },
  {
   "id": "v_oturak_05",
-  "w": 18,
+  "w": 30.14,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.832
  },
  {
   "id": "v_oturak_06",
-  "w": 18,
+  "w": 25.11,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.332
  },
  {
   "id": "v_lamba_01",
-  "w": 10
+  "w": 10.14,
+  "ar": 1.374
  },
  {
   "id": "v_lamba_02",
-  "w": 10
+  "w": 9.15,
+  "ar": 1.067
  },
  {
   "id": "v_lamba_03",
-  "w": 10,
-  "lock": true
+  "w": 7.76,
+  "lock": true,
+  "ar": 1.257
  },
  {
   "id": "v_lamba_04",
-  "w": 10,
-  "lock": true
+  "w": 5.47,
+  "lock": true,
+  "ar": 1.784
  },
  {
   "id": "v_lamba_05",
-  "w": 10,
-  "lock": true
+  "w": 4.0,
+  "lock": true,
+  "ar": 2.788
  },
  {
   "id": "v_lamba_06",
-  "w": 10,
-  "lock": true
+  "w": 16.01,
+  "lock": true,
+  "ar": 1.219
  },
  {
   "id": "v_hali_01",
-  "w": 42,
-  "flat": true
+  "w": 44.6,
+  "flat": true,
+  "ar": 0.506
  },
  {
   "id": "v_hali_02",
-  "w": 42,
-  "flat": true
+  "w": 44.6,
+  "flat": true,
+  "ar": 0.466
  },
  {
   "id": "v_hali_03",
-  "w": 42,
+  "w": 44.6,
   "flat": true,
-  "lock": true
+  "lock": true,
+  "ar": 0.578
  },
  {
   "id": "v_hali_04",
-  "w": 42,
+  "w": 44.6,
   "flat": true,
-  "lock": true
+  "lock": true,
+  "ar": 0.561
  },
  {
   "id": "v_hali_05",
-  "w": 42,
+  "w": 44.6,
   "flat": true,
-  "lock": true
+  "lock": true,
+  "ar": 0.868
  },
  {
   "id": "v_hali_06",
-  "w": 42,
+  "w": 44.6,
   "flat": true,
-  "lock": true
+  "lock": true,
+  "ar": 0.412
  },
  {
   "id": "v_hali_07",
-  "w": 42,
+  "w": 44.6,
   "flat": true,
-  "lock": true
+  "lock": true,
+  "ar": 0.515
  },
  {
   "id": "v_oyuncak_01",
-  "w": 10,
+  "w": 11.15,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.515
  },
  {
   "id": "v_oyuncak_02",
-  "w": 10,
+  "w": 8.36,
   "rooms": [
    "yatak"
-  ]
+  ],
+  "ar": 0.976
  },
  {
   "id": "v_oyuncak_03",
-  "w": 10,
+  "w": 11.15,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.686
  },
  {
   "id": "v_oyuncak_04",
-  "w": 10,
+  "w": 11.15,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.69
  },
  {
   "id": "v_oyuncak_05",
-  "w": 10,
+  "w": 7.68,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.27
  },
  {
   "id": "v_oyuncak_06",
-  "w": 10,
+  "w": 11.53,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.088
  },
  {
   "id": "v_oyuncak_07",
-  "w": 10,
+  "w": 10.03,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.251
  },
  {
   "id": "v_oyuncak_08",
-  "w": 10,
+  "w": 16.19,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.861
  },
  {
   "id": "v_oyuncak_09",
-  "w": 10,
+  "w": 15.83,
   "rooms": [
    "yatak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.233
  },
  {
   "id": "v_raf_01",
-  "w": 26
+  "w": 20.91,
+  "ar": 0.487
  },
  {
   "id": "v_raf_02",
-  "w": 26
+  "w": 32.49,
+  "ar": 1.287
  },
  {
   "id": "v_raf_03",
-  "w": 26,
-  "lock": true
+  "w": 20.91,
+  "lock": true,
+  "ar": 0.597
  },
  {
   "id": "v_raf_04",
-  "w": 26,
-  "lock": true
+  "w": 20.91,
+  "lock": true,
+  "ar": 0.973
  },
  {
   "id": "v_raf_05",
-  "w": 26,
-  "lock": true
+  "w": 49.5,
+  "lock": true,
+  "ar": 0.563
  },
  {
   "id": "v_ayna_01",
-  "w": 14
+  "w": 19.46,
+  "ar": 1.146
  },
  {
   "id": "v_ayna_02",
-  "w": 14
+  "w": 26.7,
+  "ar": 1.67
  },
  {
   "id": "v_ayna_03",
-  "w": 14,
-  "lock": true
+  "w": 14.55,
+  "lock": true,
+  "ar": 1.533
  },
  {
   "id": "v_ayna_04",
-  "w": 14,
-  "lock": true
+  "w": 24.89,
+  "lock": true,
+  "ar": 0.896
  },
  {
   "id": "v_ayna_05",
-  "w": 14,
-  "lock": true
+  "w": 17.27,
+  "lock": true,
+  "ar": 1.291
  },
  {
   "id": "buzdolabi_01",
-  "w": 22,
+  "w": 30.43,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.603
  },
  {
   "id": "buzdolabi_02",
-  "w": 22,
+  "w": 29.63,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.646
  },
  {
   "id": "buzdolabi_03",
-  "w": 22,
+  "w": 31.59,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.544
  },
  {
   "id": "buzdolabi_04",
-  "w": 22,
+  "w": 29.86,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.634
  },
  {
   "id": "buzdolabi_05",
-  "w": 22,
+  "w": 30.51,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.599
  },
  {
   "id": "buzdolabi_06",
-  "w": 22,
+  "w": 31.65,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.541
  },
  {
   "id": "buzdolabi_07",
-  "w": 22,
+  "w": 32.35,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.508
  },
  {
   "id": "buzdolabi_08",
-  "w": 22,
+  "w": 35.48,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.375
  },
  {
   "id": "v_ocak_01",
-  "w": 26,
+  "w": 20.26,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.307
  },
  {
   "id": "v_ocak_02",
-  "w": 26,
+  "w": 23.21,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.141
  },
  {
   "id": "v_ocak_03",
-  "w": 26,
+  "w": 21.95,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.206
  },
  {
   "id": "v_ocak_04",
-  "w": 26,
+  "w": 27.94,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.948
  },
  {
   "id": "v_ocak_05",
-  "w": 26,
+  "w": 35.96,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.736
  },
  {
   "id": "v_ocak_06",
-  "w": 26,
+  "w": 42.4,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.921
  },
  {
   "id": "v_tezgah_01",
-  "w": 44,
+  "w": 39.51,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.705,
+  "top": 0.257
  },
  {
   "id": "v_tezgah_02",
-  "w": 44,
+  "w": 53.18,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.524,
+  "top": 0.069
  },
  {
   "id": "v_tezgah_03",
-  "w": 44,
+  "w": 45.83,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.608,
+  "top": 0.324
  },
  {
   "id": "v_tezgah_04",
-  "w": 44,
+  "w": 46.44,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.9,
+  "top": 0.03
  },
  {
   "id": "v_tezgah_05",
-  "w": 44,
+  "w": 54.24,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.514,
+  "top": 0.171
  },
  {
   "id": "v_tezgah_06",
-  "w": 44,
+  "w": 47.56,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.586,
+  "top": 0.03
  },
  {
   "id": "v_masa_mutfak_01",
-  "w": 32,
+  "w": 42.33,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.527,
+  "top": 0.096
  },
  {
   "id": "v_masa_mutfak_02",
-  "w": 32,
+  "w": 33.39,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.668,
+  "top": 0.352
  },
  {
   "id": "v_masa_mutfak_03",
-  "w": 32,
+  "w": 37.02,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.715,
+  "top": 0.277
  },
  {
   "id": "v_masa_mutfak_04",
-  "w": 32,
+  "w": 53.88,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.414,
+  "top": 0.104
  },
  {
   "id": "v_masa_mutfak_05",
-  "w": 32,
+  "w": 45.72,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.488,
+  "top": 0.18
  },
  {
   "id": "v_sandalye_01",
-  "w": 12,
+  "w": 18.0,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.394
  },
  {
   "id": "v_sandalye_02",
-  "w": 12,
+  "w": 15.92,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.576
  },
  {
   "id": "v_sandalye_03",
-  "w": 12,
+  "w": 15.09,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.663
  },
  {
   "id": "v_sandalye_04",
-  "w": 12,
+  "w": 11.96,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.749
  },
  {
   "id": "v_sandalye_05",
-  "w": 12,
+  "w": 14.35,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.749
  },
  {
   "id": "v_sandalye_06",
-  "w": 12,
+  "w": 18.63,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.347
  },
  {
   "id": "v_alet_01",
-  "w": 11,
+  "w": 7.26,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 1.152
  },
  {
   "id": "v_alet_02",
@@ -1503,529 +1767,602 @@
  },
  {
   "id": "v_alet_03",
-  "w": 11,
+  "w": 4.27,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.96
  },
  {
   "id": "v_alet_04",
-  "w": 11,
+  "w": 7.82,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.069
  },
  {
   "id": "v_alet_05",
-  "w": 11,
+  "w": 10.98,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.762
  },
  {
   "id": "v_alet_06",
-  "w": 11,
+  "w": 6.86,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.219
  },
  {
   "id": "v_alet_07",
-  "w": 11,
+  "w": 6.82,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.226
  },
  {
   "id": "v_alet_08",
-  "w": 11,
+  "w": 10.67,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.254
  },
  {
   "id": "v_alet_09",
-  "w": 11,
+  "w": 10.1,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.324
  },
  {
   "id": "v_alet_10",
-  "w": 11,
+  "w": 10.42,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.284
  },
  {
   "id": "v_yemek_01",
-  "w": 9,
+  "w": 7.25,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.764
  },
  {
   "id": "v_yemek_02",
-  "w": 9,
+  "w": 7.25,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.579
  },
  {
   "id": "v_yemek_03",
-  "w": 9,
+  "w": 7.25,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.794
  },
  {
   "id": "v_yemek_04",
-  "w": 9,
+  "w": 7.25,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.989
  },
  {
   "id": "v_yemek_05",
-  "w": 9,
+  "w": 7.25,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.766
  },
  {
   "id": "v_yemek_06",
-  "w": 9,
+  "w": 7.25,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.568
  },
  {
   "id": "v_yemek_07",
-  "w": 9,
+  "w": 7.25,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.819
  },
  {
   "id": "v_yemek_08",
-  "w": 9,
+  "w": 7.25,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.803
  },
  {
   "id": "v_yemek_09",
-  "w": 9,
+  "w": 8.51,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.048
  },
  {
   "id": "v_yemek_10",
-  "w": 9,
+  "w": 7.25,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.912
  },
  {
   "id": "v_yemek_11",
-  "w": 9,
+  "w": 7.25,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 2.542
  },
  {
   "id": "v_yemek_12",
-  "w": 9,
+  "w": 7.25,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.478
  },
  {
   "id": "v_tabak_01",
-  "w": 26,
+  "w": 19.51,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.486
  },
  {
   "id": "v_tabak_02",
-  "w": 26,
+  "w": 19.51,
   "rooms": [
    "mutfak"
-  ]
+  ],
+  "ar": 0.378
  },
  {
   "id": "v_tabak_03",
-  "w": 26,
+  "w": 29.42,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.853,
+  "top": 0.03
  },
  {
   "id": "v_tabak_04",
-  "w": 26,
+  "w": 19.51,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.617
  },
  {
   "id": "v_tabak_05",
-  "w": 26,
+  "w": 19.51,
   "rooms": [
    "mutfak"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.497
  },
  {
   "id": "v_kuvet_01",
-  "w": 46,
+  "w": 40.98,
   "rooms": [
    "banyo"
-  ]
+  ],
+  "ar": 0.578
  },
  {
   "id": "v_kuvet_02",
-  "w": 46,
+  "w": 34.32,
   "rooms": [
    "banyo"
-  ]
+  ],
+  "ar": 0.69
  },
  {
   "id": "v_kuvet_03",
-  "w": 46,
+  "w": 45.44,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.521
  },
  {
   "id": "v_kuvet_04",
-  "w": 46,
+  "w": 40.93,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.749
  },
  {
   "id": "v_kuvet_05",
-  "w": 46,
+  "w": 29.67,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.799
  },
  {
   "id": "v_kuvet_06",
-  "w": 46,
+  "w": 29.97,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.791
  },
  {
   "id": "v_lavabo_01",
-  "w": 22,
+  "w": 23.07,
   "rooms": [
    "banyo"
-  ]
+  ],
+  "ar": 1.329
  },
  {
   "id": "v_lavabo_02",
-  "w": 22,
+  "w": 24.38,
   "rooms": [
    "banyo"
-  ]
+  ],
+  "ar": 1.715
  },
  {
   "id": "v_lavabo_03",
-  "w": 22,
+  "w": 29.49,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.418,
+  "top": 0.543
  },
  {
   "id": "v_lavabo_04",
-  "w": 22,
+  "w": 32.23,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.297,
+  "top": 0.363
  },
  {
   "id": "v_lavabo_05",
-  "w": 22,
+  "w": 25.54,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.637,
+  "top": 0.6
  },
  {
   "id": "v_lavabo_06",
-  "w": 22,
+  "w": 24.19,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.728,
+  "top": 0.371
  },
  {
   "id": "v_dus_01",
-  "w": 26,
+  "w": 36.28,
   "rooms": [
    "banyo"
-  ]
+  ],
+  "ar": 1.536
  },
  {
   "id": "v_dus_02",
-  "w": 26,
+  "w": 38.07,
   "rooms": [
    "banyo"
-  ]
+  ],
+  "ar": 1.464
  },
  {
   "id": "v_dus_03",
-  "w": 26,
+  "w": 35.13,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.587
  },
  {
   "id": "v_dus_04",
-  "w": 26,
+  "w": 29.77,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.873
  },
  {
   "id": "v_tuvalet_01",
-  "w": 18,
+  "w": 17.06,
   "rooms": [
    "banyo"
-  ]
+  ],
+  "ar": 1.307
  },
  {
   "id": "v_tuvalet_02",
-  "w": 18,
+  "w": 16.79,
   "rooms": [
    "banyo"
-  ]
+  ],
+  "ar": 1.328
  },
  {
   "id": "v_tuvalet_03",
-  "w": 18,
+  "w": 17.25,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.293
  },
  {
   "id": "v_tuvalet_04",
-  "w": 18,
+  "w": 16.76,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.33
  },
  {
   "id": "v_banyo_aksesuar_01",
-  "w": 10,
+  "w": 16.73,
   "rooms": [
    "banyo"
-  ]
+  ],
+  "ar": 0.804
  },
  {
   "id": "v_banyo_aksesuar_02",
-  "w": 10,
+  "w": 13.14,
   "rooms": [
    "banyo"
-  ]
+  ],
+  "ar": 1.061
  },
  {
   "id": "v_banyo_aksesuar_03",
-  "w": 10,
+  "w": 6.15,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.816
  },
  {
   "id": "v_banyo_aksesuar_04",
-  "w": 10,
+  "w": 4.46,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 2.037
  },
  {
   "id": "v_banyo_aksesuar_05",
-  "w": 10,
+  "w": 8.92,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.79
  },
  {
   "id": "v_banyo_aksesuar_06",
-  "w": 10,
+  "w": 8.36,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.812
  },
  {
   "id": "v_banyo_aksesuar_07",
-  "w": 10,
+  "w": 20.29,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.374
  },
  {
   "id": "v_banyo_aksesuar_08",
-  "w": 10,
+  "w": 16.73,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.919
  },
  {
   "id": "v_banyo_aksesuar_09",
-  "w": 10,
+  "w": 7.9,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.058
  },
  {
   "id": "v_banyo_aksesuar_10",
-  "w": 10,
+  "w": 9.76,
   "rooms": [
    "banyo"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.706
  },
  {
   "id": "v_kanepe_01",
-  "w": 46,
+  "w": 55.75,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.425
  },
  {
   "id": "v_kanepe_02",
-  "w": 46,
+  "w": 53.31,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.444
  },
  {
   "id": "v_kanepe_03",
-  "w": 46,
+  "w": 50.18,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.472
  },
  {
   "id": "v_kanepe_04",
-  "w": 46,
+  "w": 53.65,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.442
  },
  {
   "id": "v_kanepe_05",
-  "w": 46,
+  "w": 59.23,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.4
  },
  {
   "id": "v_kanepe_06",
-  "w": 46,
+  "w": 46.87,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.506
  },
  {
   "id": "v_kanepe_07",
-  "w": 46,
+  "w": 48.19,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.492
  },
  {
   "id": "v_kanepe_08",
-  "w": 46,
+  "w": 49.59,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.478
  },
  {
   "id": "v_koltuk_01",
-  "w": 22,
+  "w": 31.5,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.885
  },
  {
   "id": "v_koltuk_02",
-  "w": 22,
+  "w": 24.0,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 1.103
  },
  {
   "id": "v_koltuk_03",
-  "w": 22,
+  "w": 26.08,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.015
  },
  {
   "id": "v_koltuk_04",
-  "w": 22,
+  "w": 47.25,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.062
  },
  {
   "id": "v_koltuk_05",
-  "w": 22,
+  "w": 20.98,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.93
  },
  {
   "id": "v_koltuk_06",
@@ -2044,64 +2381,76 @@
  },
  {
   "id": "v_tv_02",
-  "w": 30,
+  "w": 37.36,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.895
  },
  {
   "id": "v_tv_03",
-  "w": 30,
+  "w": 14.64,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.047
  },
  {
   "id": "v_tv_04",
-  "w": 30,
+  "w": 62.72,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.489
  },
  {
   "id": "v_tv_05",
-  "w": 30,
+  "w": 64.05,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.783
  },
  {
   "id": "v_sehpa_01",
-  "w": 24,
+  "w": 15.28,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.821,
+  "top": 0.362
  },
  {
   "id": "v_sehpa_02",
-  "w": 24,
+  "w": 18.63,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.673,
+  "top": 0.424
  },
  {
   "id": "v_sehpa_03",
-  "w": 24,
+  "w": 30.12,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.416,
+  "top": 0.205
  },
  {
   "id": "v_sehpa_04",
-  "w": 24,
+  "w": 13.34,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.045,
+  "top": 0.286
  },
  {
   "id": "v_sehpa_05",
@@ -2113,93 +2462,111 @@
  },
  {
   "id": "v_bitki_01",
-  "w": 14
+  "w": 11.24,
+  "ar": 1.24
  },
  {
   "id": "v_bitki_02",
-  "w": 14
+  "w": 7.58,
+  "ar": 1.471
  },
  {
   "id": "v_bitki_03",
-  "w": 14,
-  "lock": true
+  "w": 21.35,
+  "lock": true,
+  "ar": 1.567
  },
  {
   "id": "v_bitki_04",
-  "w": 14,
-  "lock": true
+  "w": 11.34,
+  "lock": true,
+  "ar": 1.967
  },
  {
   "id": "v_bitki_05",
-  "w": 14,
-  "lock": true
+  "w": 12.77,
+  "lock": true,
+  "ar": 1.31
  },
  {
   "id": "v_bitki_06",
-  "w": 14,
-  "lock": true
+  "w": 9.98,
+  "lock": true,
+  "ar": 1.397
  },
  {
   "id": "v_bitki_07",
-  "w": 14,
-  "lock": true
+  "w": 23.08,
+  "lock": true,
+  "ar": 1.449
  },
  {
   "id": "v_bitki_08",
-  "w": 14,
-  "lock": true
+  "w": 18.71,
+  "lock": true,
+  "ar": 1.043
  },
  {
   "id": "v_bitki_09",
-  "w": 14,
-  "lock": true
+  "w": 14.94,
+  "lock": true,
+  "ar": 0.933
  },
  {
   "id": "v_tablo_01",
-  "w": 16
+  "w": 16.73,
+  "ar": 1.354
  },
  {
   "id": "v_tablo_02",
-  "w": 16
+  "w": 16.73,
+  "ar": 1.151
  },
  {
   "id": "v_tablo_03",
-  "w": 16,
-  "lock": true
+  "w": 16.73,
+  "lock": true,
+  "ar": 0.771
  },
  {
   "id": "v_tablo_04",
-  "w": 16,
-  "lock": true
+  "w": 16.73,
+  "lock": true,
+  "ar": 0.722
  },
  {
   "id": "v_tablo_05",
-  "w": 16,
-  "lock": true
+  "w": 16.73,
+  "lock": true,
+  "ar": 0.768
  },
  {
   "id": "v_tablo_06",
-  "w": 16,
-  "lock": true
+  "w": 16.73,
+  "lock": true,
+  "ar": 0.708
  },
  {
   "id": "v_tablo_07",
-  "w": 16,
-  "lock": true
+  "w": 16.73,
+  "lock": true,
+  "ar": 1.129
  },
  {
   "id": "v_muzik_01",
-  "w": 24,
+  "w": 45.01,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.557
  },
  {
   "id": "v_muzik_02",
-  "w": 24,
+  "w": 34.52,
   "rooms": [
    "salon"
-  ]
+  ],
+  "ar": 0.767
  },
  {
   "id": "v_muzik_03",
@@ -2211,423 +2578,491 @@
  },
  {
   "id": "v_muzik_04",
-  "w": 24,
+  "w": 37.79,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.664
  },
  {
   "id": "v_muzik_05",
-  "w": 24,
+  "w": 28.56,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.659
  },
  {
   "id": "v_muzik_06",
-  "w": 24,
+  "w": 16.84,
   "rooms": [
    "salon"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 2.483
  },
  {
   "id": "v_evcil_esya_01",
-  "w": 16
+  "w": 16.73,
+  "ar": 0.673
  },
  {
   "id": "v_evcil_esya_02",
-  "w": 16
+  "w": 26.37,
+  "ar": 1.586
  },
  {
   "id": "v_evcil_esya_03",
-  "w": 16,
-  "lock": true
+  "w": 18.68,
+  "lock": true,
+  "ar": 0.746
  },
  {
   "id": "v_evcil_esya_04",
-  "w": 16,
-  "lock": true
+  "w": 15.44,
+  "lock": true,
+  "ar": 1.263
  },
  {
   "id": "v_evcil_esya_05",
-  "w": 16,
-  "lock": true
+  "w": 31.9,
+  "lock": true,
+  "ar": 0.786
  },
  {
   "id": "v_evcil_esya_06",
-  "w": 16,
-  "lock": true
+  "w": 15.93,
+  "lock": true,
+  "ar": 0.7
  },
  {
   "id": "v_havuz_oyuncak_01",
-  "w": 18,
+  "w": 22.3,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.64
  },
  {
   "id": "v_havuz_oyuncak_02",
-  "w": 18,
+  "w": 11.15,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 1.0
  },
  {
   "id": "v_havuz_oyuncak_03",
-  "w": 18,
+  "w": 27.88,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.765
  },
  {
   "id": "v_havuz_oyuncak_04",
-  "w": 18,
+  "w": 33.45,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.743
  },
  {
   "id": "v_havuz_oyuncak_05",
-  "w": 18,
+  "w": 25.09,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.723
  },
  {
   "id": "v_havuz_oyuncak_06",
-  "w": 18,
+  "w": 30.66,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.897
  },
  {
   "id": "v_havuz_oyuncak_07",
-  "w": 18,
+  "w": 27.88,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.627
  },
  {
   "id": "v_havuz_oyuncak_08",
-  "w": 18,
+  "w": 53.55,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.781
  },
  {
   "id": "v_bahce_mobilya_01",
-  "w": 26,
+  "w": 38.7,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.612
  },
  {
   "id": "v_bahce_mobilya_02",
-  "w": 26,
+  "w": 25.46,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.876
  },
  {
   "id": "v_bahce_mobilya_03",
-  "w": 26,
+  "w": 55.75,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.571
  },
  {
   "id": "v_bahce_mobilya_04",
-  "w": 26,
+  "w": 59.02,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.945
  },
  {
   "id": "v_bahce_mobilya_05",
-  "w": 26,
+  "w": 37.01,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.565,
+  "top": 0.514
  },
  {
   "id": "v_bahce_mobilya_06",
-  "w": 26,
+  "w": 68.93,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.89
  },
  {
   "id": "v_bahce_mobilya_07",
-  "w": 26,
+  "w": 37.91,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.397
  },
  {
   "id": "v_oyun_parki_01",
-  "w": 30,
+  "w": 62.72,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.667
  },
  {
   "id": "v_oyun_parki_02",
-  "w": 30,
+  "w": 41.81,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.48
  },
  {
   "id": "v_oyun_parki_03",
-  "w": 30,
+  "w": 55.75,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.395
  },
  {
   "id": "v_oyun_parki_04",
-  "w": 30,
+  "w": 67.82,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.493
  },
  {
   "id": "v_oyun_parki_05",
-  "w": 30,
+  "w": 53.43,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.887
  },
  {
   "id": "v_oyun_parki_06",
-  "w": 30,
+  "w": 92.22,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.756
  },
  {
   "id": "v_bahce_bitki_01",
-  "w": 24,
+  "w": 33.45,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.41
  },
  {
   "id": "v_bahce_bitki_02",
-  "w": 24,
+  "w": 30.51,
   "rooms": [
    "havuz"
-  ]
+  ],
+  "ar": 0.914
  },
  {
   "id": "v_bahce_bitki_03",
-  "w": 24,
+  "w": 71.47,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.17
  },
  {
   "id": "v_bahce_bitki_04",
-  "w": 24,
+  "w": 89.71,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 1.088
  },
  {
   "id": "v_bahce_bitki_05",
-  "w": 24,
+  "w": 86.88,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.963
  },
  {
   "id": "v_bahce_bitki_06",
-  "w": 24,
+  "w": 48.78,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.857
  },
  {
   "id": "v_bahce_bitki_07",
-  "w": 24,
+  "w": 33.45,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.603
  },
  {
   "id": "v_bahce_bitki_08",
-  "w": 24,
+  "w": 29.0,
   "rooms": [
    "havuz"
   ],
-  "lock": true
+  "lock": true,
+  "ar": 0.961
  },
  {
   "id": "kiz1",
-  "w": 26,
-  "char": true
+  "w": 16.02,
+  "char": true,
+  "ar": 2.175
  },
  {
   "id": "kiz2",
-  "w": 26,
-  "char": true
+  "w": 18.36,
+  "char": true,
+  "ar": 1.898
  },
  {
   "id": "kiz3",
-  "w": 26,
-  "char": true
+  "w": 15.94,
+  "char": true,
+  "ar": 2.185
  },
  {
   "id": "kiz4",
-  "w": 26,
-  "char": true
+  "w": 15.56,
+  "char": true,
+  "ar": 2.24
  },
  {
   "id": "kiz5",
-  "w": 26,
-  "char": true
+  "w": 18.59,
+  "char": true,
+  "ar": 1.874
  },
  {
   "id": "kiz6",
-  "w": 26,
-  "char": true
+  "w": 19.44,
+  "char": true,
+  "ar": 1.792
  },
  {
   "id": "kiz7",
-  "w": 26,
-  "char": true
+  "w": 17.19,
+  "char": true,
+  "ar": 2.027
  },
  {
   "id": "oglan1",
-  "w": 26,
-  "char": true
+  "w": 16.57,
+  "char": true,
+  "ar": 2.103
  },
  {
   "id": "oglan2",
-  "w": 26,
-  "char": true
+  "w": 15.94,
+  "char": true,
+  "ar": 2.185
  },
  {
   "id": "oglan3",
-  "w": 26,
-  "char": true
+  "w": 17.11,
+  "char": true,
+  "ar": 2.036
  },
  {
   "id": "bebek1",
-  "w": 15,
-  "char": true
+  "w": 10.69,
+  "char": true,
+  "ar": 1.565
  },
  {
   "id": "bebek2",
-  "w": 15,
-  "char": true
+  "w": 11.3,
+  "char": true,
+  "ar": 1.48
  },
  {
   "id": "anne",
-  "w": 34,
-  "char": true
+  "w": 23.06,
+  "char": true,
+  "ar": 2.055
  },
  {
   "id": "baba",
-  "w": 34,
-  "char": true
+  "w": 22.87,
+  "char": true,
+  "ar": 2.133
  },
  {
   "id": "nine",
-  "w": 32,
-  "char": true
+  "w": 19.96,
+  "char": true,
+  "ar": 2.207
  },
  {
   "id": "dede",
-  "w": 32,
-  "char": true
+  "w": 22.18,
+  "char": true,
+  "ar": 2.036
  },
  {
   "id": "ogretmen",
-  "w": 34,
-  "char": true
+  "w": 26.66,
+  "char": true,
+  "ar": 1.757
  },
  {
   "id": "kedi",
-  "w": 14,
-  "char": true
+  "w": 8.08,
+  "char": true,
+  "ar": 1.207
  },
  {
   "id": "kedi2",
-  "w": 14,
-  "char": true
+  "w": 8.02,
+  "char": true,
+  "ar": 1.216
  },
  {
   "id": "kedi3",
-  "w": 14,
-  "char": true
+  "w": 8.11,
+  "char": true,
+  "ar": 1.202
  },
  {
   "id": "kopek",
-  "w": 15,
-  "char": true
+  "w": 12.11,
+  "char": true,
+  "ar": 1.036
  },
  {
   "id": "kopek2",
-  "w": 15,
-  "char": true
+  "w": 12.11,
+  "char": true,
+  "ar": 1.036
  },
  {
   "id": "tavsan",
-  "w": 12,
-  "char": true
+  "w": 6.05,
+  "char": true,
+  "ar": 1.613
  },
  {
   "id": "hamster",
-  "w": 9,
-  "char": true
+  "w": 4.45,
+  "char": true,
+  "ar": 1.127
  },
  {
   "id": "papagan",
-  "w": 10,
-  "char": true
+  "w": 7.15,
+  "char": true,
+  "ar": 1.17
  },
  {
   "id": "kaplumbaga",
-  "w": 12,
-  "char": true
+  "w": 6.61,
+  "char": true,
+  "ar": 0.844
  },
  {
   "id": "ordekyavrusu",
-  "w": 9,
-  "char": true
+  "w": 4.04,
+  "char": true,
+  "ar": 1.381
  },
  {
   "id": "midilli",
-  "w": 22,
-  "char": true
+  "w": 24.91,
+  "char": true,
+  "ar": 1.119
  },
  {
   "id": "panda",
-  "w": 14,
-  "char": true
+  "w": 14.86,
+  "char": true,
+  "ar": 1.313
  }
 ]

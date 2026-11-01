@@ -8,7 +8,7 @@ import { show, on, talkBtn, wiggle } from './ui';
 import { sfx } from './sfx';
 import { dollSvg, currentLook, shade } from './stage';
 import { genitive, TalkId } from './content';
-import { THINGS, colorize, itemImage, extraItemsFor, isCharAsset, isLockedItem, unlockItem, yRange } from './house-items';
+import { THINGS, colorize, itemImage, extraItemsFor, isCharAsset, isLockedItem, unlockItem, yRange, placeOf, heightPct, surfaceTop } from './house-items';
 import { readingChallenge } from './challenge';
 import { imgTag } from './assets';
 import { roomIcon, MODE_ICONS } from './icons';
@@ -207,6 +207,8 @@ interface Inst {
   fl?: boolean;
   /** Döndürme açısı (derece). */
   r?: number;
+  /** Üstünde durduğu eşyanın numarası (masa, tezgâh…). */
+  s?: number;
 }
 
 function house(): Record<string, Inst[]> {
@@ -247,6 +249,31 @@ const nextU = (list: Inst[]) => list.reduce((m, i) => Math.max(m, i.u), 0) + 1;
 
 /* --------------------------------------------------------------- screen */
 
+/** Resmin saydam kısmına dokunulunca arkadaki eşya seçilsin: küçük bir alfa haritası. */
+const ALPHA = new Map<string, { w: number; h: number; a: Uint8ClampedArray } | null>();
+function alphaAt(img: HTMLImageElement, fx: number, fy: number): boolean {
+  let m = ALPHA.get(img.src);
+  if (m === undefined) {
+    try {
+      const w = 64;
+      const h = Math.max(1, Math.round((64 * img.naturalHeight) / (img.naturalWidth || 1)));
+      const c = document.createElement('canvas');
+      c.width = w;
+      c.height = h;
+      const ctx = c.getContext('2d', { willReadFrequently: true })!;
+      ctx.drawImage(img, 0, 0, w, h);
+      m = { w, h, a: ctx.getImageData(0, 0, w, h).data };
+    } catch {
+      m = null;
+    }
+    if (img.complete && img.naturalWidth) ALPHA.set(img.src, m);
+  }
+  if (!m) return true;
+  const x = Math.min(m.w - 1, Math.max(0, Math.floor(fx * m.w)));
+  const y = Math.min(m.h - 1, Math.max(0, Math.floor(fy * m.h)));
+  return m.a[(y * m.w + x) * 4 + 3] > 40;
+}
+
 let current: RoomId = 'yatak';
 /** Oda yakınlığı: 1 = oda ekran yüksekliğini doldurur; varsayılan biraz uzaktan. */
 let zoom = 0.85;
@@ -283,7 +310,7 @@ export function showHouse(back: () => void) {
   const thingHtml = (inst: Inst) => {
     if (inst.id === 'pencere')
       return `<div class="thing window-thing" data-u="${inst.u}" style="--w:${29.5 / WORLD}%"><svg viewBox="146 36 118 108" xmlns="http://www.w3.org/2000/svg">${windowView(style(current).view, `pw${inst.u}${++bgSeq}`)}</svg></div>`;
-    if (inst.id === 'bebek') return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${30 / WORLD}%">${dollSvg(currentLook(), 'doll', { bg: false })}</div>`;
+    if (inst.id === 'bebek') return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${26 / WORLD}%">${dollSvg(currentLook(), 'doll', { bg: false })}</div>`;
     const f = FRIENDS[inst.id];
     if (f) return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${f.w / WORLD}%">${dollSvg(f.look, 'doll', { bg: false })}</div>`;
     const t = THINGS[inst.id];
@@ -310,7 +337,8 @@ export function showHouse(back: () => void) {
   const place = (el: HTMLElement, inst: Inst) => {
     el.style.left = `${inst.x / WORLD}%`;
     el.style.top = `${inst.y}%`;
-    el.style.zIndex = String(THINGS[inst.id]?.flat ? 1 : 10 + Math.round(inst.y * 10));
+    const host = inst.s ? list().find((h) => h.u === inst.s) : undefined;
+    el.style.zIndex = String(THINGS[inst.id]?.flat ? 1 : host ? 1100 + Math.round(host.y * 10) : 10 + Math.round(inst.y * 10));
     // Alt-orta noktası etrafında döner; aynalama sadece içeriği çevirir.
     el.style.transform = `translate(-50%,-100%) rotate(${inst.r ?? 0}deg)${inst.fl ? ' scaleX(-1)' : ''}`;
   };
@@ -391,6 +419,16 @@ export function showHouse(back: () => void) {
 
   const renderLayer = () => {
     hideTools();
+    // Havada kalmış küçük eşyaları yerine oturt (eski kayıtlar ve boyut değişiklikleri için).
+    let fixed = false;
+    for (const i of list()) {
+      const host = i.s ? list().find((h) => h.u === i.s) : undefined;
+      if (placeOf(i.id) === 'surface' && (!host || !surfaceTop(host.id))) {
+        settle(i);
+        fixed = true;
+      }
+    }
+    if (fixed) commit();
     layer.innerHTML = list().map(thingHtml).join('');
     layer.querySelectorAll<HTMLElement>('.thing').forEach((el) => place(el, list().find((i) => i.u === Number(el.dataset.u))!));
   };
@@ -482,6 +520,48 @@ export function showHouse(back: () => void) {
   };
   const landscape = () => window.innerWidth > window.innerHeight;
 
+  /** Bırakılan küçük eşyanın altındaki masa/tezgâh (varsa) ve üst yüzeyin y'si. */
+  const hostUnder = (inst: Inst) => {
+    let best: { h: Inst; topY: number } | null = null;
+    for (const h of list()) {
+      const top = h === inst ? undefined : surfaceTop(h.id);
+      if (top === undefined || h.r) continue;
+      const half = (THINGS[h.id]?.w ?? 0) / 2;
+      const topY = h.y - heightPct(h.id) * (1 - top);
+      if (Math.abs(inst.x - h.x) > half * 0.85) continue;
+      if (inst.y < topY - 14 || inst.y > h.y) continue;
+      if (!best || Math.abs(inst.y - topY) < Math.abs(inst.y - best.topY)) best = { h, topY };
+    }
+    return best;
+  };
+  /** Küçük eşyalar ya bir yüzeyin üstüne oturur ya yere iner; havada kalmaz. */
+  const settle = (inst: Inst) => {
+    delete inst.s;
+    if (placeOf(inst.id) !== 'surface') return;
+    const hit = hostUnder(inst);
+    if (hit) {
+      inst.y = hit.topY + 0.6;
+      inst.s = hit.h.u;
+    } else inst.y = Math.max(72, inst.y);
+  };
+  /** Dokunulan noktadaki en üstteki eşya (resimlerin saydam kısımları sayılmaz). */
+  const pickThing = (cx: number, cy: number): HTMLElement | null => {
+    for (const e of document.elementsFromPoint(cx, cy)) {
+      const th = e.closest<HTMLElement>('.thing');
+      if (!th || !layer.contains(th)) continue;
+      const img = th.querySelector<HTMLImageElement>(':scope > img');
+      if (!img) return th;
+      if (e !== img) continue;
+      const r = img.getBoundingClientRect();
+      const inst = list().find((i) => i.u === Number(th.dataset.u));
+      let fx = (cx - r.left) / r.width;
+      if (inst?.fl) fx = 1 - fx;
+      if (inst?.r || alphaAt(img, fx, (cy - r.top) / r.height)) return th;
+    }
+    return null;
+  };
+  const elOf = (u: number) => layer.querySelector<HTMLElement>(`.thing[data-u="${u}"]`);
+
   function drag(el: HTMLElement, inst: Inst, ev: PointerEvent, fresh: boolean) {
     ev.preventDefault();
     const start = toPct(ev.clientX, ev.clientY);
@@ -493,10 +573,20 @@ export function showHouse(back: () => void) {
       if (!moved && Math.hypot(p.x - start.x, p.y - start.y) > 2) moved = true;
       if (!moved) return;
       if (selected) hideTools();
+      const px = inst.x;
+      const py = inst.y;
       inst.x = Math.max(2, Math.min(100 * WORLD - 2, p.x - off.x));
       const [y0, y1] = yRange(inst.id);
       inst.y = Math.max(y0, Math.min(y1, p.y - off.y));
       place(el, inst);
+      // Üstündekiler de onunla birlikte taşınır.
+      for (const r of list()) {
+        if (r.s !== inst.u) continue;
+        r.x += inst.x - px;
+        r.y += inst.y - py;
+        const re = elOf(r.u);
+        if (re) place(re, r);
+      }
       drawer.classList.toggle('drop', overDrawer(e.clientX, e.clientY));
     };
     const up = (e: PointerEvent) => {
@@ -507,11 +597,19 @@ export function showHouse(back: () => void) {
       drawer.classList.remove('drop');
       if (!moved) return tap(el, inst);
       if (overDrawer(e.clientX, e.clientY)) {
+        for (const r of list()) if (r.s === inst.u) delete r.s;
         house()[current] = list().filter((i) => i !== inst);
         el.animate([{ transform: 'translate(-50%,-100%) scale(1)', opacity: 1 }, { transform: 'translate(-50%,-100%) scale(0.2)', opacity: 0 }], { duration: 250 }).finished.then(() => el.remove());
         sfx.soft();
         if (inst.id === 'bebek') renderDrawer();
       } else {
+        settle(inst);
+        place(el, inst);
+        for (const r of list()) {
+          if (r.s !== inst.u) continue;
+          const re = elOf(r.u);
+          if (re) place(re, r);
+        }
         sfx.tap();
       }
       commit();
@@ -568,7 +666,7 @@ export function showHouse(back: () => void) {
   const touches = new Map<number, number[]>();
   let pinch: { d: number; z: number } | null = null;
   roomEl.addEventListener('pointerdown', (ev) => {
-    if ((ev.target as Element).closest('.thing, .zoom-btns, .item-tools')) return;
+    if ((ev.target as Element).closest('.zoom-btns, .item-tools') || pickThing(ev.clientX, ev.clientY)) return;
     hideTools();
     touches.set(ev.pointerId, [ev.clientX, ev.clientY]);
     if (touches.size === 2) {
@@ -614,7 +712,7 @@ export function showHouse(back: () => void) {
   }, { passive: false });
 
   layer.addEventListener('pointerdown', (ev) => {
-    const el = (ev.target as Element).closest<HTMLElement>('.thing');
+    const el = pickThing(ev.clientX, ev.clientY);
     if (!el) return;
     const inst = list().find((i) => i.u === Number(el.dataset.u));
     if (inst) drag(el, inst, ev, false);
@@ -623,6 +721,7 @@ export function showHouse(back: () => void) {
   const addInst = (id: string, x: number, y: number): [HTMLElement, Inst] => {
     const [y0, y1] = yRange(id);
     const inst: Inst = { u: nextU(list()), id, x, y: Math.max(y0, Math.min(y1, y)) };
+    settle(inst);
     list().push(inst);
     layer.insertAdjacentHTML('beforeend', thingHtml(inst));
     if (id === 'bebek') queueMicrotask(renderDrawer);
@@ -676,9 +775,20 @@ export function showHouse(back: () => void) {
       if (Math.hypot(e.clientX - startX, e.clientY - startY) < 8) {
         // Bebeğin arkasında kaybolmasın: odanın sağına ya da soluna koy.
         const v = visibleX();
-        const f = Math.random() < 0.5 ? 0.12 + Math.random() * 0.22 : 0.66 + Math.random() * 0.22;
-        const x = v.a + (v.b - v.a) * f;
-        const [node] = addInst(b.dataset.id!, x, 84 + Math.random() * 12);
+        const id = b.dataset.id!;
+        let x: number;
+        let y = 84 + Math.random() * 12;
+        // Küçük eşyalar: ekranda bir masa/tezgâh varsa onun üstüne.
+        const hosts = placeOf(id) === 'surface' ? list().filter((h) => surfaceTop(h.id) !== undefined && !h.r && h.x > v.a && h.x < v.b) : [];
+        if (hosts.length) {
+          const h = hosts[Math.floor(Math.random() * hosts.length)];
+          x = h.x + (Math.random() - 0.5) * (THINGS[h.id]?.w ?? 0) * 0.6;
+          y = h.y - heightPct(h.id) * (1 - (surfaceTop(h.id) ?? 0)) + 1;
+        } else {
+          const f = Math.random() < 0.5 ? 0.12 + Math.random() * 0.22 : 0.66 + Math.random() * 0.22;
+          x = v.a + (v.b - v.a) * f;
+        }
+        const [node] = addInst(id, x, y);
         node.animate([{ transform: 'translate(-50%,-100%) scale(0.3)' }, { transform: 'translate(-50%,-100%) scale(1.1)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 350 });
         sfx.merge();
         commit();

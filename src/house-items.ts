@@ -242,13 +242,29 @@ interface ExtraItem {
   char?: boolean;
   /** Üst seviye çeşit: okuma sorusuyla açılır. */
   lock?: boolean;
+  /** Resmin yükseklik/genişlik oranı. */
+  ar?: number;
+  /** Üstüne eşya konabiliyorsa üst yüzeyin tepeden uzaklığı (0..1). */
+  top?: number;
 }
 const EXTRA = (Object.values(import.meta.glob('./assets/items.json', { eager: true, import: 'default' }))[0] ?? []) as ExtraItem[];
 
 for (const e of EXTRA) {
   if (!itemImage(e.id)) continue;
   if (!THINGS[e.id]) THINGS[e.id] = { id: e.id, w: e.w, vb: '0 0 100 100', svg: '', flat: e.flat };
+  // Görseli olan eşyada gerçekçi boyut (scripts/sizes.py) çizimin boyutunun yerine geçer.
+  else THINGS[e.id] = { ...THINGS[e.id], w: e.w };
 }
+const META = new Map(EXTRA.map((e) => [e.id, e]));
+/** Eşyanın yüksekliği, oda yüksekliğine göre % (oda 400x440 birim; w, 400'e göre %). */
+export function heightPct(id: string): number {
+  const e = META.get(id);
+  const t = THINGS[id];
+  if (!e?.ar || !t) return 0;
+  return ((t.w * 4 * e.ar) / 440) * 100;
+}
+/** Üstüne eşya konabilen eşyanın üst yüzeyi (0..1, resmin tepesinden), değilse undefined. */
+export const surfaceTop = (id: string) => (itemImage(id) ? META.get(id)?.top : undefined);
 
 export const isLockedItem = (id: string) => EXTRA.some((e) => e.id === id && e.lock) && !(progress.unlockedItems ?? []).includes(id);
 export function unlockItem(id: string) {

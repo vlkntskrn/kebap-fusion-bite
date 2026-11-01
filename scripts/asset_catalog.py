@@ -659,3 +659,7 @@ aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya
 
 if __name__ == "__main__":
     main()
+    # Gerçekçi boyutlar ve üst yüzeyler (items.json'u yeniden yazdığımız için).
+    import runpy
+
+    runpy.run_path(str(ROOT / "scripts" / "sizes.py"), run_name="__main__")
