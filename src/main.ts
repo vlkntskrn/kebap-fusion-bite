@@ -25,11 +25,16 @@ import { h, show, colored, on, wiggle, bounce, confetti, talkBtn } from './ui';
 import { talk, praise, bindTalkButtons } from './talk';
 import { showStage, dollSvg, showGiftPicker, pendingGifts } from './stage';
 import { showHouse, houseTitle } from './house';
+import { imgTag, wordCode, applyGlobalAssets } from './assets';
 
 const knownSet = () => new Set(progress.known);
 
 type GameKind = 'bul' | 'birlestir' | 'kur' | 'oku';
 const ROUND = 6;
+
+/** Kelime resmi: yüklenen görsel varsa o, yoksa emoji. */
+const wordPic = (w: Word) => imgTag(wordCode(w.text), w.emoji, 'word-img');
+const stickerHtml = (s: string) => imgTag(`cikartma_${String(STICKERS.indexOf(s) + 1).padStart(2, '0')}`, s);
 
 /* ---------------------------------------------------------- availability */
 
@@ -42,11 +47,11 @@ const items = {
 };
 const MIN: Record<GameKind, number> = { bul: 2, birlestir: 1, kur: 1, oku: 1 };
 
-const GAMES: { kind: GameKind; icon: string; title: string; color: string }[] = [
-  { kind: 'bul', icon: '👂', title: 'Sesi Bul', color: 'coral' },
-  { kind: 'birlestir', icon: '🔗', title: 'Sesleri Birleştir', color: 'sky' },
-  { kind: 'kur', icon: '🧩', title: 'Kelime Kur', color: 'mint' },
-  { kind: 'oku', icon: '📖', title: 'Oku', color: 'lemon' },
+const GAMES: { kind: GameKind; icon: string; art: string; title: string; color: string }[] = [
+  { kind: 'bul', icon: '👂', art: 'sesibul', title: 'Sesi Bul', color: 'coral' },
+  { kind: 'birlestir', icon: '🔗', art: 'birlestir', title: 'Sesleri Birleştir', color: 'sky' },
+  { kind: 'kur', icon: '🧩', art: 'kelimekur', title: 'Kelime Kur', color: 'mint' },
+  { kind: 'oku', icon: '📖', art: 'oku', title: 'Oku', color: 'lemon' },
 ];
 
 /* --------------------------------------------------------------- start */
@@ -105,13 +110,13 @@ function showHome(greet = false) {
         <span class="sb-doll">${dollSvg(progress.doll ?? defaultLookForSplash(), 'doll mini')}</span>
         <span class="sb-text">👑 ${genitive(progress.name)} Sahnesi<small>👗 🎨 ${pendingGifts() > 0 ? `<b class="gift-badge">🎁 ${pendingGifts()}</b>` : ''}</small></span>
       </button>
-      <button class="house-banner" data-act="house"><span class="hb-icon">🏠</span><span class="sb-text">${houseTitle()}<small>🛏️ 🍳 🛁 🛋️</small></span></button>
+      <button class="house-banner" data-act="house"><span class="hb-icon">${imgTag('ui_ev', '🏡')}</span><span class="sb-text">${houseTitle()}<small>🛏️ 🍳 🛁 🛋️</small></span></button>
       </div>
       <div class="games">
         ${GAMES.map((g) => {
           const ready = items[g.kind]().length >= MIN[g.kind];
           return `<button class="game-card ${g.color} ${ready ? '' : 'locked'}" data-act="game" data-kind="${g.kind}">
-            <span class="g-icon">${ready ? g.icon : '🔒'}</span>
+            <span class="g-icon">${ready ? imgTag(`ui_oyun_${g.art}`, g.icon) : '🔒'}</span>
             <span class="g-title">${g.title}</span>
           </button>`;
         }).join('')}
@@ -143,7 +148,7 @@ function showAlbum() {
     <div class="screen">
       <header class="bar"><button class="round-btn" data-act="home">⬅</button><h2>🎁</h2>${talkBtn('album')}</header>
       <div class="album">
-        ${STICKERS.map((s) => (progress.stickers.includes(s) ? `<span class="sticker">${s}</span>` : `<span class="sticker empty">?</span>`)).join('')}
+        ${STICKERS.map((s) => (progress.stickers.includes(s) ? `<span class="sticker">${stickerHtml(s)}</span>` : `<span class="sticker empty">?</span>`)).join('')}
       </div>
     </div>`);
   bindTalkButtons(root);
@@ -375,7 +380,7 @@ function qKur() {
   let busy = false;
   const root = gameShell(
     'kur',
-    `<button class="picture" data-act="listen">${w.emoji}<span>🔊</span></button>
+    `<button class="picture" data-act="listen">${wordPic(w)}<span>🔊</span></button>
      <div class="kur-side"><div class="slots">${w.syllables.map(() => `<span class="slot"></span>`).join('')}</div>
      <div class="tiles">${tiles.map((s, i) => `<button class="card tile" data-act="tile" data-i="${i}" data-v="${s}">${colored(s)}</button>`).join('')}</div></div>`,
   );
@@ -432,7 +437,7 @@ function qOku() {
   const root = gameShell(
     'oku',
     `<div class="oku-word"><div class="read-word">${sylHtml}</div>
-     <div class="reveal hidden"><span class="emoji">${w.emoji}</span></div></div>
+     <div class="reveal hidden"><span class="emoji">${wordPic(w)}</span></div></div>
      <div class="oku-side"><button class="big-btn sky" data-act="check">🔊</button>
      <div class="self hidden">
        <button class="big-btn mint" data-act="ok">😊 👍</button>
@@ -492,7 +497,7 @@ function showFinish() {
     <div class="screen finish">
       <h1>${progress.name} 🎉</h1>
       <div class="stars">${'⭐'.repeat(Math.max(1, r.stars))}</div>
-      <div class="new-sticker">${sticker}</div>
+      <div class="new-sticker">${stickerHtml(sticker)}</div>
       ${success ? `<button class="gift-btn big" data-act="gift">🎁</button>` : ''}
       <div class="row">
         <button class="big-btn mint" data-act="again">🔁</button>
@@ -768,4 +773,5 @@ document.addEventListener('touchmove', (e) => {
   if (e.touches.length > 1) e.preventDefault();
 }, { passive: false });
 document.addEventListener('dblclick', (e) => e.preventDefault(), { passive: false });
+applyGlobalAssets();
 initVoices().then(showSplash);

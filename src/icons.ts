@@ -1,11 +1,14 @@
 /** Okuyamayan çocuk için anlaşılır, büyük simgeler (özgün çizimler). */
 import { THINGS } from './house-items';
+import { img } from './assets';
 
 const svg = (vb: string, body: string) =>
   `<svg class="icon" viewBox="${vb}" xmlns="http://www.w3.org/2000/svg"><g stroke="#3d3553" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">${body}</g></svg>`;
 
 /** Oda düğmeleri: o odanın en tanıdık eşyası. */
 export function roomIcon(room: string): string {
+  const u = img(`ui_oda_${room}`);
+  if (u) return `<img class="ui-img" src="${u}" alt="" draggable="false"/>`;
   const id = ({ yatak: 'yatak', mutfak: 'ocak', banyo: 'kuvet', salon: 'kanepe', havuz: 'flamingo' } as Record<string, string>)[room];
   const t = THINGS[id];
   // Koyu kontur: beyaz küvet gibi açık renkli eşyalar da beyaz düğmede görünsün.

@@ -1,11 +1,12 @@
 import { isVowel } from './content';
 import { stopVoice } from './voice';
+import { swapEmoji } from './assets';
 
 const app = document.getElementById('app')!;
 
 export function h(html: string): HTMLElement {
   const t = document.createElement('template');
-  t.innerHTML = html.trim();
+  t.innerHTML = swapEmoji(html.trim());
   return t.content.firstElementChild as HTMLElement;
 }
 
@@ -54,4 +55,4 @@ export function confetti() {
 }
 
 /** Ekrandaki talimatı tekrar dinletmek için başlığın yanındaki hoparlör. */
-export const talkBtn = (id: string) => `<button class="talk-btn" data-talk="${id}" aria-label="Dinle">🔊</button>`;
+export const talkBtn = (id: string) => swapEmoji(`<button class="talk-btn" data-talk="${id}" aria-label="Dinle">🔊</button>`);

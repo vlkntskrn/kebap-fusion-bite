@@ -34,6 +34,13 @@ Oyundaki bütün sesler **anne ya da babanın kendi sesiyle** kaydedilir. Böyle
    Kayıtları ana ekran uygulamasının içinden yap, çünkü Safari ile ana ekran uygulaması kayıtları paylaşmaz.
 4. Telefon değiştirmeden önce **Yedek al** ile kayıtları dosyaya kaydet.
 
+## Görseller (Firefly)
+
+`ASSETS.md` dosyasında her görsel için hazır Firefly isteği ve dosya kodu var (eşyalar, karakterler, hayvanlar,
+butonlar, kelime resimleri, çıkartmalar, arka planlar). Liste `scripts/asset_catalog.py` ile üretilir.
+Yüklenen görseller `python3 -I scripts/prepare_assets.py <klasör>` ile arka planı silinip `src/assets/items/` içine
+konur; oyun aynı koddaki emoji ya da çizimin yerine kendiliğinden kullanır.
+
 ## Geliştirme
 
 ```bash

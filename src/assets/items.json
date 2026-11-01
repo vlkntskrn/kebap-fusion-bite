@@ -1,1 +1,975 @@
-[]
+[
+ {
+  "id": "yatak",
+  "w": 46,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "yuvarlakyatak",
+  "w": 46,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "cibinlikliyatak",
+  "w": 46,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "ranza",
+  "w": 40,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "besik",
+  "w": 30,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "dolap",
+  "w": 22,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "kiyafetaski",
+  "w": 26,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "sifonyer",
+  "w": 24,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "makyaj",
+  "w": 32,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "kozmetik",
+  "w": 16,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "koltuk",
+  "w": 22,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "armut",
+  "w": 18,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "cicekminder",
+  "w": 14,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "ayihali",
+  "w": 40,
+  "rooms": [
+   "yatak"
+  ],
+  "flat": true
+ },
+ {
+  "id": "yuvarlakhali",
+  "w": 40,
+  "flat": true
+ },
+ {
+  "id": "bilgisayar",
+  "w": 36,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "calismamasasi",
+  "w": 34,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "kitaplik",
+  "w": 24
+ },
+ {
+  "id": "aynadalga",
+  "w": 16,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "boyaynasi",
+  "w": 14,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "komodin",
+  "w": 14,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "gecelambasi",
+  "w": 8,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "oyuncaksandigi",
+  "w": 20,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "unicorn",
+  "w": 10,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "oyuncakev",
+  "w": 18,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "yazitahtasi",
+  "w": 16,
+  "rooms": [
+   "yatak"
+  ]
+ },
+ {
+  "id": "duvarrafi",
+  "w": 28
+ },
+ {
+  "id": "fotoipi",
+  "w": 30
+ },
+ {
+  "id": "perde",
+  "w": 34
+ },
+ {
+  "id": "kedipostu",
+  "w": 16
+ },
+ {
+  "id": "retrobuzdolabi",
+  "w": 22,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "buzdolabi",
+  "w": 22,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "tezgah",
+  "w": 46,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "ocak",
+  "w": 26,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "firin",
+  "w": 24,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "lavabo",
+  "w": 30,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "mikrodalga",
+  "w": 20,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "tost",
+  "w": 12,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "kahve",
+  "w": 12,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "blender",
+  "w": 9,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "mikser",
+  "w": 12,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "kettle",
+  "w": 10,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "caydanlik",
+  "w": 12,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "rafkupa",
+  "w": 32,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "tabakdolabi",
+  "w": 26,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "kasiklik",
+  "w": 24,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "masa",
+  "w": 34,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "yuvarlakmasa",
+  "w": 28,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "sandalye",
+  "w": 12,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "tabure",
+  "w": 10,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "mamasandalyesi",
+  "w": 14,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "meyve",
+  "w": 14,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "ekmek",
+  "w": 12,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "pasta",
+  "w": 13
+ },
+ {
+  "id": "kurabiye",
+  "w": 9,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "pizza",
+  "w": 12,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "hamburger",
+  "w": 9,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "salata",
+  "w": 12,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "cilek",
+  "w": 9,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "sut",
+  "w": 6,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "limonata",
+  "w": 8
+ },
+ {
+  "id": "copkutusu",
+  "w": 12
+ },
+ {
+  "id": "saksiotlar",
+  "w": 16,
+  "rooms": [
+   "mutfak"
+  ]
+ },
+ {
+  "id": "kuvet",
+  "w": 48,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "jakuzi",
+  "w": 42,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "duskabini",
+  "w": 26,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "banyolavabo",
+  "w": 22,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "tuvalet",
+  "w": 18,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "camasir",
+  "w": 22,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "sampuan",
+  "w": 26,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "sepet",
+  "w": 14,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "robot",
+  "w": 14
+ },
+ {
+  "id": "havlu",
+  "w": 16,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "bornoz",
+  "w": 12,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "ayna",
+  "w": 16,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "ordek",
+  "w": 9,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "dissfircasi",
+  "w": 7,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "sabunluk",
+  "w": 6,
+  "rooms": [
+   "banyo"
+  ]
+ },
+ {
+  "id": "paspas",
+  "w": 30,
+  "rooms": [
+   "banyo"
+  ],
+  "flat": true
+ },
+ {
+  "id": "kanepe",
+  "w": 48,
+  "rooms": [
+   "salon"
+  ]
+ },
+ {
+  "id": "kosekanepe",
+  "w": 52,
+  "rooms": [
+   "salon"
+  ]
+ },
+ {
+  "id": "berjer",
+  "w": 22,
+  "rooms": [
+   "salon"
+  ]
+ },
+ {
+  "id": "tv",
+  "w": 32,
+  "rooms": [
+   "salon"
+  ]
+ },
+ {
+  "id": "tvunitesi",
+  "w": 34,
+  "rooms": [
+   "salon"
+  ]
+ },
+ {
+  "id": "sehpa",
+  "w": 26,
+  "rooms": [
+   "salon"
+  ]
+ },
+ {
+  "id": "abajur",
+  "w": 10
+ },
+ {
+  "id": "lambader",
+  "w": 13
+ },
+ {
+  "id": "puf",
+  "w": 12
+ },
+ {
+  "id": "buyukbitki",
+  "w": 18
+ },
+ {
+  "id": "bitki",
+  "w": 15
+ },
+ {
+  "id": "sarkitbitki",
+  "w": 16
+ },
+ {
+  "id": "kaktus",
+  "w": 10
+ },
+ {
+  "id": "oyunrafi",
+  "w": 30,
+  "rooms": [
+   "salon"
+  ]
+ },
+ {
+  "id": "kediyatagi",
+  "w": 18
+ },
+ {
+  "id": "kediagaci",
+  "w": 18,
+  "rooms": [
+   "salon"
+  ]
+ },
+ {
+  "id": "akvaryum",
+  "w": 24,
+  "rooms": [
+   "salon"
+  ]
+ },
+ {
+  "id": "piyano",
+  "w": 32,
+  "rooms": [
+   "salon"
+  ]
+ },
+ {
+  "id": "somine",
+  "w": 34,
+  "rooms": [
+   "salon"
+  ]
+ },
+ {
+  "id": "oyunkonsolu",
+  "w": 12
+ },
+ {
+  "id": "vazo",
+  "w": 9
+ },
+ {
+  "id": "duvarsaati",
+  "w": 10
+ },
+ {
+  "id": "kuskafesi",
+  "w": 14,
+  "rooms": [
+   "salon"
+  ]
+ },
+ {
+  "id": "disko",
+  "w": 14
+ },
+ {
+  "id": "sarkit",
+  "w": 12
+ },
+ {
+  "id": "perilamba",
+  "w": 60
+ },
+ {
+  "id": "tablo",
+  "w": 18
+ },
+ {
+  "id": "cerceve",
+  "w": 18
+ },
+ {
+  "id": "ayi",
+  "w": 12
+ },
+ {
+  "id": "top",
+  "w": 8
+ },
+ {
+  "id": "sezlong",
+  "w": 24,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "semsiye",
+  "w": 34,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "flamingo",
+  "w": 22,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "simit",
+  "w": 15,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "palmiye",
+  "w": 26,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "kalpbalon",
+  "w": 10
+ },
+ {
+  "id": "buzkutusu",
+  "w": 14,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "dondurma",
+  "w": 7
+ },
+ {
+  "id": "kaydirak",
+  "w": 30,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "salincak",
+  "w": 30,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "trambolin",
+  "w": 34,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "kumkovasi",
+  "w": 8,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "mangal",
+  "w": 18,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "cicektarhi",
+  "w": 30,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "agac",
+  "w": 34,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "cit",
+  "w": 40,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "kopekkulubesi",
+  "w": 22,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "bisiklet",
+  "w": 26,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "cadir",
+  "w": 28
+ },
+ {
+  "id": "limonatastandi",
+  "w": 32,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "gokkusagi",
+  "w": 40,
+  "rooms": [
+   "havuz"
+  ]
+ },
+ {
+  "id": "piknik",
+  "w": 34,
+  "rooms": [
+   "havuz"
+  ],
+  "flat": true
+ },
+ {
+  "id": "kiz1",
+  "w": 26,
+  "char": true
+ },
+ {
+  "id": "kiz2",
+  "w": 26,
+  "char": true
+ },
+ {
+  "id": "kiz3",
+  "w": 26,
+  "char": true
+ },
+ {
+  "id": "kiz4",
+  "w": 26,
+  "char": true
+ },
+ {
+  "id": "kiz5",
+  "w": 26,
+  "char": true
+ },
+ {
+  "id": "kiz6",
+  "w": 26,
+  "char": true
+ },
+ {
+  "id": "kiz7",
+  "w": 26,
+  "char": true
+ },
+ {
+  "id": "oglan1",
+  "w": 26,
+  "char": true
+ },
+ {
+  "id": "oglan2",
+  "w": 26,
+  "char": true
+ },
+ {
+  "id": "oglan3",
+  "w": 26,
+  "char": true
+ },
+ {
+  "id": "bebek1",
+  "w": 15,
+  "char": true
+ },
+ {
+  "id": "bebek2",
+  "w": 15,
+  "char": true
+ },
+ {
+  "id": "anne",
+  "w": 34,
+  "char": true
+ },
+ {
+  "id": "baba",
+  "w": 34,
+  "char": true
+ },
+ {
+  "id": "nine",
+  "w": 32,
+  "char": true
+ },
+ {
+  "id": "dede",
+  "w": 32,
+  "char": true
+ },
+ {
+  "id": "ogretmen",
+  "w": 34,
+  "char": true
+ },
+ {
+  "id": "kedi",
+  "w": 14,
+  "char": true
+ },
+ {
+  "id": "kedi2",
+  "w": 14,
+  "char": true
+ },
+ {
+  "id": "kedi3",
+  "w": 14,
+  "char": true
+ },
+ {
+  "id": "kopek",
+  "w": 15,
+  "char": true
+ },
+ {
+  "id": "kopek2",
+  "w": 15,
+  "char": true
+ },
+ {
+  "id": "tavsan",
+  "w": 12,
+  "char": true
+ },
+ {
+  "id": "hamster",
+  "w": 9,
+  "char": true
+ },
+ {
+  "id": "papagan",
+  "w": 10,
+  "char": true
+ },
+ {
+  "id": "kaplumbaga",
+  "w": 12,
+  "char": true
+ },
+ {
+  "id": "ordekyavrusu",
+  "w": 9,
+  "char": true
+ },
+ {
+  "id": "midilli",
+  "w": 22,
+  "char": true
+ },
+ {
+  "id": "panda",
+  "w": 14,
+  "char": true
+ }
+]

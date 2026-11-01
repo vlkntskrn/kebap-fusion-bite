@@ -8,6 +8,7 @@ import { talk, bindTalkButtons } from './talk';
 import { show, on, wiggle, bounce, confetti, talkBtn, h } from './ui';
 import { buildSong, playSong, SongHandle } from './music';
 import { CAT_ICONS } from './icons';
+import { imgTag } from './assets';
 import type { TalkId } from './content';
 import { stopVoice, wait } from './voice';
 import { sfx } from './sfx';
@@ -354,7 +355,7 @@ export function showStage(home: () => void) {
       ${pendingGifts() > 0 ? `<button class="gift-btn" data-act="gift">🎁<b>${pendingGifts()}</b></button>` : ''}
       <div class="stage-choices">
         <button class="stage-card grape" data-act="dress">${dollSvg(look(), 'doll mini')}<span>👗</span></button>
-        <button class="stage-card pink" data-act="paint"><span class="big">🖍️</span><span>🎨</span></button>
+        <button class="stage-card pink" data-act="paint">${imgTag('ui_boyama', '<span class="big">🖍️</span>', 'ui-img card-img')}<span>🎨</span></button>
       </div>
     </div>`);
   bindTalkButtons(root);
@@ -372,7 +373,7 @@ function showDressUp() {
     <div class="screen dress">
       <header class="bar"><button class="round-btn" data-act="back">⬅</button><div class="pill">⭐ ${progress.stars}</div>${talkBtn('giydir')}</header>
       <div class="doll-wrap" data-act="doll"></div>
-      <div class="cats">${CATS.map((c) => `<button class="cat" data-act="cat" data-c="${c.id}">${CAT_ICONS[c.id] ?? c.icon}</button>`).join('')}</div>
+      <div class="cats">${CATS.map((c) => `<button class="cat" data-act="cat" data-c="${c.id}">${imgTag(`ui_kat_${c.id}`, CAT_ICONS[c.id] ?? c.icon)}</button>`).join('')}</div>
       <div class="items"></div>
       <div class="swatches"></div>
     </div>`);

@@ -226,10 +226,10 @@ export function colorize(t: Thing): string {
  * Yalnızca görselden oluşan yeni eşyalar src/assets/items.json listesine eklenir:
  *   [{ "id": "disko2", "w": 14, "rooms": ["yatak", "salon"], "flat": false }]
  */
-const IMAGES = import.meta.glob('./assets/items/*.{png,webp}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+import { img } from './assets';
 
 export function itemImage(id: string): string | undefined {
-  return IMAGES[`./assets/items/${id}.png`] ?? IMAGES[`./assets/items/${id}.webp`];
+  return img(id);
 }
 
 interface ExtraItem {
@@ -237,12 +237,20 @@ interface ExtraItem {
   w: number;
   rooms?: string[];
   flat?: boolean;
+  /** Karakter ya da hayvan: dokununca zıplar. */
+  char?: boolean;
 }
 const EXTRA = (Object.values(import.meta.glob('./assets/items.json', { eager: true, import: 'default' }))[0] ?? []) as ExtraItem[];
 
 for (const e of EXTRA) {
-  if (!THINGS[e.id] && itemImage(e.id)) THINGS[e.id] = { id: e.id, w: e.w, vb: '0 0 100 100', svg: '', flat: e.flat };
+  if (!itemImage(e.id)) continue;
+  if (!THINGS[e.id]) THINGS[e.id] = { id: e.id, w: e.w, vb: '0 0 100 100', svg: '', flat: e.flat };
 }
 
+export const isCharAsset = (id: string) => EXTRA.some((e) => e.id === id && e.char);
+
 /** Bir odanın çekmecesine eklenecek, sadece görselden oluşan eşyalar. */
-export const extraItemsFor = (room: string) => EXTRA.filter((e) => itemImage(e.id) && (!e.rooms || e.rooms.includes(room))).map((e) => e.id);
+export const extraItemsFor = (room: string) =>
+  EXTRA.filter((e) => itemImage(e.id) && (!e.rooms || e.rooms.includes(room)))
+    .sort((a, b) => Number(!!b.char) - Number(!!a.char))
+    .map((e) => e.id);

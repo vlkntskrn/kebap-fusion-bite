@@ -8,7 +8,8 @@ import { show, on, talkBtn } from './ui';
 import { sfx } from './sfx';
 import { dollSvg, currentLook, shade } from './stage';
 import { genitive, TalkId } from './content';
-import { THINGS, colorize, itemImage, extraItemsFor } from './house-items';
+import { THINGS, colorize, itemImage, extraItemsFor, isCharAsset } from './house-items';
+import { imgTag } from './assets';
 import { roomIcon, MODE_ICONS } from './icons';
 
 type RoomId = 'yatak' | 'mutfak' | 'banyo' | 'salon' | 'havuz';
@@ -232,9 +233,9 @@ export function showHouse(back: () => void) {
         ${talkBtn('oda')}</header>
       <div class="room"><div class="room-bg-wrap"></div><div class="layer"></div></div>
       <div class="modes">
-        <button class="mode" data-mode="tasi">${MODE_ICONS.tasi}</button>
-        <button class="mode" data-mode="boya">${MODE_ICONS.boya}</button>
-        <button class="mode" data-mode="tasarla">${MODE_ICONS.tasarla}</button>
+        <button class="mode" data-mode="tasi">${imgTag('ui_mod_tasi', MODE_ICONS.tasi)}</button>
+        <button class="mode" data-mode="boya">${imgTag('ui_mod_boya', MODE_ICONS.boya)}</button>
+        <button class="mode" data-mode="tasarla">${imgTag('ui_mod_tasarla', MODE_ICONS.tasarla)}</button>
       </div>
       <div class="drawer"><div class="drawer-items"></div><div class="trash">🗑️</div></div>
       <div class="design hidden"></div>
@@ -282,7 +283,7 @@ export function showHouse(back: () => void) {
     drawerItems.innerHTML =
       mode === 'boya'
         ? PALETTE.map((c) => `<button class="sw ${c === brush ? 'on' : ''}" data-color="${c}" style="background:${c}"></button>`).join('')
-        : [...room().tray, ...extraItemsFor(current), ...COMMON].map((id) => `<button class="drawer-item" data-id="${id}">${thumb(id)}</button>`).join('');
+        : [...new Set([...extraItemsFor(current).filter(isCharAsset), ...room().tray, ...extraItemsFor(current), ...COMMON])].map((id) => `<button class="drawer-item" data-id="${id}">${thumb(id)}</button>`).join('');
     drawerItems.scrollLeft = 0;
     drawer.classList.toggle('paint', mode === 'boya');
   };
@@ -391,7 +392,7 @@ export function showHouse(back: () => void) {
   }
 
   function tap(el: HTMLElement, inst: Inst) {
-    const isChar = inst.id === 'bebek' || !!FRIENDS[inst.id];
+    const isChar = inst.id === 'bebek' || !!FRIENDS[inst.id] || isCharAsset(inst.id);
     if (mode === 'boya' && !isChar) {
       const t = THINGS[inst.id];
       if (t?.main && !itemImage(inst.id)) {
@@ -406,7 +407,7 @@ export function showHouse(back: () => void) {
       return;
     }
     if (isChar) {
-      el.querySelector('.doll-body')?.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-30px)' }, { transform: 'translateY(0)' }], { duration: 500 });
+      (el.querySelector('.doll-body') ?? el.querySelector('img'))?.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-30px)' }, { transform: 'translateY(0)' }], { duration: 500 });
       sfx.sing();
       return;
     }

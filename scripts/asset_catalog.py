@@ -1,0 +1,465 @@
+#!/usr/bin/env python3
+"""
+Defne'nin Evi görsel kataloğu. Bu dosya tek kaynaktır:
+  python3 -I scripts/asset_catalog.py
+komutu ASSETS.md (Firefly istekleri) ve src/assets/items.json (oyunun bildiği eşyalar) dosyalarını üretir.
+
+Her kayıt: (kod, oda, genişlik_yüzde, yere_serili_mi, Türkçe ad, İngilizce tarif)
+  - kod: dosya adı (kod.png). Sadece küçük harf, rakam ve alt çizgi.
+  - oda: yatak, mutfak, banyo, salon, bahce, hepsi
+  - genişlik: odanın genişliğine göre eşyanın oyundaki genişliği (%)
+"""
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+
+# ---------------------------------------------------------------- stiller
+STYLE_ITEM = (
+    "Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, "
+    "rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette "
+    "(blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective "
+    "distortion, one single isolated object, the whole object fully visible and centered with generous empty margin "
+    "around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, "
+    "plain solid pure white background (#FFFFFF)."
+)
+STYLE_CHAR = (
+    "Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, "
+    "big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny "
+    "white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel "
+    "color palette, full body visible from head to shoes, standing straight and facing the viewer, arms relaxed "
+    "slightly away from the body, feet together on the same level, centered with generous empty margin, no floor, "
+    "no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF)."
+)
+STYLE_PET = (
+    "Cute 2D chibi animal for a children's dollhouse game, flat vector art style with very soft gentle shading, "
+    "big head, small rounded body, simple black oval eyes with a tiny white highlight, rosy cheeks, clean thick dark "
+    "navy outline (#3D3553), soft pastel colors, full body visible, sitting and facing the viewer, centered with "
+    "generous empty margin, no floor, no cast shadow, no text, no logo, no watermark, "
+    "plain solid pure white background (#FFFFFF)."
+)
+EXCLUDE = "photo, photograph, photorealistic, realistic, 3D render, room, interior, window, wall, floor, perspective, shadow, background scenery, text, letters, logo, watermark, frame, border"
+
+# ---------------------------------------------------------------- eşyalar
+ITEMS = [
+    # --- yatak odası
+    ("yatak", "yatak", 46, False, "Tek kişilik yatak", "a single bed with a wooden headboard, pink blanket with tiny flower pattern and two white pillows"),
+    ("yuvarlakyatak", "yatak", 46, False, "Yuvarlak yatak", "a round bed with a rainbow arch headboard, lilac blanket and fluffy white pillows"),
+    ("cibinlikliyatak", "yatak", 46, False, "Cibinlikli yatak", "a princess canopy bed with sheer pink curtains tied with bows and a heart pillow"),
+    ("ranza", "yatak", 40, False, "Ranza", "a white bunk bed with a small ladder, mint and pink blankets"),
+    ("besik", "yatak", 30, False, "Bebek beşiği", "a white baby crib with a little star mobile above it"),
+    ("dolap", "yatak", 22, False, "Gardırop", "a tall pastel pink wardrobe with two doors and round knobs"),
+    ("kiyafetaski", "yatak", 26, False, "Kıyafet askılığı", "an open clothes rack with colorful hanging shirts and dresses and two drawers below"),
+    ("sifonyer", "yatak", 24, False, "Şifonyer", "a cream chest of drawers with three drawers and gold handles"),
+    ("makyaj", "yatak", 32, False, "Makyaj masası", "a vanity table with a big mirror surrounded by round light bulbs, a hair brush and lipsticks"),
+    ("kozmetik", "yatak", 16, False, "Kozmetik dolabı", "a small glass-door mini fridge full of pastel skincare bottles"),
+    ("koltuk", "yatak", 22, False, "Salıncak koltuk", "a hanging egg chair with a white cushion and a heart pillow, hanging rope on top"),
+    ("armut", "yatak", 18, False, "Armut koltuk", "a soft lilac bean bag chair"),
+    ("cicekminder", "yatak", 14, False, "Çiçek minder", "a flower shaped floor cushion in cream and butter yellow"),
+    ("ayihali", "yatak", 40, True, "Ayı halı", "a fluffy rug shaped like a cute teddy bear face, seen from above"),
+    ("yuvarlakhali", "hepsi", 40, True, "Yuvarlak halı", "a round fluffy white rug, seen from above"),
+    ("bilgisayar", "yatak", 36, False, "Bilgisayar masası", "a lilac desk with a computer monitor, keyboard and a game controller"),
+    ("calismamasasi", "yatak", 34, False, "Çalışma masası", "a wooden study desk with a desk lamp, pencil cup and a stack of books"),
+    ("kitaplik", "hepsi", 24, False, "Kitaplık", "a bookshelf with colorful books, a small plant and a toy"),
+    ("aynadalga", "yatak", 16, False, "Dalgalı ayna", "a wall mirror with a wavy lilac frame"),
+    ("boyaynasi", "yatak", 14, False, "Boy aynası", "a tall standing full-length mirror with a wooden frame"),
+    ("komodin", "yatak", 14, False, "Komodin", "a small bedside table with a mushroom lamp on top"),
+    ("gecelambasi", "yatak", 8, False, "Ay gece lambası", "a moon shaped night light glowing softly"),
+    ("oyuncaksandigi", "yatak", 20, False, "Oyuncak sandığı", "an open toy chest with a ball, a teddy and blocks peeking out"),
+    ("unicorn", "yatak", 10, False, "Peluş unicorn", "a plush unicorn toy with a rainbow mane"),
+    ("oyuncakev", "yatak", 18, False, "Oyuncak ev", "a small toy dollhouse with a pink roof"),
+    ("yazitahtasi", "yatak", 16, False, "Yazı tahtası", "a standing chalkboard easel with colorful chalk doodles of a sun and a heart"),
+    ("duvarrafi", "hepsi", 28, False, "Duvar rafı", "a floating wall shelf with tiny plants, a candle and a photo frame"),
+    ("fotoipi", "hepsi", 30, False, "Fotoğraf ipi", "a string with clothespins holding instant photos and tiny fairy lights"),
+    ("perde", "hepsi", 34, False, "Perde", "a pair of soft pink curtains with a curtain rod, tied with bows"),
+    ("kedipostu", "hepsi", 16, False, "Kedi posteri", "a framed poster with a cute smiling cat illustration"),
+
+    # --- mutfak
+    ("retrobuzdolabi", "mutfak", 22, False, "Retro buzdolabı", "a retro rounded fridge in peach color with a silver handle and cute magnets"),
+    ("buzdolabi", "mutfak", 22, False, "Buzdolabı", "a mint green two-door fridge with sticky notes and magnets"),
+    ("tezgah", "mutfak", 46, False, "Mutfak tezgâhı", "a kitchen counter with a sink, a stove top and an oven, cream cabinets with round knobs"),
+    ("ocak", "mutfak", 26, False, "Ocak", "a small cooking stove with an oven and a pink pot on top"),
+    ("firin", "mutfak", 24, False, "Fırın", "a built-in oven with a glass door and a tray of cookies inside"),
+    ("lavabo", "mutfak", 30, False, "Mutfak lavabosu", "a kitchen sink cabinet with a silver faucet"),
+    ("mikrodalga", "mutfak", 20, False, "Mikrodalga", "a lilac microwave oven"),
+    ("tost", "mutfak", 12, False, "Tost makinesi", "a pastel blue toaster with a smiling face and two toast slices popping up"),
+    ("kahve", "mutfak", 12, False, "Kahve makinesi", "a yellow drip coffee machine with a glass coffee pot"),
+    ("blender", "mutfak", 9, False, "Blender", "a blender with a pink strawberry smoothie inside"),
+    ("mikser", "mutfak", 12, False, "Mikser", "a stand mixer in mint color with a mixing bowl"),
+    ("kettle", "mutfak", 10, False, "Su ısıtıcı", "an electric kettle in cream color"),
+    ("caydanlik", "mutfak", 12, False, "Çaydanlık", "a pink teapot with a lid"),
+    ("rafkupa", "mutfak", 32, False, "Kâse rafı", "a wall shelf with pink bowls and white mugs"),
+    ("tabakdolabi", "mutfak", 26, False, "Tabak dolabı", "a glass-door kitchen cabinet with stacked plates and cups"),
+    ("kasiklik", "mutfak", 24, False, "Kaşıklık", "a hanging rail with a spatula, a fork, a whisk and a wooden spoon"),
+    ("masa", "mutfak", 34, False, "Yemek masası", "a small wooden dining table"),
+    ("yuvarlakmasa", "mutfak", 28, False, "Yuvarlak masa", "a round white table with a vase of tulips"),
+    ("sandalye", "mutfak", 12, False, "Sandalye", "a wooden chair with a yellow cushion"),
+    ("tabure", "mutfak", 10, False, "Bar taburesi", "a wooden bar stool with a pink cushion"),
+    ("mamasandalyesi", "mutfak", 14, False, "Mama sandalyesi", "a baby high chair in mint color"),
+    ("meyve", "mutfak", 14, False, "Meyve kâsesi", "a fruit bowl with an apple, an orange and bananas"),
+    ("ekmek", "mutfak", 12, False, "Ekmek sepeti", "a woven basket with bread rolls and a baguette"),
+    ("pasta", "hepsi", 13, False, "Pasta", "a strawberry layer cake with one candle"),
+    ("kurabiye", "mutfak", 9, False, "Kurabiye kavanozu", "a glass cookie jar full of round cookies"),
+    ("pizza", "mutfak", 12, False, "Pizza", "a cute round pizza with cheese and tomato slices"),
+    ("hamburger", "mutfak", 9, False, "Hamburger", "a cute hamburger"),
+    ("salata", "mutfak", 12, False, "Salata", "a bowl of green salad with tomatoes"),
+    ("cilek", "mutfak", 9, False, "Çilek sepeti", "a small basket of red strawberries"),
+    ("sut", "mutfak", 6, False, "Süt kutusu", "a milk carton with a small cow face, no letters"),
+    ("limonata", "hepsi", 8, False, "Limonata sürahisi", "a glass jug of pink lemonade with lemon slices"),
+    ("copkutusu", "hepsi", 12, False, "Çöp kutusu", "a pastel pedal trash bin"),
+    ("saksiotlar", "mutfak", 16, False, "Saksıda otlar", "three small pots with basil and mint herbs"),
+
+    # --- banyo
+    ("kuvet", "banyo", 48, False, "Küvet", "a white bathtub with golden feet full of bubbles"),
+    ("jakuzi", "banyo", 42, False, "Jakuzi", "a round wooden hot tub with blue water"),
+    ("duskabini", "banyo", 26, False, "Duş kabini", "a glass shower cabin with a silver shower head"),
+    ("banyolavabo", "banyo", 22, False, "Lavabo", "a bathroom sink with an oval mirror and a small cabinet"),
+    ("tuvalet", "banyo", 18, False, "Tuvalet", "a white toilet"),
+    ("camasir", "banyo", 22, False, "Çamaşır makinesi", "a white washing machine with a round door"),
+    ("sampuan", "banyo", 26, False, "Şampuan rafı", "a bathroom shelf with colorful shampoo and soap bottles without letters"),
+    ("sepet", "banyo", 14, False, "Çamaşır sepeti", "a blue laundry basket with towels"),
+    ("robot", "hepsi", 14, False, "Robot süpürge", "a round robot vacuum cleaner"),
+    ("havlu", "banyo", 16, False, "Havluluk", "a towel rack with a pink striped towel"),
+    ("bornoz", "banyo", 12, False, "Bornoz", "a fluffy pink bathrobe hanging on a hook"),
+    ("ayna", "banyo", 16, False, "Yuvarlak ayna", "a round wall mirror with a wooden frame"),
+    ("ordek", "banyo", 9, False, "Plastik ördek", "a yellow rubber duck toy"),
+    ("dissfircasi", "banyo", 7, False, "Diş fırçası bardağı", "a cup with two toothbrushes and toothpaste"),
+    ("sabunluk", "banyo", 6, False, "Sabunluk", "a soap dispenser bottle in lilac"),
+    ("paspas", "banyo", 30, True, "Banyo paspası", "a fluffy blue bath mat, seen from above"),
+
+    # --- salon
+    ("kanepe", "salon", 48, False, "Kanepe", "a lilac three-seat sofa with a yellow pillow"),
+    ("kosekanepe", "salon", 52, False, "Köşe koltuk", "a cream L-shaped sectional sofa with pastel pillows"),
+    ("berjer", "salon", 22, False, "Berjer", "a cozy round armchair in mint color"),
+    ("tv", "salon", 32, False, "Televizyon", "a flat television on a small wooden stand"),
+    ("tvunitesi", "salon", 34, False, "TV ünitesi", "a low wooden TV cabinet with books and a plant"),
+    ("sehpa", "salon", 26, False, "Sehpa", "a round white coffee table with a cup of tea"),
+    ("abajur", "hepsi", 10, False, "Abajur", "a small table lamp with a pink shade"),
+    ("lambader", "hepsi", 13, False, "Lambader", "a tall floor lamp with a cream shade"),
+    ("puf", "hepsi", 12, False, "Puf", "an orange round pouf"),
+    ("buyukbitki", "hepsi", 18, False, "Büyük bitki", "a tall leafy monstera plant in a white pot"),
+    ("bitki", "hepsi", 15, False, "Saksı bitkisi", "a small potted plant in a terracotta pot"),
+    ("sarkitbitki", "hepsi", 16, False, "Asma bitki", "a hanging plant in a macrame holder"),
+    ("kaktus", "hepsi", 10, False, "Kaktüs", "a small cactus with a pink flower in an orange pot"),
+    ("oyunrafi", "salon", 30, False, "Oyuncak rafı", "a shelf full of toys, balls and building blocks"),
+    ("kediyatagi", "hepsi", 18, False, "Kedi yatağı", "a round pink pet bed"),
+    ("kediagaci", "salon", 18, False, "Kedi ağacı", "a cat tree scratching post with platforms"),
+    ("akvaryum", "salon", 24, False, "Akvaryum", "a small fish tank with two orange fish and plants"),
+    ("piyano", "salon", 32, False, "Piyano", "a white upright piano"),
+    ("somine", "salon", 34, False, "Şömine", "a cozy fireplace with a warm fire and stockings"),
+    ("oyunkonsolu", "hepsi", 12, False, "Oyun konsolu", "a game console with two controllers"),
+    ("vazo", "hepsi", 9, False, "Lale vazosu", "a glass vase with pink tulips"),
+    ("duvarsaati", "hepsi", 10, False, "Duvar saati", "a round wall clock shaped like a cat face, without numbers"),
+    ("kuskafesi", "salon", 14, False, "Kuş kafesi", "a white bird cage with a small yellow bird inside"),
+    ("disko", "hepsi", 14, False, "Disko topu", "a lilac disco ball hanging from a string"),
+    ("sarkit", "hepsi", 12, False, "Sarkıt lamba", "a hanging pendant ceiling lamp with a cream shade"),
+    ("perilamba", "hepsi", 60, False, "Peri ışıkları", "a string of warm fairy lights hanging in a gentle curve"),
+    ("tablo", "hepsi", 18, False, "Tablo", "a framed painting of flowers and a heart"),
+    ("cerceve", "hepsi", 18, False, "Manzara tablosu", "a framed painting of green hills and a sun"),
+    ("ayi", "hepsi", 12, False, "Oyuncak ayı", "a soft brown teddy bear sitting"),
+    ("top", "hepsi", 8, False, "Top", "a red and white beach ball"),
+
+    # --- bahçe ve havuz
+    ("sezlong", "bahce", 24, False, "Şezlong", "a wooden beach deck chair with pink fabric"),
+    ("semsiye", "bahce", 34, False, "Şemsiye", "a white and pink beach umbrella standing on a pole"),
+    ("flamingo", "bahce", 22, False, "Flamingo simit", "an inflatable pink flamingo pool float"),
+    ("simit", "bahce", 15, False, "Deniz simidi", "a striped inflatable swim ring"),
+    ("palmiye", "bahce", 26, False, "Palmiye", "a palm tree with coconuts"),
+    ("kalpbalon", "hepsi", 10, False, "Kalp balon", "a pink heart shaped balloon on a string"),
+    ("buzkutusu", "bahce", 14, False, "Buz kutusu", "a yellow picnic cooler box"),
+    ("dondurma", "hepsi", 7, False, "Dondurma", "an ice cream cone with pink and vanilla scoops"),
+    ("kaydirak", "bahce", 30, False, "Kaydırak", "a small pastel playground slide"),
+    ("salincak", "bahce", 30, False, "Salıncak", "a wooden garden swing with ropes and flowers"),
+    ("trambolin", "bahce", 34, False, "Trambolin", "a round trampoline with a safety net in pastel colors"),
+    ("kumkovasi", "bahce", 8, False, "Kum kovası", "a sand bucket with a little shovel"),
+    ("mangal", "bahce", 18, False, "Mangal", "a small round barbecue grill"),
+    ("cicektarhi", "bahce", 30, False, "Çiçek tarhı", "a wooden flower box full of colorful tulips and daisies"),
+    ("agac", "bahce", 34, False, "Ağaç", "a round fluffy green tree with apples"),
+    ("cit", "bahce", 40, False, "Çit", "a short white picket fence section"),
+    ("kopekkulubesi", "bahce", 22, False, "Köpek kulübesi", "a red wooden dog house"),
+    ("bisiklet", "bahce", 26, False, "Bisiklet", "a pastel kids bicycle with a basket of flowers"),
+    ("cadir", "hepsi", 28, False, "Oyun çadırı", "a cream teepee play tent with bunting flags"),
+    ("limonatastandi", "bahce", 32, False, "Limonata standı", "a wooden lemonade stand with a striped awning, no letters"),
+    ("gokkusagi", "bahce", 40, False, "Gökkuşağı", "a pastel rainbow arch with fluffy clouds at both ends"),
+    ("piknik", "bahce", 34, True, "Piknik örtüsü", "a red and white checkered picnic blanket with a basket, seen from above"),
+]
+
+CHARACTERS = [
+    ("kiz1", 26, "Mor örgülü kız", "a little girl with a long lavender braid, light skin, wearing a pink hoodie, light blue jeans and white sneakers"),
+    ("kiz2", 26, "Kıvırcık saçlı kız", "a little girl with big curly black hair in a puff with a yellow bow, dark brown skin, wearing a yellow dress and pink sandals"),
+    ("kiz3", 26, "Pembe saçlı kız", "a little girl with a short pink bob haircut, fair skin, wearing a star print t-shirt, a lilac skirt and white boots"),
+    ("kiz4", 26, "Topuzlu kız", "a little girl with two blonde space buns, light skin, wearing mint overalls with a white shirt and yellow shoes"),
+    ("kiz5", 26, "Kızıl saçlı kız", "a little girl with long wavy red hair and freckles, wearing a green dress with a white collar and red shoes"),
+    ("kiz6", 26, "Prenses kız", "a little girl princess with long brown hair and a small golden tiara, medium tan skin, wearing a puffy lilac ball gown"),
+    ("kiz7", 26, "Pop yıldızı kız", "a little girl pop star with a high purple ponytail, light skin, wearing a sparkly silver jacket, a pink skirt and holding nothing"),
+    ("oglan1", 26, "Kahverengi saçlı oğlan", "a little boy with short brown hair, light skin, wearing a blue sweater, khaki shorts and sneakers"),
+    ("oglan2", 26, "Kıvırcık saçlı oğlan", "a little boy with short black curly hair, dark brown skin, wearing a green t-shirt with a dinosaur, jeans and orange sneakers"),
+    ("oglan3", 26, "Şapkalı oğlan", "a little boy with straight black hair and a backwards yellow cap, light tan skin, wearing a striped shirt and shorts"),
+    ("bebek1", 15, "Bebek", "a cute baby with a tiny curl of hair, wearing a pastel yellow onesie, sitting"),
+    ("bebek2", 15, "Bebek (pembe)", "a cute baby girl with a pink headband, wearing a pink onesie, sitting"),
+    ("anne", 34, "Anne", "a young mother with long brown hair, light skin, wearing a green dress and white sneakers"),
+    ("baba", 34, "Baba", "a young father with short black hair and a short beard, light tan skin, wearing a blue striped shirt and jeans"),
+    ("nine", 32, "Nine", "a kind grandmother with grey hair in a bun and round glasses, wearing a lilac cardigan and a long skirt"),
+    ("dede", 32, "Dede", "a kind grandfather with white hair, a white mustache and glasses, wearing a brown vest and trousers"),
+    ("ogretmen", 34, "Öğretmen", "a friendly young teacher with a brown ponytail, wearing a yellow sweater and blue skirt"),
+]
+
+PETS = [
+    ("kedi", 14, "Turuncu kedi", "an orange tabby kitten"),
+    ("kedi2", 14, "Beyaz kedi", "a fluffy white kitten with a pink bow"),
+    ("kedi3", 14, "Gri kedi", "a grey kitten with stripes"),
+    ("kopek", 15, "Köpek yavrusu", "a light brown puppy with floppy ears"),
+    ("kopek2", 15, "Benekli köpek", "a white puppy with black spots"),
+    ("tavsan", 12, "Tavşan", "a white bunny with long ears"),
+    ("hamster", 9, "Hamster", "a round golden hamster"),
+    ("papagan", 10, "Papağan", "a small green and yellow parrot"),
+    ("kaplumbaga", 12, "Kaplumbağa", "a little green turtle"),
+    ("ordekyavrusu", 9, "Ördek yavrusu", "a fluffy yellow duckling"),
+    ("midilli", 22, "Midilli", "a little pastel pony with a rainbow mane"),
+    ("panda", 14, "Panda", "a baby panda"),
+]
+
+
+STYLE_UI = (
+    "Cute game button icon for a children's app, one bold simple symbol, flat vector art style with soft glossy shading, "
+    "rounded friendly shapes, clean thick dark navy outline (#3D3553), bright cheerful pastel colors, front view, "
+    "the symbol fills about 80 percent of the canvas and is perfectly centered, no button background, no text, "
+    "no letters, no numbers, no logo, no watermark, plain solid pure white background (#FFFFFF)."
+)
+STYLE_CARD = (
+    "Cute illustration for a children's game menu card, a small cheerful scene, flat vector art style with soft "
+    "gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), soft pastel colors, "
+    "centered composition with empty margin, no text, no letters, no logo, no watermark, plain solid pure white background (#FFFFFF)."
+)
+STYLE_WORD = (
+    "Cute picture card illustration for a children's reading game, one clear simple subject that a 6 year old "
+    "recognizes instantly, flat vector art style with soft gentle shading, rounded friendly shapes, clean thick dark "
+    "navy outline (#3D3553), soft pastel colors, front view, centered with generous empty margin, no text, no letters, "
+    "no numbers written, no logo, no watermark, plain solid pure white background (#FFFFFF)."
+)
+STYLE_STICKER = (
+    "Cute kawaii die-cut sticker for a children's sticker album, flat vector art style with soft shading, big shiny "
+    "eyes if it is a creature, clean thick dark navy outline (#3D3553) and a thick white sticker border around the "
+    "whole shape, bright pastel colors, centered, no text, no logo, no watermark, plain solid light grey background (#EEEEEE)."
+)
+STYLE_BG = (
+    "Wide cozy background illustration for a children's game screen, flat vector art style with soft gentle shading, "
+    "soft pastel colors, calm and not busy, gentle details only near the edges so the center stays clean, "
+    "no characters, no people, no text, no letters, no logo, no watermark, full bleed scene filling the whole frame."
+)
+
+UI = [
+    # (kod, Türkçe ad, tarif, stil)
+    ("ui_oyun_sesibul", "Oyun kartı: Sesi Bul", "a big cute cartoon ear with sound waves and a few floating musical notes", STYLE_CARD),
+    ("ui_oyun_birlestir", "Oyun kartı: Sesleri Birleştir", "two cute rounded toy blocks snapping together with a sparkle in the middle", STYLE_CARD),
+    ("ui_oyun_kelimekur", "Oyun kartı: Kelime Kur", "three colorful puzzle pieces fitting together with little stars", STYLE_CARD),
+    ("ui_oyun_oku", "Oyun kartı: Oku", "an open storybook with a rainbow and stars coming out of it", STYLE_CARD),
+    ("ui_sahne", "Ana sayfa: Sahne", "a small theater stage with purple curtains, a golden crown and a microphone in spotlight", STYLE_CARD),
+    ("ui_ev", "Ana sayfa: Ev", "a cute pastel pink two-storey house with a heart window and flowers", STYLE_CARD),
+    ("ui_giydir", "Sahne: Giydir", "a pastel dress on a hanger next to a little crown and a bow", STYLE_CARD),
+    ("ui_boyama", "Sahne: Boyama", "a paint palette with colorful paint blobs and a brush", STYLE_CARD),
+    ("ui_geri", "Buton: Geri", "a rounded arrow pointing left", STYLE_UI),
+    ("ui_hoparlor", "Buton: Dinle", "a cute speaker with sound waves", STYLE_UI),
+    ("ui_basla", "Buton: Başla", "a big green play triangle", STYLE_UI),
+    ("ui_anasayfa", "Buton: Ana sayfa", "a small cute house", STYLE_UI),
+    ("ui_tekrar", "Buton: Tekrar", "a circular arrow going around", STYLE_UI),
+    ("ui_hediye", "Hediye kutusu", "a pink gift box with a big golden bow", STYLE_UI),
+    ("ui_yildiz", "Yıldız", "a shiny golden star with a cute face", STYLE_UI),
+    ("ui_album", "Çıkartma albümü", "a sticker album book with hearts and stars on the cover", STYLE_UI),
+    ("ui_birlestir", "Buton: Birleştir", "two links of a chain joining together with a sparkle", STYLE_UI),
+    ("ui_dogru", "Buton: Doğru okudum", "a happy thumbs up hand", STYLE_UI),
+    ("ui_cop", "Çöp kutusu", "a cute small trash bin", STYLE_UI),
+    ("ui_oda_yatak", "Oda: Yatak odası", "a small cute bed", STYLE_UI),
+    ("ui_oda_mutfak", "Oda: Mutfak", "a small cute cooking pot on a stove with steam", STYLE_UI),
+    ("ui_oda_banyo", "Oda: Banyo", "a small cute bathtub with bubbles", STYLE_UI),
+    ("ui_oda_salon", "Oda: Salon", "a small cute sofa", STYLE_UI),
+    ("ui_oda_havuz", "Oda: Havuz bahçesi", "a small swimming pool with a pink flamingo float", STYLE_UI),
+    ("ui_mod_tasi", "Mod: Taşı", "a cute open hand with four little arrows around it", STYLE_UI),
+    ("ui_mod_boya", "Mod: Boya", "a paintbrush with a pink paint drop", STYLE_UI),
+    ("ui_mod_tasarla", "Mod: Tasarla", "a wallpaper roll and a paint roller", STYLE_UI),
+    ("ui_kat_kiyafet", "Kategori: Kıyafet", "a pink dress", STYLE_UI),
+    ("ui_kat_sac", "Kategori: Saç", "a long purple braided hairstyle on its own, no face", STYLE_UI),
+    ("ui_kat_ten", "Kategori: Ten rengi", "three round face shapes in light, medium and dark skin tones", STYLE_UI),
+    ("ui_kat_taki", "Kategori: Taç ve takılar", "a golden tiara with pink gems", STYLE_UI),
+    ("ui_kat_elde", "Kategori: Elindekiler", "a pink microphone", STYLE_UI),
+    ("ui_kat_ayakkabi", "Kategori: Ayakkabı", "a pair of pink ballet shoes", STYLE_UI),
+    ("ui_kat_hayvan", "Kategori: Evcil hayvan", "a cute cat face", STYLE_UI),
+    ("ui_kat_fon", "Kategori: Arka plan", "a tiny stage with curtains and a star", STYLE_UI),
+    ("ui_duvar", "Tasarım: Duvar", "a piece of wallpaper with little hearts", STYLE_UI),
+    ("ui_zemin", "Tasarım: Zemin", "a square of wooden floor planks", STYLE_UI),
+    ("ui_pencere", "Tasarım: Pencere", "a window with a sun and a cloud outside", STYLE_UI),
+]
+
+WORD_EN = {
+    "at": "a cute horse", "et": "a piece of steak meat", "ana": "a smiling mother hugging her child",
+    "anne": "a smiling mother hugging her little daughter", "ata": "a kind old grandfather with a cane",
+    "nine": "a kind grandmother with grey hair in a bun", "nene": "a kind grandmother knitting",
+    "nane": "a sprig of fresh mint leaves", "tane": "a single bean", "anten": "a TV antenna on a little roof",
+    "tente": "a striped awning over a small shop window", "inat": "a little girl pouting with crossed arms",
+    "tat": "a child happily licking a lollipop", "net": "a soccer goal net", "el": "an open waving hand",
+    "lale": "a red tulip", "kale": "a fairy tale castle", "kalem": "a yellow pencil", "elma": "a red apple",
+    "ekmek": "a loaf of bread", "kek": "a cupcake", "kalkan": "a knight's shield", "kedi": "a cat",
+    "etek": "a pink skirt", "inek": "a cow", "kanat": "a pair of feathered wings", "ekin": "a field of golden wheat",
+    "tekne": "a small boat", "iki": "two red apples side by side", "tilki": "a fox", "lamba": "a table lamp",
+    "ayna": "a hand mirror", "ay": "a crescent moon", "ayı": "a bear", "un": "a bag of flour",
+    "mum": "a lit candle", "muz": "a banana", "limon": "a lemon", "yumurta": "an egg", "oyun": "a pair of dice and a board game",
+    "mutlu": "a very happy smiling child", "yatak": "a bed", "kayık": "a small rowing boat", "koltuk": "an armchair",
+    "kutu": "a cardboard box", "maymun": "a monkey", "kum": "a pile of sand with a bucket", "okul": "a school building",
+    "balık": "a fish", "balon": "a balloon", "bal": "a honey pot", "araba": "a car", "ördek": "a duck",
+    "dede": "a grandfather with a white mustache", "saat": "an alarm clock", "su": "a glass of water",
+    "simit": "a Turkish sesame bagel ring", "armut": "a pear", "domates": "a tomato", "sarı": "a yellow paint splash",
+    "arı": "a bee", "burun": "a cute nose", "bebek": "a baby", "dondurma": "an ice cream cone",
+    "kırmızı": "a red paint splash", "yıldız": "a star", "balina": "a whale", "kitap": "a book", "top": "a ball",
+    "tuz": "a salt shaker", "göz": "a big eye", "güneş": "a smiling sun", "çiçek": "a flower", "çanta": "a backpack",
+    "şapka": "a sun hat", "kuş": "a little bird", "köpek": "a dog", "ceket": "a jacket", "pasta": "a birthday cake",
+    "gemi": "a ship", "patates": "a potato", "peynir": "a piece of cheese", "göl": "a small lake with ducks",
+    "şemsiye": "an umbrella", "çorap": "a pair of socks", "böcek": "a ladybug", "uçak": "an airplane", "ev": "a house",
+    "havuç": "a carrot", "fil": "an elephant", "horoz": "a rooster", "dağ": "a mountain", "ağaç": "a tree",
+    "fare": "a mouse", "zürafa": "a giraffe", "hediye": "a gift box", "havuz": "a swimming pool", "otobüs": "a bus",
+    "tavşan": "a rabbit", "tavuk": "a hen", "kaplumbağa": "a turtle",
+}
+TR = str.maketrans("çğıöşüÇĞİÖŞÜ", "cgiosuCGIOSU")
+
+
+def word_code(w: str) -> str:
+    return "kelime_" + w.translate(TR).lower()
+
+
+STICKERS = ["a unicorn", "a panda", "a butterfly", "a ladybug", "a tropical fish", "a lion", "a frog", "an octopus",
+            "a fox", "a koala", "a penguin", "an owl", "a bee", "a turtle", "a baby dinosaur", "a rainbow", "a sunflower",
+            "a strawberry", "a watermelon slice", "a rocket", "a balloon", "a teddy bear", "a pink bow", "a lollipop",
+            "a shooting star", "a dolphin", "a giraffe", "a bunny", "a whale", "a cherry blossom"]
+
+BACKGROUNDS = [
+    ("arka_ana", "Ana sayfa arka planı", "a soft pastel sky with fluffy clouds and gentle rolling hills at the bottom edge"),
+    ("arka_sahne", "Konser sahnesi", "a cute concert stage with purple velvet curtains on the sides, spotlights and twinkling stars, empty stage floor"),
+    ("arka_kale", "Kale arka planı", "a pink fairy tale castle on a hill far in the background, flowers along the bottom edge"),
+    ("arka_gece", "Gece arka planı", "a dreamy night sky with a big moon and stars over soft hills"),
+]
+
+
+ROOM_TR = {"yatak": "Yatak odası", "mutfak": "Mutfak", "banyo": "Banyo", "salon": "Salon", "bahce": "Bahçe ve havuz", "hepsi": "Her odada"}
+ROOM_GAME = {"yatak": ["yatak"], "mutfak": ["mutfak"], "banyo": ["banyo"], "salon": ["salon"], "bahce": ["havuz"], "hepsi": None}
+
+
+LEAD = "2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it"
+
+
+def prompt(code: str, subject: str, style: str) -> str:
+    # Kod başta: Firefly indirilen dosyaya isteğin ilk kelimelerini koyar, kodu dosya adından tanırım.
+    # Ardından hemen çizim stili gelir; Firefly baştaki kelimelere daha çok ağırlık veriyor.
+    if style is STYLE_BG:
+        return f"{code} — 2D flat vector cartoon background illustration, NOT a photo: {subject}. {style}"
+    return f"{code} — {LEAD}: {subject}. {style}"
+
+
+def main():
+    for code, *_ in ITEMS + [(c[0],) for c in CHARACTERS] + [(p[0],) for p in PETS]:
+        assert code.replace("_", "").isalnum() and code.islower(), code
+    words = [l.split("|")[0] for l in (ROOT / "src" / "content.ts").read_text().split("const RAW = `")[1].split("`;")[0].strip().splitlines()]
+    missing = [w for w in words if w not in WORD_EN]
+    assert not missing, f"kelime tarifi eksik: {missing}"
+    codes = ([i[0] for i in ITEMS] + [c[0] for c in CHARACTERS] + [p[0] for p in PETS] + [u[0] for u in UI]
+             + [word_code(w) for w in words] + [f"cikartma_{i + 1:02d}" for i in range(len(STICKERS))] + [b[0] for b in BACKGROUNDS] + ["uygulama_ikonu"])
+    assert len(codes) == len(set(codes)), "tekrarlanan kod"
+    (ROOT / "src" / "assets" / "codes.json").write_text(json.dumps(sorted(codes)) + "\n")
+
+    catalog = []
+    for code, room, w, flat, _tr, _en in ITEMS:
+        e = {"id": code, "w": w}
+        if ROOM_GAME[room]:
+            e["rooms"] = ROOM_GAME[room]
+        if flat:
+            e["flat"] = True
+        catalog.append(e)
+    for code, w, *_ in CHARACTERS + PETS:
+        catalog.append({"id": code, "w": w, "char": True})
+    (ROOT / "src" / "assets" / "items.json").write_text(json.dumps(catalog, ensure_ascii=False, indent=1) + "\n")
+
+    out = []
+    out.append("# Firefly görsel listesi\n")
+    out.append(f"Toplam **{len(ITEMS)} eşya**, **{len(CHARACTERS)} karakter**, **{len(PETS)} evcil hayvan**, **{len(UI)} buton/simge**, "
+               f"**{len(words)} kelime resmi**, **{len(STICKERS)} çıkartma**, **{len(BACKGROUNDS)} arka plan** ve uygulama ikonu. "
+               "Her isteği olduğu gibi kopyalayıp Firefly'a yapıştırın. Stil, arka plan, açı ve boyut bilgisi isteğin içinde.\n")
+    out.append("""## Firefly'da her görsel için aynı ayarlar
+
+| Ayar | Değer |
+|---|---|
+| Model | **Firefly Image** (Adobe'un kendi modeli, en yeni sürüm; ortak/partner modelleri seçmeyin) |
+| Aspect ratio | **Square (1:1)** |
+| Content type | **Art** (Sanat). **Photo seçili olmamalı**, yoksa gerçek fotoğraf çıkar |
+| **Style reference** | `firefly-stil-referansi.png` dosyasını yükleyin, **Strength: yüksek** (en önemli ayar) |
+| Visual intensity | düşük |
+| Effects | varsa **Flat design** ya da **Vector look**, yoksa boş |
+| Exclude from image (varsa) | `""" + EXCLUDE + """` |
+| İndirme | **PNG** ya da JPG, en büyük boyut |
+
+## Gerçek fotoğraf çıkıyorsa
+
+1. **Content type: Art** seçili mi bakın (Photo değil).
+2. **Style reference** kutusuna `firefly-stil-referansi.png` yükleyin ve gücünü (Strength) en yükseğe alın.
+   Bu dosya oyundaki çizim tarzını gösterir; Firefly yeni görseli bu tarzda çizer.
+3. Model olarak Adobe'un **Firefly Image** modelini seçin.
+
+## Dosya adları
+
+- Her isteğin başında görselin **kodu** var (ör. `yatak — …`). Dosya adı bu kod olmalı: `yatak.png`.
+- Firefly indirdiğiniz dosyaya genelde isteğin ilk kelimelerini koyar (ör. `Firefly yatak  a single bed … 12345.jpg`).
+  Dosya adında kod geçtiği sürece adını değiştirmeniz **gerekmez**, kodu dosya adından otomatik bulurum.
+- Bulamazsam yüklerken "1. resim yatak" gibi yazmanız yeterli.
+- Bir eşyayı beğenmezseniz aynı kodla yeniden üretip yükleyin, eskisinin yerine geçer.
+- Arka planı ben siliyorum; beyaz arka planla üretmeniz doğru.
+
+## Görseller oyuna nasıl girer
+
+1. Görselleri sohbete yükleyin (bir seferde 10–20 tane rahat olur).
+2. Ben arka planı silip kırpar, `src/assets/items/<kod>.png` olarak eklerim.
+3. Eşya kendi odasının çekmecesinde, karakter ve hayvanlar her odada hemen görünür.
+   Benim çizdiğim aynı adlı eşya varsa, Firefly görseli onun yerine geçer.
+""")
+
+    def section(title, rows, style):
+        out.append(f"\n## {title}\n")
+        for code, tr, en in rows:
+            out.append(f"### `{code}` — {tr}\n")
+            out.append("```\n" + prompt(code, en, style) + "\n```\n")
+
+    for room in ["yatak", "mutfak", "banyo", "salon", "bahce", "hepsi"]:
+        rows = [(c, tr, en) for c, r, _w, _f, tr, en in ITEMS if r == room]
+        section(f"Eşyalar: {ROOM_TR[room]} ({len(rows)})", rows, STYLE_ITEM)
+    section(f"Karakterler ({len(CHARACTERS)})", [(c, tr, "a cute " + en.removeprefix("a ")) for c, _w, tr, en in CHARACTERS], STYLE_CHAR)
+    section(f"Evcil hayvanlar ({len(PETS)})", [(c, tr, en) for c, _w, tr, en in PETS], STYLE_PET)
+
+    out.append(f"\n## Butonlar ve simgeler ({len(UI)})\n")
+    out.append("Oyundaki emoji ve çizim simgelerin yerine geçer. `ui_oyun_…`, `ui_sahne`, `ui_ev`, `ui_giydir`, `ui_boyama` kart resmidir; diğerleri küçük buton simgesidir.\n")
+    for code, tr, en, style in UI:
+        out.append(f"### `{code}` — {tr}\n")
+        out.append("```\n" + prompt(code, en, style) + "\n```\n")
+
+    section(f"Okuma oyunu kelime resimleri ({len(words)})", [(word_code(w), w, WORD_EN[w]) for w in words], STYLE_WORD)
+    section(f"Çıkartmalar ({len(STICKERS)})", [(f"cikartma_{i + 1:02d}", en.split(' ', 1)[1], en) for i, en in enumerate(STICKERS)], STYLE_STICKER)
+
+    out.append(f"\n## Arka planlar ({len(BACKGROUNDS)})\n")
+    out.append("Bunlar için **Aspect ratio: Widescreen (16:9)** seçin. Arka planları silmiyorum, olduğu gibi kullanılır.\n")
+    for code, tr, en in BACKGROUNDS:
+        out.append(f"### `{code}` — {tr}\n")
+        out.append("```\n" + prompt(code, en, STYLE_BG) + "\n```\n")
+    out.append("### `uygulama_ikonu` — Uygulama ikonu (Square 1:1)\n")
+    out.append("```\nuygulama_ikonu — a cute app icon: two rounded letter blocks, a pink crown on top and a little sparkle, "
+               "on a soft butter yellow rounded square that fills the whole frame, flat vector art style with soft shading, "
+               "clean thick dark navy outline (#3D3553), pastel colors, no text, no letters written, no logo, no watermark.\n```\n")
+
+    out.append("""
+## Karakterler hakkında
+
+- Karakterler evde gezdirilen hazır karakterler olur. Hepsi aynı oranlarla (büyük kafa, küçük gövde, önden, ayakta) istenir ki yan yana uyumlu dursunlar.
+- Aynı karakteri farklı kıyafetlerle istiyorsanız: Firefly'da ilk görseli **Structure reference** (Yapı referansı) olarak yükleyip
+  isteğin sadece kıyafet kısmını değiştirin, kodun sonuna `_2`, `_3` ekleyin (ör. `kiz1_2`). Haber verin, bunları kıyafet seçimine bağlarım.
+- Giydirme oyunundaki bebek katmanlı olduğu için (saç, kıyafet, ayakkabı ayrı) onu vektör çizmeye devam ediyorum.
+""")
+    (ROOT / "ASSETS.md").write_text("\n".join(out))
+    print(f"{len(codes)} görsel kodu -> ASSETS.md, src/assets/items.json, src/assets/codes.json")
+
+
+if __name__ == "__main__":
+    main()
