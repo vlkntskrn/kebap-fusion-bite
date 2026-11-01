@@ -1,3 +1,4 @@
+import { progress, commit } from './state';
 /**
  * Defne'nin Evi eşyaları. Hepsi bu proje için çizilmiş özgün SVG'lerdir.
  * `main`: boyanabilen ana renk (çizimde bu renk geçen her yer boyanır).
@@ -239,12 +240,20 @@ interface ExtraItem {
   flat?: boolean;
   /** Karakter ya da hayvan: dokununca zıplar. */
   char?: boolean;
+  /** Üst seviye çeşit: okuma sorusuyla açılır. */
+  lock?: boolean;
 }
 const EXTRA = (Object.values(import.meta.glob('./assets/items.json', { eager: true, import: 'default' }))[0] ?? []) as ExtraItem[];
 
 for (const e of EXTRA) {
   if (!itemImage(e.id)) continue;
   if (!THINGS[e.id]) THINGS[e.id] = { id: e.id, w: e.w, vb: '0 0 100 100', svg: '', flat: e.flat };
+}
+
+export const isLockedItem = (id: string) => EXTRA.some((e) => e.id === id && e.lock) && !(progress.unlockedItems ?? []).includes(id);
+export function unlockItem(id: string) {
+  progress.unlockedItems = [...new Set([...(progress.unlockedItems ?? []), id])];
+  commit();
 }
 
 export const isCharAsset = (id: string) => EXTRA.some((e) => e.id === id && e.char);

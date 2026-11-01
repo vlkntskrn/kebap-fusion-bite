@@ -4,11 +4,12 @@
  */
 import { progress, commit } from './state';
 import { talk, bindTalkButtons } from './talk';
-import { show, on, talkBtn } from './ui';
+import { show, on, talkBtn, wiggle } from './ui';
 import { sfx } from './sfx';
 import { dollSvg, currentLook, shade } from './stage';
 import { genitive, TalkId } from './content';
-import { THINGS, colorize, itemImage, extraItemsFor, isCharAsset } from './house-items';
+import { THINGS, colorize, itemImage, extraItemsFor, isCharAsset, isLockedItem, unlockItem } from './house-items';
+import { readingChallenge } from './challenge';
 import { imgTag } from './assets';
 import { roomIcon, MODE_ICONS } from './icons';
 
@@ -283,7 +284,7 @@ export function showHouse(back: () => void) {
     drawerItems.innerHTML =
       mode === 'boya'
         ? PALETTE.map((c) => `<button class="sw ${c === brush ? 'on' : ''}" data-color="${c}" style="background:${c}"></button>`).join('')
-        : [...new Set([...extraItemsFor(current).filter(isCharAsset), ...room().tray, ...extraItemsFor(current), ...COMMON])].map((id) => `<button class="drawer-item" data-id="${id}">${thumb(id)}</button>`).join('');
+        : [...new Set([...extraItemsFor(current).filter(isCharAsset), ...room().tray, ...extraItemsFor(current), ...COMMON])].map((id) => `<button class="drawer-item ${isLockedItem(id) ? 'locked' : ''}" data-id="${id}">${thumb(id)}${isLockedItem(id) ? '<span class="lock-badge">🔒</span>' : ''}</button>`).join('');
     drawerItems.scrollLeft = 0;
     drawer.classList.toggle('paint', mode === 'boya');
   };
@@ -443,6 +444,24 @@ export function showHouse(back: () => void) {
     if (mode !== 'tasi') return;
     const b = (ev.target as Element).closest<HTMLElement>('.drawer-item');
     if (!b) return;
+    if (isLockedItem(b.dataset.id!)) {
+      const up = (e: PointerEvent) => {
+        window.removeEventListener('pointerup', up);
+        if (Math.hypot(e.clientX - ev.clientX, e.clientY - ev.clientY) > 8) return;
+        wiggle(b);
+        readingChallenge(() => {
+          unlockItem(b.dataset.id!);
+          const scroll = drawerItems.scrollTop;
+          renderDrawer();
+          drawerItems.scrollTop = scroll;
+          const [node] = addInst(b.dataset.id!, 30 + Math.random() * 40, 88);
+          node.animate([{ transform: 'translate(-50%,-100%) scale(0.3)' }, { transform: 'translate(-50%,-100%) scale(1.15)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 450 });
+          commit();
+        });
+      };
+      window.addEventListener('pointerup', up);
+      return;
+    }
     const startY = ev.clientY;
     const startX = ev.clientX;
     // Çekmece kaydırılabilir; odaya doğru çekilince eşya odaya çıkar.

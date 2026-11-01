@@ -2196,3 +2196,162 @@ body {
   width: 70%;
   height: 70%;
 }
+
+
+/* ================================================== v8: kilit sınavı */
+.drawer-item {
+  position: relative;
+}
+.drawer-item.locked > img,
+.drawer-item.locked > svg {
+  filter: grayscale(0.6) brightness(0.9);
+  opacity: 0.75;
+}
+.lock-badge {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  font-size: 18px;
+  background: #fff;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 0 var(--line);
+}
+.challenge {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(61, 53, 83, 0.55);
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  animation: fade 0.2s;
+}
+.ch-card {
+  position: relative;
+  background: var(--bg);
+  border-radius: 28px;
+  padding: 14px 18px 18px;
+  width: min(100%, 720px);
+  max-height: 100%;
+  overflow: auto;
+  box-shadow: 0 8px 0 #c9b6ff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ch-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 3px 0 var(--line);
+  font-size: 18px;
+}
+.ch-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 48px;
+}
+.ch-lock {
+  font-size: 30px;
+}
+.ch-dots {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+.ch-dots i {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.ch-dots i.done {
+  background: var(--mint);
+}
+.ch-q,
+.ch-fail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.ch-word {
+  font-size: 54px;
+  font-weight: 700;
+  background: #fff;
+  border-radius: 20px;
+  padding: 0 24px 8px;
+  box-shadow: 0 5px 0 var(--line);
+}
+.ch-choices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+.ch-opt {
+  aspect-ratio: 1;
+  font-size: 64px;
+}
+.ch-opt.word {
+  aspect-ratio: auto;
+  font-size: 40px;
+  padding: 12px 6px 18px;
+}
+.ch-picture,
+.ch-fail > .word-img,
+.ch-fail > :first-child {
+  font-size: 80px;
+}
+.ch-picture {
+  width: 130px;
+  height: 130px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 5px 0 var(--line);
+}
+.ch-picture .word-img {
+  width: 90%;
+  height: 90%;
+}
+.ch-fail .word-img {
+  width: 110px;
+  height: 110px;
+}
+.ch-retry {
+  width: auto;
+  padding: 12px 40px;
+}
+.ch-pass {
+  font-size: 110px;
+  text-align: center;
+  animation: pop 0.5s ease-out;
+}
+@media (orientation: landscape) {
+  .ch-q {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .ch-choices {
+    width: auto;
+    grid-template-columns: repeat(3, min(26dvh, 140px));
+  }
+  .ch-word {
+    font-size: min(12dvh, 56px);
+  }
+}
+.room {
+  isolation: isolate;
+}
+.challenge {
+  z-index: 5000;
+}

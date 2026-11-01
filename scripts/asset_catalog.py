@@ -358,6 +358,133 @@ def sheets(entries, size, cols, style, prefix):
     return out
 
 
+# ------------------------------------------------------------ çeşit aileleri
+# (aile, oda, genişlik, yere_serili, Türkçe ad, [çeşitler]); her ailede ilk FREE çeşit bedava,
+# gerisi kilitli: Defne 2 okuma sorusunu doğru yapınca açılır. Kod: <aile>_<sıra> (ör. buzdolabi_05).
+FREE = 2
+VARIANTS = [
+    # yatak odası
+    ("v_yatak", "yatak", 46, False, "Yatak", [
+        "a simple wooden single bed with a white blanket", "a single bed with a blue blanket with stars",
+        "a pink princess bed with a heart shaped headboard", "a white bed with a cloud shaped headboard and a rainbow blanket",
+        "a lilac bed with a crescent moon headboard and star pillows", "a pastel car shaped bed for kids",
+        "a fairy tale bed shaped like a castle with tiny towers", "a golden royal bed with a velvet canopy and tassels"]),
+    ("v_dolap", "yatak", 24, False, "Gardırop", [
+        "a simple white two-door wardrobe", "a light wooden wardrobe with round knobs",
+        "a mint wardrobe with heart shaped door handles", "a lilac wardrobe with a mirror door",
+        "a pink wardrobe with a scalloped top and flower decorations", "a golden princess wardrobe with crystal knobs"]),
+    ("v_makyaj", "yatak", 30, False, "Makyaj masası", [
+        "a simple white vanity table with a round mirror", "a wooden vanity table with a square mirror",
+        "a pink vanity table with a heart mirror", "a lilac vanity with a mirror surrounded by light bulbs and perfume bottles",
+        "a white vanity with a big shell shaped mirror and pearls", "a golden princess vanity with a crown shaped mirror"]),
+    ("v_masa", "yatak", 32, False, "Çalışma masası", [
+        "a simple white study desk with a chair", "a wooden study desk with a desk lamp",
+        "a pink desk with a laptop and a cat lamp", "a lilac gaming desk with a monitor and colorful lights",
+        "a mint desk with a globe, books and a pencil cup"]),
+    ("v_oturak", "yatak", 18, False, "Koltuk ve puf", [
+        "a simple round cream pouf", "a light blue bean bag",
+        "a pink furry heart shaped chair", "a white hanging egg chair with a pink cushion",
+        "a lilac cloud shaped armchair", "a golden princess throne chair with pink velvet"]),
+    ("v_lamba", "hepsi", 10, False, "Lamba", [
+        "a simple white table lamp", "a mushroom shaped night lamp",
+        "a moon shaped lamp", "a cute bunny shaped lamp", "a lava lamp with pink and purple blobs", "a crystal chandelier"]),
+    ("v_hali", "hepsi", 42, True, "Halı", [
+        "a round cream rug, seen from above", "an oval light blue rug, seen from above",
+        "a heart shaped pink fluffy rug, seen from above", "a rainbow striped round rug, seen from above",
+        "a bunny face shaped white rug, seen from above", "a cloud shaped lilac rug, seen from above",
+        "a purple cow print oval rug, seen from above"]),
+    ("v_oyuncak", "yatak", 10, False, "Oyuncak", [
+        "a wooden toy train", "a rubber ball", "a rag doll with yarn hair", "a toy xylophone",
+        "a plush unicorn", "a toy rocket", "a plush dinosaur", "a toy castle with flags", "a dollhouse with a pink roof"]),
+    ("v_raf", "hepsi", 26, False, "Raf", [
+        "a simple white wall shelf with books", "a wooden ladder shelf with plants",
+        "a cloud shaped wall shelf with tiny toys", "a house shaped shelf with dolls", "a rainbow shaped bookshelf full of books"]),
+    ("v_ayna", "hepsi", 14, False, "Ayna", [
+        "a simple round wall mirror", "a tall standing mirror with a wooden frame",
+        "a wavy lilac mirror", "a heart shaped pink mirror", "a golden ornate princess mirror"]),
+    # mutfak
+    ("buzdolabi", "mutfak", 22, False, "Buzdolabı", [
+        "a simple white two-door fridge", "a light grey fridge with a freezer on top",
+        "a mint green retro rounded fridge with a silver handle", "a pastel pink retro fridge with cute magnets",
+        "a lilac fridge with a calendar and sticky notes on it", "a butter yellow double-door fridge with a water dispenser",
+        "a sparkly holographic fridge with glitter", "a big double-door fridge with a smart screen and an ice maker"]),
+    ("v_ocak", "mutfak", 26, False, "Ocak ve fırın", [
+        "a simple white stove with an oven", "a cream stove with a pink pot on top",
+        "a mint retro stove with knobs", "a lilac stove with a frying pan and pancakes",
+        "a big red restaurant oven with six burners", "a pizza oven made of bricks"]),
+    ("v_tezgah", "mutfak", 44, False, "Mutfak dolabı", [
+        "a simple white kitchen counter with a sink", "a wooden kitchen counter with drawers",
+        "a mint kitchen counter with a sink and plants", "a pink kitchen counter with hanging utensils",
+        "a lilac kitchen island with bar stools", "a cream kitchen counter with a tiled backsplash and spice jars"]),
+    ("v_masa_mutfak", "mutfak", 32, False, "Yemek masası", [
+        "a simple white table", "a wooden table with a vase", "a round pink table with a cake",
+        "a long wooden table with a checkered tablecloth", "a glass table with rainbow legs"]),
+    ("v_sandalye", "mutfak", 12, False, "Sandalye", [
+        "a simple white chair", "a wooden chair", "a pink chair with a heart back",
+        "a mint bar stool", "a yellow chair with a flower cushion", "a lilac velvet chair"]),
+    ("v_alet", "mutfak", 11, False, "Mutfak aleti", [
+        "a white kettle", "a toaster", "a blender with a smoothie", "a mint stand mixer",
+        "a lilac microwave", "a coffee machine with a cup", "a waffle maker with a waffle", "a cotton candy machine",
+        "a popcorn machine full of popcorn", "an ice cream machine"]),
+    ("v_yemek", "mutfak", 9, False, "Yiyecek", [
+        "a bowl of soup", "a plate of spaghetti", "a stack of pancakes with syrup", "a slice of watermelon",
+        "a basket of muffins", "a plate of sushi", "a bowl of fruit salad", "a donut with sprinkles",
+        "a big rainbow layer cake", "a bowl of popcorn", "a milkshake with a cherry", "a box of macarons"]),
+    ("v_tabak", "mutfak", 26, False, "Tabak rafı", [
+        "a shelf with white plates", "a shelf with pink cups", "a glass cabinet with colorful bowls",
+        "a hanging rack with pots and pans", "a jar shelf with cookies and candies"]),
+    # banyo
+    ("v_kuvet", "banyo", 46, False, "Küvet", [
+        "a simple white bathtub", "a white bathtub with bubbles", "a pink bathtub with golden feet",
+        "a round wooden hot tub", "a seashell shaped bathtub", "a heart shaped jacuzzi with bubbles and rose petals"]),
+    ("v_lavabo", "banyo", 22, False, "Lavabo", [
+        "a simple white sink", "a sink with a round mirror", "a pink sink with a heart mirror",
+        "a wooden sink cabinet with plants", "a seashell sink with a pearl mirror", "a golden princess sink"]),
+    ("v_dus", "banyo", 26, False, "Duş", [
+        "a simple glass shower", "a shower with a blue curtain", "a shower with a rainbow curtain", "a rain shower with a big round head"]),
+    ("v_tuvalet", "banyo", 18, False, "Tuvalet", [
+        "a simple white toilet", "a toilet with a wooden seat", "a pink toilet with a fluffy cover", "a golden toilet"]),
+    ("v_banyo_aksesuar", "banyo", 10, False, "Banyo aksesuarı", [
+        "a towel rack with a white towel", "a laundry basket", "a cup with toothbrushes", "a bath sponge",
+        "a rubber duck family", "a bath bomb box", "a fluffy pink bathrobe", "a shelf of colorful shampoo bottles",
+        "a bubble machine", "a robot vacuum"]),
+    # salon
+    ("v_kanepe", "salon", 46, False, "Kanepe", [
+        "a simple grey sofa", "a beige sofa with pillows", "a mint velvet sofa", "a pink sofa with heart pillows",
+        "a lilac L-shaped sofa", "a yellow retro sofa", "a cloud shaped white sofa", "a golden royal sofa with tassels"]),
+    ("v_koltuk", "salon", 22, False, "Koltuk", [
+        "a simple grey armchair", "a wooden rocking chair", "a pink round armchair", "a mint egg chair",
+        "a yellow bean bag", "a lilac swing chair"]),
+    ("v_tv", "salon", 30, False, "Televizyon", [
+        "a small TV on a stand", "a flat TV on a wooden cabinet", "a retro pink TV with antennas",
+        "a big TV with speakers", "a home cinema with a projector screen"]),
+    ("v_sehpa", "salon", 24, False, "Sehpa", [
+        "a simple round coffee table", "a wooden coffee table with books", "a glass coffee table",
+        "a pink heart shaped table with tea set", "a marble table with flowers"]),
+    ("v_bitki", "hepsi", 14, False, "Bitki", [
+        "a small green plant in a pot", "a cactus", "a tall monstera plant", "a snake plant", "a pot of sunflowers",
+        "a pot of pink tulips", "a little lemon tree", "a hanging ivy plant", "a bonsai tree"]),
+    ("v_tablo", "hepsi", 16, False, "Tablo", [
+        "a framed flower painting", "a framed cat painting", "a framed rainbow painting", "a framed sea painting",
+        "a framed space painting with planets", "a framed family portrait drawing", "a framed unicorn painting"]),
+    ("v_muzik", "salon", 24, False, "Müzik aleti", [
+        "a small guitar", "a toy drum set", "a white piano", "a pink keyboard", "a golden harp", "a karaoke microphone stand"]),
+    ("v_evcil_esya", "hepsi", 16, False, "Evcil hayvan eşyası", [
+        "a round pet bed", "a cat tree", "a fish tank", "a bird cage", "a dog house", "a hamster cage with a wheel"]),
+    # bahçe
+    ("v_havuz_oyuncak", "bahce", 18, False, "Havuz oyuncağı", [
+        "a striped swim ring", "a beach ball", "an inflatable duck float", "an inflatable unicorn float",
+        "an inflatable donut float", "an inflatable swan float", "an inflatable watermelon float", "a water slide"]),
+    ("v_bahce_mobilya", "bahce", 26, False, "Bahçe mobilyası", [
+        "a wooden bench", "a deck chair", "a hammock between two posts", "a garden swing",
+        "a picnic table", "a big parasol", "a rattan egg chair"]),
+    ("v_oyun_parki", "bahce", 30, False, "Oyun parkı", [
+        "a small slide", "a sandbox with toys", "a seesaw", "a trampoline", "a playhouse", "a big castle playground"]),
+    ("v_bahce_bitki", "bahce", 24, False, "Bahçe bitkisi", [
+        "a flower bed with tulips", "a round bush", "an apple tree", "a palm tree", "a cherry blossom tree",
+        "a sunflower patch", "a vegetable garden box", "a rainbow rose bush"]),
+]
+
 ROOM_TR = {"yatak": "Yatak odası", "mutfak": "Mutfak", "banyo": "Banyo", "salon": "Salon", "bahce": "Bahçe ve havuz", "hepsi": "Her odada"}
 ROOM_GAME = {"yatak": ["yatak"], "mutfak": ["mutfak"], "banyo": ["banyo"], "salon": ["salon"], "bahce": ["havuz"], "hepsi": None}
 
@@ -373,20 +500,25 @@ def prompt(code: str, subject: str, style: str) -> str:
     return f"{code} — {LEAD}: {subject}. {style}"
 
 
+VAR_ROWS = [(f"{fam}_{i + 1:02d}", room, w, flat, f"{tr} {i + 1}" + (" (kilitli)" if i >= FREE else ""), en, i >= FREE)
+            for fam, room, w, flat, tr, lst in VARIANTS for i, en in enumerate(lst)]
+ITEMS_ALL = [(c, r, w, f, tr, en, False) for c, r, w, f, tr, en in ITEMS] + VAR_ROWS
+
+
 def main():
-    for code, *_ in ITEMS + [(c[0],) for c in CHARACTERS] + [(p[0],) for p in PETS]:
+    for code, *_ in ITEMS_ALL + [(c[0],) for c in CHARACTERS] + [(p[0],) for p in PETS]:
         assert code.replace("_", "").isalnum() and code.islower(), code
     words = [l.split("|")[0] for l in (ROOT / "src" / "content.ts").read_text().split("const RAW = `")[1].split("`;")[0].strip().splitlines()]
     missing = [w for w in words if w not in WORD_EN]
     assert not missing, f"kelime tarifi eksik: {missing}"
-    codes = ([i[0] for i in ITEMS] + [c[0] for c in CHARACTERS] + [p[0] for p in PETS] + [u[0] for u in UI]
+    codes = ([i[0] for i in ITEMS_ALL] + [c[0] for c in CHARACTERS] + [p[0] for p in PETS] + [u[0] for u in UI]
              + [word_code(w) for w in words] + [f"cikartma_{i + 1:02d}" for i in range(len(STICKERS))] + [b[0] for b in BACKGROUNDS] + ["uygulama_ikonu"])
     assert len(codes) == len(set(codes)), "tekrarlanan kod"
     item_style = STYLE_ITEM.replace("one single isolated object, the whole object fully visible and centered with generous empty margin around it, ", "")
     char_style = STYLE_CHAR.replace("centered with generous empty margin, ", "")
     sets = []
     for room in ["yatak", "mutfak", "banyo", "salon", "bahce", "hepsi"]:
-        sets += sheets([(c, en) for c, r, _w, _f, _tr, en in ITEMS if r == room], 9, 3, item_style, "esya_" + room)
+        sets += sheets([(c, en) for c, r, _w, _f, _tr, en, _l in ITEMS_ALL if r == room], 9, 3, item_style, "esya_" + room)
     sets += sheets([(c, "a cute " + en.removeprefix("a ")) for c, _w, _tr, en in CHARACTERS], 4, 4, char_style, "karakter")
     sets += sheets([(c, en) for c, _w, _tr, en in PETS], 6, 3, STYLE_PET.replace("centered with generous empty margin, ", ""), "hayvan")
     sets += sheets([(c, en) for c, _tr, en, st in UI if st is STYLE_UI], 9, 3, STYLE_UI.replace("the symbol fills about 80 percent of the canvas and is perfectly centered, ", ""), "buton")
@@ -398,12 +530,14 @@ def main():
     (ROOT / "src" / "assets" / "sets.json").write_text(json.dumps({code: cs for code, cs, _t in sets}, indent=1) + "\n")
 
     catalog = []
-    for code, room, w, flat, _tr, _en in ITEMS:
+    for code, room, w, flat, _tr, _en, lock in ITEMS_ALL:
         e = {"id": code, "w": w}
         if ROOM_GAME[room]:
             e["rooms"] = ROOM_GAME[room]
         if flat:
             e["flat"] = True
+        if lock:
+            e["lock"] = True
         catalog.append(e)
     for code, w, *_ in CHARACTERS + PETS:
         catalog.append({"id": code, "w": w, "char": True})
@@ -411,7 +545,7 @@ def main():
 
     out = []
     out.append("# Firefly görsel listesi\n")
-    out.append(f"Toplam **{len(ITEMS)} eşya**, **{len(CHARACTERS)} karakter**, **{len(PETS)} evcil hayvan**, **{len(UI)} buton/simge**, "
+    out.append(f"Toplam **{len(ITEMS_ALL)} eşya** ({len(VAR_ROWS)} tanesi çeşit ailelerinden, ilk {FREE} çeşit bedava, gerisi okuma sorusuyla açılır), **{len(CHARACTERS)} karakter**, **{len(PETS)} evcil hayvan**, **{len(UI)} buton/simge**, "
                f"**{len(words)} kelime resmi**, **{len(STICKERS)} çıkartma**, **{len(BACKGROUNDS)} arka plan** ve uygulama ikonu. "
                "Her isteği olduğu gibi kopyalayıp Firefly'a yapıştırın. Stil, arka plan, açı ve boyut bilgisi isteğin içinde.\n")
     out.append("""## Firefly'da her görsel için aynı ayarlar
@@ -475,7 +609,7 @@ aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya
             out.append("```\n" + prompt(code, en, style) + "\n```\n")
 
     for room in ["yatak", "mutfak", "banyo", "salon", "bahce", "hepsi"]:
-        rows = [(c, tr, en) for c, r, _w, _f, tr, en in ITEMS if r == room]
+        rows = [(c, tr, en) for c, r, _w, _f, tr, en, _l in ITEMS_ALL if r == room]
         section(f"Eşyalar: {ROOM_TR[room]} ({len(rows)})", rows, STYLE_ITEM)
     section(f"Karakterler ({len(CHARACTERS)})", [(c, tr, "a cute " + en.removeprefix("a ")) for c, _w, tr, en in CHARACTERS], STYLE_CHAR)
     section(f"Evcil hayvanlar ({len(PETS)})", [(c, tr, en) for c, _w, tr, en in PETS], STYLE_PET)

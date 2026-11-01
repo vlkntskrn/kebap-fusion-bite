@@ -8,6 +8,7 @@ import { talk, bindTalkButtons } from './talk';
 import { show, on, wiggle, bounce, confetti, talkBtn, h } from './ui';
 import { buildSong, playSong, SongHandle } from './music';
 import { CAT_ICONS } from './icons';
+import { readingChallenge } from './challenge';
 import { imgTag } from './assets';
 import type { TalkId } from './content';
 import { stopVoice, wait } from './voice';
@@ -415,8 +416,15 @@ function showDressUp() {
     const it = cat.items.find((i) => i.id === b.dataset.item)!;
     if (!isUnlocked(cat.id, it.id)) {
       wiggle(b);
-      sfx.soft();
-      void talk('kilitli');
+      const c = cat;
+      readingChallenge(() => {
+        progress.unlocked = [...(progress.unlocked ?? []), `${c.id}:${it.id}`];
+        look()[c.id].item = it.id;
+        commit();
+        renderDoll();
+        renderPicker();
+        sparkle(wrap);
+      });
       return;
     }
     look()[cat.id].item = it.id;
