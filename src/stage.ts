@@ -17,7 +17,7 @@ const PALETTE = ['#ff5d8f', '#ff8fd8', '#c77dff', '#7b5cff', '#4d96ff', '#5fd3f3
 const HAIR = ['#1f1b24', '#3b2418', '#6b3e26', '#a8642f', '#f2c14e', '#ff6b4a', '#8e5cff', '#c77dff', '#ff7eb6', '#ff5d8f', '#4d96ff', '#5fd3f3', '#5fd39a', '#ffd93d'];
 const SKIN = ['#ffe0c7', '#f6c9a4', '#e3a777', '#c68653', '#8d5a3b', '#5e3a26'];
 
-function shade(hex: string, amt: number): string {
+export function shade(hex: string, amt: number): string {
   const n = parseInt(hex.slice(1), 16);
   const f = (c: number) => Math.max(0, Math.min(255, Math.round(c + amt * (amt < 0 ? c : 255 - c))));
   const r = f(n >> 16),

@@ -1,170 +1,189 @@
 /**
- * Defne'nin Evi: odalarda eşyaları parmakla sürükleyip yerleştirme (bebek evi oyunu).
- * Bütün oda ve eşya çizimleri bu projeye özgüdür.
+ * Defne'nin Evi: odaları tasarlama (duvar, zemin, pencere), eşyaları sürükleyip yerleştirme,
+ * eşyaları boyama ve karakterleri gezdirme. Bütün çizimler bu projeye özgüdür.
  */
 import { progress, commit } from './state';
 import { talk, bindTalkButtons } from './talk';
 import { show, on, talkBtn } from './ui';
 import { sfx } from './sfx';
-import { dollSvg, currentLook } from './stage';
+import { dollSvg, currentLook, shade } from './stage';
 import { genitive, TalkId } from './content';
+import { THINGS, colorize } from './house-items';
 
-type RoomId = 'yatak' | 'mutfak' | 'banyo' | 'salon';
-
-interface Thing {
-  id: string;
-  /** Odanın genişliğine göre yüzde. */
-  w: number;
-  vb: string;
-  svg: string;
-  /** Yere serilen (halı) eşyalar hep en arkada. */
-  flat?: boolean;
-  /** Dokununca açılıp kapanan (lamba, TV, küvet köpüğü…). */
-  toggle?: boolean;
-}
+type RoomId = 'yatak' | 'mutfak' | 'banyo' | 'salon' | 'havuz';
+type Mode = 'tasi' | 'boya' | 'tasarla';
 
 const OL = `<defs><filter id="tol" x="-15%" y="-15%" width="130%" height="130%"><feMorphology in="SourceAlpha" operator="dilate" radius="2" result="d"/><feFlood flood-color="#3d3553"/><feComposite in2="d" operator="in" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>`;
 
-const T = (id: string, w: number, vb: string, body: string, extra: Partial<Thing> = {}): Thing => ({ id, w, vb, svg: body, ...extra });
+const PALETTE = ['#ffffff', '#fff1c9', '#ffd6e7', '#ffb3d1', '#ff8fc0', '#ff6b6b', '#ffa94d', '#ffd93d', '#b5e550', '#a8e6cf', '#5fd39a', '#9fd8ff', '#5fd3f3', '#4d96ff', '#c9b6ff', '#c77dff', '#e3b98a', '#c98a5a', '#9c8f86', '#3d3553'];
+const WALL_COLORS = ['#ffffff', '#fff6e6', '#ffe3ef', '#ffd1e3', '#f1e3ff', '#e3e8ff', '#e3f1ff', '#e3f6ec', '#fff1d6', '#ffe8d6', '#f2ece4', '#d9d4e6'];
+const FLOOR_COLORS = ['#f3c99b', '#e7b98a', '#d29d69', '#fff7ec', '#f2f6fa', '#e9e3ff', '#ffe3ef', '#dff7ea', '#cfd8e6', '#c9b6ff'];
 
-/* ------------------------------------------------------------- eşyalar */
+/* --------------------------------------------------------- oda tasarımı */
 
-const THINGS: Record<string, Thing> = Object.fromEntries(
-  [
-    // yatak odası
-    T('yatak', 48, '0 0 200 120', `<rect x="2" y="14" width="30" height="100" rx="10" fill="#ffb3d1"/><rect x="170" y="44" width="26" height="70" rx="8" fill="#ffb3d1"/>
-      <rect x="20" y="64" width="160" height="34" rx="8" fill="#fff"/><rect x="66" y="58" width="114" height="42" rx="12" fill="#ff8fc0"/>
-      ${[86, 112, 138, 162].map((x, i) => `<circle cx="${x}" cy="${74 + (i % 2) * 12}" r="5" fill="#fff" opacity=".8"/>`).join('')}
-      <ellipse cx="48" cy="62" rx="24" ry="13" fill="#fff"/><rect x="24" y="98" width="8" height="18" fill="#c98a5a"/><rect x="168" y="98" width="8" height="18" fill="#c98a5a"/>`),
-    T('dolap', 22, '0 0 100 180', `<rect x="4" y="4" width="92" height="166" rx="10" fill="#ffd6e7"/><path d="M50 10 V164" stroke="#e7a9c4" stroke-width="3"/>
-      <circle cx="42" cy="90" r="4" fill="#fff"/><circle cx="58" cy="90" r="4" fill="#fff"/><rect x="12" y="170" width="10" height="8" fill="#c98a5a"/><rect x="78" y="170" width="10" height="8" fill="#c98a5a"/>`),
-    T('makyaj', 32, '0 0 140 150', `<rect x="30" y="6" width="80" height="66" rx="10" fill="#dff3ff"/>
-      ${[38, 56, 74, 92, 102].map((x) => `<circle cx="${x}" cy="10" r="5" fill="#fff6b0"/>`).join('')}
-      <rect x="4" y="78" width="132" height="18" rx="6" fill="#fff"/><rect x="12" y="96" width="44" height="40" rx="4" fill="#ffd6e7"/>
-      <rect x="12" y="136" width="6" height="12" fill="#c98a5a"/><rect x="126" y="96" width="6" height="52" fill="#c98a5a"/>
-      <rect x="80" y="62" width="8" height="16" rx="3" fill="#ff5d8f"/><rect x="92" y="66" width="10" height="12" rx="3" fill="#c77dff"/><circle cx="114" cy="72" r="6" fill="#5fd3f3"/>`),
-    T('koltuk', 22, '0 0 100 170', `<path d="M50 0 V44" stroke="#c98a5a" stroke-width="4"/><circle cx="50" cy="104" r="54" fill="#ffc8e3"/>
-      <circle cx="50" cy="110" r="38" fill="#fff"/><path d="M50 132 c-14 -10 -18 -26 -6 -28 c4 0 6 3 6 5 c0 -2 2 -5 6 -5 c12 2 8 18 -6 28Z" fill="#ff8fc0"/>`),
-    T('hali', 50, '0 0 200 50', `<ellipse cx="100" cy="26" rx="96" ry="22" fill="#ffb3d9"/><ellipse cx="100" cy="26" rx="70" ry="14" fill="#ffd1ea"/>`, { flat: true }),
-    T('lamba', 13, '0 0 60 170', `<circle class="on-show glow" cx="30" cy="32" r="40" fill="#fff6b0" opacity=".6"/><path d="M12 8 H48 L56 48 H4 Z" fill="#fff1c9"/>
-      <rect x="27" y="48" width="6" height="110" fill="#9c8f86"/><ellipse cx="30" cy="162" rx="20" ry="7" fill="#9c8f86"/>`, { toggle: true }),
-    T('bitki', 15, '0 0 80 120', `<ellipse cx="22" cy="44" rx="14" ry="30" fill="#5fbf6e" transform="rotate(-25 22 44)"/><ellipse cx="58" cy="44" rx="14" ry="30" fill="#4aa85a" transform="rotate(25 58 44)"/>
-      <ellipse cx="40" cy="34" rx="14" ry="34" fill="#6fd17d"/><path d="M16 74 H64 L56 118 H24 Z" fill="#f2b880"/>`),
-    T('ayi', 12, '0 0 70 80', `<circle cx="18" cy="14" r="10" fill="#c98a5a"/><circle cx="52" cy="14" r="10" fill="#c98a5a"/><ellipse cx="35" cy="60" rx="24" ry="20" fill="#c98a5a"/>
-      <circle cx="35" cy="28" r="20" fill="#d9a06b"/><circle cx="28" cy="26" r="3" fill="#2d2440"/><circle cx="42" cy="26" r="3" fill="#2d2440"/><ellipse cx="35" cy="35" rx="7" ry="5" fill="#f3d3b0"/>`),
-    T('kitaplik', 24, '0 0 120 150', `<rect x="4" y="4" width="112" height="142" rx="6" fill="#f5e0c3"/><path d="M8 52 H112 M8 100 H112" stroke="#d6b48c" stroke-width="5"/>
-      ${[['#ff8fc0', 14], ['#5fd3f3', 26], ['#ffd93d', 38], ['#c77dff', 52]].map(([c, x]) => `<rect x="${x}" y="16" width="10" height="34" rx="2" fill="${c}"/>`).join('')}
-      <circle cx="90" cy="38" r="12" fill="#6fd17d"/>${[['#ffa94d', 16], ['#4d96ff', 30], ['#ff6b6b', 70], ['#5fd39a', 84]].map(([c, x]) => `<rect x="${x}" y="64" width="12" height="34" rx="2" fill="${c}"/>`).join('')}`),
+interface Style {
+  wall: string;
+  wallColor: string;
+  floor: string;
+  floorColor: string;
+  view: string;
+}
 
-    // mutfak
-    T('buzdolabi', 22, '0 0 100 200', `<rect x="4" y="4" width="92" height="190" rx="16" fill="#a8e6cf"/><path d="M6 70 H94" stroke="#7fcfb0" stroke-width="4"/>
-      <rect x="14" y="24" width="6" height="30" rx="3" fill="#fff"/><rect x="14" y="88" width="6" height="40" rx="3" fill="#fff"/>
-      <circle cx="70" cy="36" r="8" fill="#ff8fc0"/><rect x="58" y="96" width="22" height="16" rx="3" fill="#ffd93d" transform="rotate(-8 69 104)"/>`),
-    T('ocak', 26, '0 0 120 140', `<path class="on-show steam" d="M48 6 q-8 10 0 20 q8 10 0 20 M70 6 q-8 10 0 20 q8 10 0 20" stroke="#cfd8e6" stroke-width="5" fill="none" stroke-linecap="round"/>
-      <rect x="34" y="40" width="52" height="30" rx="8" fill="#ff8f7a"/><rect x="28" y="38" width="64" height="8" rx="4" fill="#e2604f"/>
-      <rect x="4" y="70" width="112" height="66" rx="8" fill="#f1f1f4"/><rect x="18" y="90" width="84" height="38" rx="6" fill="#3d3553" opacity=".85"/>
-      <circle cx="22" cy="78" r="4" fill="#3d3553"/><circle cx="36" cy="78" r="4" fill="#3d3553"/><circle cx="84" cy="78" r="4" fill="#3d3553"/><circle cx="98" cy="78" r="4" fill="#3d3553"/>`, { toggle: true }),
-    T('lavabo', 30, '0 0 140 120', `<path d="M96 10 V30 H82" stroke="#b9c2cc" stroke-width="7" fill="none" stroke-linecap="round"/><path class="on-show" d="M82 34 V58" stroke="#7fd1ff" stroke-width="5" stroke-linecap="round"/>
-      <rect x="4" y="40" width="132" height="16" rx="5" fill="#fff"/><rect x="40" y="40" width="60" height="10" rx="4" fill="#cfe9ff"/>
-      <rect x="8" y="56" width="124" height="60" rx="6" fill="#a8e6cf"/><path d="M70 60 V112" stroke="#7fcfb0" stroke-width="3"/><circle cx="62" cy="86" r="3" fill="#fff"/><circle cx="78" cy="86" r="3" fill="#fff"/>`, { toggle: true }),
-    T('masa', 34, '0 0 160 90', `<rect x="4" y="6" width="152" height="16" rx="6" fill="#e3b98a"/><rect x="16" y="22" width="10" height="66" fill="#c98a5a"/><rect x="134" y="22" width="10" height="66" fill="#c98a5a"/>`),
-    T('sandalye', 12, '0 0 60 100', `<rect x="8" y="4" width="44" height="44" rx="10" fill="#ffd93d"/><rect x="4" y="50" width="52" height="12" rx="5" fill="#ffc21a"/>
-      <rect x="8" y="62" width="7" height="36" fill="#c98a5a"/><rect x="45" y="62" width="7" height="36" fill="#c98a5a"/>`),
-    T('meyve', 14, '0 0 80 56', `<circle cx="26" cy="22" r="13" fill="#ff6b6b"/><circle cx="52" cy="20" r="13" fill="#ffa94d"/><path d="M30 10 Q46 -2 62 12" stroke="#ffd93d" stroke-width="10" fill="none" stroke-linecap="round"/>
-      <path d="M4 28 H76 Q70 54 40 54 Q10 54 4 28 Z" fill="#5fd3f3"/>`),
-    T('pasta', 13, '0 0 70 76', `<rect x="31" y="2" width="8" height="16" rx="3" fill="#ff8fc0"/><path d="M35 0 q4 -6 0 -10" stroke="#ffd93d" stroke-width="4" fill="none"/>
-      <rect x="8" y="20" width="54" height="22" rx="6" fill="#fff1f6"/><rect x="4" y="42" width="62" height="26" rx="6" fill="#ffb3d1"/><path d="M8 42 q8 10 16 0 q8 10 16 0 q8 10 16 0 q8 10 14 0" fill="#fff"/><rect x="0" y="68" width="70" height="6" rx="3" fill="#cfe9ff"/>`),
-    T('caydanlik', 12, '0 0 70 60', `<path d="M56 30 Q70 26 66 14" stroke="#ff8fc0" stroke-width="6" fill="none" stroke-linecap="round"/><ellipse cx="32" cy="36" rx="26" ry="22" fill="#ff8fc0"/>
-      <rect x="22" y="8" width="20" height="8" rx="4" fill="#ffd1e6"/><circle cx="32" cy="6" r="4" fill="#ffd1e6"/><path d="M8 30 Q-2 30 2 42" stroke="#ff8fc0" stroke-width="6" fill="none"/>`),
+const WALLS = ['duz', 'puan', 'cizgi', 'kalp', 'pul', 'yildiz', 'cicek', 'tas'];
+const FLOORS = ['parke', 'balik', 'fayans', 'dama', 'hali'];
+const VIEWS = ['gunes', 'aksam', 'gece', 'sehir', 'deniz'];
 
-    // banyo
-    T('kuvet', 48, '0 0 200 120', `<path d="M164 10 V26 H150" stroke="#b9c2cc" stroke-width="7" fill="none" stroke-linecap="round"/>
-      <g class="on-show">${[40, 64, 92, 120, 146, 76, 108].map((x, i) => `<circle cx="${x}" cy="${36 - (i % 3) * 10}" r="${10 + (i % 3) * 4}" fill="#fff" opacity=".95"/>`).join('')}</g>
-      <rect x="4" y="40" width="192" height="60" rx="26" fill="#fff"/><rect x="16" y="44" width="168" height="14" rx="7" fill="#bfe8ff"/>
-      <rect x="30" y="98" width="12" height="16" rx="4" fill="#ffd93d"/><rect x="158" y="98" width="12" height="16" rx="4" fill="#ffd93d"/>`, { toggle: true }),
-    T('banyolavabo', 22, '0 0 100 180', `<ellipse cx="50" cy="40" rx="34" ry="38" fill="#dff3ff"/><ellipse cx="50" cy="40" rx="24" ry="28" fill="#f4fbff"/>
-      <path d="M50 88 V100" stroke="#b9c2cc" stroke-width="6" stroke-linecap="round"/><rect x="10" y="100" width="80" height="20" rx="8" fill="#fff"/>
-      <rect x="22" y="120" width="56" height="56" rx="6" fill="#ffd6e7"/>`),
-    T('camasir', 22, '0 0 100 110', `<rect x="4" y="4" width="92" height="102" rx="10" fill="#f1f1f4"/><rect x="10" y="10" width="40" height="10" rx="4" fill="#cfd8e6"/>
-      <circle cx="78" cy="15" r="5" fill="#5fd39a"/><circle cx="50" cy="64" r="32" fill="#cfd8e6"/><g class="spin"><circle cx="50" cy="64" r="22" fill="#7fd1ff"/><path d="M36 64 Q50 50 64 64" stroke="#fff" stroke-width="5" fill="none"/></g>`, { toggle: true }),
-    T('havlu', 16, '0 0 80 100', `<rect x="4" y="6" width="72" height="8" rx="4" fill="#b9c2cc"/><rect x="12" y="12" width="56" height="80" rx="6" fill="#ff9fd6"/>
-      <path d="M12 74 H68" stroke="#fff" stroke-width="5"/><path d="M12 82 H68" stroke="#fff" stroke-width="3"/>`),
-    T('ordek', 9, '0 0 50 46', `<ellipse cx="28" cy="32" rx="20" ry="13" fill="#ffd93d"/><circle cx="16" cy="16" r="12" fill="#ffd93d"/><path d="M2 18 L10 14 L10 22 Z" fill="#ffa94d"/><circle cx="14" cy="13" r="2.5" fill="#2d2440"/>`),
-    T('tuvalet', 18, '0 0 80 110', `<rect x="10" y="4" width="60" height="38" rx="8" fill="#fff"/><ellipse cx="40" cy="58" rx="36" ry="12" fill="#f4e3d0"/>
-      <path d="M8 60 Q12 96 40 100 Q68 96 72 60 Z" fill="#fff"/><rect x="26" y="98" width="28" height="10" rx="3" fill="#fff"/>`),
+function wallPattern(kind: string, c: string): string {
+  switch (kind) {
+    case 'puan':
+      return `<circle cx="10" cy="10" r="4" fill="${c}"/><circle cx="30" cy="30" r="4" fill="${c}"/>`;
+    case 'cizgi':
+      return `<rect width="14" height="40" fill="${c}"/>`;
+    case 'kalp':
+      return `<path d="M20 28 C8 20 10 10 16 10 C18 10 20 12 20 14 C20 12 22 10 24 10 C30 10 32 20 20 28Z" fill="${c}"/>`;
+    case 'pul':
+      return `<path d="M0 20 A20 20 0 0 1 40 20 M-20 40 A20 20 0 0 1 20 40 M20 40 A20 20 0 0 1 60 40 M-20 0 A20 20 0 0 1 20 0 M20 0 A20 20 0 0 1 60 0" stroke="${c}" stroke-width="3" fill="none"/>`;
+    case 'yildiz':
+      return `<path d="M10 4 L12 9 L17 9 L13 12 L15 17 L10 14 L5 17 L7 12 L3 9 L8 9Z M30 24 L32 29 L37 29 L33 32 L35 37 L30 34 L25 37 L27 32 L23 29 L28 29Z" fill="${c}"/>`;
+    case 'cicek':
+      return [0, 1, 2, 3, 4].map((i) => `<circle cx="${20 + Math.cos(i * 1.257) * 6}" cy="${20 + Math.sin(i * 1.257) * 6}" r="4.5" fill="${c}"/>`).join('') + `<circle cx="20" cy="20" r="3" fill="#fff"/>`;
+    case 'tas':
+      return `<path d="M2 2 h16 l3 10 -6 8 h-12z M24 4 h12 l2 12 h-14z M4 24 h14 l2 14 h-16z M24 22 h14 v16 h-12z" fill="${c}"/>`;
+  }
+  return '';
+}
 
-    // salon
-    T('kanepe', 48, '0 0 200 110', `<rect x="20" y="8" width="160" height="56" rx="20" fill="#c77dff"/><rect x="4" y="44" width="34" height="56" rx="14" fill="#b066f0"/><rect x="162" y="44" width="34" height="56" rx="14" fill="#b066f0"/>
-      <rect x="30" y="56" width="140" height="36" rx="10" fill="#d9a6ff"/><rect x="44" y="26" width="34" height="30" rx="8" fill="#ffd93d" transform="rotate(-8 61 41)"/>
-      <rect x="20" y="98" width="8" height="10" fill="#c98a5a"/><rect x="172" y="98" width="8" height="10" fill="#c98a5a"/>`),
-    T('tv', 32, '0 0 140 120', `<rect x="4" y="4" width="132" height="80" rx="8" fill="#3d3553"/><rect x="12" y="12" width="116" height="64" rx="4" fill="#4a4458"/>
-      <g class="on-show">${['#ff6b6b', '#ffa94d', '#ffd93d', '#5fd39a', '#4d96ff', '#c77dff'].map((c, i) => `<rect x="${12 + i * 19.3}" y="12" width="19.6" height="64" fill="${c}"/>`).join('')}<circle cx="70" cy="44" r="14" fill="#fff" opacity=".9"/><path d="M65 36 L79 44 L65 52Z" fill="#ff5d8f"/></g>
-      <rect x="62" y="84" width="16" height="16" fill="#9c8f86"/><rect x="34" y="98" width="72" height="16" rx="5" fill="#e3b98a"/>`, { toggle: true }),
-    T('sehpa', 26, '0 0 120 54', `<ellipse cx="60" cy="14" rx="56" ry="11" fill="#fff"/><rect x="20" y="16" width="8" height="34" fill="#c98a5a"/><rect x="92" y="16" width="8" height="34" fill="#c98a5a"/>`),
-    T('abajur', 10, '0 0 50 80', `<circle class="on-show glow" cx="25" cy="20" r="28" fill="#fff6b0" opacity=".6"/><path d="M8 4 H42 L48 34 H2 Z" fill="#ffd1ea"/><rect x="22" y="34" width="6" height="30" fill="#9c8f86"/><rect x="10" y="62" width="30" height="14" rx="5" fill="#c77dff"/>`, { toggle: true }),
-    T('hali2', 46, '0 0 200 50', `<ellipse cx="100" cy="26" rx="96" ry="22" fill="#cfe9ff"/>${[40, 70, 100, 130, 160].map((x) => `<circle cx="${x}" cy="26" r="6" fill="#fff"/>`).join('')}`, { flat: true }),
-    T('kedi', 14, '0 0 80 60', `<path d="M66 44 Q84 34 74 18" stroke="#f2c14e" stroke-width="7" fill="none" stroke-linecap="round"/><ellipse cx="44" cy="44" rx="26" ry="15" fill="#f2c14e"/>
-      <path d="M8 18 L12 0 L24 12 Z M34 18 L30 0 L18 12 Z" fill="#f2c14e"/><circle cx="21" cy="24" r="16" fill="#f2c14e"/><circle cx="16" cy="23" r="2.5" fill="#2d2440"/><circle cx="26" cy="23" r="2.5" fill="#2d2440"/>`),
-    T('top', 8, '0 0 40 40', `<circle cx="20" cy="20" r="18" fill="#ff6b6b"/><path d="M4 16 Q20 26 36 16" stroke="#fff" stroke-width="5" fill="none"/>`),
-    T('cerceve', 18, '0 0 80 60', `<rect x="2" y="2" width="76" height="56" rx="4" fill="#e3b98a"/><rect x="10" y="10" width="60" height="40" fill="#cfe9ff"/>
-      <path d="M10 50 L30 28 L44 42 L54 32 L70 50 Z" fill="#6fd17d"/><circle cx="58" cy="20" r="6" fill="#ffd93d"/>`),
-  ].map((t) => [t.id, t]),
-);
+function floorPattern(kind: string, c: string): string {
+  switch (kind) {
+    case 'parke':
+      return `<path d="M0 0 H80 M0 20 H80 M30 0 V20 M70 20 V40" stroke="${c}" stroke-width="2.5"/>`;
+    case 'balik':
+      return `<path d="M0 20 L20 0 L40 20 L60 0 L80 20 M0 40 L20 20 L40 40 L60 20 L80 40" stroke="${c}" stroke-width="2.5" fill="none"/>`;
+    case 'fayans':
+      return `<path d="M0 0 H80 M0 0 V40 M40 0 V40" stroke="${c}" stroke-width="2"/>`;
+    case 'dama':
+      return `<rect width="20" height="20" fill="${c}"/><rect x="20" y="20" width="20" height="20" fill="${c}"/><rect x="40" width="20" height="20" fill="${c}"/><rect x="60" y="20" width="20" height="20" fill="${c}"/>`;
+    case 'hali':
+      return `<circle cx="10" cy="8" r="1.5" fill="${c}"/><circle cx="50" cy="28" r="1.5" fill="${c}"/><circle cx="34" cy="14" r="1.2" fill="${c}"/>`;
+  }
+  return '';
+}
+
+function windowView(view: string, id: string): string {
+  const sky: Record<string, [string, string]> = {
+    gunes: ['#9fd8ff', '#e3f5ff'],
+    aksam: ['#ff9f7a', '#ffd6a8'],
+    gece: ['#2b2d6b', '#5a4c9c'],
+    sehir: ['#b8e2ff', '#eef8ff'],
+    deniz: ['#9fd8ff', '#e3f5ff'],
+  };
+  const [a, b] = sky[view] ?? sky.gunes;
+  let extra = `<circle cx="232" cy="70" r="16" fill="#ffe680"/><g fill="#fff"><circle cx="180" cy="110" r="12"/><circle cx="196" cy="104" r="14"/><circle cx="212" cy="112" r="10"/></g>`;
+  if (view === 'aksam') extra = `<circle cx="205" cy="128" r="26" fill="#ffb347"/><path d="M150 132 H260" stroke="#ff8f7a" stroke-width="10"/>`;
+  if (view === 'gece') extra = `<path d="M228 58 a16 16 0 1 0 14 22 a12 12 0 1 1 -14 -22Z" fill="#fff3b0"/>${[[166, 60], [190, 80], [178, 112], [246, 118], [220, 100]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.5" fill="#fff"/>`).join('')}`;
+  if (view === 'sehir') extra = `<circle cx="236" cy="62" r="12" fill="#ffe680"/><g fill="#9bb2d6">${[[152, 96, 22], [176, 80, 18], [196, 104, 20], [218, 88, 22], [242, 100, 18]].map(([x, y, w]) => `<rect x="${x}" y="${y}" width="${w}" height="${140 - y}"/>`).join('')}</g>`;
+  if (view === 'deniz') extra = `<circle cx="232" cy="66" r="14" fill="#ffe680"/><rect x="150" y="104" width="110" height="36" fill="#4fb6ef"/><path d="M156 116 q8 -6 16 0 q8 -6 16 0 M200 126 q8 -6 16 0 q8 -6 16 0" stroke="#fff" stroke-width="3" fill="none"/>`;
+  return `<defs><linearGradient id="sky-${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>
+    <clipPath id="win-${id}"><rect x="150" y="40" width="110" height="100" rx="10"/></clipPath></defs>
+    <rect x="150" y="40" width="110" height="100" rx="10" fill="url(#sky-${id})"/><g clip-path="url(#win-${id})">${extra}</g>
+    <rect x="150" y="40" width="110" height="100" rx="10" fill="none" stroke="#fff" stroke-width="8"/><path d="M205 40 V140 M150 90 H260" stroke="#fff" stroke-width="6"/>`;
+}
+
+let bgSeq = 0;
+function roomBg(id: RoomId, s: Style): string {
+  const pid = `${id}${++bgSeq}`;
+  const defs = `<defs>
+    <pattern id="w-${pid}" width="40" height="40" patternUnits="userSpaceOnUse">${wallPattern(s.wall, shade(s.wallColor, -0.1))}</pattern>
+    <pattern id="f-${pid}" width="80" height="40" patternUnits="userSpaceOnUse">${floorPattern(s.floor, shade(s.floorColor, -0.12))}</pattern></defs>`;
+  if (id === 'havuz') {
+    return `<svg class="room-bg" viewBox="0 0 400 440" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">${defs}
+      <rect width="400" height="200" fill="#8fd3ff"/><circle cx="320" cy="50" r="26" fill="#ffe680"/>
+      <g fill="#c4d9f2">${[[20, 120, 30], [60, 100, 26], [100, 130, 34], [300, 110, 30], [340, 126, 40]].map(([x, y, w]) => `<rect x="${x}" y="${y}" width="${w}" height="${200 - y}"/>`).join('')}</g>
+      <g fill="#6fcf7d">${[[150, 150, 40], [200, 140, 46], [250, 152, 40], [10, 170, 30], [390, 170, 30]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g>
+      <rect y="170" width="400" height="80" fill="${s.wallColor}"/><rect y="170" width="400" height="80" fill="url(#w-${pid})"/><rect y="166" width="400" height="8" fill="#fff"/>
+      <rect y="250" width="400" height="60" fill="${s.floorColor}"/><rect y="250" width="400" height="60" fill="url(#f-${pid})"/>
+      <rect x="0" y="306" width="400" height="134" rx="10" fill="#fff"/><rect x="10" y="314" width="380" height="126" rx="8" fill="#5fd3f3"/>
+      <path d="M30 350 q20 -8 40 0 M160 380 q20 -8 40 0 M290 344 q20 -8 40 0 M80 410 q20 -8 40 0 M260 416 q20 -8 40 0" stroke="#fff" stroke-width="4" fill="none" opacity=".7"/>
+    </svg>`;
+  }
+  return `<svg class="room-bg" viewBox="0 0 400 440" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">${defs}
+    <rect width="400" height="300" fill="${s.wallColor}"/><rect width="400" height="300" fill="url(#w-${pid})"/>
+    ${windowView(s.view, pid)}
+    <rect y="290" width="400" height="150" fill="${s.floorColor}"/><rect y="290" width="400" height="150" fill="url(#f-${pid})"/><rect y="286" width="400" height="10" fill="#fff" opacity=".85"/>
+  </svg>`;
+}
+
+/* ---------------------------------------------------------------- odalar */
 
 interface Room {
   id: RoomId;
   icon: string;
-  wall: string;
-  dots: string;
-  floor: string;
-  line: string;
-  tiles?: boolean;
-  /** Bu odada eşya çekmecesinde görünenler. */
+  style: Style;
   tray: string[];
   /** İlk açılıştaki yerleşim: [eşya, x%, y%] (y = eşyanın alt kenarı). */
   start: [string, number, number][];
 }
 
-const COMMON = ['bitki', 'lamba', 'ayi', 'cerceve', 'top', 'kedi', 'hali', 'hali2'];
+/** Her odada çekmecede olan karakterler ve eşyalar. */
+const COMMON = ['arkadas1', 'arkadas2', 'kardes', 'minik', 'kedi', 'kopek', 'tavsan', 'bitki', 'buyukbitki', 'sarkitbitki', 'kaktus', 'lamba', 'sarkit', 'perilamba', 'disko', 'tablo', 'cerceve', 'ayna', 'top', 'ayi', 'puf', 'hali', 'hali2', 'ayihali'];
 
 const ROOMS: Room[] = [
   {
-    id: 'yatak', icon: '🛏️', wall: '#ffe3ef', dots: '#ffc8de', floor: '#f3c99b', line: '#e2b07f',
-    tray: ['yatak', 'dolap', 'makyaj', 'koltuk', 'kitaplik', ...COMMON],
+    id: 'yatak', icon: '🛏️',
+    style: { wall: 'puan', wallColor: '#ffe3ef', floor: 'parke', floorColor: '#f3c99b', view: 'gunes' },
+    tray: ['yatak', 'yuvarlakyatak', 'dolap', 'kiyafetaski', 'makyaj', 'kozmetik', 'koltuk', 'armut', 'cicekminder', 'bilgisayar', 'kitaplik', 'aynadalga'],
     start: [['hali', 50, 92], ['dolap', 13, 76], ['yatak', 66, 86], ['makyaj', 36, 72], ['koltuk', 88, 60], ['ayi', 52, 79], ['cerceve', 62, 30]],
   },
   {
-    id: 'mutfak', icon: '🍳', wall: '#e3f6ec', dots: '#c9ead8', floor: '#fff7ec', line: '#e9dcc8', tiles: true,
-    tray: ['buzdolabi', 'ocak', 'lavabo', 'masa', 'sandalye', 'meyve', 'pasta', 'caydanlik', ...COMMON],
+    id: 'mutfak', icon: '🍳',
+    style: { wall: 'pul', wallColor: '#e3f6ec', floor: 'fayans', floorColor: '#fff7ec', view: 'gunes' },
+    tray: ['tezgah', 'retrobuzdolabi', 'buzdolabi', 'ocak', 'lavabo', 'mikrodalga', 'tost', 'kahve', 'rafkupa', 'kasiklik', 'masa', 'sandalye', 'tabure', 'meyve', 'ekmek', 'pasta', 'hamburger', 'caydanlik', 'dondurma'],
     start: [['buzdolabi', 12, 74], ['ocak', 34, 72], ['lavabo', 60, 70], ['masa', 62, 94], ['sandalye', 40, 95], ['sandalye', 84, 95], ['pasta', 60, 85], ['caydanlik', 34, 54]],
   },
   {
-    id: 'banyo', icon: '🛁', wall: '#e3f1ff', dots: '#c8e1fb', floor: '#f2f6fa', line: '#d9e3ec', tiles: true,
-    tray: ['kuvet', 'banyolavabo', 'camasir', 'havlu', 'ordek', 'tuvalet', ...COMMON],
+    id: 'banyo', icon: '🛁',
+    style: { wall: 'puan', wallColor: '#e3f1ff', floor: 'fayans', floorColor: '#f2f6fa', view: 'gunes' },
+    tray: ['kuvet', 'jakuzi', 'banyolavabo', 'camasir', 'sampuan', 'sepet', 'robot', 'havlu', 'ayna', 'ordek', 'tuvalet'],
     start: [['tuvalet', 12, 76], ['banyolavabo', 34, 72], ['camasir', 60, 72], ['havlu', 84, 50], ['kuvet', 64, 95], ['ordek', 60, 82], ['hali2', 30, 92]],
   },
   {
-    id: 'salon', icon: '🛋️', wall: '#fff1d6', dots: '#ffe0a8', floor: '#e7b98a', line: '#d29d69',
-    tray: ['kanepe', 'tv', 'sehpa', 'abajur', ...COMMON],
+    id: 'salon', icon: '🛋️',
+    style: { wall: 'cizgi', wallColor: '#fff1d6', floor: 'balik', floorColor: '#e7b98a', view: 'sehir' },
+    tray: ['kanepe', 'tv', 'sehpa', 'abajur', 'oyunrafi', 'kediyatagi', 'kitaplik'],
     start: [['hali2', 50, 92], ['tv', 22, 72], ['kanepe', 64, 82], ['sehpa', 42, 92], ['bitki', 92, 76], ['abajur', 92, 52], ['kedi', 30, 96], ['cerceve', 66, 30]],
+  },
+  {
+    id: 'havuz', icon: '🏖️',
+    style: { wall: 'duz', wallColor: '#ffe3ef', floor: 'fayans', floorColor: '#fff1e6', view: 'gunes' },
+    tray: ['sezlong', 'semsiye', 'flamingo', 'simit', 'palmiye', 'kalpbalon', 'kalpisik', 'buzkutusu', 'dondurma'],
+    start: [['palmiye', 10, 66], ['semsiye', 50, 66], ['sezlong', 30, 70], ['sezlong', 72, 70], ['buzkutusu', 50, 70], ['flamingo', 74, 94], ['simit', 28, 92], ['kalpbalon', 90, 64], ['kalpisik', 50, 40]],
   },
 ];
 
-function roomBg(r: Room): string {
-  const floor = r.tiles
-    ? Array.from({ length: 6 }, (_, i) => `<path d="M${i * 80} 300 V440" stroke="${r.line}" stroke-width="2"/>`).join('') +
-      Array.from({ length: 4 }, (_, i) => `<path d="M0 ${300 + i * 38} H400" stroke="${r.line}" stroke-width="2"/>`).join('')
-    : Array.from({ length: 5 }, (_, i) => `<path d="M0 ${300 + i * 32} H400" stroke="${r.line}" stroke-width="3"/>`).join('');
-  return `<svg class="room-bg" viewBox="0 0 400 440" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <defs><pattern id="pat-${r.id}" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="4" fill="${r.dots}"/><circle cx="30" cy="30" r="4" fill="${r.dots}"/></pattern>
-    <linearGradient id="sky-${r.id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fd8ff"/><stop offset="1" stop-color="#e3f5ff"/></linearGradient></defs>
-    <rect width="400" height="300" fill="${r.wall}"/><rect width="400" height="300" fill="url(#pat-${r.id})"/>
-    <rect x="150" y="40" width="110" height="100" rx="10" fill="url(#sky-${r.id})" stroke="#fff" stroke-width="8"/>
-    <circle cx="232" cy="70" r="16" fill="#ffe680"/><g fill="#fff"><circle cx="180" cy="110" r="12"/><circle cx="196" cy="104" r="14"/><circle cx="212" cy="112" r="10"/></g>
-    <path d="M205 40 V140 M150 90 H260" stroke="#fff" stroke-width="6"/>
-    <rect y="290" width="400" height="150" fill="${r.floor}"/>${floor}<rect y="286" width="400" height="10" fill="#fff" opacity=".8"/>
-  </svg>`;
-}
+/* ------------------------------------------------------------ karakterler */
+
+type LookT = ReturnType<typeof currentLook>;
+const base = (o: Record<string, [string, string]>): LookT => {
+  const l: LookT = {
+    kiyafet: { item: 'tisort', color: '#9fd8ff' },
+    sac: { item: 'uzun', color: '#3b2418' },
+    taki: { item: 'yok', color: '#fff' },
+    elde: { item: 'yok', color: '#fff' },
+    ayakkabi: { item: 'spor', color: '#fff' },
+    fon: { item: 'sahne', color: '#7b5cff' },
+    ten: { item: 'ten', color: '#f6c9a4' },
+    hayvan: { item: 'yok', color: '#fff' },
+  };
+  for (const [k, v] of Object.entries(o)) l[k] = { item: v[0], color: v[1] };
+  return l;
+};
+/** Özgün arkadaş karakterler (bebekle aynı çizim sistemi, hazır kıyafetlerle). */
+const FRIENDS: Record<string, { look: LookT; w: number }> = {
+  arkadas1: { look: base({ sac: ['kivircik', '#1f1b24'], ten: ['ten', '#8d5a3b'], kiyafet: ['sweat', '#5fd39a'], taki: ['kurdele', '#ffd93d'] }), w: 26 },
+  arkadas2: { look: base({ sac: ['kisa', '#ff7eb6'], ten: ['ten', '#ffe0c7'], kiyafet: ['tutu', '#9fd8ff'], taki: ['sapka', '#b5e550'] }), w: 26 },
+  kardes: { look: base({ sac: ['topuz', '#a8642f'], ten: ['ten', '#e3a777'], kiyafet: ['tulum', '#ffd93d'], ayakkabi: ['babet', '#ff8fd8'] }), w: 20 },
+  minik: { look: base({ sac: ['kisa', '#f2c14e'], ten: ['ten', '#f6c9a4'], kiyafet: ['tulum', '#ffb3d1'], taki: ['bere', '#c9b6ff'] }), w: 15 },
+};
 
 /* ---------------------------------------------------------------- state */
 
@@ -174,19 +193,25 @@ interface Inst {
   x: number;
   y: number;
   on?: boolean;
+  /** Boyanmış ana renk. */
+  c?: string;
 }
-type HouseState = Record<string, Inst[]>;
 
-function house(): HouseState {
-  const p = progress;
-  if (!p.house) p.house = {};
+function house(): Record<string, Inst[]> {
+  progress.house ??= {};
   for (const r of ROOMS) {
-    if (!p.house[r.id]) {
-      p.house[r.id] = r.start.map(([id, x, y], i) => ({ u: i + 1, id, x, y }));
-      p.house[r.id].push({ u: 999, id: 'bebek', x: 50, y: 97 });
+    if (!progress.house[r.id]) {
+      progress.house[r.id] = r.start.map(([id, x, y], i) => ({ u: i + 1, id, x, y }));
+      progress.house[r.id].push({ u: 999, id: 'bebek', x: 50, y: 97 });
     }
   }
-  return p.house;
+  return progress.house;
+}
+
+function style(id: RoomId): Style {
+  progress.roomStyle ??= {};
+  const def = ROOMS.find((r) => r.id === id)!.style;
+  return (progress.roomStyle[id] ??= { ...def });
 }
 
 const nextU = (list: Inst[]) => list.reduce((m, i) => Math.max(m, i.u), 0) + 1;
@@ -197,13 +222,21 @@ let current: RoomId = 'yatak';
 
 export function showHouse(back: () => void) {
   sfx.tap();
+  let mode: Mode = 'tasi';
+  let brush = '#ff8fc0';
   const root = show(`
     <div class="screen house">
       <header class="bar"><button class="round-btn" data-act="back">⬅</button>
         <div class="room-tabs">${ROOMS.map((r) => `<button class="room-tab" data-room="${r.id}">${r.icon}</button>`).join('')}</div>
         ${talkBtn('oda')}</header>
       <div class="room"><div class="room-bg-wrap"></div><div class="layer"></div></div>
+      <div class="modes">
+        <button class="mode" data-mode="tasi">✋</button>
+        <button class="mode" data-mode="boya">🖌️</button>
+        <button class="mode" data-mode="tasarla">🎨</button>
+      </div>
       <div class="drawer"><div class="drawer-items"></div><div class="trash">🗑️</div></div>
+      <div class="design hidden"></div>
     </div>`);
   bindTalkButtons(root);
   on(root, 'back', back);
@@ -211,46 +244,105 @@ export function showHouse(back: () => void) {
   const layer = root.querySelector<HTMLElement>('.layer')!;
   const drawer = root.querySelector<HTMLElement>('.drawer')!;
   const drawerItems = root.querySelector<HTMLElement>('.drawer-items')!;
+  const design = root.querySelector<HTMLElement>('.design')!;
 
   const room = () => ROOMS.find((r) => r.id === current)!;
   const list = () => house()[current];
 
   const thingHtml = (inst: Inst) => {
-    if (inst.id === 'bebek') {
-      return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:30%">${dollSvg(currentLook(), 'doll', { bg: false })}</div>`;
-    }
+    if (inst.id === 'bebek') return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:30%">${dollSvg(currentLook(), 'doll', { bg: false })}</div>`;
+    const f = FRIENDS[inst.id];
+    if (f) return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${f.w}%">${dollSvg(f.look, 'doll', { bg: false })}</div>`;
     const t = THINGS[inst.id];
     if (!t) return '';
-    return `<div class="thing ${inst.on ? 'on' : ''}" data-u="${inst.u}" style="--w:${t.w}%"><svg viewBox="${t.vb}" xmlns="http://www.w3.org/2000/svg">${OL}<g filter="url(#tol)">${t.svg}</g></svg></div>`;
+    return `<div class="thing ${inst.on ? 'on' : ''} ${t.bob ? 'bob' : ''}" data-u="${inst.u}" style="--w:${t.w}%;${inst.c ? `--c:${inst.c}` : ''}"><svg viewBox="${t.vb}" xmlns="http://www.w3.org/2000/svg">${OL}<g filter="url(#tol)">${colorize(t)}</g></svg></div>`;
+  };
+
+  const thumb = (id: string) => {
+    const f = FRIENDS[id];
+    if (f) return dollSvg(f.look, 'doll', { bg: false });
+    const t = THINGS[id];
+    return `<svg viewBox="${t.vb}">${t.svg}</svg>`;
   };
 
   const place = (el: HTMLElement, inst: Inst) => {
     el.style.left = `${inst.x}%`;
     el.style.top = `${inst.y}%`;
-    const t = THINGS[inst.id];
-    el.style.zIndex = String(t?.flat ? 1 : 10 + Math.round(inst.y * 10));
+    el.style.zIndex = String(THINGS[inst.id]?.flat ? 1 : 10 + Math.round(inst.y * 10));
+  };
+
+  const renderBg = () => (root.querySelector('.room-bg-wrap')!.innerHTML = roomBg(current, style(current)));
+
+  const renderDrawer = () => {
+    drawerItems.innerHTML =
+      mode === 'boya'
+        ? PALETTE.map((c) => `<button class="sw ${c === brush ? 'on' : ''}" data-color="${c}" style="background:${c}"></button>`).join('')
+        : [...room().tray, ...COMMON].map((id) => `<button class="drawer-item" data-id="${id}">${thumb(id)}</button>`).join('');
+    drawerItems.scrollLeft = 0;
+    drawer.classList.toggle('paint', mode === 'boya');
+  };
+
+  const renderDesign = () => {
+    const s = style(current);
+    const opt = (key: keyof Style, value: string, inner: string, extra = '') =>
+      `<button class="dz ${s[key] === value ? 'on' : ''}" ${extra} data-key="${key}" data-val="${value}">${inner}</button>`;
+    const swatch = (key: keyof Style, c: string) => opt(key, c, '', `style="background:${c}" data-sw="1"`);
+    const mini = (k: 'wall' | 'floor', kind: string) => {
+      const c = k === 'wall' ? s.wallColor : s.floorColor;
+      const pat = k === 'wall' ? wallPattern(kind, shade(c, -0.18)) : floorPattern(kind, shade(c, -0.2));
+      return `<svg viewBox="0 0 80 40"><rect width="80" height="40" fill="${c}"/><g>${pat}</g><g transform="translate(40 0)">${pat}</g></svg>`;
+    };
+    const viewMini = (v: string) => `<svg viewBox="146 36 118 108">${windowView(v, `m${v}${++bgSeq}`)}</svg>`;
+    design.innerHTML = `
+      <div class="dz-row"><span class="dz-icon">🧱</span><div class="dz-list">${WALLS.map((w) => opt('wall', w, mini('wall', w))).join('')}</div></div>
+      <div class="dz-row"><span class="dz-icon">🎨</span><div class="dz-list">${WALL_COLORS.map((c) => swatch('wallColor', c)).join('')}</div></div>
+      <div class="dz-row"><span class="dz-icon">🟫</span><div class="dz-list">${FLOORS.map((f) => opt('floor', f, mini('floor', f))).join('')}</div></div>
+      <div class="dz-row"><span class="dz-icon">🎨</span><div class="dz-list">${FLOOR_COLORS.map((c) => swatch('floorColor', c)).join('')}</div></div>
+      ${current === 'havuz' ? '' : `<div class="dz-row"><span class="dz-icon">🪟</span><div class="dz-list">${VIEWS.map((v) => opt('view', v, viewMini(v))).join('')}</div></div>`}`;
   };
 
   const render = () => {
     root.querySelectorAll('.room-tab').forEach((b) => b.classList.toggle('on', (b as HTMLElement).dataset.room === current));
-    root.querySelector('.room-bg-wrap')!.innerHTML = roomBg(room());
+    root.querySelectorAll('.mode').forEach((b) => b.classList.toggle('on', (b as HTMLElement).dataset.mode === mode));
+    renderBg();
     layer.innerHTML = list().map(thingHtml).join('');
     layer.querySelectorAll<HTMLElement>('.thing').forEach((el) => place(el, list().find((i) => i.u === Number(el.dataset.u))!));
-    drawerItems.innerHTML = room()
-      .tray.map((id) => {
-        const t = THINGS[id];
-        return `<button class="drawer-item" data-id="${id}"><svg viewBox="${t.vb}">${t.svg}</svg></button>`;
-      })
-      .join('');
-    drawerItems.scrollLeft = 0;
+    drawer.classList.toggle('hidden', mode === 'tasarla');
+    design.classList.toggle('hidden', mode !== 'tasarla');
+    if (mode === 'tasarla') renderDesign();
+    else renderDrawer();
   };
+
+  /* ---- tasarım: duvar, zemin, pencere */
+  design.addEventListener('click', (e) => {
+    const b = (e.target as Element).closest<HTMLElement>('.dz');
+    if (!b) return;
+    const s = style(current) as unknown as Record<string, string>;
+    s[b.dataset.key!] = b.dataset.val!;
+    commit();
+    sfx.paint();
+    renderBg();
+    const scroll = [...design.querySelectorAll<HTMLElement>('.dz-list')].map((l) => l.scrollLeft);
+    renderDesign();
+    design.querySelectorAll<HTMLElement>('.dz-list').forEach((l, i) => (l.scrollLeft = scroll[i] ?? 0));
+  });
+
+  /* ---- boya: renk seç */
+  drawerItems.addEventListener('click', (e) => {
+    if (mode !== 'boya') return;
+    const b = (e.target as Element).closest<HTMLElement>('.sw');
+    if (!b) return;
+    brush = b.dataset.color!;
+    sfx.tap();
+    renderDrawer();
+  });
 
   /* ---- sürükle-bırak */
   const toPct = (cx: number, cy: number) => {
     const r = roomEl.getBoundingClientRect();
     return { x: ((cx - r.left) / r.width) * 100, y: ((cy - r.top) / r.height) * 100 };
   };
-  const overDrawer = (cy: number) => cy > drawer.getBoundingClientRect().top;
+  const overDrawer = (cy: number) => mode === 'tasi' && cy > drawer.getBoundingClientRect().top;
 
   function drag(el: HTMLElement, inst: Inst, ev: PointerEvent, fresh: boolean) {
     ev.preventDefault();
@@ -261,6 +353,7 @@ export function showHouse(back: () => void) {
     const move = (e: PointerEvent) => {
       const p = toPct(e.clientX, e.clientY);
       if (!moved && Math.hypot(p.x - start.x, p.y - start.y) > 2) moved = true;
+      if (!moved) return;
       inst.x = Math.max(2, Math.min(98, p.x - off.x));
       inst.y = Math.max(8, Math.min(100, p.y - off.y));
       place(el, inst);
@@ -274,13 +367,11 @@ export function showHouse(back: () => void) {
       drawer.classList.remove('drop');
       if (!moved) return tap(el, inst);
       if (overDrawer(e.clientY) && inst.id !== 'bebek') {
-        // Çekmeceye geri bırakınca kaldırılır.
         house()[current] = list().filter((i) => i !== inst);
         el.animate([{ transform: 'translate(-50%,-100%) scale(1)', opacity: 1 }, { transform: 'translate(-50%,-100%) scale(0.2)', opacity: 0 }], { duration: 250 }).finished.then(() => el.remove());
         sfx.soft();
       } else {
         sfx.tap();
-        el.animate([{ transform: 'translate(-50%,-100%) scale(1.08)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 200 });
       }
       commit();
     };
@@ -290,7 +381,21 @@ export function showHouse(back: () => void) {
   }
 
   function tap(el: HTMLElement, inst: Inst) {
-    if (inst.id === 'bebek') {
+    const isChar = inst.id === 'bebek' || !!FRIENDS[inst.id];
+    if (mode === 'boya' && !isChar) {
+      const t = THINGS[inst.id];
+      if (t?.main) {
+        inst.c = brush;
+        el.style.setProperty('--c', brush);
+        commit();
+        sfx.paint();
+        el.animate([{ transform: 'translate(-50%,-100%) scale(1)' }, { transform: 'translate(-50%,-100%) scale(1.08)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 250 });
+      } else {
+        sfx.soft();
+      }
+      return;
+    }
+    if (isChar) {
       el.querySelector('.doll-body')?.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-30px)' }, { transform: 'translateY(0)' }], { duration: 500 });
       sfx.sing();
       return;
@@ -313,7 +418,18 @@ export function showHouse(back: () => void) {
     const inst = list().find((i) => i.u === Number(el.dataset.u));
     if (inst) drag(el, inst, ev, false);
   });
+
+  const addInst = (id: string, x: number, y: number): [HTMLElement, Inst] => {
+    const inst: Inst = { u: nextU(list()), id, x, y };
+    list().push(inst);
+    layer.insertAdjacentHTML('beforeend', thingHtml(inst));
+    const node = layer.lastElementChild as HTMLElement;
+    place(node, inst);
+    return [node, inst];
+  };
+
   drawerItems.addEventListener('pointerdown', (ev) => {
+    if (mode !== 'tasi') return;
     const b = (ev.target as Element).closest<HTMLElement>('.drawer-item');
     if (!b) return;
     const startY = ev.clientY;
@@ -323,24 +439,18 @@ export function showHouse(back: () => void) {
       if (startY - e.clientY > 14 && Math.abs(startY - e.clientY) > Math.abs(e.clientX - startX)) {
         cleanup();
         const p = toPct(e.clientX, e.clientY);
-        const inst: Inst = { u: nextU(list()), id: b.dataset.id!, x: p.x, y: Math.min(100, p.y + 6) };
-        list().push(inst);
-        layer.insertAdjacentHTML('beforeend', thingHtml(inst));
-        const node = layer.lastElementChild as HTMLElement;
-        place(node, inst);
+        const [node, inst] = addInst(b.dataset.id!, p.x, Math.min(100, p.y + 6));
         sfx.tap();
         drag(node, inst, e, true);
       }
     };
     const tapAdd = (e: PointerEvent) => {
       cleanup();
-      // Dokunup bırakınca da odanın ortasına eklensin (küçük çocuklar için kolaylık).
+      // Dokunup bırakınca odanın ortasına eklenir (küçük çocuklar için kolaylık).
       if (Math.hypot(e.clientX - startX, e.clientY - startY) < 8) {
-        const inst: Inst = { u: nextU(list()), id: b.dataset.id!, x: 30 + Math.random() * 40, y: 80 + Math.random() * 12 };
-        list().push(inst);
-        layer.insertAdjacentHTML('beforeend', thingHtml(inst));
-        const node = layer.lastElementChild as HTMLElement;
-        place(node, inst);
+        // Bebeğin arkasında kaybolmasın: odanın sağına ya da soluna koy.
+        const x = Math.random() < 0.5 ? 12 + Math.random() * 22 : 66 + Math.random() * 22;
+        const [node] = addInst(b.dataset.id!, x, 84 + Math.random() * 12);
         node.animate([{ transform: 'translate(-50%,-100%) scale(0.3)' }, { transform: 'translate(-50%,-100%) scale(1.1)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 350 });
         sfx.merge();
         commit();
@@ -360,6 +470,14 @@ export function showHouse(back: () => void) {
       sfx.tap();
       render();
       void talk(`oda_${current}` as TalkId);
+    }),
+  );
+  root.querySelectorAll<HTMLElement>('.mode').forEach((b) =>
+    b.addEventListener('click', () => {
+      mode = b.dataset.mode as Mode;
+      sfx.tap();
+      render();
+      void talk(mode === 'tasi' ? 'oda' : mode === 'boya' ? 'esyaBoya' : 'tasarla');
     }),
   );
 

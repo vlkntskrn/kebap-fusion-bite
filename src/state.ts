@@ -12,7 +12,9 @@ export interface Progress {
   /** Hediyeyle açılmış bebek parçaları ("kategori:parça"). */
   unlocked?: string[];
   /** Defne'nin Evi: odalardaki eşyalar ve yerleri. */
-  house?: Record<string, { u: number; id: string; x: number; y: number; on?: boolean }[]>;
+  house?: Record<string, { u: number; id: string; x: number; y: number; on?: boolean; c?: string }[]>;
+  /** Odaların duvar deseni/rengi, zemini ve pencere manzarası. */
+  roomStyle?: Record<string, { wall: string; wallColor: string; floor: string; floorColor: string; view: string }>;
   /** Henüz seçilmemiş hediye sayısı. */
   gifts?: number;
   paintings?: Record<string, Record<string, string>>;

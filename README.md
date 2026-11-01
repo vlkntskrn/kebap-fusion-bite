@@ -17,7 +17,7 @@ Oyundaki bütün sesler **anne ya da babanın kendi sesiyle** kaydedilir. Böyle
 
 | 👑 **Defne'nin Sahnesi** | Kâğıt bebek giydirme (prenses / pop yıldızı kıyafetleri, saç, taç, mikrofon, sahne) ve boyama sayfaları (kale, taç, çiçek, dondurma, kelebek, kendi adı). Bebeğin saçına, tenine ya da kıyafetine dokunup rengini değiştirir. Okuma oyununda 6 sorudan en az 4'ünü ilk denemede bilince **hediye** kazanır, kilitli 22 parçadan birini seçer. Ardından bebeği sahneye çıkıp **özgün bir şarkı** söyler: sözlerde çocuğun adı ve öğrendiği harfler geçer, karaoke gibi hece hece yanar. |
 
-| 🏠 **Defne'nin Evi** | Yatak odası, mutfak, banyo, salon. Eşyaları parmakla sürükleyip yerleştirme, alttaki çekmeceden yeni eşya çekme, çekmeceye geri bırakıp kaldırma. Lamba yanar, TV açılır, küvet köpürür, çamaşır makinesi döner. Bebek ve evcil hayvanı odalarda gezer. |
+| 🏠 **Defne'nin Evi** | Yatak odası, mutfak, banyo, salon. Eşyaları parmakla sürükleyip yerleştirme, alttaki çekmeceden yeni eşya çekme, çekmeceye geri bırakıp kaldırma. Lamba yanar, TV açılır, küvet köpürür, çamaşır makinesi döner. Bebek ve evcil hayvanı odalarda gezer. 🖌️ ile eşyalar boyanır, 🎨 ile odanın duvar deseni/rengi, zemini ve pencere manzarası seçilir. Havuz bahçesi ve 4 özgün arkadaş karakter var. |
 
 - **Her şey sesli:** Çocuk henüz okuyamadığı için her ekran ne yapılacağını adıyla söyler ("Defne, sesi dinle…"). Ebeveyn bu talimatları kendi sesiyle kaydedebilir. Kayıt yoksa telefonun Türkçe sesi okur. Her ekrandaki sarı 🔊 düğmesi talimatı tekrarlar.
 - Sesli harfler **kırmızı**, sessiz harfler **mavi** gösterilir.

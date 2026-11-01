@@ -1521,3 +1521,106 @@ button {
 .thing .glow {
   pointer-events: none;
 }
+
+
+/* ================================================== v5: oda tasarımı */
+.room-tab {
+  width: 42px;
+  height: 42px;
+  font-size: 22px;
+}
+.room-tabs {
+  gap: 4px;
+}
+.modes {
+  display: flex;
+  gap: 8px;
+}
+.mode {
+  flex: 1;
+  height: 48px;
+  border-radius: 16px;
+  background: var(--card);
+  box-shadow: 0 3px 0 var(--line);
+  font-size: 26px;
+}
+.mode.on {
+  background: #fff4c7;
+  box-shadow:
+    0 0 0 3px var(--lemon),
+    0 3px 0 var(--lemon-d);
+}
+.drawer.paint .drawer-items {
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: visible;
+}
+.drawer.paint .trash {
+  display: none;
+}
+.drawer .sw {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+}
+.drawer-item .doll {
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+}
+.thing.bob svg {
+  animation: bob-item 2.4s ease-in-out infinite;
+}
+@keyframes bob-item {
+  50% {
+    transform: translateY(-5%) rotate(-2deg);
+  }
+}
+.design {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 4px 0 var(--line);
+}
+.dz-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dz-icon {
+  font-size: 22px;
+  width: 30px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.dz-list {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px 2px;
+}
+.dz {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 36px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+.dz svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.dz[data-sw] {
+  width: 36px;
+  border-radius: 50%;
+}
+.dz.on {
+  box-shadow:
+    0 0 0 3px #fff,
+    0 0 0 6px var(--ink);
+}
