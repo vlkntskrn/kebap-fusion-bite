@@ -92,14 +92,54 @@ export function stopVoice() {
 /* ------------------------------------------------------ text to speech */
 
 let trVoice: SpeechSynthesisVoice | null | undefined;
+let preferred = '';
+try {
+  preferred = localStorage.getItem('hece-ses') ?? '';
+} catch {
+  /* yok */
+}
+
+/** Bilinen erkek Türkçe sesleri (kadın sesi tercih ediliyor). */
+const MALE = /(ahmet|tolga|cem|emre|kerem|male|erkek)/i;
+
+/** Doğallık puanı: "Natural/Neural/Premium/Enhanced/Gelişmiş" sesler, sonra Google, sonra Yelda. */
+function score(v: SpeechSynthesisVoice): number {
+  const n = v.name;
+  let p = 0;
+  if (/natural|neural|online/i.test(n)) p += 60;
+  if (/premium|enhanced|geli[sş]mi[sş]|siri/i.test(n)) p += 50;
+  if (/emel|seda|filiz|yelda|google/i.test(n)) p += 20;
+  if (MALE.test(n)) p -= 100;
+  if (v.localService === false) p += 5;
+  return p;
+}
+
+export function turkishVoices(): SpeechSynthesisVoice[] {
+  try {
+    return speechSynthesis
+      .getVoices()
+      .filter((v) => v.lang.toLowerCase().replace('_', '-').startsWith('tr'))
+      .sort((a, b) => score(b) - score(a));
+  } catch {
+    return [];
+  }
+}
+
+export function setPreferredVoice(name: string) {
+  preferred = name;
+  trVoice = undefined;
+  try {
+    localStorage.setItem('hece-ses', name);
+  } catch {
+    /* yok */
+  }
+}
+export const preferredVoice = () => pickVoice()?.name ?? '';
+
 function pickVoice(): SpeechSynthesisVoice | null {
   if (trVoice) return trVoice;
-  try {
-    const voices = speechSynthesis.getVoices();
-    trVoice = voices.find((v) => v.lang.toLowerCase().startsWith('tr')) ?? null;
-  } catch {
-    trVoice = null;
-  }
+  const list = turkishVoices();
+  trVoice = list.find((v) => v.name === preferred) ?? list[0] ?? null;
   return trVoice;
 }
 try {
@@ -122,8 +162,9 @@ export function speak(text: string): Promise<void> {
     u.lang = 'tr-TR';
     const v = pickVoice();
     if (v) u.voice = v;
-    u.rate = 0.95;
-    u.pitch = 1.05;
+    // Doğal konuşma hızı; çocuk için hafif yavaş.
+    u.rate = 0.92;
+    u.pitch = 1;
     let done = false;
     const end = () => {
       if (done) return;

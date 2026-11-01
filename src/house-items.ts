@@ -263,3 +263,45 @@ export const extraItemsFor = (room: string) =>
   EXTRA.filter((e) => itemImage(e.id) && (!e.rooms || e.rooms.includes(room)))
     .sort((a, b) => Number(!!b.char) - Number(!!a.char))
     .map((e) => e.id);
+
+/* ------------------------------------------------------------ yerleşim */
+
+export type Place = 'floor' | 'wall' | 'ceiling' | 'free' | 'surface';
+
+const WALL = new Set(['tablo', 'cerceve', 'ayna', 'aynadalga', 'kedipostu', 'duvarrafi', 'rafkupa', 'kasiklik', 'havlu', 'sampuan',
+  'perde', 'duvarsaati', 'tabakdolabi', 'pencere', 'v_banyo_aksesuar_01', 'v_banyo_aksesuar_08', 'v_tabak_01', 'v_tabak_02', 'v_tabak_04', 'v_tabak_05',
+  'v_ayna_01', 'v_ayna_03', 'v_ayna_04', 'v_ayna_05', 'v_raf_01', 'v_raf_03', 'v_raf_04', 'yazitahtasi_duvar']);
+const WALL_PREFIX = ['v_tablo_'];
+const CEILING = new Set(['sarkit', 'disko', 'perilamba', 'kalpisik', 'fotoipi', 'sarkitbitki', 'v_lamba_06', 'v_bitki_08']);
+const FREE = new Set(['kalpbalon', 'v_lamba_03']);
+/** Masa ya da tezgâh üstüne de konabilen küçük eşyalar. */
+const SURFACE_PREFIX = ['v_yemek_', 'v_alet_', 'kelime_'];
+const SURFACE = new Set(['pasta', 'kahve', 'tost', 'mikrodalga', 'blender', 'mikser', 'kettle', 'caydanlik', 'meyve', 'ekmek', 'kurabiye', 'pizza',
+  'hamburger', 'salata', 'cilek', 'sut', 'limonata', 'saksiotlar', 'vazo', 'abajur', 'v_lamba_01', 'v_lamba_02', 'v_lamba_04', 'v_lamba_05',
+  'kaktus', 'bitki', 'dondurma', 'gecelambasi', 'oyunkonsolu', 'dissfircasi', 'sabunluk', 'ordek', 'unicorn', 'ayi', 'top', 'v_oyuncak_02', 'v_oyuncak_05', 'kumkovasi']);
+
+export function placeOf(id: string): Place {
+  if (CEILING.has(id)) return 'ceiling';
+  if (WALL.has(id) || WALL_PREFIX.some((p) => id.startsWith(p))) return 'wall';
+  if (FREE.has(id)) return 'free';
+  if (SURFACE.has(id) || SURFACE_PREFIX.some((p) => id.startsWith(p))) return 'surface';
+  const t = THINGS[id];
+  if (t?.flat) return 'floor';
+  return 'floor';
+}
+
+/** Eşyanın alt kenarının (y, odanın yüksekliğine göre %) olabileceği aralık. Zemin %66'da başlıyor. */
+export function yRange(id: string): [number, number] {
+  switch (placeOf(id)) {
+    case 'ceiling':
+      return [14, 40];
+    case 'wall':
+      return [18, 64];
+    case 'free':
+      return [12, 100];
+    case 'surface':
+      return [44, 100];
+    default:
+      return [70, 100];
+  }
+}

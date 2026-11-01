@@ -1568,7 +1568,8 @@ button {
   width: auto;
   margin: 0 auto;
 }
-.thing.bob svg {
+.thing.bob svg,
+.thing.bob img {
   animation: bob-item 2.4s ease-in-out infinite;
 }
 @keyframes bob-item {
@@ -2484,4 +2485,64 @@ body {
   .house .dz[data-sw] {
     width: 28px;
   }
+}
+
+.img-thing {
+  isolation: isolate;
+}
+.img-thing .tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: color;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  opacity: 0.9;
+}
+.img-thing.bob .tint {
+  animation: bob-item 2.4s ease-in-out infinite;
+}
+
+.room {
+  background: linear-gradient(180deg, #efe4d6, #e2d2bf);
+}
+.world {
+  transform-origin: 0 0;
+}
+.zoom-btns {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  z-index: 3001;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.zoom-btns button {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 3px 0 var(--line);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.window-thing svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.voice-select {
+  flex: 2;
+  min-width: 0;
+  font: inherit;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 12px;
+  border: 3px solid var(--line);
+  background: #fff;
 }

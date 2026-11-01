@@ -18,6 +18,9 @@ import {
   Recording,
   speak,
   ttsAvailable,
+  turkishVoices,
+  setPreferredVoice,
+  preferredVoice,
 } from './voice';
 import { progress, commit, record, weightedPick, shuffle } from './state';
 import { sfx } from './sfx';
@@ -615,7 +618,8 @@ function showParent() {
         <h3>Çocuğun adı</h3>
         <div class="row"><input class="name-input" value="${progress.name.replace(/"/g, '')}" maxlength="12" autocomplete="off" /><button class="big-btn sky small-btn" data-act="saveName">Kaydet</button></div>
         <label class="check"><input type="checkbox" data-act="tts" ${progress.tts ? 'checked' : ''}/> Kaydı olmayan talimatları telefonun sesi okusun</label>
-        ${ttsAvailable() ? `<button class="link" data-act="testTts">🔊 Telefon sesini dene</button>` : '<p class="muted small">Bu cihazda telefon sesi yok.</p>'}
+        ${ttsAvailable() ? `<div class="row"><select class="voice-select"></select><button class="big-btn sky small-btn" data-act="testTts">🔊 Dene</button></div>
+        <p class="muted small">En doğal ses için iPhone'da: <b>Ayarlar → Erişilebilirlik → Seslendirilen İçerik → Sesler → Türkçe → Yelda (Gelişmiş)</b> sesini indirin, sonra burada seçin. Bilgisayarda Edge tarayıcısının "Emel (Natural)" sesi çok doğaldır.</p>` : '<p class="muted small">Bu cihazda telefon sesi yok.</p>'}
       </section>
 
       <section class="panel">
@@ -673,6 +677,26 @@ function showParent() {
     commit();
   });
   on(root, 'testTts', () => speak(fill(TALK.merhaba, progress.name)));
+  const vs = root.querySelector<HTMLSelectElement>('.voice-select');
+  if (vs) {
+    const fillVoices = () => {
+      const list = turkishVoices();
+      const cur = preferredVoice();
+      vs.innerHTML = list.length
+        ? list.map((v) => `<option value="${v.name.replace(/"/g, '')}" ${v.name === cur ? 'selected' : ''}>${v.name}</option>`).join('')
+        : '<option>Türkçe ses bulunamadı</option>';
+    };
+    fillVoices();
+    try {
+      speechSynthesis.addEventListener('voiceschanged', fillVoices);
+    } catch {
+      /* yok */
+    }
+    vs.addEventListener('change', () => {
+      setPreferredVoice(vs.value);
+      void speak(fill(TALK.merhaba, progress.name));
+    });
+  }
 
   on(root, 'toggle', (el) => {
     const l = el.dataset.l!;

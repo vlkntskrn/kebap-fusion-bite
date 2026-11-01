@@ -8,7 +8,7 @@ import { show, on, talkBtn, wiggle } from './ui';
 import { sfx } from './sfx';
 import { dollSvg, currentLook, shade } from './stage';
 import { genitive, TalkId } from './content';
-import { THINGS, colorize, itemImage, extraItemsFor, isCharAsset, isLockedItem, unlockItem } from './house-items';
+import { THINGS, colorize, itemImage, extraItemsFor, isCharAsset, isLockedItem, unlockItem, yRange } from './house-items';
 import { readingChallenge } from './challenge';
 import { imgTag } from './assets';
 import { roomIcon, MODE_ICONS } from './icons';
@@ -115,11 +115,8 @@ function roomBg(id: RoomId, s: Style): string {
       ${Array.from({ length: WORLD }, (_, i) => `<path transform="translate(${i * 400} 0)" d="M30 350 q20 -8 40 0 M160 380 q20 -8 40 0 M290 344 q20 -8 40 0 M80 410 q20 -8 40 0 M260 416 q20 -8 40 0" stroke="#fff" stroke-width="4" fill="none" opacity=".7"/>`).join('')}
     </svg>`;
   }
-  // Pencereler: ortada bir tane, iki yanda birer tane.
-  const wins = [-300, 0, 300].map((dx, i) => `<g transform="translate(${WVB / 2 - 205 + dx} 0)">${windowView(s.view, `${pid}w${i}`)}</g>`).join('');
   return `${open}
     <rect width="${WVB}" height="300" fill="${s.wallColor}"/><rect width="${WVB}" height="300" fill="url(#w-${pid})"/>
-    ${wins}
     <rect y="290" width="${WVB}" height="150" fill="${s.floorColor}"/><rect y="290" width="${WVB}" height="150" fill="url(#f-${pid})"/><rect y="286" width="${WVB}" height="10" fill="#fff" opacity=".85"/>
   </svg>`;
 }
@@ -214,12 +211,25 @@ function house(): Record<string, Inst[]> {
     for (const list of Object.values(progress.house)) for (const i of list) i.x += 100;
     progress.houseV = 2;
   }
+  if ((progress.houseV ?? 1) < 3) {
+    for (const [rid, list] of Object.entries(progress.house)) {
+      for (const i of list) {
+        const [y0, y1] = yRange(i.id);
+        i.y = Math.max(y0, Math.min(y1, i.y));
+      }
+      if (rid !== 'havuz' && !list.some((i) => i.id === 'pencere'))
+        [75, 150, 225].forEach((x, k) => list.push({ u: nextU(list) + k, id: 'pencere', x, y: 33 }));
+    }
+    progress.houseV = 3;
+  }
   for (const r of ROOMS) {
     if (!progress.house[r.id]) {
       progress.house[r.id] = r.start.map(([id, x, y], i) => ({ u: i + 1, id, x: x + 100, y }));
       progress.house[r.id].push({ u: 999, id: 'bebek', x: 150, y: 97 });
+      if (r.id !== 'havuz') [75, 150, 225].forEach((x, k) => progress.house![r.id].push({ u: 1000 + k, id: 'pencere', x, y: 33 }));
     }
   }
+  if (!localStorage.getItem('hece-hece-v1')?.includes('"house"')) commit();
   return progress.house;
 }
 
@@ -234,6 +244,8 @@ const nextU = (list: Inst[]) => list.reduce((m, i) => Math.max(m, i.u), 0) + 1;
 /* --------------------------------------------------------------- screen */
 
 let current: RoomId = 'yatak';
+/** Oda yakınlığı: 1 = oda ekran yüksekliğini doldurur; varsayılan biraz uzaktan. */
+let zoom = 0.85;
 
 export function showHouse(back: () => void) {
   sfx.tap();
@@ -244,7 +256,7 @@ export function showHouse(back: () => void) {
       <header class="bar"><button class="round-btn" data-act="back">⬅</button>
         <div class="room-tabs">${ROOMS.map((r) => `<button class="room-tab" data-room="${r.id}">${roomIcon(r.id)}</button>`).join('')}</div>
         ${talkBtn('oda')}</header>
-      <div class="room"><div class="world"><div class="room-bg-wrap"></div><div class="layer"></div></div><div class="pan-hint">⟷</div></div>
+      <div class="room"><div class="world"><div class="room-bg-wrap"></div><div class="layer"></div></div><div class="pan-hint">⟷</div><div class="zoom-btns"><button data-zoom="in" aria-label="Yakınlaştır">＋</button><button data-zoom="out" aria-label="Uzaklaştır">－</button></div></div>
       <div class="modes">
         <button class="mode" data-mode="tasi">${imgTag('ui_mod_tasi', MODE_ICONS.tasi)}</button>
         <button class="mode" data-mode="boya">${imgTag('ui_mod_boya', MODE_ICONS.boya)}</button>
@@ -265,17 +277,24 @@ export function showHouse(back: () => void) {
   const list = () => house()[current];
 
   const thingHtml = (inst: Inst) => {
+    if (inst.id === 'pencere')
+      return `<div class="thing window-thing" data-u="${inst.u}" style="--w:${29.5 / WORLD}%"><svg viewBox="146 36 118 108" xmlns="http://www.w3.org/2000/svg">${windowView(style(current).view, `pw${inst.u}${++bgSeq}`)}</svg></div>`;
     if (inst.id === 'bebek') return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${30 / WORLD}%">${dollSvg(currentLook(), 'doll', { bg: false })}</div>`;
     const f = FRIENDS[inst.id];
     if (f) return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${f.w / WORLD}%">${dollSvg(f.look, 'doll', { bg: false })}</div>`;
     const t = THINGS[inst.id];
     if (!t) return '';
     const img = itemImage(inst.id);
-    if (img) return `<div class="thing img-thing ${t.bob ? 'bob' : ''}" data-u="${inst.u}" style="--w:${t.w / WORLD}%"><img src="${img}" alt="" draggable="false"/></div>`;
+    if (img)
+      return `<div class="thing img-thing ${t.bob ? 'bob' : ''}" data-u="${inst.u}" style="--w:${t.w / WORLD}%"><img src="${img}" alt="" draggable="false"/>${
+        inst.c ? `<span class="tint" style="background:${inst.c};-webkit-mask-image:url('${img}');mask-image:url('${img}')"></span>` : ''
+      }</div>`;
     return `<div class="thing ${inst.on ? 'on' : ''} ${t.bob ? 'bob' : ''}" data-u="${inst.u}" style="--w:${t.w / WORLD}%;${inst.c ? `--c:${inst.c}` : ''}"><svg viewBox="${t.vb}" xmlns="http://www.w3.org/2000/svg">${OL}<g filter="url(#tol)">${colorize(t)}</g></svg></div>`;
   };
 
   const thumb = (id: string) => {
+    if (id === 'pencere') return `<svg viewBox="146 36 118 108">${windowView(style(current).view, `pt${++bgSeq}`)}</svg>`;
+    if (id === 'bebek') return dollSvg(currentLook(), 'doll', { bg: false });
     const f = FRIENDS[id];
     if (f) return dollSvg(f.look, 'doll', { bg: false });
     const img = itemImage(id);
@@ -296,7 +315,7 @@ export function showHouse(back: () => void) {
     drawerItems.innerHTML =
       mode === 'boya'
         ? PALETTE.map((c) => `<button class="sw ${c === brush ? 'on' : ''}" data-color="${c}" style="background:${c}"></button>`).join('')
-        : [...new Set([...extraItemsFor(current).filter(isCharAsset), ...room().tray, ...extraItemsFor(current), ...COMMON])].map((id) => `<button class="drawer-item ${isLockedItem(id) ? 'locked' : ''}" data-id="${id}">${thumb(id)}${isLockedItem(id) ? '<span class="lock-badge">🔒</span>' : ''}</button>`).join('');
+        : [...new Set([...(list().some((i) => i.id === 'bebek') ? [] : ['bebek']), ...(current === 'havuz' ? [] : ['pencere']), ...extraItemsFor(current).filter(isCharAsset), ...room().tray, ...extraItemsFor(current), ...COMMON])].map((id) => `<button class="drawer-item ${isLockedItem(id) ? 'locked' : ''}" data-id="${id}">${thumb(id)}${isLockedItem(id) ? '<span class="lock-badge">🔒</span>' : ''}</button>`).join('');
     drawerItems.scrollLeft = 0;
     drawer.classList.toggle('paint', mode === 'boya');
   };
@@ -320,12 +339,16 @@ export function showHouse(back: () => void) {
       ${current === 'havuz' ? '' : `<div class="dz-row"><span class="dz-icon">🪟</span><div class="dz-list">${VIEWS.map((v) => opt('view', v, viewMini(v))).join('')}</div></div>`}`;
   };
 
+  const renderLayer = () => {
+    layer.innerHTML = list().map(thingHtml).join('');
+    layer.querySelectorAll<HTMLElement>('.thing').forEach((el) => place(el, list().find((i) => i.u === Number(el.dataset.u))!));
+  };
+
   const render = () => {
     root.querySelectorAll('.room-tab').forEach((b) => b.classList.toggle('on', (b as HTMLElement).dataset.room === current));
     root.querySelectorAll('.mode').forEach((b) => b.classList.toggle('on', (b as HTMLElement).dataset.mode === mode));
     renderBg();
-    layer.innerHTML = list().map(thingHtml).join('');
-    layer.querySelectorAll<HTMLElement>('.thing').forEach((el) => place(el, list().find((i) => i.u === Number(el.dataset.u))!));
+    renderLayer();
     drawer.classList.toggle('hidden', mode === 'tasarla');
     design.classList.toggle('hidden', mode !== 'tasarla');
     if (mode === 'tasarla') renderDesign();
@@ -341,6 +364,7 @@ export function showHouse(back: () => void) {
     commit();
     sfx.paint();
     renderBg();
+    if (b.dataset.key === 'view') renderLayer();
     const scroll = [...design.querySelectorAll<HTMLElement>('.dz-list')].map((l) => l.scrollLeft);
     renderDesign();
     design.querySelectorAll<HTMLElement>('.dz-list').forEach((l, i) => (l.scrollLeft = scroll[i] ?? 0));
@@ -364,17 +388,39 @@ export function showHouse(back: () => void) {
   };
   /* ---- odayı sağa sola kaydırma */
   let panX = 0;
-  const maxPan = () => Math.max(0, world.offsetWidth - roomEl.clientWidth);
+  const scaledW = () => world.offsetWidth * zoom;
+  const maxPan = () => Math.max(0, scaledW() - roomEl.clientWidth);
   const setPan = (v: number) => {
     panX = Math.max(0, Math.min(maxPan(), v));
-    world.style.transform = `translateX(${-panX}px)`;
+    const W = scaledW();
+    const tx = W < roomEl.clientWidth ? (roomEl.clientWidth - W) / 2 : -panX;
+    const ty = (roomEl.clientHeight * (1 - zoom)) / 2;
+    world.style.transform = `translate(${tx}px, ${ty}px) scale(${zoom})`;
   };
   const centerPan = () => setPan(maxPan() / 2);
+  /** Yakınlaştırma: ekranın ortası sabit kalır. */
+  const setZoom = (z: number) => {
+    const old = zoom;
+    // En çok, odanın tamamı ekrana sığana kadar uzaklaş.
+    const fit = roomEl.clientWidth / (world.offsetWidth || 1);
+    zoom = Math.max(Math.min(1, fit), Math.min(1.25, z));
+    const mid = (panX + roomEl.clientWidth / 2) / (world.offsetWidth * old || 1);
+    setPan(mid * scaledW() - roomEl.clientWidth / 2);
+  };
   /** Ekranda görünen x aralığı (dünya birimi). */
   const visibleX = () => {
-    const w = world.offsetWidth || 1;
-    return { a: (panX / w) * 100 * WORLD, b: ((panX + roomEl.clientWidth) / w) * 100 * WORLD };
+    const W = scaledW() || 1;
+    if (W <= roomEl.clientWidth) return { a: 0, b: 100 * WORLD };
+    return { a: (panX / W) * 100 * WORLD, b: ((panX + roomEl.clientWidth) / W) * 100 * WORLD };
   };
+  root.querySelector('[data-zoom="in"]')!.addEventListener('click', () => {
+    sfx.tap();
+    setZoom(zoom + 0.15);
+  });
+  root.querySelector('[data-zoom="out"]')!.addEventListener('click', () => {
+    sfx.tap();
+    setZoom(zoom - 0.15);
+  });
   window.addEventListener('resize', () => setPan(panX));
   const overDrawer = (cx: number, cy: number) => {
     if (mode !== 'tasi') return false;
@@ -394,7 +440,8 @@ export function showHouse(back: () => void) {
       if (!moved && Math.hypot(p.x - start.x, p.y - start.y) > 2) moved = true;
       if (!moved) return;
       inst.x = Math.max(2, Math.min(100 * WORLD - 2, p.x - off.x));
-      inst.y = Math.max(8, Math.min(100, p.y - off.y));
+      const [y0, y1] = yRange(inst.id);
+      inst.y = Math.max(y0, Math.min(y1, p.y - off.y));
       place(el, inst);
       drawer.classList.toggle('drop', overDrawer(e.clientX, e.clientY));
     };
@@ -405,10 +452,11 @@ export function showHouse(back: () => void) {
       el.classList.remove('dragging');
       drawer.classList.remove('drop');
       if (!moved) return tap(el, inst);
-      if (overDrawer(e.clientX, e.clientY) && inst.id !== 'bebek') {
+      if (overDrawer(e.clientX, e.clientY)) {
         house()[current] = list().filter((i) => i !== inst);
         el.animate([{ transform: 'translate(-50%,-100%) scale(1)', opacity: 1 }, { transform: 'translate(-50%,-100%) scale(0.2)', opacity: 0 }], { duration: 250 }).finished.then(() => el.remove());
         sfx.soft();
+        if (inst.id === 'bebek') renderDrawer();
       } else {
         sfx.tap();
       }
@@ -423,7 +471,18 @@ export function showHouse(back: () => void) {
     const isChar = inst.id === 'bebek' || !!FRIENDS[inst.id] || isCharAsset(inst.id);
     if (mode === 'boya' && !isChar) {
       const t = THINGS[inst.id];
-      if (t?.main && !itemImage(inst.id)) {
+      if (t && itemImage(inst.id)) {
+        // Görsel eşyalar: rengi gölge ve çizgileri koruyarak üstüne uygula; beyaz = boyayı sil.
+        inst.c = brush === '#ffffff' ? undefined : brush;
+        commit();
+        sfx.paint();
+        const fresh = document.createElement('div');
+        fresh.innerHTML = thingHtml(inst);
+        const node = fresh.firstElementChild as HTMLElement;
+        el.replaceWith(node);
+        place(node, inst);
+        node.animate([{ transform: 'translate(-50%,-100%) scale(1)' }, { transform: 'translate(-50%,-100%) scale(1.08)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 250 });
+      } else if (t?.main) {
         inst.c = brush;
         el.style.setProperty('--c', brush);
         commit();
@@ -451,13 +510,34 @@ export function showHouse(back: () => void) {
     }
   }
 
+  const touches = new Map<number, number[]>();
+  let pinch: { d: number; z: number } | null = null;
   roomEl.addEventListener('pointerdown', (ev) => {
-    if ((ev.target as Element).closest('.thing')) return;
-    const sx = ev.clientX;
-    const start = panX;
+    if ((ev.target as Element).closest('.thing, .zoom-btns')) return;
+    touches.set(ev.pointerId, [ev.clientX, ev.clientY]);
+    if (touches.size === 2) {
+      const [a, b] = [...touches.values()];
+      pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]) || 1, z: zoom };
+    }
+    let sx = ev.clientX;
+    let start = panX;
     roomEl.classList.add('panning');
-    const move = (e: PointerEvent) => setPan(start - (e.clientX - sx));
-    const up = () => {
+    const move = (e: PointerEvent) => {
+      if (!touches.has(e.pointerId)) return;
+      touches.set(e.pointerId, [e.clientX, e.clientY]);
+      if (pinch && touches.size >= 2) {
+        const [a, b] = [...touches.values()];
+        setZoom((pinch.z * Math.hypot(a[0] - b[0], a[1] - b[1])) / pinch.d);
+        sx = e.clientX;
+        start = panX;
+        return;
+      }
+      if (e.pointerId === ev.pointerId) setPan(start - (e.clientX - sx));
+    };
+    const up = (e: PointerEvent) => {
+      if (e.pointerId !== ev.pointerId) return;
+      touches.delete(ev.pointerId);
+      if (touches.size < 2) pinch = null;
       roomEl.classList.remove('panning');
       window.removeEventListener('pointermove', move);
       window.removeEventListener('pointerup', up);
@@ -468,6 +548,11 @@ export function showHouse(back: () => void) {
     window.addEventListener('pointercancel', up);
   });
   roomEl.addEventListener('wheel', (e) => {
+    if (e.ctrlKey) {
+      setZoom(zoom - e.deltaY * 0.01);
+      e.preventDefault();
+      return;
+    }
     setPan(panX + (Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY));
     e.preventDefault();
   }, { passive: false });
@@ -480,9 +565,11 @@ export function showHouse(back: () => void) {
   });
 
   const addInst = (id: string, x: number, y: number): [HTMLElement, Inst] => {
-    const inst: Inst = { u: nextU(list()), id, x, y };
+    const [y0, y1] = yRange(id);
+    const inst: Inst = { u: nextU(list()), id, x, y: Math.max(y0, Math.min(y1, y)) };
     list().push(inst);
     layer.insertAdjacentHTML('beforeend', thingHtml(inst));
+    if (id === 'bebek') queueMicrotask(renderDrawer);
     const node = layer.lastElementChild as HTMLElement;
     place(node, inst);
     return [node, inst];
