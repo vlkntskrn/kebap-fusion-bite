@@ -5,13 +5,16 @@
 import { genitive } from './content';
 import { progress, commit } from './state';
 import { talk, bindTalkButtons } from './talk';
-import { show, on, wiggle, bounce, confetti, talkBtn } from './ui';
+import { show, on, wiggle, bounce, confetti, talkBtn, h } from './ui';
+import { buildSong, playSong, SongHandle } from './music';
+import { stopVoice, wait } from './voice';
 import { sfx } from './sfx';
 
 /* --------------------------------------------------------------- colors */
 
 const PALETTE = ['#ff5d8f', '#ff8fd8', '#c77dff', '#7b5cff', '#4d96ff', '#5fd3f3', '#5fd39a', '#b5e550', '#ffd93d', '#ffa94d', '#ff6b6b', '#a0522d', '#3d3553', '#ffffff'];
-const HAIR = ['#3b2418', '#6b3e26', '#a8642f', '#f2c14e', '#1f1b24', '#8e5cff', '#ff7eb6', '#4d96ff', '#ff6b4a'];
+// Doğal saç renkleri + boyamak için canlı renkler.
+const HAIR = ['#1f1b24', '#3b2418', '#6b3e26', '#a8642f', '#f2c14e', '#ff6b4a', '#8e5cff', '#c77dff', '#ff7eb6', '#ff5d8f', '#4d96ff', '#5fd3f3', '#5fd39a', '#ffd93d'];
 const SKIN = ['#ffe0c7', '#f6c9a4', '#e3a777', '#c68653', '#8d5a3b', '#5e3a26'];
 
 function shade(hex: string, amt: number): string {
@@ -29,7 +32,8 @@ type Look = Record<string, { item: string; color: string }>;
 
 interface Item {
   id: string;
-  stars: number;
+  /** Baştan açık mı; değilse okuma oyunlarından kazanılan hediyeyle açılır. */
+  free?: boolean;
 }
 interface Cat {
   id: string;
@@ -39,14 +43,33 @@ interface Cat {
 }
 
 const CATS: Cat[] = [
-  { id: 'kiyafet', icon: '👗', colors: PALETTE, items: [{ id: 'prenses', stars: 0 }, { id: 'pop', stars: 0 }, { id: 'tisort', stars: 0 }, { id: 'tulum', stars: 5 }, { id: 'kahraman', stars: 12 }] },
-  { id: 'sac', icon: '💇‍♀️', colors: HAIR, items: [{ id: 'uzun', stars: 0 }, { id: 'orgu', stars: 0 }, { id: 'atkuyrugu', stars: 0 }, { id: 'topuz', stars: 3 }, { id: 'kivircik', stars: 8 }] },
-  { id: 'taki', icon: '👑', colors: PALETTE, items: [{ id: 'tac', stars: 0 }, { id: 'yildiz', stars: 0 }, { id: 'cicek', stars: 6 }, { id: 'kulaklik', stars: 10 }, { id: 'yok', stars: 0 }] },
-  { id: 'elde', icon: '🎤', colors: PALETTE, items: [{ id: 'mikrofon', stars: 0 }, { id: 'degnek', stars: 15 }, { id: 'yok', stars: 0 }] },
-  { id: 'ayakkabi', icon: '👟', colors: PALETTE, items: [{ id: 'babet', stars: 0 }, { id: 'spor', stars: 0 }, { id: 'cizme', stars: 4 }] },
-  { id: 'fon', icon: '🏰', colors: PALETTE, items: [{ id: 'sahne', stars: 0 }, { id: 'kale', stars: 0 }, { id: 'gece', stars: 20 }] },
-  { id: 'ten', icon: '🙂', colors: SKIN, items: [{ id: 'ten', stars: 0 }] },
+  { id: 'kiyafet', icon: '👗', colors: PALETTE, items: [{ id: 'prenses', free: true }, { id: 'pop', free: true }, { id: 'tisort' }, { id: 'tutu' }, { id: 'sim' }, { id: 'tulum' }, { id: 'kahraman' }] },
+  { id: 'sac', icon: '💇‍♀️', colors: HAIR, items: [{ id: 'orgu', free: true }, { id: 'uzun', free: true }, { id: 'atkuyrugu' }, { id: 'kisa' }, { id: 'topuz' }, { id: 'kivircik' }] },
+  { id: 'ten', icon: '🙂', colors: SKIN, items: [{ id: 'ten', free: true }] },
+  { id: 'taki', icon: '👑', colors: PALETTE, items: [{ id: 'tac', free: true }, { id: 'yok', free: true }, { id: 'yildiz' }, { id: 'kurdele' }, { id: 'cicek' }, { id: 'gozluk' }, { id: 'kulaklik' }] },
+  { id: 'elde', icon: '🎤', colors: PALETTE, items: [{ id: 'mikrofon', free: true }, { id: 'yok', free: true }, { id: 'buket' }, { id: 'degnek' }, { id: 'gitar' }] },
+  { id: 'ayakkabi', icon: '👟', colors: PALETTE, items: [{ id: 'babet', free: true }, { id: 'spor' }, { id: 'cizme' }] },
+  { id: 'fon', icon: '🏰', colors: PALETTE, items: [{ id: 'sahne', free: true }, { id: 'kale' }, { id: 'gokkusagi' }, { id: 'gece' }] },
 ];
+
+/** Önceki sürümde yıldızla açılan parçalar: güncellemede çocuğun kazandıkları kaybolmasın. */
+const OLD_STAR_UNLOCKS: Record<string, number> = {
+  'kiyafet:tisort': 0, 'kiyafet:tulum': 5, 'kiyafet:kahraman': 12, 'sac:atkuyrugu': 0, 'sac:topuz': 3, 'sac:kivircik': 8,
+  'taki:yildiz': 0, 'taki:cicek': 6, 'taki:kulaklik': 10, 'elde:degnek': 15, 'ayakkabi:spor': 0, 'ayakkabi:cizme': 4, 'fon:kale': 0, 'fon:gece': 20,
+};
+
+export function isUnlocked(cat: string, item: string): boolean {
+  const c = CATS.find((x) => x.id === cat);
+  const it = c?.items.find((i) => i.id === item);
+  return !!it?.free || (progress.unlocked ?? []).includes(`${cat}:${item}`);
+}
+
+export function lockedItems(): { cat: string; item: string }[] {
+  return CATS.flatMap((c) => c.items.filter((i) => !isUnlocked(c.id, i.id)).map((i) => ({ cat: c.id, item: i.id })));
+}
+
+export const pendingGifts = () => progress.gifts ?? 0;
+
 
 const DEFAULT_LOOK: Look = {
   kiyafet: { item: 'prenses', color: '#c77dff' },
@@ -59,12 +82,20 @@ const DEFAULT_LOOK: Look = {
 };
 
 function look(): Look {
+  if (!progress.unlocked) {
+    progress.unlocked = progress.doll ? Object.entries(OLD_STAR_UNLOCKS).filter(([, st]) => progress.stars >= st).map(([k]) => k) : [];
+  }
   progress.doll ??= structuredClone(DEFAULT_LOOK);
   for (const k of Object.keys(DEFAULT_LOOK)) progress.doll[k] ??= { ...DEFAULT_LOOK[k] };
   return progress.doll;
 }
 
 function background(item: string, c: string): string {
+  if (item === 'gokkusagi')
+    return `<rect width="300" height="480" fill="${shade(c, 0.8)}"/>
+      ${['#ff6b6b', '#ffa94d', '#ffd93d', '#5fd39a', '#4d96ff', '#c77dff'].map((col, i) => `<path d="M${-10 + i * 14} 330 A${160 - i * 14} ${160 - i * 14} 0 0 1 ${310 - i * 14} 330" stroke="${col}" stroke-width="14" fill="none"/>`).join('')}
+      <g fill="#fff"><circle cx="40" cy="330" r="26"/><circle cx="70" cy="324" r="30"/><circle cx="260" cy="330" r="26"/><circle cx="232" cy="324" r="30"/></g>
+      <rect y="400" width="300" height="80" fill="#9be08f"/>`;
   if (item === 'kale')
     return `<rect width="300" height="480" fill="${shade(c, 0.75)}"/>
       <circle cx="250" cy="60" r="28" fill="#fff6b0"/>
@@ -98,6 +129,8 @@ function hairBack(item: string, c: string): string {
       return `${cap}<path d="M188 66 Q262 84 246 214 Q236 262 218 236 Q238 136 184 96 Z" fill="${c}"/><circle cx="192" cy="72" r="10" fill="#ff5d8f"/>`;
     case 'topuz':
       return `${cap}<circle cx="96" cy="66" r="30" fill="${c}"/><circle cx="204" cy="66" r="30" fill="${c}"/>`;
+    case 'kisa':
+      return `<path d="M84 122 Q82 52 150 48 Q218 52 216 122 L218 182 Q204 198 186 188 L114 188 Q96 198 82 182 Z" fill="${c}"/>`;
     case 'kivircik':
       return Array.from({ length: 16 }, (_, i) => {
         const a = (i / 16) * Math.PI * 2;
@@ -144,6 +177,14 @@ function outfit(item: string, c: string): string {
       return `<path d="M122 196 L178 196 L192 330 L108 330 Z" fill="${c}"/>
         <rect x="120" y="262" width="60" height="12" rx="4" fill="#ffd93d"/>
         <path d="M150 212 l6 12 13 2 -10 9 3 13 -12 -7 -12 7 3 -13 -10 -9 13 -2Z" fill="#ffd93d"/>`;
+    case 'tutu':
+      return `<path d="M124 196 Q150 188 176 196 L174 262 L126 262 Z" fill="${c}"/>
+        ${[0, 1, 2].map((i) => `<ellipse cx="150" cy="${262 + i * 9}" rx="${70 - i * 8}" ry="${20 - i * 3}" fill="${i % 2 ? l : c}" opacity=".95"/>`).join('')}
+        <circle cx="150" cy="214" r="9" fill="${l}"/><circle cx="141" cy="214" r="6" fill="${d}"/><circle cx="159" cy="214" r="6" fill="${d}"/>`;
+    case 'sim':
+      return `<path d="M124 196 Q150 188 176 196 L188 300 Q200 380 214 430 Q150 446 86 430 Q100 380 112 300 Z" fill="${c}"/>
+        ${Array.from({ length: 18 }, (_, i) => `<circle cx="${112 + ((i * 37) % 78)}" cy="${210 + ((i * 53) % 210)}" r="${2 + (i % 3)}" fill="#fff" opacity=".8"/>`).join('')}
+        <path d="M124 196 Q150 214 176 196" stroke="${l}" stroke-width="6" fill="none"/>`;
     default: // tisort
       return `<path d="M118 258 L182 258 L198 322 L102 322 Z" fill="${d}"/>
         <path d="M120 196 L180 196 L182 262 L118 262 Z" fill="${c}"/>
@@ -177,6 +218,14 @@ function accessory(item: string, c: string): string {
           return `<circle cx="${x}" cy="${y}" r="11" fill="${col}"/><circle cx="${x}" cy="${y}" r="4" fill="#ffd93d"/>`;
         })
         .join('');
+    case 'kurdele':
+      return `<path d="M150 58 L112 36 L116 82 Z M150 58 L188 36 L184 82 Z" fill="${c}" stroke="${shade(c, -0.3)}" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="150" cy="58" r="10" fill="${shade(c, -0.2)}"/>`;
+    case 'gozluk': {
+      const heart = (x: number, y: number, r: number) =>
+        `<path d="M${x} ${y + r} C${x - r * 1.7} ${y} ${x - r * 0.9} ${y - r * 1.3} ${x} ${y - r * 0.35} C${x + r * 0.9} ${y - r * 1.3} ${x + r * 1.7} ${y} ${x} ${y + r}Z" fill="${c}" opacity=".85" stroke="${shade(c, -0.35)}" stroke-width="3"/>`;
+      return `${heart(128, 130, 15)}${heart(172, 130, 15)}<path d="M140 126 Q150 120 160 126" stroke="${shade(c, -0.35)}" stroke-width="3" fill="none"/>`;
+    }
     case 'kulaklik':
       return `<path d="M90 124 Q88 34 150 34 Q212 34 210 124" stroke="${c}" stroke-width="10" fill="none" stroke-linecap="round"/>
         <rect x="76" y="106" width="22" height="40" rx="10" fill="${c}"/><rect x="202" y="106" width="22" height="40" rx="10" fill="${c}"/>
@@ -189,6 +238,14 @@ function handheld(item: string, c: string): string {
   if (item === 'mikrofon')
     return `<path d="M203 296 L214 266" stroke="#4a4458" stroke-width="8" stroke-linecap="round"/>
       <circle cx="217" cy="258" r="13" fill="${c}"/><path d="M208 252 Q217 246 226 252" stroke="#fff" stroke-width="3" fill="none" opacity=".6"/>`;
+  if (item === 'buket')
+    return `<path d="M200 296 L212 252 M204 296 L226 258 M200 296 L198 254" stroke="#3f9a52" stroke-width="4"/>
+      <circle cx="212" cy="248" r="10" fill="${c}"/><circle cx="228" cy="256" r="9" fill="#ff8fd8"/><circle cx="196" cy="250" r="9" fill="#ffd93d"/>
+      <circle cx="212" cy="248" r="3" fill="#fff"/>`;
+  if (item === 'gitar')
+    return `<g transform="rotate(-35 205 300)"><rect x="200" y="200" width="10" height="80" rx="3" fill="#7a4b2a"/>
+      <ellipse cx="205" cy="300" rx="24" ry="28" fill="${c}"/><ellipse cx="205" cy="272" rx="18" ry="18" fill="${c}"/>
+      <circle cx="205" cy="292" r="8" fill="#3d3553"/><rect x="196" y="194" width="18" height="12" rx="3" fill="#5e3a1f"/></g>`;
   if (item === 'degnek')
     return `<path d="M203 298 L228 236" stroke="#d6c3ff" stroke-width="6" stroke-linecap="round"/>
       <path d="M230 214 l7 14 15 2 -11 10 3 15 -14 -7 -14 7 3 -15 -11 -10 15 -2Z" fill="${c}"/>`;
@@ -199,17 +256,17 @@ export function dollSvg(lk: Look, cls = 'doll'): string {
   const g = (k: string) => lk[k];
   const skin = g('ten').color;
   return `<svg class="${cls}" viewBox="0 0 300 480" xmlns="http://www.w3.org/2000/svg">
-    ${background(g('fon').item, g('fon').color)}
+    <g data-part="fon">${background(g('fon').item, g('fon').color)}</g>
     <ellipse cx="150" cy="448" rx="80" ry="10" fill="#000" opacity=".15"/>
     <g class="doll-body">
-      ${hairBack(g('sac').item, g('sac').color)}
-      ${outfitBack(g('kiyafet').item, g('kiyafet').color)}
-      <rect x="128" y="316" width="18" height="118" rx="8" fill="${skin}"/><rect x="154" y="316" width="18" height="118" rx="8" fill="${skin}"/>
-      ${shoes(g('ayakkabi').item, g('ayakkabi').color)}
-      <path d="M121 202 Q102 242 98 290" stroke="${skin}" stroke-width="17" stroke-linecap="round" fill="none"/>
-      <path d="M179 202 Q198 242 202 290" stroke="${skin}" stroke-width="17" stroke-linecap="round" fill="none"/>
-      ${outfit(g('kiyafet').item, g('kiyafet').color)}
-      <circle cx="98" cy="294" r="11" fill="${skin}"/><circle cx="202" cy="294" r="11" fill="${skin}"/>
+      <g data-part="sac">${hairBack(g('sac').item, g('sac').color)}</g>
+      <g data-part="kiyafet">${outfitBack(g('kiyafet').item, g('kiyafet').color)}</g>
+      <g data-part="ten"><rect x="128" y="316" width="18" height="118" rx="8" fill="${skin}"/><rect x="154" y="316" width="18" height="118" rx="8" fill="${skin}"/></g>
+      <g data-part="ayakkabi">${shoes(g('ayakkabi').item, g('ayakkabi').color)}</g>
+      <g data-part="ten"><path d="M121 202 Q102 242 98 290" stroke="${skin}" stroke-width="17" stroke-linecap="round" fill="none"/>
+      <path d="M179 202 Q198 242 202 290" stroke="${skin}" stroke-width="17" stroke-linecap="round" fill="none"/></g>
+      <g data-part="kiyafet">${outfit(g('kiyafet').item, g('kiyafet').color)}</g>
+      <g data-part="ten"><circle cx="98" cy="294" r="11" fill="${skin}"/><circle cx="202" cy="294" r="11" fill="${skin}"/>
       <rect x="141" y="168" width="18" height="30" rx="6" fill="${skin}"/>
       <circle cx="92" cy="132" r="10" fill="${skin}"/><circle cx="208" cy="132" r="10" fill="${skin}"/>
       <circle cx="150" cy="122" r="60" fill="${skin}"/>
@@ -217,10 +274,10 @@ export function dollSvg(lk: Look, cls = 'doll'): string {
       <circle cx="131" cy="125" r="3.5" fill="#fff"/><circle cx="175" cy="125" r="3.5" fill="#fff"/></g>
       <path d="M117 116 Q127 110 136 115 M164 115 Q173 110 183 116" stroke="#2d2440" stroke-width="3" fill="none" stroke-linecap="round"/>
       <circle cx="114" cy="148" r="9" fill="#ff8fa3" opacity=".45"/><circle cx="186" cy="148" r="9" fill="#ff8fa3" opacity=".45"/>
-      <path d="M137 152 Q150 166 163 152" stroke="#d9435a" stroke-width="4" fill="none" stroke-linecap="round"/>
-      ${hairFront(g('sac').item, g('sac').color)}
-      ${accessory(g('taki').item, g('taki').color)}
-      ${handheld(g('elde').item, g('elde').color)}
+      <path d="M137 152 Q150 166 163 152" stroke="#d9435a" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+      <g data-part="sac">${hairFront(g('sac').item, g('sac').color)}</g>
+      <g data-part="taki">${accessory(g('taki').item, g('taki').color)}</g>
+      <g data-part="elde">${handheld(g('elde').item, g('elde').color)}</g>
     </g>
   </svg>`;
 }
@@ -236,6 +293,7 @@ export function showStage(home: () => void) {
     <div class="screen stage-menu">
       <header class="bar"><button class="round-btn" data-act="home">⬅</button><h2>${genitive(progress.name)} Sahnesi</h2>${talkBtn('sahne')}</header>
       <div class="pill center-pill">⭐ ${progress.stars}</div>
+      ${pendingGifts() > 0 ? `<button class="gift-btn" data-act="gift">🎁<b>${pendingGifts()}</b></button>` : ''}
       <div class="stage-choices">
         <button class="stage-card grape" data-act="dress">${dollSvg(look(), 'doll mini')}<span>👗</span></button>
         <button class="stage-card pink" data-act="paint"><span class="big">🖍️</span><span>🎨</span></button>
@@ -245,7 +303,8 @@ export function showStage(home: () => void) {
   on(root, 'home', goHome);
   on(root, 'dress', showDressUp);
   on(root, 'paint', showPaintMenu);
-  void talk('sahne');
+  on(root, 'gift', () => showGiftPicker(() => showStage(goHome)));
+  void talk(pendingGifts() > 0 ? 'hediye' : 'sahne');
 }
 
 function showDressUp() {
@@ -272,11 +331,11 @@ function showDressUp() {
       cat.items.length > 1
         ? cat.items
             .map((it) => {
-              const locked = progress.stars < it.stars;
+              const locked = !isUnlocked(cat.id, it.id);
               const preview = { ...look(), [cat.id]: { item: it.id, color: cur.color } };
               const inner = it.id === 'yok' ? '<span class="none">🚫</span>' : dollSvg(preview, 'doll thumb');
               return `<button class="item ${cur.item === it.id ? 'on' : ''} ${locked ? 'locked' : ''}" data-item="${it.id}">
-                ${inner}${locked ? `<span class="lock">🔒 ${it.stars}⭐</span>` : ''}</button>`;
+                ${inner}${locked ? `<span class="lock">🎁</span>` : ''}</button>`;
             })
             .join('')
         : '';
@@ -294,7 +353,7 @@ function showDressUp() {
     const b = (e.target as HTMLElement).closest<HTMLElement>('[data-item]');
     if (!b) return;
     const it = cat.items.find((i) => i.id === b.dataset.item)!;
-    if (progress.stars < it.stars) {
+    if (!isUnlocked(cat.id, it.id)) {
       wiggle(b);
       sfx.soft();
       void talk('kilitli');
@@ -316,8 +375,17 @@ function showDressUp() {
     renderDoll();
     renderPicker();
   });
-  // Bebeğe dokununca zıplar; mikrofon varsa şarkı söyler.
-  wrap.addEventListener('click', () => {
+  // Bebeğin bir parçasına dokununca o parça seçilir (saç, ten, kıyafet…); arka plana dokununca zıplar.
+  wrap.addEventListener('click', (e) => {
+    const part = (e.target as Element).closest<SVGGElement>('[data-part]')?.dataset.part;
+    if (part && part !== 'fon' && part !== cat.id) {
+      cat = CATS.find((c) => c.id === part)!;
+      sfx.tap();
+      renderPicker();
+      wrap.querySelectorAll(`[data-part="${part}"]`).forEach((g) => g.animate([{ opacity: 1 }, { opacity: 0.4 }, { opacity: 1 }], { duration: 400 }));
+      root.querySelector('.swatches')?.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.05)' }, { transform: 'scale(1)' }], { duration: 400 });
+      return;
+    }
     const body = wrap.querySelector('.doll-body');
     body?.animate(
       [{ transform: 'translateY(0)' }, { transform: 'translateY(-26px) rotate(-3deg)' }, { transform: 'translateY(0)' }, { transform: 'translateY(-12px) rotate(3deg)' }, { transform: 'translateY(0)' }],
@@ -331,6 +399,125 @@ function showDressUp() {
   renderDoll();
   renderPicker();
   void talk('giydir');
+}
+
+/* ------------------------------------------------------- gift & concert */
+
+/** Okuma oyununda başarılı olunca: kilitli parçalardan 3 tanesi arasından birini seçer. */
+export function showGiftPicker(after: () => void) {
+  const locked = lockedItems();
+  if (pendingGifts() <= 0 || locked.length === 0) {
+    if (locked.length === 0 && pendingGifts() > 0) {
+      progress.gifts = 0;
+      commit();
+    }
+    return showConcert(after);
+  }
+  const offer = locked.sort(() => Math.random() - 0.5).slice(0, 3);
+  const colorFor = (cat: string) => CATS.find((c) => c.id === cat)!.colors[Math.floor(Math.random() * 8)];
+  const options = offer.map((o) => ({ ...o, color: colorFor(o.cat) }));
+  const root = show(`
+    <div class="screen gift-screen">
+      <header class="bar"><span></span><div class="gift-title">🎁</div>${talkBtn('hediye')}</header>
+      <div class="gift-options">
+        ${options
+          .map((o, i) => {
+            const preview = { ...look(), [o.cat]: { item: o.item, color: o.color } };
+            return `<button class="gift-option" data-i="${i}">${dollSvg(preview, 'doll')}<span class="gift-cat">${CATS.find((c) => c.id === o.cat)!.icon}</span></button>`;
+          })
+          .join('')}
+      </div>
+    </div>`);
+  bindTalkButtons(root);
+  let chosen = false;
+  root.querySelectorAll<HTMLElement>('.gift-option').forEach((b) =>
+    b.addEventListener('click', async () => {
+      if (chosen) return;
+      chosen = true;
+      const o = options[Number(b.dataset.i)];
+      progress.unlocked = [...(progress.unlocked ?? []), `${o.cat}:${o.item}`];
+      look()[o.cat] = { item: o.item, color: o.color };
+      progress.gifts = Math.max(0, pendingGifts() - 1);
+      commit();
+      root.querySelectorAll('.gift-option').forEach((x) => x !== b && x.classList.add('faded'));
+      b.classList.add('picked');
+      sfx.win();
+      confetti();
+      await talk('hediyeSecildi');
+      await wait(300);
+      showConcert(after);
+    }),
+  );
+  void talk('hediye');
+}
+
+let song: SongHandle | null = null;
+
+/** Bebeğin sahnede şarkı söylediği konser; sözler hece hece yanar. */
+export function showConcert(after: () => void) {
+  const lk = { ...look(), fon: { item: 'sahne', color: look().fon.item === 'sahne' ? look().fon.color : '#7b5cff' } };
+  const lines = buildSong(progress.name, progress.known);
+  const root = show(`
+    <div class="screen concert">
+      <div class="lights"><i></i><i></i><i></i></div>
+      <div class="concert-doll">${dollSvg(lk)}</div>
+      <div class="lyrics"><p class="lyric"></p></div>
+      <div class="crowd">${['🧒', '👧', '👦', '👩', '👨', '👵', '👴', '🧑'].map((e, i) => `<span style="animation-delay:${i * 0.12}s">${e}</span>`).join('')}</div>
+      <div class="concert-end hidden">
+        <button class="big-btn grape-btn" data-act="again">🎤 🔁</button>
+        <button class="big-btn ghost" data-act="done">🏠</button>
+      </div>
+    </div>`);
+  const lyric = root.querySelector<HTMLElement>('.lyric')!;
+  const dollEl = root.querySelector<HTMLElement>('.concert-doll')!;
+  const renderLine = (li: number, si: number) => {
+    const l = lines[li];
+    // Heceleri kelime kelime grupla: satır kelimenin ortasından bölünmesin.
+    let html = '<span class="w">';
+    l.syl.forEach((sy, i) => {
+      html += `<span class="${i < si ? 'sung' : i === si ? 'now' : ''}">${sy}</span>`;
+      if (l.space[i]) html += i === l.syl.length - 1 ? '</span>' : '</span> <span class="w">';
+    });
+    lyric.innerHTML = html;
+  };
+  const finish = () => {
+    song?.stop();
+    song = null;
+  };
+  const leave = (fn: () => void) => {
+    finish();
+    stopVoice();
+    fn();
+  };
+  on(root, 'done', () => leave(after));
+  on(root, 'again', () => leave(() => showConcert(after)));
+  dollEl.addEventListener('click', () => sparkle(dollEl));
+
+  void (async () => {
+    lyric.textContent = '🎤';
+    await talk('konser');
+    if (!root.isConnected) return;
+    root.classList.add('playing');
+    renderLine(0, -1);
+    song = playSong(
+      lines,
+      (li, si) => {
+        if (!root.isConnected) return finish();
+        renderLine(li, si);
+        if (si === 0) sparkle(dollEl);
+      },
+      async () => {
+        song = null;
+        if (!root.isConnected) return;
+        root.classList.remove('playing');
+        lyric.innerHTML = '👏 👏 👏';
+        confetti();
+        for (let i = 0; i < 3; i++) dollEl.appendChild(h('<span class="heart-float">💖</span>'));
+        await talk('konserBitti');
+        root.querySelector('.concert-end')?.classList.remove('hidden');
+      },
+    );
+  })();
 }
 
 function sparkle(host: HTMLElement) {

@@ -964,12 +964,12 @@ button {
 }
 .cat {
   flex: 0 0 auto;
-  width: 54px;
-  height: 54px;
-  border-radius: 16px;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
   background: var(--card);
   box-shadow: 0 3px 0 var(--line);
-  font-size: 28px;
+  font-size: 24px;
 }
 .cat.on {
   background: #efe4ff;
@@ -1115,4 +1115,251 @@ button {
 .rec-row.long .rec-label {
   font-size: 15px;
   font-weight: 400;
+}
+
+
+/* ================================================== v3: hediye ve konser */
+.cats {
+  justify-content: center;
+}
+.gift-btn {
+  align-self: center;
+  position: relative;
+  font-size: 54px;
+  width: 96px;
+  height: 96px;
+  border-radius: 28px;
+  background: linear-gradient(140deg, #ffd93d, #ff8fd8);
+  box-shadow: 0 6px 0 #e07bb0;
+  animation: gift-wiggle 1.4s ease-in-out infinite;
+}
+.gift-btn.big {
+  width: 130px;
+  height: 130px;
+  font-size: 76px;
+}
+.gift-btn b {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--coral);
+  color: white;
+  font-size: 18px;
+  border-radius: 99px;
+  min-width: 30px;
+  padding: 2px 8px;
+}
+.gift-badge {
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 99px;
+  padding: 0 8px;
+  margin-left: 4px;
+}
+@keyframes gift-wiggle {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+  40% {
+    transform: rotate(8deg) scale(1.05);
+  }
+  60% {
+    transform: rotate(0);
+  }
+}
+.gift-title {
+  font-size: 56px;
+  animation: gift-wiggle 1.4s ease-in-out infinite;
+}
+.gift-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+.gift-option {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 0 var(--line);
+  background: #fff;
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
+}
+.gift-option:active {
+  transform: scale(0.97);
+}
+.gift-option.picked {
+  transform: scale(1.1);
+  box-shadow:
+    0 0 0 5px var(--lemon),
+    0 6px 0 var(--lemon-d);
+  z-index: 2;
+}
+.gift-option.faded {
+  opacity: 0.25;
+}
+.gift-cat {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-size: 22px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 2px 4px;
+}
+
+.concert {
+  background: radial-gradient(120% 70% at 50% 0%, #6b4bc4, #241a3d 70%);
+  color: white;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.lights {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.lights i {
+  position: absolute;
+  top: -40px;
+  width: 120px;
+  height: 120%;
+  background: linear-gradient(180deg, rgba(255, 246, 176, 0.5), transparent 75%);
+  transform-origin: top center;
+  filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.lights i:nth-child(1) {
+  left: 5%;
+  --a: -18deg;
+}
+.lights i:nth-child(2) {
+  left: 38%;
+  --a: 0deg;
+  background: linear-gradient(180deg, rgba(255, 143, 216, 0.45), transparent 75%);
+}
+.lights i:nth-child(3) {
+  right: 5%;
+  --a: 18deg;
+  background: linear-gradient(180deg, rgba(95, 211, 243, 0.45), transparent 75%);
+}
+.concert.playing .lights i {
+  opacity: 1;
+  animation: sweep 2.2s ease-in-out infinite alternate;
+}
+.concert.playing .lights i:nth-child(2) {
+  animation-delay: 0.7s;
+}
+@keyframes sweep {
+  from {
+    transform: rotate(calc(var(--a) - 14deg));
+  }
+  to {
+    transform: rotate(calc(var(--a) + 14deg));
+  }
+}
+.concert-doll {
+  position: relative;
+  width: min(62vw, 270px);
+  margin-top: 8px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(255, 143, 216, 0.5);
+}
+.concert.playing .doll-body {
+  animation: dance 0.536s ease-in-out infinite alternate;
+}
+@keyframes dance {
+  from {
+    transform: rotate(-4deg) translateY(0);
+  }
+  to {
+    transform: rotate(4deg) translateY(-8px);
+  }
+}
+.lyrics {
+  min-height: 110px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 0 6px;
+}
+.lyric {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.lyric span {
+  opacity: 0.55;
+  transition:
+    opacity 0.1s,
+    color 0.1s;
+  display: inline-block;
+}
+.lyric span.sung {
+  opacity: 1;
+  color: #ffd93d;
+}
+.lyric span.now {
+  opacity: 1;
+  color: #ff8fd8;
+  transform: scale(1.2);
+}
+.crowd {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  font-size: 32px;
+  margin-top: auto;
+}
+.crowd span {
+  display: inline-block;
+}
+.concert.playing .crowd span {
+  animation: bobcrowd 0.536s ease-in-out infinite alternate;
+}
+@keyframes bobcrowd {
+  to {
+    transform: translateY(-10px);
+  }
+}
+.concert-end {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+.heart-float {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  font-size: 36px;
+  animation: float-up 2s ease-out forwards;
+}
+.heart-float:nth-child(odd) {
+  left: 25%;
+  animation-delay: 0.3s;
+}
+.heart-float:nth-child(even) {
+  left: 70%;
+  animation-delay: 0.6s;
+}
+@keyframes float-up {
+  to {
+    transform: translateY(-260px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+.lyric .w {
+  white-space: nowrap;
+  display: inline-block;
 }

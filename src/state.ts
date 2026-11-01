@@ -9,6 +9,10 @@ export interface Progress {
   stats: Record<string, { ok: number; miss: number }>;
   /** Defne'nin Sahnesi: bebeğin seçili kıyafetleri ve boyama sayfalarının renkleri. */
   doll?: Record<string, { item: string; color: string }>;
+  /** Hediyeyle açılmış bebek parçaları ("kategori:parça"). */
+  unlocked?: string[];
+  /** Henüz seçilmemiş hediye sayısı. */
+  gifts?: number;
   paintings?: Record<string, Record<string, string>>;
 }
 

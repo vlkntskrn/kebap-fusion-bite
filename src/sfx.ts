@@ -1,5 +1,9 @@
 let ctx: AudioContext | null = null;
 
+export function audioCtx(): AudioContext | null {
+  return ac();
+}
+
 function ac(): AudioContext | null {
   try {
     ctx ??= new AudioContext();

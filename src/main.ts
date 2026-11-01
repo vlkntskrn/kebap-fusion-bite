@@ -23,7 +23,7 @@ import { progress, commit, record, weightedPick, shuffle } from './state';
 import { sfx } from './sfx';
 import { h, show, colored, on, wiggle, bounce, confetti, talkBtn } from './ui';
 import { talk, praise, bindTalkButtons } from './talk';
-import { showStage, dollSvg } from './stage';
+import { showStage, dollSvg, showGiftPicker, pendingGifts } from './stage';
 
 const knownSet = () => new Set(progress.known);
 
@@ -101,7 +101,7 @@ function showHome(greet = false) {
       }
       <button class="stage-banner" data-act="stage">
         <span class="sb-doll">${dollSvg(progress.doll ?? defaultLookForSplash(), 'doll mini')}</span>
-        <span class="sb-text">👑 ${genitive(progress.name)} Sahnesi<small>👗 🎨</small></span>
+        <span class="sb-text">👑 ${genitive(progress.name)} Sahnesi<small>👗 🎨 ${pendingGifts() > 0 ? `<b class="gift-badge">🎁 ${pendingGifts()}</b>` : ''}</small></span>
       </button>
       <div class="games">
         ${GAMES.map((g) => {
@@ -471,11 +471,16 @@ function qOku() {
 
 /* --------------------------------------------------------------- finish */
 
+/** 6 sorudan en az 4'ünü ilk denemede bilirse hediye kazanır, ardından bebeği sahneye çıkar. */
+const GIFT_THRESHOLD = 4;
+
 function showFinish() {
   const r = run!;
+  const success = r.stars >= GIFT_THRESHOLD;
   const remaining = STICKERS.filter((s) => !progress.stickers.includes(s));
   const sticker = remaining.length ? remaining[Math.floor(Math.random() * remaining.length)] : STICKERS[Math.floor(Math.random() * STICKERS.length)];
   if (remaining.length) progress.stickers.push(sticker);
+  if (success) progress.gifts = (progress.gifts ?? 0) + 1;
   commit();
   sfx.win();
   confetti();
@@ -484,21 +489,21 @@ function showFinish() {
       <h1>${progress.name} 🎉</h1>
       <div class="stars">${'⭐'.repeat(Math.max(1, r.stars))}</div>
       <div class="new-sticker">${sticker}</div>
+      ${success ? `<button class="gift-btn big" data-act="gift">🎁</button>` : ''}
       <div class="row">
         <button class="big-btn mint" data-act="again">🔁</button>
         <button class="big-btn ghost" data-act="home">🏠</button>
       </div>
-      <button class="big-btn grape-btn" data-act="stage">👑 👗 🎨</button>
     </div>`);
-  void talk('bitti');
+  void talk(success ? 'bittiHediye' : 'azKaldi');
   on(root, 'again', () => startGame(r.kind));
   on(root, 'home', () => {
     run = null;
     showHome();
   });
-  on(root, 'stage', () => {
+  on(root, 'gift', () => {
     run = null;
-    showStage(() => showHome());
+    showGiftPicker(() => showHome());
   });
 }
 

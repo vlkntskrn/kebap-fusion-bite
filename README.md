@@ -15,7 +15,7 @@ Oyundaki bütün sesler **anne ya da babanın kendi sesiyle** kaydedilir. Böyle
 | 🧩 **Kelime Kur** | Resmi görür, kelimeyi dinler, heceleri sırayla dizer (an + ne → anne). |
 | 📖 **Oku** | Kelimeyi önce kendisi sesli okur, sonra dinleyip kontrol eder. Heceler renkli çizgiyle ayrılır. |
 
-| 👑 **Defne'nin Sahnesi** | Kâğıt bebek giydirme (prenses / pop yıldızı kıyafetleri, saç, taç, mikrofon, sahne) ve boyama sayfaları (kale, taç, çiçek, dondurma, kelebek, kendi adı). Okuma oyunlarında kazanılan yıldızlar yeni kıyafetleri açar. |
+| 👑 **Defne'nin Sahnesi** | Kâğıt bebek giydirme (prenses / pop yıldızı kıyafetleri, saç, taç, mikrofon, sahne) ve boyama sayfaları (kale, taç, çiçek, dondurma, kelebek, kendi adı). Bebeğin saçına, tenine ya da kıyafetine dokunup rengini değiştirir. Okuma oyununda 6 sorudan en az 4'ünü ilk denemede bilince **hediye** kazanır, kilitli 22 parçadan birini seçer. Ardından bebeği sahneye çıkıp **özgün bir şarkı** söyler: sözlerde çocuğun adı ve öğrendiği harfler geçer, karaoke gibi hece hece yanar. |
 
 - **Her şey sesli:** Çocuk henüz okuyamadığı için her ekran ne yapılacağını adıyla söyler ("Defne, sesi dinle…"). Ebeveyn bu talimatları kendi sesiyle kaydedebilir. Kayıt yoksa telefonun Türkçe sesi okur. Her ekrandaki sarı 🔊 düğmesi talimatı tekrarlar.
 - Sesli harfler **kırmızı**, sessiz harfler **mavi** gösterilir.
