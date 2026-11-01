@@ -93,26 +93,34 @@ function windowView(view: string, id: string): string {
 }
 
 let bgSeq = 0;
+/** Oda ekrandan geniş bir alan: x 0..WORLD*100 birimi (eski oda genişliği = 100). Sağa sola kaydırılır. */
+const WORLD = 3;
+const WVB = 400 * WORLD;
 function roomBg(id: RoomId, s: Style): string {
   const pid = `${id}${++bgSeq}`;
   const defs = `<defs>
     <pattern id="w-${pid}" width="40" height="40" patternUnits="userSpaceOnUse">${wallPattern(s.wall, shade(s.wallColor, -0.1))}</pattern>
     <pattern id="f-${pid}" width="80" height="40" patternUnits="userSpaceOnUse">${floorPattern(s.floor, shade(s.floorColor, -0.12))}</pattern></defs>`;
+  const open = `<svg class="room-bg" viewBox="0 0 ${WVB} 440" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">${defs}`;
   if (id === 'havuz') {
-    return `<svg class="room-bg" viewBox="0 0 400 440" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">${defs}
-      <rect width="400" height="200" fill="#8fd3ff"/><circle cx="320" cy="50" r="26" fill="#ffe680"/>
+    const scene = `<rect width="400" height="200" fill="#8fd3ff"/>
       <g fill="#c4d9f2">${[[20, 120, 30], [60, 100, 26], [100, 130, 34], [300, 110, 30], [340, 126, 40]].map(([x, y, w]) => `<rect x="${x}" y="${y}" width="${w}" height="${200 - y}"/>`).join('')}</g>
-      <g fill="#6fcf7d">${[[150, 150, 40], [200, 140, 46], [250, 152, 40], [10, 170, 30], [390, 170, 30]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g>
-      <rect y="170" width="400" height="80" fill="${s.wallColor}"/><rect y="170" width="400" height="80" fill="url(#w-${pid})"/><rect y="166" width="400" height="8" fill="#fff"/>
-      <rect y="250" width="400" height="60" fill="${s.floorColor}"/><rect y="250" width="400" height="60" fill="url(#f-${pid})"/>
-      <rect x="0" y="306" width="400" height="134" rx="10" fill="#fff"/><rect x="10" y="314" width="380" height="126" rx="8" fill="#5fd3f3"/>
-      <path d="M30 350 q20 -8 40 0 M160 380 q20 -8 40 0 M290 344 q20 -8 40 0 M80 410 q20 -8 40 0 M260 416 q20 -8 40 0" stroke="#fff" stroke-width="4" fill="none" opacity=".7"/>
+      <g fill="#6fcf7d">${[[150, 150, 40], [200, 140, 46], [250, 152, 40], [10, 170, 30], [390, 170, 30]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g>`;
+    return `${open}
+      ${Array.from({ length: WORLD }, (_, i) => `<g transform="translate(${i * 400} 0)">${scene}</g>`).join('')}
+      <circle cx="${WVB - 120}" cy="50" r="26" fill="#ffe680"/>
+      <rect y="170" width="${WVB}" height="80" fill="${s.wallColor}"/><rect y="170" width="${WVB}" height="80" fill="url(#w-${pid})"/><rect y="166" width="${WVB}" height="8" fill="#fff"/>
+      <rect y="250" width="${WVB}" height="60" fill="${s.floorColor}"/><rect y="250" width="${WVB}" height="60" fill="url(#f-${pid})"/>
+      <rect x="0" y="306" width="${WVB}" height="134" rx="10" fill="#fff"/><rect x="10" y="314" width="${WVB - 20}" height="126" rx="8" fill="#5fd3f3"/>
+      ${Array.from({ length: WORLD }, (_, i) => `<path transform="translate(${i * 400} 0)" d="M30 350 q20 -8 40 0 M160 380 q20 -8 40 0 M290 344 q20 -8 40 0 M80 410 q20 -8 40 0 M260 416 q20 -8 40 0" stroke="#fff" stroke-width="4" fill="none" opacity=".7"/>`).join('')}
     </svg>`;
   }
-  return `<svg class="room-bg" viewBox="0 0 400 440" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">${defs}
-    <rect width="400" height="300" fill="${s.wallColor}"/><rect width="400" height="300" fill="url(#w-${pid})"/>
-    ${windowView(s.view, pid)}
-    <rect y="290" width="400" height="150" fill="${s.floorColor}"/><rect y="290" width="400" height="150" fill="url(#f-${pid})"/><rect y="286" width="400" height="10" fill="#fff" opacity=".85"/>
+  // Pencereler: ortada bir tane, iki yanda birer tane.
+  const wins = [-300, 0, 300].map((dx, i) => `<g transform="translate(${WVB / 2 - 205 + dx} 0)">${windowView(s.view, `${pid}w${i}`)}</g>`).join('');
+  return `${open}
+    <rect width="${WVB}" height="300" fill="${s.wallColor}"/><rect width="${WVB}" height="300" fill="url(#w-${pid})"/>
+    ${wins}
+    <rect y="290" width="${WVB}" height="150" fill="${s.floorColor}"/><rect y="290" width="${WVB}" height="150" fill="url(#f-${pid})"/><rect y="286" width="${WVB}" height="10" fill="#fff" opacity=".85"/>
   </svg>`;
 }
 
@@ -202,10 +210,14 @@ interface Inst {
 
 function house(): Record<string, Inst[]> {
   progress.house ??= {};
+  if ((progress.houseV ?? 1) < 2) {
+    for (const list of Object.values(progress.house)) for (const i of list) i.x += 100;
+    progress.houseV = 2;
+  }
   for (const r of ROOMS) {
     if (!progress.house[r.id]) {
-      progress.house[r.id] = r.start.map(([id, x, y], i) => ({ u: i + 1, id, x, y }));
-      progress.house[r.id].push({ u: 999, id: 'bebek', x: 50, y: 97 });
+      progress.house[r.id] = r.start.map(([id, x, y], i) => ({ u: i + 1, id, x: x + 100, y }));
+      progress.house[r.id].push({ u: 999, id: 'bebek', x: 150, y: 97 });
     }
   }
   return progress.house;
@@ -232,7 +244,7 @@ export function showHouse(back: () => void) {
       <header class="bar"><button class="round-btn" data-act="back">⬅</button>
         <div class="room-tabs">${ROOMS.map((r) => `<button class="room-tab" data-room="${r.id}">${roomIcon(r.id)}</button>`).join('')}</div>
         ${talkBtn('oda')}</header>
-      <div class="room"><div class="room-bg-wrap"></div><div class="layer"></div></div>
+      <div class="room"><div class="world"><div class="room-bg-wrap"></div><div class="layer"></div></div><div class="pan-hint">⟷</div></div>
       <div class="modes">
         <button class="mode" data-mode="tasi">${imgTag('ui_mod_tasi', MODE_ICONS.tasi)}</button>
         <button class="mode" data-mode="boya">${imgTag('ui_mod_boya', MODE_ICONS.boya)}</button>
@@ -253,14 +265,14 @@ export function showHouse(back: () => void) {
   const list = () => house()[current];
 
   const thingHtml = (inst: Inst) => {
-    if (inst.id === 'bebek') return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:30%">${dollSvg(currentLook(), 'doll', { bg: false })}</div>`;
+    if (inst.id === 'bebek') return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${30 / WORLD}%">${dollSvg(currentLook(), 'doll', { bg: false })}</div>`;
     const f = FRIENDS[inst.id];
-    if (f) return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${f.w}%">${dollSvg(f.look, 'doll', { bg: false })}</div>`;
+    if (f) return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${f.w / WORLD}%">${dollSvg(f.look, 'doll', { bg: false })}</div>`;
     const t = THINGS[inst.id];
     if (!t) return '';
     const img = itemImage(inst.id);
-    if (img) return `<div class="thing img-thing ${t.bob ? 'bob' : ''}" data-u="${inst.u}" style="--w:${t.w}%"><img src="${img}" alt="" draggable="false"/></div>`;
-    return `<div class="thing ${inst.on ? 'on' : ''} ${t.bob ? 'bob' : ''}" data-u="${inst.u}" style="--w:${t.w}%;${inst.c ? `--c:${inst.c}` : ''}"><svg viewBox="${t.vb}" xmlns="http://www.w3.org/2000/svg">${OL}<g filter="url(#tol)">${colorize(t)}</g></svg></div>`;
+    if (img) return `<div class="thing img-thing ${t.bob ? 'bob' : ''}" data-u="${inst.u}" style="--w:${t.w / WORLD}%"><img src="${img}" alt="" draggable="false"/></div>`;
+    return `<div class="thing ${inst.on ? 'on' : ''} ${t.bob ? 'bob' : ''}" data-u="${inst.u}" style="--w:${t.w / WORLD}%;${inst.c ? `--c:${inst.c}` : ''}"><svg viewBox="${t.vb}" xmlns="http://www.w3.org/2000/svg">${OL}<g filter="url(#tol)">${colorize(t)}</g></svg></div>`;
   };
 
   const thumb = (id: string) => {
@@ -273,7 +285,7 @@ export function showHouse(back: () => void) {
   };
 
   const place = (el: HTMLElement, inst: Inst) => {
-    el.style.left = `${inst.x}%`;
+    el.style.left = `${inst.x / WORLD}%`;
     el.style.top = `${inst.y}%`;
     el.style.zIndex = String(THINGS[inst.id]?.flat ? 1 : 10 + Math.round(inst.y * 10));
   };
@@ -345,10 +357,25 @@ export function showHouse(back: () => void) {
   });
 
   /* ---- sürükle-bırak */
+  const world = root.querySelector<HTMLElement>('.world')!;
   const toPct = (cx: number, cy: number) => {
-    const r = roomEl.getBoundingClientRect();
-    return { x: ((cx - r.left) / r.width) * 100, y: ((cy - r.top) / r.height) * 100 };
+    const r = world.getBoundingClientRect();
+    return { x: ((cx - r.left) / r.width) * 100 * WORLD, y: ((cy - r.top) / r.height) * 100 };
   };
+  /* ---- odayı sağa sola kaydırma */
+  let panX = 0;
+  const maxPan = () => Math.max(0, world.offsetWidth - roomEl.clientWidth);
+  const setPan = (v: number) => {
+    panX = Math.max(0, Math.min(maxPan(), v));
+    world.style.transform = `translateX(${-panX}px)`;
+  };
+  const centerPan = () => setPan(maxPan() / 2);
+  /** Ekranda görünen x aralığı (dünya birimi). */
+  const visibleX = () => {
+    const w = world.offsetWidth || 1;
+    return { a: (panX / w) * 100 * WORLD, b: ((panX + roomEl.clientWidth) / w) * 100 * WORLD };
+  };
+  window.addEventListener('resize', () => setPan(panX));
   const overDrawer = (cx: number, cy: number) => {
     if (mode !== 'tasi') return false;
     const r = drawer.getBoundingClientRect();
@@ -366,7 +393,7 @@ export function showHouse(back: () => void) {
       const p = toPct(e.clientX, e.clientY);
       if (!moved && Math.hypot(p.x - start.x, p.y - start.y) > 2) moved = true;
       if (!moved) return;
-      inst.x = Math.max(2, Math.min(98, p.x - off.x));
+      inst.x = Math.max(2, Math.min(100 * WORLD - 2, p.x - off.x));
       inst.y = Math.max(8, Math.min(100, p.y - off.y));
       place(el, inst);
       drawer.classList.toggle('drop', overDrawer(e.clientX, e.clientY));
@@ -424,6 +451,27 @@ export function showHouse(back: () => void) {
     }
   }
 
+  roomEl.addEventListener('pointerdown', (ev) => {
+    if ((ev.target as Element).closest('.thing')) return;
+    const sx = ev.clientX;
+    const start = panX;
+    roomEl.classList.add('panning');
+    const move = (e: PointerEvent) => setPan(start - (e.clientX - sx));
+    const up = () => {
+      roomEl.classList.remove('panning');
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+      window.removeEventListener('pointercancel', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+    window.addEventListener('pointercancel', up);
+  });
+  roomEl.addEventListener('wheel', (e) => {
+    setPan(panX + (Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY));
+    e.preventDefault();
+  }, { passive: false });
+
   layer.addEventListener('pointerdown', (ev) => {
     const el = (ev.target as Element).closest<HTMLElement>('.thing');
     if (!el) return;
@@ -454,7 +502,8 @@ export function showHouse(back: () => void) {
           const scroll = drawerItems.scrollTop;
           renderDrawer();
           drawerItems.scrollTop = scroll;
-          const [node] = addInst(b.dataset.id!, 30 + Math.random() * 40, 88);
+          const v = visibleX();
+          const [node] = addInst(b.dataset.id!, v.a + (v.b - v.a) * (0.3 + Math.random() * 0.4), 88);
           node.animate([{ transform: 'translate(-50%,-100%) scale(0.3)' }, { transform: 'translate(-50%,-100%) scale(1.15)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 450 });
           commit();
         });
@@ -483,7 +532,9 @@ export function showHouse(back: () => void) {
       // Dokunup bırakınca odanın ortasına eklenir (küçük çocuklar için kolaylık).
       if (Math.hypot(e.clientX - startX, e.clientY - startY) < 8) {
         // Bebeğin arkasında kaybolmasın: odanın sağına ya da soluna koy.
-        const x = Math.random() < 0.5 ? 12 + Math.random() * 22 : 66 + Math.random() * 22;
+        const v = visibleX();
+        const f = Math.random() < 0.5 ? 0.12 + Math.random() * 0.22 : 0.66 + Math.random() * 0.22;
+        const x = v.a + (v.b - v.a) * f;
         const [node] = addInst(b.dataset.id!, x, 84 + Math.random() * 12);
         node.animate([{ transform: 'translate(-50%,-100%) scale(0.3)' }, { transform: 'translate(-50%,-100%) scale(1.1)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 350 });
         sfx.merge();
@@ -503,6 +554,7 @@ export function showHouse(back: () => void) {
       current = b.dataset.room as RoomId;
       sfx.tap();
       render();
+      requestAnimationFrame(centerPan);
       void talk(`oda_${current}` as TalkId);
     }),
   );
@@ -516,6 +568,7 @@ export function showHouse(back: () => void) {
   );
 
   render();
+  requestAnimationFrame(centerPan);
   void talk('ev');
 }
 

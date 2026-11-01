@@ -2386,3 +2386,102 @@ body {
     font-size: 17px;
   }
 }
+
+
+/* ================================================== v9: geniş, kaydırılabilir oda */
+.room {
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+}
+.room.panning {
+  cursor: grabbing;
+}
+.world {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  aspect-ratio: 1200 / 440;
+  will-change: transform;
+}
+.world .room-bg-wrap,
+.world .layer {
+  position: absolute;
+  inset: 0;
+}
+.pan-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 99px;
+  padding: 0 14px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--muted);
+  pointer-events: none;
+  z-index: 3000;
+  animation: hint-fade 4s ease-out forwards;
+}
+@keyframes hint-fade {
+  0%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@media (orientation: landscape) {
+  .house {
+    grid-template-columns: minmax(0, 1fr) clamp(230px, 27vw, 400px);
+  }
+  .house .room {
+    aspect-ratio: auto;
+    width: 100%;
+    height: calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  }
+  .house .bar {
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: space-between;
+  }
+  .house .bar .round-btn,
+  .house .bar .talk-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  .house .room-tabs {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .house .room-tab {
+    width: 18%;
+    height: auto;
+    aspect-ratio: 1;
+    max-width: 52px;
+  }
+  .house .mode {
+    height: 38px;
+  }
+  .house .mode .ui-img {
+    width: 30px;
+    height: 30px;
+  }
+  .house .drawer-item {
+    flex: 0 0 calc(33.3% - 6px);
+    height: auto;
+    aspect-ratio: 1;
+  }
+  .house .dz {
+    width: 46px;
+    height: 28px;
+  }
+  .house .dz[data-sw] {
+    width: 28px;
+  }
+}
