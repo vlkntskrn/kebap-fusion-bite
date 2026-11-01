@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Kebap Fusion Bite</string>
+    <string name="title_activity_main">Kebap Fusion Bite</string>
+    <string name="package_name">com.kebapfusion.bite</string>
+    <string name="custom_url_scheme">com.kebapfusion.bite</string>
+</resources>
