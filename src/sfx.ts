@@ -33,6 +33,12 @@ export const sfx = {
   soft: () => tone(330, 0.2, 0, 'sine', 0.08),
   merge: () => [523, 659].forEach((f, i) => tone(f, 0.18, i * 0.07, 'triangle', 0.1)),
   win: () => [523, 659, 784, 1046, 1318].forEach((f, i) => tone(f, 0.35, i * 0.12, 'triangle', 0.12)),
+  paint: () => tone(880 + Math.random() * 300, 0.12, 0, 'sine', 0.08),
+  /** Bebek mikrofonla "şarkı söyler": rastgele neşeli bir melodi. */
+  sing: () => {
+    const scale = [523, 587, 659, 784, 880, 1046];
+    for (let i = 0; i < 6; i++) tone(scale[Math.floor(Math.random() * scale.length)], 0.22, i * 0.16, 'triangle', 0.1);
+  },
   /** iOS sesi ilk dokunuşta açmayı ister. */
   unlock: () => tone(1, 0.01, 0, 'sine', 0.0001),
 };

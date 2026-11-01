@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { WORDS, wordsFor, syllablesFor, STICKERS, ALPHABET } from './content';
+import { WORDS, wordsFor, syllablesFor, STICKERS, ALPHABET, genitive, fill } from './content';
 
 describe('içerik', () => {
   it('alfabe 29 harf', () => expect(ALPHABET).toHaveLength(29));
@@ -23,6 +23,14 @@ describe('içerik', () => {
     expect(words).toContain('nine');
     expect(words).not.toContain('el');
     expect(syllablesFor(known).sort()).toEqual(['an', 'at', 'en', 'et', 'in', 'it', 'na', 'ne', 'ni', 'ta', 'te', 'ti']);
+  });
+
+  it('isim eki', () => {
+    expect(genitive('Defne')).toBe("Defne'nin");
+    expect(genitive('Elif')).toBe("Elif'in");
+    expect(genitive('Ayşegül')).toBe("Ayşegül'ün");
+    expect(genitive('Banu')).toBe("Banu'nun");
+    expect(fill('{adın} sahnesi, {ad}!', 'Defne')).toBe("Defne'nin sahnesi, Defne!");
   });
 
   it('çıkartmalar', () => expect(STICKERS.length).toBe(30));

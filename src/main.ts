@@ -1,7 +1,7 @@
 import '@fontsource/andika/400.css';
 import '@fontsource/andika/700.css';
 import './style.css';
-import { ALPHABET, isVowel, wordsFor, syllablesFor, key, PRAISES, INSTRUCTIONS, STICKERS, Word } from './content';
+import { ALPHABET, isVowel, wordsFor, syllablesFor, key, PRAISES, TALK, TalkId, STICKERS, Word, fill, genitive } from './content';
 import {
   initVoices,
   hasVoice,
@@ -16,76 +16,19 @@ import {
   exportVoices,
   importVoices,
   Recording,
+  speak,
+  ttsAvailable,
 } from './voice';
-import { loadProgress, saveProgress, record, weightedPick, shuffle } from './state';
+import { progress, commit, record, weightedPick, shuffle } from './state';
 import { sfx } from './sfx';
+import { h, show, colored, on, wiggle, bounce, confetti, talkBtn } from './ui';
+import { talk, praise, bindTalkButtons } from './talk';
+import { showStage, dollSvg } from './stage';
 
-const APP = 'Hece Hece';
-const app = document.getElementById('app')!;
-const progress = loadProgress();
-const commit = () => saveProgress(progress);
 const knownSet = () => new Set(progress.known);
 
 type GameKind = 'bul' | 'birlestir' | 'kur' | 'oku';
 const ROUND = 6;
-
-/* ------------------------------------------------------------- helpers */
-
-function h(html: string): HTMLElement {
-  const t = document.createElement('template');
-  t.innerHTML = html.trim();
-  return t.content.firstElementChild as HTMLElement;
-}
-
-function show(html: string): HTMLElement {
-  stopVoice();
-  const el = h(html);
-  app.replaceChildren(el);
-  window.scrollTo(0, 0);
-  return el;
-}
-
-/** Sesli harfler kırmızı, sessiz harfler mavi (sınıflarda kullanılan renklendirme). */
-function colored(text: string): string {
-  return [...text].map((ch) => `<span class="${isVowel(ch) ? 'v' : 'c'}">${ch}</span>`).join('');
-}
-
-function on(root: HTMLElement, act: string, fn: (el: HTMLElement) => void) {
-  root.querySelectorAll<HTMLElement>(`[data-act="${act}"]`).forEach((el) => el.addEventListener('click', () => fn(el)));
-}
-
-function wiggle(el: Element) {
-  el.animate(
-    [{ transform: 'translateX(0)' }, { transform: 'translateX(-10px)' }, { transform: 'translateX(10px)' }, { transform: 'translateX(-6px)' }, { transform: 'translateX(0)' }],
-    { duration: 380 },
-  );
-}
-
-function bounce(el: Element) {
-  el.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.18)' }, { transform: 'scale(1)' }], { duration: 400, easing: 'ease-out' });
-}
-
-async function praise() {
-  sfx.right();
-  const have = PRAISES.map((_, i) => key.praise(i)).filter(hasVoice);
-  await wait(250);
-  if (have.length) await play(have[Math.floor(Math.random() * have.length)]);
-}
-
-function confetti() {
-  const box = h('<div class="confetti"></div>');
-  const colors = ['#ff6b6b', '#ffd93d', '#6bcB77', '#4d96ff', '#c77dff'];
-  for (let i = 0; i < 40; i++) {
-    const p = document.createElement('i');
-    p.style.left = `${Math.random() * 100}%`;
-    p.style.background = colors[i % colors.length];
-    p.style.animationDelay = `${Math.random() * 0.4}s`;
-    p.style.animationDuration = `${1.4 + Math.random()}s`;
-    box.appendChild(p);
-  }
-  document.body.appendChild(box);
-  setTimeout(() => box.remove(), 2800);
-}
 
 /* ---------------------------------------------------------- availability */
 
@@ -98,56 +41,93 @@ const items = {
 };
 const MIN: Record<GameKind, number> = { bul: 2, birlestir: 1, kur: 1, oku: 1 };
 
-const GAMES: { kind: GameKind; icon: string; title: string; sub: string; color: string }[] = [
-  { kind: 'bul', icon: '👂', title: 'Sesi Bul', sub: 'Duy, harfi bul', color: 'coral' },
-  { kind: 'birlestir', icon: '🔗', title: 'Sesleri Birleştir', sub: 'n + a = na', color: 'sky' },
-  { kind: 'kur', icon: '🧩', title: 'Kelime Kur', sub: 'Heceleri diz', color: 'mint' },
-  { kind: 'oku', icon: '📖', title: 'Oku', sub: 'Oku, dinle, kontrol et', color: 'lemon' },
+const GAMES: { kind: GameKind; icon: string; title: string; color: string }[] = [
+  { kind: 'bul', icon: '👂', title: 'Sesi Bul', color: 'coral' },
+  { kind: 'birlestir', icon: '🔗', title: 'Sesleri Birleştir', color: 'sky' },
+  { kind: 'kur', icon: '🧩', title: 'Kelime Kur', color: 'mint' },
+  { kind: 'oku', icon: '📖', title: 'Oku', color: 'lemon' },
 ];
+
+/* --------------------------------------------------------------- start */
+
+/** Açılış ekranı: iPhone sesi ancak bir dokunuştan sonra çalar, bu yüzden "Başla" ile açılır. */
+function showSplash() {
+  const root = show(`
+    <div class="screen splash" data-act="start">
+      <div class="splash-doll">${dollSvg(progress.doll ?? defaultLookForSplash())}</div>
+      <h1>Merhaba<br/>${progress.name}!</h1>
+      <button class="play-btn" data-act="start" aria-label="Başla">▶</button>
+    </div>`);
+  let started = false;
+  on(root, 'start', () => {
+    if (started) return;
+    started = true;
+    sfx.unlock();
+    showHome(true);
+  });
+}
+
+function defaultLookForSplash() {
+  return {
+    kiyafet: { item: 'prenses', color: '#c77dff' },
+    sac: { item: 'orgu', color: '#8e5cff' },
+    taki: { item: 'tac', color: '#ffd93d' },
+    elde: { item: 'mikrofon', color: '#ff5d8f' },
+    ayakkabi: { item: 'babet', color: '#ff8fd8' },
+    fon: { item: 'sahne', color: '#7b5cff' },
+    ten: { item: 'ten', color: '#f6c9a4' },
+  };
+}
 
 /* ---------------------------------------------------------------- home */
 
-function showHome() {
+function showHome(greet = false) {
   const anyVoice = voiceCount(progress.known.map(key.letter)) > 0;
   const root = show(`
     <div class="screen home">
       <header class="bar">
         <div class="pill">⭐ ${progress.stars}</div>
+        ${talkBtn('merhaba')}
         <button class="pill btn-album" data-act="album">🎁 ${progress.stickers.length}/${STICKERS.length}</button>
       </header>
       <div class="title">
-        <div class="blocks">${['he', 'ce'].map((s) => `<span class="block">${colored(s)}</span>`).join('')}</div>
-        <h1>${APP}</h1>
+        <h1>${genitive(progress.name)}<br/><span>Okuma Oyunu</span></h1>
         <div class="known">${progress.known.map((l) => `<span class="${isVowel(l) ? 'v' : 'c'}">${l}</span>`).join('')}</div>
       </div>
       ${
         anyVoice
           ? ''
-          : `<div class="notice"><b>Anne / baba için:</b> Oyunlar sizin sesinizle çalışır. Önce aşağıdaki <b>Ebeveyn</b> bölümünden harf seslerini kaydedin.</div>`
+          : `<div class="notice"><b>Anne / baba için:</b> Okuma oyunları sizin sesinizle çalışır. Önce en alttaki <b>Ebeveyn</b> bölümünden harf seslerini kaydedin.</div>`
       }
+      <button class="stage-banner" data-act="stage">
+        <span class="sb-doll">${dollSvg(progress.doll ?? defaultLookForSplash(), 'doll mini')}</span>
+        <span class="sb-text">👑 ${genitive(progress.name)} Sahnesi<small>👗 🎨</small></span>
+      </button>
       <div class="games">
         ${GAMES.map((g) => {
           const ready = items[g.kind]().length >= MIN[g.kind];
           return `<button class="game-card ${g.color} ${ready ? '' : 'locked'}" data-act="game" data-kind="${g.kind}">
             <span class="g-icon">${ready ? g.icon : '🔒'}</span>
             <span class="g-title">${g.title}</span>
-            <span class="g-sub">${ready ? g.sub : 'Ses kaydı gerekli'}</span>
           </button>`;
         }).join('')}
       </div>
       <button class="parent-btn" data-act="parent">👨‍👩‍👧 Ebeveyn</button>
     </div>`);
+  bindTalkButtons(root);
   on(root, 'game', (el) => {
-    sfx.unlock();
     const kind = el.dataset.kind as GameKind;
     if (items[kind]().length >= MIN[kind]) startGame(kind);
     else {
       wiggle(el);
       sfx.soft();
+      void talk('kayitYok');
     }
   });
+  on(root, 'stage', () => showStage(() => showHome()));
   on(root, 'parent', showGate);
   on(root, 'album', showAlbum);
+  if (greet) void talk('merhaba');
 }
 
 /* --------------------------------------------------------------- album */
@@ -156,14 +136,15 @@ function showAlbum() {
   sfx.tap();
   const root = show(`
     <div class="screen">
-      <header class="bar"><button class="round-btn" data-act="home">⬅</button><h2>Çıkartmalarım</h2><span></span></header>
-      <p class="center muted">Her oyunu bitirince yeni bir çıkartma kazanırsın!</p>
+      <header class="bar"><button class="round-btn" data-act="home">⬅</button><h2>🎁</h2>${talkBtn('album')}</header>
       <div class="album">
         ${STICKERS.map((s) => (progress.stickers.includes(s) ? `<span class="sticker">${s}</span>` : `<span class="sticker empty">?</span>`)).join('')}
       </div>
     </div>`);
-  on(root, 'home', showHome);
+  bindTalkButtons(root);
+  on(root, 'home', () => showHome());
   root.querySelectorAll('.sticker:not(.empty)').forEach((el) => el.addEventListener('click', () => bounce(el)));
+  void talk('album');
 }
 
 /* --------------------------------------------------------------- games */
@@ -172,19 +153,21 @@ interface Run {
   kind: GameKind;
   index: number;
   stars: number;
+  intro: boolean;
   last?: unknown;
 }
 let run: Run | null = null;
 
-function gameShell(title: string, body: string): HTMLElement {
+function gameShell(talkId: TalkId, body: string): HTMLElement {
   const r = run!;
   const dots = Array.from({ length: ROUND }, (_, i) => `<i class="${i < r.index ? 'done' : i === r.index ? 'now' : ''}"></i>`).join('');
   const root = show(`
     <div class="screen game">
       <header class="bar"><button class="round-btn" data-act="home">⬅</button><div class="dots">${dots}</div><div class="pill">⭐ ${progress.stars}</div></header>
-      <h2 class="prompt">${title}</h2>
+      <div class="prompt-row">${talkBtn(talkId)}</div>
       ${body}
     </div>`);
+  bindTalkButtons(root);
   on(root, 'home', () => {
     run = null;
     showHome();
@@ -192,13 +175,19 @@ function gameShell(title: string, body: string): HTMLElement {
   return root;
 }
 
-async function startGame(kind: GameKind) {
-  run = { kind, index: 0, stars: 0 };
-  nextQuestion();
-  if (hasVoice(key.intro(kind))) {
-    await wait(300);
-    await play(key.intro(kind));
+/** İlk soruda oyunun adını ve ne yapılacağını söyler. */
+async function lead() {
+  if (run?.intro) {
+    run.intro = false;
+    await talk(run.kind);
+    await wait(250);
   }
+}
+
+function startGame(kind: GameKind) {
+  sfx.tap();
+  run = { kind, index: 0, stars: 0, intro: true };
+  nextQuestion();
 }
 
 function nextQuestion() {
@@ -218,18 +207,17 @@ function advance(firstTry: boolean) {
   setTimeout(nextQuestion, 500);
 }
 
-/* ---- 1. Sesi bul: sesi duy, harfi seç */
+/* ---- 1. Sesi bul */
 function qBul() {
   const r = run!;
   const pool = items.bul();
   const target = weightedPick(pool, key.letter, progress, r.last as string);
   r.last = target;
-  const others = shuffle(pool.filter((l) => l !== target)).slice(0, 2);
-  const choices = shuffle([target, ...others]);
+  const choices = shuffle([target, ...shuffle(pool.filter((l) => l !== target)).slice(0, 2)]);
   let first = true;
   let busy = false;
   const root = gameShell(
-    'Hangi sesi duydun?',
+    'bul',
     `<button class="speaker" data-act="listen">🔊</button>
      <div class="choices n${choices.length}">
        ${choices.map((l) => `<button class="card letter" data-act="pick" data-v="${l}">${colored(l)}</button>`).join('')}
@@ -255,34 +243,38 @@ function qBul() {
       el.classList.add('wrong');
       wiggle(el);
       sfx.soft();
-      // Seçtiği harfin sesini, ardından istenen sesi tekrar dinletir: ikisini karşılaştırsın.
+      // Seçtiği harfin sesini, ardından istenen sesi dinletir: ikisini karşılaştırsın.
       await wait(200);
       await play(key.letter(v));
-      await wait(500);
+      await wait(300);
+      await talk('tekrar');
       await say();
       busy = false;
     }
   });
-  setTimeout(say, 350);
+  void (async () => {
+    await wait(300);
+    await lead();
+    await say();
+  })();
 }
 
-/* ---- 2. Sesleri birleştir: n + a → na, sonra "hangisini duydun?" */
+/* ---- 2. Sesleri birleştir */
 function qBirlestir() {
   const r = run!;
-  const pool = items.birlestir();
-  const syl = weightedPick(pool, key.syllable, progress, r.last as string);
+  const syl = weightedPick(items.birlestir(), key.syllable, progress, r.last as string);
   r.last = syl;
   const [a, b] = [...syl];
   const heard = new Set<number>();
   let merging = false;
   const root = gameShell(
-    'Harflere dokun, seslerini dinle.',
+    'birlestir',
     `<div class="pair">
-       <button class="card letter" data-act="letter" data-i="0">${colored(a)}</button>
+       <button class="card letter" data-act="letter" data-i="0">${colored(a)}<i class="tap-hint">👆</i></button>
        <span class="plus">+</span>
-       <button class="card letter" data-act="letter" data-i="1">${colored(b)}</button>
+       <button class="card letter" data-act="letter" data-i="1">${colored(b)}<i class="tap-hint">👆</i></button>
      </div>
-     <button class="big-btn sky hidden" data-act="merge">🔗 Birleştir!</button>`,
+     <button class="big-btn sky hidden" data-act="merge">🔗</button>`,
   );
   const mergeBtn = root.querySelector<HTMLElement>('[data-act=merge]')!;
   on(root, 'letter', async (el) => {
@@ -290,16 +282,20 @@ function qBirlestir() {
     const i = Number(el.dataset.i);
     bounce(el);
     el.classList.add('heard');
+    const wasNew = !heard.has(i);
     heard.add(i);
     await play(key.letter(i === 0 ? a : b));
-    if (heard.size === 2 && !merging) mergeBtn.classList.remove('hidden');
+    if (heard.size === 2 && !merging && mergeBtn.classList.contains('hidden')) {
+      mergeBtn.classList.remove('hidden');
+      bounce(mergeBtn);
+      if (wasNew) void talk('birlestirBas');
+    }
   });
   on(root, 'merge', async () => {
     if (merging) return;
     merging = true;
     mergeBtn.remove();
     const pair = root.querySelector('.pair')!;
-    // Önce yavaş yavaş: "n… a…", sonra kartlar birleşir: "na".
     const cards = pair.querySelectorAll('.card');
     cards[0].classList.add('lit');
     await play(key.letter(a), 0.85);
@@ -311,13 +307,16 @@ function qBirlestir() {
     sfx.merge();
     await wait(450);
     pair.replaceWith(h(`<div class="merged-card card">${colored(syl)}</div>`));
-    root.querySelector('.prompt')!.textContent = 'Birlikte okuyalım!';
     await play(key.syllable(syl));
     await wait(700);
     quiz();
   });
+  void (async () => {
+    await wait(300);
+    await lead();
+  })();
 
-  // Kontrol: duyduğu heceyi, harfleri aynı ama sırası farklı olan heceden ayırt etsin (na / an).
+  // Kontrol: duyduğu heceyi, harfleri aynı ama sırası ters olan heceden ayırt etsin (na / an).
   function quiz() {
     const rev = b + a;
     const alt = rev !== syl ? rev : shuffle(syllablesFor(knownSet()).filter((s) => s !== syl))[0];
@@ -325,12 +324,12 @@ function qBirlestir() {
     let first = true;
     let busy = false;
     const area = h(`<div class="quiz">
-      <p class="sub-prompt">Hangisini duydun?</p>
       <button class="speaker small" data-act="again">🔊</button>
       <div class="choices n2">${choices.map((s) => `<button class="card syl" data-act="choose" data-v="${s}">${colored(s)}</button>`).join('')}</div>
     </div>`);
     root.querySelector('.merged-card')!.replaceWith(area);
-    root.querySelector('.prompt')!.textContent = '';
+    root.querySelector('.prompt-row')!.innerHTML = talkBtn('birlestirSor');
+    bindTalkButtons(root.querySelector('.prompt-row') as HTMLElement);
     on(area, 'again', () => play(key.syllable(syl)));
     on(area, 'choose', async (el) => {
       if (busy) return;
@@ -346,20 +345,24 @@ function qBirlestir() {
         el.classList.add('wrong');
         wiggle(el);
         sfx.soft();
-        await wait(300);
+        await wait(200);
+        await talk('tekrar');
         await play(key.syllable(syl));
         busy = false;
       }
     });
-    setTimeout(() => play(key.syllable(syl)), 300);
+    void (async () => {
+      await wait(200);
+      await talk('birlestirSor');
+      await play(key.syllable(syl));
+    })();
   }
 }
 
-/* ---- 3. Kelime kur: heceleri sırayla diz */
+/* ---- 3. Kelime kur */
 function qKur() {
   const r = run!;
-  const pool = items.kur();
-  const w = weightedPick(pool, (x: Word) => key.word(x.text), progress, r.last as Word);
+  const w = weightedPick(items.kur(), (x: Word) => key.word(x.text), progress, r.last as Word);
   r.last = w;
   const extraPool = [...new Set(wordsFor(knownSet()).flatMap((x) => x.syllables))].filter((s) => !w.syllables.includes(s));
   const tiles = shuffle([...w.syllables, ...shuffle(extraPool).slice(0, 1)]);
@@ -367,7 +370,7 @@ function qKur() {
   let first = true;
   let busy = false;
   const root = gameShell(
-    'Heceleri sırayla diz!',
+    'kur',
     `<button class="picture" data-act="listen">${w.emoji}<span>🔊</span></button>
      <div class="slots">${w.syllables.map(() => `<span class="slot"></span>`).join('')}</div>
      <div class="tiles">${tiles.map((s, i) => `<button class="card tile" data-act="tile" data-i="${i}" data-v="${s}">${colored(s)}</button>`).join('')}</div>`,
@@ -403,27 +406,33 @@ function qKur() {
       first = false;
       wiggle(el);
       sfx.soft();
+      if (hasVoice(key.syllable(v))) await play(key.syllable(v));
+      await talk('tekrar');
+      await say();
     }
     busy = false;
   });
-  setTimeout(say, 350);
+  void (async () => {
+    await wait(300);
+    await lead();
+    await say();
+  })();
 }
 
-/* ---- 4. Oku: önce kendi okusun, sonra dinleyip kontrol etsin */
+/* ---- 4. Oku */
 function qOku() {
   const r = run!;
-  const pool = items.oku();
-  const w = weightedPick(pool, (x: Word) => key.word(x.text), progress, r.last as Word);
+  const w = weightedPick(items.oku(), (x: Word) => key.word(x.text), progress, r.last as Word);
   r.last = w;
   const sylHtml = w.syllables.map((s, i) => `<button class="syl-chip ${i % 2 ? 'alt' : ''}" data-act="syl" data-v="${s}">${colored(s)}</button>`).join('');
   const root = gameShell(
-    'Sesli oku!',
+    'oku',
     `<div class="read-word">${sylHtml}</div>
      <div class="reveal hidden"><span class="emoji">${w.emoji}</span></div>
-     <button class="big-btn sky" data-act="check">🔊 Dinle ve kontrol et</button>
+     <button class="big-btn sky" data-act="check">🔊</button>
      <div class="self hidden">
-       <button class="big-btn mint" data-act="ok">😊 Doğru okudum</button>
-       <button class="big-btn ghost" data-act="again">🔁 Bir daha deneyeyim</button>
+       <button class="big-btn mint" data-act="ok">😊 👍</button>
+       <button class="big-btn ghost" data-act="again">🔁</button>
      </div>`,
   );
   on(root, 'syl', (el) => {
@@ -437,6 +446,10 @@ function qOku() {
     bounce(rev);
     await play(key.word(w.text));
     root.querySelector('.self')!.classList.remove('hidden');
+    root.querySelector('.prompt-row')!.innerHTML = talkBtn('okuKontrol');
+    bindTalkButtons(root.querySelector('.prompt-row') as HTMLElement);
+    await wait(300);
+    await talk('okuKontrol');
   });
   on(root, 'ok', async () => {
     record(progress, key.word(w.text), true);
@@ -445,10 +458,15 @@ function qOku() {
   });
   on(root, 'again', () => {
     record(progress, key.word(w.text), false);
+    stopVoice();
     root.querySelector('.self')!.classList.add('hidden');
     root.querySelector('.reveal')!.classList.add('hidden');
     root.querySelector('[data-act=check]')!.classList.remove('hidden');
   });
+  void (async () => {
+    await wait(300);
+    if (run?.intro) await lead();
+  })();
 }
 
 /* --------------------------------------------------------------- finish */
@@ -463,18 +481,24 @@ function showFinish() {
   confetti();
   const root = show(`
     <div class="screen finish">
-      <h1>Aferin! 🎉</h1>
+      <h1>${progress.name} 🎉</h1>
       <div class="stars">${'⭐'.repeat(Math.max(1, r.stars))}</div>
-      <p>Yeni çıkartman:</p>
       <div class="new-sticker">${sticker}</div>
-      <button class="big-btn mint" data-act="again">🔁 Tekrar oyna</button>
-      <button class="big-btn ghost" data-act="home">🏠 Ana sayfa</button>
+      <div class="row">
+        <button class="big-btn mint" data-act="again">🔁</button>
+        <button class="big-btn ghost" data-act="home">🏠</button>
+      </div>
+      <button class="big-btn grape-btn" data-act="stage">👑 👗 🎨</button>
     </div>`);
-  void praise();
+  void talk('bitti');
   on(root, 'again', () => startGame(r.kind));
   on(root, 'home', () => {
     run = null;
     showHome();
+  });
+  on(root, 'stage', () => {
+    run = null;
+    showStage(() => showHome());
   });
 }
 
@@ -493,7 +517,7 @@ function showGate() {
       <button class="big-btn sky" data-act="go">Gir</button>
     </div>`);
   const input = root.querySelector<HTMLInputElement>('input')!;
-  on(root, 'home', showHome);
+  on(root, 'home', () => showHome());
   const go = () => {
     if (Number(input.value) === a + b) showParent();
     else {
@@ -511,7 +535,7 @@ interface RecItem {
   hint?: string;
 }
 
-function recSections(): { id: string; title: string; help: string; items: RecItem[] }[] {
+function recSections(): { id: string; title: string; help: string; items: RecItem[]; open?: boolean }[] {
   const known = knownSet();
   return [
     {
@@ -519,12 +543,14 @@ function recSections(): { id: string; title: string; help: string; items: RecIte
       title: 'Harf sesleri',
       help: 'Harfin adını değil, sesini söyleyin. Örneğin "ne" değil "nnn", "te" değil kısa bir "t". Öğretmenin söylediği gibi.',
       items: ALPHABET.filter((l) => known.has(l)).map((l) => ({ k: key.letter(l), label: l })),
+      open: true,
     },
     {
       id: 'hece',
       title: 'Heceler',
       help: 'Heceyi tek seferde, doğal okuyun: "na", "an".',
       items: syllablesFor(known).map((s) => ({ k: key.syllable(s), label: s })),
+      open: true,
     },
     {
       id: 'kelime',
@@ -533,16 +559,16 @@ function recSections(): { id: string; title: string; help: string; items: RecIte
       items: wordsFor(known).map((w) => ({ k: key.word(w.text), label: w.text, hint: w.emoji })),
     },
     {
-      id: 'ovgu',
-      title: 'Övgü sözleri (isteğe bağlı)',
-      help: 'Doğru cevapta çocuğunuz sizin sesinizle tebrik edilir. Adını da ekleyebilirsiniz.',
-      items: PRAISES.map((p, i) => ({ k: key.praise(i), label: p })),
+      id: 'talimat',
+      title: 'Sesli talimatlar (isteğe bağlı)',
+      help: 'Kaydetmezseniz telefonun Türkçe sesi okur. Kendi sesinizle kaydederseniz çocuğunuz sizin sesinizi duyar.',
+      items: (Object.keys(TALK) as TalkId[]).map((id) => ({ k: key.talk(id), label: fill(TALK[id], progress.name) })),
     },
     {
-      id: 'yonerge',
-      title: 'Oyun yönergeleri (isteğe bağlı)',
-      help: 'Oyun başında çalınır, çocuğunuz ne yapacağını duyar.',
-      items: Object.entries(INSTRUCTIONS).map(([k, t]) => ({ k: key.intro(k), label: t })),
+      id: 'ovgu',
+      title: 'Övgü sözleri (isteğe bağlı)',
+      help: 'Doğru cevapta söylenir. Kaydetmezseniz telefonun sesi okur.',
+      items: PRAISES.map((p, i) => ({ k: key.praise(i), label: fill(p, progress.name) })),
     },
   ];
 }
@@ -552,8 +578,9 @@ let activeRec: { k: string; rec: Recording; timer: number } | null = null;
 function recRow(it: RecItem): string {
   const has = hasVoice(it.k);
   const recording = activeRec?.k === it.k;
-  return `<div class="rec-row ${has ? 'has' : ''} ${recording ? 'recording' : ''}" data-k="${it.k}">
-    <span class="rec-label">${it.hint ? `<i>${it.hint}</i>` : ''}${it.label.length <= 12 ? colored(it.label) : it.label}</span>
+  const short = it.label.length <= 12;
+  return `<div class="rec-row ${has ? 'has' : ''} ${recording ? 'recording' : ''} ${short ? '' : 'long'}" data-k="${it.k}">
+    <span class="rec-label">${it.hint ? `<i>${it.hint}</i>` : ''}${short ? colored(it.label) : it.label}</span>
     <span class="rec-actions">
       ${has ? `<button class="mini play" data-rec="play" aria-label="Dinle">▶</button>` : ''}
       <button class="mini rec" data-rec="rec">${recording ? '■ Bitir' : has ? '↻' : '● Kaydet'}</button>
@@ -570,8 +597,15 @@ function showParent() {
       <header class="bar"><button class="round-btn" data-act="home">⬅</button><h2>Ebeveyn</h2><span></span></header>
 
       <section class="panel">
+        <h3>Çocuğun adı</h3>
+        <div class="row"><input class="name-input" value="${progress.name.replace(/"/g, '')}" maxlength="12" autocomplete="off" /><button class="big-btn sky small-btn" data-act="saveName">Kaydet</button></div>
+        <label class="check"><input type="checkbox" data-act="tts" ${progress.tts ? 'checked' : ''}/> Kaydı olmayan talimatları telefonun sesi okusun</label>
+        ${ttsAvailable() ? `<button class="link" data-act="testTts">🔊 Telefon sesini dene</button>` : '<p class="muted small">Bu cihazda telefon sesi yok.</p>'}
+      </section>
+
+      <section class="panel">
         <h3>1. Öğrendiği harfler</h3>
-        <p class="muted">Kızınız okulda yeni bir harf öğrendikçe buradan ekleyin. Oyunlar sadece bu harflerle hece ve kelime üretir.</p>
+        <p class="muted">Okulda yeni bir harf öğrendikçe buradan ekleyin. Oyunlar sadece bu harflerle hece ve kelime üretir.</p>
         <div class="letters">
           ${ALPHABET.map((l) => `<button class="lt ${progress.known.includes(l) ? 'on' : ''} ${isVowel(l) ? 'v' : 'c'}" data-act="toggle" data-l="${l}">${l}</button>`).join('')}
         </div>
@@ -582,7 +616,7 @@ function showParent() {
         <p class="muted">Sessiz bir ortamda telefonu ağzınıza 20-30 cm yakın tutun. <b>● Kaydet</b>'e basın, söyleyin, <b>■ Bitir</b>'e basın. Kayıt hemen geri çalınır, beğenmezseniz <b>↻</b> ile yeniden kaydedin.</p>
         ${sections
           .map(
-            (s) => `<details class="rec-sec" ${s.id === 'harf' || s.id === 'hece' ? 'open' : ''}>
+            (s) => `<details class="rec-sec" ${s.open ? 'open' : ''}>
               <summary><span>${s.title}</span><span class="count" data-count="${s.id}">${counts(s)}</span></summary>
               <p class="muted small">${s.help}</p>
               <div class="rec-list">${s.items.map(recRow).join('') || '<p class="muted small">Bu harflerle henüz kelime yok. Yeni harf ekledikçe gelecek.</p>'}</div>
@@ -607,6 +641,22 @@ function showParent() {
     releaseMic();
     showHome();
   });
+
+  on(root, 'saveName', () => {
+    const v = root.querySelector<HTMLInputElement>('.name-input')!.value.trim();
+    if (v) {
+      progress.name = v.slice(0, 12);
+      commit();
+      const y = window.scrollY;
+      showParent();
+      window.scrollTo(0, y);
+    }
+  });
+  root.querySelector<HTMLInputElement>('[data-act=tts]')!.addEventListener('change', (e) => {
+    progress.tts = (e.target as HTMLInputElement).checked;
+    commit();
+  });
+  on(root, 'testTts', () => speak(fill(TALK.merhaba, progress.name)));
 
   on(root, 'toggle', (el) => {
     const l = el.dataset.l!;
@@ -653,13 +703,14 @@ function showParent() {
       }
       return;
     }
-    // rec
     if (activeRec?.k === k) return finishRecording();
     if (activeRec) await finishRecording();
     stopVoice();
     try {
       const rec = await startRecording();
-      activeRec = { k, rec, timer: window.setTimeout(finishRecording, 5000) };
+      // Talimatlar uzun olabilir: onlara daha fazla süre.
+      const limit = k.startsWith('tal:') ? 9000 : 5000;
+      activeRec = { k, rec, timer: window.setTimeout(finishRecording, limit) };
       refreshRow(k);
     } catch {
       alert('Mikrofona erişilemedi. iPhone Ayarlar → Safari → Mikrofon kısmından izin verin.');
@@ -670,7 +721,7 @@ function showParent() {
     const blob = await exportVoices();
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `hece-hece-yedek-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `okuma-oyunu-yedek-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
   });
   root.querySelector<HTMLInputElement>('input[type=file]')!.addEventListener('change', async (e) => {
@@ -697,6 +748,5 @@ function showParent() {
 
 /* ---------------------------------------------------------------- boot */
 
-// Ana ekran uygulaması kalıcı depolama istesin (iOS'un verileri silmemesi için).
 void navigator.storage?.persist?.().catch(() => {});
-initVoices().then(showHome);
+initVoices().then(showSplash);

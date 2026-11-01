@@ -81,6 +81,64 @@ export function stopVoice() {
   }
   finishCurrent?.();
   finishCurrent = null;
+  try {
+    // iOS: gereksiz cancel() hemen ardından gelen konuşmayı yutabiliyor.
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+  } catch {
+    /* yok */
+  }
+}
+
+/* ------------------------------------------------------ text to speech */
+
+let trVoice: SpeechSynthesisVoice | null | undefined;
+function pickVoice(): SpeechSynthesisVoice | null {
+  if (trVoice) return trVoice;
+  try {
+    const voices = speechSynthesis.getVoices();
+    trVoice = voices.find((v) => v.lang.toLowerCase().startsWith('tr')) ?? null;
+  } catch {
+    trVoice = null;
+  }
+  return trVoice;
+}
+try {
+  speechSynthesis.addEventListener?.('voiceschanged', () => {
+    trVoice = undefined;
+    pickVoice();
+  });
+} catch {
+  /* yok */
+}
+
+export const ttsAvailable = () => 'speechSynthesis' in window;
+
+/** Telefonun Türkçe sesiyle okur (talimatlar için). Bitince çözülür. */
+export function speak(text: string): Promise<void> {
+  if (!ttsAvailable()) return Promise.resolve();
+  stopVoice();
+  return new Promise<void>((resolve) => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'tr-TR';
+    const v = pickVoice();
+    if (v) u.voice = v;
+    u.rate = 0.95;
+    u.pitch = 1.05;
+    let done = false;
+    const end = () => {
+      if (done) return;
+      done = true;
+      clearTimeout(t);
+      if (finishCurrent === end) finishCurrent = null;
+      resolve();
+    };
+    // Bazı cihazlarda "bitti" olayı gelmeyebilir; takılı kalmasın.
+    const t = setTimeout(end, 1500 + text.length * 110);
+    u.onend = end;
+    u.onerror = end;
+    finishCurrent = end;
+    speechSynthesis.speak(u);
+  });
 }
 
 /** Kaydı çalar, bitince çözülür. Kayıt yoksa hemen çözülür. */

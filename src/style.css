@@ -426,12 +426,15 @@ button {
   gap: 8px;
 }
 .slot {
-  min-width: 90px;
+  min-width: 100px;
   height: 90px;
   border-radius: 18px;
   border: 4px dashed #d9cbb5;
-  display: grid;
-  place-items: center;
+  /* Hecedeki harfler yan yana dursun (grid her harfi alt satıra atıyordu). */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
   font-size: 52px;
   font-weight: 700;
   padding: 0 10px 8px;
@@ -752,4 +755,364 @@ button {
     animation: none !important;
     transition: none !important;
   }
+}
+
+
+/* ================================================== v2: ses, sahne, boyama */
+
+.slot.filled {
+  border: 4px solid transparent;
+}
+
+.talk-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--lemon);
+  box-shadow: 0 4px 0 var(--lemon-d);
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.prompt-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+.prompt-row .talk-btn {
+  width: 64px;
+  height: 64px;
+  font-size: 30px;
+}
+
+.title h1 {
+  line-height: 1.1;
+}
+.title h1 span {
+  font-size: 26px;
+  color: var(--muted);
+}
+
+.tap-hint {
+  position: absolute;
+  bottom: -14px;
+  right: -6px;
+  font-style: normal;
+  font-size: 30px;
+  animation: tap 1.2s ease-in-out infinite;
+}
+.pair .card {
+  position: relative;
+}
+.pair .card.heard .tap-hint {
+  display: none;
+}
+@keyframes tap {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* splash */
+.splash {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+.splash-doll {
+  width: min(64vw, 260px);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 8px 0 var(--line);
+}
+.splash h1 {
+  margin: 6px 0;
+  font-size: 40px;
+  line-height: 1.1;
+}
+.play-btn {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 0 8px 0 var(--mint-d);
+  color: white;
+  font-size: 56px;
+  padding-left: 10px;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+/* home stage banner */
+.stage-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px 10px 10px;
+  border-radius: 24px;
+  color: white;
+  background: linear-gradient(120deg, #b18cff, #ff8fd8);
+  box-shadow: 0 6px 0 #9a6fe0;
+  text-align: left;
+}
+.stage-banner:active {
+  transform: translateY(3px);
+}
+.sb-doll {
+  width: 76px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.sb-text {
+  font-size: 23px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+}
+.sb-text small {
+  font-size: 26px;
+}
+.game-card {
+  min-height: 112px;
+}
+.grape-btn {
+  background: linear-gradient(120deg, #b18cff, #ff8fd8);
+  box-shadow: 0 6px 0 #9a6fe0;
+}
+.row .big-btn {
+  flex: 1;
+}
+
+/* doll */
+.doll {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.doll-body {
+  transform-origin: 150px 440px;
+  transform-box: view-box;
+}
+
+.center-pill {
+  align-self: center;
+}
+.stage-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.stage-card {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  min-height: 240px;
+  display: grid;
+  place-items: center;
+}
+.stage-card > span {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  font-size: 40px;
+}
+.stage-card .big {
+  position: static;
+  font-size: 96px;
+}
+.grape {
+  background: #b18cff;
+  box-shadow: 0 6px 0 #9a6fe0;
+}
+.pink {
+  background: #ff9fd6;
+  box-shadow: 0 6px 0 #e57bb8;
+}
+
+.dress {
+  gap: 10px;
+}
+.doll-wrap {
+  position: relative;
+  align-self: center;
+  width: min(44vw, 200px);
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 6px 0 var(--line);
+}
+.spark {
+  position: absolute;
+  font-size: 28px;
+  pointer-events: none;
+  animation: spark 0.9s ease-out forwards;
+}
+@keyframes spark {
+  from {
+    transform: scale(0.3);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-50px) scale(1.3);
+    opacity: 0;
+  }
+}
+.cats {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px 2px 8px;
+}
+.cat {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: var(--card);
+  box-shadow: 0 3px 0 var(--line);
+  font-size: 28px;
+}
+.cat.on {
+  background: #efe4ff;
+  box-shadow:
+    0 0 0 3px var(--grape),
+    0 3px 0 #9a6fe0;
+}
+.items {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 2px 8px;
+}
+.item {
+  position: relative;
+  flex: 0 0 auto;
+  width: 72px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--card);
+  box-shadow: 0 3px 0 var(--line);
+  min-height: 72px;
+}
+.item.on {
+  box-shadow:
+    0 0 0 4px var(--grape),
+    0 3px 0 #9a6fe0;
+}
+.item.locked .doll {
+  filter: grayscale(1) brightness(0.8);
+  opacity: 0.6;
+}
+.item .none {
+  font-size: 34px;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  min-height: 72px;
+}
+.lock {
+  position: absolute;
+  inset: auto 0 0 0;
+  background: rgba(61, 53, 83, 0.8);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 0;
+}
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.sw {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 3px rgba(0, 0, 0, 0.08),
+    0 2px 0 rgba(0, 0, 0, 0.12);
+}
+.sw.on {
+  box-shadow:
+    0 0 0 4px #fff,
+    0 0 0 7px var(--ink);
+  transform: scale(1.08);
+}
+.swatches.big .sw {
+  width: 46px;
+  height: 46px;
+}
+.sw.eraser {
+  background: #fff;
+  font-size: 22px;
+}
+
+/* coloring */
+.pages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.page-thumb {
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 5px 0 var(--line);
+}
+.paint {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+.paint .r {
+  fill: #fff;
+  stroke: #3d3553;
+  stroke-width: 4;
+  stroke-linejoin: round;
+  cursor: pointer;
+  transition: fill 0.15s;
+}
+.paint text.r {
+  stroke-width: 3;
+}
+.canvas {
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 6px 0 var(--line);
+  touch-action: manipulation;
+}
+.paint-screen {
+  gap: 12px;
+}
+
+/* parent extras */
+.name-input {
+  flex: 2;
+  font: inherit;
+  font-size: 22px;
+  border: 3px solid var(--line);
+  border-radius: 14px;
+  padding: 8px 12px;
+  min-width: 0;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.small-btn {
+  font-size: 17px !important;
+  padding: 10px !important;
+}
+.check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 15px;
+}
+.check input {
+  width: 22px;
+  height: 22px;
+}
+.rec-row.long .rec-label {
+  font-size: 15px;
+  font-weight: 400;
 }

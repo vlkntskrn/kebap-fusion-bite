@@ -145,7 +145,8 @@ export function syllablesFor(known: Set<string>): string[] {
   return out;
 }
 
-export const PRAISES = ['Aferin!', 'Harika!', 'Çok güzel!', 'Bravo!'];
+/** Övgüler: {ad} çocuğun adıyla değişir. */
+export const PRAISES = ['Aferin {ad}!', 'Harika {ad}!', 'Çok güzel {ad}!', 'Bravo {ad}!'];
 
 /** Her kaydın benzersiz anahtarı. */
 export const key = {
@@ -153,15 +154,47 @@ export const key = {
   syllable: (s: string) => `hece:${s}`,
   word: (w: string) => `kelime:${w}`,
   praise: (i: number) => `ovgu:${i}`,
-  intro: (name: string) => `yonerge:${name}`,
+  talk: (id: string) => `tal:${id}`,
 };
 
-/** Oyun yönergeleri: ebeveyn kendi sesiyle okursa çocuk ne yapacağını duyar. */
-export const INSTRUCTIONS: Record<string, string> = {
-  bul: 'Duyduğun sesin harfini bul.',
-  birlestir: 'Sesleri dinle, sonra birleştir.',
-  kur: 'Heceleri sırayla diz, kelimeyi kur.',
-  oku: 'Kelimeyi sesli oku, sonra dinleyerek kontrol et.',
-};
+/**
+ * Sesli talimatlar. Çocuk henüz okuyamadığı için her ekran ne yapacağını sesle söyler.
+ * Ebeveyn kendi sesiyle kaydedebilir; kayıt yoksa telefonun Türkçe sesi okur.
+ * {ad} = çocuğun adı, {adın} = adın -in eki almış hâli (Defne'nin).
+ */
+export const TALK = {
+  merhaba: 'Merhaba {ad}! Hangi oyunu oynamak istersin?',
+  bul: 'Sesi bul oyunu! {ad}, sesi dinle. Hangi harf? Harfe dokun.',
+  birlestir: 'Sesleri birleştir oyunu! {ad}, iki harfe de dokun, seslerini dinle.',
+  birlestirBas: 'Şimdi mavi birleştir düğmesine bas, {ad}!',
+  birlestirSor: '{ad}, hangisini duydun? Dokun.',
+  kur: 'Kelime kur oyunu! {ad}, resme bak, heceleri sırayla diz.',
+  oku: 'Oku oyunu! {ad}, kelimeyi sesli oku. Sonra mavi düğmeye bas, dinle.',
+  okuKontrol: 'Doğru okuduysan yeşil düğmeye bas, {ad}.',
+  tekrar: 'Bir daha dene, {ad}.',
+  bitti: 'Aferin {ad}! Yeni bir çıkartma kazandın.',
+  album: '{ad}, bunlar senin çıkartmaların.',
+  kayitYok: '{ad}, bu oyun için annen ya da baban önce ses kaydetmeli.',
+  sahne: '{adın} sahnesine hoş geldin! Giydirmek mi, boyamak mı istersin?',
+  giydir: '{ad}, yukarıdan bir şey seç, sonra aşağıdan rengini seç.',
+  kilitli: 'Bunu açmak için okuma oyunlarında yıldız kazan, {ad}!',
+  boyaSec: '{ad}, hangi resmi boyamak istersin?',
+  boya: '{ad}, bir renk seç, sonra resme dokun.',
+  boyaBitti: 'Çok güzel boyadın, {ad}!',
+} as const;
+export type TalkId = keyof typeof TALK;
+
+/** Türkçe -in eki (ünlü uyumu): Defne → Defne'nin, Elif → Elif'in, Ayşegül → Ayşegül'ün. */
+export function genitive(name: string): string {
+  const vowels = [...name.toLocaleLowerCase('tr')].filter((c) => 'aeıioöuü'.includes(c));
+  const last = vowels[vowels.length - 1] ?? 'e';
+  const v = ({ a: 'ı', ı: 'ı', e: 'i', i: 'i', o: 'u', u: 'u', ö: 'ü', ü: 'ü' } as Record<string, string>)[last];
+  const endsVowel = 'aeıioöuü'.includes(name.slice(-1).toLocaleLowerCase('tr'));
+  return `${name}'${endsVowel ? 'n' : ''}${v}n`;
+}
+
+export function fill(template: string, name: string): string {
+  return template.replaceAll('{adın}', genitive(name)).replaceAll('{ad}', name);
+}
 
 export const STICKERS = '🦄🐼🦋🐞🐠🦁🐸🐙🦊🐨🐧🦉🐝🐢🦖🌈🌻🍓🍉🚀🎈🧸🎀🍭⭐️🐬🦒🐰🐳🌸'.match(/\p{Extended_Pictographic}(️)?/gu)!;

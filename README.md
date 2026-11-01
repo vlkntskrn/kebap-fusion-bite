@@ -1,4 +1,4 @@
-# Hece Hece 🔤
+# Defne'nin Okuma Oyunu (Hece Hece) 🔤
 
 1. sınıfa başlayan çocuklar için **ses temelli ilk okuma** oyunu. Harf seslerini tanımayı,
 sesleri birleştirip hece oluşturmayı (n + a → **na**) ve hecelerden kelime kurmayı çalıştırır.
@@ -15,6 +15,9 @@ Oyundaki bütün sesler **anne ya da babanın kendi sesiyle** kaydedilir. Böyle
 | 🧩 **Kelime Kur** | Resmi görür, kelimeyi dinler, heceleri sırayla dizer (an + ne → anne). |
 | 📖 **Oku** | Kelimeyi önce kendisi sesli okur, sonra dinleyip kontrol eder. Heceler renkli çizgiyle ayrılır. |
 
+| 👑 **Defne'nin Sahnesi** | Kâğıt bebek giydirme (prenses / pop yıldızı kıyafetleri, saç, taç, mikrofon, sahne) ve boyama sayfaları (kale, taç, çiçek, dondurma, kelebek, kendi adı). Okuma oyunlarında kazanılan yıldızlar yeni kıyafetleri açar. |
+
+- **Her şey sesli:** Çocuk henüz okuyamadığı için her ekran ne yapılacağını adıyla söyler ("Defne, sesi dinle…"). Ebeveyn bu talimatları kendi sesiyle kaydedebilir. Kayıt yoksa telefonun Türkçe sesi okur. Her ekrandaki sarı 🔊 düğmesi talimatı tekrarlar.
 - Sesli harfler **kırmızı**, sessiz harfler **mavi** gösterilir.
 - Yazı tipi: [Andika](https://software.sil.org/andika/). Okumayı yeni öğrenenler için tasarlanmıştır, "a" harfi okulda yazıldığı gibi tek katlıdır.
 - Oyun yalnızca çocuğun **öğrendiği harflerle** hece ve kelime üretir. Ebeveyn panelinden yeni harf eklendikçe kelimeler kendiliğinden açılır.

@@ -1,13 +1,19 @@
 export interface Progress {
+  name: string;
+  /** Kayıt olmayan talimatları telefonun Türkçe sesi okusun mu. */
+  tts: boolean;
   known: string[];
   stars: number;
   stickers: string[];
   /** Harf/hece/kelime başına doğru-yanlış sayısı; zorlandığı öğeler daha sık sorulur. */
   stats: Record<string, { ok: number; miss: number }>;
+  /** Defne'nin Sahnesi: bebeğin seçili kıyafetleri ve boyama sayfalarının renkleri. */
+  doll?: Record<string, { item: string; color: string }>;
+  paintings?: Record<string, Record<string, string>>;
 }
 
 const KEY = 'hece-hece-v1';
-const DEFAULT: Progress = { known: ['e', 'n', 'a', 't', 'i'], stars: 0, stickers: [], stats: {} };
+const DEFAULT: Progress = { name: 'Defne', tts: true, known: ['e', 'n', 'a', 't', 'i'], stars: 0, stickers: [], stats: {} };
 
 export function loadProgress(): Progress {
   try {
@@ -53,3 +59,7 @@ export function shuffle<T>(a: T[]): T[] {
   }
   return arr;
 }
+
+/** Uygulama genelinde tek ilerleme kaydı. */
+export const progress = loadProgress();
+export const commit = () => saveProgress(progress);
