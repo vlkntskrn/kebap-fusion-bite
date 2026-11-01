@@ -24,6 +24,7 @@ import { sfx } from './sfx';
 import { h, show, colored, on, wiggle, bounce, confetti, talkBtn } from './ui';
 import { talk, praise, bindTalkButtons } from './talk';
 import { showStage, dollSvg, showGiftPicker, pendingGifts } from './stage';
+import { showHouse, houseTitle } from './house';
 
 const knownSet = () => new Set(progress.known);
 
@@ -103,6 +104,7 @@ function showHome(greet = false) {
         <span class="sb-doll">${dollSvg(progress.doll ?? defaultLookForSplash(), 'doll mini')}</span>
         <span class="sb-text">👑 ${genitive(progress.name)} Sahnesi<small>👗 🎨 ${pendingGifts() > 0 ? `<b class="gift-badge">🎁 ${pendingGifts()}</b>` : ''}</small></span>
       </button>
+      <button class="house-banner" data-act="house"><span class="hb-icon">🏠</span><span class="sb-text">${houseTitle()}<small>🛏️ 🍳 🛁 🛋️</small></span></button>
       <div class="games">
         ${GAMES.map((g) => {
           const ready = items[g.kind]().length >= MIN[g.kind];
@@ -125,6 +127,7 @@ function showHome(greet = false) {
     }
   });
   on(root, 'stage', () => showStage(() => showHome()));
+  on(root, 'house', () => showHouse(() => showHome()));
   on(root, 'parent', showGate);
   on(root, 'album', showAlbum);
   if (greet) void talk('merhaba');

@@ -43,12 +43,13 @@ interface Cat {
 }
 
 const CATS: Cat[] = [
-  { id: 'kiyafet', icon: '👗', colors: PALETTE, items: [{ id: 'prenses', free: true }, { id: 'pop', free: true }, { id: 'tisort' }, { id: 'tutu' }, { id: 'sim' }, { id: 'tulum' }, { id: 'kahraman' }] },
+  { id: 'kiyafet', icon: '👗', colors: PALETTE, items: [{ id: 'prenses', free: true }, { id: 'pop', free: true }, { id: 'tisort' }, { id: 'tutu' }, { id: 'sim' }, { id: 'cicekli' }, { id: 'sweat' }, { id: 'tulum' }, { id: 'kahraman' }] },
   { id: 'sac', icon: '💇‍♀️', colors: HAIR, items: [{ id: 'orgu', free: true }, { id: 'uzun', free: true }, { id: 'atkuyrugu' }, { id: 'kisa' }, { id: 'topuz' }, { id: 'kivircik' }] },
   { id: 'ten', icon: '🙂', colors: SKIN, items: [{ id: 'ten', free: true }] },
-  { id: 'taki', icon: '👑', colors: PALETTE, items: [{ id: 'tac', free: true }, { id: 'yok', free: true }, { id: 'yildiz' }, { id: 'kurdele' }, { id: 'cicek' }, { id: 'gozluk' }, { id: 'kulaklik' }] },
+  { id: 'taki', icon: '👑', colors: PALETTE, items: [{ id: 'tac', free: true }, { id: 'yok', free: true }, { id: 'yildiz' }, { id: 'kurdele' }, { id: 'cicek' }, { id: 'sapka' }, { id: 'bere' }, { id: 'gozluk' }, { id: 'kulaklik' }] },
   { id: 'elde', icon: '🎤', colors: PALETTE, items: [{ id: 'mikrofon', free: true }, { id: 'yok', free: true }, { id: 'buket' }, { id: 'degnek' }, { id: 'gitar' }] },
   { id: 'ayakkabi', icon: '👟', colors: PALETTE, items: [{ id: 'babet', free: true }, { id: 'spor' }, { id: 'cizme' }] },
+  { id: 'hayvan', icon: '🐱', colors: ['#f2c14e', '#a0522d', '#ffffff', '#9a9a9a', '#3d3553', ...PALETTE.slice(0, 6)], items: [{ id: 'kedi', free: true }, { id: 'yok', free: true }, { id: 'kopek' }, { id: 'tavsan' }] },
   { id: 'fon', icon: '🏰', colors: PALETTE, items: [{ id: 'sahne', free: true }, { id: 'kale' }, { id: 'gokkusagi' }, { id: 'gece' }] },
 ];
 
@@ -79,7 +80,13 @@ const DEFAULT_LOOK: Look = {
   ayakkabi: { item: 'babet', color: '#ff8fd8' },
   fon: { item: 'sahne', color: '#7b5cff' },
   ten: { item: 'ten', color: '#f6c9a4' },
+  hayvan: { item: 'kedi', color: '#f2c14e' },
 };
+
+/** Bebeğin şu anki görünümü (evde de aynı bebek görünsün). */
+export function currentLook(): Look {
+  return look();
+}
 
 function look(): Look {
   if (!progress.unlocked) {
@@ -122,8 +129,8 @@ function hairBack(item: string, c: string): string {
     case 'uzun':
       return `<path d="M86 120 Q84 52 150 48 Q216 52 214 120 L226 300 Q150 322 74 300 Z" fill="${c}"/>`;
     case 'orgu': {
-      const beads = Array.from({ length: 9 }, (_, i) => `<ellipse cx="${206 + Math.sin(i * 0.6) * 6}" cy="${180 + i * 26}" rx="17" ry="15" fill="${i % 2 ? shade(c, -0.15) : c}"/>`).join('');
-      return `${cap}${beads}<circle cx="${206 + Math.sin(9 * 0.6) * 6}" cy="${180 + 9 * 26 - 4}" r="8" fill="${shade(c, -0.3)}"/>`;
+      const beads = Array.from({ length: 7 }, (_, i) => `<ellipse cx="${206 + Math.sin(i * 0.6) * 6}" cy="${176 + i * 22}" rx="16" ry="14" fill="${i % 2 ? shade(c, -0.15) : c}"/>`).join('');
+      return `${cap}${beads}<circle cx="${206 + Math.sin(7 * 0.6) * 6}" cy="${176 + 7 * 22 - 6}" r="8" fill="${shade(c, -0.3)}"/>`;
     }
     case 'atkuyrugu':
       return `${cap}<path d="M188 66 Q262 84 246 214 Q236 262 218 236 Q238 136 184 96 Z" fill="${c}"/><circle cx="192" cy="72" r="10" fill="#ff5d8f"/>`;
@@ -177,6 +184,16 @@ function outfit(item: string, c: string): string {
       return `<path d="M122 196 L178 196 L192 330 L108 330 Z" fill="${c}"/>
         <rect x="120" y="262" width="60" height="12" rx="4" fill="#ffd93d"/>
         <path d="M150 212 l6 12 13 2 -10 9 3 13 -12 -7 -12 7 3 -13 -10 -9 13 -2Z" fill="#ffd93d"/>`;
+    case 'cicekli':
+      return `<path d="M124 196 Q150 188 176 196 L198 334 L102 334 Z" fill="${c}"/>
+        ${[[130, 240], [165, 262], [140, 300], [178, 310], [118, 318], [160, 220]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="7" fill="#fff"/><circle cx="${x}" cy="${y}" r="3" fill="#ffd93d"/>`).join('')}
+        <rect x="104" y="196" width="22" height="24" rx="8" fill="${l}" transform="rotate(20 115 208)"/><rect x="174" y="196" width="22" height="24" rx="8" fill="${l}" transform="rotate(-20 185 208)"/>`;
+    case 'sweat':
+      return `<rect x="127" y="276" width="22" height="140" rx="6" fill="#7a9bd6"/><rect x="151" y="276" width="22" height="140" rx="6" fill="#7a9bd6"/>
+        <path d="M112 196 L188 196 L192 288 L108 288 Z" fill="${c}"/>
+        <path d="M118 200 Q98 240 96 284" stroke="${c}" stroke-width="26" stroke-linecap="round" fill="none"/>
+        <path d="M182 200 Q202 240 204 284" stroke="${c}" stroke-width="26" stroke-linecap="round" fill="none"/>
+        <rect x="108" y="278" width="84" height="12" rx="4" fill="${d}"/><circle cx="150" cy="236" r="14" fill="${l}"/>`;
     case 'tutu':
       return `<path d="M124 196 Q150 188 176 196 L174 262 L126 262 Z" fill="${c}"/>
         ${[0, 1, 2].map((i) => `<ellipse cx="150" cy="${262 + i * 9}" rx="${70 - i * 8}" ry="${20 - i * 3}" fill="${i % 2 ? l : c}" opacity=".95"/>`).join('')}
@@ -218,6 +235,12 @@ function accessory(item: string, c: string): string {
           return `<circle cx="${x}" cy="${y}" r="11" fill="${col}"/><circle cx="${x}" cy="${y}" r="4" fill="#ffd93d"/>`;
         })
         .join('');
+    case 'sapka':
+      return `<ellipse cx="150" cy="92" rx="76" ry="15" fill="${shade(c, -0.15)}"/><path d="M98 92 Q102 38 150 36 Q198 38 202 92 Z" fill="${c}"/>
+        ${[120, 150, 180].map((x) => `<circle cx="${x}" cy="70" r="8" fill="#fff"/><circle cx="${x}" cy="70" r="3" fill="#ffd93d"/>`).join('')}`;
+    case 'bere':
+      return `<path d="M90 100 Q90 34 150 34 Q210 34 210 100 Z" fill="${c}"/><rect x="88" y="88" width="124" height="18" rx="8" fill="${shade(c, -0.2)}"/>
+        <circle cx="150" cy="32" r="14" fill="${shade(c, 0.4)}"/>`;
     case 'kurdele':
       return `<path d="M150 58 L112 36 L116 82 Z M150 58 L188 36 L184 82 Z" fill="${c}" stroke="${shade(c, -0.3)}" stroke-width="3" stroke-linejoin="round"/>
         <circle cx="150" cy="58" r="10" fill="${shade(c, -0.2)}"/>`;
@@ -252,33 +275,66 @@ function handheld(item: string, c: string): string {
   return '';
 }
 
-export function dollSvg(lk: Look, cls = 'doll'): string {
-  const g = (k: string) => lk[k];
+/** Kalın, koyu kontur: her parçanın etrafına "çıkartma" gibi çizgi çeker. */
+const OUTLINE = `<defs><filter id="ol" x="-15%" y="-15%" width="130%" height="130%"><feMorphology in="SourceAlpha" operator="dilate" radius="2.6" result="d"/><feFlood flood-color="#3d3553"/><feComposite in2="d" operator="in" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>`;
+/** Sevimli oranlar: büyük kafa, kısa gövde. */
+const HEAD = 'translate(-37.5 -46.25) scale(1.25)';
+const BODY = 'translate(0 38) scale(1 0.8)';
+
+function pet(item: string, c: string): string {
+  const d = shade(c, -0.25);
+  const eyes = (x: number, y: number) => `<circle cx="${x - 6}" cy="${y}" r="2.6" fill="#2d2440"/><circle cx="${x + 6}" cy="${y}" r="2.6" fill="#2d2440"/>`;
+  if (item === 'kedi')
+    return `<path d="M96 420 Q122 404 112 382" stroke="${c}" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <ellipse cx="74" cy="420" rx="28" ry="18" fill="${c}"/>
+      <path d="M38 382 L42 360 L54 374 Z M66 382 L62 360 L50 374 Z" fill="${c}"/>
+      <circle cx="52" cy="390" r="19" fill="${c}"/>${eyes(52, 390)}<path d="M49 397 Q52 400 55 397" stroke="#2d2440" stroke-width="2" fill="none"/>`;
+  if (item === 'kopek')
+    return `<ellipse cx="76" cy="420" rx="30" ry="18" fill="${c}"/><circle cx="52" cy="388" r="20" fill="${c}"/>
+      <ellipse cx="34" cy="390" rx="7" ry="15" fill="${d}"/><ellipse cx="70" cy="390" rx="7" ry="15" fill="${d}"/>
+      ${eyes(52, 386)}<ellipse cx="52" cy="396" rx="5" ry="4" fill="#2d2440"/><path d="M104 412 q10 -12 4 -20" stroke="${c}" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+  if (item === 'tavsan')
+    return `<ellipse cx="74" cy="422" rx="26" ry="16" fill="${c}"/><circle cx="100" cy="418" r="7" fill="#fff"/>
+      <ellipse cx="44" cy="356" rx="7" ry="20" fill="${c}"/><ellipse cx="60" cy="356" rx="7" ry="20" fill="${c}"/>
+      <ellipse cx="44" cy="356" rx="3" ry="13" fill="#ff8fa3"/><ellipse cx="60" cy="356" rx="3" ry="13" fill="#ff8fa3"/>
+      <circle cx="52" cy="390" r="18" fill="${c}"/>${eyes(52, 388)}<circle cx="52" cy="396" r="3" fill="#ff8fa3"/>`;
+  return '';
+}
+
+/** opts.bg=false: arka plansız (evde odaların içinde kullanmak için). */
+export function dollSvg(lk: Look, cls = 'doll', opts: { bg?: boolean } = {}): string {
+  const g = (k: string) => lk[k] ?? DEFAULT_LOOK[k];
   const skin = g('ten').color;
-  return `<svg class="${cls}" viewBox="0 0 300 480" xmlns="http://www.w3.org/2000/svg">
-    <g data-part="fon">${background(g('fon').item, g('fon').color)}</g>
-    <ellipse cx="150" cy="448" rx="80" ry="10" fill="#000" opacity=".15"/>
-    <g class="doll-body">
-      <g data-part="sac">${hairBack(g('sac').item, g('sac').color)}</g>
-      <g data-part="kiyafet">${outfitBack(g('kiyafet').item, g('kiyafet').color)}</g>
-      <g data-part="ten"><rect x="128" y="316" width="18" height="118" rx="8" fill="${skin}"/><rect x="154" y="316" width="18" height="118" rx="8" fill="${skin}"/></g>
-      <g data-part="ayakkabi">${shoes(g('ayakkabi').item, g('ayakkabi').color)}</g>
-      <g data-part="ten"><path d="M121 202 Q102 242 98 290" stroke="${skin}" stroke-width="17" stroke-linecap="round" fill="none"/>
-      <path d="M179 202 Q198 242 202 290" stroke="${skin}" stroke-width="17" stroke-linecap="round" fill="none"/></g>
-      <g data-part="kiyafet">${outfit(g('kiyafet').item, g('kiyafet').color)}</g>
-      <g data-part="ten"><circle cx="98" cy="294" r="11" fill="${skin}"/><circle cx="202" cy="294" r="11" fill="${skin}"/>
-      <rect x="141" y="168" width="18" height="30" rx="6" fill="${skin}"/>
-      <circle cx="92" cy="132" r="10" fill="${skin}"/><circle cx="208" cy="132" r="10" fill="${skin}"/>
-      <circle cx="150" cy="122" r="60" fill="${skin}"/>
-      <g class="eyes"><ellipse cx="128" cy="130" rx="9" ry="12" fill="#2d2440"/><ellipse cx="172" cy="130" rx="9" ry="12" fill="#2d2440"/>
-      <circle cx="131" cy="125" r="3.5" fill="#fff"/><circle cx="175" cy="125" r="3.5" fill="#fff"/></g>
-      <path d="M117 116 Q127 110 136 115 M164 115 Q173 110 183 116" stroke="#2d2440" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <circle cx="114" cy="148" r="9" fill="#ff8fa3" opacity=".45"/><circle cx="186" cy="148" r="9" fill="#ff8fa3" opacity=".45"/>
-      <path d="M137 152 Q150 166 163 152" stroke="#d9435a" stroke-width="4" fill="none" stroke-linecap="round"/></g>
-      <g data-part="sac">${hairFront(g('sac').item, g('sac').color)}</g>
-      <g data-part="taki">${accessory(g('taki').item, g('taki').color)}</g>
-      <g data-part="elde">${handheld(g('elde').item, g('elde').color)}</g>
+  const bg = opts.bg !== false;
+  const part = (id: string, body: string) => `<g data-part="${id}" filter="url(#ol)">${body}</g>`;
+  return `<svg class="${cls}" viewBox="0 0 300 480" xmlns="http://www.w3.org/2000/svg">${OUTLINE}
+    ${bg ? `<g data-part="fon">${background(g('fon').item, g('fon').color)}</g>` : ''}
+    <ellipse cx="150" cy="436" rx="70" ry="9" fill="#000" opacity=".15"/>
+    <g class="doll-body"><g transform="translate(0 40)">
+      <g transform="${HEAD}">${part('sac', hairBack(g('sac').item, g('sac').color))}</g>
+      <g transform="${BODY}">
+        ${part('kiyafet', outfitBack(g('kiyafet').item, g('kiyafet').color))}
+        ${part('ten', `<rect x="128" y="316" width="18" height="118" rx="8" fill="${skin}"/><rect x="154" y="316" width="18" height="118" rx="8" fill="${skin}"/>`)}
+        ${part('ayakkabi', shoes(g('ayakkabi').item, g('ayakkabi').color))}
+        ${part('ten', `<path d="M121 202 Q102 242 98 290" stroke="${skin}" stroke-width="17" stroke-linecap="round" fill="none"/>
+          <path d="M179 202 Q198 242 202 290" stroke="${skin}" stroke-width="17" stroke-linecap="round" fill="none"/>`)}
+        ${part('kiyafet', outfit(g('kiyafet').item, g('kiyafet').color))}
+        ${part('ten', `<circle cx="98" cy="294" r="11" fill="${skin}"/><circle cx="202" cy="294" r="11" fill="${skin}"/><rect x="141" y="160" width="18" height="40" rx="6" fill="${skin}"/>`)}
+      </g>
+      <g transform="${HEAD}">
+        ${part('ten', `<circle cx="92" cy="132" r="10" fill="${skin}"/><circle cx="208" cy="132" r="10" fill="${skin}"/><circle cx="150" cy="122" r="60" fill="${skin}"/>`)}
+        <g data-part="ten">
+          <ellipse cx="128" cy="132" rx="7" ry="9" fill="#2d2440"/><ellipse cx="172" cy="132" rx="7" ry="9" fill="#2d2440"/>
+          <circle cx="130" cy="128" r="2.6" fill="#fff"/><circle cx="174" cy="128" r="2.6" fill="#fff"/>
+          <circle cx="112" cy="148" r="10" fill="#ff8fa3" opacity=".5"/><circle cx="188" cy="148" r="10" fill="#ff8fa3" opacity=".5"/>
+          <path d="M142 152 Q150 160 158 152" stroke="#3d3553" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        </g>
+        ${part('sac', hairFront(g('sac').item, g('sac').color))}
+        ${part('taki', accessory(g('taki').item, g('taki').color))}
+      </g>
+      <g transform="${BODY}">${part('elde', handheld(g('elde').item, g('elde').color))}</g>
     </g>
+    ${part('hayvan', pet(g('hayvan').item, g('hayvan').color))}</g>
   </svg>`;
 }
 

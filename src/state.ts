@@ -11,6 +11,8 @@ export interface Progress {
   doll?: Record<string, { item: string; color: string }>;
   /** Hediyeyle açılmış bebek parçaları ("kategori:parça"). */
   unlocked?: string[];
+  /** Defne'nin Evi: odalardaki eşyalar ve yerleri. */
+  house?: Record<string, { u: number; id: string; x: number; y: number; on?: boolean }[]>;
   /** Henüz seçilmemiş hediye sayısı. */
   gifts?: number;
   paintings?: Record<string, Record<string, string>>;
