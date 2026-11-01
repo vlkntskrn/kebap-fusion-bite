@@ -1721,7 +1721,7 @@ body {
   }
 }
 @media (orientation: portrait) and (max-width: 900px) {
-  body:not(.allow-portrait) .rotate-hint {
+  html:not(.portrait-ok) body:not(.allow-portrait) .rotate-hint {
     display: flex;
   }
 }
@@ -2572,4 +2572,25 @@ body {
 .item-tools button[data-tool='reset'] {
   font-size: 13px;
   background: #f1ece4;
+}
+
+.rotate-text {
+  margin: 4px 0 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+.rotate-small {
+  margin: 0 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 15px;
+}
+.rotate-skip {
+  margin-top: 18px;
+  padding: 12px 22px;
+  border-radius: 16px;
+  background: var(--card);
+  box-shadow: 0 4px 0 var(--line);
+  font-size: 17px;
+  font-weight: 700;
 }

@@ -790,6 +790,21 @@ function showParent() {
 
 void navigator.storage?.persist?.().catch(() => {});
 
+// Dik ekranda devam etmek isteyenler için (ekran döndürme kilidi açık olabilir).
+try {
+  if (localStorage.getItem('hece-dik') === '1') document.documentElement.classList.add('portrait-ok');
+} catch {
+  /* yok */
+}
+document.querySelector('.rotate-skip')?.addEventListener('click', () => {
+  document.documentElement.classList.add('portrait-ok');
+  try {
+    localStorage.setItem('hece-dik', '1');
+  } catch {
+    /* yok */
+  }
+});
+
 // iPhone'da iki parmakla yakınlaştırma ve çift dokunma zoom'u kapalı: çocuk yanlışlıkla
 // ekranı büyütüp geri küçültemiyordu.
 for (const ev of ['gesturestart', 'gesturechange', 'gestureend']) document.addEventListener(ev, (e) => e.preventDefault(), { passive: false });
