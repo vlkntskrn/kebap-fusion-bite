@@ -1,38 +1,35 @@
+import '@fontsource/andika/400.css';
+import '@fontsource/andika/700.css';
 import './style.css';
-import { INGREDIENTS, GameState, LevelDef, MoveResult, SKEWER_SIZE } from './game/types';
-import { createState, pick, canPick, shuffleBoard, addTraySlots } from './game/engine';
-import { getLevel, FEATURE_LEVELS } from './game/levels';
-import { load, save as persist, reset, Save } from './storage';
-import { sfx, setSound, setVibration } from './audio';
-import { ads } from './ads';
+import { ALPHABET, isVowel, wordsFor, syllablesFor, key, PRAISES, INSTRUCTIONS, STICKERS, Word } from './content';
+import {
+  initVoices,
+  hasVoice,
+  voiceCount,
+  saveVoice,
+  deleteVoice,
+  play,
+  stopVoice,
+  wait,
+  startRecording,
+  releaseMic,
+  exportVoices,
+  importVoices,
+  Recording,
+} from './voice';
+import { loadProgress, saveProgress, record, weightedPick, shuffle } from './state';
+import { sfx } from './sfx';
 
-const APP_NAME = 'Kebap Fusion Bite';
-const CUSTOMERS = ['🧔', '👩', '👴', '👵', '🧑', '👱‍♀️', '👨‍🦰', '🧕', '👲', '🤠'];
-const PRICES = { undo: 60, shuffle: 80, slot: 120, continue: 150 } as const;
-type Booster = keyof Save['boosters'];
-
+const APP = 'Hece Hece';
 const app = document.getElementById('app')!;
-let data: Save = load();
-setSound(data.sound);
-setVibration(data.vibration);
+const progress = loadProgress();
+const commit = () => saveProgress(progress);
+const knownSet = () => new Set(progress.known);
 
-interface Run {
-  def: LevelDef;
-  state: GameState;
-  history: GameState[];
-  /** State before the losing move, so "continue" can replay it with extra space. */
-  beforeLoss: { state: GameState; col: number } | null;
-  continues: number;
-  slotBoostUsed: boolean;
-  busy: boolean;
-  seenOrders: Set<number>;
-}
-let run: Run | null = null;
+type GameKind = 'bul' | 'birlestir' | 'kur' | 'oku';
+const ROUND = 6;
 
-const commit = () => persist(data);
-const today = () => new Date().toISOString().slice(0, 10);
-const ingEmoji = (i: number) => INGREDIENTS[i].emoji;
-const winReward = (level: number) => 20 + Math.floor(level / 5) * 5;
+/* ------------------------------------------------------------- helpers */
 
 function h(html: string): HTMLElement {
   const t = document.createElement('template');
@@ -40,443 +37,666 @@ function h(html: string): HTMLElement {
   return t.content.firstElementChild as HTMLElement;
 }
 
-/* ----------------------------------------------------------------- HOME */
+function show(html: string): HTMLElement {
+  stopVoice();
+  const el = h(html);
+  app.replaceChildren(el);
+  window.scrollTo(0, 0);
+  return el;
+}
+
+/** Sesli harfler kırmızı, sessiz harfler mavi (sınıflarda kullanılan renklendirme). */
+function colored(text: string): string {
+  return [...text].map((ch) => `<span class="${isVowel(ch) ? 'v' : 'c'}">${ch}</span>`).join('');
+}
+
+function on(root: HTMLElement, act: string, fn: (el: HTMLElement) => void) {
+  root.querySelectorAll<HTMLElement>(`[data-act="${act}"]`).forEach((el) => el.addEventListener('click', () => fn(el)));
+}
+
+function wiggle(el: Element) {
+  el.animate(
+    [{ transform: 'translateX(0)' }, { transform: 'translateX(-10px)' }, { transform: 'translateX(10px)' }, { transform: 'translateX(-6px)' }, { transform: 'translateX(0)' }],
+    { duration: 380 },
+  );
+}
+
+function bounce(el: Element) {
+  el.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.18)' }, { transform: 'scale(1)' }], { duration: 400, easing: 'ease-out' });
+}
+
+async function praise() {
+  sfx.right();
+  const have = PRAISES.map((_, i) => key.praise(i)).filter(hasVoice);
+  await wait(250);
+  if (have.length) await play(have[Math.floor(Math.random() * have.length)]);
+}
+
+function confetti() {
+  const box = h('<div class="confetti"></div>');
+  const colors = ['#ff6b6b', '#ffd93d', '#6bcB77', '#4d96ff', '#c77dff'];
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement('i');
+    p.style.left = `${Math.random() * 100}%`;
+    p.style.background = colors[i % colors.length];
+    p.style.animationDelay = `${Math.random() * 0.4}s`;
+    p.style.animationDuration = `${1.4 + Math.random()}s`;
+    box.appendChild(p);
+  }
+  document.body.appendChild(box);
+  setTimeout(() => box.remove(), 2800);
+}
+
+/* ---------------------------------------------------------- availability */
+
+const items = {
+  bul: () => ALPHABET.filter((l) => progress.known.includes(l) && hasVoice(key.letter(l))),
+  birlestir: () =>
+    syllablesFor(knownSet()).filter((s) => hasVoice(key.syllable(s)) && [...s].every((ch) => hasVoice(key.letter(ch)))),
+  kur: () => wordsFor(knownSet()).filter((w) => w.syllables.length >= 2 && hasVoice(key.word(w.text))),
+  oku: () => wordsFor(knownSet()).filter((w) => hasVoice(key.word(w.text))),
+};
+const MIN: Record<GameKind, number> = { bul: 2, birlestir: 1, kur: 1, oku: 1 };
+
+const GAMES: { kind: GameKind; icon: string; title: string; sub: string; color: string }[] = [
+  { kind: 'bul', icon: '👂', title: 'Sesi Bul', sub: 'Duy, harfi bul', color: 'coral' },
+  { kind: 'birlestir', icon: '🔗', title: 'Sesleri Birleştir', sub: 'n + a = na', color: 'sky' },
+  { kind: 'kur', icon: '🧩', title: 'Kelime Kur', sub: 'Heceleri diz', color: 'mint' },
+  { kind: 'oku', icon: '📖', title: 'Oku', sub: 'Oku, dinle, kontrol et', color: 'lemon' },
+];
+
+/* ---------------------------------------------------------------- home */
 
 function showHome() {
-  run = null;
-  const dailyReady = data.lastDaily !== today();
-  app.replaceChildren(
-    h(`
+  const anyVoice = voiceCount(progress.known.map(key.letter)) > 0;
+  const root = show(`
     <div class="screen home">
-      <header class="topbar">
-        <div class="pill coins">🪙 <b>${data.coins}</b></div>
-        <button class="icon-btn" data-act="settings" aria-label="Ayarlar">⚙️</button>
+      <header class="bar">
+        <div class="pill">⭐ ${progress.stars}</div>
+        <button class="pill btn-album" data-act="album">🎁 ${progress.stickers.length}/${STICKERS.length}</button>
       </header>
-      <div class="logo">
-        <div class="logo-art"><span>🔥</span><span class="skewer-art">🍢</span><span>🔥</span></div>
-        <h1>Kebap<br/><em>Fusion Bite</em></h1>
-        <p>Usta, siparişler bekliyor!</p>
+      <div class="title">
+        <div class="blocks">${['he', 'ce'].map((s) => `<span class="block">${colored(s)}</span>`).join('')}</div>
+        <h1>${APP}</h1>
+        <div class="known">${progress.known.map((l) => `<span class="${isVowel(l) ? 'v' : 'c'}">${l}</span>`).join('')}</div>
       </div>
-      <div class="home-actions">
-        ${dailyReady ? `<button class="btn btn-gift" data-act="daily">🎁 Günlük ödül hazır!</button>` : ''}
-        <div class="level-chip">Level ${data.level}</div>
-        <button class="btn btn-play" data-act="play">Oyna</button>
+      ${
+        anyVoice
+          ? ''
+          : `<div class="notice"><b>Anne / baba için:</b> Oyunlar sizin sesinizle çalışır. Önce aşağıdaki <b>Ebeveyn</b> bölümünden harf seslerini kaydedin.</div>`
+      }
+      <div class="games">
+        ${GAMES.map((g) => {
+          const ready = items[g.kind]().length >= MIN[g.kind];
+          return `<button class="game-card ${g.color} ${ready ? '' : 'locked'}" data-act="game" data-kind="${g.kind}">
+            <span class="g-icon">${ready ? g.icon : '🔒'}</span>
+            <span class="g-title">${g.title}</span>
+            <span class="g-sub">${ready ? g.sub : 'Ses kaydı gerekli'}</span>
+          </button>`;
+        }).join('')}
       </div>
-    </div>`),
-  );
-  app.querySelector('[data-act=play]')!.addEventListener('click', () => {
-    sfx.click();
-    startLevel(data.level);
+      <button class="parent-btn" data-act="parent">👨‍👩‍👧 Ebeveyn</button>
+    </div>`);
+  on(root, 'game', (el) => {
+    sfx.unlock();
+    const kind = el.dataset.kind as GameKind;
+    if (items[kind]().length >= MIN[kind]) startGame(kind);
+    else {
+      wiggle(el);
+      sfx.soft();
+    }
   });
-  app.querySelector('[data-act=settings]')!.addEventListener('click', showSettings);
-  app.querySelector('[data-act=daily]')?.addEventListener('click', showDaily);
+  on(root, 'parent', showGate);
+  on(root, 'album', showAlbum);
 }
 
-function showDaily() {
-  sfx.click();
-  const amount = [50, 75, 100, 150][Math.floor(Math.random() * 4)];
-  const m = modal(`
-    <h2>Günlük ödül</h2>
-    <div class="big-reward">🪙 ${amount}</div>
-    <p>Her gün gel, ödülünü al!</p>
-    <button class="btn btn-ad" data-act="x2">🎬 İzle, ${amount * 2} al</button>
-    <button class="btn btn-ghost" data-act="take">${amount} al</button>`);
-  const claim = (n: number) => {
-    data.coins += n;
-    data.lastDaily = today();
-    commit();
-    sfx.coin();
-    m.close();
-    showHome();
-  };
-  m.on('take', () => claim(amount));
-  m.on('x2', async () => {
-    if (await ads.rewarded('daily_x2')) claim(amount * 2);
-  });
+/* --------------------------------------------------------------- album */
+
+function showAlbum() {
+  sfx.tap();
+  const root = show(`
+    <div class="screen">
+      <header class="bar"><button class="round-btn" data-act="home">⬅</button><h2>Çıkartmalarım</h2><span></span></header>
+      <p class="center muted">Her oyunu bitirince yeni bir çıkartma kazanırsın!</p>
+      <div class="album">
+        ${STICKERS.map((s) => (progress.stickers.includes(s) ? `<span class="sticker">${s}</span>` : `<span class="sticker empty">?</span>`)).join('')}
+      </div>
+    </div>`);
+  on(root, 'home', showHome);
+  root.querySelectorAll('.sticker:not(.empty)').forEach((el) => el.addEventListener('click', () => bounce(el)));
 }
 
-/* ----------------------------------------------------------------- GAME */
+/* --------------------------------------------------------------- games */
 
-function startLevel(level: number) {
-  const def = getLevel(level);
-  const state = createState(def);
-  run = {
-    def,
-    state,
-    history: [],
-    beforeLoss: null,
-    continues: 0,
-    slotBoostUsed: false,
-    busy: false,
-    seenOrders: new Set(),
-  };
-  renderGame();
-  if (level === FEATURE_LEVELS.hidden) featureIntro('hidden');
-  else if (level === FEATURE_LEVELS.frozen) featureIntro('frozen');
+interface Run {
+  kind: GameKind;
+  index: number;
+  stars: number;
+  last?: unknown;
 }
+let run: Run | null = null;
 
-function featureIntro(key: 'hidden' | 'frozen') {
-  if (data.seenFeatures.includes(key)) return;
-  const info =
-    key === 'hidden'
-      ? { icon: '<span class="tile hidden demo">?</span>', title: 'Gizli Malzeme', text: 'Üstündekiler alınınca ne olduğu ortaya çıkar.' }
-      : { icon: '<span class="tile demo frozen-demo">❄️</span>', title: 'Donmuş Kasa', text: 'Üstündeki sayı kadar sipariş teslim edince çözülür.' };
-  const m = modal(`
-    <div class="feature-tag">Yeni!</div>
-    <div class="feature-icon">${info.icon}</div>
-    <h2>${info.title}</h2>
-    <p>${info.text}</p>
-    <button class="btn btn-play" data-act="ok">Anladım</button>`);
-  m.on('ok', () => {
-    data.seenFeatures.push(key);
-    commit();
-    m.close();
-  });
-}
-
-function renderGame() {
-  if (!run) return;
-  const s = run.state;
-  const level = run.def.level;
-  const boosterBtn = (key: Booster, icon: string, label: string, disabled = false) => {
-    const n = data.boosters[key];
-    const badge = n > 0 ? `<span class="badge">${n}</span>` : `<span class="badge price">🪙${PRICES[key]}</span>`;
-    return `<button class="booster" data-booster="${key}" ${disabled ? 'disabled' : ''}><span class="b-icon">${icon}</span><span class="b-label">${label}</span>${badge}</button>`;
-  };
-
-  const orders = s.active
-    .map((o, slot) => {
-      if (!o) return `<div class="order empty" data-slot="${slot}"><span>✓</span></div>`;
-      const fresh = !run!.seenOrders.has(o.n);
-      run!.seenOrders.add(o.n);
-      const pips = Array.from({ length: SKEWER_SIZE }, (_, i) =>
-        i < o.have ? `<span class="pip full" data-i="${i}">${ingEmoji(o.ing)}</span>` : `<span class="pip" data-i="${i}"></span>`,
-      ).join('');
-      return `
-        <div class="order ${fresh ? 'enter' : ''}" data-slot="${slot}" style="--c:${INGREDIENTS[o.ing].color}">
-          <div class="cust">${CUSTOMERS[(o.n * 7 + level) % CUSTOMERS.length]}</div>
-          <div class="ticket"><span class="want">${ingEmoji(o.ing)}</span><span class="x">×${SKEWER_SIZE}</span></div>
-          <div class="skewer"><i class="stick"></i>${pips}</div>
-        </div>`;
-    })
-    .join('');
-
-  const traySlots = Array.from({ length: s.trayCap }, (_, i) => {
-    const ing = s.tray[i];
-    const danger = s.tray.length >= s.trayCap - 1 ? 'danger' : '';
-    return ing === undefined
-      ? `<div class="slot ${danger}" data-i="${i}"></div>`
-      : `<div class="slot filled ${danger}" data-i="${i}" style="--c:${INGREDIENTS[ing].color}">${ingEmoji(ing)}</div>`;
-  }).join('');
-
-  const crates = s.columns
-    .map((c, ci) => {
-      const visible = c.tiles.slice(-5);
-      const extra = c.tiles.length - visible.length;
-      const tiles = visible
-        .map((t, k) => {
-          const isTop = k === visible.length - 1;
-          const showQ = t.hidden || (c.frozen > 0 && isTop);
-          const style = showQ ? '' : `style="--c:${INGREDIENTS[t.ing].color}"`;
-          return `<span class="tile ${isTop ? 'top' : ''} ${showQ ? 'hidden' : ''}" ${style}>${showQ ? '?' : ingEmoji(t.ing)}</span>`;
-        })
-        .join('');
-      const pickable = canPick(s, ci);
-      return `
-        <button class="crate ${c.tiles.length === 0 ? 'empty' : ''} ${c.frozen > 0 ? 'frozen' : ''} ${pickable ? '' : 'locked'}" data-col="${ci}">
-          ${extra > 0 ? `<span class="more">+${extra}</span>` : ''}
-          <span class="stack">${tiles}</span>
-          ${c.frozen > 0 ? `<span class="ice"><b>❄️</b><em>${c.frozen}</em></span>` : ''}
-        </button>`;
-    })
-    .join('');
-
-  const hint =
-    level <= 2
-      ? `<div class="hint">${
-          level === 1
-            ? 'Müşterinin istediği malzemeye dokun. 3 tane olunca şiş hazır!'
-            : 'Uymayan malzemeler tezgâha gider. Tezgâh dolarsa kaybedersin!'
-        }</div>`
-      : '';
-
-  app.replaceChildren(
-    h(`
+function gameShell(title: string, body: string): HTMLElement {
+  const r = run!;
+  const dots = Array.from({ length: ROUND }, (_, i) => `<i class="${i < r.index ? 'done' : i === r.index ? 'now' : ''}"></i>`).join('');
+  const root = show(`
     <div class="screen game">
-      <header class="topbar">
-        <button class="icon-btn" data-act="pause" aria-label="Menü">⏸</button>
-        <div class="pill lvl">Level ${level}</div>
-        <div class="pill coins">🪙 <b>${data.coins}</b></div>
-      </header>
-      <section class="orders cols-${s.active.length}">${orders}</section>
-      <div class="progress"><div class="bar"><i style="width:${(s.served / s.totalOrders) * 100}%"></i></div><span>${s.served}/${s.totalOrders} sipariş</span></div>
-      <section class="tray-wrap"><div class="tray-label">Tezgâh</div><div class="tray">${traySlots}</div></section>
-      ${hint}
-      <section class="board cols-${s.columns.length}">${crates}</section>
-      <footer class="boosters">
-        ${boosterBtn('undo', '↩️', 'Geri al', run.history.length === 0)}
-        ${boosterBtn('shuffle', '🔀', 'Karıştır')}
-        ${boosterBtn('slot', '➕', '+1 Tezgâh', run.slotBoostUsed)}
-      </footer>
-    </div>`),
-  );
-
-  app.querySelectorAll<HTMLButtonElement>('.crate').forEach((b) =>
-    b.addEventListener('click', () => onPick(Number(b.dataset.col), b)),
-  );
-  app.querySelectorAll<HTMLButtonElement>('.booster').forEach((b) =>
-    b.addEventListener('click', () => onBooster(b.dataset.booster as Booster)),
-  );
-  app.querySelector('[data-act=pause]')!.addEventListener('click', showPause);
+      <header class="bar"><button class="round-btn" data-act="home">⬅</button><div class="dots">${dots}</div><div class="pill">⭐ ${progress.stars}</div></header>
+      <h2 class="prompt">${title}</h2>
+      ${body}
+    </div>`);
+  on(root, 'home', () => {
+    run = null;
+    showHome();
+  });
+  return root;
 }
 
-function flyTo(fromEl: Element | null, toEl: Element | null, emoji: string, ms = 200): Promise<void> {
-  if (!fromEl || !toEl) return Promise.resolve();
-  const a = fromEl.getBoundingClientRect();
-  const b = toEl.getBoundingClientRect();
-  const el = document.createElement('div');
-  el.className = 'flyer';
-  el.textContent = emoji;
-  el.style.left = `${a.left + a.width / 2}px`;
-  el.style.top = `${a.top + a.height / 2}px`;
-  document.body.appendChild(el);
-  const dx = b.left + b.width / 2 - (a.left + a.width / 2);
-  const dy = b.top + b.height / 2 - (a.top + a.height / 2);
-  const anim = el.animate(
-    [
-      { transform: 'translate(-50%,-50%) scale(1.1)' },
-      { transform: `translate(calc(-50% + ${dx * 0.5}px), calc(-50% + ${dy * 0.5 - 40}px)) scale(1.25)`, offset: 0.5 },
-      { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0.9)` },
-    ],
-    { duration: ms, easing: 'ease-in-out' },
+async function startGame(kind: GameKind) {
+  run = { kind, index: 0, stars: 0 };
+  nextQuestion();
+  if (hasVoice(key.intro(kind))) {
+    await wait(300);
+    await play(key.intro(kind));
+  }
+}
+
+function nextQuestion() {
+  if (!run) return;
+  if (run.index >= ROUND) return showFinish();
+  ({ bul: qBul, birlestir: qBirlestir, kur: qKur, oku: qOku })[run.kind]();
+}
+
+function advance(firstTry: boolean) {
+  if (!run) return;
+  if (firstTry) {
+    run.stars++;
+    progress.stars++;
+  }
+  commit();
+  run.index++;
+  setTimeout(nextQuestion, 500);
+}
+
+/* ---- 1. Sesi bul: sesi duy, harfi seç */
+function qBul() {
+  const r = run!;
+  const pool = items.bul();
+  const target = weightedPick(pool, key.letter, progress, r.last as string);
+  r.last = target;
+  const others = shuffle(pool.filter((l) => l !== target)).slice(0, 2);
+  const choices = shuffle([target, ...others]);
+  let first = true;
+  let busy = false;
+  const root = gameShell(
+    'Hangi sesi duydun?',
+    `<button class="speaker" data-act="listen">🔊</button>
+     <div class="choices n${choices.length}">
+       ${choices.map((l) => `<button class="card letter" data-act="pick" data-v="${l}">${colored(l)}</button>`).join('')}
+     </div>`,
   );
-  return anim.finished.then(() => el.remove()).catch(() => el.remove());
+  const say = () => play(key.letter(target));
+  on(root, 'listen', (el) => {
+    bounce(el);
+    void say();
+  });
+  on(root, 'pick', async (el) => {
+    if (busy) return;
+    busy = true;
+    const v = el.dataset.v!;
+    if (v === target) {
+      el.classList.add('right');
+      bounce(el);
+      record(progress, key.letter(target), first);
+      await praise();
+      advance(first);
+    } else {
+      first = false;
+      el.classList.add('wrong');
+      wiggle(el);
+      sfx.soft();
+      // Seçtiği harfin sesini, ardından istenen sesi tekrar dinletir: ikisini karşılaştırsın.
+      await wait(200);
+      await play(key.letter(v));
+      await wait(500);
+      await say();
+      busy = false;
+    }
+  });
+  setTimeout(say, 350);
 }
 
-async function onPick(col: number, btn: HTMLElement) {
-  if (!run || run.busy || run.state.status !== 'playing') return;
-  if (!canPick(run.state, col)) {
-    btn.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-5px)' }, { transform: 'translateX(5px)' }, { transform: 'translateX(0)' }], { duration: 200 });
-    return;
-  }
-  const res = pick(run.state, col) as MoveResult;
-  run.busy = true;
-  sfx.pick();
-  const from = btn.querySelector('.tile.top');
-  let to: Element | null = null;
-  if (res.placement.kind === 'order') to = app.querySelector(`.order[data-slot="${res.placement.slot}"] .pip[data-i="${res.placement.index}"]`);
-  else if (res.placement.kind === 'tray') to = app.querySelector(`.tray .slot[data-i="${res.placement.index}"]`);
-  else to = app.querySelector('.tray');
-  from?.classList.add('lifting');
-  await flyTo(from, to, ingEmoji(res.ing));
+/* ---- 2. Sesleri birleştir: n + a → na, sonra "hangisini duydun?" */
+function qBirlestir() {
+  const r = run!;
+  const pool = items.birlestir();
+  const syl = weightedPick(pool, key.syllable, progress, r.last as string);
+  r.last = syl;
+  const [a, b] = [...syl];
+  const heard = new Set<number>();
+  let merging = false;
+  const root = gameShell(
+    'Harflere dokun, seslerini dinle.',
+    `<div class="pair">
+       <button class="card letter" data-act="letter" data-i="0">${colored(a)}</button>
+       <span class="plus">+</span>
+       <button class="card letter" data-act="letter" data-i="1">${colored(b)}</button>
+     </div>
+     <button class="big-btn sky hidden" data-act="merge">🔗 Birleştir!</button>`,
+  );
+  const mergeBtn = root.querySelector<HTMLElement>('[data-act=merge]')!;
+  on(root, 'letter', async (el) => {
+    if (merging) return;
+    const i = Number(el.dataset.i);
+    bounce(el);
+    el.classList.add('heard');
+    heard.add(i);
+    await play(key.letter(i === 0 ? a : b));
+    if (heard.size === 2 && !merging) mergeBtn.classList.remove('hidden');
+  });
+  on(root, 'merge', async () => {
+    if (merging) return;
+    merging = true;
+    mergeBtn.remove();
+    const pair = root.querySelector('.pair')!;
+    // Önce yavaş yavaş: "n… a…", sonra kartlar birleşir: "na".
+    const cards = pair.querySelectorAll('.card');
+    cards[0].classList.add('lit');
+    await play(key.letter(a), 0.85);
+    cards[0].classList.remove('lit');
+    cards[1].classList.add('lit');
+    await play(key.letter(b), 0.85);
+    cards[1].classList.remove('lit');
+    pair.classList.add('merged');
+    sfx.merge();
+    await wait(450);
+    pair.replaceWith(h(`<div class="merged-card card">${colored(syl)}</div>`));
+    root.querySelector('.prompt')!.textContent = 'Birlikte okuyalım!';
+    await play(key.syllable(syl));
+    await wait(700);
+    quiz();
+  });
 
-  if (res.state.status === 'lost') {
-    run.beforeLoss = res.placement.kind === 'overflow' ? { state: run.state, col } : null;
-    run.state = res.state;
-    run.busy = false;
-    renderGame();
-    sfx.lose();
-    showLose();
-    return;
-  }
-  run.history.push(run.state);
-  if (run.history.length > 30) run.history.shift();
-  run.state = res.state;
-  run.busy = false;
-  if (res.placement.kind === 'tray') sfx.tray();
-  if (res.completed > 0) {
-    sfx.serve();
-    toast(res.completed > 1 ? `Kombo ×${res.completed}! 🔥` : ['Afiyet olsun!', 'Süper!', 'Harika şiş!', 'Usta işi!'][run.state.served % 4]);
-  }
-  renderGame();
-  if (run.state.status === 'won') setTimeout(showWin, 350);
-}
-
-async function onBooster(key: Booster) {
-  if (!run || run.busy || run.state.status !== 'playing') return;
-  if (key === 'undo' && run.history.length === 0) return;
-  if (key === 'slot' && run.slotBoostUsed) return;
-  if (data.boosters[key] > 0) data.boosters[key]--;
-  else if (data.coins >= PRICES[key]) data.coins -= PRICES[key];
-  else {
-    const m = modal(`
-      <h2>Yetersiz coin</h2>
-      <p>Kısa bir reklam izle, 1 adet ücretsiz kazan.</p>
-      <button class="btn btn-ad" data-act="ad">🎬 İzle ve kazan</button>
-      <button class="btn btn-ghost" data-act="no">Vazgeç</button>`);
-    m.on('no', () => m.close());
-    m.on('ad', async () => {
-      if (await ads.rewarded(`booster_${key}`)) {
-        data.boosters[key]++;
-        commit();
-        m.close();
-        renderGame();
+  // Kontrol: duyduğu heceyi, harfleri aynı ama sırası farklı olan heceden ayırt etsin (na / an).
+  function quiz() {
+    const rev = b + a;
+    const alt = rev !== syl ? rev : shuffle(syllablesFor(knownSet()).filter((s) => s !== syl))[0];
+    const choices = shuffle([syl, alt]);
+    let first = true;
+    let busy = false;
+    const area = h(`<div class="quiz">
+      <p class="sub-prompt">Hangisini duydun?</p>
+      <button class="speaker small" data-act="again">🔊</button>
+      <div class="choices n2">${choices.map((s) => `<button class="card syl" data-act="choose" data-v="${s}">${colored(s)}</button>`).join('')}</div>
+    </div>`);
+    root.querySelector('.merged-card')!.replaceWith(area);
+    root.querySelector('.prompt')!.textContent = '';
+    on(area, 'again', () => play(key.syllable(syl)));
+    on(area, 'choose', async (el) => {
+      if (busy) return;
+      busy = true;
+      if (el.dataset.v === syl) {
+        el.classList.add('right');
+        bounce(el);
+        record(progress, key.syllable(syl), first);
+        await praise();
+        advance(first);
+      } else {
+        first = false;
+        el.classList.add('wrong');
+        wiggle(el);
+        sfx.soft();
+        await wait(300);
+        await play(key.syllable(syl));
+        busy = false;
       }
     });
-    return;
+    setTimeout(() => play(key.syllable(syl)), 300);
   }
-  commit();
-  sfx.click();
-  if (key === 'undo') run.state = run.history.pop()!;
-  else if (key === 'shuffle') {
-    run.history.push(run.state);
-    run.state = shuffleBoard(run.state, Math.random);
-  } else {
-    run.history.push(run.state);
-    run.state = addTraySlots(run.state, 1);
-    run.slotBoostUsed = true;
-  }
-  renderGame();
 }
 
-function showWin() {
-  if (!run) return;
+/* ---- 3. Kelime kur: heceleri sırayla diz */
+function qKur() {
+  const r = run!;
+  const pool = items.kur();
+  const w = weightedPick(pool, (x: Word) => key.word(x.text), progress, r.last as Word);
+  r.last = w;
+  const extraPool = [...new Set(wordsFor(knownSet()).flatMap((x) => x.syllables))].filter((s) => !w.syllables.includes(s));
+  const tiles = shuffle([...w.syllables, ...shuffle(extraPool).slice(0, 1)]);
+  let placed = 0;
+  let first = true;
+  let busy = false;
+  const root = gameShell(
+    'Heceleri sırayla diz!',
+    `<button class="picture" data-act="listen">${w.emoji}<span>🔊</span></button>
+     <div class="slots">${w.syllables.map(() => `<span class="slot"></span>`).join('')}</div>
+     <div class="tiles">${tiles.map((s, i) => `<button class="card tile" data-act="tile" data-i="${i}" data-v="${s}">${colored(s)}</button>`).join('')}</div>`,
+  );
+  const say = () => play(key.word(w.text));
+  on(root, 'listen', (el) => {
+    bounce(el);
+    void say();
+  });
+  on(root, 'tile', async (el) => {
+    if (busy || el.classList.contains('used')) return;
+    busy = true;
+    const v = el.dataset.v!;
+    if (v === w.syllables[placed]) {
+      const slot = root.querySelectorAll('.slot')[placed];
+      slot.innerHTML = colored(v);
+      slot.classList.add('filled');
+      bounce(slot);
+      el.classList.add('used');
+      sfx.tap();
+      if (hasVoice(key.syllable(v))) await play(key.syllable(v));
+      placed++;
+      if (placed === w.syllables.length) {
+        root.querySelector('.slots')!.classList.add('complete');
+        await wait(300);
+        await say();
+        record(progress, key.word(w.text), first);
+        await praise();
+        advance(first);
+        return;
+      }
+    } else {
+      first = false;
+      wiggle(el);
+      sfx.soft();
+    }
+    busy = false;
+  });
+  setTimeout(say, 350);
+}
+
+/* ---- 4. Oku: önce kendi okusun, sonra dinleyip kontrol etsin */
+function qOku() {
+  const r = run!;
+  const pool = items.oku();
+  const w = weightedPick(pool, (x: Word) => key.word(x.text), progress, r.last as Word);
+  r.last = w;
+  const sylHtml = w.syllables.map((s, i) => `<button class="syl-chip ${i % 2 ? 'alt' : ''}" data-act="syl" data-v="${s}">${colored(s)}</button>`).join('');
+  const root = gameShell(
+    'Sesli oku!',
+    `<div class="read-word">${sylHtml}</div>
+     <div class="reveal hidden"><span class="emoji">${w.emoji}</span></div>
+     <button class="big-btn sky" data-act="check">🔊 Dinle ve kontrol et</button>
+     <div class="self hidden">
+       <button class="big-btn mint" data-act="ok">😊 Doğru okudum</button>
+       <button class="big-btn ghost" data-act="again">🔁 Bir daha deneyeyim</button>
+     </div>`,
+  );
+  on(root, 'syl', (el) => {
+    bounce(el);
+    if (hasVoice(key.syllable(el.dataset.v!))) void play(key.syllable(el.dataset.v!));
+  });
+  on(root, 'check', async (el) => {
+    el.classList.add('hidden');
+    const rev = root.querySelector('.reveal')!;
+    rev.classList.remove('hidden');
+    bounce(rev);
+    await play(key.word(w.text));
+    root.querySelector('.self')!.classList.remove('hidden');
+  });
+  on(root, 'ok', async () => {
+    record(progress, key.word(w.text), true);
+    await praise();
+    advance(true);
+  });
+  on(root, 'again', () => {
+    record(progress, key.word(w.text), false);
+    root.querySelector('.self')!.classList.add('hidden');
+    root.querySelector('.reveal')!.classList.add('hidden');
+    root.querySelector('[data-act=check]')!.classList.remove('hidden');
+  });
+}
+
+/* --------------------------------------------------------------- finish */
+
+function showFinish() {
+  const r = run!;
+  const remaining = STICKERS.filter((s) => !progress.stickers.includes(s));
+  const sticker = remaining.length ? remaining[Math.floor(Math.random() * remaining.length)] : STICKERS[Math.floor(Math.random() * STICKERS.length)];
+  if (remaining.length) progress.stickers.push(sticker);
+  commit();
   sfx.win();
-  const level = run.def.level;
-  const reward = winReward(level);
-  data.level = Math.max(data.level, level + 1);
-  commit();
-  const m = modal(`
-    <div class="confetti">🎉</div>
-    <h2>Level ${level} tamam!</h2>
-    <p>Bütün siparişler teslim edildi.</p>
-    <div class="big-reward">🪙 +${reward}</div>
-    <button class="btn btn-ad" data-act="x2">🎬 İzle, ${reward * 3} al</button>
-    <button class="btn btn-play" data-act="next">Devam</button>`, false);
-  const finish = async (amount: number) => {
-    data.coins += amount;
-    commit();
-    sfx.coin();
-    m.close();
-    if (!data.noAds && level >= 8 && level % 4 === 0) await ads.interstitial('level_end');
-    startLevel(data.level);
-  };
-  m.on('next', () => finish(reward));
-  m.on('x2', async () => {
-    if (await ads.rewarded('win_x3')) finish(reward * 3);
-  });
-}
-
-function showLose() {
-  if (!run) return;
-  const canContinue = run.beforeLoss !== null && run.continues < 3;
-  const m = modal(`
-    <div class="confetti">😵</div>
-    <h2>${canContinue ? 'Tezgâh doldu!' : 'Sıkıştın!'}</h2>
-    <p>${canContinue ? '+2 tezgâh yeriyle kaldığın yerden devam et.' : 'Kasalar donmuş kaldı. Bir daha dene!'}</p>
-    ${canContinue ? `<button class="btn btn-ad" data-act="ad">🎬 İzle ve devam et</button>` : ''}
-    ${canContinue ? `<button class="btn btn-coin" data-act="coin" ${data.coins < PRICES.continue ? 'disabled' : ''}>🪙 ${PRICES.continue} ile devam</button>` : ''}
-    <button class="btn btn-ghost" data-act="retry">Tekrar dene</button>`, false);
-  const doContinue = () => {
-    if (!run || !run.beforeLoss) return;
-    const { state, col } = run.beforeLoss;
-    run.continues++;
-    run.beforeLoss = null;
-    const res = pick(addTraySlots(state, 2), col)!;
-    run.history = [];
-    run.state = res.state;
-    m.close();
-    renderGame();
-  };
-  m.on('ad', async () => {
-    if (await ads.rewarded('continue')) doContinue();
-  });
-  m.on('coin', () => {
-    if (data.coins < PRICES.continue) return;
-    data.coins -= PRICES.continue;
-    commit();
-    doContinue();
-  });
-  m.on('retry', () => {
-    m.close();
-    startLevel(run!.def.level);
-  });
-}
-
-function showPause() {
-  if (!run) return;
-  sfx.click();
-  const m = modal(`
-    <h2>Mola</h2>
-    ${settingsToggles()}
-    <button class="btn btn-play" data-act="resume">Devam et</button>
-    <button class="btn btn-gold" data-act="retry">Baştan başla</button>
-    <button class="btn btn-ghost" data-act="home">Ana menü</button>`);
-  bindToggles(m.el);
-  m.on('resume', () => m.close());
-  m.on('retry', () => {
-    m.close();
-    startLevel(run!.def.level);
-  });
-  m.on('home', () => {
-    m.close();
+  confetti();
+  const root = show(`
+    <div class="screen finish">
+      <h1>Aferin! 🎉</h1>
+      <div class="stars">${'⭐'.repeat(Math.max(1, r.stars))}</div>
+      <p>Yeni çıkartman:</p>
+      <div class="new-sticker">${sticker}</div>
+      <button class="big-btn mint" data-act="again">🔁 Tekrar oyna</button>
+      <button class="big-btn ghost" data-act="home">🏠 Ana sayfa</button>
+    </div>`);
+  void praise();
+  on(root, 'again', () => startGame(r.kind));
+  on(root, 'home', () => {
+    run = null;
     showHome();
   });
 }
 
-/* ------------------------------------------------------------- SETTINGS */
+/* --------------------------------------------------------------- parent */
 
-function settingsToggles() {
-  const t = (key: 'sound' | 'vibration', label: string) =>
-    `<label class="toggle"><span>${label}</span><input type="checkbox" data-toggle="${key}" ${data[key] ? 'checked' : ''}/><i></i></label>`;
-  return `<div class="toggles">${t('sound', '🔊 Ses')}${t('vibration', '📳 Titreşim')}</div>`;
+function showGate() {
+  sfx.tap();
+  const a = 6 + Math.floor(Math.random() * 4);
+  const b = 5 + Math.floor(Math.random() * 5);
+  const root = show(`
+    <div class="screen gate">
+      <header class="bar"><button class="round-btn" data-act="home">⬅</button><h2>Ebeveyn girişi</h2><span></span></header>
+      <p>Bu bölüm anne-babalar için.</p>
+      <p class="q">${a} + ${b} = ?</p>
+      <input class="gate-input" inputmode="numeric" pattern="[0-9]*" maxlength="2" autocomplete="off" />
+      <button class="big-btn sky" data-act="go">Gir</button>
+    </div>`);
+  const input = root.querySelector<HTMLInputElement>('input')!;
+  on(root, 'home', showHome);
+  const go = () => {
+    if (Number(input.value) === a + b) showParent();
+    else {
+      wiggle(input);
+      input.value = '';
+    }
+  };
+  on(root, 'go', go);
+  input.addEventListener('keydown', (e) => e.key === 'Enter' && go());
 }
 
-function bindToggles(root: HTMLElement) {
-  root.querySelectorAll<HTMLInputElement>('[data-toggle]').forEach((inp) =>
-    inp.addEventListener('change', () => {
-      const key = inp.dataset.toggle as 'sound' | 'vibration';
-      data[key] = inp.checked;
-      setSound(data.sound);
-      setVibration(data.vibration);
-      commit();
-      sfx.click();
-    }),
-  );
+interface RecItem {
+  k: string;
+  label: string;
+  hint?: string;
 }
 
-function showSettings() {
-  sfx.click();
-  const m = modal(`
-    <h2>Ayarlar</h2>
-    ${settingsToggles()}
-    <button class="btn btn-ghost" data-act="reset">İlerlemeyi sıfırla</button>
-    <p class="small">${APP_NAME} · v${__APP_VERSION__}</p>`);
-  bindToggles(m.el);
-  m.on('reset', () => {
-    if (confirm('Tüm ilerleme silinsin mi?')) {
-      data = reset();
+function recSections(): { id: string; title: string; help: string; items: RecItem[] }[] {
+  const known = knownSet();
+  return [
+    {
+      id: 'harf',
+      title: 'Harf sesleri',
+      help: 'Harfin adını değil, sesini söyleyin. Örneğin "ne" değil "nnn", "te" değil kısa bir "t". Öğretmenin söylediği gibi.',
+      items: ALPHABET.filter((l) => known.has(l)).map((l) => ({ k: key.letter(l), label: l })),
+    },
+    {
+      id: 'hece',
+      title: 'Heceler',
+      help: 'Heceyi tek seferde, doğal okuyun: "na", "an".',
+      items: syllablesFor(known).map((s) => ({ k: key.syllable(s), label: s })),
+    },
+    {
+      id: 'kelime',
+      title: 'Kelimeler',
+      help: 'Kelimeyi normal hızda, net okuyun.',
+      items: wordsFor(known).map((w) => ({ k: key.word(w.text), label: w.text, hint: w.emoji })),
+    },
+    {
+      id: 'ovgu',
+      title: 'Övgü sözleri (isteğe bağlı)',
+      help: 'Doğru cevapta çocuğunuz sizin sesinizle tebrik edilir. Adını da ekleyebilirsiniz.',
+      items: PRAISES.map((p, i) => ({ k: key.praise(i), label: p })),
+    },
+    {
+      id: 'yonerge',
+      title: 'Oyun yönergeleri (isteğe bağlı)',
+      help: 'Oyun başında çalınır, çocuğunuz ne yapacağını duyar.',
+      items: Object.entries(INSTRUCTIONS).map(([k, t]) => ({ k: key.intro(k), label: t })),
+    },
+  ];
+}
+
+let activeRec: { k: string; rec: Recording; timer: number } | null = null;
+
+function recRow(it: RecItem): string {
+  const has = hasVoice(it.k);
+  const recording = activeRec?.k === it.k;
+  return `<div class="rec-row ${has ? 'has' : ''} ${recording ? 'recording' : ''}" data-k="${it.k}">
+    <span class="rec-label">${it.hint ? `<i>${it.hint}</i>` : ''}${it.label.length <= 12 ? colored(it.label) : it.label}</span>
+    <span class="rec-actions">
+      ${has ? `<button class="mini play" data-rec="play" aria-label="Dinle">▶</button>` : ''}
+      <button class="mini rec" data-rec="rec">${recording ? '■ Bitir' : has ? '↻' : '● Kaydet'}</button>
+      ${has ? `<button class="mini del" data-rec="del" aria-label="Sil">✕</button>` : ''}
+    </span>
+  </div>`;
+}
+
+function showParent() {
+  const sections = recSections();
+  const counts = (s: (typeof sections)[number]) => `${voiceCount(s.items.map((i) => i.k))}/${s.items.length}`;
+  const root = show(`
+    <div class="screen parent">
+      <header class="bar"><button class="round-btn" data-act="home">⬅</button><h2>Ebeveyn</h2><span></span></header>
+
+      <section class="panel">
+        <h3>1. Öğrendiği harfler</h3>
+        <p class="muted">Kızınız okulda yeni bir harf öğrendikçe buradan ekleyin. Oyunlar sadece bu harflerle hece ve kelime üretir.</p>
+        <div class="letters">
+          ${ALPHABET.map((l) => `<button class="lt ${progress.known.includes(l) ? 'on' : ''} ${isVowel(l) ? 'v' : 'c'}" data-act="toggle" data-l="${l}">${l}</button>`).join('')}
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3>2. Sesinizi kaydedin</h3>
+        <p class="muted">Sessiz bir ortamda telefonu ağzınıza 20-30 cm yakın tutun. <b>● Kaydet</b>'e basın, söyleyin, <b>■ Bitir</b>'e basın. Kayıt hemen geri çalınır, beğenmezseniz <b>↻</b> ile yeniden kaydedin.</p>
+        ${sections
+          .map(
+            (s) => `<details class="rec-sec" ${s.id === 'harf' || s.id === 'hece' ? 'open' : ''}>
+              <summary><span>${s.title}</span><span class="count" data-count="${s.id}">${counts(s)}</span></summary>
+              <p class="muted small">${s.help}</p>
+              <div class="rec-list">${s.items.map(recRow).join('') || '<p class="muted small">Bu harflerle henüz kelime yok. Yeni harf ekledikçe gelecek.</p>'}</div>
+            </details>`,
+          )
+          .join('')}
+      </section>
+
+      <section class="panel">
+        <h3>3. Yedek</h3>
+        <p class="muted">Kayıtlar sadece bu cihazda saklanır, internete gönderilmez. Oyunu <b>Ana Ekran</b>'a eklediyseniz kayıtları da oradan açarak yapın (Safari ile ana ekran uygulaması kayıtları paylaşmaz). Telefon değiştirirken yedek alın.</p>
+        <div class="row">
+          <button class="big-btn ghost" data-act="export">⬇ Yedek al</button>
+          <label class="big-btn ghost file">⬆ Yedekten yükle<input type="file" accept="application/json,.json" hidden /></label>
+        </div>
+        <button class="link" data-act="resetStats">İlerlemeyi sıfırla (yıldız, çıkartma)</button>
+      </section>
+    </div>`);
+
+  on(root, 'home', async () => {
+    if (activeRec) await finishRecording();
+    releaseMic();
+    showHome();
+  });
+
+  on(root, 'toggle', (el) => {
+    const l = el.dataset.l!;
+    const i = progress.known.indexOf(l);
+    if (i >= 0) progress.known.splice(i, 1);
+    else progress.known.push(l);
+    commit();
+    const y = window.scrollY;
+    showParent();
+    window.scrollTo(0, y);
+  });
+
+  const refreshRow = (k: string) => {
+    const row = root.querySelector(`.rec-row[data-k="${CSS.escape(k)}"]`);
+    const it = sections.flatMap((s) => s.items).find((i) => i.k === k);
+    if (row && it) row.replaceWith(h(recRow(it)));
+    for (const s of sections) {
+      const c = root.querySelector(`[data-count="${s.id}"]`);
+      if (c) c.textContent = counts(s);
+    }
+  };
+
+  async function finishRecording() {
+    if (!activeRec) return;
+    const { k, rec, timer } = activeRec;
+    clearTimeout(timer);
+    activeRec = null;
+    const blob = await rec.stop();
+    if (blob.size > 0) await saveVoice(k, blob);
+    refreshRow(k);
+    await play(k);
+  }
+
+  root.addEventListener('click', async (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-rec]');
+    if (!btn) return;
+    const k = btn.closest<HTMLElement>('.rec-row')!.dataset.k!;
+    const act = btn.dataset.rec;
+    if (act === 'play') return void play(k);
+    if (act === 'del') {
+      if (confirm('Bu kayıt silinsin mi?')) {
+        await deleteVoice(k);
+        refreshRow(k);
+      }
+      return;
+    }
+    // rec
+    if (activeRec?.k === k) return finishRecording();
+    if (activeRec) await finishRecording();
+    stopVoice();
+    try {
+      const rec = await startRecording();
+      activeRec = { k, rec, timer: window.setTimeout(finishRecording, 5000) };
+      refreshRow(k);
+    } catch {
+      alert('Mikrofona erişilemedi. iPhone Ayarlar → Safari → Mikrofon kısmından izin verin.');
+    }
+  });
+
+  on(root, 'export', async () => {
+    const blob = await exportVoices();
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `hece-hece-yedek-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+  });
+  root.querySelector<HTMLInputElement>('input[type=file]')!.addEventListener('change', async (e) => {
+    const f = (e.target as HTMLInputElement).files?.[0];
+    if (!f) return;
+    try {
+      const n = await importVoices(f);
+      alert(`${n} kayıt yüklendi.`);
+      showParent();
+    } catch (err) {
+      alert(`Yüklenemedi: ${(err as Error).message}`);
+    }
+  });
+  on(root, 'resetStats', () => {
+    if (confirm('Yıldızlar, çıkartmalar ve istatistikler silinsin mi? (Ses kayıtları kalır.)')) {
+      progress.stars = 0;
+      progress.stickers = [];
+      progress.stats = {};
       commit();
-      m.close();
-      showHome();
+      showParent();
     }
   });
 }
 
-/* ---------------------------------------------------------------- UTILS */
+/* ---------------------------------------------------------------- boot */
 
-function modal(inner: string, closable = true) {
-  const el = h(`<div class="modal-bg"><div class="modal">${closable ? '<button class="close" data-act="x">✕</button>' : ''}${inner}</div></div>`);
-  document.body.appendChild(el);
-  const api = {
-    el,
-    close: () => el.remove(),
-    on: (act: string, fn: () => void) => el.querySelector(`[data-act="${act}"]`)?.addEventListener('click', fn),
-  };
-  api.on('x', api.close);
-  return api;
-}
-
-function toast(text: string) {
-  const el = h(`<div class="toast">${text}</div>`);
-  document.body.appendChild(el);
-  setTimeout(() => el.remove(), 1100);
-}
-
-declare const __APP_VERSION__: string;
-
-// Debug helper for testing: ?level=25 jumps straight to a level.
-const qs = new URLSearchParams(location.search);
-if (qs.get('level')) startLevel(Math.max(1, Number(qs.get('level')) || 1));
-else showHome();
-
+// Ana ekran uygulaması kalıcı depolama istesin (iOS'un verileri silmemesi için).
+void navigator.storage?.persist?.().catch(() => {});
+initVoices().then(showHome);

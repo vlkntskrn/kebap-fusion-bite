@@ -1,47 +1,43 @@
-# Kebap Fusion Bite 🍢
+# Hece Hece 🔤
 
-Mutfak temalı, sipariş yetiştirmeli bir bulmaca oyunu (Android + web).
+1. sınıfa başlayan çocuklar için **ses temelli ilk okuma** oyunu. Harf seslerini tanımayı,
+sesleri birleştirip hece oluşturmayı (n + a → **na**) ve hecelerden kelime kurmayı çalıştırır.
 
-Müşteriler üst tarafta şiş siparişi verir. Her şiş için aynı malzemeden 3 tane gerekir.
-Alttaki kasalardan malzemeye dokunursun. Malzeme bir siparişe uyuyorsa şişe takılır,
-uymuyorsa **tezgâha** gider. Yeni gelen müşteri, tezgâhta istediği malzeme varsa onu alır.
-Tezgâh dolarsa level kaybedilir.
+Oyundaki bütün sesler **anne ya da babanın kendi sesiyle** kaydedilir. Böylece harf sesleri öğretmenin
+öğrettiği gibi söylenir ("ne" değil "nnn"). Kayıtlar sadece cihazda saklanır, hiçbir yere gönderilmez.
 
-Özel öğeler:
-- **Gizli malzeme (?)**: Üstündekiler alınınca ne olduğu ortaya çıkar (Level 6+).
-- **Donmuş kasa (❄️)**: Üstündeki sayı kadar sipariş teslim edilince çözülür (Level 11+).
+## Oyunlar
 
-Güçlendiriciler: Geri al, Karıştır, +1 Tezgâh.
-
-## Nasıl oynanır / test edilir
-
-| Ne | Nerede |
+| Oyun | Ne çalıştırır |
 |---|---|
-| Web sürümü (iPhone'da Safari ile) | `https://vlkntskrn.github.io/kebap-fusion-bite/` (main dalında yayınlanır) |
-| Android APK | Releases → **latest** → `kebap-fusion-bite.apk` |
-| Herhangi bir daldaki APK | Actions → "Android APK" → çalıştırma → Artifacts |
+| 👂 **Sesi Bul** | Sesi duyar, doğru harfi seçer. Yanlışta seçtiği harfin sesini ve doğru sesi art arda duyar, karşılaştırır. |
+| 🔗 **Sesleri Birleştir** | İki harfe dokunup seslerini dinler, "Birleştir"e basar: "n… a… **na**". Sonra **na / an** gibi sırası ters heceleri ayırt eder. |
+| 🧩 **Kelime Kur** | Resmi görür, kelimeyi dinler, heceleri sırayla dizer (an + ne → anne). |
+| 📖 **Oku** | Kelimeyi önce kendisi sesli okur, sonra dinleyip kontrol eder. Heceler renkli çizgiyle ayrılır. |
 
-Belirli bir leveli test etmek için: `...?level=25`
+- Sesli harfler **kırmızı**, sessiz harfler **mavi** gösterilir.
+- Yazı tipi: [Andika](https://software.sil.org/andika/). Okumayı yeni öğrenenler için tasarlanmıştır, "a" harfi okulda yazıldığı gibi tek katlıdır.
+- Oyun yalnızca çocuğun **öğrendiği harflerle** hece ve kelime üretir. Ebeveyn panelinden yeni harf eklendikçe kelimeler kendiliğinden açılır.
+- Zorlandığı harf ve heceler daha sık sorulur.
+- Her oyun sonunda bir çıkartma kazanılır (30 çıkartmalık albüm). Reklam ve satın alma yoktur.
 
-## Teknik
+## Kullanım
 
-- TypeScript + Vite, framework yok (hızlı açılış, küçük boyut: ~8 KB gzip JS).
-- Android paketi: [Capacitor](https://capacitorjs.com) (`android/` klasörü).
-- Leveller kodla üretilir (`src/game/levels.ts`). Her level aynı cihazda da farklı cihazda da aynıdır.
-  Her level bir çözücüyle **çözülebilir** olduğu doğrulanır, zorluk da bot simülasyonuyla hedefe ayarlanır.
-  Level sayısı sınırsız.
-- Reklam katmanı `src/ads.ts`. Şimdilik test ekranı gösterir, sürüm 2'de AdMob'a bağlanacak.
+1. iPhone'da Safari ile aç: **https://vlkntskrn.github.io/kebap-fusion-bite/**
+2. Paylaş → **Ana Ekrana Ekle**. Uygulamayı bundan sonra ana ekrandaki ikondan aç.
+3. **Ebeveyn** → toplama sorusunu cevapla → öğrenilen harfleri işaretle → sesleri kaydet.
+   Kayıtları ana ekran uygulamasının içinden yap, çünkü Safari ile ana ekran uygulaması kayıtları paylaşmaz.
+4. Telefon değiştirmeden önce **Yedek al** ile kayıtları dosyaya kaydet.
+
+## Geliştirme
 
 ```bash
 npm install
-npm run dev        # yerel geliştirme
-npm test           # motor + ilk 150 levelin çözülebilirlik testi
-npm run build      # dist/
-npx cap sync android && cd android && ./gradlew assembleDebug
+npm run dev     # yerel sunucu
+npm test        # içerik testleri (kelime-hece tutarlılığı vb.)
+npm run build   # dist/ → GitHub Pages
 ```
 
-## Yol haritası
-
-- [x] v1: Çekirdek oyun, sınırsız level, güçlendiriciler, günlük ödül, APK + web yayını
-- [ ] v2: AdMob (ödüllü + ara reklam), Google Play Billing (reklamsız, coin paketleri), can sistemi
-- [ ] v3: Level haritası, başarımlar, Play Store sayfası ve görseller, gizlilik politikası
+- `src/content.ts`: alfabe, kelime listesi (hece ayrımı ve resim), hece üretimi
+- `src/voice.ts`: kayıt (MediaRecorder), saklama (IndexedDB), çalma, yedekleme
+- `src/main.ts`: ekranlar ve oyunlar
