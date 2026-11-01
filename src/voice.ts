@@ -182,6 +182,23 @@ export function speak(text: string): Promise<void> {
   });
 }
 
+/** Bir ses dosyasını (URL) çalar, bitince çözülür. */
+export async function playUrl(u: string): Promise<void> {
+  stopVoice();
+  const a = new Audio(u);
+  current = a;
+  await new Promise<void>((resolve) => {
+    finishCurrent = resolve;
+    a.onended = () => resolve();
+    a.onerror = () => resolve();
+    a.play().catch(() => resolve());
+  });
+  if (current === a) {
+    current = null;
+    finishCurrent = null;
+  }
+}
+
 /** Kaydı çalar, bitince çözülür. Kayıt yoksa hemen çözülür. */
 export async function play(k: string, rate = 1): Promise<void> {
   const u = await urlFor(k);

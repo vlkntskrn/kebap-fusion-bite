@@ -24,6 +24,15 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # Talimatları doğal Türkçe kadın sesiyle seslendir (başarısız olursa cihaz sesi kullanılır).
+      - name: Sesli talimatlar
+        continue-on-error: true
+        run: |
+          pip install edge-tts
+          python scripts/gen_voice.py
       - run: npm run build
       - uses: actions/configure-pages@v5
         with:

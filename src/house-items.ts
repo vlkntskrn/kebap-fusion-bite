@@ -255,6 +255,17 @@ for (const e of EXTRA) {
   // Görseli olan eşyada gerçekçi boyut (scripts/sizes.py) çizimin boyutunun yerine geçer.
   else THINGS[e.id] = { ...THINGS[e.id], w: e.w };
 }
+/** Görseli olmayan çizim eşyaları için de gerçekçi boyut (cm; 'w' = genişlik). */
+const DRAWN_CM: Record<string, ['h' | 'w', number]> = {
+  hali: ['w', 160], hali2: ['w', 160], lamba: ['h', 160], top: ['w', 30], kalpbalon: ['h', 120], kalpisik: ['w', 200], dondurma: ['h', 20],
+};
+for (const [id, [k, cm]] of Object.entries(DRAWN_CM)) {
+  const t = THINGS[id];
+  if (!t || itemImage(id)) continue;
+  const [, , vw, vh] = t.vb.split(' ').map(Number);
+  const units = k === 'h' ? (cm * 1.115 * vw) / vh : cm * 1.115;
+  THINGS[id] = { ...t, w: Math.round((units / 4) * 100) / 100 };
+}
 const META = new Map(EXTRA.map((e) => [e.id, e]));
 /** Eşyanın yüksekliği, oda yüksekliğine göre % (oda 400x440 birim; w, 400'e göre %). */
 export function heightPct(id: string): number {
