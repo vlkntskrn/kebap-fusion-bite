@@ -1,22 +1,20 @@
 /**
- * Defne'nin Evi: odaları tasarlama (duvar, zemin, pencere), eşyaları sürükleyip yerleştirme,
- * eşyaları boyama ve karakterleri gezdirme. Bütün çizimler bu projeye özgüdür.
+ * Defne'nin Evi: ev haritası (kesit görünüm) ve tam ekran odalar. Eşyalar alttan açılan, kategorili
+ * menüden gelir; sürükle-bırak, boyama, aynalama/döndürme, geri al. Eşya görselleri Firefly'dan.
  */
 import { progress, commit } from './state';
 import { talk, bindTalkButtons } from './talk';
-import { show, on, talkBtn, wiggle } from './ui';
+import { show, on, talkBtn, wiggle, h as hEl } from './ui';
 import { sfx } from './sfx';
 import { dollSvg, currentLook, shade } from './stage';
 import { genitive, TalkId } from './content';
-import { THINGS, colorize, itemImage, extraItemsFor, isCharAsset, isLockedItem, unlockItem, yRange, placeOf, heightPct, surfaceTop } from './house-items';
+import { THINGS, itemImage, imageItems, isCharAsset, isLockedItem, unlockItem, yRange, placeOf, heightPct, surfaceTop } from './house-items';
 import { readingChallenge } from './challenge';
-import { imgTag } from './assets';
+import { imgTag, img } from './assets';
 import { roomIcon, MODE_ICONS } from './icons';
 
 type RoomId = 'yatak' | 'mutfak' | 'banyo' | 'salon' | 'havuz';
 type Mode = 'tasi' | 'boya' | 'tasarla';
-
-const OL = `<defs><filter id="tol" x="-15%" y="-15%" width="130%" height="130%"><feMorphology in="SourceAlpha" operator="dilate" radius="2" result="d"/><feFlood flood-color="#3d3553"/><feComposite in2="d" operator="in" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>`;
 
 const PALETTE = ['#ffffff', '#fff1c9', '#ffd6e7', '#ffb3d1', '#ff8fc0', '#ff6b6b', '#ffa94d', '#ffd93d', '#b5e550', '#a8e6cf', '#5fd39a', '#9fd8ff', '#5fd3f3', '#4d96ff', '#c9b6ff', '#c77dff', '#e3b98a', '#c98a5a', '#9c8f86', '#3d3553'];
 const WALL_COLORS = ['#ffffff', '#fff6e6', '#ffe3ef', '#ffd1e3', '#f1e3ff', '#e3e8ff', '#e3f1ff', '#e3f6ec', '#fff1d6', '#ffe8d6', '#f2ece4', '#d9d4e6'];
@@ -32,8 +30,14 @@ interface Style {
   view: string;
 }
 
-const WALLS = ['duz', 'puan', 'cizgi', 'kalp', 'pul', 'yildiz', 'cicek', 'tas'];
-const FLOORS = ['parke', 'balik', 'fayans', 'dama', 'hali'];
+/** Firefly duvar kâğıdı / zemin dokuları varsa onlar, yoksa çizim desenleri. */
+const range = (p: string, n: number) => Array.from({ length: n }, (_, i) => `${p}_${String(i + 1).padStart(2, '0')}`);
+const WALL_TILES = range('duvar', 12);
+const FLOOR_TILES = range('zemin', 10);
+const WALLS = [...WALL_TILES.filter((c) => img(c)), 'duz', 'puan', 'cizgi', 'kalp', 'pul', 'yildiz', 'cicek', 'tas'];
+const FLOORS = [...FLOOR_TILES.filter((c) => img(c)), 'parke', 'balik', 'fayans', 'dama', 'hali'];
+/** Desen bir görsel dokuysa <pattern> içine görsel olarak döşenir. */
+const tileFill = (code: string, w: number, h: number) => `<image href="${img(code)}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice"/>`;
 const VIEWS = ['gunes', 'aksam', 'gece', 'sehir', 'deniz'];
 
 function wallPattern(kind: string, c: string): string {
@@ -96,28 +100,34 @@ let bgSeq = 0;
 /** Oda ekrandan geniş bir alan: x 0..WORLD*100 birimi (eski oda genişliği = 100). Sağa sola kaydırılır. */
 const WORLD = 3;
 const WVB = 400 * WORLD;
-function roomBg(id: RoomId, s: Style): string {
+export function roomBg(id: RoomId, s: Style): string {
   const pid = `${id}${++bgSeq}`;
+  const wImg = !!img(s.wall);
+  const fImg = !!img(s.floor);
+  const sky = img('bahce_manzara');
+  const water = img('havuz_su');
   const defs = `<defs>
-    <pattern id="w-${pid}" width="40" height="40" patternUnits="userSpaceOnUse">${wallPattern(s.wall, shade(s.wallColor, -0.1))}</pattern>
-    <pattern id="f-${pid}" width="80" height="40" patternUnits="userSpaceOnUse">${floorPattern(s.floor, shade(s.floorColor, -0.12))}</pattern></defs>`;
+    ${wImg ? `<pattern id="w-${pid}" width="150" height="150" patternUnits="userSpaceOnUse">${tileFill(s.wall, 150, 150)}</pattern>` : `<pattern id="w-${pid}" width="40" height="40" patternUnits="userSpaceOnUse">${wallPattern(s.wall, shade(s.wallColor, -0.1))}</pattern>`}
+    ${fImg ? `<pattern id="f-${pid}" width="120" height="120" patternUnits="userSpaceOnUse">${tileFill(s.floor, 120, 120)}</pattern>` : `<pattern id="f-${pid}" width="80" height="40" patternUnits="userSpaceOnUse">${floorPattern(s.floor, shade(s.floorColor, -0.12))}</pattern>`}
+    ${sky ? `<pattern id="s-${pid}" width="${(200 * 16) / 9}" height="200" patternUnits="userSpaceOnUse"><image href="${sky}" width="${(200 * 16) / 9}" height="200" preserveAspectRatio="xMidYMid slice"/></pattern>` : ''}
+    ${water ? `<pattern id="p-${pid}" width="160" height="160" patternUnits="userSpaceOnUse"><image href="${water}" width="160" height="160" preserveAspectRatio="xMidYMid slice"/></pattern>` : ''}</defs>`;
   const open = `<svg class="room-bg" viewBox="0 0 ${WVB} 440" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">${defs}`;
   if (id === 'havuz') {
     const scene = `<rect width="400" height="200" fill="#8fd3ff"/>
       <g fill="#c4d9f2">${[[20, 120, 30], [60, 100, 26], [100, 130, 34], [300, 110, 30], [340, 126, 40]].map(([x, y, w]) => `<rect x="${x}" y="${y}" width="${w}" height="${200 - y}"/>`).join('')}</g>
       <g fill="#6fcf7d">${[[150, 150, 40], [200, 140, 46], [250, 152, 40], [10, 170, 30], [390, 170, 30]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g>`;
     return `${open}
-      ${Array.from({ length: WORLD }, (_, i) => `<g transform="translate(${i * 400} 0)">${scene}</g>`).join('')}
-      <circle cx="${WVB - 120}" cy="50" r="26" fill="#ffe680"/>
+      ${sky ? `<rect width="${WVB}" height="200" fill="url(#s-${pid})"/>` : `${Array.from({ length: WORLD }, (_, i) => `<g transform="translate(${i * 400} 0)">${scene}</g>`).join('')}<circle cx="${WVB - 120}" cy="50" r="26" fill="#ffe680"/>`}
       <rect y="170" width="${WVB}" height="80" fill="${s.wallColor}"/><rect y="170" width="${WVB}" height="80" fill="url(#w-${pid})"/><rect y="166" width="${WVB}" height="8" fill="#fff"/>
       <rect y="250" width="${WVB}" height="60" fill="${s.floorColor}"/><rect y="250" width="${WVB}" height="60" fill="url(#f-${pid})"/>
-      <rect x="0" y="306" width="${WVB}" height="134" rx="10" fill="#fff"/><rect x="10" y="314" width="${WVB - 20}" height="126" rx="8" fill="#5fd3f3"/>
+      <rect x="0" y="306" width="${WVB}" height="134" rx="10" fill="#fff"/><rect x="10" y="314" width="${WVB - 20}" height="126" rx="8" fill="${water ? `url(#p-${pid})` : '#5fd3f3'}"/>
       ${Array.from({ length: WORLD }, (_, i) => `<path transform="translate(${i * 400} 0)" d="M30 350 q20 -8 40 0 M160 380 q20 -8 40 0 M290 344 q20 -8 40 0 M80 410 q20 -8 40 0 M260 416 q20 -8 40 0" stroke="#fff" stroke-width="4" fill="none" opacity=".7"/>`).join('')}
     </svg>`;
   }
   return `${open}
     <rect width="${WVB}" height="300" fill="${s.wallColor}"/><rect width="${WVB}" height="300" fill="url(#w-${pid})"/>
-    <rect y="290" width="${WVB}" height="150" fill="${s.floorColor}"/><rect y="290" width="${WVB}" height="150" fill="url(#f-${pid})"/><rect y="286" width="${WVB}" height="10" fill="#fff" opacity=".85"/>
+    <rect y="290" width="${WVB}" height="150" fill="${s.floorColor}"/><rect y="290" width="${WVB}" height="150" fill="url(#f-${pid})"/>
+    <rect y="280" width="${WVB}" height="14" fill="#fff" opacity=".9"/><rect y="292" width="${WVB}" height="6" fill="#000" opacity=".06"/>
   </svg>`;
 }
 
@@ -127,71 +137,37 @@ interface Room {
   id: RoomId;
   icon: string;
   style: Style;
-  tray: string[];
-  /** İlk açılıştaki yerleşim: [eşya, x%, y%] (y = eşyanın alt kenarı). */
+  /** İlk açılıştaki yerleşim: [eşya, x%, y%] (y = eşyanın alt kenarı; x eski oda genişliğine göre). */
   start: [string, number, number][];
 }
-
-/** Her odada çekmecede olan karakterler ve eşyalar. */
-const COMMON = ['arkadas1', 'arkadas2', 'kardes', 'minik', 'kedi', 'kopek', 'tavsan', 'bitki', 'buyukbitki', 'sarkitbitki', 'kaktus', 'lamba', 'sarkit', 'perilamba', 'disko', 'tablo', 'cerceve', 'ayna', 'top', 'ayi', 'puf', 'hali', 'hali2', 'ayihali'];
 
 const ROOMS: Room[] = [
   {
     id: 'yatak', icon: '🛏️',
     style: { wall: 'puan', wallColor: '#ffe3ef', floor: 'parke', floorColor: '#f3c99b', view: 'gunes' },
-    tray: ['yatak', 'yuvarlakyatak', 'dolap', 'kiyafetaski', 'makyaj', 'kozmetik', 'koltuk', 'armut', 'cicekminder', 'bilgisayar', 'kitaplik', 'aynadalga'],
-    start: [['hali', 50, 92], ['dolap', 13, 76], ['yatak', 66, 86], ['makyaj', 36, 72], ['koltuk', 88, 60], ['ayi', 52, 79], ['cerceve', 62, 30]],
+    start: [['yuvarlakhali', 50, 94], ['dolap', 13, 80], ['yatak', 66, 88], ['makyaj', 36, 76], ['koltuk', 88, 70], ['ayi', 52, 82], ['cerceve', 62, 30]],
   },
   {
     id: 'mutfak', icon: '🍳',
     style: { wall: 'pul', wallColor: '#e3f6ec', floor: 'fayans', floorColor: '#fff7ec', view: 'gunes' },
-    tray: ['tezgah', 'retrobuzdolabi', 'buzdolabi', 'ocak', 'lavabo', 'mikrodalga', 'tost', 'kahve', 'rafkupa', 'kasiklik', 'masa', 'sandalye', 'tabure', 'meyve', 'ekmek', 'pasta', 'hamburger', 'caydanlik', 'dondurma'],
-    start: [['buzdolabi', 12, 74], ['ocak', 34, 72], ['lavabo', 60, 70], ['masa', 62, 94], ['sandalye', 40, 95], ['sandalye', 84, 95], ['pasta', 60, 85], ['caydanlik', 34, 54]],
+    start: [['buzdolabi', 12, 76], ['ocak', 34, 74], ['lavabo', 60, 74], ['masa', 62, 94], ['sandalye', 40, 95], ['sandalye', 84, 95], ['pasta', 60, 85]],
   },
   {
     id: 'banyo', icon: '🛁',
     style: { wall: 'puan', wallColor: '#e3f1ff', floor: 'fayans', floorColor: '#f2f6fa', view: 'gunes' },
-    tray: ['kuvet', 'jakuzi', 'banyolavabo', 'camasir', 'sampuan', 'sepet', 'robot', 'havlu', 'ayna', 'ordek', 'tuvalet'],
-    start: [['tuvalet', 12, 76], ['banyolavabo', 34, 72], ['camasir', 60, 72], ['havlu', 84, 50], ['kuvet', 64, 95], ['ordek', 60, 82], ['hali2', 30, 92]],
+    start: [['tuvalet', 12, 78], ['banyolavabo', 34, 76], ['camasir', 60, 76], ['havlu', 84, 50], ['kuvet', 64, 95], ['paspas', 30, 94]],
   },
   {
     id: 'salon', icon: '🛋️',
     style: { wall: 'cizgi', wallColor: '#fff1d6', floor: 'balik', floorColor: '#e7b98a', view: 'sehir' },
-    tray: ['kanepe', 'tv', 'sehpa', 'abajur', 'oyunrafi', 'kediyatagi', 'kitaplik'],
-    start: [['hali2', 50, 92], ['tv', 22, 72], ['kanepe', 64, 82], ['sehpa', 42, 92], ['bitki', 92, 76], ['abajur', 92, 52], ['kedi', 30, 96], ['cerceve', 66, 30]],
+    start: [['v_hali_02', 50, 94], ['tv', 22, 76], ['kanepe', 64, 84], ['sehpa', 42, 92], ['bitki', 92, 80], ['kedi', 30, 96], ['cerceve', 66, 30]],
   },
   {
     id: 'havuz', icon: '🏖️',
     style: { wall: 'duz', wallColor: '#ffe3ef', floor: 'fayans', floorColor: '#fff1e6', view: 'gunes' },
-    tray: ['sezlong', 'semsiye', 'flamingo', 'simit', 'palmiye', 'kalpbalon', 'kalpisik', 'buzkutusu', 'dondurma'],
-    start: [['palmiye', 10, 66], ['semsiye', 50, 66], ['sezlong', 30, 70], ['sezlong', 72, 70], ['buzkutusu', 50, 70], ['flamingo', 74, 94], ['simit', 28, 92], ['kalpbalon', 90, 64], ['kalpisik', 50, 40]],
+    start: [['palmiye', 10, 66], ['semsiye', 50, 66], ['sezlong', 30, 70], ['sezlong', 72, 70], ['buzkutusu', 50, 70], ['flamingo', 74, 94], ['simit', 28, 92]],
   },
 ];
-
-/* ------------------------------------------------------------ karakterler */
-
-type LookT = ReturnType<typeof currentLook>;
-const base = (o: Record<string, [string, string]>): LookT => {
-  const l: LookT = {
-    kiyafet: { item: 'tisort', color: '#9fd8ff' },
-    sac: { item: 'uzun', color: '#3b2418' },
-    taki: { item: 'yok', color: '#fff' },
-    elde: { item: 'yok', color: '#fff' },
-    ayakkabi: { item: 'spor', color: '#fff' },
-    fon: { item: 'sahne', color: '#7b5cff' },
-    ten: { item: 'ten', color: '#f6c9a4' },
-    hayvan: { item: 'yok', color: '#fff' },
-  };
-  for (const [k, v] of Object.entries(o)) l[k] = { item: v[0], color: v[1] };
-  return l;
-};
-/** Özgün arkadaş karakterler (bebekle aynı çizim sistemi, hazır kıyafetlerle). */
-const FRIENDS: Record<string, { look: LookT; w: number }> = {
-  arkadas1: { look: base({ sac: ['kivircik', '#1f1b24'], ten: ['ten', '#8d5a3b'], kiyafet: ['sweat', '#5fd39a'], taki: ['kurdele', '#ffd93d'] }), w: 26 },
-  arkadas2: { look: base({ sac: ['kisa', '#ff7eb6'], ten: ['ten', '#ffe0c7'], kiyafet: ['tutu', '#9fd8ff'], taki: ['sapka', '#b5e550'] }), w: 26 },
-  kardes: { look: base({ sac: ['topuz', '#a8642f'], ten: ['ten', '#e3a777'], kiyafet: ['tulum', '#ffd93d'], ayakkabi: ['babet', '#ff8fd8'] }), w: 20 },
-  minik: { look: base({ sac: ['kisa', '#f2c14e'], ten: ['ten', '#f6c9a4'], kiyafet: ['tulum', '#ffb3d1'], taki: ['bere', '#c9b6ff'] }), w: 15 },
-};
 
 /* ---------------------------------------------------------------- state */
 
@@ -201,7 +177,7 @@ interface Inst {
   x: number;
   y: number;
   on?: boolean;
-  /** Boyanmış ana renk. */
+  /** Boyanmış renk. */
   c?: string;
   /** Aynalanmış (sağa/sola bakıyor). */
   fl?: boolean;
@@ -210,6 +186,9 @@ interface Inst {
   /** Üstünde durduğu eşyanın numarası (masa, tezgâh…). */
   s?: number;
 }
+
+/** Görseli olmayan eşyalar artık gösterilmez (bebek ve çizim pencere hariç). */
+const keep = (id: string) => id === 'bebek' || id === 'pencere' || !!itemImage(id);
 
 function house(): Record<string, Inst[]> {
   progress.house ??= {};
@@ -228,15 +207,22 @@ function house(): Record<string, Inst[]> {
     }
     progress.houseV = 3;
   }
+  if ((progress.houseV ?? 1) < 4) {
+    for (const rid of Object.keys(progress.house)) progress.house[rid] = progress.house[rid].filter((i) => keep(i.id));
+    progress.houseV = 4;
+  }
+  let created = false;
   for (const r of ROOMS) {
     if (!progress.house[r.id]) {
-      progress.house[r.id] = r.start.map(([id, x, y], i) => ({ u: i + 1, id, x: x + 100, y }));
-      progress.house[r.id].push({ u: 999, id: 'bebek', x: 150, y: 97 });
-      if (r.id !== 'havuz') [75, 150, 225].forEach((x, k) => progress.house![r.id].push({ u: 1000 + k, id: 'pencere', x, y: 33 }));
+      created = true;
+      const list: Inst[] = r.start.filter(([id]) => keep(id)).map(([id, x, y], i) => ({ u: i + 1, id, x: x + 100, y }));
+      list.push({ u: 999, id: 'bebek', x: 150, y: 97 });
+      if (r.id !== 'havuz') [75, 150, 225].forEach((x, k) => list.push({ u: 1000 + k, id: 'pencere', x, y: 33 }));
+      progress.house[r.id] = list;
     }
   }
-  if (!localStorage.getItem('hece-hece-v1')?.includes('"house"')) commit();
-  return progress.house;
+  if (created) commit();
+  return progress.house as Record<string, Inst[]>;
 }
 
 function style(id: RoomId): Style {
@@ -247,26 +233,54 @@ function style(id: RoomId): Style {
 
 const nextU = (list: Inst[]) => list.reduce((m, i) => Math.max(m, i.u), 0) + 1;
 
-/* --------------------------------------------------------------- screen */
+/* ------------------------------------------------------------ çizim */
+
+/** Bir eşyanın HTML'i (oda ve harita önizlemesi için ortak). */
+function thingHtml(inst: Inst, room: RoomId): string {
+  if (inst.id === 'pencere')
+    return `<div class="thing window-thing" data-u="${inst.u}" style="--w:${29.5 / WORLD}%"><svg viewBox="146 36 118 108" xmlns="http://www.w3.org/2000/svg">${windowView(style(room).view, `pw${inst.u}${++bgSeq}`)}</svg></div>`;
+  if (inst.id === 'bebek') return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${26 / WORLD}%">${dollSvg(currentLook(), 'doll', { bg: false })}</div>`;
+  const t = THINGS[inst.id];
+  const src = itemImage(inst.id);
+  if (!t || !src) return '';
+  return `<div class="thing img-thing ${t.bob ? 'bob' : ''} ${inst.on ? 'on' : ''}" data-u="${inst.u}" style="--w:${t.w / WORLD}%"><img src="${src}" alt="" draggable="false"/>${
+    inst.c ? `<span class="tint" style="background:${inst.c};-webkit-mask-image:url('${src}');mask-image:url('${src}')"></span>` : ''
+  }</div>`;
+}
+
+function placeStyle(el: HTMLElement, inst: Inst, list: Inst[]) {
+  el.style.left = `${inst.x / WORLD}%`;
+  el.style.top = `${inst.y}%`;
+  const host = inst.s ? list.find((h) => h.u === inst.s) : undefined;
+  el.style.zIndex = String(THINGS[inst.id]?.flat ? 1 : host ? 1100 + Math.round(host.y * 10) : 10 + Math.round(inst.y * 10));
+  el.style.transform = `translate(-50%,-100%) rotate(${inst.r ?? 0}deg)${inst.fl ? ' scaleX(-1)' : ''}`;
+}
+
+/** Odanın tamamı (arka plan + eşyalar), harita önizlemesi için. */
+function worldInto(target: HTMLElement, room: RoomId) {
+  const list = house()[room];
+  target.innerHTML = `<div class="room-bg-wrap">${roomBg(room, style(room))}</div><div class="layer">${list.map((i) => thingHtml(i, room)).join('')}</div>`;
+  target.querySelectorAll<HTMLElement>('.thing').forEach((el) => placeStyle(el, list.find((i) => i.u === Number(el.dataset.u))!, list));
+}
 
 /** Resmin saydam kısmına dokunulunca arkadaki eşya seçilsin: küçük bir alfa haritası. */
 const ALPHA = new Map<string, { w: number; h: number; a: Uint8ClampedArray } | null>();
-function alphaAt(img: HTMLImageElement, fx: number, fy: number): boolean {
-  let m = ALPHA.get(img.src);
+function alphaAt(im: HTMLImageElement, fx: number, fy: number): boolean {
+  let m = ALPHA.get(im.src);
   if (m === undefined) {
     try {
       const w = 64;
-      const h = Math.max(1, Math.round((64 * img.naturalHeight) / (img.naturalWidth || 1)));
+      const hh = Math.max(1, Math.round((64 * im.naturalHeight) / (im.naturalWidth || 1)));
       const c = document.createElement('canvas');
       c.width = w;
-      c.height = h;
+      c.height = hh;
       const ctx = c.getContext('2d', { willReadFrequently: true })!;
-      ctx.drawImage(img, 0, 0, w, h);
-      m = { w, h, a: ctx.getImageData(0, 0, w, h).data };
+      ctx.drawImage(im, 0, 0, w, hh);
+      m = { w, h: hh, a: ctx.getImageData(0, 0, w, hh).data };
     } catch {
       m = null;
     }
-    if (img.complete && img.naturalWidth) ALPHA.set(img.src, m);
+    if (im.complete && im.naturalWidth) ALPHA.set(im.src, m);
   }
   if (!m) return true;
   const x = Math.min(m.w - 1, Math.max(0, Math.floor(fx * m.w)));
@@ -274,102 +288,167 @@ function alphaAt(img: HTMLImageElement, fx: number, fy: number): boolean {
   return m.a[(y * m.w + x) * 4 + 3] > 40;
 }
 
+/* ------------------------------------------------------------ kategoriler */
+
+interface Cat {
+  id: string;
+  /** Simge olarak kullanılacak eşya (görseli olan ilk aday). */
+  icons: string[];
+  test: (id: string) => boolean;
+}
+const re = (s: string) => new RegExp(s);
+const CATS: Cat[] = [
+  { id: 'kisi', icons: ['kiz1', 'kiz2'], test: (id) => id === 'bebek' || (isCharAsset(id) && re('^(kiz|oglan|bebek|anne|baba|nine|dede|ogretmen)').test(id)) },
+  { id: 'hayvan', icons: ['kedi', 'kopek'], test: (id) => isCharAsset(id) || re('^(v_evcil_esya|kediyatagi|kediagaci|kuskafesi|akvaryum|kopekkulubesi)').test(id) },
+  { id: 'yatak', icons: ['v_yatak_03', 'yatak'], test: (id) => re('^(yatak|yuvarlakyatak|cibinlikliyatak|ranza|besik|v_yatak_|dolap|v_dolap_|kiyafetaski|sifonyer|komodin|makyaj|v_makyaj_|kozmetik|boyaynasi)').test(id) },
+  { id: 'oturma', icons: ['kanepe', 'v_kanepe_04'], test: (id) => re('^(kanepe|kosekanepe|berjer|v_kanepe_|v_koltuk_|koltuk$|armut|puf|v_oturak_|cicekminder|sandalye|tabure|v_sandalye_|mamasandalyesi)').test(id) },
+  { id: 'masa', icons: ['masa', 'v_masa_03'], test: (id) => re('^(masa|yuvarlakmasa|v_masa|sehpa|v_sehpa_|calismamasasi|bilgisayar|tvunitesi|kitaplik|oyunrafi|v_raf_02|v_raf_05)').test(id) },
+  { id: 'mutfak', icons: ['retrobuzdolabi', 'buzdolabi'], test: (id) => re('^(buzdolabi|retrobuzdolabi|tezgah|v_tezgah_|ocak|firin|v_ocak_|lavabo|mikrodalga|tost|kahve|blender|mikser|kettle|caydanlik|v_alet_|tabakdolabi|rafkupa|kasiklik|v_tabak_|copkutusu|saksiotlar)').test(id) },
+  { id: 'yemek', icons: ['pasta', 'pizza'], test: (id) => re('^(pasta|pizza|hamburger|salata|meyve|ekmek|kurabiye|cilek|sut|limonata|dondurma|v_yemek_)').test(id) },
+  { id: 'banyo', icons: ['kuvet', 'v_kuvet_02'], test: (id) => re('^(kuvet|v_kuvet_|jakuzi|duskabini|v_dus_|banyolavabo|v_lavabo_|tuvalet|v_tuvalet_|camasir|sampuan|sepet|havlu|bornoz|ordek|dissfircasi|sabunluk|paspas|robot|v_banyo_aksesuar_)').test(id) },
+  { id: 'tv', icons: ['tv', 'v_tv_03'], test: (id) => re('^(tv$|v_tv_|oyunkonsolu|piyano|v_muzik_|somine)').test(id) },
+  { id: 'dekor', icons: ['v_bitki_06', 'buyukbitki'], test: (id) => id === 'pencere' || re('^(pencere_|kapi_|perde|tablo|v_tablo_|cerceve|kedipostu|ayna|aynadalga|v_ayna_|duvarrafi|v_raf_|fotoipi|duvarsaati|vazo|bitki|buyukbitki|sarkitbitki|kaktus|v_bitki_|abajur|lambader|v_lamba_|sarkit|disko|perilamba|gecelambasi|yuvarlakhali|ayihali|v_hali_)').test(id) },
+  { id: 'oyuncak', icons: ['v_oyuncak_05', 'ayi'], test: (id) => re('^(ayi|unicorn|oyuncakev|oyuncaksandigi|yazitahtasi|v_oyuncak_|top$|cadir)').test(id) },
+  { id: 'bahce', icons: ['flamingo', 'semsiye'], test: (id) => re('^(sezlong|semsiye|flamingo|simit|palmiye|buzkutusu|kaydirak|salincak|trambolin|kumkovasi|mangal|cicektarhi|agac|cit|bisiklet|limonatastandi|gokkusagi|piknik|v_havuz_oyuncak_|v_bahce_|v_oyun_parki_)').test(id) },
+];
+const catOf = (id: string) => CATS.find((c) => c.test(id))?.id ?? 'dekor';
+const catIcon = (c: Cat) => {
+  const id = c.icons.find((i) => itemImage(i));
+  return id ? `<img src="${itemImage(id)}" alt="" draggable="false"/>` : '';
+};
+
+/* ------------------------------------------------------------ ev haritası */
+
+/** Evin kesiti: üst kat (yatak odası, banyo), alt kat (salon, mutfak), yanda havuz bahçesi. */
+const FLOORS_MAP: RoomId[][] = [
+  ['yatak', 'banyo'],
+  ['salon', 'mutfak'],
+];
 let current: RoomId = 'yatak';
-/** Oda yakınlığı: 1 = oda ekran yüksekliğini doldurur; varsayılan biraz uzaktan. */
+/** Oda yakınlığı: 1 = oda ekran yüksekliğini doldurur. */
 let zoom = 0.85;
 
 export function showHouse(back: () => void) {
   sfx.tap();
-  let mode: Mode = 'tasi';
-  let brush = '#ff8fc0';
+  const card = (r: RoomId) => `<button class="map-room" data-room="${r}"><div class="map-world"></div><span class="map-label">${roomIcon(r)}</span></button>`;
   const root = show(`
-    <div class="screen house">
-      <header class="bar"><button class="round-btn" data-act="back">⬅</button>
-        <div class="room-tabs">${ROOMS.map((r) => `<button class="room-tab" data-room="${r.id}">${roomIcon(r.id)}</button>`).join('')}</div>
-        ${talkBtn('oda')}</header>
-      <div class="room"><div class="world"><div class="room-bg-wrap"></div><div class="layer"></div></div><div class="pan-hint">⟷</div><div class="zoom-btns"><button data-zoom="in" aria-label="Yakınlaştır">＋</button><button data-zoom="out" aria-label="Uzaklaştır">－</button></div></div>
-      <div class="modes">
-        <button class="mode" data-mode="tasi">${imgTag('ui_mod_tasi', MODE_ICONS.tasi)}</button>
-        <button class="mode" data-mode="boya">${imgTag('ui_mod_boya', MODE_ICONS.boya)}</button>
-        <button class="mode" data-mode="tasarla">${imgTag('ui_mod_tasarla', MODE_ICONS.tasarla)}</button>
+    <div class="screen house-map">
+      <button class="round-btn map-back" data-act="back">⬅</button>
+      <div class="map-talk">${talkBtn('ev')}</div>
+      <div class="map-house">
+        <div class="map-roof"><span class="map-name">${houseTitle()}</span></div>
+        <div class="map-body">${FLOORS_MAP.map((row) => `<div class="map-floor">${row.map(card).join('')}</div>`).join('')}</div>
       </div>
-      <div class="drawer"><div class="drawer-items"></div><div class="trash">🗑️</div></div>
-      <div class="design hidden"></div>
+      <div class="map-garden">${card('havuz')}<div class="map-grass"></div></div>
     </div>`);
   bindTalkButtons(root);
   on(root, 'back', back);
+  root.querySelectorAll<HTMLElement>('.map-room').forEach((b) => {
+    worldInto(b.querySelector('.map-world')!, b.dataset.room as RoomId);
+    b.addEventListener('click', () => {
+      current = b.dataset.room as RoomId;
+      // Odaya yakınlaşma animasyonu.
+      const r = b.getBoundingClientRect();
+      const ghost = b.cloneNode(true) as HTMLElement;
+      ghost.classList.add('map-zoom');
+      Object.assign(ghost.style, { left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px` });
+      document.body.appendChild(ghost);
+      sfx.merge();
+      ghost
+        .animate([{ left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px` }, { left: '0px', top: '0px', width: `${innerWidth}px`, height: `${innerHeight}px` }], { duration: 320, easing: 'ease-in' })
+        .finished.then(() => {
+          showRoom(back);
+          ghost.remove();
+        });
+    });
+  });
+  void talk('ev');
+}
+
+/* ------------------------------------------------------------ oda */
+
+function showRoom(backToHome: () => void) {
+  let mode: Mode = 'tasi';
+  let brush = '#ff8fc0';
+  let cat = 'kisi';
+  const root = show(`
+    <div class="screen room-screen">
+      <div class="room"><div class="world"><div class="room-bg-wrap"></div><div class="layer"></div></div><div class="pan-hint">⟷</div></div>
+      <div class="hud hud-tl"><button class="round-btn" data-act="map">⬅</button><span class="room-chip">${roomIcon(current)}</span></div>
+      <div class="hud hud-tr">${talkBtn('oda')}<button class="round-btn" data-zoom="in" aria-label="Yakınlaştır">＋</button><button class="round-btn" data-zoom="out" aria-label="Uzaklaştır">－</button></div>
+      <div class="hud hud-l">
+        <button class="mode" data-mode="tasi">${imgTag('ui_mod_tasi', MODE_ICONS.tasi)}</button>
+        <button class="mode" data-mode="boya">${imgTag('ui_mod_boya', MODE_ICONS.boya)}</button>
+        <button class="mode" data-mode="tasarla">${imgTag('ui_mod_tasarla', MODE_ICONS.tasarla)}</button>
+        <button class="mode undo" data-act="undo" aria-label="Geri al">↶</button>
+      </div>
+      <button class="open-sheet" data-act="sheet" aria-label="Eşyalar">${catIcon(CATS[2]) || '🧺'}<b>＋</b></button>
+      <div class="trash-drop">🗑️</div>
+      <div class="sheet hidden">
+        <div class="sheet-head"><div class="cat-tabs"></div><button class="sheet-close" data-act="close">▾</button></div>
+        <div class="sheet-body"></div>
+      </div>
+    </div>`);
+  bindTalkButtons(root);
   const roomEl = root.querySelector<HTMLElement>('.room')!;
+  const world = root.querySelector<HTMLElement>('.world')!;
   const layer = root.querySelector<HTMLElement>('.layer')!;
-  const drawer = root.querySelector<HTMLElement>('.drawer')!;
-  const drawerItems = root.querySelector<HTMLElement>('.drawer-items')!;
-  const design = root.querySelector<HTMLElement>('.design')!;
-
-  const room = () => ROOMS.find((r) => r.id === current)!;
+  const sheet = root.querySelector<HTMLElement>('.sheet')!;
+  const sheetBody = root.querySelector<HTMLElement>('.sheet-body')!;
+  const tabs = root.querySelector<HTMLElement>('.cat-tabs')!;
+  const trash = root.querySelector<HTMLElement>('.trash-drop')!;
   const list = () => house()[current];
+  const place = (el: HTMLElement, inst: Inst) => placeStyle(el, inst, list());
+  const elOf = (u: number) => layer.querySelector<HTMLElement>(`.thing[data-u="${u}"]`);
 
-  const thingHtml = (inst: Inst) => {
-    if (inst.id === 'pencere')
-      return `<div class="thing window-thing" data-u="${inst.u}" style="--w:${29.5 / WORLD}%"><svg viewBox="146 36 118 108" xmlns="http://www.w3.org/2000/svg">${windowView(style(current).view, `pw${inst.u}${++bgSeq}`)}</svg></div>`;
-    if (inst.id === 'bebek') return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${26 / WORLD}%">${dollSvg(currentLook(), 'doll', { bg: false })}</div>`;
-    const f = FRIENDS[inst.id];
-    if (f) return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${f.w / WORLD}%">${dollSvg(f.look, 'doll', { bg: false })}</div>`;
-    const t = THINGS[inst.id];
-    if (!t) return '';
-    const img = itemImage(inst.id);
-    if (img)
-      return `<div class="thing img-thing ${t.bob ? 'bob' : ''}" data-u="${inst.u}" style="--w:${t.w / WORLD}%"><img src="${img}" alt="" draggable="false"/>${
-        inst.c ? `<span class="tint" style="background:${inst.c};-webkit-mask-image:url('${img}');mask-image:url('${img}')"></span>` : ''
-      }</div>`;
-    return `<div class="thing ${inst.on ? 'on' : ''} ${t.bob ? 'bob' : ''}" data-u="${inst.u}" style="--w:${t.w / WORLD}%;${inst.c ? `--c:${inst.c}` : ''}"><svg viewBox="${t.vb}" xmlns="http://www.w3.org/2000/svg">${OL}<g filter="url(#tol)">${colorize(t)}</g></svg></div>`;
+  /* ---- geri al */
+  const undoStack: string[] = [];
+  const snapshot = () => {
+    undoStack.push(JSON.stringify({ l: list(), s: style(current) }));
+    if (undoStack.length > 40) undoStack.shift();
+    root.querySelector('.undo')!.classList.remove('off');
   };
-
-  const thumb = (id: string) => {
-    if (id === 'pencere') return `<svg viewBox="146 36 118 108">${windowView(style(current).view, `pt${++bgSeq}`)}</svg>`;
-    if (id === 'bebek') return dollSvg(currentLook(), 'doll', { bg: false });
-    const f = FRIENDS[id];
-    if (f) return dollSvg(f.look, 'doll', { bg: false });
-    const img = itemImage(id);
-    if (img) return `<img src="${img}" alt="" loading="lazy" decoding="async" draggable="false"/>`;
-    const t = THINGS[id];
-    return `<svg viewBox="${t.vb}">${t.svg}</svg>`;
+  const undo = () => {
+    const last = undoStack.pop();
+    if (!last) return;
+    const { l, s } = JSON.parse(last);
+    house()[current] = l;
+    progress.roomStyle![current] = s;
+    commit();
+    renderBg();
+    renderLayer();
+    sfx.soft();
+    root.querySelector('.undo')!.classList.toggle('off', undoStack.length === 0);
   };
+  root.querySelector('.undo')!.classList.add('off');
+  on(root, 'undo', undo);
+  on(root, 'map', () => showHouse(backToHome));
 
-  const place = (el: HTMLElement, inst: Inst) => {
-    el.style.left = `${inst.x / WORLD}%`;
-    el.style.top = `${inst.y}%`;
-    const host = inst.s ? list().find((h) => h.u === inst.s) : undefined;
-    el.style.zIndex = String(THINGS[inst.id]?.flat ? 1 : host ? 1100 + Math.round(host.y * 10) : 10 + Math.round(inst.y * 10));
-    // Alt-orta noktası etrafında döner; aynalama sadece içeriği çevirir.
-    el.style.transform = `translate(-50%,-100%) rotate(${inst.r ?? 0}deg)${inst.fl ? ' scaleX(-1)' : ''}`;
-  };
-
-  /* ---- seçili eşya: aynala / döndür / sil düğmeleri */
+  /* ---- seçili eşya: aynala / döndür */
   let selected: { el: HTMLElement; inst: Inst } | null = null;
-  const tools = document.createElement('div');
-  tools.className = 'item-tools hidden';
-  tools.innerHTML = `<button data-tool="flip" aria-label="Aynala">⇋</button><button data-tool="left" aria-label="Sola döndür">↺</button><button data-tool="right" aria-label="Sağa döndür">↻</button><button data-tool="reset" aria-label="Düzelt">⟲0</button>`;
+  const tools = hEl(`<div class="item-tools hidden"><button data-tool="flip" aria-label="Aynala">⇋</button><button data-tool="left" aria-label="Sola döndür">↺</button><button data-tool="right" aria-label="Sağa döndür">↻</button><button data-tool="reset" aria-label="Düzelt">⟲0</button></div>`);
+  roomEl.appendChild(tools);
   const hideTools = () => {
     selected = null;
     tools.classList.add('hidden');
+  };
+  const positionTools = () => {
+    if (!selected) return;
+    const r = selected.el.getBoundingClientRect();
+    const rr = roomEl.getBoundingClientRect();
+    tools.style.left = `${Math.max(4, Math.min(rr.width - tools.offsetWidth - 4, r.left + r.width / 2 - rr.left - tools.offsetWidth / 2))}px`;
+    tools.style.top = `${Math.max(56, r.top - rr.top - tools.offsetHeight - 6)}px`;
   };
   const showTools = (el: HTMLElement, inst: Inst) => {
     selected = { el, inst };
     tools.classList.remove('hidden');
     positionTools();
   };
-  const positionTools = () => {
-    if (!selected) return;
-    const r = selected.el.getBoundingClientRect();
-    const rr = roomEl.getBoundingClientRect();
-    const x = Math.max(4, Math.min(rr.width - tools.offsetWidth - 4, r.left + r.width / 2 - rr.left - tools.offsetWidth / 2));
-    const y = Math.max(4, r.top - rr.top - tools.offsetHeight - 6);
-    tools.style.left = `${x}px`;
-    tools.style.top = `${y}px`;
-  };
   tools.addEventListener('pointerdown', (e) => e.stopPropagation());
   tools.addEventListener('click', (e) => {
     const b = (e.target as Element).closest<HTMLElement>('[data-tool]');
     if (!b || !selected) return;
+    snapshot();
     const { el, inst } = selected;
     const t = b.dataset.tool;
     if (t === 'flip') inst.fl = !inst.fl;
@@ -387,39 +466,10 @@ export function showHouse(back: () => void) {
     sfx.tap();
   });
 
+  /* ---- çizim */
   const renderBg = () => (root.querySelector('.room-bg-wrap')!.innerHTML = roomBg(current, style(current)));
-
-  const renderDrawer = () => {
-    drawerItems.innerHTML =
-      mode === 'boya'
-        ? PALETTE.map((c) => `<button class="sw ${c === brush ? 'on' : ''}" data-color="${c}" style="background:${c}"></button>`).join('')
-        : [...new Set([...(list().some((i) => i.id === 'bebek') ? [] : ['bebek']), ...(current === 'havuz' ? [] : ['pencere']), ...extraItemsFor(current).filter(isCharAsset), ...room().tray, ...extraItemsFor(current), ...COMMON])].map((id) => `<button class="drawer-item ${isLockedItem(id) ? 'locked' : ''}" data-id="${id}">${thumb(id)}${isLockedItem(id) ? '<span class="lock-badge">🔒</span>' : ''}</button>`).join('');
-    drawerItems.scrollLeft = 0;
-    drawer.classList.toggle('paint', mode === 'boya');
-  };
-
-  const renderDesign = () => {
-    const s = style(current);
-    const opt = (key: keyof Style, value: string, inner: string, extra = '') =>
-      `<button class="dz ${s[key] === value ? 'on' : ''}" ${extra} data-key="${key}" data-val="${value}">${inner}</button>`;
-    const swatch = (key: keyof Style, c: string) => opt(key, c, '', `style="background:${c}" data-sw="1"`);
-    const mini = (k: 'wall' | 'floor', kind: string) => {
-      const c = k === 'wall' ? s.wallColor : s.floorColor;
-      const pat = k === 'wall' ? wallPattern(kind, shade(c, -0.18)) : floorPattern(kind, shade(c, -0.2));
-      return `<svg viewBox="0 0 80 40"><rect width="80" height="40" fill="${c}"/><g>${pat}</g><g transform="translate(40 0)">${pat}</g></svg>`;
-    };
-    const viewMini = (v: string) => `<svg viewBox="146 36 118 108">${windowView(v, `m${v}${++bgSeq}`)}</svg>`;
-    design.innerHTML = `
-      <div class="dz-row"><span class="dz-icon">🧱</span><div class="dz-list">${WALLS.map((w) => opt('wall', w, mini('wall', w))).join('')}</div></div>
-      <div class="dz-row"><span class="dz-icon">🎨</span><div class="dz-list">${WALL_COLORS.map((c) => swatch('wallColor', c)).join('')}</div></div>
-      <div class="dz-row"><span class="dz-icon">🟫</span><div class="dz-list">${FLOORS.map((f) => opt('floor', f, mini('floor', f))).join('')}</div></div>
-      <div class="dz-row"><span class="dz-icon">🎨</span><div class="dz-list">${FLOOR_COLORS.map((c) => swatch('floorColor', c)).join('')}</div></div>
-      ${current === 'havuz' ? '' : `<div class="dz-row"><span class="dz-icon">🪟</span><div class="dz-list">${VIEWS.map((v) => opt('view', v, viewMini(v))).join('')}</div></div>`}`;
-  };
-
   const renderLayer = () => {
     hideTools();
-    // Havada kalmış küçük eşyaları yerine oturt (eski kayıtlar ve boyut değişiklikleri için).
     let fixed = false;
     for (const i of list()) {
       const host = i.s ? list().find((h) => h.u === i.s) : undefined;
@@ -429,54 +479,109 @@ export function showHouse(back: () => void) {
       }
     }
     if (fixed) commit();
-    layer.innerHTML = list().map(thingHtml).join('');
+    layer.innerHTML = list().map((i) => thingHtml(i, current)).join('');
     layer.querySelectorAll<HTMLElement>('.thing').forEach((el) => place(el, list().find((i) => i.u === Number(el.dataset.u))!));
   };
 
-  const render = () => {
-    root.querySelectorAll('.room-tab').forEach((b) => b.classList.toggle('on', (b as HTMLElement).dataset.room === current));
-    root.querySelectorAll('.mode').forEach((b) => b.classList.toggle('on', (b as HTMLElement).dataset.mode === mode));
-    renderBg();
-    renderLayer();
-    drawer.classList.toggle('hidden', mode === 'tasarla');
-    design.classList.toggle('hidden', mode !== 'tasarla');
-    if (mode === 'tasarla') renderDesign();
-    else renderDrawer();
+  /* ---- alt menü */
+  const allItems = () => {
+    const ids = imageItems().filter((id) => current === 'havuz' || catOf(id) !== 'bahce' || !re('^(palmiye|agac|v_bahce_bitki_0[3-5])').test(id));
+    const extra = [...(list().some((i) => i.id === 'bebek') ? [] : ['bebek']), ...(current === 'havuz' ? [] : ['pencere'])];
+    return [...extra, ...ids];
+  };
+  const thumb = (id: string) => {
+    if (id === 'pencere') return `<svg viewBox="146 36 118 108">${windowView(style(current).view, `pt${++bgSeq}`)}</svg>`;
+    if (id === 'bebek') return dollSvg(currentLook(), 'doll', { bg: false });
+    return `<img src="${itemImage(id)}" alt="" loading="lazy" decoding="async" draggable="false"/>`;
+  };
+  const renderTabs = () => {
+    tabs.innerHTML =
+      mode === 'tasi'
+        ? CATS.filter((c) => allItems().some((id) => catOf(id) === c.id)).map((c) => `<button class="cat-tab ${c.id === cat ? 'on' : ''}" data-cat="${c.id}">${catIcon(c)}</button>`).join('')
+        : `<span class="sheet-title">${mode === 'boya' ? imgTag('ui_mod_boya', MODE_ICONS.boya) : imgTag('ui_mod_tasarla', MODE_ICONS.tasarla)}</span>`;
+  };
+  const renderBody = () => {
+    if (mode === 'boya') {
+      sheetBody.innerHTML = `<div class="palette">${PALETTE.map((c) => `<button class="sw ${c === brush ? 'on' : ''}" data-color="${c}" style="background:${c}"></button>`).join('')}</div>`;
+      return;
+    }
+    if (mode === 'tasarla') return renderDesign();
+    const ids = allItems().filter((id) => catOf(id) === cat);
+    sheetBody.innerHTML = `<div class="sheet-items">${ids
+      .map((id) => `<button class="drawer-item ${isLockedItem(id) ? 'locked' : ''}" data-id="${id}">${thumb(id)}${isLockedItem(id) ? '<span class="lock-badge">🔒</span>' : ''}</button>`)
+      .join('')}</div>`;
+  };
+  const openSheet = (yes: boolean) => {
+    sheet.classList.toggle('hidden', !yes);
+    root.classList.toggle('sheet-open', yes);
+    if (yes) {
+      renderTabs();
+      renderBody();
+    }
+  };
+  on(root, 'sheet', () => {
+    sfx.tap();
+    openSheet(true);
+  });
+  on(root, 'close', () => openSheet(false));
+  tabs.addEventListener('click', (e) => {
+    const b = (e.target as Element).closest<HTMLElement>('.cat-tab');
+    if (!b) return;
+    cat = b.dataset.cat!;
+    sfx.tap();
+    renderTabs();
+    renderBody();
+    void talk(`esyakat_${cat}` as TalkId);
+  });
+
+  const renderDesign = () => {
+    const s = style(current);
+    const opt = (k: keyof Style, value: string, inner: string, extra = '') => `<button class="dz ${s[k] === value ? 'on' : ''}" ${extra} data-key="${k}" data-val="${value}">${inner}</button>`;
+    const swatch = (k: keyof Style, c: string) => opt(k, c, '', `style="background:${c}" data-sw="1"`);
+    const mini = (k: 'wall' | 'floor', kind: string) => {
+      if (img(kind)) return `<img src="${img(kind)}" alt=""/>`;
+      const c = k === 'wall' ? s.wallColor : s.floorColor;
+      const pat = k === 'wall' ? wallPattern(kind, shade(c, -0.18)) : floorPattern(kind, shade(c, -0.2));
+      return `<svg viewBox="0 0 80 40"><rect width="80" height="40" fill="${c}"/><g>${pat}</g><g transform="translate(40 0)">${pat}</g></svg>`;
+    };
+    const viewMini = (v: string) => `<svg viewBox="146 36 118 108">${windowView(v, `m${v}${++bgSeq}`)}</svg>`;
+    const row = (icon: string, inner: string) => `<div class="dz-row"><span class="dz-icon">${icon}</span><div class="dz-list">${inner}</div></div>`;
+    sheetBody.innerHTML =
+      row(imgTag('ui_duvar', '🧱'), WALLS.map((w) => opt('wall', w, mini('wall', w))).join('')) +
+      (img(s.wall) ? '' : row('🎨', WALL_COLORS.map((c) => swatch('wallColor', c)).join(''))) +
+      row(imgTag('ui_zemin', '🟫'), FLOORS.map((f) => opt('floor', f, mini('floor', f))).join('')) +
+      (img(s.floor) ? '' : row('🎨', FLOOR_COLORS.map((c) => swatch('floorColor', c)).join(''))) +
+      (current === 'havuz' ? '' : row(imgTag('ui_pencere', '🪟'), VIEWS.map((v) => opt('view', v, viewMini(v))).join('')));
   };
 
-  /* ---- tasarım: duvar, zemin, pencere */
-  design.addEventListener('click', (e) => {
-    const b = (e.target as Element).closest<HTMLElement>('.dz');
-    if (!b) return;
-    const s = style(current) as unknown as Record<string, string>;
-    s[b.dataset.key!] = b.dataset.val!;
-    commit();
-    sfx.paint();
-    renderBg();
-    if (b.dataset.key === 'view') renderLayer();
-    const scroll = [...design.querySelectorAll<HTMLElement>('.dz-list')].map((l) => l.scrollLeft);
-    renderDesign();
-    design.querySelectorAll<HTMLElement>('.dz-list').forEach((l, i) => (l.scrollLeft = scroll[i] ?? 0));
+  sheetBody.addEventListener('click', (e) => {
+    const t = e.target as Element;
+    const sw = t.closest<HTMLElement>('.palette .sw');
+    if (sw) {
+      brush = sw.dataset.color!;
+      sfx.tap();
+      renderBody();
+      return;
+    }
+    const dz = t.closest<HTMLElement>('.dz');
+    if (dz) {
+      snapshot();
+      (style(current) as unknown as Record<string, string>)[dz.dataset.key!] = dz.dataset.val!;
+      commit();
+      sfx.paint();
+      renderBg();
+      if (dz.dataset.key === 'view') renderLayer();
+      const scroll = [...sheetBody.querySelectorAll<HTMLElement>('.dz-list')].map((l) => l.scrollLeft);
+      renderDesign();
+      sheetBody.querySelectorAll<HTMLElement>('.dz-list').forEach((l, i) => (l.scrollLeft = scroll[i] ?? 0));
+    }
   });
 
-  /* ---- boya: renk seç */
-  drawerItems.addEventListener('click', (e) => {
-    if (mode !== 'boya') return;
-    const b = (e.target as Element).closest<HTMLElement>('.sw');
-    if (!b) return;
-    brush = b.dataset.color!;
-    sfx.tap();
-    renderDrawer();
-  });
-
-  /* ---- sürükle-bırak */
-  const world = root.querySelector<HTMLElement>('.world')!;
-  roomEl.appendChild(tools);
+  /* ---- kaydırma ve yakınlaştırma */
   const toPct = (cx: number, cy: number) => {
     const r = world.getBoundingClientRect();
     return { x: ((cx - r.left) / r.width) * 100 * WORLD, y: ((cy - r.top) / r.height) * 100 };
   };
-  /* ---- odayı sağa sola kaydırma */
   let panX = 0;
   const scaledW = () => world.offsetWidth * zoom;
   const maxPan = () => Math.max(0, scaledW() - roomEl.clientWidth);
@@ -489,38 +594,24 @@ export function showHouse(back: () => void) {
     positionTools();
   };
   const centerPan = () => setPan(maxPan() / 2);
-  /** Yakınlaştırma: ekranın ortası sabit kalır. */
   const setZoom = (z: number) => {
     const old = zoom;
-    // En çok, odanın tamamı ekrana sığana kadar uzaklaş.
     const fit = roomEl.clientWidth / (world.offsetWidth || 1);
-    zoom = Math.max(Math.min(1, fit), Math.min(1.25, z));
+    zoom = Math.max(Math.min(1, fit), Math.min(1.3, z));
     const mid = (panX + roomEl.clientWidth / 2) / (world.offsetWidth * old || 1);
     setPan(mid * scaledW() - roomEl.clientWidth / 2);
   };
-  /** Ekranda görünen x aralığı (dünya birimi). */
   const visibleX = () => {
     const W = scaledW() || 1;
     if (W <= roomEl.clientWidth) return { a: 0, b: 100 * WORLD };
     return { a: (panX / W) * 100 * WORLD, b: ((panX + roomEl.clientWidth) / W) * 100 * WORLD };
   };
-  root.querySelector('[data-zoom="in"]')!.addEventListener('click', () => {
-    sfx.tap();
-    setZoom(zoom + 0.15);
-  });
-  root.querySelector('[data-zoom="out"]')!.addEventListener('click', () => {
-    sfx.tap();
-    setZoom(zoom - 0.15);
-  });
-  window.addEventListener('resize', () => setPan(panX));
-  const overDrawer = (cx: number, cy: number) => {
-    if (mode !== 'tasi') return false;
-    const r = drawer.getBoundingClientRect();
-    return cx >= r.left && cx <= r.right && cy >= r.top && cy <= r.bottom;
-  };
-  const landscape = () => window.innerWidth > window.innerHeight;
+  root.querySelector('[data-zoom="in"]')!.addEventListener('click', () => setZoom(zoom + 0.15));
+  root.querySelector('[data-zoom="out"]')!.addEventListener('click', () => setZoom(zoom - 0.15));
+  const onResize = () => setPan(panX);
+  window.addEventListener('resize', onResize);
 
-  /** Bırakılan küçük eşyanın altındaki masa/tezgâh (varsa) ve üst yüzeyin y'si. */
+  /* ---- yüzeyler */
   const hostUnder = (inst: Inst) => {
     let best: { h: Inst; topY: number } | null = null;
     for (const h of list()) {
@@ -534,7 +625,6 @@ export function showHouse(back: () => void) {
     }
     return best;
   };
-  /** Küçük eşyalar ya bir yüzeyin üstüne oturur ya yere iner; havada kalmaz. */
   const settle = (inst: Inst) => {
     delete inst.s;
     if (placeOf(inst.id) !== 'surface') return;
@@ -544,24 +634,28 @@ export function showHouse(back: () => void) {
       inst.s = hit.h.u;
     } else inst.y = Math.max(72, inst.y);
   };
-  /** Dokunulan noktadaki en üstteki eşya (resimlerin saydam kısımları sayılmaz). */
+
   const pickThing = (cx: number, cy: number): HTMLElement | null => {
     for (const e of document.elementsFromPoint(cx, cy)) {
       const th = e.closest<HTMLElement>('.thing');
       if (!th || !layer.contains(th)) continue;
-      const img = th.querySelector<HTMLImageElement>(':scope > img');
-      if (!img) return th;
-      if (e !== img) continue;
-      const r = img.getBoundingClientRect();
+      const im = th.querySelector<HTMLImageElement>(':scope > img');
+      if (!im) return th;
+      if (e !== im) continue;
+      const r = im.getBoundingClientRect();
       const inst = list().find((i) => i.u === Number(th.dataset.u));
       let fx = (cx - r.left) / r.width;
       if (inst?.fl) fx = 1 - fx;
-      if (inst?.r || alphaAt(img, fx, (cy - r.top) / r.height)) return th;
+      if (inst?.r || alphaAt(im, fx, (cy - r.top) / r.height)) return th;
     }
     return null;
   };
-  const elOf = (u: number) => layer.querySelector<HTMLElement>(`.thing[data-u="${u}"]`);
+  const overTrash = (cx: number, cy: number) => {
+    const r = trash.getBoundingClientRect();
+    return cx >= r.left - 20 && cx <= r.right + 20 && cy >= r.top - 20 && cy <= r.bottom + 20;
+  };
 
+  /* ---- sürükle-bırak */
   function drag(el: HTMLElement, inst: Inst, ev: PointerEvent, fresh: boolean) {
     ev.preventDefault();
     const start = toPct(ev.clientX, ev.clientY);
@@ -570,45 +664,49 @@ export function showHouse(back: () => void) {
     el.classList.add('dragging');
     const move = (e: PointerEvent) => {
       const p = toPct(e.clientX, e.clientY);
-      if (!moved && Math.hypot(p.x - start.x, p.y - start.y) > 2) moved = true;
+      if (!moved && Math.hypot(p.x - start.x, p.y - start.y) > 2) {
+        moved = true;
+        snapshot();
+      }
       if (!moved) return;
-      if (selected) hideTools();
+      hideTools();
+      root.classList.add('dragging-item');
       const px = inst.x;
       const py = inst.y;
       inst.x = Math.max(2, Math.min(100 * WORLD - 2, p.x - off.x));
       const [y0, y1] = yRange(inst.id);
       inst.y = Math.max(y0, Math.min(y1, p.y - off.y));
       place(el, inst);
-      // Üstündekiler de onunla birlikte taşınır.
       for (const r of list()) {
         if (r.s !== inst.u) continue;
         r.x += inst.x - px;
         r.y += inst.y - py;
-        const re = elOf(r.u);
-        if (re) place(re, r);
+        const rel = elOf(r.u);
+        if (rel) place(rel, r);
       }
-      drawer.classList.toggle('drop', overDrawer(e.clientX, e.clientY));
+      trash.classList.toggle('hot', overTrash(e.clientX, e.clientY));
     };
     const up = (e: PointerEvent) => {
       window.removeEventListener('pointermove', move);
       window.removeEventListener('pointerup', up);
       window.removeEventListener('pointercancel', up);
       el.classList.remove('dragging');
-      drawer.classList.remove('drop');
+      const del = moved && overTrash(e.clientX, e.clientY);
+      root.classList.remove('dragging-item');
+      trash.classList.remove('hot');
       if (!moved) return tap(el, inst);
-      if (overDrawer(e.clientX, e.clientY)) {
+      if (del) {
         for (const r of list()) if (r.s === inst.u) delete r.s;
         house()[current] = list().filter((i) => i !== inst);
-        el.animate([{ transform: 'translate(-50%,-100%) scale(1)', opacity: 1 }, { transform: 'translate(-50%,-100%) scale(0.2)', opacity: 0 }], { duration: 250 }).finished.then(() => el.remove());
+        el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 200 }).finished.then(() => el.remove());
         sfx.soft();
-        if (inst.id === 'bebek') renderDrawer();
       } else {
         settle(inst);
         place(el, inst);
         for (const r of list()) {
           if (r.s !== inst.u) continue;
-          const re = elOf(r.u);
-          if (re) place(re, r);
+          const rel = elOf(r.u);
+          if (rel) place(rel, r);
         }
         sfx.tap();
       }
@@ -619,46 +717,35 @@ export function showHouse(back: () => void) {
     window.addEventListener('pointercancel', up);
   }
 
+  const pop = (node: HTMLElement) =>
+    node.animate([{ transform: 'translate(-50%,-100%) scale(0.3)' }, { transform: 'translate(-50%,-100%) scale(1.1)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 350 });
+
   function tap(el: HTMLElement, inst: Inst) {
-    if (mode === 'tasi') showTools(el, inst);
-    const isChar = inst.id === 'bebek' || !!FRIENDS[inst.id] || isCharAsset(inst.id);
-    if (mode === 'boya' && !isChar) {
-      const t = THINGS[inst.id];
-      if (t && itemImage(inst.id)) {
-        // Görsel eşyalar: rengi gölge ve çizgileri koruyarak üstüne uygula; beyaz = boyayı sil.
-        inst.c = brush === '#ffffff' ? undefined : brush;
-        commit();
-        sfx.paint();
-        const fresh = document.createElement('div');
-        fresh.innerHTML = thingHtml(inst);
-        const node = fresh.firstElementChild as HTMLElement;
-        el.replaceWith(node);
-        place(node, inst);
-        node.animate([{ transform: 'translate(-50%,-100%) scale(1)' }, { transform: 'translate(-50%,-100%) scale(1.08)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 250 });
-      } else if (t?.main) {
-        inst.c = brush;
-        el.style.setProperty('--c', brush);
-        commit();
-        sfx.paint();
-        el.animate([{ transform: 'translate(-50%,-100%) scale(1)' }, { transform: 'translate(-50%,-100%) scale(1.08)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 250 });
-      } else {
-        sfx.soft();
-      }
+    const isChar = inst.id === 'bebek' || isCharAsset(inst.id);
+    if (mode === 'boya') {
+      if (isChar || inst.id === 'pencere') return sfx.soft();
+      snapshot();
+      inst.c = brush === '#ffffff' ? undefined : brush;
+      commit();
+      sfx.paint();
+      const node = hEl(thingHtml(inst, current));
+      el.replaceWith(node);
+      place(node, inst);
+      pop(node);
       return;
     }
+    showTools(el, inst);
     if (isChar) {
       (el.querySelector('.doll-body') ?? el.querySelector('img'))?.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-30px)' }, { transform: 'translateY(0)' }], { duration: 500 });
       sfx.sing();
       return;
     }
-    const t = THINGS[inst.id];
-    if (t?.toggle) {
+    if (THINGS[inst.id]?.toggle) {
       inst.on = !inst.on;
       el.classList.toggle('on', inst.on);
       commit();
       sfx.merge();
     } else {
-      el.animate([{ transform: 'translate(-50%,-100%) rotate(0)' }, { transform: 'translate(-50%,-100%) rotate(-6deg)' }, { transform: 'translate(-50%,-100%) rotate(6deg)' }, { transform: 'translate(-50%,-100%) rotate(0)' }], { duration: 400 });
       sfx.paint();
     }
   }
@@ -666,8 +753,9 @@ export function showHouse(back: () => void) {
   const touches = new Map<number, number[]>();
   let pinch: { d: number; z: number } | null = null;
   roomEl.addEventListener('pointerdown', (ev) => {
-    if ((ev.target as Element).closest('.zoom-btns, .item-tools') || pickThing(ev.clientX, ev.clientY)) return;
+    if ((ev.target as Element).closest('.item-tools') || pickThing(ev.clientX, ev.clientY)) return;
     hideTools();
+    if (!sheet.classList.contains('hidden') && mode === 'tasi') openSheet(false);
     touches.set(ev.pointerId, [ev.clientX, ev.clientY]);
     if (touches.size === 2) {
       const [a, b] = [...touches.values()];
@@ -675,7 +763,6 @@ export function showHouse(back: () => void) {
     }
     let sx = ev.clientX;
     let start = panX;
-    roomEl.classList.add('panning');
     const move = (e: PointerEvent) => {
       if (!touches.has(e.pointerId)) return;
       touches.set(e.pointerId, [e.clientX, e.clientY]);
@@ -692,7 +779,6 @@ export function showHouse(back: () => void) {
       if (e.pointerId !== ev.pointerId) return;
       touches.delete(ev.pointerId);
       if (touches.size < 2) pinch = null;
-      roomEl.classList.remove('panning');
       window.removeEventListener('pointermove', move);
       window.removeEventListener('pointerup', up);
       window.removeEventListener('pointercancel', up);
@@ -701,16 +787,15 @@ export function showHouse(back: () => void) {
     window.addEventListener('pointerup', up);
     window.addEventListener('pointercancel', up);
   });
-  roomEl.addEventListener('wheel', (e) => {
-    if (e.ctrlKey) {
-      setZoom(zoom - e.deltaY * 0.01);
+  roomEl.addEventListener(
+    'wheel',
+    (e) => {
+      if (e.ctrlKey) setZoom(zoom - e.deltaY * 0.01);
+      else setPan(panX + (Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY));
       e.preventDefault();
-      return;
-    }
-    setPan(panX + (Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY));
-    e.preventDefault();
-  }, { passive: false });
-
+    },
+    { passive: false },
+  );
   layer.addEventListener('pointerdown', (ev) => {
     const el = pickThing(ev.clientX, ev.clientY);
     if (!el) return;
@@ -723,76 +808,71 @@ export function showHouse(back: () => void) {
     const inst: Inst = { u: nextU(list()), id, x, y: Math.max(y0, Math.min(y1, y)) };
     settle(inst);
     list().push(inst);
-    layer.insertAdjacentHTML('beforeend', thingHtml(inst));
-    if (id === 'bebek') queueMicrotask(renderDrawer);
-    const node = layer.lastElementChild as HTMLElement;
+    const node = hEl(thingHtml(inst, current));
+    layer.appendChild(node);
     place(node, inst);
     return [node, inst];
   };
+  /** Dokunarak eklenen eşyanın yeri: küçükse görünen bir masa/tezgâhın üstü, değilse görünen alanda boş bir yer. */
+  const spotFor = (id: string) => {
+    const v = visibleX();
+    const hosts = placeOf(id) === 'surface' ? list().filter((h) => surfaceTop(h.id) !== undefined && !h.r && h.x > v.a && h.x < v.b) : [];
+    if (hosts.length) {
+      const h = hosts[Math.floor(Math.random() * hosts.length)];
+      return { x: h.x + (Math.random() - 0.5) * (THINGS[h.id]?.w ?? 0) * 0.6, y: h.y - heightPct(h.id) * (1 - (surfaceTop(h.id) ?? 0)) + 1 };
+    }
+    const [y0, y1] = yRange(id);
+    return { x: v.a + (v.b - v.a) * (0.2 + Math.random() * 0.6), y: y1 >= 100 ? 84 + Math.random() * 12 : (y0 + y1) / 2 };
+  };
 
-  drawerItems.addEventListener('pointerdown', (ev) => {
+  sheetBody.addEventListener('pointerdown', (ev) => {
     if (mode !== 'tasi') return;
     const b = (ev.target as Element).closest<HTMLElement>('.drawer-item');
     if (!b) return;
-    if (isLockedItem(b.dataset.id!)) {
+    const id = b.dataset.id!;
+    if (isLockedItem(id)) {
       const up = (e: PointerEvent) => {
         window.removeEventListener('pointerup', up);
         if (Math.hypot(e.clientX - ev.clientX, e.clientY - ev.clientY) > 8) return;
         wiggle(b);
         readingChallenge(() => {
-          unlockItem(b.dataset.id!);
-          const scroll = drawerItems.scrollTop;
-          renderDrawer();
-          drawerItems.scrollTop = scroll;
-          const v = visibleX();
-          const [node] = addInst(b.dataset.id!, v.a + (v.b - v.a) * (0.3 + Math.random() * 0.4), 88);
-          node.animate([{ transform: 'translate(-50%,-100%) scale(0.3)' }, { transform: 'translate(-50%,-100%) scale(1.15)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 450 });
+          unlockItem(id);
+          renderBody();
+          openSheet(false);
+          snapshot();
+          const s = spotFor(id);
+          pop(addInst(id, s.x, s.y)[0]);
           commit();
         });
       };
       window.addEventListener('pointerup', up);
       return;
     }
-    const startY = ev.clientY;
-    const startX = ev.clientX;
-    // Çekmece kaydırılabilir; odaya doğru çekilince eşya odaya çıkar.
+    const sx = ev.clientX;
+    const sy = ev.clientY;
+    // Yukarı, odaya doğru çekilince eşya parmağa yapışır; menü kapanır.
     const pull = (e: PointerEvent) => {
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
-      // Dikeyde çekmece altta: yukarı çek. Yatayda çekmece sağda: sola, odaya doğru çek.
-      const out = landscape() ? dx < -14 && Math.abs(dx) > Math.abs(dy) : dy < -14 && Math.abs(dy) > Math.abs(dx);
-      if (out) {
+      const dx = e.clientX - sx;
+      const dy = e.clientY - sy;
+      if (dy < -16 && Math.abs(dy) > Math.abs(dx)) {
         cleanup();
+        openSheet(false);
+        snapshot();
         const p = toPct(e.clientX, e.clientY);
-        const [node, inst] = addInst(b.dataset.id!, p.x, Math.min(100, p.y + 6));
+        const [node, inst] = addInst(id, p.x, Math.min(100, p.y + 6));
         sfx.tap();
         drag(node, inst, e, true);
       }
     };
     const tapAdd = (e: PointerEvent) => {
       cleanup();
-      // Dokunup bırakınca odanın ortasına eklenir (küçük çocuklar için kolaylık).
-      if (Math.hypot(e.clientX - startX, e.clientY - startY) < 8) {
-        // Bebeğin arkasında kaybolmasın: odanın sağına ya da soluna koy.
-        const v = visibleX();
-        const id = b.dataset.id!;
-        let x: number;
-        let y = 84 + Math.random() * 12;
-        // Küçük eşyalar: ekranda bir masa/tezgâh varsa onun üstüne.
-        const hosts = placeOf(id) === 'surface' ? list().filter((h) => surfaceTop(h.id) !== undefined && !h.r && h.x > v.a && h.x < v.b) : [];
-        if (hosts.length) {
-          const h = hosts[Math.floor(Math.random() * hosts.length)];
-          x = h.x + (Math.random() - 0.5) * (THINGS[h.id]?.w ?? 0) * 0.6;
-          y = h.y - heightPct(h.id) * (1 - (surfaceTop(h.id) ?? 0)) + 1;
-        } else {
-          const f = Math.random() < 0.5 ? 0.12 + Math.random() * 0.22 : 0.66 + Math.random() * 0.22;
-          x = v.a + (v.b - v.a) * f;
-        }
-        const [node] = addInst(id, x, y);
-        node.animate([{ transform: 'translate(-50%,-100%) scale(0.3)' }, { transform: 'translate(-50%,-100%) scale(1.1)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 350 });
-        sfx.merge();
-        commit();
-      }
+      if (Math.hypot(e.clientX - sx, e.clientY - sy) >= 8) return;
+      openSheet(false);
+      snapshot();
+      const s = spotFor(id);
+      pop(addInst(id, s.x, s.y)[0]);
+      sfx.merge();
+      commit();
     };
     const cleanup = () => {
       window.removeEventListener('pointermove', pull);
@@ -802,27 +882,22 @@ export function showHouse(back: () => void) {
     window.addEventListener('pointerup', tapAdd);
   });
 
-  root.querySelectorAll<HTMLElement>('.room-tab').forEach((b) =>
-    b.addEventListener('click', () => {
-      current = b.dataset.room as RoomId;
-      sfx.tap();
-      render();
-      requestAnimationFrame(centerPan);
-      void talk(`oda_${current}` as TalkId);
-    }),
-  );
-  root.querySelectorAll<HTMLElement>('.mode').forEach((b) =>
+  root.querySelectorAll<HTMLElement>('.mode[data-mode]').forEach((b) =>
     b.addEventListener('click', () => {
       mode = b.dataset.mode as Mode;
       sfx.tap();
-      render();
+      root.querySelectorAll('.mode[data-mode]').forEach((x) => x.classList.toggle('on', (x as HTMLElement).dataset.mode === mode));
+      hideTools();
+      openSheet(mode !== 'tasi');
       void talk(mode === 'tasi' ? 'mod_tasi' : mode === 'boya' ? 'esyaBoya' : 'tasarla');
     }),
   );
+  root.querySelector('.mode[data-mode="tasi"]')!.classList.add('on');
 
-  render();
+  renderBg();
+  renderLayer();
   requestAnimationFrame(centerPan);
-  void talk('ev');
+  void talk(`oda_${current}` as TalkId);
 }
 
 export const houseTitle = () => `${genitive(progress.name)} Evi`;

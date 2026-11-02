@@ -84,6 +84,7 @@ PREFIX = [
     (r"^v_alet_(08|09|10)", (H, 48)), (r"^v_alet_", (H, 30)), (r"^v_yemek_09", (H, 32)), (r"^v_yemek_", (W, 26)), (r"^v_tabak_03", (H, 90)),
     (r"^v_tabak_", (W, 70)), (r"^v_kuvet_", (H, 85)), (r"^v_lavabo_", (H, 150)), (r"^v_dus_", (H, 200)), (r"^v_tuvalet_", (H, 80)),
     (r"^v_kanepe_", (H, 85)), (r"^v_koltuk_", (H, 95)), (r"^v_sehpa_", (H, 45)), (r"^v_bitki_", (H, 50)), (r"^v_lamba_", (H, 50)),
+    (r"^pencere_03$", (W, 70)), (r"^pencere_06$", (W, 160)), (r"^pencere_", (W, 110)), (r"^kapi_", (H, 200)),
     (r"^v_hali_", (W, 160)), (r"^v_tablo_", (W, 60)), (r"^v_ayna_", (H, 80)), (r"^v_raf_", (W, 75)),
 ]
 # Üstüne eşya konabilenler (üst yüzey resimden bulunur).

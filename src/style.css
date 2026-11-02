@@ -2594,3 +2594,421 @@ body {
   font-size: 17px;
   font-weight: 700;
 }
+
+/* ================================================== v10: ev haritası + tam ekran oda */
+
+/* ---- harita */
+.house-map {
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+  padding: calc(env(safe-area-inset-top) + 8px) calc(env(safe-area-inset-right) + 12px) 0 calc(env(safe-area-inset-left) + 12px);
+  background: linear-gradient(180deg, #a9dcff 0%, #dff3ff 62%, #bfe8a6 62%, #9fd88a 100%);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2vw;
+}
+.house-map::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60px 26px at 14% 16%, #fff 98%, transparent),
+    radial-gradient(80px 30px at 20% 13%, #fff 98%, transparent),
+    radial-gradient(70px 26px at 78% 10%, #fff 98%, transparent),
+    radial-gradient(90px 32px at 85% 14%, #fff 98%, transparent);
+  pointer-events: none;
+}
+.map-back {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 10px);
+  left: calc(env(safe-area-inset-left) + 12px);
+  z-index: 5;
+}
+.map-talk {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 10px);
+  right: calc(env(safe-area-inset-right) + 12px);
+  z-index: 5;
+}
+.map-house {
+  position: relative;
+  width: min(62vw, 150dvh);
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4dvh;
+  filter: drop-shadow(0 10px 18px rgba(61, 53, 83, 0.25));
+}
+.map-roof {
+  height: 17dvh;
+  margin: 0 -3%;
+  background: linear-gradient(180deg, #ff9fb8, #f07a9a);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  display: grid;
+  place-items: end center;
+  padding-bottom: 2dvh;
+}
+.map-name {
+  color: #fff;
+  font-weight: 700;
+  font-size: clamp(16px, 3.4dvh, 26px);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
+.map-body {
+  background: #fff3e4;
+  border: 8px solid #fff3e4;
+  border-radius: 0 0 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.map-floor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.map-room {
+  position: relative;
+  aspect-ratio: 1.75;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: inset 0 0 0 3px rgba(61, 53, 83, 0.12);
+  padding: 0;
+  transition: transform 0.15s;
+}
+.map-room:active {
+  transform: scale(0.97);
+}
+.map-world {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  aspect-ratio: 1200 / 440;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.map-world .room-bg-wrap,
+.map-world .layer {
+  position: absolute;
+  inset: 0;
+}
+.map-world .thing {
+  pointer-events: none;
+}
+.map-label {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  width: 38px;
+  height: 38px;
+  padding: 4px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 0 var(--line);
+}
+.map-label .ui-img,
+.map-label .icon {
+  width: 100%;
+  height: 100%;
+}
+.map-garden {
+  position: relative;
+  flex: 0 0 auto;
+  width: min(25vw, 56dvh);
+  margin-bottom: 6dvh;
+}
+.map-garden .map-room {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 18px;
+  border: 6px solid #fff;
+}
+.map-zoom {
+  position: fixed !important;
+  z-index: 900;
+  margin: 0;
+  border-radius: 0;
+  pointer-events: none;
+}
+
+/* ---- tam ekran oda */
+.room-screen {
+  position: relative;
+  height: 100dvh;
+  padding: 0 !important;
+  overflow: hidden;
+  display: block !important;
+}
+.room-screen .room {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: auto !important;
+  border-radius: 0;
+  box-shadow: none;
+}
+.hud {
+  position: absolute;
+  z-index: 3100;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.hud .round-btn,
+.hud .talk-btn {
+  width: 46px;
+  height: 46px;
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 3px 0 var(--line), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.hud .talk-btn {
+  background: var(--lemon);
+}
+.hud-tl {
+  top: calc(env(safe-area-inset-top) + 10px);
+  left: calc(env(safe-area-inset-left) + 10px);
+}
+.hud-tr {
+  top: calc(env(safe-area-inset-top) + 10px);
+  right: calc(env(safe-area-inset-right) + 10px);
+}
+.hud-l {
+  left: calc(env(safe-area-inset-left) + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column;
+}
+.room-chip {
+  width: 46px;
+  height: 46px;
+  padding: 5px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 3px 0 var(--line);
+}
+.room-chip .ui-img,
+.room-chip .icon {
+  width: 100%;
+  height: 100%;
+}
+.hud-l .mode {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 3px 0 var(--line), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.hud-l .mode .ui-img,
+.hud-l .mode .icon {
+  width: 34px;
+  height: 34px;
+}
+.hud-l .mode.undo {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.hud-l .mode.undo.off {
+  opacity: 0.35;
+}
+.open-sheet {
+  position: absolute;
+  z-index: 3100;
+  left: calc(50% - 38px);
+  bottom: calc(env(safe-area-inset-bottom) + 12px);
+  width: 76px;
+  height: 76px;
+  border-radius: 24px;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 5px 0 var(--line), 0 6px 18px rgba(0, 0, 0, 0.15);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.open-sheet img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.open-sheet b {
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--mint);
+  color: #fff;
+  font-size: 22px;
+  line-height: 28px;
+  box-shadow: 0 2px 0 var(--mint-d);
+}
+.sheet-open .open-sheet,
+.dragging-item .open-sheet,
+.dragging-item .hud {
+  display: none;
+}
+.trash-drop {
+  position: absolute;
+  z-index: 3100;
+  right: calc(env(safe-area-inset-right) + 16px);
+  bottom: calc(env(safe-area-inset-bottom) + 16px);
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: none;
+  place-items: center;
+  font-size: 38px;
+  background: #fff;
+  box-shadow: 0 5px 0 var(--line), 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s, background 0.15s;
+}
+.trash-drop .ui-img {
+  width: 70%;
+  height: 70%;
+}
+.dragging-item .trash-drop {
+  display: grid;
+}
+.trash-drop.hot {
+  transform: scale(1.25);
+  background: #ffd9d4;
+}
+.sheet {
+  position: absolute;
+  z-index: 3200;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: min(46dvh, 300px);
+  background: #fff;
+  border-radius: 26px 26px 0 0;
+  box-shadow: 0 -6px 24px rgba(61, 53, 83, 0.18);
+  display: flex;
+  flex-direction: column;
+  padding: 8px calc(env(safe-area-inset-right) + 10px) calc(env(safe-area-inset-bottom) + 6px) calc(env(safe-area-inset-left) + 10px);
+  animation: sheet-up 0.22s ease-out;
+}
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+.sheet-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cat-tabs {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 2px 2px 6px;
+}
+.cat-tab {
+  flex: 0 0 auto;
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  border-radius: 14px;
+  background: #faf6ef;
+}
+.cat-tab img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.cat-tab.on {
+  background: #fff4c7;
+  box-shadow: 0 0 0 3px var(--lemon), 0 3px 0 var(--lemon-d);
+}
+.sheet-title {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+}
+.sheet-title .ui-img,
+.sheet-title .icon {
+  width: 40px;
+  height: 40px;
+}
+.sheet-close {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #f1ece4;
+  font-size: 24px;
+  color: var(--muted);
+}
+.sheet-body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.sheet-items {
+  height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: minmax(0, 1fr);
+  grid-auto-columns: calc(min(46dvh, 300px) - 96px);
+  gap: 10px;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  touch-action: pan-x;
+  padding: 2px;
+}
+.sheet-items .drawer-item {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  flex: none;
+}
+.palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+}
+.palette .sw {
+  width: 46px;
+  height: 46px;
+}
+.sheet-body .dz-row {
+  margin-bottom: 4px;
+}
+.sheet-body .dz {
+  width: 64px;
+  height: 40px;
+}
+.sheet-body .dz img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.sheet-body .dz[data-sw] {
+  width: 36px;
+  height: 36px;
+}
+.sheet-body {
+  overflow-y: auto;
+}
+.room-screen .pan-hint {
+  bottom: 100px;
+}
+.room-screen .item-tools {
+  z-index: 3150;
+}

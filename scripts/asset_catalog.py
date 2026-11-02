@@ -338,6 +338,63 @@ BACKGROUNDS = [
 ]
 
 
+# ------------------------------------------------------------ oda yüzeyleri (duvar, zemin, bahçe)
+STYLE_TILE = (
+    "Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle "
+    "shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams "
+    "when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, "
+    "no outline frame, no border, no vignette, no text, no letters, no logo, no watermark."
+)
+WALLPAPERS = [
+    ("duvar_01", "Pembe puantiyeli duvar kâğıdı", "soft blush pink wallpaper with small white polka dots"),
+    ("duvar_02", "Lila çizgili duvar kâğıdı", "lilac and cream vertical stripes wallpaper"),
+    ("duvar_03", "Nane yeşili yonca desenli", "mint green wallpaper with tiny white four-leaf clovers"),
+    ("duvar_04", "Gökyüzü ve bulutlar", "pale sky blue wallpaper with small fluffy white clouds"),
+    ("duvar_05", "Yıldızlı gece mavisi", "dusty navy blue wallpaper with tiny golden stars and little moons"),
+    ("duvar_06", "Küçük kalpler", "cream wallpaper with small pink and red hearts in a regular pattern"),
+    ("duvar_07", "Çiçekli bahar", "butter yellow wallpaper with small pastel flowers and leaves"),
+    ("duvar_08", "Gökkuşağı yaylar", "white wallpaper with small pastel rainbow arches in a regular pattern"),
+    ("duvar_09", "Pembe ahşap lambri", "light pink painted wooden wall panels, vertical planks"),
+    ("duvar_10", "Beyaz tuğla", "soft white painted brick wall with gentle cream mortar"),
+    ("duvar_11", "Mutfak fayansı", "mint and white small square kitchen wall tiles in a checker pattern"),
+    ("duvar_12", "Banyo balık pulu fayans", "pale aqua fish scale bathroom wall tiles"),
+]
+FLOORTILES = [
+    ("zemin_01", "Açık meşe parke", "light honey oak wooden floor planks in a straight pattern, top-down view"),
+    ("zemin_02", "Balıksırtı parke", "warm light wooden herringbone parquet floor, top-down view"),
+    ("zemin_03", "Beyaz ahşap", "whitewashed pale wooden floor planks, top-down view"),
+    ("zemin_04", "Siyah beyaz dama", "soft charcoal and cream checkerboard floor tiles, top-down view"),
+    ("zemin_05", "Pembe beyaz dama", "blush pink and white checkerboard floor tiles, top-down view"),
+    ("zemin_06", "Banyo fayansı", "small white hexagon bathroom floor tiles with light grey grout, top-down view"),
+    ("zemin_07", "Mutfak karosu", "terracotta and cream patterned kitchen floor tiles, top-down view"),
+    ("zemin_08", "Yumuşak halıfleks", "soft lilac fluffy carpet floor texture, top-down view"),
+    ("zemin_09", "Mermer", "white marble floor with very soft pink veins, top-down view"),
+    ("zemin_10", "Çim", "soft green lawn grass with a few tiny daisies, top-down view, for the garden"),
+]
+OUTDOOR = [
+    ("havuz_su", "Havuz suyu (kare, kenarsız döşeme)", "sparkling turquoise swimming pool water with soft white light ripples, top-down view", STYLE_TILE),
+    ("bahce_manzara", "Bahçe manzarası (16:9, havuz odasının arkası)",
+     "a sunny garden view behind a swimming pool: pastel blue sky with a few soft clouds at the top, a low white wooden "
+     "fence across the middle, green bushes, a few trees and flower beds along the fence, empty grass in front, the "
+     "left and right edges continue the same scene so it can repeat side by side", None),
+]
+# Pencere ve kapılar: duvara/yere yerleştirilen eşyalar. (kod, Türkçe, tarif)
+WINDOWS = [
+    ("pencere_01", "Beyaz çift kanatlı pencere", "a white double casement window with a blue sky and one cloud visible through the glass"),
+    ("pencere_02", "Kemerli pencere", "a tall arched white window with thin muntins and pale sky behind the glass"),
+    ("pencere_03", "Yuvarlak pencere", "a round porthole style window with a pink wooden frame and blue sky inside"),
+    ("pencere_04", "Perdeli pencere", "a white window with short pink gingham curtains tied on both sides and a flower box below"),
+    ("pencere_05", "Gece penceresi", "a white window showing a dark blue night sky with a crescent moon and stars"),
+    ("pencere_06", "Büyük cam kapı/pencere", "a wide three-panel white framed window with green garden trees visible outside"),
+]
+DOORS = [
+    ("kapi_01", "Beyaz panel kapı", "a closed white panel interior door with a round gold doorknob"),
+    ("kapi_02", "Pembe kemerli kapı", "a closed pastel pink arched wooden door with a small heart window and gold knob"),
+    ("kapi_03", "Mint ahşap kapı", "a closed mint green wooden plank door with a brass handle"),
+    ("kapi_04", "Bahçe cam kapısı", "a closed white French door with glass panes showing a sunny garden"),
+]
+SURFACES = WALLPAPERS + FLOORTILES + [(c, tr, en) for c, tr, en, _s in OUTDOOR]
+
 # ------------------------------------------------------------ toplu üretim
 SHEET_LEAD = ("2D flat vector cartoon sticker sheet, NOT a photo: {n} completely separate items arranged in a neat {grid} grid "
               "with wide empty white space between them, every item fully visible, none of the items touching or overlapping, "
@@ -512,7 +569,8 @@ def main():
     missing = [w for w in words if w not in WORD_EN]
     assert not missing, f"kelime tarifi eksik: {missing}"
     codes = ([i[0] for i in ITEMS_ALL] + [c[0] for c in CHARACTERS] + [p[0] for p in PETS] + [u[0] for u in UI]
-             + [word_code(w) for w in words] + [f"cikartma_{i + 1:02d}" for i in range(len(STICKERS))] + [b[0] for b in BACKGROUNDS] + ["uygulama_ikonu"])
+             + [word_code(w) for w in words] + [f"cikartma_{i + 1:02d}" for i in range(len(STICKERS))] + [b[0] for b in BACKGROUNDS] + ["uygulama_ikonu"]
+             + [x[0] for x in SURFACES] + [x[0] for x in WINDOWS + DOORS])
     assert len(codes) == len(set(codes)), "tekrarlanan kod"
     item_style = STYLE_ITEM.replace("one single isolated object, the whole object fully visible and centered with generous empty margin around it, ", "")
     char_style = STYLE_CHAR.replace("centered with generous empty margin, ", "")
@@ -529,6 +587,7 @@ def main():
     sets += sheets([(c, en) for c, _tr, en, st in UI if st is STYLE_CARD], 4, 2, STYLE_CARD.replace("centered composition with empty margin, ", ""), "kart")
     sets += sheets([(word_code(w), WORD_EN[w]) for w in words], 9, 3, STYLE_WORD.replace("centered with generous empty margin, ", ""), "kelime")
     sets += sheets([(f"cikartma_{i + 1:02d}", en) for i, en in enumerate(STICKERS)], 9, 3, STYLE_STICKER.replace("centered, ", ""), "cikartma")
+    sets += sheets([(c, en) for c, _tr, en in WINDOWS + DOORS], 10, 5, item_style, "yapi")
     codes += [code for code, _c, _t in sets]
     (ROOT / "src" / "assets" / "codes.json").write_text(json.dumps(sorted(codes)) + "\n")
     (ROOT / "src" / "assets" / "sets.json").write_text(json.dumps({code: cs for code, cs, _t in sets}, indent=1) + "\n")
@@ -543,6 +602,10 @@ def main():
         if lock:
             e["lock"] = True
         catalog.append(e)
+    for code, *_ in WINDOWS:
+        catalog.append({"id": code, "w": 14})
+    for code, *_ in DOORS:
+        catalog.append({"id": code, "w": 14})
     for code, w, *_ in CHARACTERS + PETS:
         catalog.append({"id": code, "w": w, "char": True})
     (ROOT / "src" / "assets" / "items.json").write_text(json.dumps(catalog, ensure_ascii=False, indent=1) + "\n")
@@ -589,6 +652,34 @@ def main():
    Benim çizdiğim aynı adlı eşya varsa, Firefly görseli onun yerine geçer.
 """)
 
+
+    out.append(f"""
+## 🆕 Oda yüzeyleri: duvar kâğıtları, zeminler, bahçe ve havuz ({len(SURFACES)} istek)
+
+Bunlar odanın **boş** zemini ve duvarıdır; içinde eşya olmamalı. Oyun bunları fayans gibi yan yana döşer.
+
+- Ayarlar: **Square (1:1)**, **Art**, Style reference yüklü (bahçe manzarası hariç hepsi kare).
+- `bahce_manzara` için **Widescreen (16:9)** seçin.
+- Bunların arka planını silmiyorum; görsel kenardan kenara dolu olmalı (beyaz kenar, çerçeve olmasın).
+- Firefly'da varsa **"Seamless pattern / Tileable"** efektini açın; yoksa istek zaten bunu söylüyor.
+- Oyunda: Oda içinde sol menüdeki **Tasarla** düğmesinde duvar ve zemin seçeneği olarak çıkar. `zemin_10` (çim) ve `havuz_su`, `bahce_manzara` havuz bahçesinde kullanılır.
+""")
+    for code, tr, en in WALLPAPERS + FLOORTILES:
+        out.append(f"### `{code}` — {tr}\n")
+        out.append("```\n" + f"{code} — 2D flat vector cartoon seamless pattern, NOT a photo: {en}. {STYLE_TILE}" + "\n```\n")
+    for code, tr, en, st in OUTDOOR:
+        out.append(f"### `{code}` — {tr}\n")
+        body = f"{code} — 2D flat vector cartoon seamless pattern, NOT a photo: {en}. {STYLE_TILE}" if st else prompt(code, en, STYLE_BG)
+        out.append("```\n" + body + "\n```\n")
+    out.append(f"""
+## 🆕 Pencereler ve kapılar ({len(WINDOWS) + len(DOORS)} istek)
+
+Eşya gibi üretilir (**Square 1:1**, beyaz arka plan; arka planı ben silerim). Pencereler duvara, kapılar yere oturur;
+ikisi de oyunda sürüklenip yeri değiştirilebilir. Toplu istek: aşağıdaki `set_yapi_01` (10'lu sayfa).
+""")
+    for code, tr, en in WINDOWS + DOORS:
+        out.append(f"### `{code}` — {tr}\n")
+        out.append("```\n" + prompt(code, en, STYLE_ITEM) + "\n```\n")
     out.append(f"""
 ## Toplu üretim: çıkartma sayfaları ({len(sets)} istek)
 
@@ -601,9 +692,9 @@ aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya
 - Kalite: tekli istek her eşyayı daha büyük ve detaylı çizer. Önemli eşyalar (yatak, kanepe, karakterler) için tekli,
   küçük eşyalar ve kelime resimleri için toplu üretim iyi bir denge.
 """)
-    new_sets = [x for x in sets if x[0].startswith("set_cesit_")]
-    old_sets = [x for x in sets if not x[0].startswith("set_cesit_")]
-    out.append(f"\n### 🆕 YENİ sayfalar: çeşit aileleri ({len(new_sets)} istek)\n")
+    new_sets = [x for x in sets if x[0].startswith(("set_cesit_", "set_yapi_"))]
+    old_sets = [x for x in sets if not x[0].startswith(("set_cesit_", "set_yapi_"))]
+    out.append(f"\n### 🆕 YENİ sayfalar: çeşit aileleri, pencere ve kapılar ({len(new_sets)} istek)\n")
     out.append("Bunlar yeni eklendi, henüz üretilmedi. Her ailede ilk 2 çeşit bedava, diğerleri oyunda okuma sorusuyla açılır.\n")
     for code, cs, text in new_sets:
         out.append(f"#### `{code}` — {len(cs)} görsel: {', '.join(cs)}\n")

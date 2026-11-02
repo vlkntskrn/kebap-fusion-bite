@@ -186,7 +186,13 @@ def prepare(name: str, src: Path):
     for old in OUT.glob(f"{name}.*"):
         old.unlink()
     img = Image.open(src)
-    if name.startswith("arka_"):
+    if name.startswith(("duvar_", "zemin_")) or name == "havuz_su":
+        # Döşeme: arka plan silinmez, kırpılmaz, kare kalır.
+        img = img.convert("RGB").resize((512, 512), Image.LANCZOS)
+        dest = OUT / f"{name}.webp"
+        img.save(dest, "WEBP", quality=86, method=6)
+        return dest
+    if name.startswith("arka_") or name == "bahce_manzara":
         img = img.convert("RGB")
         img.thumbnail((1600, 1600), Image.LANCZOS)
         dest = OUT / f"{name}.jpg"

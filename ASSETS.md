@@ -39,7 +39,228 @@ Toplam **363 eşya** (232 tanesi çeşit ailelerinden, ilk 2 çeşit bedava, ger
    Benim çizdiğim aynı adlı eşya varsa, Firefly görseli onun yerine geçer.
 
 
-## Toplu üretim: çıkartma sayfaları (76 istek)
+## 🆕 Oda yüzeyleri: duvar kâğıtları, zeminler, bahçe ve havuz (24 istek)
+
+Bunlar odanın **boş** zemini ve duvarıdır; içinde eşya olmamalı. Oyun bunları fayans gibi yan yana döşer.
+
+- Ayarlar: **Square (1:1)**, **Art**, Style reference yüklü (bahçe manzarası hariç hepsi kare).
+- `bahce_manzara` için **Widescreen (16:9)** seçin.
+- Bunların arka planını silmiyorum; görsel kenardan kenara dolu olmalı (beyaz kenar, çerçeve olmasın).
+- Firefly'da varsa **"Seamless pattern / Tileable"** efektini açın; yoksa istek zaten bunu söylüyor.
+- Oyunda: Oda içinde sol menüdeki **Tasarla** düğmesinde duvar ve zemin seçeneği olarak çıkar. `zemin_10` (çim) ve `havuz_su`, `bahce_manzara` havuz bahçesinde kullanılır.
+
+### `duvar_01` — Pembe puantiyeli duvar kâğıdı
+
+```
+duvar_01 — 2D flat vector cartoon seamless pattern, NOT a photo: soft blush pink wallpaper with small white polka dots. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `duvar_02` — Lila çizgili duvar kâğıdı
+
+```
+duvar_02 — 2D flat vector cartoon seamless pattern, NOT a photo: lilac and cream vertical stripes wallpaper. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `duvar_03` — Nane yeşili yonca desenli
+
+```
+duvar_03 — 2D flat vector cartoon seamless pattern, NOT a photo: mint green wallpaper with tiny white four-leaf clovers. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `duvar_04` — Gökyüzü ve bulutlar
+
+```
+duvar_04 — 2D flat vector cartoon seamless pattern, NOT a photo: pale sky blue wallpaper with small fluffy white clouds. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `duvar_05` — Yıldızlı gece mavisi
+
+```
+duvar_05 — 2D flat vector cartoon seamless pattern, NOT a photo: dusty navy blue wallpaper with tiny golden stars and little moons. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `duvar_06` — Küçük kalpler
+
+```
+duvar_06 — 2D flat vector cartoon seamless pattern, NOT a photo: cream wallpaper with small pink and red hearts in a regular pattern. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `duvar_07` — Çiçekli bahar
+
+```
+duvar_07 — 2D flat vector cartoon seamless pattern, NOT a photo: butter yellow wallpaper with small pastel flowers and leaves. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `duvar_08` — Gökkuşağı yaylar
+
+```
+duvar_08 — 2D flat vector cartoon seamless pattern, NOT a photo: white wallpaper with small pastel rainbow arches in a regular pattern. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `duvar_09` — Pembe ahşap lambri
+
+```
+duvar_09 — 2D flat vector cartoon seamless pattern, NOT a photo: light pink painted wooden wall panels, vertical planks. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `duvar_10` — Beyaz tuğla
+
+```
+duvar_10 — 2D flat vector cartoon seamless pattern, NOT a photo: soft white painted brick wall with gentle cream mortar. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `duvar_11` — Mutfak fayansı
+
+```
+duvar_11 — 2D flat vector cartoon seamless pattern, NOT a photo: mint and white small square kitchen wall tiles in a checker pattern. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `duvar_12` — Banyo balık pulu fayans
+
+```
+duvar_12 — 2D flat vector cartoon seamless pattern, NOT a photo: pale aqua fish scale bathroom wall tiles. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `zemin_01` — Açık meşe parke
+
+```
+zemin_01 — 2D flat vector cartoon seamless pattern, NOT a photo: light honey oak wooden floor planks in a straight pattern, top-down view. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `zemin_02` — Balıksırtı parke
+
+```
+zemin_02 — 2D flat vector cartoon seamless pattern, NOT a photo: warm light wooden herringbone parquet floor, top-down view. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `zemin_03` — Beyaz ahşap
+
+```
+zemin_03 — 2D flat vector cartoon seamless pattern, NOT a photo: whitewashed pale wooden floor planks, top-down view. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `zemin_04` — Siyah beyaz dama
+
+```
+zemin_04 — 2D flat vector cartoon seamless pattern, NOT a photo: soft charcoal and cream checkerboard floor tiles, top-down view. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `zemin_05` — Pembe beyaz dama
+
+```
+zemin_05 — 2D flat vector cartoon seamless pattern, NOT a photo: blush pink and white checkerboard floor tiles, top-down view. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `zemin_06` — Banyo fayansı
+
+```
+zemin_06 — 2D flat vector cartoon seamless pattern, NOT a photo: small white hexagon bathroom floor tiles with light grey grout, top-down view. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `zemin_07` — Mutfak karosu
+
+```
+zemin_07 — 2D flat vector cartoon seamless pattern, NOT a photo: terracotta and cream patterned kitchen floor tiles, top-down view. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `zemin_08` — Yumuşak halıfleks
+
+```
+zemin_08 — 2D flat vector cartoon seamless pattern, NOT a photo: soft lilac fluffy carpet floor texture, top-down view. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `zemin_09` — Mermer
+
+```
+zemin_09 — 2D flat vector cartoon seamless pattern, NOT a photo: white marble floor with very soft pink veins, top-down view. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `zemin_10` — Çim
+
+```
+zemin_10 — 2D flat vector cartoon seamless pattern, NOT a photo: soft green lawn grass with a few tiny daisies, top-down view, for the garden. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `havuz_su` — Havuz suyu (kare, kenarsız döşeme)
+
+```
+havuz_su — 2D flat vector cartoon seamless pattern, NOT a photo: sparkling turquoise swimming pool water with soft white light ripples, top-down view. Seamless repeating square texture tile for a children's dollhouse game, flat vector art style with very soft gentle shading, soft pastel colors, the pattern fills the WHOLE square edge to edge and tiles perfectly with no visible seams when repeated left-right and up-down, straight-on flat view with no perspective, no furniture, no objects, no people, no outline frame, no border, no vignette, no text, no letters, no logo, no watermark.
+```
+
+### `bahce_manzara` — Bahçe manzarası (16:9, havuz odasının arkası)
+
+```
+bahce_manzara — 2D flat vector cartoon background illustration, NOT a photo: a sunny garden view behind a swimming pool: pastel blue sky with a few soft clouds at the top, a low white wooden fence across the middle, green bushes, a few trees and flower beds along the fence, empty grass in front, the left and right edges continue the same scene so it can repeat side by side. Wide cozy background illustration for a children's game screen, flat vector art style with soft gentle shading, soft pastel colors, calm and not busy, gentle details only near the edges so the center stays clean, no characters, no people, no text, no letters, no logo, no watermark, full bleed scene filling the whole frame.
+```
+
+
+## 🆕 Pencereler ve kapılar (10 istek)
+
+Eşya gibi üretilir (**Square 1:1**, beyaz arka plan; arka planı ben silerim). Pencereler duvara, kapılar yere oturur;
+ikisi de oyunda sürüklenip yeri değiştirilebilir. Toplu istek: aşağıdaki `set_yapi_01` (10'lu sayfa).
+
+### `pencere_01` — Beyaz çift kanatlı pencere
+
+```
+pencere_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a white double casement window with a blue sky and one cloud visible through the glass. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `pencere_02` — Kemerli pencere
+
+```
+pencere_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a tall arched white window with thin muntins and pale sky behind the glass. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `pencere_03` — Yuvarlak pencere
+
+```
+pencere_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a round porthole style window with a pink wooden frame and blue sky inside. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `pencere_04` — Perdeli pencere
+
+```
+pencere_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a white window with short pink gingham curtains tied on both sides and a flower box below. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `pencere_05` — Gece penceresi
+
+```
+pencere_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a white window showing a dark blue night sky with a crescent moon and stars. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `pencere_06` — Büyük cam kapı/pencere
+
+```
+pencere_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a wide three-panel white framed window with green garden trees visible outside. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `kapi_01` — Beyaz panel kapı
+
+```
+kapi_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a closed white panel interior door with a round gold doorknob. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `kapi_02` — Pembe kemerli kapı
+
+```
+kapi_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a closed pastel pink arched wooden door with a small heart window and gold knob. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `kapi_03` — Mint ahşap kapı
+
+```
+kapi_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a closed mint green wooden plank door with a brass handle. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `kapi_04` — Bahçe cam kapısı
+
+```
+kapi_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a closed white French door with glass panes showing a sunny garden. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+
+## Toplu üretim: çıkartma sayfaları (77 istek)
 
 Görselleri tek tek üretmek yerine **bir istekte 9 tane** (karakterlerde 4) üretebilirsiniz. Firefly hepsini aynı resimde,
 aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya doğru kodu veririm.
@@ -51,7 +272,7 @@ aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya
   küçük eşyalar ve kelime resimleri için toplu üretim iyi bir denge.
 
 
-### 🆕 YENİ sayfalar: çeşit aileleri (29 istek)
+### 🆕 YENİ sayfalar: çeşit aileleri, pencere ve kapılar (30 istek)
 
 Bunlar yeni eklendi, henüz üretilmedi. Her ailede ilk 2 çeşit bedava, diğerleri oyunda okuma sorusuyla açılır.
 
@@ -227,6 +448,12 @@ set_cesit_hepsi_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 comp
 
 ```
 set_cesit_hepsi_05 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a framed space painting with planets; 2) a framed family portrait drawing; 3) a framed unicorn painting; 4) a round pet bed; 5) a cat tree; 6) a fish tank; 7) a bird cage; 8) a dog house; 9) a hamster cage with a wheel. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yapi_01` — 10 görsel: pencere_01, pencere_02, pencere_03, pencere_04, pencere_05, pencere_06, kapi_01, kapi_02, kapi_03, kapi_04
+
+```
+set_yapi_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 10 completely separate items arranged in a neat 2 by 5 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a white double casement window with a blue sky and one cloud visible through the glass; 2) a tall arched white window with thin muntins and pale sky behind the glass; 3) a round porthole style window with a pink wooden frame and blue sky inside; 4) a white window with short pink gingham curtains tied on both sides and a flower box below; 5) a white window showing a dark blue night sky with a crescent moon and stars; 6) a wide three-panel white framed window with green garden trees visible outside; 7) a closed white panel interior door with a round gold doorknob; 8) a closed pastel pink arched wooden door with a small heart window and gold knob; 9) a closed mint green wooden plank door with a brass handle; 10) a closed white French door with glass panes showing a sunny garden. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
 
