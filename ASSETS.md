@@ -1,6 +1,6 @@
 # Firefly görsel listesi
 
-Toplam **603 eşya** (232 tanesi çeşit ailelerinden, ilk 2 çeşit bedava, gerisi okuma sorusuyla açılır), **17 karakter**, **12 evcil hayvan**, **38 buton/simge**, **101 kelime resmi**, **30 çıkartma**, **4 arka plan** ve uygulama ikonu. Her isteği olduğu gibi kopyalayıp Firefly'a yapıştırın. Stil, arka plan, açı ve boyut bilgisi isteğin içinde.
+Toplam **815 eşya** (232 tanesi çeşit ailelerinden, ilk 2 çeşit bedava, gerisi okuma sorusuyla açılır), **17 karakter**, **12 evcil hayvan**, **38 buton/simge**, **101 kelime resmi**, **30 çıkartma**, **4 arka plan** ve uygulama ikonu. Her isteği olduğu gibi kopyalayıp Firefly'a yapıştırın. Stil, arka plan, açı ve boyut bilgisi isteğin içinde.
 
 ## Firefly'da her görsel için aynı ayarlar
 
@@ -39,7 +39,7 @@ Toplam **603 eşya** (232 tanesi çeşit ailelerinden, ilk 2 çeşit bedava, ger
    Benim çizdiğim aynı adlı eşya varsa, Firefly görseli onun yerine geçer.
 
 
-## 🆕 Yeni odalar: Oyun odası, Bebek odası, Giyinme odası, Sanat atölyesi, Müzik odası, Kütüphane (246 istek)
+## 🆕 Yeni odalar: Oyun odası, Bebek odası, Giyinme odası, Sanat atölyesi, Müzik odası, Kütüphane, Pet revir, Makyaj odası, Oyun parkı (461 istek)
 
 Altı yeni oda ve eşyaları. Her odada temel eşyalar ve çeşit aileleri var (her ailede ilk 2 çeşit bedava, gerisi okuma
 sorusuyla açılır). Ayarlar eşyalarla aynı: **Square (1:1)**, Art, Style reference yüklü, beyaz arka plan.
@@ -83,7 +83,25 @@ ui_oda_muzik — 2D flat vector cartoon illustration, NOT a photo, simple clean 
 ui_oda_kutuphane — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small cute stack of colorful books with an open book on top. Cute game button icon for a children's app, one bold simple symbol, flat vector art style with soft glossy shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), bright cheerful pastel colors, front view, the symbol fills about 80 percent of the canvas and is perfectly centered, no button background, no text, no letters, no numbers, no logo, no watermark, plain solid pure white background (#FFFFFF).
 ```
 
-### Oyun odası (39 eşya)
+#### `ui_oda_petrevir` — Oda: Pet revir
+
+```
+ui_oda_petrevir — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small cute veterinary cross with a paw print and a heart. Cute game button icon for a children's app, one bold simple symbol, flat vector art style with soft glossy shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), bright cheerful pastel colors, front view, the symbol fills about 80 percent of the canvas and is perfectly centered, no button background, no text, no letters, no numbers, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+#### `ui_oda_makyaj` — Oda: Makyaj odası
+
+```
+ui_oda_makyaj — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small cute lipstick and a round mirror with sparkles. Cute game button icon for a children's app, one bold simple symbol, flat vector art style with soft glossy shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), bright cheerful pastel colors, front view, the symbol fills about 80 percent of the canvas and is perfectly centered, no button background, no text, no letters, no numbers, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+#### `ui_oda_oyunparki` — Oda: Oyun parkı
+
+```
+ui_oda_oyunparki — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small cute playground slide with a sun. Cute game button icon for a children's app, one bold simple symbol, flat vector art style with soft glossy shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), bright cheerful pastel colors, front view, the symbol fills about 80 percent of the canvas and is perfectly centered, no button background, no text, no letters, no numbers, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### Oyun odası (44 eşya)
 
 | Kod | Eşya |
 |---|---|
@@ -110,6 +128,11 @@ ui_oda_kutuphane — 2D flat vector cartoon illustration, NOT a photo, simple cl
 | `kostum_sandigi` | Kostüm sandığı |
 | `robot_oyuncak` | Robot oyuncak |
 | `uzay_roketi` | Oyuncak roket |
+| `oyuncak_bebek_arabasi` | Oyuncak bebek arabası |
+| `top_sepeti` | Top sepeti |
+| `hula_hop` | Hula hop |
+| `oyuncak_piyano` | Oyuncak piyano |
+| `kale_cadiri` | Kale yapbozu |
 | `v_cadir_01` | Oyun çadırı 1 |
 | `v_cadir_02` | Oyun çadırı 2 |
 | `v_cadir_03` | Oyun çadırı 3 (kilitli) |
@@ -265,6 +288,36 @@ robot_oyuncak — 2D flat vector cartoon illustration, NOT a photo, simple clean
 uzay_roketi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a big cardboard play rocket with round windows. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
+#### `oyuncak_bebek_arabasi` — Oyuncak bebek arabası
+
+```
+oyuncak_bebek_arabasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small toy doll stroller with a doll inside. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `top_sepeti` — Top sepeti
+
+```
+top_sepeti — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a basket full of colorful balls. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `hula_hop` — Hula hop
+
+```
+hula_hop — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a striped hula hoop. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `oyuncak_piyano` — Oyuncak piyano
+
+```
+oyuncak_piyano — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small pink toy piano. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `kale_cadiri` — Kale yapbozu
+
+```
+kale_cadiri — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a big foam castle building blocks set. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
 #### `v_cadir_01` — Oyun çadırı 1
 
 ```
@@ -361,7 +414,7 @@ v_top_havuzu_04 — 2D flat vector cartoon illustration, NOT a photo, simple cle
 v_top_havuzu_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cloud shaped ball pit. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-### Bebek odası (39 eşya)
+### Bebek odası (44 eşya)
 
 | Kod | Eşya |
 |---|---|
@@ -388,6 +441,11 @@ v_top_havuzu_05 — 2D flat vector cartoon illustration, NOT a photo, simple cle
 | `bebek_kitabi` | Bez kitap |
 | `emekleme_tuneli` | Emekleme tüneli |
 | `bebek_salincagi` | Ana kucağı |
+| `bebek_aynasi` | Bebek aynası |
+| `bebek_pelus_seti` | Peluş seti |
+| `bebek_ayakkabisi` | Patik |
+| `bebek_sallanir_tavsan` | Sallanan tavşan |
+| `bebek_kitapligi` | Bebek kitaplığı |
 | `v_besik_01` | Bebek karyolası 1 |
 | `v_besik_02` | Bebek karyolası 2 |
 | `v_besik_03` | Bebek karyolası 3 (kilitli) |
@@ -543,6 +601,36 @@ emekleme_tuneli — 2D flat vector cartoon illustration, NOT a photo, simple cle
 bebek_salincagi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a baby bouncer seat with a toy bar. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
+#### `bebek_aynasi` — Bebek aynası
+
+```
+bebek_aynasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a soft baby floor mirror with a rainbow frame. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `bebek_pelus_seti` — Peluş seti
+
+```
+bebek_pelus_seti — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: three tiny plush toys: a bunny, a bear and a duck. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `bebek_ayakkabisi` — Patik
+
+```
+bebek_ayakkabisi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pair of knitted baby booties. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `bebek_sallanir_tavsan` — Sallanan tavşan
+
+```
+bebek_sallanir_tavsan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a soft rocking bunny toy. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `bebek_kitapligi` — Bebek kitaplığı
+
+```
+bebek_kitapligi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a low baby bookshelf with soft books. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
 #### `v_besik_01` — Bebek karyolası 1
 
 ```
@@ -639,7 +727,7 @@ v_donence_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean 
 v_donence_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a crib mobile with planets. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-### Giyinme odası (48 eşya)
+### Giyinme odası (53 eşya)
 
 | Kod | Eşya |
 |---|---|
@@ -675,6 +763,11 @@ v_donence_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean 
 | `giysi_yagmurluk` | Yağmurluk |
 | `giysi_mayo` | Mayo |
 | `giysi_sort` | Şort |
+| `aksesuar_kutusu` | Aksesuar kutusu |
+| `tac_standi` | Taç standı |
+| `canta_koleksiyonu` | Çanta koleksiyonu |
+| `ayakkabi_kutusu` | Ayakkabı kutusu |
+| `isikli_dolap` | Işıklı vitrin |
 | `v_manken_01` | Manken 1 |
 | `v_manken_02` | Manken 2 |
 | `v_manken_03` | Manken 3 (kilitli) |
@@ -884,6 +977,36 @@ giysi_mayo — 2D flat vector cartoon illustration, NOT a photo, simple clean sh
 giysi_sort — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pair of kids denim shorts. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
+#### `aksesuar_kutusu` — Aksesuar kutusu
+
+```
+aksesuar_kutusu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an open box with sunglasses, watches and hair clips. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `tac_standi` — Taç standı
+
+```
+tac_standi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a stand with three tiaras. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `canta_koleksiyonu` — Çanta koleksiyonu
+
+```
+canta_koleksiyonu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a shelf with five cute bags. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `ayakkabi_kutusu` — Ayakkabı kutusu
+
+```
+ayakkabi_kutusu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an open shoe box with sparkly shoes. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `isikli_dolap` — Işıklı vitrin
+
+```
+isikli_dolap — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a lighted glass wardrobe showing dresses. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
 #### `v_manken_01` — Manken 1
 
 ```
@@ -980,7 +1103,7 @@ v_ayakkabi_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean
 v_ayakkabi_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pair of glass princess slippers. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-### Sanat atölyesi (39 eşya)
+### Sanat atölyesi (44 eşya)
 
 | Kod | Eşya |
 |---|---|
@@ -1007,6 +1130,11 @@ v_ayakkabi_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean
 | `boncuk_kutusu` | Boncuk kutusu |
 | `cizim_tableti` | Çizim tableti |
 | `sanat_ruloyu_kurutucu` | Boya kurutma rafı |
+| `cocuk_sergisi` | Çocuk sergisi |
+| `boya_rafi` | Boya rafı |
+| `kolaj_masasi` | Kolaj masası |
+| `sanat_onlugu` | Önlük |
+| `heykel_seti` | Kil hayvanlar |
 | `v_sovale_01` | Şövale 1 |
 | `v_sovale_02` | Şövale 2 |
 | `v_sovale_03` | Şövale 3 (kilitli) |
@@ -1162,6 +1290,36 @@ cizim_tableti — 2D flat vector cartoon illustration, NOT a photo, simple clean
 sanat_ruloyu_kurutucu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a wooden drying rack with wet paintings. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
+#### `cocuk_sergisi` — Çocuk sergisi
+
+```
+cocuk_sergisi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an easel board with kids art pinned on it. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `boya_rafi` — Boya rafı
+
+```
+boya_rafi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a wall shelf with paint jars in rainbow order. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `kolaj_masasi` — Kolaj masası
+
+```
+kolaj_masasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a table with paper cutouts and stickers. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `sanat_onlugu` — Önlük
+
+```
+sanat_onlugu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a painting apron with paint splashes. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `heykel_seti` — Kil hayvanlar
+
+```
+heykel_seti — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: three small clay animal figures. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
 #### `v_sovale_01` — Şövale 1
 
 ```
@@ -1258,7 +1416,7 @@ v_boya_masasi_04 — 2D flat vector cartoon illustration, NOT a photo, simple cl
 v_boya_masasi_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a big wooden workshop table. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-### Müzik odası (35 eşya)
+### Müzik odası (40 eşya)
 
 | Kod | Eşya |
 |---|---|
@@ -1286,6 +1444,11 @@ v_boya_masasi_05 — 2D flat vector cartoon illustration, NOT a photo, simple cl
 | `akordeon` | Akordeon |
 | `baglama` | Bağlama |
 | `darbuka` | Darbuka |
+| `mikrofon_standi` | Mikrofon standı |
+| `gitar_standi` | Gitar standı |
+| `notalar` | Nota kitabı |
+| `isikli_kurs` | Sahne merdiveni |
+| `plak_rafi` | Plak rafı |
 | `v_gitar_01` | Gitar 1 |
 | `v_gitar_02` | Gitar 2 |
 | `v_gitar_03` | Gitar 3 (kilitli) |
@@ -1442,6 +1605,36 @@ baglama — 2D flat vector cartoon illustration, NOT a photo, simple clean shape
 darbuka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a decorated goblet drum (darbuka). Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
+#### `mikrofon_standi` — Mikrofon standı
+
+```
+mikrofon_standi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a microphone on a tall stand. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `gitar_standi` — Gitar standı
+
+```
+gitar_standi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a stand holding two guitars. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `notalar` — Nota kitabı
+
+```
+notalar — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an open music book with colorful notes. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `isikli_kurs` — Sahne merdiveni
+
+```
+isikli_kurs — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: small lighted stage steps. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `plak_rafi` — Plak rafı
+
+```
+plak_rafi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a shelf with colorful vinyl records. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
 #### `v_gitar_01` — Gitar 1
 
 ```
@@ -1508,7 +1701,7 @@ v_davul_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean sh
 v_davul_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a set of bongo drums. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-### Kütüphane (40 eşya)
+### Kütüphane (45 eşya)
 
 | Kod | Eşya |
 |---|---|
@@ -1536,6 +1729,11 @@ v_davul_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean sh
 | `mektup_kutusu` | Defter ve kalemler |
 | `sessiz_tabelasi` | Sus işareti |
 | `fil_kitap_destegi` | Kitap desteği |
+| `kitap_kosesi_minder` | Minder köşesi |
+| `bilgi_kuresi_lamba` | Gezegen lamba |
+| `harf_bloklari` | Bloklar |
+| `kitap_okuyan_ayi` | Okuyan ayıcık |
+| `posta_kutusu_kitap` | Kitap iade kutusu |
 | `v_kitaplik_01` | Kitaplık 1 |
 | `v_kitaplik_02` | Kitaplık 2 |
 | `v_kitaplik_03` | Kitaplık 3 (kilitli) |
@@ -1697,6 +1895,36 @@ sessiz_tabelasi — 2D flat vector cartoon illustration, NOT a photo, simple cle
 fil_kitap_destegi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pair of elephant shaped bookends holding books. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
+#### `kitap_kosesi_minder` — Minder köşesi
+
+```
+kitap_kosesi_minder — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a corner with big floor pillows and a soft rug. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `bilgi_kuresi_lamba` — Gezegen lamba
+
+```
+bilgi_kuresi_lamba — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a glowing planet shaped lamp. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `harf_bloklari` — Bloklar
+
+```
+harf_bloklari — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a stack of colorful wooden blocks with pictures, no letters. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `kitap_okuyan_ayi` — Okuyan ayıcık
+
+```
+kitap_okuyan_ayi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a teddy bear reading a book. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `posta_kutusu_kitap` — Kitap iade kutusu
+
+```
+posta_kutusu_kitap — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute red book return box. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
 #### `v_kitaplik_01` — Kitaplık 1
 
 ```
@@ -1793,8 +2021,1659 @@ v_kitap_kosesi_04 — 2D flat vector cartoon illustration, NOT a photo, simple c
 v_kitap_kosesi_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a reading cloud corner. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
+### Pet revir (29 eşya)
 
-## 🆕 Yandan ve arkadan görünümler (122 istek)
+| Kod | Eşya |
+|---|---|
+| `muayene_masasi` | Muayene masası |
+| `pet_kafesi` | Hasta kafesi |
+| `veteriner_dolabi` | Veteriner dolabı |
+| `pet_tartisi` | Pet tartısı |
+| `pet_yatagi_yuvarlak` | Pet yatağı |
+| `mama_kabi` | Mama kabı |
+| `su_kabi` | Su kabı |
+| `ilk_yardim_cantasi` | İlk yardım çantası |
+| `stetoskop` | Stetoskop |
+| `pet_tasima_cantasi` | Taşıma çantası |
+| `pet_kuveti` | Pet küveti |
+| `pet_oyuncaklari` | Pet oyuncakları |
+| `bekleme_sandalyesi` | Bekleme sandalyesi |
+| `pet_odul_kavanozu` | Ödül kavanozu |
+| `kedi_tirmalama` | Tırmalama tahtası |
+| `tasma_askisi` | Tasma askısı |
+| `pati_posteri` | Pati tablosu |
+| `bandaj_rulosu` | Bandaj |
+| `v_pet_yatagi_01` | Pet yatağı 1 |
+| `v_pet_yatagi_02` | Pet yatağı 2 |
+| `v_pet_yatagi_03` | Pet yatağı 3 (kilitli) |
+| `v_pet_yatagi_04` | Pet yatağı 4 (kilitli) |
+| `v_pet_yatagi_05` | Pet yatağı 5 (kilitli) |
+| `v_pet_yatagi_06` | Pet yatağı 6 (kilitli) |
+| `v_pet_kafesi_01` | Pet evi 1 |
+| `v_pet_kafesi_02` | Pet evi 2 |
+| `v_pet_kafesi_03` | Pet evi 3 (kilitli) |
+| `v_pet_kafesi_04` | Pet evi 4 (kilitli) |
+| `v_pet_kafesi_05` | Pet evi 5 (kilitli) |
+
+#### `muayene_masasi` — Muayene masası
+
+```
+muayene_masasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a white pet examination table with a soft mint pad and a paw print. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `pet_kafesi` — Hasta kafesi
+
+```
+pet_kafesi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cozy pet recovery cage with a blanket and a little bone toy. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `veteriner_dolabi` — Veteriner dolabı
+
+```
+veteriner_dolabi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a white cabinet with glass doors, pet food bags and cute medicine bottles. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `pet_tartisi` — Pet tartısı
+
+```
+pet_tartisi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a flat pet weighing scale with a paw print. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `pet_yatagi_yuvarlak` — Pet yatağı
+
+```
+pet_yatagi_yuvarlak — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a round fluffy pet bed with a pillow. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `mama_kabi` — Mama kabı
+
+```
+mama_kabi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pet food bowl full of kibble. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `su_kabi` — Su kabı
+
+```
+su_kabi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a blue pet water bowl. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `ilk_yardim_cantasi` — İlk yardım çantası
+
+```
+ilk_yardim_cantasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute first aid bag with a heart and bandages. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `stetoskop` — Stetoskop
+
+```
+stetoskop — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a toy stethoscope. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `pet_tasima_cantasi` — Taşıma çantası
+
+```
+pet_tasima_cantasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pastel pet carrier bag with a window. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `pet_kuveti` — Pet küveti
+
+```
+pet_kuveti — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small pet bath tub with bubbles and a rubber bone. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `pet_oyuncaklari` — Pet oyuncakları
+
+```
+pet_oyuncaklari — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a basket of pet toys: a ball, a mouse toy and a rope. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `bekleme_sandalyesi` — Bekleme sandalyesi
+
+```
+bekleme_sandalyesi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a row of two cute waiting room chairs. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `pet_odul_kavanozu` — Ödül kavanozu
+
+```
+pet_odul_kavanozu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a jar of bone shaped pet treats. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `kedi_tirmalama` — Tırmalama tahtası
+
+```
+kedi_tirmalama — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cat scratching post with a dangling ball. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `tasma_askisi` — Tasma askısı
+
+```
+tasma_askisi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: wall hooks with colorful pet leashes and collars. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `pati_posteri` — Pati tablosu
+
+```
+pati_posteri — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a framed picture of cute paw prints and hearts. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `bandaj_rulosu` — Bandaj
+
+```
+bandaj_rulosu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a roll of colorful bandage. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_pet_yatagi_01` — Pet yatağı 1
+
+```
+v_pet_yatagi_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a round grey pet bed. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_pet_yatagi_02` — Pet yatağı 2
+
+```
+v_pet_yatagi_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pink pet bed with a crown. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_pet_yatagi_03` — Pet yatağı 3 (kilitli)
+
+```
+v_pet_yatagi_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pet bed shaped like a donut. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_pet_yatagi_04` — Pet yatağı 4 (kilitli)
+
+```
+v_pet_yatagi_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pet bed shaped like a slipper. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_pet_yatagi_05` — Pet yatağı 5 (kilitli)
+
+```
+v_pet_yatagi_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pet bed shaped like a cloud. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_pet_yatagi_06` — Pet yatağı 6 (kilitli)
+
+```
+v_pet_yatagi_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a royal pet bed with a canopy. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_pet_kafesi_01` — Pet evi 1
+
+```
+v_pet_kafesi_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a white pet crate. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_pet_kafesi_02` — Pet evi 2
+
+```
+v_pet_kafesi_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a wooden pet house. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_pet_kafesi_03` — Pet evi 3 (kilitli)
+
+```
+v_pet_kafesi_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pet house shaped like a castle. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_pet_kafesi_04` — Pet evi 4 (kilitli)
+
+```
+v_pet_kafesi_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pet tent. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_pet_kafesi_05` — Pet evi 5 (kilitli)
+
+```
+v_pet_kafesi_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a bird house on a stand. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### Makyaj odası (29 eşya)
+
+| Kod | Eşya |
+|---|---|
+| `kuafor_koltugu` | Kuaför koltuğu |
+| `kurutma_kaski` | Kurutma kaskı |
+| `ayna_istasyonu` | Ayna istasyonu |
+| `oje_rafi` | Oje rafı |
+| `manikur_masasi` | Manikür masası |
+| `makyaj_cantasi` | Makyaj çantası |
+| `ruj_seti` | Ruj seti |
+| `far_paleti` | Far paleti |
+| `fon_makinesi` | Fön makinesi |
+| `tarak_firca` | Tarak ve fırça |
+| `spa_ayak_kuveti` | Ayak spası |
+| `havlu_rafi_salon` | Havlu rafı |
+| `yuz_maskesi_seti` | Yüz maskesi |
+| `sac_bandi` | Saç bandı |
+| `parfum_vitrini` | Parfüm vitrini |
+| `bekleme_koltugu_salon` | Bekleme koltuğu |
+| `oje_kurutucu` | Oje kurutucu |
+| `sac_yikama_lavabosu` | Saç yıkama koltuğu |
+| `v_kuafor_koltugu_01` | Kuaför koltuğu 1 |
+| `v_kuafor_koltugu_02` | Kuaför koltuğu 2 |
+| `v_kuafor_koltugu_03` | Kuaför koltuğu 3 (kilitli) |
+| `v_kuafor_koltugu_04` | Kuaför koltuğu 4 (kilitli) |
+| `v_kuafor_koltugu_05` | Kuaför koltuğu 5 (kilitli) |
+| `v_oje_01` | Oje 1 |
+| `v_oje_02` | Oje 2 |
+| `v_oje_03` | Oje 3 (kilitli) |
+| `v_oje_04` | Oje 4 (kilitli) |
+| `v_oje_05` | Oje 5 (kilitli) |
+| `v_oje_06` | Oje 6 (kilitli) |
+
+#### `kuafor_koltugu` — Kuaför koltuğu
+
+```
+kuafor_koltugu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pink salon chair with a footrest. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `kurutma_kaski` — Kurutma kaskı
+
+```
+kurutma_kaski — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a retro standing hair dryer hood. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `ayna_istasyonu` — Ayna istasyonu
+
+```
+ayna_istasyonu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a salon mirror station with light bulbs and a counter with brushes. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `oje_rafi` — Oje rafı
+
+```
+oje_rafi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a wall shelf full of colorful nail polish bottles. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `manikur_masasi` — Manikür masası
+
+```
+manikur_masasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small white manicure table with a lamp and nail polish. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `makyaj_cantasi` — Makyaj çantası
+
+```
+makyaj_cantasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an open pink makeup bag with brushes. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `ruj_seti` — Ruj seti
+
+```
+ruj_seti — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: three lipsticks in different colors. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `far_paleti` — Far paleti
+
+```
+far_paleti — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an eyeshadow palette with pastel colors. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `fon_makinesi` — Fön makinesi
+
+```
+fon_makinesi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a lilac hair dryer. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `tarak_firca` — Tarak ve fırça
+
+```
+tarak_firca — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a hairbrush and a comb. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `spa_ayak_kuveti` — Ayak spası
+
+```
+spa_ayak_kuveti — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a foot spa basin with bubbles and flower petals. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `havlu_rafi_salon` — Havlu rafı
+
+```
+havlu_rafi_salon — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a rack with rolled pastel towels. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `yuz_maskesi_seti` — Yüz maskesi
+
+```
+yuz_maskesi_seti — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a jar of face mask with cucumber slices. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `sac_bandi` — Saç bandı
+
+```
+sac_bandi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a fluffy spa headband with bunny ears. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `parfum_vitrini` — Parfüm vitrini
+
+```
+parfum_vitrini — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a glass display cabinet with perfume bottles. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `bekleme_koltugu_salon` — Bekleme koltuğu
+
+```
+bekleme_koltugu_salon — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a velvet pink waiting armchair. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `oje_kurutucu` — Oje kurutucu
+
+```
+oje_kurutucu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small nail dryer machine. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `sac_yikama_lavabosu` — Saç yıkama koltuğu
+
+```
+sac_yikama_lavabosu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a salon hair washing chair with a basin. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_kuafor_koltugu_01` — Kuaför koltuğu 1
+
+```
+v_kuafor_koltugu_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a white salon chair. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_kuafor_koltugu_02` — Kuaför koltuğu 2
+
+```
+v_kuafor_koltugu_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mint salon chair. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_kuafor_koltugu_03` — Kuaför koltuğu 3 (kilitli)
+
+```
+v_kuafor_koltugu_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a lilac velvet salon chair. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_kuafor_koltugu_04` — Kuaför koltuğu 4 (kilitli)
+
+```
+v_kuafor_koltugu_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a golden salon chair. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_kuafor_koltugu_05` — Kuaför koltuğu 5 (kilitli)
+
+```
+v_kuafor_koltugu_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a salon chair shaped like a shell. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_oje_01` — Oje 1
+
+```
+v_oje_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a red nail polish bottle. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_oje_02` — Oje 2
+
+```
+v_oje_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pink nail polish bottle. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_oje_03` — Oje 3 (kilitli)
+
+```
+v_oje_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a glitter nail polish bottle. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_oje_04` — Oje 4 (kilitli)
+
+```
+v_oje_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mint nail polish bottle. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_oje_05` — Oje 5 (kilitli)
+
+```
+v_oje_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a purple nail polish bottle. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_oje_06` — Oje 6 (kilitli)
+
+```
+v_oje_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a rainbow nail polish bottle. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### Oyun parkı (26 eşya)
+
+| Kod | Eşya |
+|---|---|
+| `kaydirak_buyuk` | Büyük kaydırak |
+| `salincak_seti` | Salıncak seti |
+| `tahterevalli` | Tahterevalli |
+| `kum_havuzu` | Kum havuzu |
+| `tirmanma_duvari` | Tırmanma duvarı |
+| `atlikarinca` | Atlıkarınca |
+| `park_banki` | Park bankı |
+| `su_cesmesi` | Su çeşmesi |
+| `agac_ev` | Ağaç ev |
+| `tunel_kaydirak` | Tünel kaydırak |
+| `yayli_at` | Yaylı at |
+| `basket_potasi` | Basket potası |
+| `seksek` | Seksek |
+| `ucurtma` | Uçurtma |
+| `dondurma_arabasi` | Dondurma arabası |
+| `park_cop_kutusu` | Park çöp kutusu |
+| `v_salincak_01` | Salıncak 1 |
+| `v_salincak_02` | Salıncak 2 |
+| `v_salincak_03` | Salıncak 3 (kilitli) |
+| `v_salincak_04` | Salıncak 4 (kilitli) |
+| `v_salincak_05` | Salıncak 5 (kilitli) |
+| `v_kaydirak_01` | Kaydırak 1 |
+| `v_kaydirak_02` | Kaydırak 2 |
+| `v_kaydirak_03` | Kaydırak 3 (kilitli) |
+| `v_kaydirak_04` | Kaydırak 4 (kilitli) |
+| `v_kaydirak_05` | Kaydırak 5 (kilitli) |
+
+#### `kaydirak_buyuk` — Büyük kaydırak
+
+```
+kaydirak_buyuk — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a big colorful playground slide with stairs. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `salincak_seti` — Salıncak seti
+
+```
+salincak_seti — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a playground swing set with two swings. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `tahterevalli` — Tahterevalli
+
+```
+tahterevalli — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a colorful seesaw. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `kum_havuzu` — Kum havuzu
+
+```
+kum_havuzu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a wooden sandbox with sand, a bucket and a shovel. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `tirmanma_duvari` — Tırmanma duvarı
+
+```
+tirmanma_duvari — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a kids climbing wall with colorful holds. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `atlikarinca` — Atlıkarınca
+
+```
+atlikarinca — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small playground merry-go-round with a pastel canopy. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `park_banki` — Park bankı
+
+```
+park_banki — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a green wooden park bench. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `su_cesmesi` — Su çeşmesi
+
+```
+su_cesmesi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small drinking water fountain for kids. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `agac_ev` — Ağaç ev
+
+```
+agac_ev — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute treehouse with a ladder and a little flag. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `tunel_kaydirak` — Tünel kaydırak
+
+```
+tunel_kaydirak — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a tube slide on a small tower. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `yayli_at` — Yaylı at
+
+```
+yayli_at — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a spring rider horse toy for the playground. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `basket_potasi` — Basket potası
+
+```
+basket_potasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a kids basketball hoop with a ball. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `seksek` — Seksek
+
+```
+seksek — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a hopscotch game drawn with chalk on the ground, seen from above, no numbers. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `ucurtma` — Uçurtma
+
+```
+ucurtma — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a colorful kite with a ribbon tail. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `dondurma_arabasi` — Dondurma arabası
+
+```
+dondurma_arabasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute ice cream cart with an umbrella. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `park_cop_kutusu` — Park çöp kutusu
+
+```
+park_cop_kutusu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a green park trash bin with a smiling face. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_salincak_01` — Salıncak 1
+
+```
+v_salincak_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single swing. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_salincak_02` — Salıncak 2
+
+```
+v_salincak_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a baby bucket swing. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_salincak_03` — Salıncak 3 (kilitli)
+
+```
+v_salincak_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a tire swing. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_salincak_04` — Salıncak 4 (kilitli)
+
+```
+v_salincak_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a nest swing. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_salincak_05` — Salıncak 5 (kilitli)
+
+```
+v_salincak_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a swing shaped like a horse. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_kaydirak_01` — Kaydırak 1
+
+```
+v_kaydirak_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small plastic slide. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_kaydirak_02` — Kaydırak 2
+
+```
+v_kaydirak_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a wavy slide. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_kaydirak_03` — Kaydırak 3 (kilitli)
+
+```
+v_kaydirak_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a double slide. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_kaydirak_04` — Kaydırak 4 (kilitli)
+
+```
+v_kaydirak_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a slide shaped like an elephant. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_kaydirak_05` — Kaydırak 5 (kilitli)
+
+```
+v_kaydirak_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a spiral slide. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### Işık, süs ve ev aksesuarları (her oda) (47 eşya)
+
+| Kod | Eşya |
+|---|---|
+| `tavan_lambasi_yildiz` | Yıldız tavan lambası |
+| `duvar_apligi` | Duvar apliği |
+| `neon_kalp` | Neon kalp |
+| `neon_gokkusagi` | Neon gökkuşağı |
+| `bulut_lamba` | Bulut lamba |
+| `mantar_lamba` | Mantar lamba |
+| `fener_lamba` | Fener |
+| `mum_seti` | Mumlar |
+| `yastik_seti` | Yastıklar |
+| `orgu_battaniye` | Örgü battaniye |
+| `kedi_saat` | Kedi saat |
+| `terrarium` | Teraryum |
+| `cerceve_seti` | Fotoğraf çerçeveleri |
+| `dekor_sepet` | Örgü sepet |
+| `seramik_kus` | Seramik kuş |
+| `boncuk_perde` | Boncuk perde |
+| `ruya_kapani` | Rüya kapanı |
+| `duvar_yildizlari` | Duvar yıldızları |
+| `v_avize_01` | Avize 1 |
+| `v_avize_02` | Avize 2 |
+| `v_avize_03` | Avize 3 (kilitli) |
+| `v_avize_04` | Avize 4 (kilitli) |
+| `v_avize_05` | Avize 5 (kilitli) |
+| `v_avize_06` | Avize 6 (kilitli) |
+| `v_aplik_01` | Duvar lambası 1 |
+| `v_aplik_02` | Duvar lambası 2 |
+| `v_aplik_03` | Duvar lambası 3 (kilitli) |
+| `v_aplik_04` | Duvar lambası 4 (kilitli) |
+| `v_aplik_05` | Duvar lambası 5 (kilitli) |
+| `v_yastik_01` | Yastık 1 |
+| `v_yastik_02` | Yastık 2 |
+| `v_yastik_03` | Yastık 3 (kilitli) |
+| `v_yastik_04` | Yastık 4 (kilitli) |
+| `v_yastik_05` | Yastık 5 (kilitli) |
+| `v_yastik_06` | Yastık 6 (kilitli) |
+| `v_vazo_01` | Vazo 1 |
+| `v_vazo_02` | Vazo 2 |
+| `v_vazo_03` | Vazo 3 (kilitli) |
+| `v_vazo_04` | Vazo 4 (kilitli) |
+| `v_vazo_05` | Vazo 5 (kilitli) |
+| `v_vazo_06` | Vazo 6 (kilitli) |
+| `v_cerceve_01` | Çerçeve 1 |
+| `v_cerceve_02` | Çerçeve 2 |
+| `v_cerceve_03` | Çerçeve 3 (kilitli) |
+| `v_cerceve_04` | Çerçeve 4 (kilitli) |
+| `v_cerceve_05` | Çerçeve 5 (kilitli) |
+| `v_cerceve_06` | Çerçeve 6 (kilitli) |
+
+#### `tavan_lambasi_yildiz` — Yıldız tavan lambası
+
+```
+tavan_lambasi_yildiz — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a star shaped ceiling lamp. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `duvar_apligi` — Duvar apliği
+
+```
+duvar_apligi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute brass wall sconce lamp with a pastel shade. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `neon_kalp` — Neon kalp
+
+```
+neon_kalp — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a glowing pink neon heart wall sign. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `neon_gokkusagi` — Neon gökkuşağı
+
+```
+neon_gokkusagi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a glowing rainbow neon wall sign. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `bulut_lamba` — Bulut lamba
+
+```
+bulut_lamba — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a glowing cloud shaped wall lamp. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `mantar_lamba` — Mantar lamba
+
+```
+mantar_lamba — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a red mushroom shaped table lamp. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `fener_lamba` — Fener
+
+```
+fener_lamba — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a little lantern with a candle light. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `mum_seti` — Mumlar
+
+```
+mum_seti — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: three glowing candles of different sizes. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `yastik_seti` — Yastıklar
+
+```
+yastik_seti — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pile of three cute cushions: a heart, a star and a cloud. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `orgu_battaniye` — Örgü battaniye
+
+```
+orgu_battaniye — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a folded chunky knit blanket. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `kedi_saat` — Kedi saat
+
+```
+kedi_saat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cat shaped wall clock with a swinging tail. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `terrarium` — Teraryum
+
+```
+terrarium — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a glass terrarium with tiny plants. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `cerceve_seti` — Fotoğraf çerçeveleri
+
+```
+cerceve_seti — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: three small standing photo frames with family drawings. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `dekor_sepet` — Örgü sepet
+
+```
+dekor_sepet — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a woven basket with a folded blanket. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `seramik_kus` — Seramik kuş
+
+```
+seramik_kus — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute ceramic bird figurine. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `boncuk_perde` — Boncuk perde
+
+```
+boncuk_perde — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pastel bead curtain with hearts. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `ruya_kapani` — Rüya kapanı
+
+```
+ruya_kapani — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a dreamcatcher with feathers. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `duvar_yildizlari` — Duvar yıldızları
+
+```
+duvar_yildizlari — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a group of glow in the dark stars for the wall. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_avize_01` — Avize 1
+
+```
+v_avize_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a simple white pendant lamp. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_avize_02` — Avize 2
+
+```
+v_avize_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a crystal chandelier. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_avize_03` — Avize 3 (kilitli)
+
+```
+v_avize_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a flower shaped chandelier. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_avize_04` — Avize 4 (kilitli)
+
+```
+v_avize_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a hot air balloon lamp. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_avize_05` — Avize 5 (kilitli)
+
+```
+v_avize_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a moon and stars chandelier. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_avize_06` — Avize 6 (kilitli)
+
+```
+v_avize_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a candy colored chandelier. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_aplik_01` — Duvar lambası 1
+
+```
+v_aplik_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a star wall lamp. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_aplik_02` — Duvar lambası 2
+
+```
+v_aplik_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a moon wall lamp. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_aplik_03` — Duvar lambası 3 (kilitli)
+
+```
+v_aplik_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a flower wall lamp. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_aplik_04` — Duvar lambası 4 (kilitli)
+
+```
+v_aplik_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a heart wall lamp. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_aplik_05` — Duvar lambası 5 (kilitli)
+
+```
+v_aplik_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a rainbow wall lamp. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_yastik_01` — Yastık 1
+
+```
+v_yastik_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a heart cushion. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_yastik_02` — Yastık 2
+
+```
+v_yastik_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a star cushion. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_yastik_03` — Yastık 3 (kilitli)
+
+```
+v_yastik_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cat cushion. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_yastik_04` — Yastık 4 (kilitli)
+
+```
+v_yastik_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a rainbow cushion. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_yastik_05` — Yastık 5 (kilitli)
+
+```
+v_yastik_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a donut cushion. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_yastik_06` — Yastık 6 (kilitli)
+
+```
+v_yastik_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a strawberry cushion. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_vazo_01` — Vazo 1
+
+```
+v_vazo_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a white vase with tulips. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_vazo_02` — Vazo 2
+
+```
+v_vazo_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pink vase with roses. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_vazo_03` — Vazo 3 (kilitli)
+
+```
+v_vazo_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a blue vase with daisies. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_vazo_04` — Vazo 4 (kilitli)
+
+```
+v_vazo_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a glass vase with sunflowers. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_vazo_05` — Vazo 5 (kilitli)
+
+```
+v_vazo_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a round vase with lavender. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_vazo_06` — Vazo 6 (kilitli)
+
+```
+v_vazo_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a golden vase with peonies. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_cerceve_01` — Çerçeve 1
+
+```
+v_cerceve_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a framed family photo drawing. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_cerceve_02` — Çerçeve 2
+
+```
+v_cerceve_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a framed pet photo drawing. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_cerceve_03` — Çerçeve 3 (kilitli)
+
+```
+v_cerceve_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a framed beach photo drawing. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_cerceve_04` — Çerçeve 4 (kilitli)
+
+```
+v_cerceve_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a framed baby photo drawing. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_cerceve_05` — Çerçeve 5 (kilitli)
+
+```
+v_cerceve_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a heart shaped photo frame. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_cerceve_06` — Çerçeve 6 (kilitli)
+
+```
+v_cerceve_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a star shaped photo frame. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### Parti malzemeleri ve süsler (34 eşya)
+
+| Kod | Eşya |
+|---|---|
+| `balon_kemeri` | Balon kemeri |
+| `flama` | Flama |
+| `parti_masasi` | Parti masası |
+| `dogum_gunu_pastasi` | Doğum günü pastası |
+| `hediye_yigini` | Hediye yığını |
+| `konfeti_patlatici` | Konfeti |
+| `parti_sapkasi` | Parti şapkası |
+| `pinata` | Pinyata |
+| `kapkek_kulesi` | Kek kulesi |
+| `limonata_surahisi` | Limonata sürahisi |
+| `kagit_fener` | Kâğıt fenerler |
+| `balon_hayvan` | Balon köpek |
+| `parti_duduk` | Parti düdüğü |
+| `yildiz_balon` | Yıldız balon |
+| `dans_isigi` | Disko ışığı |
+| `sac_kulahi_pasta` | Dondurmalı pasta |
+| `v_parti_pastasi_01` | Parti pastası 1 |
+| `v_parti_pastasi_02` | Parti pastası 2 |
+| `v_parti_pastasi_03` | Parti pastası 3 (kilitli) |
+| `v_parti_pastasi_04` | Parti pastası 4 (kilitli) |
+| `v_parti_pastasi_05` | Parti pastası 5 (kilitli) |
+| `v_parti_pastasi_06` | Parti pastası 6 (kilitli) |
+| `v_hediye_01` | Hediye kutusu 1 |
+| `v_hediye_02` | Hediye kutusu 2 |
+| `v_hediye_03` | Hediye kutusu 3 (kilitli) |
+| `v_hediye_04` | Hediye kutusu 4 (kilitli) |
+| `v_hediye_05` | Hediye kutusu 5 (kilitli) |
+| `v_hediye_06` | Hediye kutusu 6 (kilitli) |
+| `v_balon_01` | Balon 1 |
+| `v_balon_02` | Balon 2 |
+| `v_balon_03` | Balon 3 (kilitli) |
+| `v_balon_04` | Balon 4 (kilitli) |
+| `v_balon_05` | Balon 5 (kilitli) |
+| `v_balon_06` | Balon 6 (kilitli) |
+
+#### `balon_kemeri` — Balon kemeri
+
+```
+balon_kemeri — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pastel balloon arch. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `flama` — Flama
+
+```
+flama — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pastel triangle bunting garland. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `parti_masasi` — Parti masası
+
+```
+parti_masasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a party table with a festive tablecloth, plates and cups. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `dogum_gunu_pastasi` — Doğum günü pastası
+
+```
+dogum_gunu_pastasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a tall birthday cake with candles and sprinkles. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `hediye_yigini` — Hediye yığını
+
+```
+hediye_yigini — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pile of wrapped presents with bows. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `konfeti_patlatici` — Konfeti
+
+```
+konfeti_patlatici — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a party popper with confetti. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `parti_sapkasi` — Parti şapkası
+
+```
+parti_sapkasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a striped cone party hat with a pom pom. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `pinata` — Pinyata
+
+```
+pinata — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a colorful donkey pinata hanging from a string. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `kapkek_kulesi` — Kek kulesi
+
+```
+kapkek_kulesi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cupcake tower with colorful cupcakes. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `limonata_surahisi` — Limonata sürahisi
+
+```
+limonata_surahisi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a jug of pink lemonade with lemon slices. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `kagit_fener` — Kâğıt fenerler
+
+```
+kagit_fener — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: three hanging paper lanterns in pastel colors. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `balon_hayvan` — Balon köpek
+
+```
+balon_hayvan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a balloon animal dog. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `parti_duduk` — Parti düdüğü
+
+```
+parti_duduk — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a party blower horn. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `yildiz_balon` — Yıldız balon
+
+```
+yildiz_balon — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a golden star foil balloon. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `dans_isigi` — Disko ışığı
+
+```
+dans_isigi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small party disco light projecting colorful dots. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `sac_kulahi_pasta` — Dondurmalı pasta
+
+```
+sac_kulahi_pasta — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an ice cream cake with a cherry. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_parti_pastasi_01` — Parti pastası 1
+
+```
+v_parti_pastasi_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a chocolate birthday cake. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_parti_pastasi_02` — Parti pastası 2
+
+```
+v_parti_pastasi_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a unicorn cake. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_parti_pastasi_03` — Parti pastası 3 (kilitli)
+
+```
+v_parti_pastasi_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a rainbow cake. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_parti_pastasi_04` — Parti pastası 4 (kilitli)
+
+```
+v_parti_pastasi_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a princess castle cake. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_parti_pastasi_05` — Parti pastası 5 (kilitli)
+
+```
+v_parti_pastasi_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a strawberry cake. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_parti_pastasi_06` — Parti pastası 6 (kilitli)
+
+```
+v_parti_pastasi_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a three tier party cake. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_hediye_01` — Hediye kutusu 1
+
+```
+v_hediye_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pink gift box with a bow. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_hediye_02` — Hediye kutusu 2
+
+```
+v_hediye_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a blue gift box with stars. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_hediye_03` — Hediye kutusu 3 (kilitli)
+
+```
+v_hediye_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a striped gift box. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_hediye_04` — Hediye kutusu 4 (kilitli)
+
+```
+v_hediye_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a round gift box. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_hediye_05` — Hediye kutusu 5 (kilitli)
+
+```
+v_hediye_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a heart shaped gift box. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_hediye_06` — Hediye kutusu 6 (kilitli)
+
+```
+v_hediye_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a big golden gift box. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_balon_01` — Balon 1
+
+```
+v_balon_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pink heart balloon. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_balon_02` — Balon 2
+
+```
+v_balon_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a blue round balloon. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_balon_03` — Balon 3 (kilitli)
+
+```
+v_balon_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a rainbow balloon. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_balon_04` — Balon 4 (kilitli)
+
+```
+v_balon_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a unicorn balloon. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_balon_05` — Balon 5 (kilitli)
+
+```
+v_balon_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cat balloon. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_balon_06` — Balon 6 (kilitli)
+
+```
+v_balon_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a number free star balloon. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### Havuz ve bahçe (ek) (17 eşya)
+
+| Kod | Eşya |
+|---|---|
+| `havuz_merdiveni` | Havuz merdiveni |
+| `sisme_yatak` | Şişme yatak |
+| `semsiyeli_masa` | Şemsiyeli masa |
+| `havuz_dusu` | Havuz duşu |
+| `havuz_bari` | Havuz barı |
+| `hamak` | Hamak |
+| `cardak` | Çardak |
+| `havuz_lambasi` | Bahçe feneri |
+| `su_tabancasi` | Su tabancası |
+| `deniz_gozlugu` | Deniz gözlüğü |
+| `havlu_sezlong` | Havlulu şezlong |
+| `v_sisme_01` | Şişme oyuncak 1 |
+| `v_sisme_02` | Şişme oyuncak 2 |
+| `v_sisme_03` | Şişme oyuncak 3 (kilitli) |
+| `v_sisme_04` | Şişme oyuncak 4 (kilitli) |
+| `v_sisme_05` | Şişme oyuncak 5 (kilitli) |
+| `v_sisme_06` | Şişme oyuncak 6 (kilitli) |
+
+#### `havuz_merdiveni` — Havuz merdiveni
+
+```
+havuz_merdiveni — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a shiny pool ladder. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `sisme_yatak` — Şişme yatak
+
+```
+sisme_yatak — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a striped inflatable pool mattress. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `semsiyeli_masa` — Şemsiyeli masa
+
+```
+semsiyeli_masa — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a round garden table with a big striped umbrella. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `havuz_dusu` — Havuz duşu
+
+```
+havuz_dusu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an outdoor pool shower. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `havuz_bari` — Havuz barı
+
+```
+havuz_bari — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a little tiki juice bar with straw roof. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `hamak` — Hamak
+
+```
+hamak — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a striped hammock between two posts. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `cardak` — Çardak
+
+```
+cardak — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a white garden gazebo with flowers. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `havuz_lambasi` — Bahçe feneri
+
+```
+havuz_lambasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a garden lantern lamp on a post. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `su_tabancasi` — Su tabancası
+
+```
+su_tabancasi — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a colorful water squirt gun. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `deniz_gozlugu` — Deniz gözlüğü
+
+```
+deniz_gozlugu — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: kids swimming goggles. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `havlu_sezlong` — Havlulu şezlong
+
+```
+havlu_sezlong — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a lounge chair with a beach towel. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_sisme_01` — Şişme oyuncak 1
+
+```
+v_sisme_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an inflatable crocodile float. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_sisme_02` — Şişme oyuncak 2
+
+```
+v_sisme_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an inflatable pizza float. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_sisme_03` — Şişme oyuncak 3 (kilitli)
+
+```
+v_sisme_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an inflatable rainbow float. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_sisme_04` — Şişme oyuncak 4 (kilitli)
+
+```
+v_sisme_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an inflatable whale float. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_sisme_05` — Şişme oyuncak 5 (kilitli)
+
+```
+v_sisme_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an inflatable boat. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `v_sisme_06` — Şişme oyuncak 6 (kilitli)
+
+```
+v_sisme_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an inflatable star float. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+
+## 🆕 Giydirme aksesuarları (57 istek)
+
+Evdeki karakterlere takılan aksesuarlar (taç, gözlük, küpe, kolye, saat, eldeki eşya, çanta, ayakkabı, yüz süsü) **Square (1:1)**, beyaz arka plan; arka planı ben silerim. Ayakkabılar **tek tek** (tek ayakkabı, önden).
+
+#### `aks_bas_01` — Aksesuar bas 1
+
+```
+aks_bas_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small golden crown with pink gems. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bas_02` — Aksesuar bas 2
+
+```
+aks_bas_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a big red hair bow. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bas_03` — Aksesuar bas 3
+
+```
+aks_bas_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a straw sun hat with a ribbon. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bas_04` — Aksesuar bas 4
+
+```
+aks_bas_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pastel baseball cap. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bas_05` — Aksesuar bas 5
+
+```
+aks_bas_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pink flower hair clip. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bas_06` — Aksesuar bas 6
+
+```
+aks_bas_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a yellow star hair clip. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bas_07` — Aksesuar bas 7
+
+```
+aks_bas_07 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a unicorn horn headband. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bas_08` — Aksesuar bas 8
+
+```
+aks_bas_08 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cat ears headband. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bas_09` — Aksesuar bas 9
+
+```
+aks_bas_09 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a daisy flower hairband. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bas_10` — Aksesuar bas 10
+
+```
+aks_bas_10 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a sparkly gem tiara. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_goz_01` — Aksesuar goz 1
+
+```
+aks_goz_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pair of black sunglasses. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_goz_02` — Aksesuar goz 2
+
+```
+aks_goz_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pair of round glasses. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_goz_03` — Aksesuar goz 3
+
+```
+aks_goz_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pair of swim goggles. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_goz_04` — Aksesuar goz 4
+
+```
+aks_goz_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pair of heart shaped glasses. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_goz_05` — Aksesuar goz 5
+
+```
+aks_goz_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pair of star shaped glasses. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_goz_06` — Aksesuar goz 6
+
+```
+aks_goz_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pair of rainbow glasses. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_kulak_01` — Aksesuar kulak 1
+
+```
+aks_kulak_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pair of pastel headphones. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_kulak_02` — Aksesuar kulak 2
+
+```
+aks_kulak_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single small gem earring. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_kulak_03` — Aksesuar kulak 3
+
+```
+aks_kulak_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single star earring. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_kulak_04` — Aksesuar kulak 4
+
+```
+aks_kulak_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single moon earring. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_kulak_05` — Aksesuar kulak 5
+
+```
+aks_kulak_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single cherry earring. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_kulak_06` — Aksesuar kulak 6
+
+```
+aks_kulak_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single heart earring. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_boyun_01` — Aksesuar boyun 1
+
+```
+aks_boyun_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pearl necklace. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_boyun_02` — Aksesuar boyun 2
+
+```
+aks_boyun_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a necklace with a heart pendant. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_boyun_03` — Aksesuar boyun 3
+
+```
+aks_boyun_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a necklace with a star pendant. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_boyun_04` — Aksesuar boyun 4
+
+```
+aks_boyun_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a flower garland necklace. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_boyun_05` — Aksesuar boyun 5
+
+```
+aks_boyun_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a gold medal on a ribbon. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_boyun_06` — Aksesuar boyun 6
+
+```
+aks_boyun_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a striped knitted scarf. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bilek_01` — Aksesuar bilek 1
+
+```
+aks_bilek_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a kids wrist watch. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bilek_02` — Aksesuar bilek 2
+
+```
+aks_bilek_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a sparkly ring. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bilek_03` — Aksesuar bilek 3
+
+```
+aks_bilek_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a rainbow bead bracelet. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bilek_04` — Aksesuar bilek 4
+
+```
+aks_bilek_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a gem bracelet. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_bilek_05` — Aksesuar bilek 5
+
+```
+aks_bilek_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a bracelet with a bow. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_el_01` — Aksesuar el 1
+
+```
+aks_el_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a smartphone with a pink case. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_el_02` — Aksesuar el 2
+
+```
+aks_el_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a sparkly microphone. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_el_03` — Aksesuar el 3
+
+```
+aks_el_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a swirl lollipop. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_el_04` — Aksesuar el 4
+
+```
+aks_el_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a closed umbrella. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_el_05` — Aksesuar el 5
+
+```
+aks_el_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a magic wand with a star. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_el_06` — Aksesuar el 6
+
+```
+aks_el_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a red balloon on a string. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_canta_01` — Aksesuar canta 1
+
+```
+aks_canta_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small handbag. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_canta_02` — Aksesuar canta 2
+
+```
+aks_canta_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a little purse. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_canta_03` — Aksesuar canta 3
+
+```
+aks_canta_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a kids backpack. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_canta_04` — Aksesuar canta 4
+
+```
+aks_canta_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mini suitcase. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_canta_05` — Aksesuar canta 5
+
+```
+aks_canta_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a picnic basket. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_canta_06` — Aksesuar canta 6
+
+```
+aks_canta_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a shopping bag. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_ayak_01` — Aksesuar ayak 1
+
+```
+aks_ayak_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single white sneaker seen from the front. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_ayak_02` — Aksesuar ayak 2
+
+```
+aks_ayak_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single red party shoe seen from the front. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_ayak_03` — Aksesuar ayak 3
+
+```
+aks_ayak_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single pink ballet flat seen from the front. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_ayak_04` — Aksesuar ayak 4
+
+```
+aks_ayak_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single rain boot seen from the front. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_ayak_05` — Aksesuar ayak 5
+
+```
+aks_ayak_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single ballet slipper seen from the front. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_ayak_06` — Aksesuar ayak 6
+
+```
+aks_ayak_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single flip flop seen from the front. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_yuz_01` — Aksesuar yuz 1
+
+```
+aks_yuz_01 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a tiny pink heart face sticker. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_yuz_02` — Aksesuar yuz 2
+
+```
+aks_yuz_02 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a tiny gold star face sticker. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_yuz_03` — Aksesuar yuz 3
+
+```
+aks_yuz_03 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a tiny butterfly face sticker. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_yuz_04` — Aksesuar yuz 4
+
+```
+aks_yuz_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a tiny rainbow face sticker. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_yuz_05` — Aksesuar yuz 5
+
+```
+aks_yuz_05 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a tiny flower face sticker. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `aks_yuz_06` — Aksesuar yuz 6
+
+```
+aks_yuz_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a tiny sparkle face sticker. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+
+## 🆕 Yandan ve arkadan görünümler (196 istek)
 
 ### Bire bir aynı eşyayı/karakteri nasıl üretirsiniz
 
@@ -1931,6 +3810,62 @@ Referans yüklemeden (yalnızca metinle):
 ranza_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a white bunk bed with a small ladder, mint and pink blankets, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
+### `dolap_yan` — Gardırop (yandan)
+
+**Önerilen — referans resimle:** `referans/dolap.png` dosyasını yükleyin, şunu yazın:
+
+```
+dolap_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+dolap_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a tall pastel pink wardrobe with two doors and round knobs, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `dolap_arka` — Gardırop (arkadan)
+
+**Önerilen — referans resimle:** `referans/dolap.png` dosyasını yükleyin, şunu yazın:
+
+```
+dolap_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+dolap_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a tall pastel pink wardrobe with two doors and round knobs, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `sifonyer_yan` — Şifonyer (yandan)
+
+**Önerilen — referans resimle:** `referans/sifonyer.png` dosyasını yükleyin, şunu yazın:
+
+```
+sifonyer_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+sifonyer_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cream chest of drawers with three drawers and gold handles, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `sifonyer_arka` — Şifonyer (arkadan)
+
+**Önerilen — referans resimle:** `referans/sifonyer.png` dosyasını yükleyin, şunu yazın:
+
+```
+sifonyer_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+sifonyer_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cream chest of drawers with three drawers and gold handles, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
 ### `koltuk_yan` — Salıncak koltuk (yandan)
 
 **Önerilen — referans resimle:** `referans/koltuk.png` dosyasını yükleyin, şunu yazın:
@@ -1957,6 +3892,258 @@ Referans yüklemeden (yalnızca metinle):
 
 ```
 koltuk_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a hanging egg chair with a white cushion and a heart pillow, hanging rope on top, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `kitaplik_yan` — Kitaplık (yandan)
+
+**Önerilen — referans resimle:** `referans/kitaplik.png` dosyasını yükleyin, şunu yazın:
+
+```
+kitaplik_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+kitaplik_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a bookshelf with colorful books, a small plant and a toy, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `kitaplik_arka` — Kitaplık (arkadan)
+
+**Önerilen — referans resimle:** `referans/kitaplik.png` dosyasını yükleyin, şunu yazın:
+
+```
+kitaplik_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+kitaplik_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a bookshelf with colorful books, a small plant and a toy, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `komodin_yan` — Komodin (yandan)
+
+**Önerilen — referans resimle:** `referans/komodin.png` dosyasını yükleyin, şunu yazın:
+
+```
+komodin_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+komodin_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small bedside table with a mushroom lamp on top, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `komodin_arka` — Komodin (arkadan)
+
+**Önerilen — referans resimle:** `referans/komodin.png` dosyasını yükleyin, şunu yazın:
+
+```
+komodin_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+komodin_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small bedside table with a mushroom lamp on top, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `oyuncaksandigi_yan` — Oyuncak sandığı (yandan)
+
+**Önerilen — referans resimle:** `referans/oyuncaksandigi.png` dosyasını yükleyin, şunu yazın:
+
+```
+oyuncaksandigi_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+oyuncaksandigi_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an open toy chest with a ball, a teddy and blocks peeking out, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `oyuncaksandigi_arka` — Oyuncak sandığı (arkadan)
+
+**Önerilen — referans resimle:** `referans/oyuncaksandigi.png` dosyasını yükleyin, şunu yazın:
+
+```
+oyuncaksandigi_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+oyuncaksandigi_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: an open toy chest with a ball, a teddy and blocks peeking out, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `retrobuzdolabi_yan` — Retro buzdolabı (yandan)
+
+**Önerilen — referans resimle:** `referans/retrobuzdolabi.png` dosyasını yükleyin, şunu yazın:
+
+```
+retrobuzdolabi_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+retrobuzdolabi_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a retro rounded fridge in peach color with a silver handle and cute magnets, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `retrobuzdolabi_arka` — Retro buzdolabı (arkadan)
+
+**Önerilen — referans resimle:** `referans/retrobuzdolabi.png` dosyasını yükleyin, şunu yazın:
+
+```
+retrobuzdolabi_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+retrobuzdolabi_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a retro rounded fridge in peach color with a silver handle and cute magnets, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_yan` — Buzdolabı (yandan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mint green two-door fridge with sticky notes and magnets, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_arka` — Buzdolabı (arkadan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mint green two-door fridge with sticky notes and magnets, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `tezgah_yan` — Mutfak tezgâhı (yandan)
+
+**Önerilen — referans resimle:** `referans/tezgah.png` dosyasını yükleyin, şunu yazın:
+
+```
+tezgah_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+tezgah_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a kitchen counter with a sink, a stove top and an oven, cream cabinets with round knobs, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `tezgah_arka` — Mutfak tezgâhı (arkadan)
+
+**Önerilen — referans resimle:** `referans/tezgah.png` dosyasını yükleyin, şunu yazın:
+
+```
+tezgah_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+tezgah_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a kitchen counter with a sink, a stove top and an oven, cream cabinets with round knobs, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `ocak_yan` — Ocak (yandan)
+
+**Önerilen — referans resimle:** `referans/ocak.png` dosyasını yükleyin, şunu yazın:
+
+```
+ocak_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+ocak_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small cooking stove with an oven and a pink pot on top, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `ocak_arka` — Ocak (arkadan)
+
+**Önerilen — referans resimle:** `referans/ocak.png` dosyasını yükleyin, şunu yazın:
+
+```
+ocak_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+ocak_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a small cooking stove with an oven and a pink pot on top, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `firin_yan` — Fırın (yandan)
+
+**Önerilen — referans resimle:** `referans/firin.png` dosyasını yükleyin, şunu yazın:
+
+```
+firin_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+firin_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a built-in oven with a glass door and a tray of cookies inside, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `firin_arka` — Fırın (arkadan)
+
+**Önerilen — referans resimle:** `referans/firin.png` dosyasını yükleyin, şunu yazın:
+
+```
+firin_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+firin_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a built-in oven with a glass door and a tray of cookies inside, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `tabakdolabi_yan` — Tabak dolabı (yandan)
+
+**Önerilen — referans resimle:** `referans/tabakdolabi.png` dosyasını yükleyin, şunu yazın:
+
+```
+tabakdolabi_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+tabakdolabi_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a glass-door kitchen cabinet with stacked plates and cups, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `tabakdolabi_arka` — Tabak dolabı (arkadan)
+
+**Önerilen — referans resimle:** `referans/tabakdolabi.png` dosyasını yükleyin, şunu yazın:
+
+```
+tabakdolabi_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+tabakdolabi_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a glass-door kitchen cabinet with stacked plates and cups, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
 ### `sandalye_yan` — Sandalye (yandan)
@@ -2349,6 +4536,734 @@ Referans yüklemeden (yalnızca metinle):
 
 ```
 v_yatak_08_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a golden royal bed with a velvet canopy and tassels, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_dolap_01_yan` — Gardırop 1 (yandan)
+
+**Önerilen — referans resimle:** `referans/v_dolap_01.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_dolap_01_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_dolap_01_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a simple white two-door wardrobe, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_dolap_01_arka` — Gardırop 1 (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_dolap_01.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_dolap_01_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_dolap_01_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a simple white two-door wardrobe, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_dolap_02_yan` — Gardırop 2 (yandan)
+
+**Önerilen — referans resimle:** `referans/v_dolap_02.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_dolap_02_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_dolap_02_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a light wooden wardrobe with round knobs, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_dolap_02_arka` — Gardırop 2 (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_dolap_02.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_dolap_02_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_dolap_02_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a light wooden wardrobe with round knobs, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_dolap_03_yan` — Gardırop 3 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/v_dolap_03.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_dolap_03_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_dolap_03_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mint wardrobe with heart shaped door handles, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_dolap_03_arka` — Gardırop 3 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_dolap_03.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_dolap_03_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_dolap_03_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mint wardrobe with heart shaped door handles, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_dolap_04_yan` — Gardırop 4 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/v_dolap_04.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_dolap_04_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_dolap_04_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a lilac wardrobe with a mirror door, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_dolap_04_arka` — Gardırop 4 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_dolap_04.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_dolap_04_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_dolap_04_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a lilac wardrobe with a mirror door, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_dolap_05_yan` — Gardırop 5 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/v_dolap_05.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_dolap_05_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_dolap_05_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pink wardrobe with a scalloped top and flower decorations, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_dolap_05_arka` — Gardırop 5 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_dolap_05.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_dolap_05_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_dolap_05_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pink wardrobe with a scalloped top and flower decorations, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_dolap_06_yan` — Gardırop 6 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/v_dolap_06.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_dolap_06_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_dolap_06_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a golden princess wardrobe with crystal knobs, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_dolap_06_arka` — Gardırop 6 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_dolap_06.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_dolap_06_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_dolap_06_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a golden princess wardrobe with crystal knobs, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_01_yan` — Buzdolabı 1 (yandan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_01.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_01_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_01_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a simple white two-door fridge, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_01_arka` — Buzdolabı 1 (arkadan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_01.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_01_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_01_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a simple white two-door fridge, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_02_yan` — Buzdolabı 2 (yandan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_02.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_02_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_02_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a light grey fridge with a freezer on top, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_02_arka` — Buzdolabı 2 (arkadan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_02.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_02_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_02_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a light grey fridge with a freezer on top, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_03_yan` — Buzdolabı 3 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_03.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_03_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_03_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mint green retro rounded fridge with a silver handle, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_03_arka` — Buzdolabı 3 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_03.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_03_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_03_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mint green retro rounded fridge with a silver handle, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_04_yan` — Buzdolabı 4 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_04.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_04_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_04_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pastel pink retro fridge with cute magnets, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_04_arka` — Buzdolabı 4 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_04.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_04_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_04_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pastel pink retro fridge with cute magnets, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_05_yan` — Buzdolabı 5 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_05.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_05_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_05_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a lilac fridge with a calendar and sticky notes on it, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_05_arka` — Buzdolabı 5 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_05.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_05_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_05_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a lilac fridge with a calendar and sticky notes on it, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_06_yan` — Buzdolabı 6 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_06.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_06_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_06_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a butter yellow double-door fridge with a water dispenser, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_06_arka` — Buzdolabı 6 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_06.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_06_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_06_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a butter yellow double-door fridge with a water dispenser, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_07_yan` — Buzdolabı 7 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_07.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_07_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_07_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a sparkly holographic fridge with glitter, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_07_arka` — Buzdolabı 7 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_07.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_07_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_07_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a sparkly holographic fridge with glitter, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_08_yan` — Buzdolabı 8 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_08.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_08_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_08_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a big double-door fridge with a smart screen and an ice maker, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `buzdolabi_08_arka` — Buzdolabı 8 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/buzdolabi_08.png` dosyasını yükleyin, şunu yazın:
+
+```
+buzdolabi_08_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+buzdolabi_08_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a big double-door fridge with a smart screen and an ice maker, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_ocak_01_yan` — Ocak ve fırın 1 (yandan)
+
+**Önerilen — referans resimle:** `referans/v_ocak_01.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_ocak_01_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_ocak_01_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a simple white stove with an oven, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_ocak_01_arka` — Ocak ve fırın 1 (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_ocak_01.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_ocak_01_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_ocak_01_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a simple white stove with an oven, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_ocak_02_yan` — Ocak ve fırın 2 (yandan)
+
+**Önerilen — referans resimle:** `referans/v_ocak_02.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_ocak_02_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_ocak_02_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cream stove with a pink pot on top, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_ocak_02_arka` — Ocak ve fırın 2 (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_ocak_02.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_ocak_02_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_ocak_02_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cream stove with a pink pot on top, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_ocak_03_yan` — Ocak ve fırın 3 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/v_ocak_03.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_ocak_03_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_ocak_03_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mint retro stove with knobs, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_ocak_03_arka` — Ocak ve fırın 3 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_ocak_03.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_ocak_03_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_ocak_03_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mint retro stove with knobs, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_ocak_04_yan` — Ocak ve fırın 4 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/v_ocak_04.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_ocak_04_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_ocak_04_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a lilac stove with a frying pan and pancakes, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_ocak_04_arka` — Ocak ve fırın 4 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_ocak_04.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_ocak_04_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_ocak_04_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a lilac stove with a frying pan and pancakes, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_ocak_05_yan` — Ocak ve fırın 5 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/v_ocak_05.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_ocak_05_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_ocak_05_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a big red restaurant oven with six burners, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_ocak_05_arka` — Ocak ve fırın 5 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_ocak_05.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_ocak_05_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_ocak_05_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a big red restaurant oven with six burners, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_ocak_06_yan` — Ocak ve fırın 6 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/v_ocak_06.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_ocak_06_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_ocak_06_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pizza oven made of bricks, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_ocak_06_arka` — Ocak ve fırın 6 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_ocak_06.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_ocak_06_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_ocak_06_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pizza oven made of bricks, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_tezgah_01_yan` — Mutfak dolabı 1 (yandan)
+
+**Önerilen — referans resimle:** `referans/v_tezgah_01.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_tezgah_01_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_tezgah_01_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a simple white kitchen counter with a sink, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_tezgah_01_arka` — Mutfak dolabı 1 (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_tezgah_01.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_tezgah_01_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_tezgah_01_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a simple white kitchen counter with a sink, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_tezgah_02_yan` — Mutfak dolabı 2 (yandan)
+
+**Önerilen — referans resimle:** `referans/v_tezgah_02.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_tezgah_02_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_tezgah_02_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a wooden kitchen counter with drawers, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_tezgah_02_arka` — Mutfak dolabı 2 (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_tezgah_02.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_tezgah_02_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_tezgah_02_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a wooden kitchen counter with drawers, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_tezgah_03_yan` — Mutfak dolabı 3 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/v_tezgah_03.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_tezgah_03_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_tezgah_03_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mint kitchen counter with a sink and plants, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_tezgah_03_arka` — Mutfak dolabı 3 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_tezgah_03.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_tezgah_03_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_tezgah_03_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a mint kitchen counter with a sink and plants, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_tezgah_04_yan` — Mutfak dolabı 4 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/v_tezgah_04.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_tezgah_04_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_tezgah_04_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pink kitchen counter with hanging utensils, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_tezgah_04_arka` — Mutfak dolabı 4 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_tezgah_04.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_tezgah_04_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_tezgah_04_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a pink kitchen counter with hanging utensils, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_tezgah_05_yan` — Mutfak dolabı 5 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/v_tezgah_05.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_tezgah_05_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_tezgah_05_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a lilac kitchen island with bar stools, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_tezgah_05_arka` — Mutfak dolabı 5 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_tezgah_05.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_tezgah_05_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_tezgah_05_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a lilac kitchen island with bar stools, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_tezgah_06_yan` — Mutfak dolabı 6 (kilitli) (yandan)
+
+**Önerilen — referans resimle:** `referans/v_tezgah_06.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_tezgah_06_yan — Show this exact same piece of furniture from the side, in a flat side profile view facing to the right. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_tezgah_06_yan — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cream kitchen counter with a tiled backsplash and spice jars, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `v_tezgah_06_arka` — Mutfak dolabı 6 (kilitli) (arkadan)
+
+**Önerilen — referans resimle:** `referans/v_tezgah_06.png` dosyasını yükleyin, şunu yazın:
+
+```
+v_tezgah_06_arka — Show this exact same piece of furniture from behind, a flat back view. Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.
+```
+
+Referans yüklemeden (yalnızca metinle):
+
+```
+v_tezgah_06_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cream kitchen counter with a tiled backsplash and spice jars, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
 ### `v_sandalye_01_yan` — Sandalye 1 (yandan)
@@ -4321,7 +7236,7 @@ kapi_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shape
 ```
 
 
-## Toplu üretim: çıkartma sayfaları (137 istek)
+## Toplu üretim: çıkartma sayfaları (177 istek)
 
 Görselleri tek tek üretmek yerine **bir istekte 9 tane** (karakterlerde 4) üretebilirsiniz. Firefly hepsini aynı resimde,
 aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya doğru kodu veririm.
@@ -4333,7 +7248,7 @@ aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya
   küçük eşyalar ve kelime resimleri için toplu üretim iyi bir denge.
 
 
-### 🆕 YENİ sayfalar: çeşit aileleri, pencere ve kapılar (90 istek)
+### 🆕 YENİ sayfalar: çeşit aileleri, pencere ve kapılar (130 istek)
 
 Bunlar yeni eklendi, henüz üretilmedi. Her ailede ilk 2 çeşit bedava, diğerleri oyunda okuma sorusuyla açılır.
 
@@ -4583,10 +7498,16 @@ set_yeni_oyun_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 comple
 set_yeni_oyun_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a wooden climbing triangle with rungs and a small slide board; 2) a little puppet theater booth with red curtains and two hand puppets on the stage; 3) a pastel blue ride-on toy car for kids with a steering wheel; 4) a giant fluffy cream teddy bear sitting with a pink bow; 5) a bunch of five pastel balloons with curly strings; 6) an open cardboard toy box full of toys: a ball, a doll, blocks and a car; 7) a low kids loft bed with a pastel slide and a little ladder; 8) a wooden toy market stand with tiny fruits, a scale and a cash register; 9) an indoor wooden swing with soft ropes and a cushion. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_yeni_oyun_03` — 5 görsel: yarisa_araba_pisti, bowling_seti, kostum_sandigi, robot_oyuncak, uzay_roketi
+#### `set_yeni_oyun_03` — 9 görsel: yarisa_araba_pisti, bowling_seti, kostum_sandigi, robot_oyuncak, uzay_roketi, oyuncak_bebek_arabasi, top_sepeti, hula_hop, oyuncak_piyano
 
 ```
-set_yeni_oyun_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 5 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a colorful toy car race track play mat with little cars, seen from above; 2) a kids bowling set with colorful pins and a ball; 3) an open dress-up trunk with a cape, a crown and a fairy wand peeking out; 4) a cute friendly toy robot with antenna; 5) a big cardboard play rocket with round windows. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_yeni_oyun_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a colorful toy car race track play mat with little cars, seen from above; 2) a kids bowling set with colorful pins and a ball; 3) an open dress-up trunk with a cape, a crown and a fairy wand peeking out; 4) a cute friendly toy robot with antenna; 5) a big cardboard play rocket with round windows; 6) a small toy doll stroller with a doll inside; 7) a basket full of colorful balls; 8) a striped hula hoop; 9) a small pink toy piano. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_oyun_04` — 1 görsel: kale_cadiri
+
+```
+set_yeni_oyun_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 1 completely separate items arranged in a neat 1 by 1 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a big foam castle building blocks set. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
 #### `set_yeni_cesit_oyun_01` — 9 görsel: v_cadir_01, v_cadir_02, v_cadir_03, v_cadir_04, v_cadir_05, v_pelus_01, v_pelus_02, v_pelus_03, v_pelus_04
@@ -4613,10 +7534,16 @@ set_yeni_bebekodasi_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 
 set_yeni_bebekodasi_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a colorful baby rattle toy; 2) a neat stack of folded baby diapers; 3) a small white baby wardrobe with star shaped knobs; 4) a wall shelf shaped like a cloud with small plush toys on it; 5) a fluffy white rug shaped like a cloud, seen from above; 6) a glowing crescent moon night light; 7) a soft white canopy net hanging from above with a little crown on top; 8) a soft baby play mat with an arch of hanging toys, seen from above; 9) a cute diaper bag with bunny ears. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_yeni_bebekodasi_03` — 5 görsel: bebek_terazisi, muzik_kutusu, bebek_kitabi, emekleme_tuneli, bebek_salincagi
+#### `set_yeni_bebekodasi_03` — 9 görsel: bebek_terazisi, muzik_kutusu, bebek_kitabi, emekleme_tuneli, bebek_salincagi, bebek_aynasi, bebek_pelus_seti, bebek_ayakkabisi, bebek_sallanir_tavsan
 
 ```
-set_yeni_bebekodasi_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 5 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pastel baby scale with a tray; 2) a music box with a tiny spinning carousel horse; 3) a soft fabric baby book with animals; 4) a colorful soft play tunnel for babies; 5) a baby bouncer seat with a toy bar. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_yeni_bebekodasi_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pastel baby scale with a tray; 2) a music box with a tiny spinning carousel horse; 3) a soft fabric baby book with animals; 4) a colorful soft play tunnel for babies; 5) a baby bouncer seat with a toy bar; 6) a soft baby floor mirror with a rainbow frame; 7) three tiny plush toys: a bunny, a bear and a duck; 8) a pair of knitted baby booties; 9) a soft rocking bunny toy. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_bebekodasi_04` — 1 görsel: bebek_kitapligi
+
+```
+set_yeni_bebekodasi_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 1 completely separate items arranged in a neat 1 by 1 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a low baby bookshelf with soft books. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
 #### `set_yeni_cesit_bebekodasi_01` — 9 görsel: v_besik_01, v_besik_02, v_besik_03, v_besik_04, v_besik_05, v_besik_06, v_bebek_arabasi_01, v_bebek_arabasi_02, v_bebek_arabasi_03
@@ -4649,10 +7576,16 @@ set_yeni_giyinme_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 com
 set_yeni_giyinme_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pair of shiny red kids shoes with straps; 2) a pair of pink rain boots; 3) a small heart shaped kids handbag; 4) a striped knitted scarf; 5) a small golden princess tiara with pink gems; 6) a pearl necklace with a heart pendant; 7) a small stand with colorful heart and star sunglasses; 8) an open box of hair bows, clips and scrunchies; 9) a pastel ironing board with an iron. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_yeni_giyinme_04` — 5 görsel: kiyafet_sepeti, terlik, giysi_yagmurluk, giysi_mayo, giysi_sort
+#### `set_yeni_giyinme_04` — 9 görsel: kiyafet_sepeti, terlik, giysi_yagmurluk, giysi_mayo, giysi_sort, aksesuar_kutusu, tac_standi, canta_koleksiyonu, ayakkabi_kutusu
 
 ```
-set_yeni_giyinme_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 5 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a woven laundry basket with folded clothes; 2) a pair of fluffy bunny slippers; 3) a yellow kids raincoat with a hood; 4) a cute kids swimsuit with watermelon print; 5) a pair of kids denim shorts. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_yeni_giyinme_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a woven laundry basket with folded clothes; 2) a pair of fluffy bunny slippers; 3) a yellow kids raincoat with a hood; 4) a cute kids swimsuit with watermelon print; 5) a pair of kids denim shorts; 6) an open box with sunglasses, watches and hair clips; 7) a stand with three tiaras; 8) a shelf with five cute bags; 9) an open shoe box with sparkly shoes. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_giyinme_05` — 1 görsel: isikli_dolap
+
+```
+set_yeni_giyinme_05 — 2D flat vector cartoon sticker sheet, NOT a photo: 1 completely separate items arranged in a neat 1 by 1 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a lighted glass wardrobe showing dresses. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
 #### `set_yeni_cesit_giyinme_01` — 9 görsel: v_manken_01, v_manken_02, v_manken_03, v_manken_04, v_manken_05, v_elbise_01, v_elbise_02, v_elbise_03, v_elbise_04
@@ -4679,10 +7612,16 @@ set_yeni_atolye_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 comp
 set_yeni_atolye_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a string with clothespins holding colorful kids drawings; 2) an open box of colorful crayons; 3) kids safety scissors and a glue stick; 4) a small bucket of pink paint with drips; 5) wall hooks with colorful painting aprons; 6) a paint splattered wooden stool; 7) a glowing light table for tracing drawings; 8) a row of jars with colorful glitter; 9) a cute pastel sewing machine with a spool of thread. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_yeni_atolye_03` — 5 görsel: yun_sepeti, oyun_hamuru, boncuk_kutusu, cizim_tableti, sanat_ruloyu_kurutucu
+#### `set_yeni_atolye_03` — 9 görsel: yun_sepeti, oyun_hamuru, boncuk_kutusu, cizim_tableti, sanat_ruloyu_kurutucu, cocuk_sergisi, boya_rafi, kolaj_masasi, sanat_onlugu
 
 ```
-set_yeni_atolye_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 5 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a basket of colorful yarn balls with knitting needles; 2) colorful play dough tubs and shapes; 3) a box of colorful beads with a half-made bracelet; 4) a kids drawing tablet with a stylus; 5) a wooden drying rack with wet paintings. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_yeni_atolye_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a basket of colorful yarn balls with knitting needles; 2) colorful play dough tubs and shapes; 3) a box of colorful beads with a half-made bracelet; 4) a kids drawing tablet with a stylus; 5) a wooden drying rack with wet paintings; 6) an easel board with kids art pinned on it; 7) a wall shelf with paint jars in rainbow order; 8) a table with paper cutouts and stickers; 9) a painting apron with paint splashes. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_atolye_04` — 1 görsel: heykel_seti
+
+```
+set_yeni_atolye_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 1 completely separate items arranged in a neat 1 by 1 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) three small clay animal figures. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
 #### `set_yeni_cesit_atolye_01` — 9 görsel: v_sovale_01, v_sovale_02, v_sovale_03, v_sovale_04, v_sovale_05, v_cocuk_resmi_01, v_cocuk_resmi_02, v_cocuk_resmi_03, v_cocuk_resmi_04
@@ -4709,10 +7648,16 @@ set_yeni_muzik_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 compl
 set_yeni_muzik_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pair of pastel headphones with cat ears; 2) a stage spotlight on a tall stand with a warm beam; 3) a tambourine with ribbons; 4) a shiny golden trumpet; 5) a silver flute; 6) a karaoke machine with a screen, lights and a microphone; 7) a framed picture of colorful music notes; 8) a big rainbow xylophone on a stand; 9) a pair of colorful maracas. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_yeni_muzik_03` — 6 görsel: cello, dj_masasi, nota_dolabi, akordeon, baglama, darbuka
+#### `set_yeni_muzik_03` — 9 görsel: cello, dj_masasi, nota_dolabi, akordeon, baglama, darbuka, mikrofon_standi, gitar_standi, notalar
 
 ```
-set_yeni_muzik_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 6 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a wooden cello standing on its end pin; 2) a kids DJ table with turntables and glowing buttons; 3) a cabinet with music books and small instruments; 4) a red accordion; 5) a wooden Turkish baglama (saz) with a long neck; 6) a decorated goblet drum (darbuka). Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_yeni_muzik_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a wooden cello standing on its end pin; 2) a kids DJ table with turntables and glowing buttons; 3) a cabinet with music books and small instruments; 4) a red accordion; 5) a wooden Turkish baglama (saz) with a long neck; 6) a decorated goblet drum (darbuka); 7) a microphone on a tall stand; 8) a stand holding two guitars; 9) an open music book with colorful notes. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_muzik_04` — 2 görsel: isikli_kurs, plak_rafi
+
+```
+set_yeni_muzik_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 2 completely separate items arranged in a neat 1 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) small lighted stage steps; 2) a shelf with colorful vinyl records. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
 #### `set_yeni_cesit_muzik_01` — 9 görsel: v_gitar_01, v_gitar_02, v_gitar_03, v_gitar_04, v_gitar_05, v_gitar_06, v_davul_01, v_davul_02, v_davul_03
@@ -4739,10 +7684,16 @@ set_yeni_kutuphane_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 c
 set_yeni_kutuphane_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a bookshelf shaped like a tree with books on the branches; 2) a cozy reading nook tent with fairy lights and pillows; 3) a woven basket full of picture books; 4) a kids telescope on a tripod; 5) a colorful world map poster with cute animals, no text; 6) a wooden hourglass with pink sand; 7) a cute owl shaped table lamp; 8) a rolling library book cart full of books; 9) a set of cute animal bookmarks. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_yeni_kutuphane_03` — 6 görsel: hikaye_sandalyesi, okuma_lambasi, dinozor_kitaplik, mektup_kutusu, sessiz_tabelasi, fil_kitap_destegi
+#### `set_yeni_kutuphane_03` — 9 görsel: hikaye_sandalyesi, okuma_lambasi, dinozor_kitaplik, mektup_kutusu, sessiz_tabelasi, fil_kitap_destegi, kitap_kosesi_minder, bilgi_kuresi_lamba, harf_bloklari
 
 ```
-set_yeni_kutuphane_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 6 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a big storyteller chair painted with stars; 2) a tall floor reading lamp with a curved neck; 3) a bookshelf shaped like a friendly dinosaur; 4) a notebook with colorful pencils; 5) a cute wall sign with a finger on lips owl, no text; 6) a pair of elephant shaped bookends holding books. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_yeni_kutuphane_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a big storyteller chair painted with stars; 2) a tall floor reading lamp with a curved neck; 3) a bookshelf shaped like a friendly dinosaur; 4) a notebook with colorful pencils; 5) a cute wall sign with a finger on lips owl, no text; 6) a pair of elephant shaped bookends holding books; 7) a corner with big floor pillows and a soft rug; 8) a glowing planet shaped lamp; 9) a stack of colorful wooden blocks with pictures, no letters. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_kutuphane_04` — 2 görsel: kitap_okuyan_ayi, posta_kutusu_kitap
+
+```
+set_yeni_kutuphane_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 2 completely separate items arranged in a neat 1 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a teddy bear reading a book; 2) a cute red book return box. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
 #### `set_yeni_cesit_kutuphane_01` — 9 görsel: v_kitaplik_01, v_kitaplik_02, v_kitaplik_03, v_kitaplik_04, v_kitaplik_05, v_kitaplik_06, v_okuma_koltugu_01, v_okuma_koltugu_02, v_okuma_koltugu_03
@@ -4757,70 +7708,274 @@ set_yeni_cesit_kutuphane_01 — 2D flat vector cartoon sticker sheet, NOT a phot
 set_yeni_cesit_kutuphane_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 7 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cloud shaped armchair; 2) a velvet throne reading chair; 3) a reading nook with pillows; 4) a reading tent with fairy lights; 5) a reading treehouse corner; 6) a reading castle corner; 7) a reading cloud corner. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
+#### `set_yeni_petrevir_01` — 9 görsel: muayene_masasi, pet_kafesi, veteriner_dolabi, pet_tartisi, pet_yatagi_yuvarlak, mama_kabi, su_kabi, ilk_yardim_cantasi, stetoskop
+
+```
+set_yeni_petrevir_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a white pet examination table with a soft mint pad and a paw print; 2) a cozy pet recovery cage with a blanket and a little bone toy; 3) a white cabinet with glass doors, pet food bags and cute medicine bottles; 4) a flat pet weighing scale with a paw print; 5) a round fluffy pet bed with a pillow; 6) a pet food bowl full of kibble; 7) a blue pet water bowl; 8) a cute first aid bag with a heart and bandages; 9) a toy stethoscope. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_petrevir_02` — 9 görsel: pet_tasima_cantasi, pet_kuveti, pet_oyuncaklari, bekleme_sandalyesi, pet_odul_kavanozu, kedi_tirmalama, tasma_askisi, pati_posteri, bandaj_rulosu
+
+```
+set_yeni_petrevir_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pastel pet carrier bag with a window; 2) a small pet bath tub with bubbles and a rubber bone; 3) a basket of pet toys: a ball, a mouse toy and a rope; 4) a row of two cute waiting room chairs; 5) a jar of bone shaped pet treats; 6) a cat scratching post with a dangling ball; 7) wall hooks with colorful pet leashes and collars; 8) a framed picture of cute paw prints and hearts; 9) a roll of colorful bandage. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_petrevir_01` — 9 görsel: v_pet_yatagi_01, v_pet_yatagi_02, v_pet_yatagi_03, v_pet_yatagi_04, v_pet_yatagi_05, v_pet_yatagi_06, v_pet_kafesi_01, v_pet_kafesi_02, v_pet_kafesi_03
+
+```
+set_yeni_cesit_petrevir_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a round grey pet bed; 2) a pink pet bed with a crown; 3) a pet bed shaped like a donut; 4) a pet bed shaped like a slipper; 5) a pet bed shaped like a cloud; 6) a royal pet bed with a canopy; 7) a white pet crate; 8) a wooden pet house; 9) a pet house shaped like a castle. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_petrevir_02` — 2 görsel: v_pet_kafesi_04, v_pet_kafesi_05
+
+```
+set_yeni_cesit_petrevir_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 2 completely separate items arranged in a neat 1 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pet tent; 2) a bird house on a stand. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_makyaj_01` — 9 görsel: kuafor_koltugu, kurutma_kaski, ayna_istasyonu, oje_rafi, manikur_masasi, makyaj_cantasi, ruj_seti, far_paleti, fon_makinesi
+
+```
+set_yeni_makyaj_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pink salon chair with a footrest; 2) a retro standing hair dryer hood; 3) a salon mirror station with light bulbs and a counter with brushes; 4) a wall shelf full of colorful nail polish bottles; 5) a small white manicure table with a lamp and nail polish; 6) an open pink makeup bag with brushes; 7) three lipsticks in different colors; 8) an eyeshadow palette with pastel colors; 9) a lilac hair dryer. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_makyaj_02` — 9 görsel: tarak_firca, spa_ayak_kuveti, havlu_rafi_salon, yuz_maskesi_seti, sac_bandi, parfum_vitrini, bekleme_koltugu_salon, oje_kurutucu, sac_yikama_lavabosu
+
+```
+set_yeni_makyaj_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a hairbrush and a comb; 2) a foot spa basin with bubbles and flower petals; 3) a rack with rolled pastel towels; 4) a jar of face mask with cucumber slices; 5) a fluffy spa headband with bunny ears; 6) a glass display cabinet with perfume bottles; 7) a velvet pink waiting armchair; 8) a small nail dryer machine; 9) a salon hair washing chair with a basin. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_makyaj_01` — 9 görsel: v_kuafor_koltugu_01, v_kuafor_koltugu_02, v_kuafor_koltugu_03, v_kuafor_koltugu_04, v_kuafor_koltugu_05, v_oje_01, v_oje_02, v_oje_03, v_oje_04
+
+```
+set_yeni_cesit_makyaj_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a white salon chair; 2) a mint salon chair; 3) a lilac velvet salon chair; 4) a golden salon chair; 5) a salon chair shaped like a shell; 6) a red nail polish bottle; 7) a pink nail polish bottle; 8) a glitter nail polish bottle; 9) a mint nail polish bottle. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_makyaj_02` — 2 görsel: v_oje_05, v_oje_06
+
+```
+set_yeni_cesit_makyaj_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 2 completely separate items arranged in a neat 1 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a purple nail polish bottle; 2) a rainbow nail polish bottle. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_oyunparki_01` — 9 görsel: kaydirak_buyuk, salincak_seti, tahterevalli, kum_havuzu, tirmanma_duvari, atlikarinca, park_banki, su_cesmesi, agac_ev
+
+```
+set_yeni_oyunparki_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a big colorful playground slide with stairs; 2) a playground swing set with two swings; 3) a colorful seesaw; 4) a wooden sandbox with sand, a bucket and a shovel; 5) a kids climbing wall with colorful holds; 6) a small playground merry-go-round with a pastel canopy; 7) a green wooden park bench; 8) a small drinking water fountain for kids; 9) a cute treehouse with a ladder and a little flag. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_oyunparki_02` — 7 görsel: tunel_kaydirak, yayli_at, basket_potasi, seksek, ucurtma, dondurma_arabasi, park_cop_kutusu
+
+```
+set_yeni_oyunparki_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 7 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a tube slide on a small tower; 2) a spring rider horse toy for the playground; 3) a kids basketball hoop with a ball; 4) a hopscotch game drawn with chalk on the ground, seen from above, no numbers; 5) a colorful kite with a ribbon tail; 6) a cute ice cream cart with an umbrella; 7) a green park trash bin with a smiling face. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_oyunparki_01` — 9 görsel: v_salincak_01, v_salincak_02, v_salincak_03, v_salincak_04, v_salincak_05, v_kaydirak_01, v_kaydirak_02, v_kaydirak_03, v_kaydirak_04
+
+```
+set_yeni_cesit_oyunparki_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a single swing; 2) a baby bucket swing; 3) a tire swing; 4) a nest swing; 5) a swing shaped like a horse; 6) a small plastic slide; 7) a wavy slide; 8) a double slide; 9) a slide shaped like an elephant. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_oyunparki_02` — 1 görsel: v_kaydirak_05
+
+```
+set_yeni_cesit_oyunparki_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 1 completely separate items arranged in a neat 1 by 1 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a spiral slide. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_hepsi_01` — 9 görsel: tavan_lambasi_yildiz, duvar_apligi, neon_kalp, neon_gokkusagi, bulut_lamba, mantar_lamba, fener_lamba, mum_seti, yastik_seti
+
+```
+set_yeni_hepsi_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a star shaped ceiling lamp; 2) a cute brass wall sconce lamp with a pastel shade; 3) a glowing pink neon heart wall sign; 4) a glowing rainbow neon wall sign; 5) a glowing cloud shaped wall lamp; 6) a red mushroom shaped table lamp; 7) a little lantern with a candle light; 8) three glowing candles of different sizes; 9) a pile of three cute cushions: a heart, a star and a cloud. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_hepsi_02` — 9 görsel: orgu_battaniye, kedi_saat, terrarium, cerceve_seti, dekor_sepet, seramik_kus, boncuk_perde, ruya_kapani, duvar_yildizlari
+
+```
+set_yeni_hepsi_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a folded chunky knit blanket; 2) a cat shaped wall clock with a swinging tail; 3) a glass terrarium with tiny plants; 4) three small standing photo frames with family drawings; 5) a woven basket with a folded blanket; 6) a cute ceramic bird figurine; 7) a pastel bead curtain with hearts; 8) a dreamcatcher with feathers; 9) a group of glow in the dark stars for the wall. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_hepsi_01` — 9 görsel: v_avize_01, v_avize_02, v_avize_03, v_avize_04, v_avize_05, v_avize_06, v_aplik_01, v_aplik_02, v_aplik_03
+
+```
+set_yeni_cesit_hepsi_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a simple white pendant lamp; 2) a crystal chandelier; 3) a flower shaped chandelier; 4) a hot air balloon lamp; 5) a moon and stars chandelier; 6) a candy colored chandelier; 7) a star wall lamp; 8) a moon wall lamp; 9) a flower wall lamp. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_hepsi_02` — 9 görsel: v_aplik_04, v_aplik_05, v_yastik_01, v_yastik_02, v_yastik_03, v_yastik_04, v_yastik_05, v_yastik_06, v_vazo_01
+
+```
+set_yeni_cesit_hepsi_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a heart wall lamp; 2) a rainbow wall lamp; 3) a heart cushion; 4) a star cushion; 5) a cat cushion; 6) a rainbow cushion; 7) a donut cushion; 8) a strawberry cushion; 9) a white vase with tulips. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_hepsi_03` — 9 görsel: v_vazo_02, v_vazo_03, v_vazo_04, v_vazo_05, v_vazo_06, v_cerceve_01, v_cerceve_02, v_cerceve_03, v_cerceve_04
+
+```
+set_yeni_cesit_hepsi_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pink vase with roses; 2) a blue vase with daisies; 3) a glass vase with sunflowers; 4) a round vase with lavender; 5) a golden vase with peonies; 6) a framed family photo drawing; 7) a framed pet photo drawing; 8) a framed beach photo drawing; 9) a framed baby photo drawing. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_hepsi_04` — 2 görsel: v_cerceve_05, v_cerceve_06
+
+```
+set_yeni_cesit_hepsi_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 2 completely separate items arranged in a neat 1 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a heart shaped photo frame; 2) a star shaped photo frame. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_parti_01` — 9 görsel: balon_kemeri, flama, parti_masasi, dogum_gunu_pastasi, hediye_yigini, konfeti_patlatici, parti_sapkasi, pinata, kapkek_kulesi
+
+```
+set_yeni_parti_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pastel balloon arch; 2) a pastel triangle bunting garland; 3) a party table with a festive tablecloth, plates and cups; 4) a tall birthday cake with candles and sprinkles; 5) a pile of wrapped presents with bows; 6) a party popper with confetti; 7) a striped cone party hat with a pom pom; 8) a colorful donkey pinata hanging from a string; 9) a cupcake tower with colorful cupcakes. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_parti_02` — 7 görsel: limonata_surahisi, kagit_fener, balon_hayvan, parti_duduk, yildiz_balon, dans_isigi, sac_kulahi_pasta
+
+```
+set_yeni_parti_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 7 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a jug of pink lemonade with lemon slices; 2) three hanging paper lanterns in pastel colors; 3) a balloon animal dog; 4) a party blower horn; 5) a golden star foil balloon; 6) a small party disco light projecting colorful dots; 7) an ice cream cake with a cherry. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_parti_01` — 9 görsel: v_parti_pastasi_01, v_parti_pastasi_02, v_parti_pastasi_03, v_parti_pastasi_04, v_parti_pastasi_05, v_parti_pastasi_06, v_hediye_01, v_hediye_02, v_hediye_03
+
+```
+set_yeni_cesit_parti_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a chocolate birthday cake; 2) a unicorn cake; 3) a rainbow cake; 4) a princess castle cake; 5) a strawberry cake; 6) a three tier party cake; 7) a pink gift box with a bow; 8) a blue gift box with stars; 9) a striped gift box. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_parti_02` — 9 görsel: v_hediye_04, v_hediye_05, v_hediye_06, v_balon_01, v_balon_02, v_balon_03, v_balon_04, v_balon_05, v_balon_06
+
+```
+set_yeni_cesit_parti_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a round gift box; 2) a heart shaped gift box; 3) a big golden gift box; 4) a pink heart balloon; 5) a blue round balloon; 6) a rainbow balloon; 7) a unicorn balloon; 8) a cat balloon; 9) a number free star balloon. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_bahce_01` — 9 görsel: havuz_merdiveni, sisme_yatak, semsiyeli_masa, havuz_dusu, havuz_bari, hamak, cardak, havuz_lambasi, su_tabancasi
+
+```
+set_yeni_bahce_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a shiny pool ladder; 2) a striped inflatable pool mattress; 3) a round garden table with a big striped umbrella; 4) an outdoor pool shower; 5) a little tiki juice bar with straw roof; 6) a striped hammock between two posts; 7) a white garden gazebo with flowers; 8) a garden lantern lamp on a post; 9) a colorful water squirt gun. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_bahce_02` — 2 görsel: deniz_gozlugu, havlu_sezlong
+
+```
+set_yeni_bahce_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 2 completely separate items arranged in a neat 1 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) kids swimming goggles; 2) a lounge chair with a beach towel. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_yeni_cesit_bahce_01` — 6 görsel: v_sisme_01, v_sisme_02, v_sisme_03, v_sisme_04, v_sisme_05, v_sisme_06
+
+```
+set_yeni_cesit_bahce_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 6 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) an inflatable crocodile float; 2) an inflatable pizza float; 3) an inflatable rainbow float; 4) an inflatable whale float; 5) an inflatable boat; 6) an inflatable star float. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
 #### `set_yeni_oda_simge_01` — 6 görsel: ui_oda_oyun, ui_oda_bebekodasi, ui_oda_giyinme, ui_oda_atolye, ui_oda_muzik, ui_oda_kutuphane
 
 ```
 set_yeni_oda_simge_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 6 completely separate items arranged in a neat 2 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a small cute play tent with a pennant flag; 2) a small cute baby crib with a star mobile; 3) a small cute pink dress on a hanger; 4) a small cute painter's easel with a rainbow painting; 5) a small cute electric guitar with music notes; 6) a small cute stack of colorful books with an open book on top. Cute game button icon for a children's app, one bold simple symbol, flat vector art style with soft glossy shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), bright cheerful pastel colors, front view, no button background, no text, no letters, no numbers, no logo, no watermark, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_gorunum_01` — 9 görsel: yatak_yan, yatak_arka, yuvarlakyatak_yan, yuvarlakyatak_arka, cibinlikliyatak_yan, cibinlikliyatak_arka, ranza_yan, ranza_arka, koltuk_yan
+#### `set_yeni_oda_simge_02` — 3 görsel: ui_oda_petrevir, ui_oda_makyaj, ui_oda_oyunparki
 
 ```
-set_gorunum_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a single bed with a wooden headboard, pink blanket with tiny flower pattern and two white pillows, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a single bed with a wooden headboard, pink blanket with tiny flower pattern and two white pillows, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a round bed with a rainbow arch headboard, lilac blanket and fluffy white pillows, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a round bed with a rainbow arch headboard, lilac blanket and fluffy white pillows, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a princess canopy bed with sheer pink curtains tied with bows and a heart pillow, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a princess canopy bed with sheer pink curtains tied with bows and a heart pillow, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a white bunk bed with a small ladder, mint and pink blankets, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a white bunk bed with a small ladder, mint and pink blankets, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a hanging egg chair with a white cushion and a heart pillow, hanging rope on top, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_yeni_oda_simge_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 3 completely separate items arranged in a neat 1 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a small cute veterinary cross with a paw print and a heart; 2) a small cute lipstick and a round mirror with sparkles; 3) a small cute playground slide with a sun. Cute game button icon for a children's app, one bold simple symbol, flat vector art style with soft glossy shading, rounded friendly shapes, clean thick dark navy outline (#3D3553), bright cheerful pastel colors, front view, no button background, no text, no letters, no numbers, no logo, no watermark, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_gorunum_02` — 9 görsel: koltuk_arka, sandalye_yan, sandalye_arka, kanepe_yan, kanepe_arka, kosekanepe_yan, kosekanepe_arka, berjer_yan, berjer_arka
+#### `set_gorunum_01` — 9 görsel: yatak_yan, yatak_arka, yuvarlakyatak_yan, yuvarlakyatak_arka, cibinlikliyatak_yan, cibinlikliyatak_arka, ranza_yan, ranza_arka, dolap_yan
 
 ```
-set_gorunum_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a hanging egg chair with a white cushion and a heart pillow, hanging rope on top, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a wooden chair with a yellow cushion, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a wooden chair with a yellow cushion, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a lilac three-seat sofa with a yellow pillow, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a lilac three-seat sofa with a yellow pillow, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a cream L-shaped sectional sofa with pastel pillows, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a cream L-shaped sectional sofa with pastel pillows, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a cozy round armchair in mint color, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a cozy round armchair in mint color, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_gorunum_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a single bed with a wooden headboard, pink blanket with tiny flower pattern and two white pillows, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a single bed with a wooden headboard, pink blanket with tiny flower pattern and two white pillows, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a round bed with a rainbow arch headboard, lilac blanket and fluffy white pillows, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a round bed with a rainbow arch headboard, lilac blanket and fluffy white pillows, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a princess canopy bed with sheer pink curtains tied with bows and a heart pillow, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a princess canopy bed with sheer pink curtains tied with bows and a heart pillow, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a white bunk bed with a small ladder, mint and pink blankets, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a white bunk bed with a small ladder, mint and pink blankets, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a tall pastel pink wardrobe with two doors and round knobs, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_gorunum_03` — 9 görsel: tv_yan, tv_arka, piyano_yan, piyano_arka, v_yatak_01_yan, v_yatak_01_arka, v_yatak_02_yan, v_yatak_02_arka, v_yatak_03_yan
+#### `set_gorunum_02` — 9 görsel: dolap_arka, sifonyer_yan, sifonyer_arka, koltuk_yan, koltuk_arka, kitaplik_yan, kitaplik_arka, komodin_yan, komodin_arka
 
 ```
-set_gorunum_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a flat television on a small wooden stand, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a flat television on a small wooden stand, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a white upright piano, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a white upright piano, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a simple wooden single bed with a white blanket, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a simple wooden single bed with a white blanket, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a single bed with a blue blanket with stars, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a single bed with a blue blanket with stars, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a pink princess bed with a heart shaped headboard, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_gorunum_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a tall pastel pink wardrobe with two doors and round knobs, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a cream chest of drawers with three drawers and gold handles, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a cream chest of drawers with three drawers and gold handles, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a hanging egg chair with a white cushion and a heart pillow, hanging rope on top, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a hanging egg chair with a white cushion and a heart pillow, hanging rope on top, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a bookshelf with colorful books, a small plant and a toy, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a bookshelf with colorful books, a small plant and a toy, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a small bedside table with a mushroom lamp on top, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a small bedside table with a mushroom lamp on top, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_gorunum_04` — 9 görsel: v_yatak_03_arka, v_yatak_04_yan, v_yatak_04_arka, v_yatak_05_yan, v_yatak_05_arka, v_yatak_06_yan, v_yatak_06_arka, v_yatak_07_yan, v_yatak_07_arka
+#### `set_gorunum_03` — 9 görsel: oyuncaksandigi_yan, oyuncaksandigi_arka, retrobuzdolabi_yan, retrobuzdolabi_arka, buzdolabi_yan, buzdolabi_arka, tezgah_yan, tezgah_arka, ocak_yan
 
 ```
-set_gorunum_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pink princess bed with a heart shaped headboard, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a white bed with a cloud shaped headboard and a rainbow blanket, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a white bed with a cloud shaped headboard and a rainbow blanket, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a lilac bed with a crescent moon headboard and star pillows, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a lilac bed with a crescent moon headboard and star pillows, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a pastel car shaped bed for kids, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a pastel car shaped bed for kids, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a fairy tale bed shaped like a castle with tiny towers, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a fairy tale bed shaped like a castle with tiny towers, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_gorunum_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) an open toy chest with a ball, a teddy and blocks peeking out, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) an open toy chest with a ball, a teddy and blocks peeking out, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a retro rounded fridge in peach color with a silver handle and cute magnets, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a retro rounded fridge in peach color with a silver handle and cute magnets, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a mint green two-door fridge with sticky notes and magnets, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a mint green two-door fridge with sticky notes and magnets, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a kitchen counter with a sink, a stove top and an oven, cream cabinets with round knobs, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a kitchen counter with a sink, a stove top and an oven, cream cabinets with round knobs, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a small cooking stove with an oven and a pink pot on top, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_gorunum_05` — 9 görsel: v_yatak_08_yan, v_yatak_08_arka, v_sandalye_01_yan, v_sandalye_01_arka, v_sandalye_02_yan, v_sandalye_02_arka, v_sandalye_03_yan, v_sandalye_03_arka, v_sandalye_04_yan
+#### `set_gorunum_04` — 9 görsel: ocak_arka, firin_yan, firin_arka, tabakdolabi_yan, tabakdolabi_arka, sandalye_yan, sandalye_arka, kanepe_yan, kanepe_arka
 
 ```
-set_gorunum_05 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a golden royal bed with a velvet canopy and tassels, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a golden royal bed with a velvet canopy and tassels, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a simple white chair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a simple white chair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a wooden chair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a wooden chair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a pink chair with a heart back, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a pink chair with a heart back, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a mint bar stool, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_gorunum_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a small cooking stove with an oven and a pink pot on top, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a built-in oven with a glass door and a tray of cookies inside, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a built-in oven with a glass door and a tray of cookies inside, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a glass-door kitchen cabinet with stacked plates and cups, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a glass-door kitchen cabinet with stacked plates and cups, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a wooden chair with a yellow cushion, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a wooden chair with a yellow cushion, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a lilac three-seat sofa with a yellow pillow, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a lilac three-seat sofa with a yellow pillow, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_gorunum_06` — 9 görsel: v_sandalye_04_arka, v_sandalye_05_yan, v_sandalye_05_arka, v_sandalye_06_yan, v_sandalye_06_arka, v_kanepe_01_yan, v_kanepe_01_arka, v_kanepe_02_yan, v_kanepe_02_arka
+#### `set_gorunum_05` — 9 görsel: kosekanepe_yan, kosekanepe_arka, berjer_yan, berjer_arka, tv_yan, tv_arka, piyano_yan, piyano_arka, v_yatak_01_yan
 
 ```
-set_gorunum_06 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a mint bar stool, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a yellow chair with a flower cushion, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a yellow chair with a flower cushion, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a lilac velvet chair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a lilac velvet chair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a simple grey sofa, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a simple grey sofa, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a beige sofa with pillows, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a beige sofa with pillows, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_gorunum_05 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cream L-shaped sectional sofa with pastel pillows, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a cream L-shaped sectional sofa with pastel pillows, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a cozy round armchair in mint color, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a cozy round armchair in mint color, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a flat television on a small wooden stand, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a flat television on a small wooden stand, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a white upright piano, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a white upright piano, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a simple wooden single bed with a white blanket, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_gorunum_07` — 9 görsel: v_kanepe_03_yan, v_kanepe_03_arka, v_kanepe_04_yan, v_kanepe_04_arka, v_kanepe_05_yan, v_kanepe_05_arka, v_kanepe_06_yan, v_kanepe_06_arka, v_kanepe_07_yan
+#### `set_gorunum_06` — 9 görsel: v_yatak_01_arka, v_yatak_02_yan, v_yatak_02_arka, v_yatak_03_yan, v_yatak_03_arka, v_yatak_04_yan, v_yatak_04_arka, v_yatak_05_yan, v_yatak_05_arka
 
 ```
-set_gorunum_07 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a mint velvet sofa, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a mint velvet sofa, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a pink sofa with heart pillows, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a pink sofa with heart pillows, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a lilac L-shaped sofa, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a lilac L-shaped sofa, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a yellow retro sofa, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a yellow retro sofa, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a cloud shaped white sofa, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_gorunum_06 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a simple wooden single bed with a white blanket, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a single bed with a blue blanket with stars, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a single bed with a blue blanket with stars, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a pink princess bed with a heart shaped headboard, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a pink princess bed with a heart shaped headboard, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a white bed with a cloud shaped headboard and a rainbow blanket, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a white bed with a cloud shaped headboard and a rainbow blanket, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a lilac bed with a crescent moon headboard and star pillows, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a lilac bed with a crescent moon headboard and star pillows, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_gorunum_08` — 9 görsel: v_kanepe_07_arka, v_kanepe_08_yan, v_kanepe_08_arka, v_koltuk_01_yan, v_koltuk_01_arka, v_koltuk_02_yan, v_koltuk_02_arka, v_koltuk_03_yan, v_koltuk_03_arka
+#### `set_gorunum_07` — 9 görsel: v_yatak_06_yan, v_yatak_06_arka, v_yatak_07_yan, v_yatak_07_arka, v_yatak_08_yan, v_yatak_08_arka, v_dolap_01_yan, v_dolap_01_arka, v_dolap_02_yan
 
 ```
-set_gorunum_08 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cloud shaped white sofa, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a golden royal sofa with tassels, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a golden royal sofa with tassels, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a simple grey armchair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a simple grey armchair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a wooden rocking chair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a wooden rocking chair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a pink round armchair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a pink round armchair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_gorunum_07 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pastel car shaped bed for kids, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a pastel car shaped bed for kids, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a fairy tale bed shaped like a castle with tiny towers, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a fairy tale bed shaped like a castle with tiny towers, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a golden royal bed with a velvet canopy and tassels, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a golden royal bed with a velvet canopy and tassels, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a simple white two-door wardrobe, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a simple white two-door wardrobe, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a light wooden wardrobe with round knobs, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_gorunum_09` — 9 görsel: v_koltuk_04_yan, v_koltuk_04_arka, v_koltuk_05_yan, v_koltuk_05_arka, v_koltuk_06_yan, v_koltuk_06_arka, v_tv_01_yan, v_tv_01_arka, v_tv_02_yan
+#### `set_gorunum_08` — 9 görsel: v_dolap_02_arka, v_dolap_03_yan, v_dolap_03_arka, v_dolap_04_yan, v_dolap_04_arka, v_dolap_05_yan, v_dolap_05_arka, v_dolap_06_yan, v_dolap_06_arka
 
 ```
-set_gorunum_09 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a mint egg chair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a mint egg chair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a yellow bean bag, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a yellow bean bag, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a lilac swing chair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a lilac swing chair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a small TV on a stand, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a small TV on a stand, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a flat TV on a wooden cabinet, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_gorunum_08 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a light wooden wardrobe with round knobs, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a mint wardrobe with heart shaped door handles, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a mint wardrobe with heart shaped door handles, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a lilac wardrobe with a mirror door, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a lilac wardrobe with a mirror door, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a pink wardrobe with a scalloped top and flower decorations, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a pink wardrobe with a scalloped top and flower decorations, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a golden princess wardrobe with crystal knobs, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a golden princess wardrobe with crystal knobs, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
-#### `set_gorunum_10` — 7 görsel: v_tv_02_arka, v_tv_03_yan, v_tv_03_arka, v_tv_04_yan, v_tv_04_arka, v_tv_05_yan, v_tv_05_arka
+#### `set_gorunum_09` — 9 görsel: buzdolabi_01_yan, buzdolabi_01_arka, buzdolabi_02_yan, buzdolabi_02_arka, buzdolabi_03_yan, buzdolabi_03_arka, buzdolabi_04_yan, buzdolabi_04_arka, buzdolabi_05_yan
 
 ```
-set_gorunum_10 — 2D flat vector cartoon sticker sheet, NOT a photo: 7 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a flat TV on a wooden cabinet, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a retro pink TV with antennas, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a retro pink TV with antennas, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a big TV with speakers, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a big TV with speakers, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a home cinema with a projector screen, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a home cinema with a projector screen, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+set_gorunum_09 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a simple white two-door fridge, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a simple white two-door fridge, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a light grey fridge with a freezer on top, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a light grey fridge with a freezer on top, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a mint green retro rounded fridge with a silver handle, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a mint green retro rounded fridge with a silver handle, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a pastel pink retro fridge with cute magnets, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a pastel pink retro fridge with cute magnets, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a lilac fridge with a calendar and sticky notes on it, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_gorunum_10` — 9 görsel: buzdolabi_05_arka, buzdolabi_06_yan, buzdolabi_06_arka, buzdolabi_07_yan, buzdolabi_07_arka, buzdolabi_08_yan, buzdolabi_08_arka, v_ocak_01_yan, v_ocak_01_arka
+
+```
+set_gorunum_10 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a lilac fridge with a calendar and sticky notes on it, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a butter yellow double-door fridge with a water dispenser, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a butter yellow double-door fridge with a water dispenser, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a sparkly holographic fridge with glitter, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a sparkly holographic fridge with glitter, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a big double-door fridge with a smart screen and an ice maker, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a big double-door fridge with a smart screen and an ice maker, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a simple white stove with an oven, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a simple white stove with an oven, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_gorunum_11` — 9 görsel: v_ocak_02_yan, v_ocak_02_arka, v_ocak_03_yan, v_ocak_03_arka, v_ocak_04_yan, v_ocak_04_arka, v_ocak_05_yan, v_ocak_05_arka, v_ocak_06_yan
+
+```
+set_gorunum_11 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cream stove with a pink pot on top, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a cream stove with a pink pot on top, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a mint retro stove with knobs, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a mint retro stove with knobs, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a lilac stove with a frying pan and pancakes, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a lilac stove with a frying pan and pancakes, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a big red restaurant oven with six burners, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a big red restaurant oven with six burners, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a pizza oven made of bricks, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_gorunum_12` — 9 görsel: v_ocak_06_arka, v_tezgah_01_yan, v_tezgah_01_arka, v_tezgah_02_yan, v_tezgah_02_arka, v_tezgah_03_yan, v_tezgah_03_arka, v_tezgah_04_yan, v_tezgah_04_arka
+
+```
+set_gorunum_12 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pizza oven made of bricks, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a simple white kitchen counter with a sink, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a simple white kitchen counter with a sink, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a wooden kitchen counter with drawers, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a wooden kitchen counter with drawers, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a mint kitchen counter with a sink and plants, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a mint kitchen counter with a sink and plants, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a pink kitchen counter with hanging utensils, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a pink kitchen counter with hanging utensils, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_gorunum_13` — 9 görsel: v_tezgah_05_yan, v_tezgah_05_arka, v_tezgah_06_yan, v_tezgah_06_arka, v_sandalye_01_yan, v_sandalye_01_arka, v_sandalye_02_yan, v_sandalye_02_arka, v_sandalye_03_yan
+
+```
+set_gorunum_13 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a lilac kitchen island with bar stools, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a lilac kitchen island with bar stools, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a cream kitchen counter with a tiled backsplash and spice jars, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a cream kitchen counter with a tiled backsplash and spice jars, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a simple white chair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a simple white chair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a wooden chair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a wooden chair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a pink chair with a heart back, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_gorunum_14` — 9 görsel: v_sandalye_03_arka, v_sandalye_04_yan, v_sandalye_04_arka, v_sandalye_05_yan, v_sandalye_05_arka, v_sandalye_06_yan, v_sandalye_06_arka, v_kanepe_01_yan, v_kanepe_01_arka
+
+```
+set_gorunum_14 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pink chair with a heart back, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a mint bar stool, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a mint bar stool, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a yellow chair with a flower cushion, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a yellow chair with a flower cushion, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a lilac velvet chair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a lilac velvet chair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a simple grey sofa, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a simple grey sofa, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_gorunum_15` — 9 görsel: v_kanepe_02_yan, v_kanepe_02_arka, v_kanepe_03_yan, v_kanepe_03_arka, v_kanepe_04_yan, v_kanepe_04_arka, v_kanepe_05_yan, v_kanepe_05_arka, v_kanepe_06_yan
+
+```
+set_gorunum_15 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a beige sofa with pillows, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a beige sofa with pillows, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a mint velvet sofa, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a mint velvet sofa, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a pink sofa with heart pillows, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a pink sofa with heart pillows, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a lilac L-shaped sofa, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a lilac L-shaped sofa, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a yellow retro sofa, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_gorunum_16` — 9 görsel: v_kanepe_06_arka, v_kanepe_07_yan, v_kanepe_07_arka, v_kanepe_08_yan, v_kanepe_08_arka, v_koltuk_01_yan, v_koltuk_01_arka, v_koltuk_02_yan, v_koltuk_02_arka
+
+```
+set_gorunum_16 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a yellow retro sofa, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a cloud shaped white sofa, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a cloud shaped white sofa, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a golden royal sofa with tassels, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a golden royal sofa with tassels, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a simple grey armchair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a simple grey armchair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a wooden rocking chair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a wooden rocking chair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_gorunum_17` — 9 görsel: v_koltuk_03_yan, v_koltuk_03_arka, v_koltuk_04_yan, v_koltuk_04_arka, v_koltuk_05_yan, v_koltuk_05_arka, v_koltuk_06_yan, v_koltuk_06_arka, v_tv_01_yan
+
+```
+set_gorunum_17 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a pink round armchair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 2) a pink round armchair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 3) a mint egg chair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 4) a mint egg chair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 5) a yellow bean bag, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 6) a yellow bean bag, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 7) a lilac swing chair, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 8) a lilac swing chair, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 9) a small TV on a stand, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_gorunum_18` — 9 görsel: v_tv_01_arka, v_tv_02_yan, v_tv_02_arka, v_tv_03_yan, v_tv_03_arka, v_tv_04_yan, v_tv_04_arka, v_tv_05_yan, v_tv_05_arka
+
+```
+set_gorunum_18 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 completely separate items arranged in a neat 3 by 3 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a small TV on a stand, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 2) a flat TV on a wooden cabinet, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 3) a flat TV on a wooden cabinet, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 4) a retro pink TV with antennas, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 5) a retro pink TV with antennas, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 6) a big TV with speakers, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 7) a big TV with speakers, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size; 8) a home cinema with a projector screen, now seen exactly from the side in a flat side profile view, facing to the right, same colors, same style and same size; 9) a home cinema with a projector screen, now seen from directly behind, a flat back view showing only the back side, same colors, same style and same size. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
 ```
 
 #### `set_gorunum_karakter_01` — 4 görsel: kiz1_yan, kiz1_arka, kiz2_yan, kiz2_arka

@@ -9,16 +9,18 @@ import { sfx } from './sfx';
 import { dollSvg, currentLook, shade } from './stage';
 import { genitive, TalkId } from './content';
 import { THINGS, itemImage, itemsForRoom, isCharAsset, isLockedItem, unlockItem, yRange, placeOf, heightPct, surfaceTop, aspectOf } from './house-items';
-import { Pose, isPerson, isBaby, babyOnly, canMakeup, isPet, poseFor, isFood, isStove, isLamp, isHoldable, contentsOf, petSound, poseImage, boxKind, fitsIn, BoxKind } from './play';
+import { Pose, isPerson, isBaby, babyOnly, petOnly, canMakeup, isPet, poseFor, isFood, isStove, isLamp, isHoldable, contentsOf, petSound, poseImage, boxKind, fitsIn, BoxKind } from './play';
 import { readingChallenge } from './challenge';
 import { imgTag, img } from './assets';
 import { roomIcon, MODE_ICONS } from './icons';
 import { Look, Slot, DRESS, dressLayer, dressThumb } from './dress';
 
-type RoomId = 'yatak' | 'mutfak' | 'banyo' | 'salon' | 'havuz' | 'oyun' | 'bebekodasi' | 'giyinme' | 'atolye' | 'muzik' | 'kutuphane';
-const ROOM_IDS: RoomId[] = ['yatak', 'bebekodasi', 'giyinme', 'banyo', 'oyun', 'atolye', 'muzik', 'kutuphane', 'salon', 'mutfak', 'havuz'];
-/** İkinci aşama odaları. */
-const NEW_ROOMS: RoomId[] = ['oyun', 'bebekodasi', 'giyinme', 'atolye', 'muzik', 'kutuphane'];
+type RoomId = 'yatak' | 'mutfak' | 'banyo' | 'salon' | 'havuz' | 'oyun' | 'bebekodasi' | 'giyinme' | 'atolye' | 'muzik' | 'kutuphane' | 'petrevir' | 'makyaj' | 'oyunparki';
+const ROOM_IDS: RoomId[] = ['yatak', 'bebekodasi', 'giyinme', 'banyo', 'oyun', 'atolye', 'muzik', 'kutuphane', 'salon', 'mutfak', 'makyaj', 'petrevir', 'havuz', 'oyunparki'];
+/** İkinci ve üçüncü aşama odaları (görselleri sonradan gelen ilk eşyalar bir kez eklenir). */
+const NEW_ROOMS: RoomId[] = ['oyun', 'bebekodasi', 'giyinme', 'atolye', 'muzik', 'kutuphane', 'petrevir', 'makyaj', 'oyunparki'];
+/** Dış alanlar: duvar yok, gökyüzü ve çimen. */
+const OUTDOOR: RoomId[] = ['havuz', 'oyunparki'];
 type Mode = 'tasi' | 'boya' | 'tasarla';
 
 const PALETTE = ['#ffffff', '#fff1c9', '#ffd6e7', '#ffb3d1', '#ff8fc0', '#ff6b6b', '#ffa94d', '#ffd93d', '#b5e550', '#a8e6cf', '#5fd39a', '#9fd8ff', '#5fd3f3', '#4d96ff', '#c9b6ff', '#c77dff', '#e3b98a', '#c98a5a', '#9c8f86', '#3d3553'];
@@ -119,6 +121,13 @@ export function roomBg(id: RoomId, s: Style): string {
     ${sky ? `<pattern id="s-${pid}" width="${SKY_W}" height="256" patternUnits="userSpaceOnUse"><image href="${sky}" width="${SKY_W}" height="256" preserveAspectRatio="xMidYMid slice"/></pattern>` : ''}
     ${water ? `<pattern id="p-${pid}" width="160" height="160" patternUnits="userSpaceOnUse"><image href="${water}" width="160" height="160" preserveAspectRatio="xMidYMid slice"/></pattern>` : ''}</defs>`;
   const open = `<svg class="room-bg" viewBox="0 0 ${WVB} 440" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">${defs}`;
+  if (id === 'oyunparki') {
+    return `${open}
+      ${sky ? `<rect width="${WVB}" height="256" fill="url(#s-${pid})"/>` : `<rect width="${WVB}" height="256" fill="#9fd8ff"/>`}
+      <rect y="250" width="${WVB}" height="190" fill="${s.floorColor}"/><rect y="250" width="${WVB}" height="190" fill="url(#f-${pid})"/>
+      <rect y="250" width="${WVB}" height="8" fill="#000" opacity=".05"/>
+    </svg>`;
+  }
   if (id === 'havuz') {
     const scene = `<rect width="400" height="200" fill="#8fd3ff"/>
       <g fill="#c4d9f2">${[[20, 120, 30], [60, 100, 26], [100, 130, 34], [300, 110, 30], [340, 126, 40]].map(([x, y, w]) => `<rect x="${x}" y="${y}" width="${w}" height="${200 - y}"/>`).join('')}</g>
@@ -209,6 +218,21 @@ const ROOMS: Room[] = [
     id: 'kutuphane', icon: '📚',
     style: { wall: tile('duvar_03', 'cicek'), wallColor: '#e3f6ec', floor: tile('zemin_01', 'parke'), floorColor: '#f3c99b', view: 'gunes' }, win: 'pencere_02',
     start: [['buyuk_kitaplik', 14, 84], ['agac_kitaplik', 86, 84], ['okuma_koltugu', 36, 90], ['yazi_masasi', 64, 90], ['okuma_cadiri', 50, 84], ['kure', 64, 74], ['dunya_haritasi', 50, 30], ['kitaplik', 24, 84], ['koltuk', 76, 90]],
+  },
+  {
+    id: 'petrevir', icon: '🐾',
+    style: { wall: tile('duvar_04', 'puan'), wallColor: '#e3f1ff', floor: tile('zemin_06', 'fayans'), floorColor: '#f2f6fa', view: 'gunes' }, win: 'pencere_03',
+    start: [['muayene_masasi', 50, 92], ['pet_kafesi', 20, 92], ['veteriner_dolabi', 80, 86], ['bekleme_sandalyesi', 34, 95], ['kedi_tirmalama', 92, 96], ['kedi', 44, 97], ['kopek', 60, 97], ['kediyatagi', 70, 96]],
+  },
+  {
+    id: 'makyaj', icon: '💄',
+    style: { wall: tile('duvar_01', 'puan'), wallColor: '#ffe3ef', floor: tile('zemin_09', 'parke'), floorColor: '#fff7ec', view: 'gunes' }, win: 'pencere_02',
+    start: [['ayna_istasyonu', 30, 84], ['kuafor_koltugu', 30, 94], ['manikur_masasi', 62, 92], ['kurutma_kaski', 86, 90], ['bekleme_koltugu_salon', 10, 94], ['v_makyaj_04', 50, 86], ['boyaynasi', 96, 86], ['puf', 72, 96]],
+  },
+  {
+    id: 'oyunparki', icon: '🛝',
+    style: { wall: 'duz', wallColor: '#ffe3ef', floor: tile('zemin_10', 'hali'), floorColor: '#a8e6a1', view: 'gunes' }, win: '',
+    start: [['kaydirak_buyuk', 24, 90], ['salincak_seti', 56, 92], ['kum_havuzu', 84, 97], ['tahterevalli', 40, 98], ['agac_ev', 6, 88], ['kaydirak', 20, 92], ['salincak', 56, 92], ['trambolin', 86, 96], ['v_oyun_parki_01', 40, 96], ['agac', 96, 88]],
   },
   {
     id: 'havuz', icon: '🏖️',
@@ -308,7 +332,7 @@ function house(): Record<string, Inst[]> {
       created = true;
       const list: Inst[] = r.start.filter(([id]) => keep(id)).map(([id, x, y], i) => ({ u: i + 1, id, x: x + 100, y }));
       list.push({ u: 999, id: 'bebek', x: 150, y: 97 });
-      if (r.id !== 'havuz') {
+      if (!OUTDOOR.includes(r.id)) {
         const w = winOf(r.id);
         [75, 150, 225].forEach((x, k) => list.push({ u: 1000 + k, id: w, x, y: w === 'pencere' ? 33 : WIN_Y }));
       }
@@ -413,6 +437,11 @@ const re = (s: string) => new RegExp(s);
 const CATS: Cat[] = [
   { id: 'kisi', icons: ['kiz1', 'kiz2'], test: (id) => id === 'bebek' || (isCharAsset(id) && re('^(kiz|oglan|bebek|anne|baba|nine|dede|ogretmen)').test(id)) },
   { id: 'hayvan', icons: ['kedi', 'kopek'], test: (id) => isCharAsset(id) || re('^(v_evcil_esya|kediyatagi|kediagaci|kuskafesi|akvaryum|kopekkulubesi)').test(id) },
+  { id: 'pet', icons: ['muayene_masasi', 'kediyatagi'], test: (id) => re('^(muayene_masasi|pet_|veteriner_dolabi|mama_kabi|su_kabi|ilk_yardim_cantasi|stetoskop|bekleme_sandalyesi|kedi_tirmalama|tasma_askisi|pati_posteri|bandaj_rulosu|v_pet_)').test(id) },
+  { id: 'guzellik', icons: ['kuafor_koltugu', 'v_makyaj_04'], test: (id) => re('^(kuafor_koltugu|kurutma_kaski|ayna_istasyonu|oje_|manikur_masasi|makyaj_cantasi|ruj_seti|far_paleti|fon_makinesi|tarak_firca|spa_ayak_kuveti|havlu_rafi_salon|yuz_maskesi_seti|sac_bandi|parfum_vitrini|bekleme_koltugu_salon|sac_yikama_lavabosu|v_kuafor_koltugu_|v_oje_)').test(id) },
+  { id: 'park', icons: ['kaydirak_buyuk', 'kaydirak'], test: (id) => re('^(kaydirak_buyuk|salincak_seti|tahterevalli|kum_havuzu|tirmanma_duvari|atlikarinca|park_|su_cesmesi|agac_ev|tunel_kaydirak|yayli_at|basket_potasi|seksek|ucurtma|dondurma_arabasi|v_salincak_|v_kaydirak_)').test(id) },
+  { id: 'parti', icons: ['balon_kemeri', 'pasta'], test: (id) => re('^(balon_kemeri|flama|parti_|dogum_gunu_pastasi|hediye_yigini|konfeti_patlatici|pinata|kapkek_kulesi|limonata_surahisi|kagit_fener|balon_hayvan|yildiz_balon|dans_isigi|sac_kulahi_pasta|v_parti_pastasi_|v_hediye_|v_balon_)').test(id) },
+  { id: 'isik', icons: ['v_avize_02', 'abajur'], test: (id) => re('^(tavan_lambasi_yildiz|duvar_apligi|neon_|bulut_lamba|mantar_lamba|fener_lamba|mum_seti|v_avize_|v_aplik_|abajur|lambader|v_lamba_|sarkit|disko|perilamba|gecelambasi)').test(id) },
   { id: 'bebekesya', icons: ['sallanan_besik', 'bebek1'], test: (id) => re('^(sallanan_besik|alt_degistirme|emzirme_koltugu|donence|bebek_arabasi|oyun_parki|bebek_kuveti|biberon|emzik|cingirak|bez_yigini|bebek_dolabi|ayicik_rafi|bulut_hali|ay_gece_lambasi|v_besik_|v_bebek_arabasi_|mamasandalyesi|besik)').test(id) },
   { id: 'giysi', icons: ['giysi_elbise', 'kiyafetaski'], test: (id) => re('^(acik_gardirop|ayakkabi_rafi|canta_rafi|isikli_boy_aynasi|taki_kutusu|sapka_standi|manken|kapitone_puf|ada_dolap|parfum_seti|deneme_kabini|sac_kurutma|tac_vitrini|giysi_|v_manken_|v_elbise_)').test(id) },
   { id: 'sanat', icons: ['sovale', 'yazitahtasi'], test: (id) => re('^(sovale|boya_|firca_kupasi|comlek_carki|heykel_kaidesi|kagit_rulosu|sanat_|resim_ipi|pastel_kutusu|makas_yapistirici|onluk_askisi|v_sovale_|v_cocuk_resmi_|yazitahtasi)').test(id) },
@@ -442,7 +471,7 @@ const catIcon = (c: Cat) => {
 const FLOORS_MAP: RoomId[][] = [
   ['yatak', 'bebekodasi', 'giyinme', 'banyo'],
   ['oyun', 'atolye', 'muzik', 'kutuphane'],
-  ['salon', 'mutfak'],
+  ['salon', 'mutfak', 'makyaj', 'petrevir'],
 ];
 let current: RoomId = 'yatak';
 /** Oda yakınlığı: 1 = oda ekran yüksekliğini doldurur. */
@@ -466,7 +495,7 @@ export function showHouse(back: () => void) {
         <div class="map-roof ${roof ? 'has-img' : ''}">${roof ? `<img class="roof-img" src="${roof}" alt="" draggable="false"/>` : ''}<span class="map-name ${sign ? 'has-sign' : ''}" ${sign ? `style="background-image:url('${sign}')"` : ''}>${houseTitle()}</span></div>
         <div class="map-body">${FLOORS_MAP.map((row) => `<div class="map-floor ${row.length === 2 ? 'wide' : ''}">${row.map(card).join('')}</div>`).join('')}</div>
       </div>
-      <div class="map-garden">${card('havuz')}<div class="map-grass"></div></div>
+      <div class="map-garden">${card('havuz')}${card('oyunparki')}<div class="map-grass"></div></div>
       ${bush ? `<div class="map-bushes" style="background-image:url('${bush}')"></div>` : ''}
     </div>`);
   bindTalkButtons(root);
@@ -654,6 +683,15 @@ function showRoom(backToHome: () => void) {
         settle(i);
         fixed = true;
       }
+      // Masa/tezgâh boyu değiştiyse üstündeki eşya yeni yüzeye oturur.
+      const top = host && !i.hd && !i.p ? surfaceTop(host.id) : undefined;
+      if (host && top !== undefined && !i.hd && !i.p) {
+        const y = host.y - heightPct(host.id) * (1 - top) + 0.6;
+        if (Math.abs(i.y - y) > 0.3) {
+          i.y = y;
+          fixed = true;
+        }
+      }
     }
     if (fixed) commit();
     layer.innerHTML = list().map((i) => thingHtml(i, current)).join('');
@@ -688,7 +726,7 @@ function showRoom(backToHome: () => void) {
   /* ---- alt menü */
   const allItems = () => {
     const ids = itemsForRoom(current);
-    const extra = [...(list().some((i) => i.id === 'bebek') ? [] : ['bebek']), ...(current === 'havuz' ? [] : ['pencere'])];
+    const extra = [...(list().some((i) => i.id === 'bebek') ? [] : ['bebek']), ...(OUTDOOR.includes(current) ? [] : ['pencere'])];
     return [...extra, ...ids];
   };
   const thumb = (id: string) => {
@@ -753,7 +791,7 @@ function showRoom(backToHome: () => void) {
       (img(s.wall) ? '' : row('🎨', WALL_COLORS.map((c) => swatch('wallColor', c)).join(''))) +
       row(imgTag('ui_zemin', '🟫'), FLOORS.map((f) => opt('floor', f, mini('floor', f))).join('')) +
       (img(s.floor) ? '' : row('🎨', FLOOR_COLORS.map((c) => swatch('floorColor', c)).join(''))) +
-      (current === 'havuz' ? '' : row(imgTag('ui_pencere', '🪟'), VIEWS.map((v) => opt('view', v, viewMini(v))).join('')));
+      (OUTDOOR.includes(current) ? '' : row(imgTag('ui_pencere', '🪟'), VIEWS.map((v) => opt('view', v, viewMini(v))).join('')));
   };
 
   sheetBody.addEventListener('click', (e) => {
@@ -925,7 +963,7 @@ function showRoom(backToHome: () => void) {
     // Karakter: yatağa yatar, sandalyeye oturur, küvete girer, havuzda yüzer.
     if (isChar(inst.id)) {
       const person = isPerson(inst.id);
-      const host = under(inst.x, inst.y, (h) => !!poseFor(h.id) && !isChar(h.id) && (!babyOnly(h.id) || isBaby(inst.id)), inst);
+      const host = under(inst.x, inst.y, (h) => !!poseFor(h.id) && !isChar(h.id) && (!babyOnly(h.id) || isBaby(inst.id)) && (!petOnly(h.id) || isPet(inst.id)), inst);
       if (host) {
         const pf = poseFor(host.id)!;
         const p: Pose = person ? pf.p : pf.p === 'banyo' ? 'banyo' : 'otur';

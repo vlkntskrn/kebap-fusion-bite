@@ -9,7 +9,7 @@ const svg = (vb: string, body: string) =>
 export function roomIcon(room: string): string {
   const u = img(`ui_oda_${room}`);
   if (u) return `<img class="ui-img" src="${u}" alt="" draggable="false"/>`;
-  const id = ({ yatak: 'yatak', mutfak: 'ocak', banyo: 'kuvet', salon: 'kanepe', havuz: 'flamingo', oyun: 'v_oyuncak_05', bebekodasi: 'bebek1', giyinme: 'kiyafetaski', atolye: 'yazitahtasi', muzik: 'piyano', kutuphane: 'kitaplik' } as Record<string, string>)[room];
+  const id = ({ yatak: 'yatak', mutfak: 'ocak', banyo: 'kuvet', salon: 'kanepe', havuz: 'flamingo', oyun: 'v_oyuncak_05', bebekodasi: 'bebek1', giyinme: 'kiyafetaski', atolye: 'yazitahtasi', muzik: 'piyano', kutuphane: 'kitaplik', petrevir: 'kedi', makyaj: 'v_makyaj_04', oyunparki: 'kaydirak' } as Record<string, string>)[room];
   // Odanın simgesi yoksa o odanın tanıdık bir eşyasının resmi.
   const im = id ? img(id) : undefined;
   if (im) return `<img class="ui-img" src="${im}" alt="" draggable="false"/>`;

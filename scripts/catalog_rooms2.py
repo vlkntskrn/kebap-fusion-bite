@@ -24,10 +24,10 @@ NEW_ITEMS = [
     ("top_havuzu", "oyun", False, "Top havuzu", "a round soft ball pit full of colorful plastic balls", (H, 45)),
     ("oyuncak_mutfak", "oyun", False, "Oyuncak mutfak", "a wooden toy kitchen with a tiny stove, sink and little pots", (H, 90)),
     ("tren_rayi", "oyun", True, "Tren rayı", "a wooden toy train track set laid out in a loop with a little red train, seen from above", (W, 120)),
-    ("lego_masasi", "oyun", False, "Yapı masası", "a low kids table covered with colorful building blocks and a small block tower", (H, 50)),
+    ("lego_masasi", "oyun", False, "Yapı masası", "a low kids table covered with colorful building blocks and a small block tower", (H, 62)),
     ("sallanan_at", "oyun", False, "Sallanan at", "a wooden rocking horse with a yarn mane and a red saddle", (H, 70)),
     ("oyuncak_dolabi", "oyun", False, "Oyuncak dolabı", "a low white toy storage shelf with colorful fabric bins and toys peeking out", (H, 95)),
-    ("puzzle_minder", "oyun", True, "Yapboz minder", "a colorful foam puzzle floor mat made of interlocking squares, seen from above", (W, 150)),
+    ("puzzle_minder", "oyun", True, "Yapboz minder", "a colorful foam puzzle floor mat made of interlocking squares, seen from above", (W, 220)),
     ("buyuk_bebek_evi", "oyun", False, "Büyük bebek evi", "a big open wooden dollhouse with three rooms and tiny furniture", (H, 110)),
     ("tirmanma_ucgeni", "oyun", False, "Tırmanma üçgeni", "a wooden climbing triangle with rungs and a small slide board", (H, 90)),
     ("kukla_tiyatrosu", "oyun", False, "Kukla tiyatrosu", "a little puppet theater booth with red curtains and two hand puppets on the stage", (H, 140)),
@@ -49,7 +49,7 @@ NEW_ITEMS = [
     ("bez_yigini", "bebekodasi", False, "Bez yığını", "a neat stack of folded baby diapers", (H, 25)),
     ("bebek_dolabi", "bebekodasi", False, "Bebek dolabı", "a small white baby wardrobe with star shaped knobs", (H, 120)),
     ("ayicik_rafi", "bebekodasi", False, "Ayıcık rafı", "a wall shelf shaped like a cloud with small plush toys on it", (W, 70)),
-    ("bulut_hali", "bebekodasi", True, "Bulut halı", "a fluffy white rug shaped like a cloud, seen from above", (W, 140)),
+    ("bulut_hali", "bebekodasi", True, "Bulut halı", "a fluffy white rug shaped like a cloud, seen from above", (W, 210)),
     ("ay_gece_lambasi", "bebekodasi", False, "Ay gece lambası", "a glowing crescent moon night light", (H, 22)),
     # --- giyinme odası
     ("acik_gardirop", "giyinme", False, "Açık gardırop", "an open walk-in closet rail with colorful dresses on hangers and shoe shelves below", (H, 180)),
@@ -78,7 +78,7 @@ NEW_ITEMS = [
     ("giysi_kolye", "giyinme", False, "Kolye", "a pearl necklace with a heart pendant", (W, 20)),
     # --- sanat atölyesi
     ("sovale", "atolye", False, "Şövale", "a wooden easel with a colorful painting of a rainbow and a sun", (H, 160)),
-    ("boya_masasi", "atolye", False, "Boya masası", "a kids craft table with paint pots, brushes and paper on top", (H, 75)),
+    ("boya_masasi", "atolye", False, "Boya masası", "a kids craft table with paint pots, brushes and paper on top", (H, 90)),
     ("boya_paleti", "atolye", False, "Boya paleti", "a wooden paint palette with colorful paint blobs", (W, 30)),
     ("firca_kupasi", "atolye", False, "Fırça kupası", "a jar full of paint brushes", (H, 22)),
     ("boya_tupleri", "atolye", False, "Boya tüpleri", "a set of colorful paint tubes", (W, 22)),
@@ -117,7 +117,7 @@ NEW_ITEMS = [
     ("okuma_minderi", "kutuphane", False, "Okuma minderi", "a big round floor cushion with tassels", (H, 25)),
     ("kure", "kutuphane", False, "Dünya küresi", "a world globe on a wooden stand", (H, 45)),
     ("masa_lambasi", "kutuphane", False, "Masa lambası", "a green banker desk lamp", (H, 45)),
-    ("yazi_masasi", "kutuphane", False, "Yazı masası", "a wooden writing desk with a drawer and a pencil cup", (H, 75)),
+    ("yazi_masasi", "kutuphane", False, "Yazı masası", "a wooden writing desk with a drawer and a pencil cup", (H, 90)),
     ("kitaplik_merdiveni", "kutuphane", False, "Kitaplık merdiveni", "a wooden library ladder", (H, 180)),
     ("agac_kitaplik", "kutuphane", False, "Ağaç kitaplık", "a bookshelf shaped like a tree with books on the branches", (H, 160)),
     ("okuma_cadiri", "kutuphane", False, "Okuma çadırı", "a cozy reading nook tent with fairy lights and pillows", (H, 150)),
@@ -227,7 +227,7 @@ NEW_VARIANTS += [
     ("v_ayakkabi", "giyinme", "Ayakkabı", (W, 30), [
         "a pair of white sneakers", "a pair of pink ballet flats", "a pair of glittery party shoes",
         "a pair of rainbow sneakers", "a pair of glass princess slippers"]),
-    ("v_boya_masasi", "atolye", "Sanat masası", (H, 75), [
+    ("v_boya_masasi", "atolye", "Sanat masası", (H, 90), [
         "a simple white craft table", "a round art table with stools", "a rainbow art table", "an art table shaped like a palette", "a big wooden workshop table"]),
     ("v_davul", "muzik", "Davul", (H, 60), [
         "a small toy drum", "a pink drum set", "a blue drum with stars", "a big bass drum", "a set of bongo drums"]),
@@ -273,3 +273,230 @@ HEPSI_ROOMS = {
     "puf": ["salon", "yatak", "giyinme", "oyun", "kutuphane", "muzik"],
     "disko": ["salon", "yatak", "muzik", "oyun"],
 }
+
+
+# ------------------------------------------------------------------ üçüncü aşama
+NEW_ROOMS.update({
+    "petrevir": ("Pet revir", "a small cute veterinary cross with a paw print and a heart"),
+    "makyaj": ("Makyaj odası", "a small cute lipstick and a round mirror with sparkles"),
+    "oyunparki": ("Oyun parkı", "a small cute playground slide with a sun"),
+})
+# Odası olmayan gruplar: hepsi = her iç oda, parti = iç odalar + dış alanlar, bahce = havuz ve oyun parkı
+EXTRA_GROUPS = {"hepsi": "Işık, süs ve ev aksesuarları (her oda)", "parti": "Parti malzemeleri ve süsler", "bahce": "Havuz ve bahçe (ek)"}
+
+NEW_ITEMS += [
+    # --- pet revir
+    ("muayene_masasi", "petrevir", False, "Muayene masası", "a white pet examination table with a soft mint pad and a paw print", (H, 90)),
+    ("pet_kafesi", "petrevir", False, "Hasta kafesi", "a cozy pet recovery cage with a blanket and a little bone toy", (H, 70)),
+    ("veteriner_dolabi", "petrevir", False, "Veteriner dolabı", "a white cabinet with glass doors, pet food bags and cute medicine bottles", (H, 140)),
+    ("pet_tartisi", "petrevir", False, "Pet tartısı", "a flat pet weighing scale with a paw print", (W, 60)),
+    ("pet_yatagi_yuvarlak", "petrevir", False, "Pet yatağı", "a round fluffy pet bed with a pillow", (W, 60)),
+    ("mama_kabi", "petrevir", False, "Mama kabı", "a pet food bowl full of kibble", (W, 20)),
+    ("su_kabi", "petrevir", False, "Su kabı", "a blue pet water bowl", (W, 20)),
+    ("ilk_yardim_cantasi", "petrevir", False, "İlk yardım çantası", "a cute first aid bag with a heart and bandages", (W, 35)),
+    ("stetoskop", "petrevir", False, "Stetoskop", "a toy stethoscope", (W, 30)),
+    ("pet_tasima_cantasi", "petrevir", False, "Taşıma çantası", "a pastel pet carrier bag with a window", (H, 40)),
+    ("pet_kuveti", "petrevir", False, "Pet küveti", "a small pet bath tub with bubbles and a rubber bone", (H, 50)),
+    ("pet_oyuncaklari", "petrevir", False, "Pet oyuncakları", "a basket of pet toys: a ball, a mouse toy and a rope", (W, 30)),
+    ("bekleme_sandalyesi", "petrevir", False, "Bekleme sandalyesi", "a row of two cute waiting room chairs", (H, 85)),
+    ("pet_odul_kavanozu", "petrevir", False, "Ödül kavanozu", "a jar of bone shaped pet treats", (H, 25)),
+    ("kedi_tirmalama", "petrevir", False, "Tırmalama tahtası", "a cat scratching post with a dangling ball", (H, 90)),
+    ("tasma_askisi", "petrevir", False, "Tasma askısı", "wall hooks with colorful pet leashes and collars", (W, 60)),
+    ("pati_posteri", "petrevir", False, "Pati tablosu", "a framed picture of cute paw prints and hearts", (W, 50)),
+    ("bandaj_rulosu", "petrevir", False, "Bandaj", "a roll of colorful bandage", (W, 12)),
+    # --- makyaj odası
+    ("kuafor_koltugu", "makyaj", False, "Kuaför koltuğu", "a pink salon chair with a footrest", (H, 110)),
+    ("kurutma_kaski", "makyaj", False, "Kurutma kaskı", "a retro standing hair dryer hood", (H, 150)),
+    ("ayna_istasyonu", "makyaj", False, "Ayna istasyonu", "a salon mirror station with light bulbs and a counter with brushes", (H, 170)),
+    ("oje_rafi", "makyaj", False, "Oje rafı", "a wall shelf full of colorful nail polish bottles", (W, 70)),
+    ("manikur_masasi", "makyaj", False, "Manikür masası", "a small white manicure table with a lamp and nail polish", (H, 75)),
+    ("makyaj_cantasi", "makyaj", False, "Makyaj çantası", "an open pink makeup bag with brushes", (W, 30)),
+    ("ruj_seti", "makyaj", False, "Ruj seti", "three lipsticks in different colors", (W, 18)),
+    ("far_paleti", "makyaj", False, "Far paleti", "an eyeshadow palette with pastel colors", (W, 20)),
+    ("fon_makinesi", "makyaj", False, "Fön makinesi", "a lilac hair dryer", (H, 22)),
+    ("tarak_firca", "makyaj", False, "Tarak ve fırça", "a hairbrush and a comb", (W, 25)),
+    ("spa_ayak_kuveti", "makyaj", False, "Ayak spası", "a foot spa basin with bubbles and flower petals", (W, 45)),
+    ("havlu_rafi_salon", "makyaj", False, "Havlu rafı", "a rack with rolled pastel towels", (H, 120)),
+    ("yuz_maskesi_seti", "makyaj", False, "Yüz maskesi", "a jar of face mask with cucumber slices", (W, 20)),
+    ("sac_bandi", "makyaj", False, "Saç bandı", "a fluffy spa headband with bunny ears", (W, 18)),
+    ("parfum_vitrini", "makyaj", False, "Parfüm vitrini", "a glass display cabinet with perfume bottles", (H, 130)),
+    ("bekleme_koltugu_salon", "makyaj", False, "Bekleme koltuğu", "a velvet pink waiting armchair", (H, 90)),
+    ("oje_kurutucu", "makyaj", False, "Oje kurutucu", "a small nail dryer machine", (W, 20)),
+    ("sac_yikama_lavabosu", "makyaj", False, "Saç yıkama koltuğu", "a salon hair washing chair with a basin", (H, 100)),
+    # --- oyun parkı
+    ("kaydirak_buyuk", "oyunparki", False, "Büyük kaydırak", "a big colorful playground slide with stairs", (H, 200)),
+    ("salincak_seti", "oyunparki", False, "Salıncak seti", "a playground swing set with two swings", (H, 200)),
+    ("tahterevalli", "oyunparki", False, "Tahterevalli", "a colorful seesaw", (H, 60)),
+    ("kum_havuzu", "oyunparki", False, "Kum havuzu", "a wooden sandbox with sand, a bucket and a shovel", (W, 200)),
+    ("tirmanma_duvari", "oyunparki", False, "Tırmanma duvarı", "a kids climbing wall with colorful holds", (H, 180)),
+    ("atlikarinca", "oyunparki", False, "Atlıkarınca", "a small playground merry-go-round with a pastel canopy", (H, 180)),
+    ("park_banki", "oyunparki", False, "Park bankı", "a green wooden park bench", (H, 80)),
+    ("su_cesmesi", "oyunparki", False, "Su çeşmesi", "a small drinking water fountain for kids", (H, 90)),
+    ("agac_ev", "oyunparki", False, "Ağaç ev", "a cute treehouse with a ladder and a little flag", (H, 260)),
+    ("tunel_kaydirak", "oyunparki", False, "Tünel kaydırak", "a tube slide on a small tower", (H, 160)),
+    ("yayli_at", "oyunparki", False, "Yaylı at", "a spring rider horse toy for the playground", (H, 80)),
+    ("basket_potasi", "oyunparki", False, "Basket potası", "a kids basketball hoop with a ball", (H, 200)),
+    ("seksek", "oyunparki", True, "Seksek", "a hopscotch game drawn with chalk on the ground, seen from above, no numbers", (W, 150)),
+    ("ucurtma", "oyunparki", False, "Uçurtma", "a colorful kite with a ribbon tail", (H, 80)),
+    ("dondurma_arabasi", "oyunparki", False, "Dondurma arabası", "a cute ice cream cart with an umbrella", (H, 160)),
+    ("park_cop_kutusu", "oyunparki", False, "Park çöp kutusu", "a green park trash bin with a smiling face", (H, 90)),
+    # --- havuz ve bahçe (ek)
+    ("havuz_merdiveni", "bahce", False, "Havuz merdiveni", "a shiny pool ladder", (H, 120)),
+    ("sisme_yatak", "bahce", False, "Şişme yatak", "a striped inflatable pool mattress", (W, 180)),
+    ("semsiyeli_masa", "bahce", False, "Şemsiyeli masa", "a round garden table with a big striped umbrella", (H, 220)),
+    ("havuz_dusu", "bahce", False, "Havuz duşu", "an outdoor pool shower", (H, 200)),
+    ("havuz_bari", "bahce", False, "Havuz barı", "a little tiki juice bar with straw roof", (H, 110)),
+    ("hamak", "bahce", False, "Hamak", "a striped hammock between two posts", (H, 100)),
+    ("cardak", "bahce", False, "Çardak", "a white garden gazebo with flowers", (H, 250)),
+    ("havuz_lambasi", "bahce", False, "Bahçe feneri", "a garden lantern lamp on a post", (H, 120)),
+    ("su_tabancasi", "bahce", False, "Su tabancası", "a colorful water squirt gun", (W, 30)),
+    ("deniz_gozlugu", "bahce", False, "Deniz gözlüğü", "kids swimming goggles", (W, 20)),
+    ("havlu_sezlong", "bahce", False, "Havlulu şezlong", "a lounge chair with a beach towel", (H, 80)),
+    # --- ışık (her oda)
+    ("tavan_lambasi_yildiz", "hepsi", False, "Yıldız tavan lambası", "a star shaped ceiling lamp", (H, 50)),
+    ("duvar_apligi", "hepsi", False, "Duvar apliği", "a cute brass wall sconce lamp with a pastel shade", (H, 35)),
+    ("neon_kalp", "hepsi", False, "Neon kalp", "a glowing pink neon heart wall sign", (W, 50)),
+    ("neon_gokkusagi", "hepsi", False, "Neon gökkuşağı", "a glowing rainbow neon wall sign", (W, 60)),
+    ("bulut_lamba", "hepsi", False, "Bulut lamba", "a glowing cloud shaped wall lamp", (W, 50)),
+    ("mantar_lamba", "hepsi", False, "Mantar lamba", "a red mushroom shaped table lamp", (H, 30)),
+    ("fener_lamba", "hepsi", False, "Fener", "a little lantern with a candle light", (H, 30)),
+    ("mum_seti", "hepsi", False, "Mumlar", "three glowing candles of different sizes", (H, 20)),
+    # --- süs ve ev aksesuarları (her oda)
+    ("yastik_seti", "hepsi", False, "Yastıklar", "a pile of three cute cushions: a heart, a star and a cloud", (W, 50)),
+    ("orgu_battaniye", "hepsi", False, "Örgü battaniye", "a folded chunky knit blanket", (W, 50)),
+    ("kedi_saat", "hepsi", False, "Kedi saat", "a cat shaped wall clock with a swinging tail", (H, 45)),
+    ("terrarium", "hepsi", False, "Teraryum", "a glass terrarium with tiny plants", (H, 25)),
+    ("cerceve_seti", "hepsi", False, "Fotoğraf çerçeveleri", "three small standing photo frames with family drawings", (W, 40)),
+    ("dekor_sepet", "hepsi", False, "Örgü sepet", "a woven basket with a folded blanket", (H, 40)),
+    ("seramik_kus", "hepsi", False, "Seramik kuş", "a cute ceramic bird figurine", (H, 15)),
+    ("boncuk_perde", "hepsi", False, "Boncuk perde", "a pastel bead curtain with hearts", (H, 120)),
+    ("ruya_kapani", "hepsi", False, "Rüya kapanı", "a dreamcatcher with feathers", (H, 60)),
+    ("duvar_yildizlari", "hepsi", False, "Duvar yıldızları", "a group of glow in the dark stars for the wall", (W, 60)),
+    # --- parti
+    ("balon_kemeri", "parti", False, "Balon kemeri", "a pastel balloon arch", (H, 220)),
+    ("flama", "parti", False, "Flama", "a pastel triangle bunting garland", (W, 200)),
+    ("parti_masasi", "parti", False, "Parti masası", "a party table with a festive tablecloth, plates and cups", (H, 80)),
+    ("dogum_gunu_pastasi", "parti", False, "Doğum günü pastası", "a tall birthday cake with candles and sprinkles", (H, 35)),
+    ("hediye_yigini", "parti", False, "Hediye yığını", "a pile of wrapped presents with bows", (H, 50)),
+    ("konfeti_patlatici", "parti", False, "Konfeti", "a party popper with confetti", (W, 20)),
+    ("parti_sapkasi", "parti", False, "Parti şapkası", "a striped cone party hat with a pom pom", (H, 20)),
+    ("pinata", "parti", False, "Pinyata", "a colorful donkey pinata hanging from a string", (H, 70)),
+    ("kapkek_kulesi", "parti", False, "Kek kulesi", "a cupcake tower with colorful cupcakes", (H, 45)),
+    ("limonata_surahisi", "parti", False, "Limonata sürahisi", "a jug of pink lemonade with lemon slices", (H, 30)),
+    ("kagit_fener", "parti", False, "Kâğıt fenerler", "three hanging paper lanterns in pastel colors", (H, 60)),
+    ("balon_hayvan", "parti", False, "Balon köpek", "a balloon animal dog", (H, 40)),
+    ("parti_duduk", "parti", False, "Parti düdüğü", "a party blower horn", (W, 15)),
+    ("yildiz_balon", "parti", False, "Yıldız balon", "a golden star foil balloon", (H, 60)),
+    ("dans_isigi", "parti", False, "Disko ışığı", "a small party disco light projecting colorful dots", (H, 40)),
+    ("sac_kulahi_pasta", "parti", False, "Dondurmalı pasta", "an ice cream cake with a cherry", (H, 30)),
+    # --- önceki yeni odalara ek
+    ("oyuncak_bebek_arabasi", "oyun", False, "Oyuncak bebek arabası", "a small toy doll stroller with a doll inside", (H, 60)),
+    ("top_sepeti", "oyun", False, "Top sepeti", "a basket full of colorful balls", (H, 40)),
+    ("hula_hop", "oyun", False, "Hula hop", "a striped hula hoop", (W, 70)),
+    ("oyuncak_piyano", "oyun", False, "Oyuncak piyano", "a small pink toy piano", (H, 40)),
+    ("kale_cadiri", "oyun", False, "Kale yapbozu", "a big foam castle building blocks set", (H, 60)),
+    ("bebek_aynasi", "bebekodasi", False, "Bebek aynası", "a soft baby floor mirror with a rainbow frame", (W, 40)),
+    ("bebek_pelus_seti", "bebekodasi", False, "Peluş seti", "three tiny plush toys: a bunny, a bear and a duck", (W, 35)),
+    ("bebek_ayakkabisi", "bebekodasi", False, "Patik", "a pair of knitted baby booties", (W, 15)),
+    ("bebek_sallanir_tavsan", "bebekodasi", False, "Sallanan tavşan", "a soft rocking bunny toy", (H, 45)),
+    ("bebek_kitapligi", "bebekodasi", False, "Bebek kitaplığı", "a low baby bookshelf with soft books", (H, 60)),
+    ("aksesuar_kutusu", "giyinme", False, "Aksesuar kutusu", "an open box with sunglasses, watches and hair clips", (W, 35)),
+    ("tac_standi", "giyinme", False, "Taç standı", "a stand with three tiaras", (H, 40)),
+    ("canta_koleksiyonu", "giyinme", False, "Çanta koleksiyonu", "a shelf with five cute bags", (H, 100)),
+    ("ayakkabi_kutusu", "giyinme", False, "Ayakkabı kutusu", "an open shoe box with sparkly shoes", (W, 35)),
+    ("isikli_dolap", "giyinme", False, "Işıklı vitrin", "a lighted glass wardrobe showing dresses", (H, 190)),
+    ("cocuk_sergisi", "atolye", False, "Çocuk sergisi", "an easel board with kids art pinned on it", (H, 150)),
+    ("boya_rafi", "atolye", False, "Boya rafı", "a wall shelf with paint jars in rainbow order", (W, 80)),
+    ("kolaj_masasi", "atolye", False, "Kolaj masası", "a table with paper cutouts and stickers", (H, 75)),
+    ("sanat_onlugu", "atolye", False, "Önlük", "a painting apron with paint splashes", (H, 50)),
+    ("heykel_seti", "atolye", False, "Kil hayvanlar", "three small clay animal figures", (W, 30)),
+    ("mikrofon_standi", "muzik", False, "Mikrofon standı", "a microphone on a tall stand", (H, 150)),
+    ("gitar_standi", "muzik", False, "Gitar standı", "a stand holding two guitars", (H, 110)),
+    ("notalar", "muzik", False, "Nota kitabı", "an open music book with colorful notes", (W, 30)),
+    ("isikli_kurs", "muzik", False, "Sahne merdiveni", "small lighted stage steps", (H, 30)),
+    ("plak_rafi", "muzik", False, "Plak rafı", "a shelf with colorful vinyl records", (H, 90)),
+    ("kitap_kosesi_minder", "kutuphane", False, "Minder köşesi", "a corner with big floor pillows and a soft rug", (W, 140)),
+    ("bilgi_kuresi_lamba", "kutuphane", False, "Gezegen lamba", "a glowing planet shaped lamp", (H, 35)),
+    ("harf_bloklari", "kutuphane", False, "Bloklar", "a stack of colorful wooden blocks with pictures, no letters", (H, 30)),
+    ("kitap_okuyan_ayi", "kutuphane", False, "Okuyan ayıcık", "a teddy bear reading a book", (H, 35)),
+    ("posta_kutusu_kitap", "kutuphane", False, "Kitap iade kutusu", "a cute red book return box", (H, 100)),
+]
+
+NEW_VARIANTS += [
+    ("v_pet_yatagi", "petrevir", "Pet yatağı", (W, 60), [
+        "a round grey pet bed", "a pink pet bed with a crown", "a pet bed shaped like a donut", "a pet bed shaped like a slipper",
+        "a pet bed shaped like a cloud", "a royal pet bed with a canopy"]),
+    ("v_pet_kafesi", "petrevir", "Pet evi", (H, 70), [
+        "a white pet crate", "a wooden pet house", "a pet house shaped like a castle", "a pet tent", "a bird house on a stand"]),
+    ("v_kuafor_koltugu", "makyaj", "Kuaför koltuğu", (H, 110), [
+        "a white salon chair", "a mint salon chair", "a lilac velvet salon chair", "a golden salon chair", "a salon chair shaped like a shell"]),
+    ("v_oje", "makyaj", "Oje", (H, 10), [
+        "a red nail polish bottle", "a pink nail polish bottle", "a glitter nail polish bottle", "a mint nail polish bottle",
+        "a purple nail polish bottle", "a rainbow nail polish bottle"]),
+    ("v_salincak", "oyunparki", "Salıncak", (H, 200), [
+        "a single swing", "a baby bucket swing", "a tire swing", "a nest swing", "a swing shaped like a horse"]),
+    ("v_kaydirak", "oyunparki", "Kaydırak", (H, 150), [
+        "a small plastic slide", "a wavy slide", "a double slide", "a slide shaped like an elephant", "a spiral slide"]),
+    ("v_sisme", "bahce", "Şişme oyuncak", (W, 120), [
+        "an inflatable crocodile float", "an inflatable pizza float", "an inflatable rainbow float", "an inflatable whale float",
+        "an inflatable boat", "an inflatable star float"]),
+    ("v_avize", "hepsi", "Avize", (H, 70), [
+        "a simple white pendant lamp", "a crystal chandelier", "a flower shaped chandelier", "a hot air balloon lamp",
+        "a moon and stars chandelier", "a candy colored chandelier"]),
+    ("v_aplik", "hepsi", "Duvar lambası", (H, 35), [
+        "a star wall lamp", "a moon wall lamp", "a flower wall lamp", "a heart wall lamp", "a rainbow wall lamp"]),
+    ("v_yastik", "hepsi", "Yastık", (W, 40), [
+        "a heart cushion", "a star cushion", "a cat cushion", "a rainbow cushion", "a donut cushion", "a strawberry cushion"]),
+    ("v_vazo", "hepsi", "Vazo", (H, 35), [
+        "a white vase with tulips", "a pink vase with roses", "a blue vase with daisies", "a glass vase with sunflowers",
+        "a round vase with lavender", "a golden vase with peonies"]),
+    ("v_cerceve", "hepsi", "Çerçeve", (W, 40), [
+        "a framed family photo drawing", "a framed pet photo drawing", "a framed beach photo drawing", "a framed baby photo drawing",
+        "a heart shaped photo frame", "a star shaped photo frame"]),
+    ("v_parti_pastasi", "parti", "Parti pastası", (H, 35), [
+        "a chocolate birthday cake", "a unicorn cake", "a rainbow cake", "a princess castle cake", "a strawberry cake", "a three tier party cake"]),
+    ("v_hediye", "parti", "Hediye kutusu", (H, 30), [
+        "a pink gift box with a bow", "a blue gift box with stars", "a striped gift box", "a round gift box",
+        "a heart shaped gift box", "a big golden gift box"]),
+    ("v_balon", "parti", "Balon", (H, 60), [
+        "a pink heart balloon", "a blue round balloon", "a rainbow balloon", "a unicorn balloon", "a cat balloon", "a number free star balloon"]),
+]
+
+# Odası olmayan yeni eşyaların menüde görüneceği odalar
+PARTI_ROOMS = ["salon", "mutfak", "oyun", "yatak", "muzik", "havuz", "oyunparki"]
+
+ALSO_ROOMS += [
+    (r"^(v_bahce_bitki_\d+|agac|cit|cicektarhi|bisiklet|trambolin|kaydirak|salincak|kumkovasi|v_oyun_parki_\d+|piknik|limonatastandi|mangal|v_bahce_mobilya_\d+|semsiyeli_masa|havuz_lambasi|su_tabancasi|cardak|hamak)$", ["oyunparki"]),
+    (r"^(kedi_tirmalama|pet_yatagi_yuvarlak|mama_kabi|su_kabi|pet_oyuncaklari|v_pet_yatagi_\d+)$", ["salon", "yatak", "mutfak"]),
+    (r"^(makyaj_cantasi|ruj_seti|far_paleti|fon_makinesi|tarak_firca|v_oje_\d+|sac_bandi|yuz_maskesi_seti)$", ["giyinme", "yatak", "banyo"]),
+    (r"^(v_makyaj_\d+|makyaj|kozmetik|boyaynasi|isikli_boy_aynasi|kapitone_puf|parfum_seti)$", ["makyaj"]),
+    (r"^(kedi|kedi2|kedi3|kopek|kopek2|tavsan|hamster|papagan|kaplumbaga|panda|midilli|ordekyavrusu|v_evcil_esya_\d+|kediyatagi|kediagaci|kuskafesi|akvaryum|kopekkulubesi)$", ["petrevir"]),
+]
+
+
+# ------------------------------------------------------------------ giydirme (src/dress.ts ile aynı sıra)
+_DRESS = {
+    "bas": ["a small golden crown with pink gems", "a big red hair bow", "a straw sun hat with a ribbon", "a pastel baseball cap",
+            "a pink flower hair clip", "a yellow star hair clip", "a unicorn horn headband", "a cat ears headband", "a daisy flower hairband",
+            "a sparkly gem tiara"],
+    "goz": ["a pair of black sunglasses", "a pair of round glasses", "a pair of swim goggles", "a pair of heart shaped glasses",
+            "a pair of star shaped glasses", "a pair of rainbow glasses"],
+    "kulak": ["a pair of pastel headphones", "a single small gem earring", "a single star earring", "a single moon earring",
+              "a single cherry earring", "a single heart earring"],
+    "boyun": ["a pearl necklace", "a necklace with a heart pendant", "a necklace with a star pendant", "a flower garland necklace",
+              "a gold medal on a ribbon", "a striped knitted scarf"],
+    "bilek": ["a kids wrist watch", "a sparkly ring", "a rainbow bead bracelet", "a gem bracelet", "a bracelet with a bow"],
+    "el": ["a smartphone with a pink case", "a sparkly microphone", "a swirl lollipop", "a closed umbrella", "a magic wand with a star",
+           "a red balloon on a string"],
+    "canta": ["a small handbag", "a little purse", "a kids backpack", "a mini suitcase", "a picnic basket", "a shopping bag"],
+    "ayak": ["a single white sneaker seen from the front", "a single red party shoe seen from the front", "a single pink ballet flat seen from the front",
+             "a single rain boot seen from the front", "a single ballet slipper seen from the front", "a single flip flop seen from the front"],
+    "yuz": ["a tiny pink heart face sticker", "a tiny gold star face sticker", "a tiny butterfly face sticker", "a tiny rainbow face sticker",
+            "a tiny flower face sticker", "a tiny sparkle face sticker"],
+}
+DRESS_ITEMS = [(f"aks_{k}_{i + 1:02d}", f"Aksesuar {k} {i + 1}", en) for k, lst in _DRESS.items() for i, en in enumerate(lst)]
+
+# Saç modelleri: kel karakterin üstüne giyilen saç parçaları (önden, yüz kısmı boş)
+HAIRS = ["long straight hair with bangs", "short bob hair", "two space buns", "a high ponytail", "long wavy hair", "two braids",
+         "a curly afro puff", "a pixie cut", "a side braid", "long hair with a headband", "short curly hair", "a messy bun"]
+HAIR_ITEMS = [(f"aks_sac_{i + 1:02d}", f"Saç {i + 1}", f"a cartoon hairstyle piece only: {en}, seen from the front, with an empty space where the face goes, no face, no body, no head") for i, en in enumerate(HAIRS)]

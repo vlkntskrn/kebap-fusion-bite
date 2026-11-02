@@ -611,6 +611,9 @@ for _r, (_tr, _icon) in R2.NEW_ROOMS.items():
     ROOM_TR[_r] = _tr
     ROOM_GAME[_r] = [_r]
 NEW_ROOM_IDS = list(R2.NEW_ROOMS)
+ROOM_TR["parti"] = "Parti"
+ROOM_GAME["parti"] = list(R2.PARTI_ROOMS)
+GROUP_IDS = NEW_ROOM_IDS + list(R2.EXTRA_GROUPS)
 
 
 LEAD = "2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it"
@@ -637,7 +640,7 @@ ROOM_ICONS2 = [(f"ui_oda_{r}", f"Oda: {tr}", icon) for r, (tr, icon) in R2.NEW_R
 
 
 # Yan ve arka görünümler: oyundaki "çevir" düğmesi önden -> yandan -> arkadan gösterir.
-VIEW_BASE = re.compile(r"^(kanepe|kosekanepe|v_kanepe_\d+|koltuk|berjer|v_koltuk_\d+|sandalye|v_sandalye_\d+|yatak|yuvarlakyatak|cibinlikliyatak|ranza|v_yatak_\d+|tv|v_tv_\d+|piyano)$")
+VIEW_BASE = re.compile(r"^(buzdolabi_\d+|buzdolabi|retrobuzdolabi|dolap|v_dolap_\d+|sifonyer|komodin|kitaplik|oyuncaksandigi|tabakdolabi|firin|ocak|v_ocak_\d+|tezgah|v_tezgah_\d+|kanepe|kosekanepe|v_kanepe_\d+|koltuk|berjer|v_koltuk_\d+|sandalye|v_sandalye_\d+|yatak|yuvarlakyatak|cibinlikliyatak|ranza|v_yatak_\d+|tv|v_tv_\d+|piyano)$")
 VIEW_TEXT = {
     "yan": "now seen exactly from the side in a flat side profile view, facing to the right",
     "arka": "now seen from directly behind, a flat back view showing only the back side",
@@ -674,7 +677,7 @@ def main():
     assert not missing, f"kelime tarifi eksik: {missing}"
     codes = ([i[0] for i in ITEMS_ALL] + [c[0] for c in CHARACTERS] + [p[0] for p in PETS] + [u[0] for u in UI]
              + [word_code(w) for w in words] + [f"cikartma_{i + 1:02d}" for i in range(len(STICKERS))] + [b[0] for b in BACKGROUNDS] + ["uygulama_ikonu"]
-             + [x[0] for x in SURFACES] + [x[0] for x in WINDOWS + DOORS] + [x[0] for x in MAP] + [c for c, _tr, _en in POSES] + [x[0] for x in INTERIORS] + [x[0] for x in VIEWS] + [x[0] for x in ROOM_ICONS2])
+             + [x[0] for x in SURFACES] + [x[0] for x in WINDOWS + DOORS] + [x[0] for x in MAP] + [c for c, _tr, _en in POSES] + [x[0] for x in INTERIORS] + [x[0] for x in VIEWS] + [x[0] for x in ROOM_ICONS2] + [x[0] for x in R2.DRESS_ITEMS])
     assert len(codes) == len(set(codes)), "tekrarlanan kod"
     item_style = STYLE_ITEM.replace("one single isolated object, the whole object fully visible and centered with generous empty margin around it, ", "")
     char_style = STYLE_CHAR.replace("centered with generous empty margin, ", "")
@@ -693,7 +696,7 @@ def main():
     sets += sheets([(f"cikartma_{i + 1:02d}", en) for i, en in enumerate(STICKERS)], 9, 3, STYLE_STICKER.replace("centered, ", ""), "cikartma")
     sets += sheets([(c, en) for c, _tr, en in WINDOWS + DOORS], 10, 5, item_style, "yapi")
     sets += sheets([(c, "a cute " + en) for c, _tr, en in POSES], 4, 2, pose_style(char_style), "poz")
-    for room in NEW_ROOM_IDS:
+    for room in GROUP_IDS:
         sets += sheets([(c, en) for c, r, _w, _f, _tr, en, _l in NEW_ROWS if r == room], 9, 3, item_style, "yeni_" + room)
         sets += sheets([(c, en) for c, r, _w, _f, _tr, en, _l in NEW_VAR_ROWS if r == room], 9, 3, item_style, "yeni_cesit_" + room)
     sets += sheets([(c, en) for c, _tr, en in ROOM_ICONS2], 6, 3, STYLE_UI.replace("the symbol fills about 80 percent of the canvas and is perfectly centered, ", ""), "yeni_oda_simge")
@@ -786,13 +789,21 @@ Toplu istekler `set_yeni_…` sayfalarında (9'lu).
     for code, tr, en in ROOM_ICONS2:
         out.append(f"#### `{code}` — {tr}\n")
         out.append("```\n" + prompt(code, en, STYLE_UI) + "\n```\n")
-    for room in NEW_ROOM_IDS:
+    for room in GROUP_IDS:
         rows = [(c, tr, en) for c, r, _w, _f, tr, en, _l in NEW_ROWS + NEW_VAR_ROWS if r == room]
-        out.append(f"### {R2.NEW_ROOMS[room][0]} ({len(rows)} eşya)\n")
+        out.append(f"### {R2.NEW_ROOMS[room][0] if room in R2.NEW_ROOMS else R2.EXTRA_GROUPS[room]} ({len(rows)} eşya)\n")
         out.append("| Kod | Eşya |\n|---|---|\n" + "\n".join(f"| `{c}` | {tr} |" for c, tr, _en in rows) + "\n")
         for code, tr, en in rows:
             out.append(f"#### `{code}` — {tr}\n")
             out.append("```\n" + prompt(code, en, STYLE_ITEM) + "\n```\n")
+    out.append(f"""
+## 🆕 Giydirme aksesuarları ({len(R2.DRESS_ITEMS)} istek)
+
+Evdeki karakterlere takılan aksesuarlar (taç, gözlük, küpe, kolye, saat, eldeki eşya, çanta, ayakkabı, yüz süsü) **Square (1:1)**, beyaz arka plan; arka planı ben silerim. Ayakkabılar **tek tek** (tek ayakkabı, önden).
+""")
+    for code, tr, en in R2.DRESS_ITEMS:
+        out.append(f"#### `{code}` — {tr}\n")
+        out.append("```\n" + prompt(code, en, STYLE_ITEM) + "\n```\n")
     out.append(f"""
 ## 🆕 Yandan ve arkadan görünümler ({len(VIEWS)} istek)
 
@@ -921,7 +932,8 @@ aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya
             out.append("```\n" + prompt(code, en, style) + "\n```\n")
 
     for room in ["yatak", "mutfak", "banyo", "salon", "bahce", "hepsi"]:
-        rows = [(c, tr, en) for c, r, _w, _f, tr, en, _l in ITEMS_ALL if r == room and r not in NEW_ROOM_IDS]
+        new_codes = {x[0] for x in NEW_ROWS + NEW_VAR_ROWS}
+        rows = [(c, tr, en) for c, r, _w, _f, tr, en, _l in ITEMS_ALL if r == room and c not in new_codes]
         section(f"Eşyalar: {ROOM_TR[room]} ({len(rows)})", rows, STYLE_ITEM)
     section(f"Karakterler ({len(CHARACTERS)})", [(c, tr, "a cute " + en.removeprefix("a ")) for c, _w, tr, en in CHARACTERS], STYLE_CHAR)
     section(f"Evcil hayvanlar ({len(PETS)})", [(c, tr, en) for c, _w, tr, en in PETS], STYLE_PET)

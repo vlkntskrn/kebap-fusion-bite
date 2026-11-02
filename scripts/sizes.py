@@ -30,30 +30,30 @@ EXACT = {
     # mutfak
     "retrobuzdolabi": (H, 165), "tezgah": (H, 110), "ocak": (H, 95), "firin": (H, 90), "lavabo": (H, 100),
     "mikrodalga": (H, 30), "tost": (H, 22), "kahve": (H, 34), "blender": (H, 38), "mikser": (H, 34), "kettle": (H, 26),
-    "caydanlik": (H, 22), "rafkupa": (W, 70), "tabakdolabi": (H, 90), "kasiklik": (W, 60), "masa": (H, 75),
-    "yuvarlakmasa": (H, 95), "sandalye": (H, 90), "tabure": (H, 75), "mamasandalyesi": (H, 100), "meyve": (W, 30),
+    "caydanlik": (H, 22), "rafkupa": (W, 70), "tabakdolabi": (H, 90), "kasiklik": (W, 60), "masa": (H, 90),
+    "yuvarlakmasa": (H, 105), "sandalye": (H, 90), "tabure": (H, 75), "mamasandalyesi": (H, 100), "meyve": (W, 30),
     "ekmek": (W, 30), "pasta": (H, 22), "kurabiye": (H, 24), "pizza": (W, 32), "hamburger": (W, 14), "salata": (W, 26),
     "cilek": (W, 24), "sut": (H, 22), "limonata": (H, 26), "saksiotlar": (W, 40), "v_ocak_06": (H, 140), "v_tezgah_04": (H, 150),
-    "v_sandalye_04": (H, 75), "v_masa_mutfak_03": (H, 95),
+    "v_sandalye_04": (H, 75), "v_masa_mutfak_03": (H, 105),
     # banyo
     "kuvet": (H, 85), "jakuzi": (H, 95), "duskabini": (H, 200), "banyolavabo": (H, 150), "tuvalet": (H, 80), "camasir": (H, 85),
     "sampuan": (W, 60), "sepet": (H, 50), "robot": (W, 35), "havlu": (W, 60), "bornoz": (H, 100), "ayna": (W, 60),
-    "ordek": (W, 14), "dissfircasi": (H, 20), "sabunluk": (H, 18), "paspas": (W, 80), "v_kuvet_04": (H, 110),
+    "ordek": (W, 14), "dissfircasi": (H, 20), "sabunluk": (H, 18), "paspas": (W, 110), "v_kuvet_04": (H, 110),
     "v_lavabo_01": (H, 110), "v_banyo_aksesuar_01": (W, 60), "v_banyo_aksesuar_02": (H, 50), "v_banyo_aksesuar_03": (H, 18),
     "v_banyo_aksesuar_04": (W, 16), "v_banyo_aksesuar_05": (W, 32), "v_banyo_aksesuar_06": (W, 30), "v_banyo_aksesuar_07": (H, 100),
     "v_banyo_aksesuar_08": (W, 60), "v_banyo_aksesuar_09": (H, 30), "v_banyo_aksesuar_10": (W, 35),
     # salon
-    "kanepe": (H, 85), "kosekanepe": (H, 85), "berjer": (H, 90), "tv": (H, 100), "tvunitesi": (H, 70), "sehpa": (H, 45),
+    "kanepe": (H, 85), "kosekanepe": (H, 85), "berjer": (H, 90), "tv": (H, 100), "tvunitesi": (H, 70), "sehpa": (H, 60),
     "oyunrafi": (H, 100), "kediagaci": (H, 150), "akvaryum": (H, 40), "piyano": (H, 130), "somine": (H, 120), "kuskafesi": (H, 70),
     "v_koltuk_01": (H, 100), "v_koltuk_04": (H, 180), "v_koltuk_05": (H, 70), "v_tv_02": (H, 120), "v_tv_03": (H, 55),
-    "v_tv_04": (H, 110), "v_tv_05": (H, 180), "v_sehpa_04": (H, 50), "v_muzik_01": (H, 90), "v_muzik_02": (H, 95),
+    "v_tv_04": (H, 110), "v_tv_05": (H, 180), "v_sehpa_04": (H, 62), "v_muzik_01": (H, 90), "v_muzik_02": (H, 95),
     "v_muzik_04": (H, 90), "v_muzik_05": (H, 170), "v_muzik_06": (H, 150), "v_evcil_esya_01": (W, 60), "v_evcil_esya_02": (H, 150),
     "v_evcil_esya_03": (H, 50), "v_evcil_esya_04": (H, 70), "v_evcil_esya_05": (H, 90), "v_evcil_esya_06": (H, 40), "kediyatagi": (W, 60),
     # her oda
     "abajur": (H, 50), "lambader": (H, 160), "puf": (H, 42), "buyukbitki": (H, 120), "bitki": (H, 45), "sarkitbitki": (H, 70),
     "kaktus": (H, 35), "disko": (H, 70), "sarkit": (H, 60), "perilamba": (W, 200), "kalpisik": (W, 200), "tablo": (W, 60),
     "cerceve": (W, 60), "oyunkonsolu": (W, 35), "vazo": (H, 35), "duvarsaati": (H, 35), "ayi": (H, 40), "top": (W, 30),
-    "copkutusu": (H, 45), "kalpbalon": (H, 120), "dondurma": (H, 20), "cadir": (H, 170), "yuvarlakhali": (W, 160),
+    "copkutusu": (H, 45), "kalpbalon": (H, 120), "dondurma": (H, 20), "cadir": (H, 170), "yuvarlakhali": (W, 230),
     "v_bitki_02": (H, 40), "v_bitki_03": (H, 120), "v_bitki_04": (H, 80), "v_bitki_05": (H, 60), "v_bitki_07": (H, 120),
     "v_bitki_08": (H, 70), "v_lamba_02": (H, 35), "v_lamba_03": (H, 35), "v_lamba_04": (H, 35), "v_lamba_05": (H, 40),
     "v_lamba_06": (H, 70), "v_ayna_02": (H, 160), "v_raf_02": (H, 150), "v_raf_05": (H, 100),
@@ -64,7 +64,7 @@ EXACT = {
     "sezlong": (H, 80), "semsiye": (H, 220), "flamingo": (H, 80), "simit": (W, 80), "palmiye": (H, 350), "buzkutusu": (H, 40),
     "kaydirak": (H, 150), "salincak": (H, 200), "trambolin": (H, 120), "kumkovasi": (H, 25), "mangal": (H, 100), "cicektarhi": (W, 120),
     "agac": (H, 300), "cit": (H, 100), "kopekkulubesi": (H, 90), "bisiklet": (H, 80), "limonatastandi": (H, 180), "gokkusagi": (H, 150),
-    "piknik": (W, 180), "ayihali": (W, 150), "v_havuz_oyuncak_01": (W, 80), "v_havuz_oyuncak_02": (W, 40), "v_havuz_oyuncak_03": (W, 100),
+    "piknik": (W, 180), "ayihali": (W, 210), "v_havuz_oyuncak_01": (W, 80), "v_havuz_oyuncak_02": (W, 40), "v_havuz_oyuncak_03": (W, 100),
     "v_havuz_oyuncak_04": (W, 120), "v_havuz_oyuncak_05": (W, 90), "v_havuz_oyuncak_06": (W, 110), "v_havuz_oyuncak_07": (W, 100),
     "v_havuz_oyuncak_08": (H, 150), "v_bahce_mobilya_01": (H, 85), "v_bahce_mobilya_02": (H, 80), "v_bahce_mobilya_03": (W, 200),
     "v_bahce_mobilya_04": (H, 200), "v_bahce_mobilya_05": (H, 75), "v_bahce_mobilya_06": (H, 220), "v_bahce_mobilya_07": (H, 190),
@@ -79,16 +79,16 @@ EXACT = {
 }
 PREFIX = [
     (r"^kiz\d|^oglan\d", (H, 125)),
-    (r"^v_yatak_", (H, 95)), (r"^v_dolap_", (H, 175)), (r"^v_makyaj_", (H, 140)), (r"^v_masa_mutfak_", (H, 80)), (r"^v_masa_", (H, 110)),
+    (r"^v_yatak_", (H, 95)), (r"^v_dolap_", (H, 175)), (r"^v_makyaj_", (H, 140)), (r"^v_masa_mutfak_", (H, 92)), (r"^v_masa_", (H, 110)),
     (r"^buzdolabi", (H, 175)), (r"^v_ocak_", (H, 95)), (r"^v_tezgah_", (H, 100)), (r"^v_sandalye_", (H, 90)),
     (r"^v_alet_(08|09|10)", (H, 48)), (r"^v_alet_", (H, 30)), (r"^v_yemek_09", (H, 32)), (r"^v_yemek_", (W, 26)), (r"^v_tabak_03", (H, 90)),
     (r"^v_tabak_", (W, 70)), (r"^v_kuvet_", (H, 85)), (r"^v_lavabo_", (H, 150)), (r"^v_dus_", (H, 200)), (r"^v_tuvalet_", (H, 80)),
-    (r"^v_kanepe_", (H, 85)), (r"^v_koltuk_", (H, 95)), (r"^v_sehpa_", (H, 45)), (r"^v_bitki_", (H, 50)), (r"^v_lamba_", (H, 50)),
+    (r"^v_kanepe_", (H, 85)), (r"^v_koltuk_", (H, 95)), (r"^v_sehpa_", (H, 60)), (r"^v_bitki_", (H, 50)), (r"^v_lamba_", (H, 50)),
     (r"^kelime_(elma|armut|limon|yumurta|peynir|kek|mum)$", (H, 12)), (r"^kelime_(muz|simit|havuc|patates|et|ekmek)$", (W, 20)),
     (r"^kelime_(pasta|dondurma|saat|kitap|kalem)$", (H, 20)), (r"^kelime_(ceket|etek|canta|sapka|top|ucak|gemi|araba)$", (H, 30)),
     (r"^kelime_corap$", (H, 25)), (r"^kelime_(balon|lamba)$", (H, 45)), (r"^kelime_semsiye$", (H, 80)),
     (r"^pencere_03$", (W, 70)), (r"^pencere_06$", (W, 160)), (r"^pencere_", (W, 110)), (r"^kapi_", (H, 200)),
-    (r"^v_hali_", (W, 160)), (r"^v_tablo_", (W, 60)), (r"^v_ayna_", (H, 80)), (r"^v_raf_", (W, 75)),
+    (r"^v_hali_", (W, 240)), (r"^v_tablo_", (W, 60)), (r"^v_ayna_", (H, 80)), (r"^v_raf_", (W, 75)),
 ]
 # Üstüne eşya konabilenler (üst yüzey resimden bulunur).
 HOSTS = [r"^masa$", r"^yuvarlakmasa$", r"^v_masa", r"^sehpa$", r"^v_sehpa_", r"^tezgah$", r"^v_tezgah_", r"^lavabo$", r"^komodin$",
@@ -102,7 +102,7 @@ _sys.path.insert(0, str(Path(__file__).resolve().parent))
 import catalog_rooms2 as _R2  # noqa: E402
 
 EXACT.update(_R2.sizes())
-HOSTS += [r"^lego_masasi$", r"^alt_degistirme$", r"^ada_dolap$", r"^boya_masasi$", r"^yazi_masasi$", r"^kucuk_sahne$",
+HOSTS += [r"^manikur_masasi$", r"^parti_masasi$", r"^havuz_bari$", r"^semsiyeli_masa$", r"^veteriner_dolabi$", r"^lego_masasi$", r"^alt_degistirme$", r"^ada_dolap$", r"^boya_masasi$", r"^yazi_masasi$", r"^kucuk_sahne$",
           r"^oyuncak_dolabi$", r"^oyuncak_mutfak$", r"^bebek_dolabi$", r"^sanat_dolabi$"]
 
 

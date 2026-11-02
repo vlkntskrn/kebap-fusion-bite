@@ -61,6 +61,11 @@ def job(code: str):
             ref = src("ui_oda_yatak")
             p = C.prompt(code, en, C.STYLE_UI)
             return (p + STYLE_NOTE if ref else p), [ref] if ref else [], "1:1"
+    for c, _tr, en in C.R2.DRESS_ITEMS + C.R2.HAIR_ITEMS:
+        if c == code:
+            ref = src("kelime_sapka") or src("dolap")
+            p = C.prompt(code, en, C.STYLE_ITEM)
+            return (p + STYLE_NOTE if ref else p), [ref] if ref else [], "1:1"
     for c, _r, _w, _f, _tr, en, _l in C.NEW_ROWS + C.NEW_VAR_ROWS:
         if c == code:
             ref = src("dolap")
@@ -81,6 +86,7 @@ GROUPS = {
     "yuzey": lambda: [c for c, *_ in C.WALLPAPERS + C.FLOORTILES],
     "yapi": lambda: [c for c, *_ in C.WINDOWS + C.DOORS],
     "yeni": lambda: [c for c, *_ in C.ROOM_ICONS2 + C.NEW_ROWS + C.NEW_VAR_ROWS],
+    "aks": lambda: [c for c, *_ in C.R2.DRESS_ITEMS],
 }
 
 

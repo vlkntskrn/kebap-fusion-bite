@@ -3878,3 +3878,13 @@ body {
 .dress-char {
   height: min(58dvh, 340px);
 }
+/* Harita: dışarıda iki alan (havuz, oyun parkı) üst üste */
+.map-garden {
+  display: flex;
+  flex-direction: column;
+  gap: 2dvh;
+  width: min(22vw, 44dvh);
+}
+.map-garden .map-room {
+  aspect-ratio: 1.35;
+}

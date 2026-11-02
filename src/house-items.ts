@@ -302,14 +302,19 @@ export type Place = 'floor' | 'wall' | 'ceiling' | 'free' | 'surface';
 const WALL = new Set(['tablo', 'cerceve', 'ayna', 'aynadalga', 'kedipostu', 'duvarrafi', 'rafkupa', 'kasiklik', 'havlu', 'sampuan',
   'perde', 'duvarsaati', 'tabakdolabi', 'pencere', 'v_banyo_aksesuar_01', 'v_banyo_aksesuar_08', 'v_tabak_01', 'v_tabak_02', 'v_tabak_04', 'v_tabak_05',
   'v_ayna_01', 'v_ayna_03', 'v_ayna_04', 'v_ayna_05', 'v_raf_01', 'v_raf_03', 'v_raf_04', 'yazitahtasi_duvar']);
-const WALL_PREFIX = ['v_tablo_', 'pencere_', 'v_cocuk_resmi_'];
-const WALL2 = new Set(['sessiz_tabelasi', 'canta_rafi', 'ayicik_rafi', 'resim_ipi', 'onluk_askisi', 'nota_posteri', 'dunya_haritasi']);
-const CEILING_PREFIX = ['v_donence_'];
-const CEILING = new Set(['donence', 'bebek_yatagi_tavan', 'sarkit', 'disko', 'perilamba', 'kalpisik', 'fotoipi', 'sarkitbitki', 'v_lamba_06', 'v_bitki_08']);
-const FREE = new Set(['kalpbalon', 'v_lamba_03', 'balon_demeti']);
+const WALL_PREFIX = ['v_tablo_', 'pencere_', 'v_cocuk_resmi_', 'v_aplik_'];
+const WALL2 = new Set(['tasma_askisi', 'pati_posteri', 'oje_rafi', 'neon_kalp', 'neon_gokkusagi', 'bulut_lamba', 'duvar_apligi', 'kedi_saat',
+  'ruya_kapani', 'duvar_yildizlari', 'flama', 'boya_rafi', 'sessiz_tabelasi', 'canta_rafi', 'ayicik_rafi', 'resim_ipi', 'onluk_askisi', 'nota_posteri', 'dunya_haritasi']);
+const CEILING_PREFIX = ['v_donence_', 'v_avize_'];
+const CEILING = new Set(['tavan_lambasi_yildiz', 'pinata', 'kagit_fener', 'donence', 'bebek_yatagi_tavan', 'sarkit', 'disko', 'perilamba', 'kalpisik', 'fotoipi', 'sarkitbitki', 'v_lamba_06', 'v_bitki_08']);
+const FREE = new Set(['kalpbalon', 'v_lamba_03', 'balon_demeti', 'yildiz_balon', 'ucurtma']);
+const FREE_PREFIX = ['v_balon_'];
 /** Masa ya da tezgâh üstüne de konabilen küçük eşyalar. */
-const SURFACE_PREFIX = ['v_yemek_', 'v_alet_', 'kelime_', 'giysi_', 'v_pelus_', 'v_ayakkabi_'];
-const SURFACE = new Set(['marakas', 'akordeon', 'bowling_seti', 'robot_oyuncak', 'muzik_kutusu', 'bebek_kitabi', 'bebek_terazisi', 'terlik', 'toka_kutusu',
+const SURFACE_PREFIX = ['v_yemek_', 'v_alet_', 'kelime_', 'giysi_', 'v_pelus_', 'v_ayakkabi_', 'v_oje_', 'v_hediye_', 'v_parti_pastasi_', 'v_vazo_', 'v_yastik_', 'v_cerceve_'];
+const SURFACE = new Set(['mama_kabi', 'su_kabi', 'ilk_yardim_cantasi', 'stetoskop', 'bandaj_rulosu', 'pet_odul_kavanozu', 'pet_oyuncaklari', 'makyaj_cantasi',
+  'ruj_seti', 'far_paleti', 'fon_makinesi', 'tarak_firca', 'yuz_maskesi_seti', 'sac_bandi', 'oje_kurutucu', 'su_tabancasi', 'deniz_gozlugu', 'mantar_lamba',
+  'fener_lamba', 'mum_seti', 'yastik_seti', 'terrarium', 'cerceve_seti', 'seramik_kus', 'dogum_gunu_pastasi', 'konfeti_patlatici', 'parti_sapkasi',
+  'kapkek_kulesi', 'limonata_surahisi', 'balon_hayvan', 'parti_duduk', 'dans_isigi', 'sac_kulahi_pasta', 'marakas', 'akordeon', 'bowling_seti', 'robot_oyuncak', 'muzik_kutusu', 'bebek_kitabi', 'bebek_terazisi', 'terlik', 'toka_kutusu',
   'gozluk_standi', 'simli_kavanozlar', 'dikis_makinesi', 'yun_sepeti', 'oyun_hamuru', 'boncuk_kutusu', 'cizim_tableti', 'kitap_ayraci_seti', 'mektup_kutusu',
   'fil_kitap_destegi', 'puset_cantasi', 'biberon', 'emzik', 'cingirak', 'bez_yigini', 'ay_gece_lambasi', 'taki_kutusu', 'parfum_seti', 'sac_kurutma', 'boya_paleti',
   'firca_kupasi', 'boya_tupleri', 'pastel_kutusu', 'makas_yapistirici', 'mikrofon', 'plak_calar', 'kulaklik', 'tef', 'trompet', 'flut', 'keman',
@@ -320,7 +325,7 @@ const SURFACE = new Set(['marakas', 'akordeon', 'bowling_seti', 'robot_oyuncak',
 export function placeOf(id: string): Place {
   if (CEILING.has(id) || CEILING_PREFIX.some((p) => id.startsWith(p))) return 'ceiling';
   if (WALL.has(id) || WALL2.has(id) || WALL_PREFIX.some((p) => id.startsWith(p))) return 'wall';
-  if (FREE.has(id)) return 'free';
+  if (FREE.has(id) || FREE_PREFIX.some((p) => id.startsWith(p))) return 'free';
   if (SURFACE.has(id) || SURFACE_PREFIX.some((p) => id.startsWith(p))) return 'surface';
   const t = THINGS[id];
   if (t?.flat) return 'floor';
@@ -350,4 +355,4 @@ export const imageItems = () => EXTRA.filter((e) => itemImage(e.id) && !e.hide).
  * karakterler ve hayvanlar. Havuz bahçesinde yalnızca bahçe eşyaları.
  */
 export const itemsForRoom = (room: string) =>
-  EXTRA.filter((e) => itemImage(e.id) && !e.hide && (e.char || (e.rooms ? e.rooms.includes(room) : room !== 'havuz'))).map((e) => e.id);
+  EXTRA.filter((e) => itemImage(e.id) && !e.hide && (e.char || (e.rooms ? e.rooms.includes(room) : room !== 'havuz' && room !== 'oyunparki'))).map((e) => e.id);
