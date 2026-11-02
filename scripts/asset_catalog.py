@@ -393,6 +393,31 @@ DOORS = [
     ("kapi_03", "Mint ahşap kapı", "a closed mint green wooden plank door with a brass handle"),
     ("kapi_04", "Bahçe cam kapısı", "a closed white French door with glass panes showing a sunny garden"),
 ]
+# Ev haritası parçaları: (kod, Türkçe, tarif, en-boy)
+MAP = [
+    ("arka_harita", "Harita arka planı (16:9)",
+     "a sunny pastel landscape seen from the front: soft blue sky with a few fluffy clouds and a small sun in the "
+     "top right corner, far away gentle green rolling hills with tiny round trees, a wide flat light green lawn filling the "
+     "bottom third, a narrow light stone garden path along the very bottom edge, the middle of the picture is open empty "
+     "lawn and sky with no house and no buildings so a house can be placed there", "Widescreen (16:9)"),
+    ("harita_cati", "Evin çatısı",
+     "a wide cute pastel pink tiled dollhouse roof seen straight from the front, a symmetrical triangle gable that is about "
+     "three times wider than it is tall, scalloped roof tiles, a small round attic window in the center top, a little brick "
+     "chimney on the right side with a tiny puff of white smoke, white trim along the bottom edge, nothing below the roof",
+     "Widescreen (16:9)"),
+    ("harita_tabela", "İsim tabelası (boş)",
+     "a cute blank wooden name sign board with rounded corners hanging from two short ropes, cream painted face with a "
+     "thin pink border, two small flowers on the top corners, the board face is completely empty with no writing",
+     "Square (1:1)"),
+    ("harita_cali", "Önde çalı ve çiçek şeridi",
+     "a long low horizontal row of round green bushes with small pink, yellow and white flowers between them, like a "
+     "garden border strip, the row fills the full width from left edge to right edge, very low and flat, nothing above it",
+     "Widescreen (16:9)"),
+    ("harita_agac", "Bahçe ağacı",
+     "a single cute round fluffy green tree with a short brown trunk and a few pink blossoms in the crown",
+     "Square (1:1)"),
+]
+
 SURFACES = WALLPAPERS + FLOORTILES + [(c, tr, en) for c, tr, en, _s in OUTDOOR]
 
 # ------------------------------------------------------------ toplu üretim
@@ -570,7 +595,7 @@ def main():
     assert not missing, f"kelime tarifi eksik: {missing}"
     codes = ([i[0] for i in ITEMS_ALL] + [c[0] for c in CHARACTERS] + [p[0] for p in PETS] + [u[0] for u in UI]
              + [word_code(w) for w in words] + [f"cikartma_{i + 1:02d}" for i in range(len(STICKERS))] + [b[0] for b in BACKGROUNDS] + ["uygulama_ikonu"]
-             + [x[0] for x in SURFACES] + [x[0] for x in WINDOWS + DOORS])
+             + [x[0] for x in SURFACES] + [x[0] for x in WINDOWS + DOORS] + [x[0] for x in MAP])
     assert len(codes) == len(set(codes)), "tekrarlanan kod"
     item_style = STYLE_ITEM.replace("one single isolated object, the whole object fully visible and centered with generous empty margin around it, ", "")
     char_style = STYLE_CHAR.replace("centered with generous empty margin, ", "")
@@ -653,6 +678,18 @@ def main():
 """)
 
 
+    out.append(f"""
+## 🆕 Ev haritası ({len(MAP)} istek)
+
+Ev haritası (odaların seçildiği ekran) bu parçalardan kurulur: arkada manzara, odaların üstünde çatı, çatıda isim
+tabelası (yazıyı oyun kendisi yazar), önde çalı şeridi ve yanda ağaç. Odaların içi oyundan canlı gösterilir; o yüzden
+evin gövdesi istenmiyor. Her isteğin altında hangi **Aspect ratio**'nun seçileceği yazıyor.
+`arka_harita` olduğu gibi kullanılır; diğerlerinin beyaz arka planını ben silerim.
+""")
+    for code, tr, en, ar in MAP:
+        out.append(f"### `{code}` — {tr} · **{ar}**\n")
+        body = prompt(code, en, STYLE_BG) if code.startswith("arka_") else prompt(code, en, STYLE_ITEM)
+        out.append("```\n" + body + "\n```\n")
     out.append(f"""
 ## 🆕 Oda yüzeyleri: duvar kâğıtları, zeminler, bahçe ve havuz ({len(SURFACES)} istek)
 

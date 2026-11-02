@@ -3012,3 +3012,67 @@ body {
 .room-screen .item-tools {
   z-index: 3150;
 }
+
+/* ---- harita: Firefly parçaları */
+.house-map.has-bg {
+  background-size: cover;
+  background-position: center bottom;
+}
+.house-map.has-bg::before {
+  display: none;
+}
+.map-roof.has-img {
+  position: relative;
+  clip-path: none;
+  background: none;
+  height: 22dvh;
+  margin: 0 -7% -1.5dvh;
+  place-items: center;
+  padding: 0;
+}
+.roof-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+.map-name.has-sign {
+  position: relative;
+  margin-top: 5dvh;
+  padding: 1.6dvh 6% 1.2dvh;
+  min-width: 34%;
+  text-align: center;
+  color: var(--ink, #3d3553);
+  text-shadow: none;
+  background: center / 100% 100% no-repeat;
+}
+.map-bushes {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2.5dvh;
+  height: 9dvh;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: center bottom;
+  pointer-events: none;
+  z-index: 4;
+}
+.map-tree {
+  position: absolute;
+  left: 0.5vw;
+  bottom: 5dvh;
+  height: 36dvh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.house-map.has-bg .map-house,
+.house-map.has-bg .map-garden {
+  z-index: 2;
+}
+.house-map:has(.map-roof.has-img) .map-house {
+  width: min(58vw, 128dvh);
+}

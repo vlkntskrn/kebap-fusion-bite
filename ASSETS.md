@@ -39,6 +39,44 @@ Toplam **363 eşya** (232 tanesi çeşit ailelerinden, ilk 2 çeşit bedava, ger
    Benim çizdiğim aynı adlı eşya varsa, Firefly görseli onun yerine geçer.
 
 
+## 🆕 Ev haritası (5 istek)
+
+Ev haritası (odaların seçildiği ekran) bu parçalardan kurulur: arkada manzara, odaların üstünde çatı, çatıda isim
+tabelası (yazıyı oyun kendisi yazar), önde çalı şeridi ve yanda ağaç. Odaların içi oyundan canlı gösterilir; o yüzden
+evin gövdesi istenmiyor. Her isteğin altında hangi **Aspect ratio**'nun seçileceği yazıyor.
+`arka_harita` olduğu gibi kullanılır; diğerlerinin beyaz arka planını ben silerim.
+
+### `arka_harita` — Harita arka planı (16:9) · **Widescreen (16:9)**
+
+```
+arka_harita — 2D flat vector cartoon background illustration, NOT a photo: a sunny pastel landscape seen from the front: soft blue sky with a few fluffy clouds and a small sun in the top right corner, far away gentle green rolling hills with tiny round trees, a wide flat light green lawn filling the bottom third, a narrow light stone garden path along the very bottom edge, the middle of the picture is open empty lawn and sky with no house and no buildings so a house can be placed there. Wide cozy background illustration for a children's game screen, flat vector art style with soft gentle shading, soft pastel colors, calm and not busy, gentle details only near the edges so the center stays clean, no characters, no people, no text, no letters, no logo, no watermark, full bleed scene filling the whole frame.
+```
+
+### `harita_cati` — Evin çatısı · **Widescreen (16:9)**
+
+```
+harita_cati — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a wide cute pastel pink tiled dollhouse roof seen straight from the front, a symmetrical triangle gable that is about three times wider than it is tall, scalloped roof tiles, a small round attic window in the center top, a little brick chimney on the right side with a tiny puff of white smoke, white trim along the bottom edge, nothing below the roof. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `harita_tabela` — İsim tabelası (boş) · **Square (1:1)**
+
+```
+harita_tabela — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute blank wooden name sign board with rounded corners hanging from two short ropes, cream painted face with a thin pink border, two small flowers on the top corners, the board face is completely empty with no writing. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `harita_cali` — Önde çalı ve çiçek şeridi · **Widescreen (16:9)**
+
+```
+harita_cali — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a long low horizontal row of round green bushes with small pink, yellow and white flowers between them, like a garden border strip, the row fills the full width from left edge to right edge, very low and flat, nothing above it. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+### `harita_agac` — Bahçe ağacı · **Square (1:1)**
+
+```
+harita_agac — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a single cute round fluffy green tree with a short brown trunk and a few pink blossoms in the crown. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, one single isolated object, the whole object fully visible and centered with generous empty margin around it, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+
 ## 🆕 Oda yüzeyleri: duvar kâğıtları, zeminler, bahçe ve havuz (24 istek)
 
 Bunlar odanın **boş** zemini ve duvarıdır; içinde eşya olmamalı. Oyun bunları fayans gibi yan yana döşer.

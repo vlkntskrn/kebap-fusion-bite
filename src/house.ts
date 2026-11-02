@@ -365,15 +365,23 @@ let zoom = 0.85;
 export function showHouse(back: () => void) {
   sfx.tap();
   const card = (r: RoomId) => `<button class="map-room" data-room="${r}"><div class="map-world"></div><span class="map-label">${roomIcon(r)}</span></button>`;
+  // Firefly harita parçaları varsa onlar, yoksa CSS çizimi.
+  const bg = img('arka_harita');
+  const roof = img('harita_cati');
+  const sign = img('harita_tabela');
+  const bush = img('harita_cali');
+  const tree = img('harita_agac');
   const root = show(`
-    <div class="screen house-map">
+    <div class="screen house-map ${bg ? 'has-bg' : ''}" ${bg ? `style="background-image:url('${bg}')"` : ''}>
       <button class="round-btn map-back" data-act="back">⬅</button>
       <div class="map-talk">${talkBtn('ev')}</div>
+      ${tree ? `<img class="map-tree" src="${tree}" alt="" draggable="false"/>` : ''}
       <div class="map-house">
-        <div class="map-roof"><span class="map-name">${houseTitle()}</span></div>
+        <div class="map-roof ${roof ? 'has-img' : ''}">${roof ? `<img class="roof-img" src="${roof}" alt="" draggable="false"/>` : ''}<span class="map-name ${sign ? 'has-sign' : ''}" ${sign ? `style="background-image:url('${sign}')"` : ''}>${houseTitle()}</span></div>
         <div class="map-body">${FLOORS_MAP.map((row) => `<div class="map-floor">${row.map(card).join('')}</div>`).join('')}</div>
       </div>
       <div class="map-garden">${card('havuz')}<div class="map-grass"></div></div>
+      ${bush ? `<div class="map-bushes" style="background-image:url('${bush}')"></div>` : ''}
     </div>`);
   bindTalkButtons(root);
   on(root, 'back', back);

@@ -207,7 +207,9 @@ def prepare(name: str, src: Path):
     box = img.getbbox()
     if box:
         img = img.crop(box)
-    img.thumbnail((448, 448), Image.LANCZOS)
+    # Harita parçaları ekranı boydan boya kaplar: daha büyük kalsın.
+    m = 1200 if name.startswith("harita_") else 448
+    img.thumbnail((m, m), Image.LANCZOS)
     dest = OUT / f"{name}.webp"
     img.save(dest, "WEBP", quality=84, method=6)
     return dest
