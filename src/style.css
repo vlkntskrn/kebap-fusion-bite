@@ -3720,3 +3720,161 @@ body {
 .glow {
   background: radial-gradient(circle, rgba(255, 232, 160, 0.95), rgba(255, 210, 130, 0.45) 40%, rgba(255, 200, 120, 0.12) 65%, transparent 75%);
 }
+/* Bebekler zaten oturur çizildi: oturunca kesilmez, biraz aşağı iner. */
+.thing.baby.pose-otur > img {
+  clip-path: none;
+  transform: translateY(8%);
+}
+/* ---- giydirme katmanı */
+.dress-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.dr {
+  position: absolute;
+  display: block;
+}
+.dr img,
+.dr svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.dr.mk {
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  filter: blur(0.4px);
+}
+.dr.mk.round {
+  filter: blur(1.5px);
+}
+.dr.lips {
+  border-radius: 40% 40% 50% 50% / 30% 30% 70% 70%;
+  mix-blend-mode: normal;
+  opacity: 0.85;
+}
+.pose-otur:not(.pose-img):not(.baby) > .dress-layer {
+  transform: translateY(30%);
+  clip-path: inset(0 0 30% 0);
+}
+.pose-otur.pose-img > .dress-layer {
+  transform: translateY(18%);
+}
+.baby.pose-otur > .dress-layer {
+  transform: translateY(8%);
+}
+.pose-banyo > .dress-layer,
+.pose-yuz > .dress-layer {
+  transform: translateY(46%);
+  clip-path: inset(0 0 46% 0);
+}
+.item-tools button[data-tool='open'] {
+  background: #d9f7e8;
+}
+.item-tools button[data-tool='dress'] {
+  background: #ffe1ef;
+}
+/* ---- giydirme paneli */
+.dress-box {
+  width: min(84vw, 720px);
+}
+.dress-main {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  margin: 0 10px 10px;
+  min-height: 0;
+}
+.dress-prev {
+  flex: 0 0 34%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 70%, #fff 0, #ffe9f3 70%);
+  border-radius: 16px;
+}
+.dress-char {
+  position: relative;
+  width: 70%;
+}
+.dress-char > img {
+  display: block;
+  width: 100%;
+}
+.dress-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.dress-tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  flex: none;
+  padding-bottom: 2px;
+}
+.dress-tab {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #fff;
+  font-size: 26px;
+  box-shadow: inset 0 0 0 3px var(--line);
+}
+.dress-tab.on {
+  box-shadow: inset 0 0 0 4px var(--pink, #ff8fc0);
+  background: #fff4f9;
+}
+.dress-items {
+  flex: 1;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(62px, 1fr));
+  gap: 8px;
+  align-content: start;
+  background: #fff;
+  border-radius: 16px;
+  padding: 8px;
+}
+.dress-item {
+  aspect-ratio: 1;
+  border-radius: 14px;
+  background: #fff8ee;
+  padding: 8px;
+  font-size: 26px;
+  box-shadow: inset 0 0 0 2px var(--line);
+}
+.dress-item svg,
+.dress-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.dress-item.color {
+  background: var(--c);
+  border: 5px solid #fff;
+}
+.dress-item.on {
+  box-shadow: 0 0 0 4px var(--mint), inset 0 0 0 2px var(--line);
+}
+.dress-prev {
+  overflow: hidden;
+  padding: 6% 0 4%;
+}
+.dress-char {
+  width: auto;
+  height: 100%;
+  display: inline-block;
+}
+.dress-char > img {
+  width: auto;
+  height: 100%;
+}
+.dress-char {
+  height: min(58dvh, 340px);
+}

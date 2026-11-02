@@ -9,10 +9,11 @@ import { sfx } from './sfx';
 import { dollSvg, currentLook, shade } from './stage';
 import { genitive, TalkId } from './content';
 import { THINGS, itemImage, itemsForRoom, isCharAsset, isLockedItem, unlockItem, yRange, placeOf, heightPct, surfaceTop, aspectOf } from './house-items';
-import { Pose, isPerson, isPet, poseFor, isFood, isStove, isLamp, isHoldable, contentsOf, petSound, poseImage, boxKind, fitsIn, BoxKind } from './play';
+import { Pose, isPerson, isBaby, babyOnly, canMakeup, isPet, poseFor, isFood, isStove, isLamp, isHoldable, contentsOf, petSound, poseImage, boxKind, fitsIn, BoxKind } from './play';
 import { readingChallenge } from './challenge';
 import { imgTag, img } from './assets';
 import { roomIcon, MODE_ICONS } from './icons';
+import { Look, Slot, DRESS, dressLayer, dressThumb } from './dress';
 
 type RoomId = 'yatak' | 'mutfak' | 'banyo' | 'salon' | 'havuz' | 'oyun' | 'bebekodasi' | 'giyinme' | 'atolye' | 'muzik' | 'kutuphane';
 const ROOM_IDS: RoomId[] = ['yatak', 'bebekodasi', 'giyinme', 'banyo', 'oyun', 'atolye', 'muzik', 'kutuphane', 'salon', 'mutfak', 'havuz'];
@@ -244,6 +245,8 @@ interface Inst {
   in?: string[];
   /** Görünüm: yandan ya da arkadan (Firefly <kod>_yan / <kod>_arka). */
   v?: 'yan' | 'arka';
+  /** Karakterin aksesuarları ve makyajı. */
+  dr?: Look;
 }
 
 /** Eşyanın elde olan görünümleri: önden ('') + resmi olan yan/arka. */
@@ -340,26 +343,28 @@ function thingHtml(inst: Inst, room: RoomId): string {
   const fit = p === 'yat' && host ? Math.min(1, ((THINGS[host.id]?.w ?? 40) * 0.9) / ((inst.id === 'bebek' ? 26 : THINGS[inst.id]?.w ?? 10) * ar)) : 1;
   const fx = p === 'banyo' ? '<span class="fx-bubbles"><i></i><i></i><i></i><i></i><i></i></span>' : p === 'dus' ? '<span class="fx-rain"></span>' : p === 'yuz' ? '<span class="fx-ripple"></span>' : '';
   const mood = p === 'yat' ? '<span class="mood sleep">💤</span>' : '';
-  const cls = [p ? `pose pose-${p}` : '', inst.hd ? 'held' : '', inst.b ? `bite-${inst.b}` : '', isLamp(inst.id) ? `lamp ${inst.off ? 'off' : ''}` : '', boxKind(inst.id) ? 'openable' : ''].join(' ');
+  const cls = [p ? `pose pose-${p}` : '', /^bebek\d$/.test(inst.id) ? 'baby' : '', inst.hd ? 'held' : '', inst.b ? `bite-${inst.b}` : '', isLamp(inst.id) ? `lamp ${inst.off ? 'off' : ''}` : '', boxKind(inst.id) ? 'openable' : ''].join(' ');
   const vars = `--ar:${ar};--fit:${fit.toFixed(3)};`;
   if (inst.id === 'bebek') return `<div class="thing doll-thing ${cls}" data-u="${inst.u}" style="--w:${26 / WORLD}%;${vars}">${dollSvg(currentLook(), 'doll', { bg: false })}${fx}${mood}</div>`;
   const vid = inst.v && itemImage(`${inst.id}_${inst.v}`) ? `${inst.id}_${inst.v}` : inst.id;
   const t = THINGS[vid] ?? THINGS[inst.id];
   const src = itemImage(vid);
   if (!t || !src) return '';
-  const pimg = poseImage(inst.id, p);
+  const pimg = inst.v ? undefined : poseImage(inst.id, p);
   // Ocaktaki yemekten buhar çıkar.
   const cooking = host && isStove(host.id) && !inst.hd ? '<span class="fx-steam"><i></i><i></i><i></i></span>' : '';
   return `<div class="thing img-thing ${t.bob ? 'bob' : ''} ${inst.on ? 'on' : ''} ${cls} ${pimg ? 'pose-img' : ''}" data-u="${inst.u}" style="--w:${(pimg && p === 'yat' ? t.w * ar * fit : t.w) / WORLD}%;${vars}"><img src="${pimg ?? src}" alt="" draggable="false"/>${
     inst.c ? `<span class="tint" style="background:${inst.c};-webkit-mask-image:url('${src}');mask-image:url('${src}')"></span>` : ''
-  }${fx}${mood}${cooking}</div>`;
+  }${fx}${mood}${cooking}${inst.dr && !inst.v && p !== 'yat' ? dressLayer(inst.dr, pimg && p === 'otur' ? `${inst.id}_otur` : inst.id) : ''}</div>`;
 }
 
 function placeStyle(el: HTMLElement, inst: Inst, list: Inst[]) {
   el.style.left = `${inst.x / WORLD}%`;
   el.style.top = `${inst.y}%`;
   const host = inst.s ? list.find((h) => h.u === inst.s) : undefined;
-  el.style.zIndex = String(inst.hd ? 2600 : THINGS[inst.id]?.flat ? 1 : host ? 1100 + Math.round(host.y * 10) : 10 + Math.round(inst.y * 10));
+  // Arkası dönük sandalyede oturan karakter sandalyenin arkasında kalır (sırtı görünür, sandalye önünde).
+  const behind = host && inst.p === 'otur' && host.v === 'arka';
+  el.style.zIndex = String(inst.hd ? 2600 : THINGS[inst.id]?.flat ? 1 : behind ? 9 + Math.round(host.y * 10) : host ? 1100 + Math.round(host.y * 10) : 10 + Math.round(inst.y * 10));
   el.style.transform = `translate(-50%,-100%) rotate(${inst.r ?? 0}deg)${inst.fl ? ' scaleX(-1)' : ''}`;
 }
 
@@ -551,7 +556,7 @@ function showRoom(backToHome: () => void) {
 
   /* ---- seçili eşya: aynala / döndür */
   let selected: { el: HTMLElement; inst: Inst } | null = null;
-  const tools = hEl(`<div class="item-tools hidden"><button data-tool="flip" aria-label="Sağa sola çevir">⇋</button><button data-tool="turn" aria-label="Önden, yandan, arkadan">🔄</button><button data-tool="left" aria-label="Sola eğ">↺</button><button data-tool="right" aria-label="Sağa eğ">↻</button><button data-tool="reset" aria-label="Düzelt">⟲0</button></div>`);
+  const tools = hEl(`<div class="item-tools hidden"><button data-tool="open" aria-label="Aç">🚪</button><button data-tool="dress" aria-label="Giydir">👗</button><button data-tool="flip" aria-label="Sağa sola çevir">⇋</button><button data-tool="turn" aria-label="Önden, yandan, arkadan">🔄</button><button data-tool="left" aria-label="Sola eğ">↺</button><button data-tool="right" aria-label="Sağa eğ">↻</button><button data-tool="reset" aria-label="Düzelt">⟲0</button></div>`);
   roomEl.appendChild(tools);
   const hideTools = () => {
     selected = null;
@@ -568,7 +573,10 @@ function showRoom(backToHome: () => void) {
     selected = { el, inst };
     // Çevir: yalnızca yan/arka resmi olan eşyada. Eğme: küçük eşyalarda (ya da zaten eğilmişse düzeltmek için).
     const small = isHoldable(inst.id) || isFood(inst.id) || placeOf(inst.id) === 'surface' || placeOf(inst.id) === 'wall';
-    tools.querySelector<HTMLElement>('[data-tool="turn"]')!.hidden = viewsOf(inst.id).length < 2;
+    const seatHost = inst.p && inst.s ? list().find((h) => h.u === inst.s) : undefined;
+    tools.querySelector<HTMLElement>('[data-tool="turn"]')!.hidden = viewsOf((seatHost ?? inst).id).length < 2;
+    tools.querySelector<HTMLElement>('[data-tool="open"]')!.hidden = !contentsOf(inst.id, inst.in);
+    tools.querySelector<HTMLElement>('[data-tool="dress"]')!.hidden = !isPerson(inst.id) || inst.id === 'bebek';
     for (const k of ['left', 'right']) tools.querySelector<HTMLElement>(`[data-tool="${k}"]`)!.hidden = !small;
     tools.querySelector<HTMLElement>('[data-tool="reset"]')!.hidden = !inst.r && !inst.v && !inst.fl;
     tools.classList.remove('hidden');
@@ -578,54 +586,60 @@ function showRoom(backToHome: () => void) {
   tools.addEventListener('click', (e) => {
     const b = (e.target as Element).closest<HTMLElement>('[data-tool]');
     if (!b || !selected) return;
-    snapshot();
-    const { inst } = selected;
-    let { el } = selected;
+    const picked = selected.inst;
+    const pickedEl = selected.el;
     const t = b.dataset.tool;
+    if (t === 'open') {
+      const inside = contentsOf(picked.id, picked.in);
+      hideTools();
+      if (inside) openInside(pickedEl, picked, inside);
+      return;
+    }
+    if (t === 'dress') {
+      hideTools();
+      return openDress(picked);
+    }
+    snapshot();
+    // Oturan/yatan karakter çevrilince oturduğu eşya da çevrilir (ikisi birlikte döner).
+    const seatHost = picked.p && picked.s ? list().find((h) => h.u === picked.s) : undefined;
+    const inst = seatHost && (t === 'flip' || t === 'turn') ? seatHost : picked;
+    const kids: Inst[] = [];
+    for (let k = -1; k < kids.length; k++) {
+      const host = k < 0 ? inst : kids[k];
+      for (const r of list()) if (r.s === host.u && !kids.includes(r)) kids.push(r);
+    }
     if (t === 'turn') {
       const vs = viewsOf(inst.id);
+      if (vs.length < 2) return sfx.soft();
       const next = vs[(vs.indexOf(inst.v ?? '') + 1) % vs.length];
       if (next) inst.v = next;
       else delete inst.v;
-      const node = hEl(thingHtml(inst, current));
-      el.replaceWith(node);
-      el = node;
-      selected = { el, inst };
-      node.animate([{ scale: '0.6 1' }, { scale: '1 1' }], { duration: 250, easing: 'ease-out' });
+      // Üstünde oturan karakterler de aynı yöne döner.
+      for (const r of kids) if (r.p && isChar(r.id)) syncView(r, inst);
     } else if (t === 'flip') {
       inst.fl = !inst.fl;
+      if (!inst.fl) delete inst.fl;
       // Üstündekiler (oturan karakter, masadaki eşya, eldeki eşya) da aynı eksende döner.
-      const kids: Inst[] = [];
-      for (let k = -1; k < kids.length; k++) {
-        const host = k < 0 ? inst : kids[k];
-        for (const r of list()) if (r.s === host.u && !kids.includes(r)) kids.push(r);
-      }
       for (const r of kids) {
         r.x = inst.x - (r.x - inst.x);
         r.fl = !r.fl;
         if (!r.fl) delete r.fl;
-        const rel = elOf(r.u);
-        if (rel) place(rel, r);
       }
-    }
-    else if (t === 'left') inst.r = ((inst.r ?? 0) - 15) % 360;
+    } else if (t === 'left') inst.r = ((inst.r ?? 0) - 15) % 360;
     else if (t === 'right') inst.r = ((inst.r ?? 0) + 15) % 360;
     else if (t === 'reset') {
       inst.r = 0;
-      inst.fl = false;
-      if (inst.v) {
-        delete inst.v;
-        const node = hEl(thingHtml(inst, current));
-        el.replaceWith(node);
-        el = node;
-        selected = { el, inst };
-      }
+      delete inst.v;
+      for (const r of kids) if (r.p && isChar(r.id)) syncView(r, inst);
     }
     if (!inst.r) delete inst.r;
-    if (!inst.fl) delete inst.fl;
-    place(el, inst);
-    showTools(el, inst);
     commit();
+    renderLayer();
+    const el = elOf(picked.u);
+    if (el) {
+      el.animate([{ scale: '0.85 1' }, { scale: '1 1' }], { duration: 220, easing: 'ease-out' });
+      showTools(el, picked);
+    }
     sfx.tap();
   });
 
@@ -855,6 +869,11 @@ function showRoom(backToHome: () => void) {
   const isChar = (id: string) => id === 'bebek' || isCharAsset(id);
   const widthOf = (i: Inst) => (i.id === 'bebek' ? 26 : THINGS[i.id]?.w ?? 10);
   const heightOf = (i: Inst) => (i.id === 'bebek' ? ((26 * 4 * 1.6) / 440) * 100 : heightPct(i.id));
+  /** Oturan karakter eşyanın görünümüne uyar: eşya arkadan görünüyorsa karakterin de sırtı görünür. */
+  const syncView = (ch: Inst, host: Inst) => {
+    if (ch.p !== 'yat' && host.v && itemImage(`${ch.id}_${host.v}`)) ch.v = host.v;
+    else delete ch.v;
+  };
   /** Noktanın üstünde olduğu eşya (en öndeki). */
   const under = (x: number, y: number, ok: (h: Inst) => boolean, self: Inst) => {
     let best: Inst | null = null;
@@ -906,15 +925,16 @@ function showRoom(backToHome: () => void) {
     // Karakter: yatağa yatar, sandalyeye oturur, küvete girer, havuzda yüzer.
     if (isChar(inst.id)) {
       const person = isPerson(inst.id);
-      const host = under(inst.x, inst.y, (h) => !!poseFor(h.id) && !isChar(h.id), inst);
+      const host = under(inst.x, inst.y, (h) => !!poseFor(h.id) && !isChar(h.id) && (!babyOnly(h.id) || isBaby(inst.id)), inst);
       if (host) {
         const pf = poseFor(host.id)!;
         const p: Pose = person ? pf.p : pf.p === 'banyo' ? 'banyo' : 'otur';
         inst.s = host.u;
         inst.p = p;
-        // Karakter oturduğu/yattığı eşyanın baktığı yöne bakar.
+        // Karakter oturduğu/yattığı eşyanın baktığı yöne bakar (sağ/sol ve ön/yan/arka).
         if (host.fl) inst.fl = true;
         else delete inst.fl;
+        syncView(inst, host);
         inst.x = host.x;
         inst.y = host.y - heightOf(host) * (p === 'otur' && !person ? 0.5 : pf.at);
         commit();
@@ -1091,6 +1111,67 @@ function showRoom(backToHome: () => void) {
     window.addEventListener('pointerup', tapOut);
   });
 
+  /* ---- giydirme ve makyaj */
+  const dressEl = hEl('<div class="inside dress-panel hidden"></div>');
+  root.appendChild(dressEl);
+  let dressing: Inst | null = null;
+  let dslot: Slot = 'bas';
+  const slotsFor = (inst: Inst) => DRESS.filter((d) => !d.makeup || canMakeup(inst.id));
+  const renderDress = () => {
+    const inst = dressing;
+    if (!inst) return;
+    const slots = slotsFor(inst);
+    const s = slots.find((d) => d.k === dslot) ?? slots[0];
+    dslot = s.k;
+    const cur = inst.dr?.[s.k];
+    const opts = s.colors
+      ? s.colors.map((c) => `<button class="dress-item color ${cur === c ? 'on' : ''}" data-v="${c}" style="--c:${c}"></button>`).join('')
+      : (s.items ?? []).map((i) => `<button class="dress-item ${cur === i.id ? 'on' : ''}" data-v="${i.id}">${dressThumb(i)}</button>`).join('');
+    dressEl.innerHTML = `<div class="cabinet dress-box">
+        <div class="cab-top"><span class="dress-title">👗</span><button class="cab-close" data-act="dress-close" aria-label="Kapat">✕</button></div>
+        <div class="dress-main">
+          <div class="dress-prev"><div class="dress-char"><img src="${itemImage(inst.id)}" alt="" draggable="false"/>${dressLayer(inst.dr, inst.id)}</div></div>
+          <div class="dress-side">
+            <div class="dress-tabs">${slots.map((d) => `<button class="dress-tab ${d.k === dslot ? 'on' : ''}" data-slot="${d.k}">${d.icon}</button>`).join('')}</div>
+            <div class="dress-items"><button class="dress-item none ${cur ? '' : 'on'}" data-v="">🚫</button>${opts}</div>
+          </div>
+        </div>
+      </div>`;
+  };
+  const openDress = (inst: Inst) => {
+    dressing = inst;
+    renderDress();
+    dressEl.classList.remove('hidden');
+    sfx.door();
+  };
+  dressEl.addEventListener('click', (e) => {
+    const t = e.target as Element;
+    if (t === dressEl || t.closest('[data-act="dress-close"]')) {
+      dressEl.classList.add('hidden');
+      dressing = null;
+      return sfx.close();
+    }
+    const tab = t.closest<HTMLElement>('.dress-tab');
+    if (tab) {
+      dslot = tab.dataset.slot as Slot;
+      sfx.tap();
+      return renderDress();
+    }
+    const b = t.closest<HTMLElement>('.dress-item');
+    if (!b || !dressing) return;
+    snapshot();
+    const v = b.dataset.v;
+    dressing.dr = { ...(dressing.dr ?? {}) };
+    if (v) dressing.dr[dslot] = v;
+    else delete dressing.dr[dslot];
+    if (!Object.keys(dressing.dr).length) delete dressing.dr;
+    commit();
+    renderLayer();
+    renderDress();
+    sfx.paint();
+    mood(dressing.u, '😍', 900);
+  });
+
   /* ---- sürükle-bırak */
   function drag(el: HTMLElement, inst: Inst, ev: PointerEvent, fresh: boolean) {
     ev.preventDefault();
@@ -1237,9 +1318,12 @@ function showRoom(backToHome: () => void) {
       mood(inst.u, ['😊', '😄', '🎵', '💖'][Math.floor(Math.random() * 4)], 1200);
       return;
     }
-    const inside = contentsOf(inst.id, inst.in);
-    if (inside) return openInside(el, inst, inside);
     showTools(el, inst);
+    // Açılabilen eşyada araç çubuğundaki kapı düğmesi dikkat çeksin.
+    if (contentsOf(inst.id, inst.in)) {
+      tools.querySelector('[data-tool="open"]')?.animate([{ scale: '1' }, { scale: '1.25' }, { scale: '1' }], { duration: 500, iterations: 2 });
+      return sfx.click();
+    }
     if (isLamp(inst.id)) {
       snapshot();
       inst.off = !inst.off;

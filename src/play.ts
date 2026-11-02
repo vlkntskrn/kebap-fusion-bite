@@ -14,10 +14,16 @@ export type Pose = 'otur' | 'yat' | 'banyo' | 'dus' | 'yuz';
 const PERSON = R('bebek$|bebek1$|bebek2$|kiz\\d$|oglan\\d$|anne$|baba$|nine$|dede$|ogretmen$');
 const PET = R('kedi\\d?$|kopek\\d?$|tavsan$|hamster$|papagan$|kaplumbaga$|ordekyavrusu$|midilli$|panda$');
 export const isPerson = (id: string) => PERSON.test(id);
+/** Bebek karakterler (mama sandalyesi, beşik, bebek arabası yalnızca onlar için). */
+export const isBaby = (id: string) => /^bebek\d$/.test(id);
+const BABY_ONLY = R('mamasandalyesi$|sallanan_besik$|v_besik_|bebek_arabasi$|v_bebek_arabasi_|bebek_kuveti$|bebek_salincagi$|oyun_parki$|besik$');
+export const babyOnly = (id: string) => BABY_ONLY.test(id);
+/** Makyaj yapılabilen karakterler (kızlar ve kadınlar). */
+export const canMakeup = (id: string) => /^(kiz\d|anne|nine|ogretmen|bebek2)$/.test(id);
 export const isPet = (id: string) => PET.test(id);
 
-const BED = R('kaydirakli_yatak$|sallanan_besik$|v_besik_|oyun_parki$|yatak$|yuvarlakyatak$|cibinlikliyatak$|ranza$|v_yatak_|kediyatagi$|v_evcil_esya_01$');
-const SEAT = R('ic_salincak$|bebek_salincagi$|hikaye_sandalyesi$|v_top_havuzu_|v_kitap_kosesi_|emzirme_koltugu$|sallanan_at$|kapitone_puf$|sanat_taburesi$|okuma_koltugu$|okuma_minderi$|v_okuma_koltugu_|akulu_araba$|dev_ayi$|top_havuzu$|kucuk_sahne$|sandalye$|v_sandalye_|tabure$|koltuk$|berjer$|kanepe$|kosekanepe$|v_kanepe_|v_koltuk_|v_oturak_|puf$|armut$|sezlong$|mamasandalyesi$|salincak$|cicekminder$|v_bahce_mobilya_0[1-4]$');
+const BED = R('besik$|kaydirakli_yatak$|sallanan_besik$|v_besik_|oyun_parki$|yatak$|yuvarlakyatak$|cibinlikliyatak$|ranza$|v_yatak_|kediyatagi$|v_evcil_esya_01$');
+const SEAT = R('bebek_arabasi$|v_bebek_arabasi_|ic_salincak$|bebek_salincagi$|hikaye_sandalyesi$|v_top_havuzu_|v_kitap_kosesi_|emzirme_koltugu$|sallanan_at$|kapitone_puf$|sanat_taburesi$|okuma_koltugu$|okuma_minderi$|v_okuma_koltugu_|akulu_araba$|dev_ayi$|top_havuzu$|kucuk_sahne$|sandalye$|v_sandalye_|tabure$|koltuk$|berjer$|kanepe$|kosekanepe$|v_kanepe_|v_koltuk_|v_oturak_|puf$|armut$|sezlong$|mamasandalyesi$|salincak$|cicekminder$|v_bahce_mobilya_0[1-4]$');
 const TOILET = R('tuvalet$|v_tuvalet_');
 const TUB = R('bebek_kuveti$|kuvet$|jakuzi$|v_kuvet_');
 const SHOWER = R('duskabini$|v_dus_');
