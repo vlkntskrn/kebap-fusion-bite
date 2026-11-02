@@ -56,6 +56,16 @@ def job(code: str):
             ref = next((src(x) for x in ("duvar_01", "zemin_01") if have(x)), None)
             p = f"{code} — 2D flat vector cartoon seamless pattern, NOT a photo: {en}. {C.STYLE_TILE}"
             return (p + STYLE_NOTE if ref else p), [ref] if ref else [], "1:1"
+    for c, _tr, en in C.ROOM_ICONS2:
+        if c == code:
+            ref = src("ui_oda_yatak")
+            p = C.prompt(code, en, C.STYLE_UI)
+            return (p + STYLE_NOTE if ref else p), [ref] if ref else [], "1:1"
+    for c, _r, _w, _f, _tr, en, _l in C.NEW_ROWS + C.NEW_VAR_ROWS:
+        if c == code:
+            ref = src("dolap")
+            p = C.prompt(code, en, C.STYLE_ITEM)
+            return (p + STYLE_NOTE if ref else p), [ref] if ref else [], "1:1"
     for c, _tr, en in C.WINDOWS + C.DOORS:
         if c == code:
             ref = next((src(x) for x in ("pencere_02", "kapi_01") if have(x)), None)
@@ -70,6 +80,7 @@ GROUPS = {
     "ic": lambda: [c for c, *_ in C.INTERIORS],
     "yuzey": lambda: [c for c, *_ in C.WALLPAPERS + C.FLOORTILES],
     "yapi": lambda: [c for c, *_ in C.WINDOWS + C.DOORS],
+    "yeni": lambda: [c for c, *_ in C.ROOM_ICONS2 + C.NEW_ROWS + C.NEW_VAR_ROWS],
 }
 
 

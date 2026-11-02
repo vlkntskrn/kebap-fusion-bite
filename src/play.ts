@@ -16,10 +16,10 @@ const PET = R('kedi\\d?$|kopek\\d?$|tavsan$|hamster$|papagan$|kaplumbaga$|ordeky
 export const isPerson = (id: string) => PERSON.test(id);
 export const isPet = (id: string) => PET.test(id);
 
-const BED = R('yatak$|yuvarlakyatak$|cibinlikliyatak$|ranza$|v_yatak_|kediyatagi$|v_evcil_esya_01$');
-const SEAT = R('sandalye$|v_sandalye_|tabure$|koltuk$|berjer$|kanepe$|kosekanepe$|v_kanepe_|v_koltuk_|v_oturak_|puf$|armut$|sezlong$|mamasandalyesi$|salincak$|cicekminder$|v_bahce_mobilya_0[1-4]$');
+const BED = R('sallanan_besik$|v_besik_|oyun_parki$|yatak$|yuvarlakyatak$|cibinlikliyatak$|ranza$|v_yatak_|kediyatagi$|v_evcil_esya_01$');
+const SEAT = R('emzirme_koltugu$|sallanan_at$|kapitone_puf$|sanat_taburesi$|okuma_koltugu$|okuma_minderi$|v_okuma_koltugu_|akulu_araba$|dev_ayi$|top_havuzu$|kucuk_sahne$|sandalye$|v_sandalye_|tabure$|koltuk$|berjer$|kanepe$|kosekanepe$|v_kanepe_|v_koltuk_|v_oturak_|puf$|armut$|sezlong$|mamasandalyesi$|salincak$|cicekminder$|v_bahce_mobilya_0[1-4]$');
 const TOILET = R('tuvalet$|v_tuvalet_');
-const TUB = R('kuvet$|jakuzi$|v_kuvet_');
+const TUB = R('bebek_kuveti$|kuvet$|jakuzi$|v_kuvet_');
 const SHOWER = R('duskabini$|v_dus_');
 
 /** Eşyaya bırakılan karakterin duruşu ve oturduğu yerin yüksekliği (eşya boyunun tabandan oranı). */
@@ -31,17 +31,17 @@ export function poseFor(hostId: string): { p: Pose; at: number } | null {
   return null;
 }
 
-const FOOD = R('v_yemek_|pasta$|kurabiye$|pizza$|hamburger$|salata$|cilek$|meyve$|ekmek$|sut$|limonata$|dondurma$|kelime_elma$|kelime_muz$|kelime_armut$|kelime_simit$|kelime_kek$|kelime_peynir$|kelime_limon$|kelime_havuc$|kelime_yumurta$|kelime_pasta$|kelime_dondurma$|kelime_ekmek$|kelime_patates$|kelime_et$');
+const FOOD = R('biberon$|v_yemek_|pasta$|kurabiye$|pizza$|hamburger$|salata$|cilek$|meyve$|ekmek$|sut$|limonata$|dondurma$|kelime_elma$|kelime_muz$|kelime_armut$|kelime_simit$|kelime_kek$|kelime_peynir$|kelime_limon$|kelime_havuc$|kelime_yumurta$|kelime_pasta$|kelime_dondurma$|kelime_ekmek$|kelime_patates$|kelime_et$');
 export const isFood = (id: string) => FOOD.test(id);
 
 const STOVE = R('ocak$|v_ocak_|firin$|mangal$');
 export const isStove = (id: string) => STOVE.test(id);
 
-const LAMP = R('abajur$|lambader$|gecelambasi$|perilamba$|sarkit$|disko$|v_lamba_|somine$|kelime_lamba$|kelime_mum$');
+const LAMP = R('ay_gece_lambasi$|masa_lambasi$|baykus_lamba$|sahne_isigi$|abajur$|lambader$|gecelambasi$|perilamba$|sarkit$|disko$|v_lamba_|somine$|kelime_lamba$|kelime_mum$');
 export const isLamp = (id: string) => LAMP.test(id);
 
 /** Elde tutulabilecek küçük eşyalar (yiyecek, oyuncak, kelime resimleri…). */
-const HOLD = R('v_yemek_|v_oyuncak_|v_alet_0[1-2]$|kelime_|pasta$|kurabiye$|pizza$|hamburger$|salata$|cilek$|meyve$|ekmek$|sut$|limonata$|dondurma$|kahve$|ayi$|unicorn$|top$|ordek$|dissfircasi$|sabunluk$|kumkovasi$|v_havuz_oyuncak_0[1-2]$|v_banyo_aksesuar_0[3-5]$|v_muzik_0[1,6]$|robot$');
+const HOLD = R('giysi_|v_pelus_|biberon$|emzik$|cingirak$|taki_kutusu$|parfum_seti$|sac_kurutma$|boya_paleti$|firca_kupasi$|boya_tupleri$|pastel_kutusu$|makas_yapistirici$|mikrofon$|kulaklik$|tef$|trompet$|flut$|keman$|kitap_yigini$|acik_kitap$|kum_saati$|v_yemek_|v_oyuncak_|v_alet_0[1-2]$|kelime_|pasta$|kurabiye$|pizza$|hamburger$|salata$|cilek$|meyve$|ekmek$|sut$|limonata$|dondurma$|kahve$|ayi$|unicorn$|top$|ordek$|dissfircasi$|sabunluk$|kumkovasi$|v_havuz_oyuncak_0[1-2]$|v_banyo_aksesuar_0[3-5]$|v_muzik_0[1,6]$|robot$');
 export const isHoldable = (id: string) => HOLD.test(id);
 
 /* ------------------------------------------------------------ açılan eşyalar */
@@ -52,10 +52,15 @@ export type BoxKind = 'buzdolabi' | 'firin' | 'dolap' | 'sandik' | 'raf' | 'bany
 const CONTAINERS: [RegExp, BoxKind, string[]][] = [
   [R('buzdolabi|retrobuzdolabi$'), 'buzdolabi', [...range('v_yemek_', 12), 'pasta', 'meyve', 'sut', 'limonata', 'salata', 'cilek', 'pizza', 'hamburger', 'ekmek', 'kurabiye', 'dondurma', 'kelime_elma', 'kelime_muz', 'kelime_peynir', 'kelime_yumurta', 'kelime_limon', 'kelime_havuc']],
   [R('firin$|v_ocak_'), 'firin', ['pasta', 'kurabiye', 'pizza', 'ekmek', 'v_yemek_02', 'v_yemek_03', 'v_yemek_05', 'v_yemek_09', 'kelime_kek', 'kelime_simit', 'kelime_patates']],
-  [R('dolap$|v_dolap_|sifonyer$|kiyafetaski$'), 'dolap', ['kelime_ceket', 'kelime_etek', 'kelime_corap', 'kelime_sapka', 'kelime_canta', 'bornoz', 'v_banyo_aksesuar_07', 'havlu', 'kelime_semsiye']],
-  [R('oyuncaksandigi$|oyunrafi$'), 'sandik', [...range('v_oyuncak_', 9), 'ayi', 'unicorn', 'top', 'robot', 'kelime_top', 'kelime_balon', 'kelime_ucak', 'kelime_gemi', 'kelime_araba']],
+  [R('acik_gardirop$|ayakkabi_rafi$|bebek_dolabi$|ada_dolap$'), 'dolap', ['giysi_elbise', 'giysi_tisort', 'giysi_kot', 'giysi_mont', 'giysi_pijama', 'giysi_ayakkabi', 'giysi_bot', 'giysi_canta', 'giysi_atki', 'giysi_tac', 'giysi_kolye', ...range('v_elbise_', 6), 'kelime_sapka', 'kelime_corap']],
+  [R('dolap$|v_dolap_|sifonyer$|kiyafetaski$'), 'dolap', ['giysi_elbise', 'giysi_tisort', 'giysi_kot', 'giysi_pijama', 'giysi_mont', 'kelime_ceket', 'kelime_etek', 'kelime_corap', 'kelime_sapka', 'kelime_canta', 'bornoz', 'v_banyo_aksesuar_07', 'havlu', 'kelime_semsiye']],
+  [R('oyuncaksandigi$|oyunrafi$|oyuncak_dolabi$|oyuncak_kutusu$'), 'sandik', [...range('v_pelus_', 6), 'dev_ayi', 'cingirak', ...range('v_oyuncak_', 9), 'ayi', 'unicorn', 'top', 'robot', 'kelime_top', 'kelime_balon', 'kelime_ucak', 'kelime_gemi', 'kelime_araba']],
   [R('tabakdolabi$|v_tabak_|tezgah$|v_tezgah_'), 'raf', [...range('v_alet_', 10), 'kahve', 'caydanlik', 'kettle', 'tost', 'blender', 'mikser', 'v_yemek_01', 'v_yemek_07', 'v_yemek_10']],
   [R('banyolavabo$|v_lavabo_'), 'banyo', ['dissfircasi', 'sabunluk', 'ordek', 'sampuan', 'v_banyo_aksesuar_03', 'v_banyo_aksesuar_04', 'v_banyo_aksesuar_05', 'v_banyo_aksesuar_06', 'havlu']],
+  [R('buyuk_kitaplik$|agac_kitaplik$|v_kitaplik_|kitap_sepeti$|yazi_masasi$'), 'raf', ['kitap_yigini', 'acik_kitap', 'kelime_kitap', 'kure', 'kum_saati', 'baykus_lamba', 'masa_lambasi', 'kelime_kalem', 'teleskop']],
+  [R('sanat_dolabi$|boya_masasi$'), 'raf', ['boya_paleti', 'firca_kupasi', 'boya_tupleri', 'pastel_kutusu', 'makas_yapistirici', 'boya_kovasi', 'kelime_kalem']],
+  [R('alt_degistirme$'), 'cekmece', ['biberon', 'emzik', 'cingirak', 'bez_yigini', 'ay_gece_lambasi', ...range('v_pelus_', 6)]],
+  [R('oyuncak_mutfak$'), 'firin', ['pasta', 'kurabiye', 'pizza', 'v_yemek_08', 'v_yemek_05', 'meyve']],
   [R('komodin$|kitaplik$'), 'cekmece', ['gecelambasi', 'kelime_kitap', 'kelime_kalem', 'ayi', 'kelime_saat', 'kelime_mum']],
 ];
 export const boxKind = (id: string): BoxKind | null => CONTAINERS.find(([re]) => re.test(id))?.[1] ?? null;

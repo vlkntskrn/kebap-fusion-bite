@@ -14,8 +14,10 @@ import { readingChallenge } from './challenge';
 import { imgTag, img } from './assets';
 import { roomIcon, MODE_ICONS } from './icons';
 
-type RoomId = 'yatak' | 'mutfak' | 'banyo' | 'salon' | 'havuz';
-const ROOM_IDS: RoomId[] = ['yatak', 'banyo', 'salon', 'mutfak', 'havuz'];
+type RoomId = 'yatak' | 'mutfak' | 'banyo' | 'salon' | 'havuz' | 'oyun' | 'bebekodasi' | 'giyinme' | 'atolye' | 'muzik' | 'kutuphane';
+const ROOM_IDS: RoomId[] = ['yatak', 'bebekodasi', 'giyinme', 'banyo', 'oyun', 'atolye', 'muzik', 'kutuphane', 'salon', 'mutfak', 'havuz'];
+/** İkinci aşama odaları. */
+const NEW_ROOMS: RoomId[] = ['oyun', 'bebekodasi', 'giyinme', 'atolye', 'muzik', 'kutuphane'];
 type Mode = 'tasi' | 'boya' | 'tasarla';
 
 const PALETTE = ['#ffffff', '#fff1c9', '#ffd6e7', '#ffb3d1', '#ff8fc0', '#ff6b6b', '#ffa94d', '#ffd93d', '#b5e550', '#a8e6cf', '#5fd39a', '#9fd8ff', '#5fd3f3', '#4d96ff', '#c9b6ff', '#c77dff', '#e3b98a', '#c98a5a', '#9c8f86', '#3d3553'];
@@ -178,6 +180,36 @@ const ROOMS: Room[] = [
     start: [['v_hali_02', 50, 94], ['tv', 22, 76], ['kanepe', 64, 84], ['sehpa', 42, 92], ['bitki', 92, 80], ['kedi', 30, 96], ['cerceve', 66, 30]],
   },
   {
+    id: 'oyun', icon: '🧸',
+    style: { wall: tile('duvar_08', 'yildiz'), wallColor: '#fff6e6', floor: tile('zemin_05', 'dama'), floorColor: '#ffe3ef', view: 'gunes' }, win: 'pencere_03',
+    start: [['puzzle_minder', 50, 96], ['oyun_cadiri', 20, 86], ['top_havuzu', 48, 90], ['sallanan_at', 72, 92], ['buyuk_bebek_evi', 88, 82], ['oyuncaksandigi', 34, 96], ['v_oyuncak_05', 60, 97], ['unicorn', 8, 97]],
+  },
+  {
+    id: 'bebekodasi', icon: '🍼',
+    style: { wall: tile('duvar_04', 'puan'), wallColor: '#e3f1ff', floor: tile('zemin_08', 'hali'), floorColor: '#f1e3ff', view: 'gunes' }, win: 'pencere_04',
+    start: [['bulut_hali', 50, 96], ['sallanan_besik', 30, 88], ['alt_degistirme', 66, 84], ['emzirme_koltugu', 86, 88], ['donence', 30, 30], ['bebek_arabasi', 12, 92], ['bebek1', 46, 97], ['mamasandalyesi', 56, 90]],
+  },
+  {
+    id: 'giyinme', icon: '👗',
+    style: { wall: tile('duvar_06', 'kalp'), wallColor: '#ffe3ef', floor: tile('zemin_09', 'parke'), floorColor: '#fff7ec', view: 'gunes' }, win: 'pencere_01',
+    start: [['acik_gardirop', 18, 84], ['isikli_boy_aynasi', 40, 82], ['manken', 58, 86], ['ada_dolap', 76, 90], ['kapitone_puf', 90, 94], ['kiyafetaski', 6, 88], ['boyaynasi', 96, 84]],
+  },
+  {
+    id: 'atolye', icon: '🎨',
+    style: { wall: tile('duvar_10', 'tas'), wallColor: '#fff6e6', floor: tile('zemin_03', 'parke'), floorColor: '#f2ece4', view: 'gunes' }, win: 'pencere_06',
+    start: [['sovale', 24, 88], ['boya_masasi', 54, 92], ['sanat_dolabi', 84, 84], ['resim_ipi', 54, 30], ['sanat_taburesi', 40, 95], ['yazitahtasi', 8, 86], ['comlek_carki', 70, 96]],
+  },
+  {
+    id: 'muzik', icon: '🎸',
+    style: { wall: tile('duvar_05', 'yildiz'), wallColor: '#2d3a66', floor: tile('zemin_02', 'balik'), floorColor: '#e7b98a', view: 'gece' }, win: 'pencere_05',
+    start: [['kucuk_sahne', 50, 94], ['davul_seti', 30, 86], ['kuyruklu_piyano', 76, 88], ['hoparlor', 10, 88], ['sahne_isigi', 92, 86], ['mikrofon', 50, 84], ['piyano', 76, 84], ['v_muzik_01', 60, 95]],
+  },
+  {
+    id: 'kutuphane', icon: '📚',
+    style: { wall: tile('duvar_03', 'cicek'), wallColor: '#e3f6ec', floor: tile('zemin_01', 'parke'), floorColor: '#f3c99b', view: 'gunes' }, win: 'pencere_02',
+    start: [['buyuk_kitaplik', 14, 84], ['agac_kitaplik', 86, 84], ['okuma_koltugu', 36, 90], ['yazi_masasi', 64, 90], ['okuma_cadiri', 50, 84], ['kure', 64, 74], ['dunya_haritasi', 50, 30], ['kitaplik', 24, 84], ['koltuk', 76, 90]],
+  },
+  {
     id: 'havuz', icon: '🏖️',
     style: { wall: 'duz', wallColor: '#ffe3ef', floor: tile('zemin_10', 'fayans'), floorColor: '#fff1e6', view: 'gunes' }, win: '',
     start: [['palmiye', 10, 66], ['semsiye', 50, 66], ['sezlong', 30, 70], ['sezlong', 72, 70], ['buzkutusu', 50, 70], ['flamingo', 74, 94], ['simit', 28, 92]],
@@ -255,6 +287,16 @@ function house(): Record<string, Inst[]> {
       if (st.floor === old[1]) st.floor = def.floor;
     }
     progress.houseV = 5;
+    commit();
+  }
+  // Yeni odaların eşya görselleri sonradan gelince, odaya henüz eklenmemiş ilk eşyalar bir kez eklenir.
+  if (!progress.seed2 && itemImage('oyun_cadiri')) {
+    for (const r of ROOMS) {
+      const list = progress.house[r.id];
+      if (!NEW_ROOMS.includes(r.id) || !list) continue;
+      for (const [id, x, y] of r.start) if (keep(id) && !list.some((i) => i.id === id)) list.push({ u: nextU(list), id, x: x + 100, y });
+    }
+    progress.seed2 = true;
     commit();
   }
   let created = false;
@@ -366,6 +408,12 @@ const re = (s: string) => new RegExp(s);
 const CATS: Cat[] = [
   { id: 'kisi', icons: ['kiz1', 'kiz2'], test: (id) => id === 'bebek' || (isCharAsset(id) && re('^(kiz|oglan|bebek|anne|baba|nine|dede|ogretmen)').test(id)) },
   { id: 'hayvan', icons: ['kedi', 'kopek'], test: (id) => isCharAsset(id) || re('^(v_evcil_esya|kediyatagi|kediagaci|kuskafesi|akvaryum|kopekkulubesi)').test(id) },
+  { id: 'bebekesya', icons: ['sallanan_besik', 'bebek1'], test: (id) => re('^(sallanan_besik|alt_degistirme|emzirme_koltugu|donence|bebek_arabasi|oyun_parki|bebek_kuveti|biberon|emzik|cingirak|bez_yigini|bebek_dolabi|ayicik_rafi|bulut_hali|ay_gece_lambasi|v_besik_|v_bebek_arabasi_|mamasandalyesi|besik)').test(id) },
+  { id: 'giysi', icons: ['giysi_elbise', 'kiyafetaski'], test: (id) => re('^(acik_gardirop|ayakkabi_rafi|canta_rafi|isikli_boy_aynasi|taki_kutusu|sapka_standi|manken|kapitone_puf|ada_dolap|parfum_seti|deneme_kabini|sac_kurutma|tac_vitrini|giysi_|v_manken_|v_elbise_)').test(id) },
+  { id: 'sanat', icons: ['sovale', 'yazitahtasi'], test: (id) => re('^(sovale|boya_|firca_kupasi|comlek_carki|heykel_kaidesi|kagit_rulosu|sanat_|resim_ipi|pastel_kutusu|makas_yapistirici|onluk_askisi|v_sovale_|v_cocuk_resmi_|yazitahtasi)').test(id) },
+  { id: 'muzik', icons: ['elektro_gitar', 'piyano'], test: (id) => re('^(kucuk_sahne|mikrofon|davul_seti|elektro_gitar|keman|kuyruklu_piyano|hoparlor|nota_|plak_calar|kulaklik|sahne_isigi|tef$|trompet|flut|karaoke_makinesi|v_gitar_|piyano|v_muzik_)').test(id) },
+  { id: 'kitap', icons: ['buyuk_kitaplik', 'kitaplik'], test: (id) => re('^(buyuk_kitaplik|okuma_|kitap_|acik_kitap|kure$|masa_lambasi|yazi_masasi|kitaplik|agac_kitaplik|teleskop|dunya_haritasi|kum_saati|baykus_lamba|v_kitaplik_|v_okuma_koltugu_)').test(id) },
+  { id: 'oyunodasi', icons: ['oyun_cadiri', 'v_oyuncak_05'], test: (id) => re('^(oyun_cadiri|top_havuzu|oyuncak_mutfak|tren_rayi|lego_masasi|sallanan_at|oyuncak_dolabi|puzzle_minder|buyuk_bebek_evi|tirmanma_ucgeni|kukla_tiyatrosu|akulu_araba|dev_ayi|balon_demeti|oyuncak_kutusu|v_cadir_|v_pelus_)').test(id) },
   { id: 'yatak', icons: ['v_yatak_03', 'yatak'], test: (id) => re('^(yatak|yuvarlakyatak|cibinlikliyatak|ranza|besik|v_yatak_|dolap|v_dolap_|kiyafetaski|sifonyer|komodin|makyaj|v_makyaj_|kozmetik|boyaynasi)').test(id) },
   { id: 'oturma', icons: ['kanepe', 'v_kanepe_04'], test: (id) => re('^(kanepe|kosekanepe|berjer|v_kanepe_|v_koltuk_|koltuk$|armut|puf|v_oturak_|cicekminder|sandalye|tabure|v_sandalye_|mamasandalyesi)').test(id) },
   { id: 'masa', icons: ['masa', 'v_masa_03'], test: (id) => re('^(masa|yuvarlakmasa|v_masa|sehpa|v_sehpa_|calismamasasi|bilgisayar|tvunitesi|kitaplik|oyunrafi|v_raf_02|v_raf_05)').test(id) },
@@ -387,7 +435,8 @@ const catIcon = (c: Cat) => {
 
 /** Evin kesiti: üst kat (yatak odası, banyo), alt kat (salon, mutfak), yanda havuz bahçesi. */
 const FLOORS_MAP: RoomId[][] = [
-  ['yatak', 'banyo'],
+  ['yatak', 'bebekodasi', 'giyinme', 'banyo'],
+  ['oyun', 'atolye', 'muzik', 'kutuphane'],
   ['salon', 'mutfak'],
 ];
 let current: RoomId = 'yatak';
@@ -410,7 +459,7 @@ export function showHouse(back: () => void) {
       ${tree ? `<img class="map-tree" src="${tree}" alt="" draggable="false"/>` : ''}
       <div class="map-house">
         <div class="map-roof ${roof ? 'has-img' : ''}">${roof ? `<img class="roof-img" src="${roof}" alt="" draggable="false"/>` : ''}<span class="map-name ${sign ? 'has-sign' : ''}" ${sign ? `style="background-image:url('${sign}')"` : ''}>${houseTitle()}</span></div>
-        <div class="map-body">${FLOORS_MAP.map((row) => `<div class="map-floor">${row.map(card).join('')}</div>`).join('')}</div>
+        <div class="map-body">${FLOORS_MAP.map((row) => `<div class="map-floor ${row.length === 2 ? 'wide' : ''}">${row.map(card).join('')}</div>`).join('')}</div>
       </div>
       <div class="map-garden">${card('havuz')}<div class="map-grass"></div></div>
       ${bush ? `<div class="map-bushes" style="background-image:url('${bush}')"></div>` : ''}

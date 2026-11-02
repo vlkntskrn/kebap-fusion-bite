@@ -17,6 +17,8 @@ export interface Progress {
   house?: Record<string, { u: number; id: string; x: number; y: number; on?: boolean; c?: string }[]>;
   /** Evde gece mi. */
   night?: boolean;
+  /** Yeni odaların ilk eşyaları eklendi mi. */
+  seed2?: boolean;
   /** Ev kayıt biçimi (2: geniş oda). */
   houseV?: number;
   /** Odaların duvar deseni/rengi, zemini ve pencere manzarası. */

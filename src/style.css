@@ -3690,3 +3690,26 @@ body {
 .cab-body.has-art .cab-glow {
   display: none;
 }
+/* Harita: üç kat, dörderli odalar; zemin katta iki geniş oda */
+.map-floor {
+  grid-template-columns: repeat(4, 1fr);
+}
+.map-floor.wide {
+  grid-template-columns: 1fr 1fr;
+}
+.map-floor.wide .map-room {
+  aspect-ratio: 3.6;
+}
+.map-floor:not(.wide) .map-label {
+  width: 28px;
+  height: 28px;
+  padding: 3px;
+  left: 4px;
+  top: 4px;
+}
+.map-floor.wide .map-world {
+  width: 100%;
+  height: auto;
+  top: auto;
+  bottom: 0;
+}

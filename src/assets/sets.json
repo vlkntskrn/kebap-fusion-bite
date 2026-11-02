@@ -776,6 +776,224 @@
   "ogretmen_otur",
   "ogretmen_yat"
  ],
+ "set_yeni_oyun_01": [
+  "oyun_cadiri",
+  "top_havuzu",
+  "oyuncak_mutfak",
+  "tren_rayi",
+  "lego_masasi",
+  "sallanan_at",
+  "oyuncak_dolabi",
+  "puzzle_minder",
+  "buyuk_bebek_evi"
+ ],
+ "set_yeni_oyun_02": [
+  "tirmanma_ucgeni",
+  "kukla_tiyatrosu",
+  "akulu_araba",
+  "dev_ayi",
+  "balon_demeti",
+  "oyuncak_kutusu"
+ ],
+ "set_yeni_cesit_oyun_01": [
+  "v_cadir_01",
+  "v_cadir_02",
+  "v_cadir_03",
+  "v_cadir_04",
+  "v_cadir_05",
+  "v_pelus_01",
+  "v_pelus_02",
+  "v_pelus_03",
+  "v_pelus_04"
+ ],
+ "set_yeni_cesit_oyun_02": [
+  "v_pelus_05",
+  "v_pelus_06"
+ ],
+ "set_yeni_bebekodasi_01": [
+  "sallanan_besik",
+  "alt_degistirme",
+  "emzirme_koltugu",
+  "donence",
+  "bebek_arabasi",
+  "oyun_parki",
+  "bebek_kuveti",
+  "biberon",
+  "emzik"
+ ],
+ "set_yeni_bebekodasi_02": [
+  "cingirak",
+  "bez_yigini",
+  "bebek_dolabi",
+  "ayicik_rafi",
+  "bulut_hali",
+  "ay_gece_lambasi"
+ ],
+ "set_yeni_cesit_bebekodasi_01": [
+  "v_besik_01",
+  "v_besik_02",
+  "v_besik_03",
+  "v_besik_04",
+  "v_besik_05",
+  "v_besik_06",
+  "v_bebek_arabasi_01",
+  "v_bebek_arabasi_02",
+  "v_bebek_arabasi_03"
+ ],
+ "set_yeni_cesit_bebekodasi_02": [
+  "v_bebek_arabasi_04",
+  "v_bebek_arabasi_05"
+ ],
+ "set_yeni_giyinme_01": [
+  "acik_gardirop",
+  "ayakkabi_rafi",
+  "canta_rafi",
+  "isikli_boy_aynasi",
+  "taki_kutusu",
+  "sapka_standi",
+  "manken",
+  "kapitone_puf",
+  "ada_dolap"
+ ],
+ "set_yeni_giyinme_02": [
+  "parfum_seti",
+  "deneme_kabini",
+  "sac_kurutma",
+  "tac_vitrini",
+  "giysi_elbise",
+  "giysi_tisort",
+  "giysi_kot",
+  "giysi_mont",
+  "giysi_pijama"
+ ],
+ "set_yeni_giyinme_03": [
+  "giysi_ayakkabi",
+  "giysi_bot",
+  "giysi_canta",
+  "giysi_atki",
+  "giysi_tac",
+  "giysi_kolye"
+ ],
+ "set_yeni_cesit_giyinme_01": [
+  "v_manken_01",
+  "v_manken_02",
+  "v_manken_03",
+  "v_manken_04",
+  "v_manken_05",
+  "v_elbise_01",
+  "v_elbise_02",
+  "v_elbise_03",
+  "v_elbise_04"
+ ],
+ "set_yeni_cesit_giyinme_02": [
+  "v_elbise_05",
+  "v_elbise_06"
+ ],
+ "set_yeni_atolye_01": [
+  "sovale",
+  "boya_masasi",
+  "boya_paleti",
+  "firca_kupasi",
+  "boya_tupleri",
+  "comlek_carki",
+  "heykel_kaidesi",
+  "kagit_rulosu",
+  "sanat_dolabi"
+ ],
+ "set_yeni_atolye_02": [
+  "resim_ipi",
+  "pastel_kutusu",
+  "makas_yapistirici",
+  "boya_kovasi",
+  "onluk_askisi",
+  "sanat_taburesi"
+ ],
+ "set_yeni_cesit_atolye_01": [
+  "v_sovale_01",
+  "v_sovale_02",
+  "v_sovale_03",
+  "v_sovale_04",
+  "v_sovale_05",
+  "v_cocuk_resmi_01",
+  "v_cocuk_resmi_02",
+  "v_cocuk_resmi_03",
+  "v_cocuk_resmi_04"
+ ],
+ "set_yeni_cesit_atolye_02": [
+  "v_cocuk_resmi_05",
+  "v_cocuk_resmi_06"
+ ],
+ "set_yeni_muzik_01": [
+  "kucuk_sahne",
+  "mikrofon",
+  "davul_seti",
+  "elektro_gitar",
+  "keman",
+  "kuyruklu_piyano",
+  "hoparlor",
+  "nota_sehpasi",
+  "plak_calar"
+ ],
+ "set_yeni_muzik_02": [
+  "kulaklik",
+  "sahne_isigi",
+  "tef",
+  "trompet",
+  "flut",
+  "karaoke_makinesi",
+  "nota_posteri"
+ ],
+ "set_yeni_cesit_muzik_01": [
+  "v_gitar_01",
+  "v_gitar_02",
+  "v_gitar_03",
+  "v_gitar_04",
+  "v_gitar_05",
+  "v_gitar_06"
+ ],
+ "set_yeni_kutuphane_01": [
+  "buyuk_kitaplik",
+  "okuma_koltugu",
+  "kitap_yigini",
+  "acik_kitap",
+  "okuma_minderi",
+  "kure",
+  "masa_lambasi",
+  "yazi_masasi",
+  "kitaplik_merdiveni"
+ ],
+ "set_yeni_kutuphane_02": [
+  "agac_kitaplik",
+  "okuma_cadiri",
+  "kitap_sepeti",
+  "teleskop",
+  "dunya_haritasi",
+  "kum_saati",
+  "baykus_lamba"
+ ],
+ "set_yeni_cesit_kutuphane_01": [
+  "v_kitaplik_01",
+  "v_kitaplik_02",
+  "v_kitaplik_03",
+  "v_kitaplik_04",
+  "v_kitaplik_05",
+  "v_kitaplik_06",
+  "v_okuma_koltugu_01",
+  "v_okuma_koltugu_02",
+  "v_okuma_koltugu_03"
+ ],
+ "set_yeni_cesit_kutuphane_02": [
+  "v_okuma_koltugu_04",
+  "v_okuma_koltugu_05"
+ ],
+ "set_yeni_oda_simge_01": [
+  "ui_oda_oyun",
+  "ui_oda_bebekodasi",
+  "ui_oda_giyinme",
+  "ui_oda_atolye",
+  "ui_oda_muzik",
+  "ui_oda_kutuphane"
+ ],
  "set_gorunum_01": [
   "yatak_yan",
   "yatak_arka",

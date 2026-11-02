@@ -2900,6 +2900,1182 @@
   "ar": 0.961
  },
  {
+  "id": "oyun_cadiri",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "top_havuzu",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "oyuncak_mutfak",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "tren_rayi",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ],
+  "flat": true
+ },
+ {
+  "id": "lego_masasi",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "sallanan_at",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "oyuncak_dolabi",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "puzzle_minder",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ],
+  "flat": true
+ },
+ {
+  "id": "buyuk_bebek_evi",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "tirmanma_ucgeni",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "kukla_tiyatrosu",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "akulu_araba",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "dev_ayi",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "balon_demeti",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "oyuncak_kutusu",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "sallanan_besik",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "alt_degistirme",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "emzirme_koltugu",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "donence",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "bebek_arabasi",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "oyun_parki",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "bebek_kuveti",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "biberon",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "emzik",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "cingirak",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "bez_yigini",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "bebek_dolabi",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "ayicik_rafi",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "bulut_hali",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ],
+  "flat": true
+ },
+ {
+  "id": "ay_gece_lambasi",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "acik_gardirop",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "ayakkabi_rafi",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "canta_rafi",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "isikli_boy_aynasi",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "taki_kutusu",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "sapka_standi",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "manken",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "kapitone_puf",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "ada_dolap",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "parfum_seti",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "deneme_kabini",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "sac_kurutma",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "tac_vitrini",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "giysi_elbise",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "giysi_tisort",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "giysi_kot",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "giysi_mont",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "giysi_pijama",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "giysi_ayakkabi",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "giysi_bot",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "giysi_canta",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "giysi_atki",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "giysi_tac",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "giysi_kolye",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "sovale",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "boya_masasi",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "boya_paleti",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "firca_kupasi",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "boya_tupleri",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "comlek_carki",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "heykel_kaidesi",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "kagit_rulosu",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "sanat_dolabi",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "resim_ipi",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "pastel_kutusu",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "makas_yapistirici",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "boya_kovasi",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "onluk_askisi",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "sanat_taburesi",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "kucuk_sahne",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "mikrofon",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "davul_seti",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "elektro_gitar",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "keman",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "kuyruklu_piyano",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "hoparlor",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "nota_sehpasi",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "plak_calar",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "kulaklik",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "sahne_isigi",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "tef",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "trompet",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "flut",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "karaoke_makinesi",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "nota_posteri",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "buyuk_kitaplik",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "okuma_koltugu",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "kitap_yigini",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "acik_kitap",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "okuma_minderi",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "kure",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "masa_lambasi",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "yazi_masasi",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "kitaplik_merdiveni",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "agac_kitaplik",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "okuma_cadiri",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "kitap_sepeti",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "teleskop",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "dunya_haritasi",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "kum_saati",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "baykus_lamba",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "v_cadir_01",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "v_cadir_02",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "v_cadir_03",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_cadir_04",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_cadir_05",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_pelus_01",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "v_pelus_02",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ]
+ },
+ {
+  "id": "v_pelus_03",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_pelus_04",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_pelus_05",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_pelus_06",
+  "w": 10,
+  "rooms": [
+   "oyun"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_besik_01",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "v_besik_02",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "v_besik_03",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_besik_04",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_besik_05",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_besik_06",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_bebek_arabasi_01",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "v_bebek_arabasi_02",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ]
+ },
+ {
+  "id": "v_bebek_arabasi_03",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_bebek_arabasi_04",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_bebek_arabasi_05",
+  "w": 10,
+  "rooms": [
+   "bebekodasi"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_manken_01",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "v_manken_02",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "v_manken_03",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_manken_04",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_manken_05",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_elbise_01",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "v_elbise_02",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ]
+ },
+ {
+  "id": "v_elbise_03",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_elbise_04",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_elbise_05",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_elbise_06",
+  "w": 10,
+  "rooms": [
+   "giyinme"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_sovale_01",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "v_sovale_02",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "v_sovale_03",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_sovale_04",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_sovale_05",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_cocuk_resmi_01",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "v_cocuk_resmi_02",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ]
+ },
+ {
+  "id": "v_cocuk_resmi_03",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_cocuk_resmi_04",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_cocuk_resmi_05",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_cocuk_resmi_06",
+  "w": 10,
+  "rooms": [
+   "atolye"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_gitar_01",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "v_gitar_02",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ]
+ },
+ {
+  "id": "v_gitar_03",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_gitar_04",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_gitar_05",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_gitar_06",
+  "w": 10,
+  "rooms": [
+   "muzik"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_kitaplik_01",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "v_kitaplik_02",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "v_kitaplik_03",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_kitaplik_04",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_kitaplik_05",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_kitaplik_06",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_okuma_koltugu_01",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "v_okuma_koltugu_02",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ]
+ },
+ {
+  "id": "v_okuma_koltugu_03",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_okuma_koltugu_04",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ],
+  "lock": true
+ },
+ {
+  "id": "v_okuma_koltugu_05",
+  "w": 10,
+  "rooms": [
+   "kutuphane"
+  ],
+  "lock": true
+ },
+ {
   "id": "pencere_01",
   "w": 30.66,
   "ar": 1.002

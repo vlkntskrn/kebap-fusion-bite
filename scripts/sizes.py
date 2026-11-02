@@ -97,6 +97,15 @@ HOSTS = [r"^masa$", r"^yuvarlakmasa$", r"^v_masa", r"^sehpa$", r"^v_sehpa_", r"^
          r"^camasir$", r"^ocak$", r"^v_ocak_", r"^mangal$", r"^oyunrafi$", r"^limonatastandi$", r"^v_oturak_01$", r"^puf$"]
 
 
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+import catalog_rooms2 as _R2  # noqa: E402
+
+EXACT.update(_R2.sizes())
+HOSTS += [r"^lego_masasi$", r"^alt_degistirme$", r"^ada_dolap$", r"^boya_masasi$", r"^yazi_masasi$", r"^kucuk_sahne$",
+          r"^oyuncak_dolabi$", r"^oyuncak_mutfak$", r"^bebek_dolabi$", r"^sanat_dolabi$"]
+
+
 def spec(code):
     # Yan/arka görünüm: temel eşyanın gerçek boyu.
     m = re.match(r"^(.+)_(yan|arka|otur|yat)$", code)

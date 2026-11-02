@@ -9,7 +9,10 @@ const svg = (vb: string, body: string) =>
 export function roomIcon(room: string): string {
   const u = img(`ui_oda_${room}`);
   if (u) return `<img class="ui-img" src="${u}" alt="" draggable="false"/>`;
-  const id = ({ yatak: 'yatak', mutfak: 'ocak', banyo: 'kuvet', salon: 'kanepe', havuz: 'flamingo' } as Record<string, string>)[room];
+  const id = ({ yatak: 'yatak', mutfak: 'ocak', banyo: 'kuvet', salon: 'kanepe', havuz: 'flamingo', oyun: 'v_oyuncak_05', bebekodasi: 'bebek1', giyinme: 'kiyafetaski', atolye: 'yazitahtasi', muzik: 'piyano', kutuphane: 'kitaplik' } as Record<string, string>)[room];
+  // Odanın simgesi yoksa o odanın tanıdık bir eşyasının resmi.
+  const im = id ? img(id) : undefined;
+  if (im) return `<img class="ui-img" src="${im}" alt="" draggable="false"/>`;
   const t = THINGS[id];
   // Koyu kontur: beyaz küvet gibi açık renkli eşyalar da beyaz düğmede görünsün.
   const ol = `<defs><filter id="iol" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="3" result="d"/><feFlood flood-color="#3d3553"/><feComposite in2="d" operator="in" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>`;
