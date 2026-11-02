@@ -592,7 +592,22 @@ function showRoom(backToHome: () => void) {
       el = node;
       selected = { el, inst };
       node.animate([{ scale: '0.6 1' }, { scale: '1 1' }], { duration: 250, easing: 'ease-out' });
-    } else if (t === 'flip') inst.fl = !inst.fl;
+    } else if (t === 'flip') {
+      inst.fl = !inst.fl;
+      // Üstündekiler (oturan karakter, masadaki eşya, eldeki eşya) da aynı eksende döner.
+      const kids: Inst[] = [];
+      for (let k = -1; k < kids.length; k++) {
+        const host = k < 0 ? inst : kids[k];
+        for (const r of list()) if (r.s === host.u && !kids.includes(r)) kids.push(r);
+      }
+      for (const r of kids) {
+        r.x = inst.x - (r.x - inst.x);
+        r.fl = !r.fl;
+        if (!r.fl) delete r.fl;
+        const rel = elOf(r.u);
+        if (rel) place(rel, r);
+      }
+    }
     else if (t === 'left') inst.r = ((inst.r ?? 0) - 15) % 360;
     else if (t === 'right') inst.r = ((inst.r ?? 0) + 15) % 360;
     else if (t === 'reset') {
@@ -634,14 +649,17 @@ function showRoom(backToHome: () => void) {
   /** Gece açık lambaların ışığı. */
   const glowLayer = root.querySelector<HTMLElement>('.glow-layer')!;
   const renderGlows = () => {
-    glowLayer.innerHTML = list()
-      .filter((i) => isLamp(i.id) && !i.off)
+    const on = list().filter((i) => isLamp(i.id) && !i.off);
+    const strong = (id: string) => /lambader|sarkit|somine|perilamba|disko|v_lamba_06|okuma_lambasi|sahne_isigi/.test(id);
+    glowLayer.innerHTML = on
       .map((i) => {
         const hgt = heightPct(i.id) || 10;
-        const big = /lambader|sarkit|somine|perilamba|disko|v_lamba_06/.test(i.id) ? 1.6 : 1;
-        return `<span class="glow" style="left:${i.x / WORLD}%;top:${i.y - hgt * 0.7}%;--g:${(18 + hgt) * big}"></span>`;
+        return `<span class="glow" style="left:${i.x / WORLD}%;top:${i.y - hgt * 0.7}%;--g:${(24 + hgt) * (strong(i.id) ? 1.7 : 1.15)}"></span>`;
       })
       .join('');
+    // Açık her lamba odayı biraz daha aydınlatır; gündüz kadar olmaz (en az %35 karanlık kalır).
+    const light = on.reduce((t, i) => t + (strong(i.id) ? 1.5 : 1), 0);
+    world.style.setProperty('--night-k', String(Math.max(0.35, 1 - light * 0.16)));
   };
   const setNight = (n: boolean) => {
     progress.night = n;
@@ -894,6 +912,9 @@ function showRoom(backToHome: () => void) {
         const p: Pose = person ? pf.p : pf.p === 'banyo' ? 'banyo' : 'otur';
         inst.s = host.u;
         inst.p = p;
+        // Karakter oturduğu/yattığı eşyanın baktığı yöne bakar.
+        if (host.fl) inst.fl = true;
+        else delete inst.fl;
         inst.x = host.x;
         inst.y = host.y - heightOf(host) * (p === 'otur' && !person ? 0.5 : pf.at);
         commit();
