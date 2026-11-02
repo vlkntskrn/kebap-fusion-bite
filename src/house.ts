@@ -100,6 +100,8 @@ let bgSeq = 0;
 /** Oda ekrandan geniş bir alan: x 0..WORLD*100 birimi (eski oda genişliği = 100). Sağa sola kaydırılır. */
 const WORLD = 3;
 const WVB = 400 * WORLD;
+/** Bahçe manzarasının bir tekrarının genişliği (görsel 1344x564, yükseklik 256 birim). */
+const SKY_W = Math.round((256 * 1344) / 564);
 export function roomBg(id: RoomId, s: Style): string {
   const pid = `${id}${++bgSeq}`;
   const wImg = !!img(s.wall);
@@ -109,7 +111,7 @@ export function roomBg(id: RoomId, s: Style): string {
   const defs = `<defs>
     ${wImg ? `<pattern id="w-${pid}" width="150" height="150" patternUnits="userSpaceOnUse">${tileFill(s.wall, 150, 150)}</pattern>` : `<pattern id="w-${pid}" width="40" height="40" patternUnits="userSpaceOnUse">${wallPattern(s.wall, shade(s.wallColor, -0.1))}</pattern>`}
     ${fImg ? `<pattern id="f-${pid}" width="120" height="120" patternUnits="userSpaceOnUse">${tileFill(s.floor, 120, 120)}</pattern>` : `<pattern id="f-${pid}" width="80" height="40" patternUnits="userSpaceOnUse">${floorPattern(s.floor, shade(s.floorColor, -0.12))}</pattern>`}
-    ${sky ? `<pattern id="s-${pid}" width="${(200 * 16) / 9}" height="200" patternUnits="userSpaceOnUse"><image href="${sky}" width="${(200 * 16) / 9}" height="200" preserveAspectRatio="xMidYMid slice"/></pattern>` : ''}
+    ${sky ? `<pattern id="s-${pid}" width="${SKY_W}" height="256" patternUnits="userSpaceOnUse"><image href="${sky}" width="${SKY_W}" height="256" preserveAspectRatio="xMidYMid slice"/></pattern>` : ''}
     ${water ? `<pattern id="p-${pid}" width="160" height="160" patternUnits="userSpaceOnUse"><image href="${water}" width="160" height="160" preserveAspectRatio="xMidYMid slice"/></pattern>` : ''}</defs>`;
   const open = `<svg class="room-bg" viewBox="0 0 ${WVB} 440" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">${defs}`;
   if (id === 'havuz') {
@@ -117,8 +119,8 @@ export function roomBg(id: RoomId, s: Style): string {
       <g fill="#c4d9f2">${[[20, 120, 30], [60, 100, 26], [100, 130, 34], [300, 110, 30], [340, 126, 40]].map(([x, y, w]) => `<rect x="${x}" y="${y}" width="${w}" height="${200 - y}"/>`).join('')}</g>
       <g fill="#6fcf7d">${[[150, 150, 40], [200, 140, 46], [250, 152, 40], [10, 170, 30], [390, 170, 30]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g>`;
     return `${open}
-      ${sky ? `<rect width="${WVB}" height="200" fill="url(#s-${pid})"/>` : `${Array.from({ length: WORLD }, (_, i) => `<g transform="translate(${i * 400} 0)">${scene}</g>`).join('')}<circle cx="${WVB - 120}" cy="50" r="26" fill="#ffe680"/>`}
-      <rect y="170" width="${WVB}" height="80" fill="${s.wallColor}"/><rect y="170" width="${WVB}" height="80" fill="url(#w-${pid})"/><rect y="166" width="${WVB}" height="8" fill="#fff"/>
+      ${sky ? `<rect width="${WVB}" height="256" fill="url(#s-${pid})"/>` : `${Array.from({ length: WORLD }, (_, i) => `<g transform="translate(${i * 400} 0)">${scene}</g>`).join('')}<circle cx="${WVB - 120}" cy="50" r="26" fill="#ffe680"/>
+      <rect y="170" width="${WVB}" height="80" fill="${s.wallColor}"/><rect y="170" width="${WVB}" height="80" fill="url(#w-${pid})"/><rect y="166" width="${WVB}" height="8" fill="#fff"/>`}
       <rect y="250" width="${WVB}" height="60" fill="${s.floorColor}"/><rect y="250" width="${WVB}" height="60" fill="url(#f-${pid})"/>
       <rect x="0" y="306" width="${WVB}" height="134" rx="10" fill="#fff"/><rect x="10" y="314" width="${WVB - 20}" height="126" rx="8" fill="${water ? `url(#p-${pid})` : '#5fd3f3'}"/>
       ${Array.from({ length: WORLD }, (_, i) => `<path transform="translate(${i * 400} 0)" d="M30 350 q20 -8 40 0 M160 380 q20 -8 40 0 M290 344 q20 -8 40 0 M80 410 q20 -8 40 0 M260 416 q20 -8 40 0" stroke="#fff" stroke-width="4" fill="none" opacity=".7"/>`).join('')}
@@ -139,32 +141,43 @@ interface Room {
   style: Style;
   /** İlk açılıştaki yerleşim: [eşya, x%, y%] (y = eşyanın alt kenarı; x eski oda genişliğine göre). */
   start: [string, number, number][];
+  /** Odanın penceresi (görseli yoksa çizim pencere). */
+  win: string;
 }
+
+/** Görseli gelen doku, yoksa çizim desen. */
+const tile = (code: string, fallback: string) => (img(code) ? code : fallback);
+/** Eski sürümlerin varsayılan desenleri: hâlâ bunlarsa yeni dokulara geçilir. */
+const OLD_DEF: Record<string, [string, string]> = { yatak: ['puan', 'parke'], mutfak: ['pul', 'fayans'], banyo: ['puan', 'fayans'], salon: ['cizgi', 'balik'], havuz: ['duz', 'fayans'] };
+const winOf = (rid: string) => {
+  const w = ROOMS.find((r) => r.id === rid)?.win;
+  return w && itemImage(w) ? w : 'pencere';
+};
 
 const ROOMS: Room[] = [
   {
     id: 'yatak', icon: '🛏️',
-    style: { wall: 'puan', wallColor: '#ffe3ef', floor: 'parke', floorColor: '#f3c99b', view: 'gunes' },
+    style: { wall: tile('duvar_01', 'puan'), wallColor: '#ffe3ef', floor: tile('zemin_01', 'parke'), floorColor: '#f3c99b', view: 'gunes' }, win: 'pencere_04',
     start: [['yuvarlakhali', 50, 94], ['dolap', 13, 80], ['yatak', 66, 88], ['makyaj', 36, 76], ['koltuk', 88, 70], ['ayi', 52, 82], ['cerceve', 62, 30]],
   },
   {
     id: 'mutfak', icon: '🍳',
-    style: { wall: 'pul', wallColor: '#e3f6ec', floor: 'fayans', floorColor: '#fff7ec', view: 'gunes' },
+    style: { wall: tile('duvar_11', 'pul'), wallColor: '#e3f6ec', floor: tile('zemin_03', 'fayans'), floorColor: '#fff7ec', view: 'gunes' }, win: 'pencere_04',
     start: [['buzdolabi', 12, 76], ['ocak', 34, 74], ['lavabo', 60, 74], ['masa', 62, 94], ['sandalye', 40, 95], ['sandalye', 84, 95], ['pasta', 60, 85]],
   },
   {
     id: 'banyo', icon: '🛁',
-    style: { wall: 'puan', wallColor: '#e3f1ff', floor: 'fayans', floorColor: '#f2f6fa', view: 'gunes' },
+    style: { wall: tile('duvar_12', 'puan'), wallColor: '#e3f1ff', floor: tile('zemin_06', 'fayans'), floorColor: '#f2f6fa', view: 'gunes' }, win: 'pencere_03',
     start: [['tuvalet', 12, 78], ['banyolavabo', 34, 76], ['camasir', 60, 76], ['havlu', 84, 50], ['kuvet', 64, 95], ['paspas', 30, 94]],
   },
   {
     id: 'salon', icon: '🛋️',
-    style: { wall: 'cizgi', wallColor: '#fff1d6', floor: 'balik', floorColor: '#e7b98a', view: 'sehir' },
+    style: { wall: tile('duvar_02', 'cizgi'), wallColor: '#fff1d6', floor: tile('zemin_02', 'balik'), floorColor: '#e7b98a', view: 'sehir' }, win: 'pencere_02',
     start: [['v_hali_02', 50, 94], ['tv', 22, 76], ['kanepe', 64, 84], ['sehpa', 42, 92], ['bitki', 92, 80], ['kedi', 30, 96], ['cerceve', 66, 30]],
   },
   {
     id: 'havuz', icon: '🏖️',
-    style: { wall: 'duz', wallColor: '#ffe3ef', floor: 'fayans', floorColor: '#fff1e6', view: 'gunes' },
+    style: { wall: 'duz', wallColor: '#ffe3ef', floor: tile('zemin_10', 'fayans'), floorColor: '#fff1e6', view: 'gunes' }, win: '',
     start: [['palmiye', 10, 66], ['semsiye', 50, 66], ['sezlong', 30, 70], ['sezlong', 72, 70], ['buzkutusu', 50, 70], ['flamingo', 74, 94], ['simit', 28, 92]],
   },
 ];
@@ -211,13 +224,32 @@ function house(): Record<string, Inst[]> {
     for (const rid of Object.keys(progress.house)) progress.house[rid] = progress.house[rid].filter((i) => keep(i.id));
     progress.houseV = 4;
   }
+  if ((progress.houseV ?? 1) < 5) {
+    // Çizim pencereler yerine Firefly pencereleri; eski varsayılan duvar/zemin yerine dokular.
+    for (const [rid, list] of Object.entries(progress.house)) {
+      const w = winOf(rid);
+      if (w !== 'pencere') for (const i of list) if (i.id === 'pencere') { i.id = w; i.y = WIN_Y; }
+    }
+    for (const [rid, st] of Object.entries(progress.roomStyle ?? {})) {
+      const old = OLD_DEF[rid];
+      const def = ROOMS.find((r) => r.id === rid)?.style;
+      if (!old || !def) continue;
+      if (st.wall === old[0]) st.wall = def.wall;
+      if (st.floor === old[1]) st.floor = def.floor;
+    }
+    progress.houseV = 5;
+    commit();
+  }
   let created = false;
   for (const r of ROOMS) {
     if (!progress.house[r.id]) {
       created = true;
       const list: Inst[] = r.start.filter(([id]) => keep(id)).map(([id, x, y], i) => ({ u: i + 1, id, x: x + 100, y }));
       list.push({ u: 999, id: 'bebek', x: 150, y: 97 });
-      if (r.id !== 'havuz') [75, 150, 225].forEach((x, k) => list.push({ u: 1000 + k, id: 'pencere', x, y: 33 }));
+      if (r.id !== 'havuz') {
+        const w = winOf(r.id);
+        [75, 150, 225].forEach((x, k) => list.push({ u: 1000 + k, id: w, x, y: w === 'pencere' ? 33 : WIN_Y }));
+      }
       progress.house[r.id] = list;
     }
   }
@@ -231,6 +263,8 @@ function style(id: RoomId): Style {
   return (progress.roomStyle[id] ??= { ...def });
 }
 
+/** Firefly penceresinin alt kenarı (oda yüksekliğinin %'si). */
+const WIN_Y = 46;
 const nextU = (list: Inst[]) => list.reduce((m, i) => Math.max(m, i.u), 0) + 1;
 
 /* ------------------------------------------------------------ çizim */
