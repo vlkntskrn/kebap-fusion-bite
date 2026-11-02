@@ -303,19 +303,22 @@ const WALL = new Set(['tablo', 'cerceve', 'ayna', 'aynadalga', 'kedipostu', 'duv
   'perde', 'duvarsaati', 'tabakdolabi', 'pencere', 'v_banyo_aksesuar_01', 'v_banyo_aksesuar_08', 'v_tabak_01', 'v_tabak_02', 'v_tabak_04', 'v_tabak_05',
   'v_ayna_01', 'v_ayna_03', 'v_ayna_04', 'v_ayna_05', 'v_raf_01', 'v_raf_03', 'v_raf_04', 'yazitahtasi_duvar']);
 const WALL_PREFIX = ['v_tablo_', 'pencere_', 'v_cocuk_resmi_'];
-const WALL2 = new Set(['canta_rafi', 'ayicik_rafi', 'resim_ipi', 'onluk_askisi', 'nota_posteri', 'dunya_haritasi']);
-const CEILING = new Set(['donence', 'sarkit', 'disko', 'perilamba', 'kalpisik', 'fotoipi', 'sarkitbitki', 'v_lamba_06', 'v_bitki_08']);
+const WALL2 = new Set(['sessiz_tabelasi', 'canta_rafi', 'ayicik_rafi', 'resim_ipi', 'onluk_askisi', 'nota_posteri', 'dunya_haritasi']);
+const CEILING_PREFIX = ['v_donence_'];
+const CEILING = new Set(['donence', 'bebek_yatagi_tavan', 'sarkit', 'disko', 'perilamba', 'kalpisik', 'fotoipi', 'sarkitbitki', 'v_lamba_06', 'v_bitki_08']);
 const FREE = new Set(['kalpbalon', 'v_lamba_03', 'balon_demeti']);
 /** Masa ya da tezgâh üstüne de konabilen küçük eşyalar. */
-const SURFACE_PREFIX = ['v_yemek_', 'v_alet_', 'kelime_', 'giysi_', 'v_pelus_'];
-const SURFACE = new Set(['biberon', 'emzik', 'cingirak', 'bez_yigini', 'ay_gece_lambasi', 'taki_kutusu', 'parfum_seti', 'sac_kurutma', 'boya_paleti',
+const SURFACE_PREFIX = ['v_yemek_', 'v_alet_', 'kelime_', 'giysi_', 'v_pelus_', 'v_ayakkabi_'];
+const SURFACE = new Set(['marakas', 'akordeon', 'bowling_seti', 'robot_oyuncak', 'muzik_kutusu', 'bebek_kitabi', 'bebek_terazisi', 'terlik', 'toka_kutusu',
+  'gozluk_standi', 'simli_kavanozlar', 'dikis_makinesi', 'yun_sepeti', 'oyun_hamuru', 'boncuk_kutusu', 'cizim_tableti', 'kitap_ayraci_seti', 'mektup_kutusu',
+  'fil_kitap_destegi', 'puset_cantasi', 'biberon', 'emzik', 'cingirak', 'bez_yigini', 'ay_gece_lambasi', 'taki_kutusu', 'parfum_seti', 'sac_kurutma', 'boya_paleti',
   'firca_kupasi', 'boya_tupleri', 'pastel_kutusu', 'makas_yapistirici', 'mikrofon', 'plak_calar', 'kulaklik', 'tef', 'trompet', 'flut', 'keman',
   'kitap_yigini', 'acik_kitap', 'kure', 'masa_lambasi', 'kum_saati', 'baykus_lamba', 'oyuncak_kutusu', 'pasta', 'kahve', 'tost', 'mikrodalga', 'blender', 'mikser', 'kettle', 'caydanlik', 'meyve', 'ekmek', 'kurabiye', 'pizza',
   'hamburger', 'salata', 'cilek', 'sut', 'limonata', 'saksiotlar', 'vazo', 'abajur', 'v_lamba_01', 'v_lamba_02', 'v_lamba_04', 'v_lamba_05',
   'kaktus', 'bitki', 'dondurma', 'gecelambasi', 'oyunkonsolu', 'dissfircasi', 'sabunluk', 'ordek', 'unicorn', 'ayi', 'top', 'v_oyuncak_02', 'v_oyuncak_05', 'kumkovasi']);
 
 export function placeOf(id: string): Place {
-  if (CEILING.has(id)) return 'ceiling';
+  if (CEILING.has(id) || CEILING_PREFIX.some((p) => id.startsWith(p))) return 'ceiling';
   if (WALL.has(id) || WALL2.has(id) || WALL_PREFIX.some((p) => id.startsWith(p))) return 'wall';
   if (FREE.has(id)) return 'free';
   if (SURFACE.has(id) || SURFACE_PREFIX.some((p) => id.startsWith(p))) return 'surface';
@@ -342,3 +345,9 @@ export function yRange(id: string): [number, number] {
 
 /** Görseli olan bütün ev eşyaları ve karakterler (eşya menüsü için). */
 export const imageItems = () => EXTRA.filter((e) => itemImage(e.id) && !e.hide).map((e) => e.id);
+/**
+ * Bir odanın eşya menüsü: o odanın eşyaları, her odaya uyan ortak eşyalar (halı, bitki, lamba, pencere…),
+ * karakterler ve hayvanlar. Havuz bahçesinde yalnızca bahçe eşyaları.
+ */
+export const itemsForRoom = (room: string) =>
+  EXTRA.filter((e) => itemImage(e.id) && !e.hide && (e.char || (e.rooms ? e.rooms.includes(room) : room !== 'havuz'))).map((e) => e.id);

@@ -161,6 +161,80 @@ NEW_VARIANTS = [
         "a simple grey reading chair", "a yellow bean bag chair", "a hanging egg chair", "a cloud shaped armchair", "a velvet throne reading chair"]),
 ]
 
+NEW_ITEMS += [
+    # --- oyun odası (ek)
+    ("kaydirakli_yatak", "oyun", False, "Kaydıraklı ranza", "a low kids loft bed with a pastel slide and a little ladder", (H, 140)),
+    ("oyuncak_market", "oyun", False, "Oyuncak market", "a wooden toy market stand with tiny fruits, a scale and a cash register", (H, 110)),
+    ("ic_salincak", "oyun", False, "Salıncak", "an indoor wooden swing with soft ropes and a cushion", (H, 160)),
+    ("yarisa_araba_pisti", "oyun", True, "Araba pisti", "a colorful toy car race track play mat with little cars, seen from above", (W, 140)),
+    ("bowling_seti", "oyun", False, "Bowling seti", "a kids bowling set with colorful pins and a ball", (H, 30)),
+    ("kostum_sandigi", "oyun", False, "Kostüm sandığı", "an open dress-up trunk with a cape, a crown and a fairy wand peeking out", (H, 55)),
+    ("robot_oyuncak", "oyun", False, "Robot oyuncak", "a cute friendly toy robot with antenna", (H, 40)),
+    ("uzay_roketi", "oyun", False, "Oyuncak roket", "a big cardboard play rocket with round windows", (H, 150)),
+    # --- bebek odası (ek)
+    ("bebek_yatagi_tavan", "bebekodasi", False, "Cibinlik", "a soft white canopy net hanging from above with a little crown on top", (H, 120)),
+    ("oyun_halisi_bebek", "bebekodasi", True, "Bebek oyun halısı", "a soft baby play mat with an arch of hanging toys, seen from above", (W, 100)),
+    ("puset_cantasi", "bebekodasi", False, "Bebek çantası", "a cute diaper bag with bunny ears", (H, 35)),
+    ("bebek_terazisi", "bebekodasi", False, "Bebek terazisi", "a pastel baby scale with a tray", (H, 20)),
+    ("muzik_kutusu", "bebekodasi", False, "Müzik kutusu", "a music box with a tiny spinning carousel horse", (H, 20)),
+    ("bebek_kitabi", "bebekodasi", False, "Bez kitap", "a soft fabric baby book with animals", (W, 18)),
+    ("emekleme_tuneli", "bebekodasi", False, "Emekleme tüneli", "a colorful soft play tunnel for babies", (H, 50)),
+    ("bebek_salincagi", "bebekodasi", False, "Ana kucağı", "a baby bouncer seat with a toy bar", (H, 55)),
+    # --- giyinme odası (ek)
+    ("gozluk_standi", "giyinme", False, "Gözlük standı", "a small stand with colorful heart and star sunglasses", (H, 30)),
+    ("toka_kutusu", "giyinme", False, "Toka kutusu", "an open box of hair bows, clips and scrunchies", (W, 25)),
+    ("utu_masasi", "giyinme", False, "Ütü masası", "a pastel ironing board with an iron", (H, 90)),
+    ("kiyafet_sepeti", "giyinme", False, "Kıyafet sepeti", "a woven laundry basket with folded clothes", (H, 45)),
+    ("terlik", "giyinme", False, "Terlik", "a pair of fluffy bunny slippers", (W, 25)),
+    ("giysi_yagmurluk", "giyinme", False, "Yağmurluk", "a yellow kids raincoat with a hood", (H, 60)),
+    ("giysi_mayo", "giyinme", False, "Mayo", "a cute kids swimsuit with watermelon print", (H, 40)),
+    ("giysi_sort", "giyinme", False, "Şort", "a pair of kids denim shorts", (H, 30)),
+    # --- sanat atölyesi (ek)
+    ("isik_masasi", "atolye", False, "Işıklı çizim masası", "a glowing light table for tracing drawings", (H, 70)),
+    ("simli_kavanozlar", "atolye", False, "Simli kavanozlar", "a row of jars with colorful glitter", (W, 30)),
+    ("dikis_makinesi", "atolye", False, "Dikiş makinesi", "a cute pastel sewing machine with a spool of thread", (H, 30)),
+    ("yun_sepeti", "atolye", False, "Yün sepeti", "a basket of colorful yarn balls with knitting needles", (H, 30)),
+    ("oyun_hamuru", "atolye", False, "Oyun hamuru", "colorful play dough tubs and shapes", (W, 25)),
+    ("boncuk_kutusu", "atolye", False, "Boncuk kutusu", "a box of colorful beads with a half-made bracelet", (W, 22)),
+    ("cizim_tableti", "atolye", False, "Çizim tableti", "a kids drawing tablet with a stylus", (W, 30)),
+    ("sanat_ruloyu_kurutucu", "atolye", False, "Boya kurutma rafı", "a wooden drying rack with wet paintings", (H, 120)),
+    # --- müzik odası (ek)
+    ("ksilofon_buyuk", "muzik", False, "Ksilofon", "a big rainbow xylophone on a stand", (H, 70)),
+    ("marakas", "muzik", False, "Marakas", "a pair of colorful maracas", (W, 25)),
+    ("cello", "muzik", False, "Çello", "a wooden cello standing on its end pin", (H, 120)),
+    ("dj_masasi", "muzik", False, "DJ masası", "a kids DJ table with turntables and glowing buttons", (H, 90)),
+    ("nota_dolabi", "muzik", False, "Nota dolabı", "a cabinet with music books and small instruments", (H, 110)),
+    ("akordeon", "muzik", False, "Akordeon", "a red accordion", (W, 40)),
+    ("baglama", "muzik", False, "Bağlama", "a wooden Turkish baglama (saz) with a long neck", (H, 100)),
+    ("darbuka", "muzik", False, "Darbuka", "a decorated goblet drum (darbuka)", (H, 40)),
+    # --- kütüphane (ek)
+    ("kitap_arabasi", "kutuphane", False, "Kitap arabası", "a rolling library book cart full of books", (H, 90)),
+    ("kitap_ayraci_seti", "kutuphane", False, "Ayraçlar", "a set of cute animal bookmarks", (W, 15)),
+    ("hikaye_sandalyesi", "kutuphane", False, "Hikâye sandalyesi", "a big storyteller chair painted with stars", (H, 120)),
+    ("okuma_lambasi", "kutuphane", False, "Okuma lambası", "a tall floor reading lamp with a curved neck", (H, 160)),
+    ("dinozor_kitaplik", "kutuphane", False, "Dinozor kitaplık", "a bookshelf shaped like a friendly dinosaur", (H, 120)),
+    ("mektup_kutusu", "kutuphane", False, "Defter ve kalemler", "a notebook with colorful pencils", (W, 25)),
+    ("sessiz_tabelasi", "kutuphane", False, "Sus işareti", "a cute wall sign with a finger on lips owl, no text", (W, 40)),
+    ("fil_kitap_destegi", "kutuphane", False, "Kitap desteği", "a pair of elephant shaped bookends holding books", (W, 35)),
+]
+
+NEW_VARIANTS += [
+    ("v_top_havuzu", "oyun", "Top havuzu", (H, 45), [
+        "a square ball pit with pastel balls", "a round mint ball pit", "a castle ball pit with towers", "a rainbow ball pit", "a cloud shaped ball pit"]),
+    ("v_donence", "bebekodasi", "Dönence", (H, 50), [
+        "a crib mobile with clouds", "a crib mobile with little elephants", "a crib mobile with hot air balloons",
+        "a crib mobile with butterflies", "a crib mobile with planets"]),
+    ("v_ayakkabi", "giyinme", "Ayakkabı", (W, 30), [
+        "a pair of white sneakers", "a pair of pink ballet flats", "a pair of glittery party shoes",
+        "a pair of rainbow sneakers", "a pair of glass princess slippers"]),
+    ("v_boya_masasi", "atolye", "Sanat masası", (H, 75), [
+        "a simple white craft table", "a round art table with stools", "a rainbow art table", "an art table shaped like a palette", "a big wooden workshop table"]),
+    ("v_davul", "muzik", "Davul", (H, 60), [
+        "a small toy drum", "a pink drum set", "a blue drum with stars", "a big bass drum", "a set of bongo drums"]),
+    ("v_kitap_kosesi", "kutuphane", "Okuma köşesi", (H, 120), [
+        "a reading nook with pillows", "a reading tent with fairy lights", "a reading treehouse corner", "a reading castle corner", "a reading cloud corner"]),
+]
+
 
 def sizes():
     """sizes.py için: kod -> (h|w, cm)."""
@@ -169,3 +243,33 @@ def sizes():
         for i in range(len(lst)):
             out[f"{fam}_{i + 1:02d}"] = sz
     return out
+
+
+# Bir eşyanın başka hangi odalarda da menüde görüneceği (kendi odası ve "her oda" eşyaları zaten görünür).
+ALSO_ROOMS = [
+    (r"^(besik|mamasandalyesi)$", ["bebekodasi"]),
+    (r"^(kiyafetaski|boyaynasi|makyaj|v_makyaj_\d+|kozmetik|dolap|v_dolap_\d+|sifonyer)$", ["giyinme"]),
+    (r"^(yazitahtasi)$", ["atolye", "oyun"]),
+    (r"^(v_oyuncak_\d+|oyuncaksandigi|ayi|unicorn|oyuncakev|oyunrafi)$", ["oyun"]),
+    (r"^(piyano|v_muzik_\d+|disko)$", ["muzik"]),
+    (r"^(kitaplik|calismamasasi|bilgisayar|v_masa_\d+|koltuk|berjer|v_koltuk_\d+)$", ["kutuphane"]),
+    (r"^(armut|puf|cicekminder|v_oturak_\d+)$", ["giyinme", "oyun", "kutuphane", "muzik"]),
+    (r"^(sandalye|v_sandalye_\d+|tabure|masa|yuvarlakmasa|v_masa_mutfak_\d+)$", ["salon", "atolye"]),
+    (r"^(giysi_.+|v_elbise_\d+)$", ["yatak"]),
+    (r"^(v_pelus_\d+|dev_ayi)$", ["yatak", "bebekodasi"]),
+    (r"^(kitap_yigini|acik_kitap|kum_saati|kure|masa_lambasi|baykus_lamba|kitap_sepeti)$", ["yatak", "salon", "oyun"]),
+    (r"^(v_gitar_\d+|mikrofon|kulaklik|keman|tef|plak_calar)$", ["yatak", "salon", "oyun"]),
+    (r"^(boya_paleti|pastel_kutusu|firca_kupasi|v_cocuk_resmi_\d+|makas_yapistirici)$", ["oyun", "yatak"]),
+    (r"^(oyun_cadiri|v_cadir_\d+|balon_demeti|puzzle_minder)$", ["yatak", "bebekodasi"]),
+]
+
+# "Her odada" diye işaretlenmiş ama aslında belli odalara ait eşyalar.
+HEPSI_ROOMS = {
+    "ayi": ["yatak", "oyun", "bebekodasi"],
+    "kitaplik": ["salon", "yatak", "kutuphane"],
+    "pasta": ["mutfak", "salon"],
+    "limonata": ["mutfak", "havuz"],
+    "oyunkonsolu": ["salon", "oyun", "yatak"],
+    "puf": ["salon", "yatak", "giyinme", "oyun", "kutuphane", "muzik"],
+    "disko": ["salon", "yatak", "muzik", "oyun"],
+}

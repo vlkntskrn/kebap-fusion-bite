@@ -793,7 +793,17 @@
   "akulu_araba",
   "dev_ayi",
   "balon_demeti",
-  "oyuncak_kutusu"
+  "oyuncak_kutusu",
+  "kaydirakli_yatak",
+  "oyuncak_market",
+  "ic_salincak"
+ ],
+ "set_yeni_oyun_03": [
+  "yarisa_araba_pisti",
+  "bowling_seti",
+  "kostum_sandigi",
+  "robot_oyuncak",
+  "uzay_roketi"
  ],
  "set_yeni_cesit_oyun_01": [
   "v_cadir_01",
@@ -808,7 +818,12 @@
  ],
  "set_yeni_cesit_oyun_02": [
   "v_pelus_05",
-  "v_pelus_06"
+  "v_pelus_06",
+  "v_top_havuzu_01",
+  "v_top_havuzu_02",
+  "v_top_havuzu_03",
+  "v_top_havuzu_04",
+  "v_top_havuzu_05"
  ],
  "set_yeni_bebekodasi_01": [
   "sallanan_besik",
@@ -827,7 +842,17 @@
   "bebek_dolabi",
   "ayicik_rafi",
   "bulut_hali",
-  "ay_gece_lambasi"
+  "ay_gece_lambasi",
+  "bebek_yatagi_tavan",
+  "oyun_halisi_bebek",
+  "puset_cantasi"
+ ],
+ "set_yeni_bebekodasi_03": [
+  "bebek_terazisi",
+  "muzik_kutusu",
+  "bebek_kitabi",
+  "emekleme_tuneli",
+  "bebek_salincagi"
  ],
  "set_yeni_cesit_bebekodasi_01": [
   "v_besik_01",
@@ -842,7 +867,12 @@
  ],
  "set_yeni_cesit_bebekodasi_02": [
   "v_bebek_arabasi_04",
-  "v_bebek_arabasi_05"
+  "v_bebek_arabasi_05",
+  "v_donence_01",
+  "v_donence_02",
+  "v_donence_03",
+  "v_donence_04",
+  "v_donence_05"
  ],
  "set_yeni_giyinme_01": [
   "acik_gardirop",
@@ -872,7 +902,17 @@
   "giysi_canta",
   "giysi_atki",
   "giysi_tac",
-  "giysi_kolye"
+  "giysi_kolye",
+  "gozluk_standi",
+  "toka_kutusu",
+  "utu_masasi"
+ ],
+ "set_yeni_giyinme_04": [
+  "kiyafet_sepeti",
+  "terlik",
+  "giysi_yagmurluk",
+  "giysi_mayo",
+  "giysi_sort"
  ],
  "set_yeni_cesit_giyinme_01": [
   "v_manken_01",
@@ -887,7 +927,12 @@
  ],
  "set_yeni_cesit_giyinme_02": [
   "v_elbise_05",
-  "v_elbise_06"
+  "v_elbise_06",
+  "v_ayakkabi_01",
+  "v_ayakkabi_02",
+  "v_ayakkabi_03",
+  "v_ayakkabi_04",
+  "v_ayakkabi_05"
  ],
  "set_yeni_atolye_01": [
   "sovale",
@@ -906,7 +951,17 @@
   "makas_yapistirici",
   "boya_kovasi",
   "onluk_askisi",
-  "sanat_taburesi"
+  "sanat_taburesi",
+  "isik_masasi",
+  "simli_kavanozlar",
+  "dikis_makinesi"
+ ],
+ "set_yeni_atolye_03": [
+  "yun_sepeti",
+  "oyun_hamuru",
+  "boncuk_kutusu",
+  "cizim_tableti",
+  "sanat_ruloyu_kurutucu"
  ],
  "set_yeni_cesit_atolye_01": [
   "v_sovale_01",
@@ -921,7 +976,12 @@
  ],
  "set_yeni_cesit_atolye_02": [
   "v_cocuk_resmi_05",
-  "v_cocuk_resmi_06"
+  "v_cocuk_resmi_06",
+  "v_boya_masasi_01",
+  "v_boya_masasi_02",
+  "v_boya_masasi_03",
+  "v_boya_masasi_04",
+  "v_boya_masasi_05"
  ],
  "set_yeni_muzik_01": [
   "kucuk_sahne",
@@ -941,7 +1001,17 @@
   "trompet",
   "flut",
   "karaoke_makinesi",
-  "nota_posteri"
+  "nota_posteri",
+  "ksilofon_buyuk",
+  "marakas"
+ ],
+ "set_yeni_muzik_03": [
+  "cello",
+  "dj_masasi",
+  "nota_dolabi",
+  "akordeon",
+  "baglama",
+  "darbuka"
  ],
  "set_yeni_cesit_muzik_01": [
   "v_gitar_01",
@@ -949,7 +1019,14 @@
   "v_gitar_03",
   "v_gitar_04",
   "v_gitar_05",
-  "v_gitar_06"
+  "v_gitar_06",
+  "v_davul_01",
+  "v_davul_02",
+  "v_davul_03"
+ ],
+ "set_yeni_cesit_muzik_02": [
+  "v_davul_04",
+  "v_davul_05"
  ],
  "set_yeni_kutuphane_01": [
   "buyuk_kitaplik",
@@ -969,7 +1046,17 @@
   "teleskop",
   "dunya_haritasi",
   "kum_saati",
-  "baykus_lamba"
+  "baykus_lamba",
+  "kitap_arabasi",
+  "kitap_ayraci_seti"
+ ],
+ "set_yeni_kutuphane_03": [
+  "hikaye_sandalyesi",
+  "okuma_lambasi",
+  "dinozor_kitaplik",
+  "mektup_kutusu",
+  "sessiz_tabelasi",
+  "fil_kitap_destegi"
  ],
  "set_yeni_cesit_kutuphane_01": [
   "v_kitaplik_01",
@@ -984,7 +1071,12 @@
  ],
  "set_yeni_cesit_kutuphane_02": [
   "v_okuma_koltugu_04",
-  "v_okuma_koltugu_05"
+  "v_okuma_koltugu_05",
+  "v_kitap_kosesi_01",
+  "v_kitap_kosesi_02",
+  "v_kitap_kosesi_03",
+  "v_kitap_kosesi_04",
+  "v_kitap_kosesi_05"
  ],
  "set_yeni_oda_simge_01": [
   "ui_oda_oyun",

@@ -706,8 +706,13 @@ def main():
     catalog = []
     for code, room, w, flat, _tr, _en, lock in ITEMS_ALL:
         e = {"id": code, "w": w}
+        if not ROOM_GAME[room] and code in R2.HEPSI_ROOMS:
+            e["rooms"] = list(R2.HEPSI_ROOMS[code])
         if ROOM_GAME[room]:
-            e["rooms"] = ROOM_GAME[room]
+            e["rooms"] = list(ROOM_GAME[room])
+            for pat, extra in R2.ALSO_ROOMS:
+                if re.match(pat, code):
+                    e["rooms"] += [x for x in extra if x not in e["rooms"]]
         if flat:
             e["flat"] = True
         if lock:

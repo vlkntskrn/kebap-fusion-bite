@@ -8,7 +8,7 @@ import { show, on, talkBtn, wiggle, h as hEl } from './ui';
 import { sfx } from './sfx';
 import { dollSvg, currentLook, shade } from './stage';
 import { genitive, TalkId } from './content';
-import { THINGS, itemImage, imageItems, isCharAsset, isLockedItem, unlockItem, yRange, placeOf, heightPct, surfaceTop, aspectOf } from './house-items';
+import { THINGS, itemImage, itemsForRoom, isCharAsset, isLockedItem, unlockItem, yRange, placeOf, heightPct, surfaceTop, aspectOf } from './house-items';
 import { Pose, isPerson, isPet, poseFor, isFood, isStove, isLamp, isHoldable, contentsOf, petSound, poseImage, boxKind, fitsIn, BoxKind } from './play';
 import { readingChallenge } from './challenge';
 import { imgTag, img } from './assets';
@@ -416,12 +416,12 @@ const CATS: Cat[] = [
   { id: 'oyunodasi', icons: ['oyun_cadiri', 'v_oyuncak_05'], test: (id) => re('^(oyun_cadiri|top_havuzu|oyuncak_mutfak|tren_rayi|lego_masasi|sallanan_at|oyuncak_dolabi|puzzle_minder|buyuk_bebek_evi|tirmanma_ucgeni|kukla_tiyatrosu|akulu_araba|dev_ayi|balon_demeti|oyuncak_kutusu|v_cadir_|v_pelus_)').test(id) },
   { id: 'yatak', icons: ['v_yatak_03', 'yatak'], test: (id) => re('^(yatak|yuvarlakyatak|cibinlikliyatak|ranza|besik|v_yatak_|dolap|v_dolap_|kiyafetaski|sifonyer|komodin|makyaj|v_makyaj_|kozmetik|boyaynasi)').test(id) },
   { id: 'oturma', icons: ['kanepe', 'v_kanepe_04'], test: (id) => re('^(kanepe|kosekanepe|berjer|v_kanepe_|v_koltuk_|koltuk$|armut|puf|v_oturak_|cicekminder|sandalye|tabure|v_sandalye_|mamasandalyesi)').test(id) },
-  { id: 'masa', icons: ['masa', 'v_masa_03'], test: (id) => re('^(masa|yuvarlakmasa|v_masa|sehpa|v_sehpa_|calismamasasi|bilgisayar|tvunitesi|kitaplik|oyunrafi|v_raf_02|v_raf_05)').test(id) },
-  { id: 'mutfak', icons: ['retrobuzdolabi', 'buzdolabi'], test: (id) => re('^(buzdolabi|retrobuzdolabi|tezgah|v_tezgah_|ocak|firin|v_ocak_|lavabo|mikrodalga|tost|kahve|blender|mikser|kettle|caydanlik|v_alet_|tabakdolabi|rafkupa|kasiklik|v_tabak_|copkutusu|saksiotlar)').test(id) },
+  { id: 'masa', icons: ['masa', 'v_masa_03'], test: (id) => re('^(masa|yuvarlakmasa|v_masa|sehpa|v_sehpa_|calismamasasi|bilgisayar|tvunitesi|kitaplik|oyunrafi)').test(id) },
+  { id: 'mutfak', icons: ['retrobuzdolabi', 'buzdolabi'], test: (id) => re('^(buzdolabi|retrobuzdolabi|tezgah|v_tezgah_|ocak|firin|v_ocak_|lavabo|mikrodalga|tost|kahve|blender|mikser|kettle|caydanlik|v_alet_|tabakdolabi|rafkupa|kasiklik|v_tabak_|saksiotlar)').test(id) },
   { id: 'yemek', icons: ['pasta', 'pizza'], test: (id) => re('^(pasta|pizza|hamburger|salata|meyve|ekmek|kurabiye|cilek|sut|limonata|dondurma|v_yemek_)').test(id) },
-  { id: 'banyo', icons: ['kuvet', 'v_kuvet_02'], test: (id) => re('^(kuvet|v_kuvet_|jakuzi|duskabini|v_dus_|banyolavabo|v_lavabo_|tuvalet|v_tuvalet_|camasir|sampuan|sepet|havlu|bornoz|ordek|dissfircasi|sabunluk|paspas|robot|v_banyo_aksesuar_)').test(id) },
+  { id: 'banyo', icons: ['kuvet', 'v_kuvet_02'], test: (id) => re('^(kuvet|v_kuvet_|jakuzi|duskabini|v_dus_|banyolavabo|v_lavabo_|tuvalet|v_tuvalet_|camasir|sampuan|sepet|havlu|bornoz|ordek|dissfircasi|sabunluk|paspas|v_banyo_aksesuar_)').test(id) },
   { id: 'tv', icons: ['tv', 'v_tv_03'], test: (id) => re('^(tv$|v_tv_|oyunkonsolu|piyano|v_muzik_|somine)').test(id) },
-  { id: 'dekor', icons: ['v_bitki_06', 'buyukbitki'], test: (id) => id === 'pencere' || re('^(pencere_|kapi_|perde|tablo|v_tablo_|cerceve|kedipostu|ayna|aynadalga|v_ayna_|duvarrafi|v_raf_|fotoipi|duvarsaati|vazo|bitki|buyukbitki|sarkitbitki|kaktus|v_bitki_|abajur|lambader|v_lamba_|sarkit|disko|perilamba|gecelambasi|yuvarlakhali|ayihali|v_hali_)').test(id) },
+  { id: 'dekor', icons: ['v_bitki_06', 'buyukbitki'], test: (id) => id === 'pencere' || re('^(pencere_|kapi_|perde|tablo|v_tablo_|cerceve|kedipostu|ayna|aynadalga|v_ayna_|duvarrafi|v_raf_|fotoipi|duvarsaati|copkutusu|robot|vazo|bitki|buyukbitki|sarkitbitki|kaktus|v_bitki_|abajur|lambader|v_lamba_|sarkit|disko|perilamba|gecelambasi|yuvarlakhali|ayihali|v_hali_)').test(id) },
   { id: 'oyuncak', icons: ['v_oyuncak_05', 'ayi'], test: (id) => re('^(ayi|unicorn|oyuncakev|oyuncaksandigi|yazitahtasi|v_oyuncak_|top$|cadir)').test(id) },
   { id: 'bahce', icons: ['flamingo', 'semsiye'], test: (id) => re('^(sezlong|semsiye|flamingo|simit|palmiye|buzkutusu|kaydirak|salincak|trambolin|kumkovasi|mangal|cicektarhi|agac|cit|bisiklet|limonatastandi|gokkusagi|piknik|v_havuz_oyuncak_|v_bahce_|v_oyun_parki_)').test(id) },
 ];
@@ -655,7 +655,7 @@ function showRoom(backToHome: () => void) {
 
   /* ---- alt menü */
   const allItems = () => {
-    const ids = imageItems().filter((id) => current === 'havuz' || catOf(id) !== 'bahce' || !re('^(palmiye|agac|v_bahce_bitki_0[3-5])').test(id));
+    const ids = itemsForRoom(current);
     const extra = [...(list().some((i) => i.id === 'bebek') ? [] : ['bebek']), ...(current === 'havuz' ? [] : ['pencere'])];
     return [...extra, ...ids];
   };
