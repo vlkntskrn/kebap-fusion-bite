@@ -10,6 +10,7 @@ Her kayıt: (kod, oda, genişlik_yüzde, yere_serili_mi, Türkçe ad, İngilizce
   - genişlik: odanın genişliğine göre eşyanın oyundaki genişliği (%)
 """
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -393,6 +394,28 @@ DOORS = [
     ("kapi_03", "Mint ahşap kapı", "a closed mint green wooden plank door with a brass handle"),
     ("kapi_04", "Bahçe cam kapısı", "a closed white French door with glass panes showing a sunny garden"),
 ]
+# Açılan eşyaların içinden çıkan kelime resimleri (gerçek boyları scripts/sizes.py'de).
+INSIDE_WORDS = ["kelime_" + w for w in ["elma", "muz", "armut", "simit", "kek", "peynir", "limon", "havuc", "yumurta", "pasta", "dondurma",
+                "ekmek", "patates", "et", "ceket", "etek", "corap", "sapka", "canta", "semsiye", "top", "balon", "ucak", "gemi", "araba",
+                "kitap", "kalem", "saat", "mum", "lamba"]]
+
+# Karakter pozları: oturan ve uyuyan hâller (oyun bunları varsa kullanır, yoksa ayakta resmi döndürür/keser).
+POSE_TEXT = {
+    "otur": "sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile",
+    "yat": "lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow",
+}
+POSES = []  # (kod, Türkçe, tarif)
+
+
+def pose_style(st: str) -> str:
+    """Karakter stilinden 'ayakta dik dur' kısmını çıkarır (poz isteklerinde çelişmesin)."""
+    return re.sub(r"standing straight[^,]*, arms relaxed[^,]*, feet together[^,]*, ", "", st)
+
+for _c, _w, _tr, _en in CHARACTERS:
+    for _k, _t in POSE_TEXT.items():
+        POSES.append((f"{_c}_{_k}", f"{_tr} ({'oturuyor' if _k == 'otur' else 'uyuyor'})", f"{_en.removeprefix('a ')}, {_t}"))
+
+
 # Ev haritası parçaları: (kod, Türkçe, tarif, en-boy)
 MAP = [
     ("arka_harita", "Harita arka planı (16:9)",
@@ -595,7 +618,7 @@ def main():
     assert not missing, f"kelime tarifi eksik: {missing}"
     codes = ([i[0] for i in ITEMS_ALL] + [c[0] for c in CHARACTERS] + [p[0] for p in PETS] + [u[0] for u in UI]
              + [word_code(w) for w in words] + [f"cikartma_{i + 1:02d}" for i in range(len(STICKERS))] + [b[0] for b in BACKGROUNDS] + ["uygulama_ikonu"]
-             + [x[0] for x in SURFACES] + [x[0] for x in WINDOWS + DOORS] + [x[0] for x in MAP])
+             + [x[0] for x in SURFACES] + [x[0] for x in WINDOWS + DOORS] + [x[0] for x in MAP] + [c for c, _tr, _en in POSES])
     assert len(codes) == len(set(codes)), "tekrarlanan kod"
     item_style = STYLE_ITEM.replace("one single isolated object, the whole object fully visible and centered with generous empty margin around it, ", "")
     char_style = STYLE_CHAR.replace("centered with generous empty margin, ", "")
@@ -613,6 +636,7 @@ def main():
     sets += sheets([(word_code(w), WORD_EN[w]) for w in words], 9, 3, STYLE_WORD.replace("centered with generous empty margin, ", ""), "kelime")
     sets += sheets([(f"cikartma_{i + 1:02d}", en) for i, en in enumerate(STICKERS)], 9, 3, STYLE_STICKER.replace("centered, ", ""), "cikartma")
     sets += sheets([(c, en) for c, _tr, en in WINDOWS + DOORS], 10, 5, item_style, "yapi")
+    sets += sheets([(c, "a cute " + en) for c, _tr, en in POSES], 4, 2, pose_style(char_style), "poz")
     codes += [code for code, _c, _t in sets]
     (ROOT / "src" / "assets" / "codes.json").write_text(json.dumps(sorted(codes)) + "\n")
     (ROOT / "src" / "assets" / "sets.json").write_text(json.dumps({code: cs for code, cs, _t in sets}, indent=1) + "\n")
@@ -633,6 +657,9 @@ def main():
         catalog.append({"id": code, "w": 14})
     for code, w, *_ in CHARACTERS + PETS:
         catalog.append({"id": code, "w": w, "char": True})
+    # Dolaptan, buzdolabından çıkan küçük eşyalar: kelime resimleri (menüde görünmez).
+    for code in INSIDE_WORDS:
+        catalog.append({"id": code, "w": 6, "hide": True})
     (ROOT / "src" / "assets" / "items.json").write_text(json.dumps(catalog, ensure_ascii=False, indent=1) + "\n")
 
     out = []
@@ -678,6 +705,18 @@ def main():
 """)
 
 
+    out.append(f"""
+## 🆕 Karakter pozları: oturan ve uyuyan hâller ({len(POSES)} istek)
+
+Oyunda karakter sandalyeye bırakılınca oturur, yatağa bırakılınca uyur. Bu resimler yoksa oyun ayakta duran resmi
+keserek ya da yatırarak gösterir; resimler gelince gerçek oturma ve uyuma pozları kullanılır.
+- Ayarlar: **Square (1:1)**, Art, Style reference yüklü. En iyi sonuç için Firefly'da **Structure/Style reference** olarak
+  aynı karakterin ayakta duran resmini (ör. `kiz1`) yükleyin; böylece yüz ve kıyafet aynı kalır.
+- `_yat` resimlerinde karakter **yatay**, başı **solda** olmalı. Toplu istekler aşağıda `set_poz_…` sayfalarında (4'lü).
+""")
+    for code, tr, en in POSES:
+        out.append(f"### `{code}` — {tr}\n")
+        out.append("```\n" + prompt(code, "a cute " + en, pose_style(STYLE_CHAR)) + "\n```\n")
     out.append(f"""
 ## 🆕 Ev haritası ({len(MAP)} istek)
 
@@ -729,8 +768,8 @@ aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya
 - Kalite: tekli istek her eşyayı daha büyük ve detaylı çizer. Önemli eşyalar (yatak, kanepe, karakterler) için tekli,
   küçük eşyalar ve kelime resimleri için toplu üretim iyi bir denge.
 """)
-    new_sets = [x for x in sets if x[0].startswith(("set_cesit_", "set_yapi_"))]
-    old_sets = [x for x in sets if not x[0].startswith(("set_cesit_", "set_yapi_"))]
+    new_sets = [x for x in sets if x[0].startswith(("set_cesit_", "set_yapi_", "set_poz_"))]
+    old_sets = [x for x in sets if not x[0].startswith(("set_cesit_", "set_yapi_", "set_poz_"))]
     out.append(f"\n### 🆕 YENİ sayfalar: çeşit aileleri, pencere ve kapılar ({len(new_sets)} istek)\n")
     out.append("Bunlar yeni eklendi, henüz üretilmedi. Her ailede ilk 2 çeşit bedava, diğerleri oyunda okuma sorusuyla açılır.\n")
     for code, cs, text in new_sets:

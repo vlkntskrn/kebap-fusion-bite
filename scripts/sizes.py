@@ -84,6 +84,9 @@ PREFIX = [
     (r"^v_alet_(08|09|10)", (H, 48)), (r"^v_alet_", (H, 30)), (r"^v_yemek_09", (H, 32)), (r"^v_yemek_", (W, 26)), (r"^v_tabak_03", (H, 90)),
     (r"^v_tabak_", (W, 70)), (r"^v_kuvet_", (H, 85)), (r"^v_lavabo_", (H, 150)), (r"^v_dus_", (H, 200)), (r"^v_tuvalet_", (H, 80)),
     (r"^v_kanepe_", (H, 85)), (r"^v_koltuk_", (H, 95)), (r"^v_sehpa_", (H, 45)), (r"^v_bitki_", (H, 50)), (r"^v_lamba_", (H, 50)),
+    (r"^kelime_(elma|armut|limon|yumurta|peynir|kek|mum)$", (H, 12)), (r"^kelime_(muz|simit|havuc|patates|et|ekmek)$", (W, 20)),
+    (r"^kelime_(pasta|dondurma|saat|kitap|kalem)$", (H, 20)), (r"^kelime_(ceket|etek|canta|sapka|top|ucak|gemi|araba)$", (H, 30)),
+    (r"^kelime_corap$", (H, 25)), (r"^kelime_(balon|lamba)$", (H, 45)), (r"^kelime_semsiye$", (H, 80)),
     (r"^pencere_03$", (W, 70)), (r"^pencere_06$", (W, 160)), (r"^pencere_", (W, 110)), (r"^kapi_", (H, 200)),
     (r"^v_hali_", (W, 160)), (r"^v_tablo_", (W, 60)), (r"^v_ayna_", (H, 80)), (r"^v_raf_", (W, 75)),
 ]
@@ -91,7 +94,7 @@ PREFIX = [
 HOSTS = [r"^masa$", r"^yuvarlakmasa$", r"^v_masa", r"^sehpa$", r"^v_sehpa_", r"^tezgah$", r"^v_tezgah_", r"^lavabo$", r"^komodin$",
          r"^sifonyer$", r"^tvunitesi$", r"^calismamasasi$", r"^bilgisayar$", r"^makyaj$", r"^v_makyaj_", r"^banyolavabo$", r"^v_lavabo_0[3-6]",
          r"^kozmetik$", r"^v_tabak_03$", r"^v_bahce_mobilya_05$", r"^piyano$", r"^somine$", r"^kitaplik$", r"^oyuncaksandigi$", r"^firin$",
-         r"^camasir$", r"^oyunrafi$", r"^limonatastandi$", r"^v_oturak_01$", r"^puf$"]
+         r"^camasir$", r"^ocak$", r"^v_ocak_", r"^mangal$", r"^oyunrafi$", r"^limonatastandi$", r"^v_oturak_01$", r"^puf$"]
 
 
 def spec(code):
@@ -126,7 +129,9 @@ def main():
     missing = []
     for f in sorted(ITEMS.glob("*.webp")):
         code = f.stem
-        if code.startswith(("ui_", "kelime_", "cikartma_", "arka_", "uygulama")):
+        if code.startswith(("ui_", "cikartma_", "arka_", "uygulama", "duvar_", "zemin_", "harita_", "havuz_su", "bahce_manzara")):
+            continue
+        if code.startswith("kelime_") and code not in by_id:
             continue
         sp = spec(code)
         if not sp:

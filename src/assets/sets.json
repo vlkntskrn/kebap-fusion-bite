@@ -723,5 +723,57 @@
   "kapi_02",
   "kapi_03",
   "kapi_04"
+ ],
+ "set_poz_01": [
+  "kiz1_otur",
+  "kiz1_yat",
+  "kiz2_otur",
+  "kiz2_yat"
+ ],
+ "set_poz_02": [
+  "kiz3_otur",
+  "kiz3_yat",
+  "kiz4_otur",
+  "kiz4_yat"
+ ],
+ "set_poz_03": [
+  "kiz5_otur",
+  "kiz5_yat",
+  "kiz6_otur",
+  "kiz6_yat"
+ ],
+ "set_poz_04": [
+  "kiz7_otur",
+  "kiz7_yat",
+  "oglan1_otur",
+  "oglan1_yat"
+ ],
+ "set_poz_05": [
+  "oglan2_otur",
+  "oglan2_yat",
+  "oglan3_otur",
+  "oglan3_yat"
+ ],
+ "set_poz_06": [
+  "bebek1_otur",
+  "bebek1_yat",
+  "bebek2_otur",
+  "bebek2_yat"
+ ],
+ "set_poz_07": [
+  "anne_otur",
+  "anne_yat",
+  "baba_otur",
+  "baba_yat"
+ ],
+ "set_poz_08": [
+  "nine_otur",
+  "nine_yat",
+  "dede_otur",
+  "dede_yat"
+ ],
+ "set_poz_09": [
+  "ogretmen_otur",
+  "ogretmen_yat"
  ]
 }

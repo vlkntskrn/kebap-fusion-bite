@@ -261,7 +261,8 @@
   "rooms": [
    "mutfak"
   ],
-  "ar": 1.436
+  "ar": 1.436,
+  "top": 0.287
  },
  {
   "id": "firin",
@@ -903,7 +904,8 @@
   "rooms": [
    "havuz"
   ],
-  "ar": 1.317
+  "ar": 1.317,
+  "top": 0.325
  },
  {
   "id": "cicektarhi",
@@ -1546,7 +1548,8 @@
   "rooms": [
    "mutfak"
   ],
-  "ar": 1.307
+  "ar": 1.307,
+  "top": 0.217
  },
  {
   "id": "v_ocak_02",
@@ -1554,7 +1557,8 @@
   "rooms": [
    "mutfak"
   ],
-  "ar": 1.141
+  "ar": 1.141,
+  "top": 0.294
  },
  {
   "id": "v_ocak_03",
@@ -1563,7 +1567,8 @@
    "mutfak"
   ],
   "lock": true,
-  "ar": 1.206
+  "ar": 1.206,
+  "top": 0.222
  },
  {
   "id": "v_ocak_04",
@@ -1572,7 +1577,8 @@
    "mutfak"
   ],
   "lock": true,
-  "ar": 0.948
+  "ar": 0.948,
+  "top": 0.149
  },
  {
   "id": "v_ocak_05",
@@ -1581,7 +1587,8 @@
    "mutfak"
   ],
   "lock": true,
-  "ar": 0.736
+  "ar": 0.736,
+  "top": 0.167
  },
  {
   "id": "v_ocak_06",
@@ -1590,7 +1597,8 @@
    "mutfak"
   ],
   "lock": true,
-  "ar": 0.921
+  "ar": 0.921,
+  "top": 0.503
  },
  {
   "id": "v_tezgah_01",
@@ -3112,5 +3120,185 @@
   "w": 14.86,
   "char": true,
   "ar": 1.313
+ },
+ {
+  "id": "kelime_elma",
+  "w": 2.97,
+  "hide": true,
+  "ar": 1.125
+ },
+ {
+  "id": "kelime_muz",
+  "w": 5.58,
+  "hide": true,
+  "ar": 1.062
+ },
+ {
+  "id": "kelime_armut",
+  "w": 2.24,
+  "hide": true,
+  "ar": 1.491
+ },
+ {
+  "id": "kelime_simit",
+  "w": 5.58,
+  "hide": true,
+  "ar": 0.952
+ },
+ {
+  "id": "kelime_kek",
+  "w": 2.63,
+  "hide": true,
+  "ar": 1.273
+ },
+ {
+  "id": "kelime_peynir",
+  "w": 3.6,
+  "hide": true,
+  "ar": 0.93
+ },
+ {
+  "id": "kelime_limon",
+  "w": 2.85,
+  "hide": true,
+  "ar": 1.173
+ },
+ {
+  "id": "kelime_havuc",
+  "w": 5.58,
+  "hide": true,
+  "ar": 0.847
+ },
+ {
+  "id": "kelime_yumurta",
+  "w": 2.64,
+  "hide": true,
+  "ar": 1.269
+ },
+ {
+  "id": "kelime_pasta",
+  "w": 4.93,
+  "hide": true,
+  "ar": 1.13
+ },
+ {
+  "id": "kelime_dondurma",
+  "w": 3.29,
+  "hide": true,
+  "ar": 1.695
+ },
+ {
+  "id": "kelime_ekmek",
+  "w": 5.58,
+  "hide": true,
+  "ar": 0.606
+ },
+ {
+  "id": "kelime_patates",
+  "w": 5.58,
+  "hide": true,
+  "ar": 1.346
+ },
+ {
+  "id": "kelime_et",
+  "w": 5.58,
+  "hide": true,
+  "ar": 0.778
+ },
+ {
+  "id": "kelime_ceket",
+  "w": 7.84,
+  "hide": true,
+  "ar": 1.067
+ },
+ {
+  "id": "kelime_etek",
+  "w": 12.37,
+  "hide": true,
+  "ar": 0.676
+ },
+ {
+  "id": "kelime_corap",
+  "w": 7.04,
+  "hide": true,
+  "ar": 0.99
+ },
+ {
+  "id": "kelime_sapka",
+  "w": 12.59,
+  "hide": true,
+  "ar": 0.664
+ },
+ {
+  "id": "kelime_canta",
+  "w": 7.5,
+  "hide": true,
+  "ar": 1.115
+ },
+ {
+  "id": "kelime_semsiye",
+  "w": 22.3,
+  "hide": true,
+  "ar": 1.0
+ },
+ {
+  "id": "kelime_top",
+  "w": 8.32,
+  "hide": true,
+  "ar": 1.005
+ },
+ {
+  "id": "kelime_balon",
+  "w": 8.44,
+  "hide": true,
+  "ar": 1.487
+ },
+ {
+  "id": "kelime_ucak",
+  "w": 16.21,
+  "hide": true,
+  "ar": 0.516
+ },
+ {
+  "id": "kelime_gemi",
+  "w": 9.41,
+  "hide": true,
+  "ar": 0.889
+ },
+ {
+  "id": "kelime_araba",
+  "w": 12.92,
+  "hide": true,
+  "ar": 0.647
+ },
+ {
+  "id": "kelime_kitap",
+  "w": 7.94,
+  "hide": true,
+  "ar": 0.702
+ },
+ {
+  "id": "kelime_kalem",
+  "w": 4.84,
+  "hide": true,
+  "ar": 1.152
+ },
+ {
+  "id": "kelime_saat",
+  "w": 4.39,
+  "hide": true,
+  "ar": 1.269
+ },
+ {
+  "id": "kelime_mum",
+  "w": 2.48,
+  "hide": true,
+  "ar": 1.347
+ },
+ {
+  "id": "kelime_lamba",
+  "w": 7.9,
+  "hide": true,
+  "ar": 1.589
  }
 ]

@@ -242,6 +242,8 @@ interface ExtraItem {
   char?: boolean;
   /** Üst seviye çeşit: okuma sorusuyla açılır. */
   lock?: boolean;
+  /** Menüde görünmez (yalnızca dolap, buzdolabı… içinden çıkar). */
+  hide?: boolean;
   /** Resmin yükseklik/genişlik oranı. */
   ar?: number;
   /** Üstüne eşya konabiliyorsa üst yüzeyin tepeden uzaklığı (0..1). */
@@ -274,6 +276,8 @@ export function heightPct(id: string): number {
   if (!e?.ar || !t) return 0;
   return ((t.w * 4 * e.ar) / 440) * 100;
 }
+/** Resmin yükseklik/genişlik oranı (yoksa 1). */
+export const aspectOf = (id: string) => META.get(id)?.ar ?? 1;
 /** Üstüne eşya konabilen eşyanın üst yüzeyi (0..1, resmin tepesinden), değilse undefined. */
 export const surfaceTop = (id: string) => (itemImage(id) ? META.get(id)?.top : undefined);
 
@@ -287,7 +291,7 @@ export const isCharAsset = (id: string) => EXTRA.some((e) => e.id === id && e.ch
 
 /** Bir odanın çekmecesine eklenecek, sadece görselden oluşan eşyalar. */
 export const extraItemsFor = (room: string) =>
-  EXTRA.filter((e) => itemImage(e.id) && (!e.rooms || e.rooms.includes(room)))
+  EXTRA.filter((e) => itemImage(e.id) && !e.hide && (!e.rooms || e.rooms.includes(room)))
     .sort((a, b) => Number(!!b.char) - Number(!!a.char))
     .map((e) => e.id);
 
@@ -334,4 +338,4 @@ export function yRange(id: string): [number, number] {
 }
 
 /** Görseli olan bütün ev eşyaları ve karakterler (eşya menüsü için). */
-export const imageItems = () => EXTRA.filter((e) => itemImage(e.id)).map((e) => e.id);
+export const imageItems = () => EXTRA.filter((e) => itemImage(e.id) && !e.hide).map((e) => e.id);

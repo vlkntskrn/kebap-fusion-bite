@@ -15,6 +15,8 @@ export interface Progress {
   unlockedItems?: string[];
   /** Defne'nin Evi: odalardaki eşyalar ve yerleri. */
   house?: Record<string, { u: number; id: string; x: number; y: number; on?: boolean; c?: string }[]>;
+  /** Evde gece mi. */
+  night?: boolean;
   /** Ev kayıt biçimi (2: geniş oda). */
   houseV?: number;
   /** Odaların duvar deseni/rengi, zemini ve pencere manzarası. */

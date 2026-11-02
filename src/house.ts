@@ -8,12 +8,14 @@ import { show, on, talkBtn, wiggle, h as hEl } from './ui';
 import { sfx } from './sfx';
 import { dollSvg, currentLook, shade } from './stage';
 import { genitive, TalkId } from './content';
-import { THINGS, itemImage, imageItems, isCharAsset, isLockedItem, unlockItem, yRange, placeOf, heightPct, surfaceTop } from './house-items';
+import { THINGS, itemImage, imageItems, isCharAsset, isLockedItem, unlockItem, yRange, placeOf, heightPct, surfaceTop, aspectOf } from './house-items';
+import { Pose, isPerson, isPet, poseFor, isFood, isStove, isLamp, isHoldable, contentsOf, petSound, poseImage } from './play';
 import { readingChallenge } from './challenge';
 import { imgTag, img } from './assets';
 import { roomIcon, MODE_ICONS } from './icons';
 
 type RoomId = 'yatak' | 'mutfak' | 'banyo' | 'salon' | 'havuz';
+const ROOM_IDS: RoomId[] = ['yatak', 'banyo', 'salon', 'mutfak', 'havuz'];
 type Mode = 'tasi' | 'boya' | 'tasarla';
 
 const PALETTE = ['#ffffff', '#fff1c9', '#ffd6e7', '#ffb3d1', '#ff8fc0', '#ff6b6b', '#ffa94d', '#ffd93d', '#b5e550', '#a8e6cf', '#5fd39a', '#9fd8ff', '#5fd3f3', '#4d96ff', '#c9b6ff', '#c77dff', '#e3b98a', '#c98a5a', '#9c8f86', '#3d3553'];
@@ -196,8 +198,16 @@ interface Inst {
   fl?: boolean;
   /** Döndürme açısı (derece). */
   r?: number;
-  /** Üstünde durduğu eşyanın numarası (masa, tezgâh…). */
+  /** Üstünde durduğu eşyanın numarası (masa, tezgâh…; karakterde yatak, sandalye…). */
   s?: number;
+  /** Karakterin duruşu (oturuyor, yatıyor, banyoda…). */
+  p?: Pose;
+  /** Karakterin elinde tutuluyor (s = karakter). */
+  hd?: boolean;
+  /** Yiyecekten alınan ısırık sayısı. */
+  b?: number;
+  /** Lamba kapalı. */
+  off?: boolean;
 }
 
 /** Görseli olmayan eşyalar artık gösterilmez (bebek ve çizim pencere hariç). */
@@ -273,27 +283,41 @@ const nextU = (list: Inst[]) => list.reduce((m, i) => Math.max(m, i.u), 0) + 1;
 function thingHtml(inst: Inst, room: RoomId): string {
   if (inst.id === 'pencere')
     return `<div class="thing window-thing" data-u="${inst.u}" style="--w:${29.5 / WORLD}%"><svg viewBox="146 36 118 108" xmlns="http://www.w3.org/2000/svg">${windowView(style(room).view, `pw${inst.u}${++bgSeq}`)}</svg></div>`;
-  if (inst.id === 'bebek') return `<div class="thing doll-thing" data-u="${inst.u}" style="--w:${26 / WORLD}%">${dollSvg(currentLook(), 'doll', { bg: false })}</div>`;
+  const list = house()[room] ?? [];
+  const host = inst.s ? list.find((h) => h.u === inst.s) : undefined;
+  const p = inst.p;
+  // Yatarken karakter yatağa sığsın.
+  const ar = inst.id === 'bebek' ? 1.6 : aspectOf(inst.id);
+  const fit = p === 'yat' && host ? Math.min(1, ((THINGS[host.id]?.w ?? 40) * 0.9) / ((inst.id === 'bebek' ? 26 : THINGS[inst.id]?.w ?? 10) * ar)) : 1;
+  const fx = p === 'banyo' ? '<span class="fx-bubbles"><i></i><i></i><i></i><i></i><i></i></span>' : p === 'dus' ? '<span class="fx-rain"></span>' : p === 'yuz' ? '<span class="fx-ripple"></span>' : '';
+  const mood = p === 'yat' ? '<span class="mood sleep">💤</span>' : '';
+  const cls = [p ? `pose pose-${p}` : '', inst.hd ? 'held' : '', inst.b ? `bite-${inst.b}` : '', isLamp(inst.id) ? `lamp ${inst.off ? 'off' : ''}` : ''].join(' ');
+  const vars = `--ar:${ar};--fit:${fit.toFixed(3)};`;
+  if (inst.id === 'bebek') return `<div class="thing doll-thing ${cls}" data-u="${inst.u}" style="--w:${26 / WORLD}%;${vars}">${dollSvg(currentLook(), 'doll', { bg: false })}${fx}${mood}</div>`;
   const t = THINGS[inst.id];
   const src = itemImage(inst.id);
   if (!t || !src) return '';
-  return `<div class="thing img-thing ${t.bob ? 'bob' : ''} ${inst.on ? 'on' : ''}" data-u="${inst.u}" style="--w:${t.w / WORLD}%"><img src="${src}" alt="" draggable="false"/>${
+  const pimg = poseImage(inst.id, p);
+  // Ocaktaki yemekten buhar çıkar.
+  const cooking = host && isStove(host.id) && !inst.hd ? '<span class="fx-steam"><i></i><i></i><i></i></span>' : '';
+  return `<div class="thing img-thing ${t.bob ? 'bob' : ''} ${inst.on ? 'on' : ''} ${cls} ${pimg ? 'pose-img' : ''}" data-u="${inst.u}" style="--w:${(pimg && p === 'yat' ? t.w * ar * fit : t.w) / WORLD}%;${vars}"><img src="${pimg ?? src}" alt="" draggable="false"/>${
     inst.c ? `<span class="tint" style="background:${inst.c};-webkit-mask-image:url('${src}');mask-image:url('${src}')"></span>` : ''
-  }</div>`;
+  }${fx}${mood}${cooking}</div>`;
 }
 
 function placeStyle(el: HTMLElement, inst: Inst, list: Inst[]) {
   el.style.left = `${inst.x / WORLD}%`;
   el.style.top = `${inst.y}%`;
   const host = inst.s ? list.find((h) => h.u === inst.s) : undefined;
-  el.style.zIndex = String(THINGS[inst.id]?.flat ? 1 : host ? 1100 + Math.round(host.y * 10) : 10 + Math.round(inst.y * 10));
+  el.style.zIndex = String(inst.hd ? 2600 : THINGS[inst.id]?.flat ? 1 : host ? 1100 + Math.round(host.y * 10) : 10 + Math.round(inst.y * 10));
   el.style.transform = `translate(-50%,-100%) rotate(${inst.r ?? 0}deg)${inst.fl ? ' scaleX(-1)' : ''}`;
 }
 
 /** Odanın tamamı (arka plan + eşyalar), harita önizlemesi için. */
 function worldInto(target: HTMLElement, room: RoomId) {
   const list = house()[room];
-  target.innerHTML = `<div class="room-bg-wrap">${roomBg(room, style(room))}</div><div class="layer">${list.map((i) => thingHtml(i, room)).join('')}</div>`;
+  target.innerHTML = `<div class="room-bg-wrap">${roomBg(room, style(room))}</div><div class="layer">${list.map((i) => thingHtml(i, room)).join('')}</div><div class="night-shade"></div>`;
+  target.classList.toggle('night', !!progress.night);
   target.querySelectorAll<HTMLElement>('.thing').forEach((el) => placeStyle(el, list.find((i) => i.u === Number(el.dataset.u))!, list));
 }
 
@@ -415,9 +439,9 @@ function showRoom(backToHome: () => void) {
   let cat = 'kisi';
   const root = show(`
     <div class="screen room-screen">
-      <div class="room"><div class="world"><div class="room-bg-wrap"></div><div class="layer"></div></div><div class="pan-hint">⟷</div></div>
+      <div class="room"><div class="world ${progress.night ? 'night' : ''}"><div class="room-bg-wrap"></div><div class="layer"></div><div class="night-shade"></div><div class="glow-layer"></div></div><div class="pan-hint">⟷</div></div>
       <div class="hud hud-tl"><button class="round-btn" data-act="map">⬅</button><span class="room-chip">${roomIcon(current)}</span></div>
-      <div class="hud hud-tr">${talkBtn('oda')}<button class="round-btn" data-zoom="in" aria-label="Yakınlaştır">＋</button><button class="round-btn" data-zoom="out" aria-label="Uzaklaştır">－</button></div>
+      <div class="hud hud-tr"><button class="round-btn daynight" data-act="night" aria-label="Gece / gündüz">${progress.night ? '☀️' : '🌙'}</button>${talkBtn('oda')}<button class="round-btn" data-zoom="in" aria-label="Yakınlaştır">＋</button><button class="round-btn" data-zoom="out" aria-label="Uzaklaştır">－</button></div>
       <div class="hud hud-l">
         <button class="mode" data-mode="tasi">${imgTag('ui_mod_tasi', MODE_ICONS.tasi)}</button>
         <button class="mode" data-mode="boya">${imgTag('ui_mod_boya', MODE_ICONS.boya)}</button>
@@ -426,6 +450,8 @@ function showRoom(backToHome: () => void) {
       </div>
       <button class="open-sheet" data-act="sheet" aria-label="Eşyalar">${catIcon(CATS[2]) || '🧺'}<b>＋</b></button>
       <div class="trash-drop">🗑️</div>
+      <div class="room-doors">${ROOM_IDS.filter((r) => r !== current).map((r) => `<div class="door-drop" data-room="${r}">${roomIcon(r)}</div>`).join('')}</div>
+      <div class="inside hidden"><div class="inside-box"><div class="inside-head"><span class="inside-icon"></span><button class="sheet-close" data-act="inside-close">✕</button></div><div class="inside-items"></div></div></div>
       <div class="sheet hidden">
         <div class="sheet-head"><div class="cat-tabs"></div><button class="sheet-close" data-act="close">▾</button></div>
         <div class="sheet-body"></div>
@@ -515,7 +541,7 @@ function showRoom(backToHome: () => void) {
     let fixed = false;
     for (const i of list()) {
       const host = i.s ? list().find((h) => h.u === i.s) : undefined;
-      if (placeOf(i.id) === 'surface' && (!host || !surfaceTop(host.id))) {
+      if (placeOf(i.id) === 'surface' && !i.hd && (!host || !surfaceTop(host.id))) {
         settle(i);
         fixed = true;
       }
@@ -523,7 +549,29 @@ function showRoom(backToHome: () => void) {
     if (fixed) commit();
     layer.innerHTML = list().map((i) => thingHtml(i, current)).join('');
     layer.querySelectorAll<HTMLElement>('.thing').forEach((el) => place(el, list().find((i) => i.u === Number(el.dataset.u))!));
+    renderGlows();
   };
+  /** Gece açık lambaların ışığı. */
+  const glowLayer = root.querySelector<HTMLElement>('.glow-layer')!;
+  const renderGlows = () => {
+    glowLayer.innerHTML = list()
+      .filter((i) => isLamp(i.id) && !i.off)
+      .map((i) => {
+        const hgt = heightPct(i.id) || 10;
+        const big = /lambader|sarkit|somine|perilamba|disko|v_lamba_06/.test(i.id) ? 1.6 : 1;
+        return `<span class="glow" style="left:${i.x / WORLD}%;top:${i.y - hgt * 0.7}%;--g:${(18 + hgt) * big}"></span>`;
+      })
+      .join('');
+  };
+  const setNight = (n: boolean) => {
+    progress.night = n;
+    commit();
+    world.classList.toggle('night', n);
+    root.querySelector('.daynight')!.textContent = n ? '☀️' : '🌙';
+    (n ? sfx.night : sfx.day)();
+    renderGlows();
+  };
+  on(root, 'night', () => setNight(!progress.night));
 
   /* ---- alt menü */
   const allItems = () => {
@@ -688,7 +736,7 @@ function showRoom(backToHome: () => void) {
       const inst = list().find((i) => i.u === Number(th.dataset.u));
       let fx = (cx - r.left) / r.width;
       if (inst?.fl) fx = 1 - fx;
-      if (inst?.r || alphaAt(im, fx, (cy - r.top) / r.height)) return th;
+      if (inst?.r || inst?.p || alphaAt(im, fx, (cy - r.top) / r.height)) return th;
     }
     return null;
   };
@@ -696,6 +744,181 @@ function showRoom(backToHome: () => void) {
     const r = trash.getBoundingClientRect();
     return cx >= r.left - 20 && cx <= r.right + 20 && cy >= r.top - 20 && cy <= r.bottom + 20;
   };
+
+  /* ---- karakter ve eşya etkileşimleri */
+  const doors = root.querySelector<HTMLElement>('.room-doors')!;
+  const doorAt = (cx: number, cy: number) => {
+    for (const d of doors.querySelectorAll<HTMLElement>('.door-drop')) {
+      const r = d.getBoundingClientRect();
+      if (cx >= r.left - 8 && cx <= r.right + 8 && cy >= r.top - 8 && cy <= r.bottom + 8) return d;
+    }
+    return null;
+  };
+  const isChar = (id: string) => id === 'bebek' || isCharAsset(id);
+  const widthOf = (i: Inst) => (i.id === 'bebek' ? 26 : THINGS[i.id]?.w ?? 10);
+  const heightOf = (i: Inst) => (i.id === 'bebek' ? ((26 * 4 * 1.6) / 440) * 100 : heightPct(i.id));
+  /** Noktanın üstünde olduğu eşya (en öndeki). */
+  const under = (x: number, y: number, ok: (h: Inst) => boolean, self: Inst) => {
+    let best: Inst | null = null;
+    for (const h of list()) {
+      if (h === self || h.s === self.u || !ok(h)) continue;
+      const half = widthOf(h) / 2;
+      if (Math.abs(x - h.x) > half * 0.9 || y > h.y + 3 || y < h.y - heightOf(h) - 2) continue;
+      if (!best || h.y > best.y) best = h;
+    }
+    return best;
+  };
+  const mood = (u: number, emoji: string, ms = 1600) => {
+    const el = elOf(u);
+    if (!el) return;
+    const m = hEl(`<span class="mood pop">${emoji}</span>`);
+    el.appendChild(m);
+    setTimeout(() => m.remove(), ms);
+  };
+  /** Yiyecekten bir ısırık: üçüncüde biter. */
+  const bite = (food: Inst, eater: Inst) => {
+    food.b = (food.b ?? 0) + 1;
+    sfx.chomp();
+    if (food.b >= 3) {
+      house()[current] = list().filter((i) => i !== food);
+      setTimeout(() => sfx.yum(), 350);
+    }
+    commit();
+    renderLayer();
+    mood(eater.u, food.b >= 3 ? '😋' : '😊');
+  };
+  /** Bırakılan eşya bir şeyle etkileşirse true. */
+  const interact = (inst: Inst): boolean => {
+    // Karakter: yatağa yatar, sandalyeye oturur, küvete girer, havuzda yüzer.
+    if (isChar(inst.id)) {
+      const person = isPerson(inst.id);
+      const host = under(inst.x, inst.y, (h) => !!poseFor(h.id) && !isChar(h.id), inst);
+      if (host) {
+        const pf = poseFor(host.id)!;
+        const p: Pose = person ? pf.p : pf.p === 'banyo' ? 'banyo' : 'otur';
+        inst.s = host.u;
+        inst.p = p;
+        inst.x = host.x;
+        inst.y = host.y - heightOf(host) * (p === 'otur' && !person ? 0.5 : pf.at);
+        commit();
+        renderLayer();
+        if (p === 'yat') {
+          sfx.sleep();
+        } else if (p === 'banyo') {
+          sfx.water();
+          setTimeout(() => sfx.bubbles(), 500);
+          mood(inst.u, '😊');
+        } else if (p === 'dus') {
+          sfx.water();
+          mood(inst.u, '😊');
+        } else {
+          sfx.sit();
+          mood(inst.u, '🙂', 1100);
+        }
+        return true;
+      }
+      if (current === 'havuz' && inst.y >= 76) {
+        inst.p = 'yuz';
+        commit();
+        renderLayer();
+        sfx.splash();
+        mood(inst.u, '😄');
+        return true;
+      }
+      return false;
+    }
+    // Küçük eşya karaktere verilince eline alır; yiyecek ağzına götürülünce yer.
+    if (isHoldable(inst.id) || isFood(inst.id)) {
+      const cy = inst.y - heightPct(inst.id) / 2;
+      const ch = under(inst.x, cy, (h) => isPerson(h.id), inst);
+      if (!ch) return false;
+      const H = heightOf(ch);
+      const lying = ch.p === 'yat';
+      const nearMouth = cy < ch.y - H * 0.55;
+      for (const r of list()) if (r.s === ch.u && r.hd && r !== inst) {
+        delete r.hd;
+        delete r.s;
+        r.x = ch.x + widthOf(ch);
+        r.y = Math.max(72, ch.y);
+        settle(r);
+      }
+      inst.s = ch.u;
+      inst.hd = true;
+      inst.x = ch.x + (ch.fl ? -1 : 1) * widthOf(ch) * 0.34;
+      inst.y = lying ? ch.y - 1 : ch.y - H * (ch.p === 'otur' ? 0.18 : 0.3);
+      if (isFood(inst.id) && nearMouth && !lying) bite(inst, ch);
+      else {
+        commit();
+        renderLayer();
+        sfx.merge();
+        mood(ch.u, isFood(inst.id) ? '🤤' : '😊', 1200);
+      }
+      return true;
+    }
+    return false;
+  };
+  /** Eşyayı (üstündekilerle birlikte) başka odaya taşır ve o odaya geçer. */
+  const moveToRoom = (inst: Inst, to: RoomId) => {
+    const group = [inst];
+    for (let k = 0; k < group.length; k++) for (const r of list()) if (r.s === group[k].u && !group.includes(r)) group.push(r);
+    house()[current] = list().filter((i) => !group.includes(i));
+    const dest = house()[to];
+    const dx = 150 - inst.x;
+    const map = new Map<number, number>();
+    for (const g of group) {
+      const u = nextU(dest);
+      map.set(g.u, u);
+      dest.push({ ...g, u, x: g.x + dx });
+    }
+    for (const g of dest.slice(dest.length - group.length)) {
+      if (g.s) g.s = map.get(g.s);
+    }
+    const moved = dest[dest.length - group.length];
+    delete moved.s;
+    if (moved.p !== 'yuz' || to !== 'havuz') delete moved.p;
+    if (to !== 'havuz' || moved.p !== 'yuz') {
+      const [y0, y1] = yRange(moved.id);
+      moved.y = Math.max(y0, Math.min(y1, moved.y));
+    }
+    commit();
+    sfx.whoosh();
+    current = to;
+    showRoom(backToHome);
+  };
+
+  /* ---- açılan eşyalar (buzdolabı, dolap, fırın…) */
+  const insideEl = root.querySelector<HTMLElement>('.inside')!;
+  let openBox: { el: HTMLElement; inst: Inst } | null = null;
+  const closeInside = () => {
+    if (!openBox) return;
+    openBox.el.classList.remove('opened');
+    openBox = null;
+    insideEl.classList.add('hidden');
+    sfx.close();
+  };
+  const openInside = (el: HTMLElement, inst: Inst, items: string[]) => {
+    openBox = { el, inst };
+    el.classList.add('opened');
+    insideEl.querySelector('.inside-icon')!.innerHTML = `<img src="${itemImage(inst.id)}" alt=""/>`;
+    insideEl.querySelector('.inside-items')!.innerHTML = items.map((id) => `<button class="drawer-item" data-id="${id}">${thumb(id)}</button>`).join('');
+    insideEl.classList.remove('hidden');
+    sfx.door();
+  };
+  on(root, 'inside-close', closeInside);
+  insideEl.addEventListener('click', (e) => {
+    if (e.target === insideEl) return closeInside();
+    const b = (e.target as Element).closest<HTMLElement>('.drawer-item');
+    if (!b || !openBox) return;
+    const box = openBox.inst;
+    snapshot();
+    const id = b.dataset.id!;
+    const w = widthOf(box);
+    const [node] = addInst(id, box.x + (Math.random() < 0.5 ? -1 : 1) * (w / 2 + 3 + Math.random() * 4), placeOf(id) === 'wall' ? 50 : Math.min(98, box.y + 4));
+    pop(node);
+    commit();
+    sfx.merge();
+    closeInside();
+  });
 
   /* ---- sürükle-bırak */
   function drag(el: HTMLElement, inst: Inst, ev: PointerEvent, fresh: boolean) {
@@ -709,6 +932,17 @@ function showRoom(backToHome: () => void) {
       if (!moved && Math.hypot(p.x - start.x, p.y - start.y) > 2) {
         moved = true;
         snapshot();
+        // Kalkınca oturma/yatma biter, elden alınan eşya serbest kalır.
+        if (inst.p || inst.hd) {
+          delete inst.p;
+          delete inst.hd;
+          delete inst.s;
+          const node = hEl(thingHtml(inst, current));
+          node.classList.add('dragging');
+          el.replaceWith(node);
+          el = node;
+          place(el, inst);
+        }
       }
       if (!moved) return;
       hideTools();
@@ -727,6 +961,8 @@ function showRoom(backToHome: () => void) {
         if (rel) place(rel, r);
       }
       trash.classList.toggle('hot', overTrash(e.clientX, e.clientY));
+      const dr = doorAt(e.clientX, e.clientY);
+      doors.querySelectorAll('.door-drop').forEach((d) => d.classList.toggle('hot', d === dr));
     };
     const up = (e: PointerEvent) => {
       window.removeEventListener('pointermove', move);
@@ -734,15 +970,26 @@ function showRoom(backToHome: () => void) {
       window.removeEventListener('pointercancel', up);
       el.classList.remove('dragging');
       const del = moved && overTrash(e.clientX, e.clientY);
+      const door = moved ? doorAt(e.clientX, e.clientY) : null;
       root.classList.remove('dragging-item');
       trash.classList.remove('hot');
+      doors.querySelectorAll('.door-drop').forEach((d) => d.classList.remove('hot'));
       if (!moved) return tap(el, inst);
+      if (door) return moveToRoom(inst, door.dataset.room as RoomId);
       if (del) {
-        for (const r of list()) if (r.s === inst.u) delete r.s;
+        for (const r of list())
+          if (r.s === inst.u) {
+            delete r.s;
+            delete r.p;
+            if (r.hd) {
+              delete r.hd;
+              r.y = Math.max(72, r.y);
+            }
+          }
         house()[current] = list().filter((i) => i !== inst);
         el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 200 }).finished.then(() => el.remove());
         sfx.soft();
-      } else {
+      } else if (!interact(inst)) {
         settle(inst);
         place(el, inst);
         for (const r of list()) {
@@ -750,7 +997,11 @@ function showRoom(backToHome: () => void) {
           const rel = elOf(r.u);
           if (rel) place(rel, r);
         }
-        sfx.tap();
+        // Ocağa yemek konunca buhar çıksın, kalkınca dursun.
+        if (list().some((h) => isStove(h.id))) renderLayer();
+        const host = inst.s ? list().find((h) => h.u === inst.s) : undefined;
+        if (host && isStove(host.id)) sfx.sizzle();
+        else sfx.tap();
       }
       commit();
     };
@@ -763,9 +1014,9 @@ function showRoom(backToHome: () => void) {
     node.animate([{ transform: 'translate(-50%,-100%) scale(0.3)' }, { transform: 'translate(-50%,-100%) scale(1.1)' }, { transform: 'translate(-50%,-100%) scale(1)' }], { duration: 350 });
 
   function tap(el: HTMLElement, inst: Inst) {
-    const isChar = inst.id === 'bebek' || isCharAsset(inst.id);
+    const ch = isChar(inst.id);
     if (mode === 'boya') {
-      if (isChar || inst.id === 'pencere') return sfx.soft();
+      if (ch || inst.id === 'pencere') return sfx.soft();
       snapshot();
       inst.c = brush === '#ffffff' ? undefined : brush;
       commit();
@@ -776,12 +1027,60 @@ function showRoom(backToHome: () => void) {
       pop(node);
       return;
     }
-    showTools(el, inst);
-    if (isChar) {
-      (el.querySelector('.doll-body') ?? el.querySelector('img'))?.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-30px)' }, { transform: 'translateY(0)' }], { duration: 500 });
-      sfx.sing();
+    const jump = () =>
+      (el.querySelector('.doll-body') ?? el.querySelector('img'))?.animate([{ translate: '0 0' }, { translate: '0 -30px' }, { translate: '0 0' }], { duration: 500 });
+    // Elindeki yiyecekten ısırır.
+    const food = ch ? list().find((r) => r.s === inst.u && r.hd && isFood(r.id)) : undefined;
+    if (food) {
+      snapshot();
+      return bite(food, inst);
+    }
+    // Elindeki yiyeceğe dokununca da yer.
+    if (inst.hd && isFood(inst.id)) {
+      const eater = list().find((h) => h.u === inst.s);
+      if (eater) {
+        snapshot();
+        return bite(inst, eater);
+      }
+    }
+    if (ch && isPet(inst.id)) {
+      jump();
+      petSound(inst.id);
+      mood(inst.u, '💕', 1200);
       return;
     }
+    if (ch) {
+      if (inst.p === 'yat') {
+        sfx.sleep();
+        mood(inst.u, progress.night ? '😴' : '🥱', 1400);
+        return;
+      }
+      showTools(el, inst);
+      if (inst.p === 'banyo' || inst.p === 'yuz') {
+        sfx.bubbles();
+        mood(inst.u, '🫧', 1200);
+        return;
+      }
+      jump();
+      sfx.sing();
+      mood(inst.u, ['😊', '😄', '🎵', '💖'][Math.floor(Math.random() * 4)], 1200);
+      return;
+    }
+    const inside = contentsOf(inst.id);
+    if (inside) return openInside(el, inst, inside);
+    showTools(el, inst);
+    if (isLamp(inst.id)) {
+      snapshot();
+      inst.off = !inst.off;
+      if (!inst.off) delete inst.off;
+      el.classList.toggle('off', !!inst.off);
+      commit();
+      sfx.click();
+      renderGlows();
+      return;
+    }
+    if (isStove(inst.id) && list().some((r) => r.s === inst.u)) return sfx.sizzle();
+    if (poseFor(inst.id)?.p === 'banyo' || poseFor(inst.id)?.p === 'dus') return sfx.water();
     if (THINGS[inst.id]?.toggle) {
       inst.on = !inst.on;
       el.classList.toggle('on', inst.on);

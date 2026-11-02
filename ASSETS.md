@@ -39,6 +39,219 @@ Toplam **363 eşya** (232 tanesi çeşit ailelerinden, ilk 2 çeşit bedava, ger
    Benim çizdiğim aynı adlı eşya varsa, Firefly görseli onun yerine geçer.
 
 
+## 🆕 Karakter pozları: oturan ve uyuyan hâller (34 istek)
+
+Oyunda karakter sandalyeye bırakılınca oturur, yatağa bırakılınca uyur. Bu resimler yoksa oyun ayakta duran resmi
+keserek ya da yatırarak gösterir; resimler gelince gerçek oturma ve uyuma pozları kullanılır.
+- Ayarlar: **Square (1:1)**, Art, Style reference yüklü. En iyi sonuç için Firefly'da **Structure/Style reference** olarak
+  aynı karakterin ayakta duran resmini (ör. `kiz1`) yükleyin; böylece yüz ve kıyafet aynı kalır.
+- `_yat` resimlerinde karakter **yatay**, başı **solda** olmalı. Toplu istekler aşağıda `set_poz_…` sayfalarında (4'lü).
+
+### `kiz1_otur` — Mor örgülü kız (oturuyor)
+
+```
+kiz1_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl with a long lavender braid, light skin, wearing a pink hoodie, light blue jeans and white sneakers, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz1_yat` — Mor örgülü kız (uyuyor)
+
+```
+kiz1_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl with a long lavender braid, light skin, wearing a pink hoodie, light blue jeans and white sneakers, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz2_otur` — Kıvırcık saçlı kız (oturuyor)
+
+```
+kiz2_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl with big curly black hair in a puff with a yellow bow, dark brown skin, wearing a yellow dress and pink sandals, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz2_yat` — Kıvırcık saçlı kız (uyuyor)
+
+```
+kiz2_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl with big curly black hair in a puff with a yellow bow, dark brown skin, wearing a yellow dress and pink sandals, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz3_otur` — Pembe saçlı kız (oturuyor)
+
+```
+kiz3_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl with a short pink bob haircut, fair skin, wearing a star print t-shirt, a lilac skirt and white boots, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz3_yat` — Pembe saçlı kız (uyuyor)
+
+```
+kiz3_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl with a short pink bob haircut, fair skin, wearing a star print t-shirt, a lilac skirt and white boots, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz4_otur` — Topuzlu kız (oturuyor)
+
+```
+kiz4_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl with two blonde space buns, light skin, wearing mint overalls with a white shirt and yellow shoes, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz4_yat` — Topuzlu kız (uyuyor)
+
+```
+kiz4_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl with two blonde space buns, light skin, wearing mint overalls with a white shirt and yellow shoes, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz5_otur` — Kızıl saçlı kız (oturuyor)
+
+```
+kiz5_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl with long wavy red hair and freckles, wearing a green dress with a white collar and red shoes, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz5_yat` — Kızıl saçlı kız (uyuyor)
+
+```
+kiz5_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl with long wavy red hair and freckles, wearing a green dress with a white collar and red shoes, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz6_otur` — Prenses kız (oturuyor)
+
+```
+kiz6_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl princess with long brown hair and a small golden tiara, medium tan skin, wearing a puffy lilac ball gown, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz6_yat` — Prenses kız (uyuyor)
+
+```
+kiz6_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl princess with long brown hair and a small golden tiara, medium tan skin, wearing a puffy lilac ball gown, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz7_otur` — Pop yıldızı kız (oturuyor)
+
+```
+kiz7_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl pop star with a high purple ponytail, light skin, wearing a sparkly silver jacket, a pink skirt and holding nothing, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `kiz7_yat` — Pop yıldızı kız (uyuyor)
+
+```
+kiz7_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little girl pop star with a high purple ponytail, light skin, wearing a sparkly silver jacket, a pink skirt and holding nothing, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `oglan1_otur` — Kahverengi saçlı oğlan (oturuyor)
+
+```
+oglan1_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little boy with short brown hair, light skin, wearing a blue sweater, khaki shorts and sneakers, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `oglan1_yat` — Kahverengi saçlı oğlan (uyuyor)
+
+```
+oglan1_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little boy with short brown hair, light skin, wearing a blue sweater, khaki shorts and sneakers, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `oglan2_otur` — Kıvırcık saçlı oğlan (oturuyor)
+
+```
+oglan2_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little boy with short black curly hair, dark brown skin, wearing a green t-shirt with a dinosaur, jeans and orange sneakers, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `oglan2_yat` — Kıvırcık saçlı oğlan (uyuyor)
+
+```
+oglan2_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little boy with short black curly hair, dark brown skin, wearing a green t-shirt with a dinosaur, jeans and orange sneakers, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `oglan3_otur` — Şapkalı oğlan (oturuyor)
+
+```
+oglan3_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little boy with straight black hair and a backwards yellow cap, light tan skin, wearing a striped shirt and shorts, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `oglan3_yat` — Şapkalı oğlan (uyuyor)
+
+```
+oglan3_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute little boy with straight black hair and a backwards yellow cap, light tan skin, wearing a striped shirt and shorts, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `bebek1_otur` — Bebek (oturuyor)
+
+```
+bebek1_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute cute baby with a tiny curl of hair, wearing a pastel yellow onesie, sitting, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `bebek1_yat` — Bebek (uyuyor)
+
+```
+bebek1_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute cute baby with a tiny curl of hair, wearing a pastel yellow onesie, sitting, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `bebek2_otur` — Bebek (pembe) (oturuyor)
+
+```
+bebek2_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute cute baby girl with a pink headband, wearing a pink onesie, sitting, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `bebek2_yat` — Bebek (pembe) (uyuyor)
+
+```
+bebek2_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute cute baby girl with a pink headband, wearing a pink onesie, sitting, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `anne_otur` — Anne (oturuyor)
+
+```
+anne_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute young mother with long brown hair, light skin, wearing a green dress and white sneakers, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `anne_yat` — Anne (uyuyor)
+
+```
+anne_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute young mother with long brown hair, light skin, wearing a green dress and white sneakers, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `baba_otur` — Baba (oturuyor)
+
+```
+baba_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute young father with short black hair and a short beard, light tan skin, wearing a blue striped shirt and jeans, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `baba_yat` — Baba (uyuyor)
+
+```
+baba_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute young father with short black hair and a short beard, light tan skin, wearing a blue striped shirt and jeans, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `nine_otur` — Nine (oturuyor)
+
+```
+nine_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute kind grandmother with grey hair in a bun and round glasses, wearing a lilac cardigan and a long skirt, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `nine_yat` — Nine (uyuyor)
+
+```
+nine_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute kind grandmother with grey hair in a bun and round glasses, wearing a lilac cardigan and a long skirt, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `dede_otur` — Dede (oturuyor)
+
+```
+dede_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute kind grandfather with white hair, a white mustache and glasses, wearing a brown vest and trousers, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `dede_yat` — Dede (uyuyor)
+
+```
+dede_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute kind grandfather with white hair, a white mustache and glasses, wearing a brown vest and trousers, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `ogretmen_otur` — Öğretmen (oturuyor)
+
+```
+ogretmen_otur — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute friendly young teacher with a brown ponytail, wearing a yellow sweater and blue skirt, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+### `ogretmen_yat` — Öğretmen (uyuyor)
+
+```
+ogretmen_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean shapes, no realistic textures, no photographic lighting, isolated on a plain white background, no room around it: a cute friendly young teacher with a brown ponytail, wearing a yellow sweater and blue skirt, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, centered with generous empty margin, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+
 ## 🆕 Ev haritası (5 istek)
 
 Ev haritası (odaların seçildiği ekran) bu parçalardan kurulur: arkada manzara, odaların üstünde çatı, çatıda isim
@@ -298,7 +511,7 @@ kapi_04 — 2D flat vector cartoon illustration, NOT a photo, simple clean shape
 ```
 
 
-## Toplu üretim: çıkartma sayfaları (77 istek)
+## Toplu üretim: çıkartma sayfaları (86 istek)
 
 Görselleri tek tek üretmek yerine **bir istekte 9 tane** (karakterlerde 4) üretebilirsiniz. Firefly hepsini aynı resimde,
 aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya doğru kodu veririm.
@@ -310,7 +523,7 @@ aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya
   küçük eşyalar ve kelime resimleri için toplu üretim iyi bir denge.
 
 
-### 🆕 YENİ sayfalar: çeşit aileleri, pencere ve kapılar (30 istek)
+### 🆕 YENİ sayfalar: çeşit aileleri, pencere ve kapılar (39 istek)
 
 Bunlar yeni eklendi, henüz üretilmedi. Her ailede ilk 2 çeşit bedava, diğerleri oyunda okuma sorusuyla açılır.
 
@@ -492,6 +705,60 @@ set_cesit_hepsi_05 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 comp
 
 ```
 set_yapi_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 10 completely separate items arranged in a neat 2 by 5 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a white double casement window with a blue sky and one cloud visible through the glass; 2) a tall arched white window with thin muntins and pale sky behind the glass; 3) a round porthole style window with a pink wooden frame and blue sky inside; 4) a white window with short pink gingham curtains tied on both sides and a flower box below; 5) a white window showing a dark blue night sky with a crescent moon and stars; 6) a wide three-panel white framed window with green garden trees visible outside; 7) a closed white panel interior door with a round gold doorknob; 8) a closed pastel pink arched wooden door with a small heart window and gold knob; 9) a closed mint green wooden plank door with a brass handle; 10) a closed white French door with glass panes showing a sunny garden. Cute cozy 2D illustration for a children's dollhouse game, flat vector art style with very soft gentle shading, rounded friendly shapes, clean thick dark navy outline (#3D3553) around every shape, soft pastel color palette (blush pink, lilac, mint, butter yellow, sky blue, cream), straight-on front view at eye level with no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no people, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_poz_01` — 4 görsel: kiz1_otur, kiz1_yat, kiz2_otur, kiz2_yat
+
+```
+set_poz_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 2 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute little girl with a long lavender braid, light skin, wearing a pink hoodie, light blue jeans and white sneakers, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 2) a cute little girl with a long lavender braid, light skin, wearing a pink hoodie, light blue jeans and white sneakers, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow; 3) a cute little girl with big curly black hair in a puff with a yellow bow, dark brown skin, wearing a yellow dress and pink sandals, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 4) a cute little girl with big curly black hair in a puff with a yellow bow, dark brown skin, wearing a yellow dress and pink sandals, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_poz_02` — 4 görsel: kiz3_otur, kiz3_yat, kiz4_otur, kiz4_yat
+
+```
+set_poz_02 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 2 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute little girl with a short pink bob haircut, fair skin, wearing a star print t-shirt, a lilac skirt and white boots, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 2) a cute little girl with a short pink bob haircut, fair skin, wearing a star print t-shirt, a lilac skirt and white boots, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow; 3) a cute little girl with two blonde space buns, light skin, wearing mint overalls with a white shirt and yellow shoes, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 4) a cute little girl with two blonde space buns, light skin, wearing mint overalls with a white shirt and yellow shoes, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_poz_03` — 4 görsel: kiz5_otur, kiz5_yat, kiz6_otur, kiz6_yat
+
+```
+set_poz_03 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 2 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute little girl with long wavy red hair and freckles, wearing a green dress with a white collar and red shoes, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 2) a cute little girl with long wavy red hair and freckles, wearing a green dress with a white collar and red shoes, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow; 3) a cute little girl princess with long brown hair and a small golden tiara, medium tan skin, wearing a puffy lilac ball gown, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 4) a cute little girl princess with long brown hair and a small golden tiara, medium tan skin, wearing a puffy lilac ball gown, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_poz_04` — 4 görsel: kiz7_otur, kiz7_yat, oglan1_otur, oglan1_yat
+
+```
+set_poz_04 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 2 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute little girl pop star with a high purple ponytail, light skin, wearing a sparkly silver jacket, a pink skirt and holding nothing, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 2) a cute little girl pop star with a high purple ponytail, light skin, wearing a sparkly silver jacket, a pink skirt and holding nothing, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow; 3) a cute little boy with short brown hair, light skin, wearing a blue sweater, khaki shorts and sneakers, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 4) a cute little boy with short brown hair, light skin, wearing a blue sweater, khaki shorts and sneakers, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_poz_05` — 4 görsel: oglan2_otur, oglan2_yat, oglan3_otur, oglan3_yat
+
+```
+set_poz_05 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 2 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute little boy with short black curly hair, dark brown skin, wearing a green t-shirt with a dinosaur, jeans and orange sneakers, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 2) a cute little boy with short black curly hair, dark brown skin, wearing a green t-shirt with a dinosaur, jeans and orange sneakers, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow; 3) a cute little boy with straight black hair and a backwards yellow cap, light tan skin, wearing a striped shirt and shorts, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 4) a cute little boy with straight black hair and a backwards yellow cap, light tan skin, wearing a striped shirt and shorts, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_poz_06` — 4 görsel: bebek1_otur, bebek1_yat, bebek2_otur, bebek2_yat
+
+```
+set_poz_06 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 2 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute cute baby with a tiny curl of hair, wearing a pastel yellow onesie, sitting, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 2) a cute cute baby with a tiny curl of hair, wearing a pastel yellow onesie, sitting, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow; 3) a cute cute baby girl with a pink headband, wearing a pink onesie, sitting, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 4) a cute cute baby girl with a pink headband, wearing a pink onesie, sitting, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_poz_07` — 4 görsel: anne_otur, anne_yat, baba_otur, baba_yat
+
+```
+set_poz_07 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 2 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute young mother with long brown hair, light skin, wearing a green dress and white sneakers, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 2) a cute young mother with long brown hair, light skin, wearing a green dress and white sneakers, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow; 3) a cute young father with short black hair and a short beard, light tan skin, wearing a blue striped shirt and jeans, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 4) a cute young father with short black hair and a short beard, light tan skin, wearing a blue striped shirt and jeans, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_poz_08` — 4 görsel: nine_otur, nine_yat, dede_otur, dede_yat
+
+```
+set_poz_08 — 2D flat vector cartoon sticker sheet, NOT a photo: 4 completely separate items arranged in a neat 2 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute kind grandmother with grey hair in a bun and round glasses, wearing a lilac cardigan and a long skirt, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 2) a cute kind grandmother with grey hair in a bun and round glasses, wearing a lilac cardigan and a long skirt, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow; 3) a cute kind grandfather with white hair, a white mustache and glasses, wearing a brown vest and trousers, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 4) a cute kind grandfather with white hair, a white mustache and glasses, wearing a brown vest and trousers, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
+```
+
+#### `set_poz_09` — 2 görsel: ogretmen_otur, ogretmen_yat
+
+```
+set_poz_09 — 2D flat vector cartoon sticker sheet, NOT a photo: 2 completely separate items arranged in a neat 1 by 2 grid with wide empty white space between them, every item fully visible, none of the items touching or overlapping, all items drawn at a similar size and in the same consistent style. The items in order, left to right and top to bottom: 1) a cute friendly young teacher with a brown ponytail, wearing a yellow sweater and blue skirt, sitting on an invisible chair seen straight from the front, knees bent, lower legs hanging down, hands resting on the lap, happy smile; 2) a cute friendly young teacher with a brown ponytail, wearing a yellow sweater and blue skirt, lying flat on their back asleep, seen from the side, the whole body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow. Cute 2D chibi character for a children's dollhouse game, flat vector art style with very soft gentle shading, big round head, small rounded body (head about one third of total height), simple black oval eyes with a tiny white highlight, rosy round cheeks, small friendly smile, clean thick dark navy outline (#3D3553), soft pastel color palette, full body visible from head to shoes, no floor, no cast shadow, no props, no text, no logo, no watermark, plain solid pure white background (#FFFFFF).
 ```
 
 

@@ -184,7 +184,7 @@ export const TALK = {
   hediyeSecildi: 'Çok yakıştı! Şimdi sahneye çıkma zamanı!',
   konser: '{ad} sahneye çıkıyor! Hadi birlikte söyleyelim!',
   ev: '{adın} evine hoş geldin! Bir odaya dokun, içine gir.',
-  oda: '{ad}, artı düğmesine bas, eşya seç. Eşyaları parmağınla sürükle. Atmak istediğini çöp kutusuna götür. Ok düğmesi geri alır.',
+  oda: '{ad}, artı düğmesine bas, eşya seç. Karakteri yatağa koy, uyusun. Sandalyeye koy, otursun. Yemeği eline ver, dokun, yesin. Buzdolabına, dolaba dokun, içini aç. Ay düğmesi geceyi getirir. Karakteri yukarıdaki odalara götürürsen o odaya gider.',
   oda_yatak: 'Yatak odası!',
   oda_mutfak: 'Mutfak!',
   oda_banyo: 'Banyo!',
