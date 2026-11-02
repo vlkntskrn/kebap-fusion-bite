@@ -192,7 +192,7 @@ def prepare(name: str, src: Path):
         dest = OUT / f"{name}.webp"
         img.save(dest, "WEBP", quality=86, method=6)
         return dest
-    if name.startswith("arka_") or name == "bahce_manzara":
+    if name.startswith(("arka_", "ic_")) or name == "bahce_manzara":
         img = img.convert("RGB")
         img.thumbnail((1600, 1600), Image.LANCZOS)
         dest = OUT / f"{name}.jpg"

@@ -47,21 +47,31 @@ export const isHoldable = (id: string) => HOLD.test(id);
 /* ------------------------------------------------------------ açılan eşyalar */
 
 const range = (p: string, n: number) => Array.from({ length: n }, (_, i) => `${p}${String(i + 1).padStart(2, '0')}`);
-const CONTAINERS: [RegExp, string, string[]][] = [
-  [R('buzdolabi|retrobuzdolabi$'), '🧊', [...range('v_yemek_', 12), 'pasta', 'meyve', 'sut', 'limonata', 'salata', 'cilek', 'pizza', 'hamburger', 'ekmek', 'kurabiye', 'dondurma', 'kelime_elma', 'kelime_muz', 'kelime_peynir', 'kelime_yumurta', 'kelime_limon', 'kelime_havuc']],
-  [R('firin$|v_ocak_'), '🔥', ['pasta', 'kurabiye', 'pizza', 'ekmek', 'v_yemek_02', 'v_yemek_03', 'v_yemek_05', 'v_yemek_09', 'kelime_kek', 'kelime_simit', 'kelime_patates']],
-  [R('dolap$|v_dolap_|sifonyer$|kiyafetaski$'), '👗', ['kelime_ceket', 'kelime_etek', 'kelime_corap', 'kelime_sapka', 'kelime_canta', 'bornoz', 'v_banyo_aksesuar_07', 'havlu', 'kelime_semsiye']],
-  [R('oyuncaksandigi$|oyunrafi$'), '🧸', [...range('v_oyuncak_', 9), 'ayi', 'unicorn', 'top', 'robot', 'kelime_top', 'kelime_balon', 'kelime_ucak', 'kelime_gemi', 'kelime_araba']],
-  [R('tabakdolabi$|v_tabak_|tezgah$|v_tezgah_'), '🍽️', [...range('v_alet_', 10), 'kahve', 'caydanlik', 'kettle', 'tost', 'blender', 'mikser', 'v_yemek_01', 'v_yemek_07', 'v_yemek_10']],
-  [R('banyolavabo$|v_lavabo_'), '🧴', ['dissfircasi', 'sabunluk', 'ordek', 'sampuan', 'v_banyo_aksesuar_03', 'v_banyo_aksesuar_04', 'v_banyo_aksesuar_05', 'v_banyo_aksesuar_06', 'havlu']],
-  [R('komodin$|kitaplik$'), '📚', ['gecelambasi', 'kelime_kitap', 'kelime_kalem', 'ayi', 'kelime_saat', 'kelime_mum']],
+/** Açılan eşyanın türü: içinin nasıl görüneceğini belirler. */
+export type BoxKind = 'buzdolabi' | 'firin' | 'dolap' | 'sandik' | 'raf' | 'banyo' | 'cekmece';
+const CONTAINERS: [RegExp, BoxKind, string[]][] = [
+  [R('buzdolabi|retrobuzdolabi$'), 'buzdolabi', [...range('v_yemek_', 12), 'pasta', 'meyve', 'sut', 'limonata', 'salata', 'cilek', 'pizza', 'hamburger', 'ekmek', 'kurabiye', 'dondurma', 'kelime_elma', 'kelime_muz', 'kelime_peynir', 'kelime_yumurta', 'kelime_limon', 'kelime_havuc']],
+  [R('firin$|v_ocak_'), 'firin', ['pasta', 'kurabiye', 'pizza', 'ekmek', 'v_yemek_02', 'v_yemek_03', 'v_yemek_05', 'v_yemek_09', 'kelime_kek', 'kelime_simit', 'kelime_patates']],
+  [R('dolap$|v_dolap_|sifonyer$|kiyafetaski$'), 'dolap', ['kelime_ceket', 'kelime_etek', 'kelime_corap', 'kelime_sapka', 'kelime_canta', 'bornoz', 'v_banyo_aksesuar_07', 'havlu', 'kelime_semsiye']],
+  [R('oyuncaksandigi$|oyunrafi$'), 'sandik', [...range('v_oyuncak_', 9), 'ayi', 'unicorn', 'top', 'robot', 'kelime_top', 'kelime_balon', 'kelime_ucak', 'kelime_gemi', 'kelime_araba']],
+  [R('tabakdolabi$|v_tabak_|tezgah$|v_tezgah_'), 'raf', [...range('v_alet_', 10), 'kahve', 'caydanlik', 'kettle', 'tost', 'blender', 'mikser', 'v_yemek_01', 'v_yemek_07', 'v_yemek_10']],
+  [R('banyolavabo$|v_lavabo_'), 'banyo', ['dissfircasi', 'sabunluk', 'ordek', 'sampuan', 'v_banyo_aksesuar_03', 'v_banyo_aksesuar_04', 'v_banyo_aksesuar_05', 'v_banyo_aksesuar_06', 'havlu']],
+  [R('komodin$|kitaplik$'), 'cekmece', ['gecelambasi', 'kelime_kitap', 'kelime_kalem', 'ayi', 'kelime_saat', 'kelime_mum']],
 ];
-/** Açılabilen eşyanın içindekiler (görseli olanlar). */
-export function contentsOf(id: string): string[] | null {
+export const boxKind = (id: string): BoxKind | null => CONTAINERS.find(([re]) => re.test(id))?.[1] ?? null;
+/** Açılabilen eşyanın içindekiler (görseli olanlar): önce Defne'nin içine koydukları, sonra hazır olanlar. */
+export function contentsOf(id: string, stored: string[] = []): string[] | null {
   const c = CONTAINERS.find(([re]) => re.test(id));
   if (!c) return null;
-  const items = [...new Set(c[2])].filter((x) => img(x) && THINGS[x]);
+  const items = [...new Set([...stored, ...c[2]])].filter((x) => img(x) && THINGS[x]);
   return items.length ? items : null;
+}
+/** Bu eşya bu dolaba konabilir mi (buzdolabına yiyecek, gardıroba kıyafet…). */
+export function fitsIn(box: string, item: string): boolean {
+  const k = boxKind(box);
+  if (!k) return false;
+  if (k === 'buzdolabi' || k === 'firin') return isFood(item);
+  return isHoldable(item) || isFood(item);
 }
 
 /* ------------------------------------------------------------ sesler */

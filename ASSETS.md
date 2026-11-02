@@ -39,6 +39,55 @@ Toplam **363 eşya** (232 tanesi çeşit ailelerinden, ilk 2 çeşit bedava, ger
    Benim çizdiğim aynı adlı eşya varsa, Firefly görseli onun yerine geçer.
 
 
+## 🆕 Açılan eşyaların içi (7 istek)
+
+Buzdolabı, gardırop, fırın gibi eşyalara dokununca kapakları açılır ve içi görünür; içindekiler raflara dizilir.
+Bu resimler o iç görünümün arka planıdır (raflar boş olmalı, oyun eşyaları kendisi koyar). Yoksa oyun düz renkli bir iç çizer.
+- **Aspect ratio: Landscape (4:3)**, Art, Style reference yüklü. Arka planını silmiyorum; resim kenardan kenara dolu olmalı.
+
+### `ic_buzdolabi` — Buzdolabının içi
+
+```
+ic_buzdolabi — 2D flat vector cartoon background illustration, NOT a photo: the inside of an open fridge seen straight from the front: bright white inner walls, a soft warm light at the top, three empty clear glass shelves at even heights, two empty vegetable drawers at the bottom. Wide cozy background illustration for a children's game screen, flat vector art style with soft gentle shading, soft pastel colors, calm and not busy, gentle details only near the edges so the center stays clean, no characters, no people, no text, no letters, no logo, no watermark, full bleed scene filling the whole frame.
+```
+
+### `ic_dolap` — Gardırobun içi
+
+```
+ic_dolap — 2D flat vector cartoon background illustration, NOT a photo: the inside of an open pastel wardrobe seen straight from the front: light wooden back wall, an empty wooden hanging rail near the top, two empty wooden shelves below. Wide cozy background illustration for a children's game screen, flat vector art style with soft gentle shading, soft pastel colors, calm and not busy, gentle details only near the edges so the center stays clean, no characters, no people, no text, no letters, no logo, no watermark, full bleed scene filling the whole frame.
+```
+
+### `ic_firin` — Fırının içi
+
+```
+ic_firin — 2D flat vector cartoon background illustration, NOT a photo: the inside of an open oven seen straight from the front: dark warm brown inner walls, a soft orange glow at the bottom, two empty metal racks. Wide cozy background illustration for a children's game screen, flat vector art style with soft gentle shading, soft pastel colors, calm and not busy, gentle details only near the edges so the center stays clean, no characters, no people, no text, no letters, no logo, no watermark, full bleed scene filling the whole frame.
+```
+
+### `ic_sandik` — Oyuncak sandığının içi
+
+```
+ic_sandik — 2D flat vector cartoon background illustration, NOT a photo: the inside of an open wooden toy chest seen straight from the front: warm yellow painted inner walls with little stars, empty. Wide cozy background illustration for a children's game screen, flat vector art style with soft gentle shading, soft pastel colors, calm and not busy, gentle details only near the edges so the center stays clean, no characters, no people, no text, no letters, no logo, no watermark, full bleed scene filling the whole frame.
+```
+
+### `ic_raf` — Mutfak dolabının içi
+
+```
+ic_raf — 2D flat vector cartoon background illustration, NOT a photo: the inside of an open cream kitchen cupboard seen straight from the front: light inner walls, three empty wooden shelves. Wide cozy background illustration for a children's game screen, flat vector art style with soft gentle shading, soft pastel colors, calm and not busy, gentle details only near the edges so the center stays clean, no characters, no people, no text, no letters, no logo, no watermark, full bleed scene filling the whole frame.
+```
+
+### `ic_banyo` — Banyo dolabının içi
+
+```
+ic_banyo — 2D flat vector cartoon background illustration, NOT a photo: the inside of an open white bathroom cabinet seen straight from the front: pale aqua inner walls, three empty glass shelves. Wide cozy background illustration for a children's game screen, flat vector art style with soft gentle shading, soft pastel colors, calm and not busy, gentle details only near the edges so the center stays clean, no characters, no people, no text, no letters, no logo, no watermark, full bleed scene filling the whole frame.
+```
+
+### `ic_cekmece` — Çekmecenin içi
+
+```
+ic_cekmece — 2D flat vector cartoon background illustration, NOT a photo: the inside of an open wooden drawer seen from the front and slightly above: light wood, empty. Wide cozy background illustration for a children's game screen, flat vector art style with soft gentle shading, soft pastel colors, calm and not busy, gentle details only near the edges so the center stays clean, no characters, no people, no text, no letters, no logo, no watermark, full bleed scene filling the whole frame.
+```
+
+
 ## 🆕 Karakter pozları: oturan ve uyuyan hâller (34 istek)
 
 Oyunda karakter sandalyeye bırakılınca oturur, yatağa bırakılınca uyur. Bu resimler yoksa oyun ayakta duran resmi

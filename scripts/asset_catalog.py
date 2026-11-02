@@ -416,6 +416,17 @@ for _c, _w, _tr, _en in CHARACTERS:
         POSES.append((f"{_c}_{_k}", f"{_tr} ({'oturuyor' if _k == 'otur' else 'uyuyor'})", f"{_en.removeprefix('a ')}, {_t}"))
 
 
+# Açılan eşyaların içi (oyunda kapaklar açılınca arkada görünür; eşyalar rafların üstüne dizilir).
+INTERIORS = [
+    ("ic_buzdolabi", "Buzdolabının içi", "the inside of an open fridge seen straight from the front: bright white inner walls, a soft warm light at the top, three empty clear glass shelves at even heights, two empty vegetable drawers at the bottom"),
+    ("ic_dolap", "Gardırobun içi", "the inside of an open pastel wardrobe seen straight from the front: light wooden back wall, an empty wooden hanging rail near the top, two empty wooden shelves below"),
+    ("ic_firin", "Fırının içi", "the inside of an open oven seen straight from the front: dark warm brown inner walls, a soft orange glow at the bottom, two empty metal racks"),
+    ("ic_sandik", "Oyuncak sandığının içi", "the inside of an open wooden toy chest seen straight from the front: warm yellow painted inner walls with little stars, empty"),
+    ("ic_raf", "Mutfak dolabının içi", "the inside of an open cream kitchen cupboard seen straight from the front: light inner walls, three empty wooden shelves"),
+    ("ic_banyo", "Banyo dolabının içi", "the inside of an open white bathroom cabinet seen straight from the front: pale aqua inner walls, three empty glass shelves"),
+    ("ic_cekmece", "Çekmecenin içi", "the inside of an open wooden drawer seen from the front and slightly above: light wood, empty"),
+]
+
 # Ev haritası parçaları: (kod, Türkçe, tarif, en-boy)
 MAP = [
     ("arka_harita", "Harita arka planı (16:9)",
@@ -618,7 +629,7 @@ def main():
     assert not missing, f"kelime tarifi eksik: {missing}"
     codes = ([i[0] for i in ITEMS_ALL] + [c[0] for c in CHARACTERS] + [p[0] for p in PETS] + [u[0] for u in UI]
              + [word_code(w) for w in words] + [f"cikartma_{i + 1:02d}" for i in range(len(STICKERS))] + [b[0] for b in BACKGROUNDS] + ["uygulama_ikonu"]
-             + [x[0] for x in SURFACES] + [x[0] for x in WINDOWS + DOORS] + [x[0] for x in MAP] + [c for c, _tr, _en in POSES])
+             + [x[0] for x in SURFACES] + [x[0] for x in WINDOWS + DOORS] + [x[0] for x in MAP] + [c for c, _tr, _en in POSES] + [x[0] for x in INTERIORS])
     assert len(codes) == len(set(codes)), "tekrarlanan kod"
     item_style = STYLE_ITEM.replace("one single isolated object, the whole object fully visible and centered with generous empty margin around it, ", "")
     char_style = STYLE_CHAR.replace("centered with generous empty margin, ", "")
@@ -705,6 +716,16 @@ def main():
 """)
 
 
+    out.append(f"""
+## 🆕 Açılan eşyaların içi ({len(INTERIORS)} istek)
+
+Buzdolabı, gardırop, fırın gibi eşyalara dokununca kapakları açılır ve içi görünür; içindekiler raflara dizilir.
+Bu resimler o iç görünümün arka planıdır (raflar boş olmalı, oyun eşyaları kendisi koyar). Yoksa oyun düz renkli bir iç çizer.
+- **Aspect ratio: Landscape (4:3)**, Art, Style reference yüklü. Arka planını silmiyorum; resim kenardan kenara dolu olmalı.
+""")
+    for code, tr, en in INTERIORS:
+        out.append(f"### `{code}` — {tr}\n")
+        out.append("```\n" + prompt(code, en, STYLE_BG) + "\n```\n")
     out.append(f"""
 ## 🆕 Karakter pozları: oturan ve uyuyan hâller ({len(POSES)} istek)
 
