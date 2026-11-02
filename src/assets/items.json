@@ -2926,7 +2926,8 @@
  },
  {
   "id": "pencere_06",
-  "w": 14
+  "w": 44.6,
+  "ar": 0.891
  },
  {
   "id": "kapi_01",
@@ -3304,63 +3305,75 @@
  },
  {
   "id": "yatak_yan",
-  "w": 10,
-  "hide": true
+  "w": 37.97,
+  "hide": true,
+  "ar": 0.661
  },
  {
   "id": "yatak_arka",
-  "w": 10,
-  "hide": true
+  "w": 34.06,
+  "hide": true,
+  "ar": 0.737
  },
  {
   "id": "yuvarlakyatak_yan",
-  "w": 10,
-  "hide": true
+  "w": 36.24,
+  "hide": true,
+  "ar": 0.846
  },
  {
   "id": "yuvarlakyatak_arka",
-  "w": 10,
-  "hide": true
+  "w": 36.34,
+  "hide": true,
+  "ar": 0.844
  },
  {
   "id": "cibinlikliyatak_yan",
-  "w": 10,
-  "hide": true
+  "w": 48.71,
+  "hide": true,
+  "ar": 1.087
  },
  {
   "id": "cibinlikliyatak_arka",
-  "w": 10,
-  "hide": true
+  "w": 48.71,
+  "hide": true,
+  "ar": 1.087
  },
  {
   "id": "ranza_yan",
-  "w": 10,
-  "hide": true
+  "w": 40.96,
+  "hide": true,
+  "ar": 1.123
  },
  {
   "id": "ranza_arka",
-  "w": 10,
-  "hide": true
+  "w": 40.86,
+  "hide": true,
+  "ar": 1.126
  },
  {
   "id": "koltuk_yan",
-  "w": 10,
-  "hide": true
+  "w": 36.4,
+  "hide": true,
+  "ar": 1.378
  },
  {
   "id": "koltuk_arka",
-  "w": 10,
-  "hide": true
+  "w": 36.4,
+  "hide": true,
+  "ar": 1.378
  },
  {
   "id": "sandalye_yan",
-  "w": 10,
-  "hide": true
+  "w": 16.63,
+  "hide": true,
+  "ar": 1.508
  },
  {
   "id": "sandalye_arka",
-  "w": 10,
-  "hide": true
+  "w": 15.62,
+  "hide": true,
+  "ar": 1.606
  },
  {
   "id": "kanepe_yan",
@@ -3376,313 +3389,375 @@
  },
  {
   "id": "kosekanepe_yan",
-  "w": 10,
-  "hide": true
+  "w": 47.6,
+  "hide": true,
+  "ar": 0.498
  },
  {
   "id": "kosekanepe_arka",
-  "w": 10,
-  "hide": true
+  "w": 64.72,
+  "hide": true,
+  "ar": 0.366
  },
  {
   "id": "berjer_yan",
-  "w": 10,
-  "hide": true
+  "w": 26.14,
+  "hide": true,
+  "ar": 0.96
  },
  {
   "id": "berjer_arka",
-  "w": 10,
-  "hide": true
+  "w": 26.14,
+  "hide": true,
+  "ar": 0.96
  },
  {
   "id": "tv_yan",
-  "w": 10,
-  "hide": true
+  "w": 23.15,
+  "hide": true,
+  "ar": 1.204
  },
  {
   "id": "tv_arka",
-  "w": 10,
-  "hide": true
+  "w": 28.25,
+  "hide": true,
+  "ar": 0.987
  },
  {
   "id": "piyano_yan",
-  "w": 10,
-  "hide": true
+  "w": 41.95,
+  "hide": true,
+  "ar": 0.864
  },
  {
   "id": "piyano_arka",
-  "w": 10,
-  "hide": true
+  "w": 41.84,
+  "hide": true,
+  "ar": 0.866
  },
  {
   "id": "v_yatak_01_yan",
-  "w": 10,
-  "hide": true
+  "w": 54.17,
+  "hide": true,
+  "ar": 0.489
  },
  {
   "id": "v_yatak_01_arka",
-  "w": 10,
-  "hide": true
+  "w": 35.31,
+  "hide": true,
+  "ar": 0.75
  },
  {
   "id": "v_yatak_02_yan",
-  "w": 10,
-  "hide": true
+  "w": 54.92,
+  "hide": true,
+  "ar": 0.482
  },
  {
   "id": "v_yatak_02_arka",
-  "w": 10,
-  "hide": true
+  "w": 42.52,
+  "hide": true,
+  "ar": 0.623
  },
  {
   "id": "v_yatak_03_yan",
-  "w": 10,
-  "hide": true
+  "w": 36.96,
+  "hide": true,
+  "ar": 0.717
  },
  {
   "id": "v_yatak_03_arka",
-  "w": 10,
-  "hide": true
+  "w": 34.29,
+  "hide": true,
+  "ar": 0.772
  },
  {
   "id": "v_yatak_04_yan",
-  "w": 10,
-  "hide": true
+  "w": 39.55,
+  "hide": true,
+  "ar": 0.67
  },
  {
   "id": "v_yatak_04_arka",
-  "w": 10,
-  "hide": true
+  "w": 31.55,
+  "hide": true,
+  "ar": 0.839
  },
  {
   "id": "v_yatak_05_yan",
-  "w": 10,
-  "hide": true
+  "w": 38.64,
+  "hide": true,
+  "ar": 0.685
  },
  {
   "id": "v_yatak_05_arka",
-  "w": 10,
-  "hide": true
+  "w": 33.23,
+  "hide": true,
+  "ar": 0.797
  },
  {
   "id": "v_yatak_06_yan",
-  "w": 10,
-  "hide": true
+  "w": 43.06,
+  "hide": true,
+  "ar": 0.518
  },
  {
   "id": "v_yatak_06_arka",
-  "w": 10,
-  "hide": true
+  "w": 43.06,
+  "hide": true,
+  "ar": 0.518
  },
  {
   "id": "v_yatak_07_yan",
-  "w": 10,
-  "hide": true
+  "w": 58.36,
+  "hide": true,
+  "ar": 0.717
  },
  {
   "id": "v_yatak_07_arka",
-  "w": 10,
-  "hide": true
+  "w": 55.75,
+  "hide": true,
+  "ar": 0.75
  },
  {
   "id": "v_yatak_08_yan",
-  "w": 10,
-  "hide": true
+  "w": 61.92,
+  "hide": true,
+  "ar": 0.81
  },
  {
   "id": "v_yatak_08_arka",
-  "w": 10,
-  "hide": true
+  "w": 61.92,
+  "hide": true,
+  "ar": 0.81
  },
  {
   "id": "v_sandalye_01_yan",
-  "w": 10,
-  "hide": true
+  "w": 18.26,
+  "hide": true,
+  "ar": 1.374
  },
  {
   "id": "v_sandalye_01_arka",
-  "w": 10,
-  "hide": true
+  "w": 18.09,
+  "hide": true,
+  "ar": 1.387
  },
  {
   "id": "v_sandalye_02_yan",
-  "w": 10,
-  "hide": true
+  "w": 15.85,
+  "hide": true,
+  "ar": 1.583
  },
  {
   "id": "v_sandalye_02_arka",
-  "w": 10,
-  "hide": true
+  "w": 15.9,
+  "hide": true,
+  "ar": 1.577
  },
  {
   "id": "v_sandalye_03_yan",
-  "w": 10,
-  "hide": true
+  "w": 15.12,
+  "hide": true,
+  "ar": 1.659
  },
  {
   "id": "v_sandalye_03_arka",
-  "w": 10,
-  "hide": true
+  "w": 15.34,
+  "hide": true,
+  "ar": 1.635
  },
  {
   "id": "v_sandalye_04_yan",
-  "w": 10,
-  "hide": true
+  "w": 11.9,
+  "hide": true,
+  "ar": 1.757
  },
  {
   "id": "v_sandalye_04_arka",
-  "w": 10,
-  "hide": true
+  "w": 11.9,
+  "hide": true,
+  "ar": 1.757
  },
  {
   "id": "v_sandalye_05_yan",
-  "w": 10,
-  "hide": true
+  "w": 14.34,
+  "hide": true,
+  "ar": 1.75
  },
  {
   "id": "v_sandalye_05_arka",
-  "w": 10,
-  "hide": true
+  "w": 14.28,
+  "hide": true,
+  "ar": 1.757
  },
  {
   "id": "v_sandalye_06_yan",
-  "w": 10,
-  "hide": true
+  "w": 19.26,
+  "hide": true,
+  "ar": 1.302
  },
  {
   "id": "v_sandalye_06_arka",
-  "w": 10,
-  "hide": true
+  "w": 18.59,
+  "hide": true,
+  "ar": 1.349
  },
  {
   "id": "v_kanepe_01_yan",
-  "w": 10,
-  "hide": true
+  "w": 24.02,
+  "hide": true,
+  "ar": 0.987
  },
  {
   "id": "v_kanepe_01_arka",
-  "w": 10,
-  "hide": true
+  "w": 55.29,
+  "hide": true,
+  "ar": 0.429
  },
  {
   "id": "v_kanepe_02_yan",
-  "w": 10,
-  "hide": true
+  "w": 22.9,
+  "hide": true,
+  "ar": 1.035
  },
  {
   "id": "v_kanepe_02_arka",
-  "w": 10,
-  "hide": true
+  "w": 53.34,
+  "hide": true,
+  "ar": 0.444
  },
  {
   "id": "v_kanepe_03_yan",
-  "w": 10,
-  "hide": true
+  "w": 23.91,
+  "hide": true,
+  "ar": 0.991
  },
  {
   "id": "v_kanepe_03_arka",
-  "w": 10,
-  "hide": true
+  "w": 50.07,
+  "hide": true,
+  "ar": 0.473
  },
  {
   "id": "v_kanepe_04_yan",
-  "w": 10,
-  "hide": true
+  "w": 23.75,
+  "hide": true,
+  "ar": 0.998
  },
  {
   "id": "v_kanepe_04_arka",
-  "w": 10,
-  "hide": true
+  "w": 54.16,
+  "hide": true,
+  "ar": 0.438
  },
  {
   "id": "v_kanepe_05_yan",
-  "w": 10,
-  "hide": true
+  "w": 55.87,
+  "hide": true,
+  "ar": 0.424
  },
  {
   "id": "v_kanepe_05_arka",
-  "w": 10,
-  "hide": true
+  "w": 59.63,
+  "hide": true,
+  "ar": 0.397
  },
  {
   "id": "v_kanepe_06_yan",
-  "w": 10,
-  "hide": true
+  "w": 46.76,
+  "hide": true,
+  "ar": 0.507
  },
  {
   "id": "v_kanepe_06_arka",
-  "w": 10,
-  "hide": true
+  "w": 46.97,
+  "hide": true,
+  "ar": 0.504
  },
  {
   "id": "v_kanepe_07_yan",
-  "w": 10,
-  "hide": true
+  "w": 48.03,
+  "hide": true,
+  "ar": 0.493
  },
  {
   "id": "v_kanepe_07_arka",
-  "w": 10,
-  "hide": true
+  "w": 48.03,
+  "hide": true,
+  "ar": 0.493
  },
  {
   "id": "v_kanepe_08_yan",
-  "w": 10,
-  "hide": true
+  "w": 42.29,
+  "hide": true,
+  "ar": 0.56
  },
  {
   "id": "v_kanepe_08_arka",
-  "w": 10,
-  "hide": true
+  "w": 49.6,
+  "hide": true,
+  "ar": 0.478
  },
  {
   "id": "v_koltuk_01_yan",
-  "w": 10,
-  "hide": true
+  "w": 31.54,
+  "hide": true,
+  "ar": 0.884
  },
  {
   "id": "v_koltuk_01_arka",
-  "w": 10,
-  "hide": true
+  "w": 31.62,
+  "hide": true,
+  "ar": 0.882
  },
  {
   "id": "v_koltuk_02_yan",
-  "w": 10,
-  "hide": true
+  "w": 23.94,
+  "hide": true,
+  "ar": 1.106
  },
  {
   "id": "v_koltuk_02_arka",
-  "w": 10,
-  "hide": true
+  "w": 22.58,
+  "hide": true,
+  "ar": 1.173
  },
  {
   "id": "v_koltuk_03_yan",
-  "w": 10,
-  "hide": true
+  "w": 26.24,
+  "hide": true,
+  "ar": 1.009
  },
  {
   "id": "v_koltuk_03_arka",
-  "w": 10,
-  "hide": true
+  "w": 26.24,
+  "hide": true,
+  "ar": 1.009
  },
  {
   "id": "v_koltuk_04_yan",
-  "w": 10,
-  "hide": true
+  "w": 47.38,
+  "hide": true,
+  "ar": 1.059
  },
  {
   "id": "v_koltuk_04_arka",
-  "w": 10,
-  "hide": true
+  "w": 46.59,
+  "hide": true,
+  "ar": 1.077
  },
  {
   "id": "v_koltuk_05_yan",
-  "w": 10,
-  "hide": true
+  "w": 21.01,
+  "hide": true,
+  "ar": 0.929
  },
  {
   "id": "v_koltuk_05_arka",
-  "w": 10,
-  "hide": true
+  "w": 20.86,
+  "hide": true,
+  "ar": 0.935
  },
  {
   "id": "v_koltuk_06_yan",
@@ -3706,48 +3781,57 @@
  },
  {
   "id": "v_tv_02_yan",
-  "w": 10,
-  "hide": true
+  "w": 15.53,
+  "hide": true,
+  "ar": 2.154
  },
  {
   "id": "v_tv_02_arka",
-  "w": 10,
-  "hide": true
+  "w": 37.19,
+  "hide": true,
+  "ar": 0.9
  },
  {
   "id": "v_tv_03_yan",
-  "w": 10,
-  "hide": true
+  "w": 12.42,
+  "hide": true,
+  "ar": 1.234
  },
  {
   "id": "v_tv_03_arka",
-  "w": 10,
-  "hide": true
+  "w": 14.58,
+  "hide": true,
+  "ar": 1.052
  },
  {
   "id": "v_tv_04_yan",
-  "w": 10,
-  "hide": true
+  "w": 18.82,
+  "hide": true,
+  "ar": 1.629
  },
  {
   "id": "v_tv_04_arka",
-  "w": 10,
-  "hide": true
+  "w": 63.01,
+  "hide": true,
+  "ar": 0.487
  },
  {
   "id": "v_tv_05_yan",
-  "w": 10,
-  "hide": true
+  "w": 62.79,
+  "hide": true,
+  "ar": 0.799
  },
  {
   "id": "v_tv_05_arka",
-  "w": 10,
-  "hide": true
+  "w": 64.04,
+  "hide": true,
+  "ar": 0.783
  },
  {
   "id": "kiz1_yan",
-  "w": 10,
-  "hide": true
+  "w": 13.07,
+  "hide": true,
+  "ar": 2.667
  },
  {
   "id": "kiz1_arka",
@@ -3757,162 +3841,194 @@
  },
  {
   "id": "kiz2_yan",
-  "w": 10,
-  "hide": true
+  "w": 15.24,
+  "hide": true,
+  "ar": 2.286
  },
  {
   "id": "kiz2_arka",
-  "w": 10,
-  "hide": true
+  "w": 18.36,
+  "hide": true,
+  "ar": 1.898
  },
  {
   "id": "kiz3_yan",
-  "w": 10,
-  "hide": true
+  "w": 13.69,
+  "hide": true,
+  "ar": 2.545
  },
  {
   "id": "kiz3_arka",
-  "w": 10,
-  "hide": true
+  "w": 15.94,
+  "hide": true,
+  "ar": 2.185
  },
  {
   "id": "kiz4_yan",
-  "w": 10,
-  "hide": true
+  "w": 13.46,
+  "hide": true,
+  "ar": 2.59
  },
  {
   "id": "kiz4_arka",
-  "w": 10,
-  "hide": true
+  "w": 15.56,
+  "hide": true,
+  "ar": 2.24
  },
  {
   "id": "kiz5_yan",
-  "w": 10,
-  "hide": true
+  "w": 16.8,
+  "hide": true,
+  "ar": 2.074
  },
  {
   "id": "kiz5_arka",
-  "w": 10,
-  "hide": true
+  "w": 18.67,
+  "hide": true,
+  "ar": 1.867
  },
  {
   "id": "kiz6_yan",
-  "w": 10,
-  "hide": true
+  "w": 19.52,
+  "hide": true,
+  "ar": 1.785
  },
  {
   "id": "kiz6_arka",
-  "w": 10,
-  "hide": true
+  "w": 19.6,
+  "hide": true,
+  "ar": 1.778
  },
  {
   "id": "kiz7_yan",
-  "w": 10,
-  "hide": true
+  "w": 17.27,
+  "hide": true,
+  "ar": 2.018
  },
  {
   "id": "kiz7_arka",
-  "w": 10,
-  "hide": true
+  "w": 17.27,
+  "hide": true,
+  "ar": 2.018
  },
  {
   "id": "oglan1_yan",
-  "w": 10,
-  "hide": true
+  "w": 15.71,
+  "hide": true,
+  "ar": 2.218
  },
  {
   "id": "oglan1_arka",
-  "w": 10,
-  "hide": true
+  "w": 16.57,
+  "hide": true,
+  "ar": 2.103
  },
  {
   "id": "oglan2_yan",
-  "w": 10,
-  "hide": true
+  "w": 15.24,
+  "hide": true,
+  "ar": 2.286
  },
  {
   "id": "oglan2_arka",
-  "w": 10,
-  "hide": true
+  "w": 16.02,
+  "hide": true,
+  "ar": 2.175
  },
  {
   "id": "oglan3_yan",
-  "w": 10,
-  "hide": true
+  "w": 17.42,
+  "hide": true,
+  "ar": 2.0
  },
  {
   "id": "oglan3_arka",
-  "w": 10,
-  "hide": true
+  "w": 15.94,
+  "hide": true,
+  "ar": 2.185
  },
  {
   "id": "bebek1_yan",
-  "w": 10,
-  "hide": true
+  "w": 9.0,
+  "hide": true,
+  "ar": 1.859
  },
  {
   "id": "bebek1_arka",
-  "w": 10,
-  "hide": true
+  "w": 10.64,
+  "hide": true,
+  "ar": 1.572
  },
  {
   "id": "bebek2_yan",
-  "w": 10,
-  "hide": true
+  "w": 9.78,
+  "hide": true,
+  "ar": 1.71
  },
  {
   "id": "bebek2_arka",
-  "w": 10,
-  "hide": true
+  "w": 11.24,
+  "hide": true,
+  "ar": 1.488
  },
  {
   "id": "anne_yan",
-  "w": 10,
-  "hide": true
+  "w": 23.59,
+  "hide": true,
+  "ar": 2.009
  },
  {
   "id": "anne_arka",
-  "w": 10,
-  "hide": true
+  "w": 22.95,
+  "hide": true,
+  "ar": 2.065
  },
  {
   "id": "baba_yan",
-  "w": 10,
-  "hide": true
+  "w": 22.0,
+  "hide": true,
+  "ar": 2.218
  },
  {
   "id": "baba_arka",
-  "w": 10,
-  "hide": true
+  "w": 22.98,
+  "hide": true,
+  "ar": 2.123
  },
  {
   "id": "nine_yan",
-  "w": 10,
-  "hide": true
+  "w": 20.74,
+  "hide": true,
+  "ar": 2.123
  },
  {
   "id": "nine_arka",
-  "w": 10,
-  "hide": true
+  "w": 19.86,
+  "hide": true,
+  "ar": 2.218
  },
  {
   "id": "dede_yan",
-  "w": 10,
-  "hide": true
+  "w": 21.67,
+  "hide": true,
+  "ar": 2.084
  },
  {
   "id": "dede_arka",
-  "w": 10,
-  "hide": true
+  "w": 22.28,
+  "hide": true,
+  "ar": 2.027
  },
  {
   "id": "ogretmen_yan",
-  "w": 10,
-  "hide": true
+  "w": 26.45,
+  "hide": true,
+  "ar": 1.771
  },
  {
   "id": "ogretmen_arka",
-  "w": 10,
-  "hide": true
+  "w": 26.66,
+  "hide": true,
+  "ar": 1.757
  }
 ]
