@@ -3025,8 +3025,8 @@ body {
   position: relative;
   clip-path: none;
   background: none;
-  height: 22dvh;
-  margin: 0 -7% -1.5dvh;
+  height: 27dvh;
+  margin: 0 -6% -1dvh;
   place-items: center;
   padding: 0;
 }
@@ -3040,9 +3040,10 @@ body {
 }
 .map-name.has-sign {
   position: relative;
-  margin-top: 5dvh;
-  padding: 1.6dvh 6% 1.2dvh;
-  min-width: 34%;
+  margin-top: 12.5dvh;
+  padding: 3dvh 6.5% 2.3dvh;
+  min-width: 30%;
+  font-size: clamp(14px, 3.6dvh, 26px);
   text-align: center;
   color: var(--ink, #3d3553);
   text-shadow: none;
@@ -3074,5 +3075,5 @@ body {
   z-index: 2;
 }
 .house-map:has(.map-roof.has-img) .map-house {
-  width: min(58vw, 128dvh);
+  width: min(52vw, 112dvh);
 }
