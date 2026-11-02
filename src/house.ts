@@ -958,7 +958,7 @@ function showRoom(backToHome: () => void) {
     insideEl.innerHTML = `
       <div class="cabinet kind-${kind}">
         <div class="cab-top"><img src="${itemImage(inst.id)}" alt=""/><button class="cab-close" data-act="inside-close" aria-label="Kapat">✕</button></div>
-        <div class="cab-body" ${back ? `style="background-image:url('${back}')"` : ''}>
+        <div class="cab-body ${back ? 'has-art' : ''}" ${back ? `style="background-image:url('${back}')"` : ''}>
           ${kind === 'firin' ? '<div class="cab-glow"></div>' : ''}
           <div class="cab-shelves">${rows
             .map((r) => `<div class="cab-shelf">${r.map((id) => `<button class="cab-item ${stored.has(id) ? 'mine' : ''}" data-id="${id}">${thumb(id)}</button>`).join('')}</div>`)
@@ -976,9 +976,9 @@ function showRoom(backToHome: () => void) {
     if (k >= 0) box.in!.splice(k, 1);
     if (box.in && !box.in.length) delete box.in;
   };
-  on(root, 'inside-close', () => closeInside());
+  // Kapat düğmesi dolap her açıldığında yeniden çizildiği için tıklama burada yakalanır.
   insideEl.addEventListener('click', (e) => {
-    if (e.target === insideEl) closeInside();
+    if (e.target === insideEl || (e.target as Element).closest('[data-act="inside-close"]')) closeInside();
   });
   // Raftaki eşyaya dokununca dolabın önüne çıkar; parmakla çekince odaya sürüklenir.
   insideEl.addEventListener('pointerdown', (ev) => {

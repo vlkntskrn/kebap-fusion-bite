@@ -2901,7 +2901,8 @@
  },
  {
   "id": "pencere_01",
-  "w": 14
+  "w": 30.66,
+  "ar": 1.002
  },
  {
   "id": "pencere_02",
@@ -3021,9 +3022,9 @@
  },
  {
   "id": "anne",
-  "w": 23.06,
+  "w": 22.95,
   "char": true,
-  "ar": 2.055
+  "ar": 2.065
  },
  {
   "id": "baba",
@@ -3363,13 +3364,15 @@
  },
  {
   "id": "kanepe_yan",
-  "w": 10,
-  "hide": true
+  "w": 29.32,
+  "hide": true,
+  "ar": 0.808
  },
  {
   "id": "kanepe_arka",
-  "w": 10,
-  "hide": true
+  "w": 51.28,
+  "hide": true,
+  "ar": 0.462
  },
  {
   "id": "kosekanepe_yan",
@@ -3748,8 +3751,9 @@
  },
  {
   "id": "kiz1_arka",
-  "w": 10,
-  "hide": true
+  "w": 16.02,
+  "hide": true,
+  "ar": 2.175
  },
  {
   "id": "kiz2_yan",

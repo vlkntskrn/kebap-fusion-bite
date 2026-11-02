@@ -3682,3 +3682,11 @@ body {
 .item-tools button[data-tool='turn'] {
   background: #d9f2ff;
 }
+/* İç görünüm resmi varsa raflar resmin kendisinde: çizim raf çizgileri gizlenir. */
+.cab-body.has-art .cab-shelf {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+.cab-body.has-art .cab-glow {
+  display: none;
+}
