@@ -98,6 +98,12 @@ HOSTS = [r"^masa$", r"^yuvarlakmasa$", r"^v_masa", r"^sehpa$", r"^v_sehpa_", r"^
 
 
 def spec(code):
+    # Yan/arka görünüm: temel eşyanın gerçek boyu.
+    m = re.match(r"^(.+)_(yan|arka|otur|yat)$", code)
+    if m and code not in EXACT:
+        base = spec(m.group(1))
+        if base:
+            return base
     if code in EXACT:
         return EXACT[code]
     for pat, sp in PREFIX:
@@ -131,7 +137,7 @@ def main():
         code = f.stem
         if code.startswith(("ui_", "cikartma_", "arka_", "uygulama", "duvar_", "zemin_", "harita_", "havuz_su", "bahce_manzara")):
             continue
-        if code.startswith("kelime_") and code not in by_id:
+        if (code.startswith("kelime_") or re.match(r"^.+_(yan|arka|otur|yat)$", code)) and code not in by_id:
             continue
         sp = spec(code)
         if not sp:

@@ -210,7 +210,12 @@ interface Inst {
   off?: boolean;
   /** Dolabın, buzdolabının içine konan eşyalar. */
   in?: string[];
+  /** Görünüm: yandan ya da arkadan (Firefly <kod>_yan / <kod>_arka). */
+  v?: 'yan' | 'arka';
 }
+
+/** Eşyanın elde olan görünümleri: önden ('') + resmi olan yan/arka. */
+const viewsOf = (id: string): ('' | 'yan' | 'arka')[] => ['', ...(['yan', 'arka'] as const).filter((k) => itemImage(`${id}_${k}`))];
 
 /** Görseli olmayan eşyalar artık gösterilmez (bebek ve çizim pencere hariç). */
 const keep = (id: string) => id === 'bebek' || id === 'pencere' || !!itemImage(id);
@@ -296,8 +301,9 @@ function thingHtml(inst: Inst, room: RoomId): string {
   const cls = [p ? `pose pose-${p}` : '', inst.hd ? 'held' : '', inst.b ? `bite-${inst.b}` : '', isLamp(inst.id) ? `lamp ${inst.off ? 'off' : ''}` : '', boxKind(inst.id) ? 'openable' : ''].join(' ');
   const vars = `--ar:${ar};--fit:${fit.toFixed(3)};`;
   if (inst.id === 'bebek') return `<div class="thing doll-thing ${cls}" data-u="${inst.u}" style="--w:${26 / WORLD}%;${vars}">${dollSvg(currentLook(), 'doll', { bg: false })}${fx}${mood}</div>`;
-  const t = THINGS[inst.id];
-  const src = itemImage(inst.id);
+  const vid = inst.v && itemImage(`${inst.id}_${inst.v}`) ? `${inst.id}_${inst.v}` : inst.id;
+  const t = THINGS[vid] ?? THINGS[inst.id];
+  const src = itemImage(vid);
   if (!t || !src) return '';
   const pimg = poseImage(inst.id, p);
   // Ocaktaki yemekten buhar çıkar.
@@ -496,7 +502,7 @@ function showRoom(backToHome: () => void) {
 
   /* ---- seçili eşya: aynala / döndür */
   let selected: { el: HTMLElement; inst: Inst } | null = null;
-  const tools = hEl(`<div class="item-tools hidden"><button data-tool="flip" aria-label="Aynala">⇋</button><button data-tool="left" aria-label="Sola döndür">↺</button><button data-tool="right" aria-label="Sağa döndür">↻</button><button data-tool="reset" aria-label="Düzelt">⟲0</button></div>`);
+  const tools = hEl(`<div class="item-tools hidden"><button data-tool="flip" aria-label="Sağa sola çevir">⇋</button><button data-tool="turn" aria-label="Önden, yandan, arkadan">🔄</button><button data-tool="left" aria-label="Sola eğ">↺</button><button data-tool="right" aria-label="Sağa eğ">↻</button><button data-tool="reset" aria-label="Düzelt">⟲0</button></div>`);
   roomEl.appendChild(tools);
   const hideTools = () => {
     selected = null;
@@ -511,6 +517,11 @@ function showRoom(backToHome: () => void) {
   };
   const showTools = (el: HTMLElement, inst: Inst) => {
     selected = { el, inst };
+    // Çevir: yalnızca yan/arka resmi olan eşyada. Eğme: küçük eşyalarda (ya da zaten eğilmişse düzeltmek için).
+    const small = isHoldable(inst.id) || isFood(inst.id) || placeOf(inst.id) === 'surface' || placeOf(inst.id) === 'wall';
+    tools.querySelector<HTMLElement>('[data-tool="turn"]')!.hidden = viewsOf(inst.id).length < 2;
+    for (const k of ['left', 'right']) tools.querySelector<HTMLElement>(`[data-tool="${k}"]`)!.hidden = !small;
+    tools.querySelector<HTMLElement>('[data-tool="reset"]')!.hidden = !inst.r && !inst.v && !inst.fl;
     tools.classList.remove('hidden');
     positionTools();
   };
@@ -519,19 +530,37 @@ function showRoom(backToHome: () => void) {
     const b = (e.target as Element).closest<HTMLElement>('[data-tool]');
     if (!b || !selected) return;
     snapshot();
-    const { el, inst } = selected;
+    const { inst } = selected;
+    let { el } = selected;
     const t = b.dataset.tool;
-    if (t === 'flip') inst.fl = !inst.fl;
+    if (t === 'turn') {
+      const vs = viewsOf(inst.id);
+      const next = vs[(vs.indexOf(inst.v ?? '') + 1) % vs.length];
+      if (next) inst.v = next;
+      else delete inst.v;
+      const node = hEl(thingHtml(inst, current));
+      el.replaceWith(node);
+      el = node;
+      selected = { el, inst };
+      node.animate([{ scale: '0.6 1' }, { scale: '1 1' }], { duration: 250, easing: 'ease-out' });
+    } else if (t === 'flip') inst.fl = !inst.fl;
     else if (t === 'left') inst.r = ((inst.r ?? 0) - 15) % 360;
     else if (t === 'right') inst.r = ((inst.r ?? 0) + 15) % 360;
-    else {
+    else if (t === 'reset') {
       inst.r = 0;
       inst.fl = false;
+      if (inst.v) {
+        delete inst.v;
+        const node = hEl(thingHtml(inst, current));
+        el.replaceWith(node);
+        el = node;
+        selected = { el, inst };
+      }
     }
     if (!inst.r) delete inst.r;
     if (!inst.fl) delete inst.fl;
     place(el, inst);
-    positionTools();
+    showTools(el, inst);
     commit();
     sfx.tap();
   });

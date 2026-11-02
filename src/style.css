@@ -3676,3 +3676,9 @@ body {
 .map-world .thing.openable::after {
   display: none;
 }
+.item-tools button[hidden] {
+  display: none;
+}
+.item-tools button[data-tool='turn'] {
+  background: #d9f2ff;
+}

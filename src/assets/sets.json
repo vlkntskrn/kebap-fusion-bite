@@ -775,5 +775,165 @@
  "set_poz_09": [
   "ogretmen_otur",
   "ogretmen_yat"
+ ],
+ "set_gorunum_01": [
+  "yatak_yan",
+  "yatak_arka",
+  "yuvarlakyatak_yan",
+  "yuvarlakyatak_arka",
+  "cibinlikliyatak_yan",
+  "cibinlikliyatak_arka",
+  "ranza_yan",
+  "ranza_arka",
+  "koltuk_yan"
+ ],
+ "set_gorunum_02": [
+  "koltuk_arka",
+  "sandalye_yan",
+  "sandalye_arka",
+  "kanepe_yan",
+  "kanepe_arka",
+  "kosekanepe_yan",
+  "kosekanepe_arka",
+  "berjer_yan",
+  "berjer_arka"
+ ],
+ "set_gorunum_03": [
+  "tv_yan",
+  "tv_arka",
+  "piyano_yan",
+  "piyano_arka",
+  "v_yatak_01_yan",
+  "v_yatak_01_arka",
+  "v_yatak_02_yan",
+  "v_yatak_02_arka",
+  "v_yatak_03_yan"
+ ],
+ "set_gorunum_04": [
+  "v_yatak_03_arka",
+  "v_yatak_04_yan",
+  "v_yatak_04_arka",
+  "v_yatak_05_yan",
+  "v_yatak_05_arka",
+  "v_yatak_06_yan",
+  "v_yatak_06_arka",
+  "v_yatak_07_yan",
+  "v_yatak_07_arka"
+ ],
+ "set_gorunum_05": [
+  "v_yatak_08_yan",
+  "v_yatak_08_arka",
+  "v_sandalye_01_yan",
+  "v_sandalye_01_arka",
+  "v_sandalye_02_yan",
+  "v_sandalye_02_arka",
+  "v_sandalye_03_yan",
+  "v_sandalye_03_arka",
+  "v_sandalye_04_yan"
+ ],
+ "set_gorunum_06": [
+  "v_sandalye_04_arka",
+  "v_sandalye_05_yan",
+  "v_sandalye_05_arka",
+  "v_sandalye_06_yan",
+  "v_sandalye_06_arka",
+  "v_kanepe_01_yan",
+  "v_kanepe_01_arka",
+  "v_kanepe_02_yan",
+  "v_kanepe_02_arka"
+ ],
+ "set_gorunum_07": [
+  "v_kanepe_03_yan",
+  "v_kanepe_03_arka",
+  "v_kanepe_04_yan",
+  "v_kanepe_04_arka",
+  "v_kanepe_05_yan",
+  "v_kanepe_05_arka",
+  "v_kanepe_06_yan",
+  "v_kanepe_06_arka",
+  "v_kanepe_07_yan"
+ ],
+ "set_gorunum_08": [
+  "v_kanepe_07_arka",
+  "v_kanepe_08_yan",
+  "v_kanepe_08_arka",
+  "v_koltuk_01_yan",
+  "v_koltuk_01_arka",
+  "v_koltuk_02_yan",
+  "v_koltuk_02_arka",
+  "v_koltuk_03_yan",
+  "v_koltuk_03_arka"
+ ],
+ "set_gorunum_09": [
+  "v_koltuk_04_yan",
+  "v_koltuk_04_arka",
+  "v_koltuk_05_yan",
+  "v_koltuk_05_arka",
+  "v_koltuk_06_yan",
+  "v_koltuk_06_arka",
+  "v_tv_01_yan",
+  "v_tv_01_arka",
+  "v_tv_02_yan"
+ ],
+ "set_gorunum_10": [
+  "v_tv_02_arka",
+  "v_tv_03_yan",
+  "v_tv_03_arka",
+  "v_tv_04_yan",
+  "v_tv_04_arka",
+  "v_tv_05_yan",
+  "v_tv_05_arka"
+ ],
+ "set_gorunum_karakter_01": [
+  "kiz1_yan",
+  "kiz1_arka",
+  "kiz2_yan",
+  "kiz2_arka"
+ ],
+ "set_gorunum_karakter_02": [
+  "kiz3_yan",
+  "kiz3_arka",
+  "kiz4_yan",
+  "kiz4_arka"
+ ],
+ "set_gorunum_karakter_03": [
+  "kiz5_yan",
+  "kiz5_arka",
+  "kiz6_yan",
+  "kiz6_arka"
+ ],
+ "set_gorunum_karakter_04": [
+  "kiz7_yan",
+  "kiz7_arka",
+  "oglan1_yan",
+  "oglan1_arka"
+ ],
+ "set_gorunum_karakter_05": [
+  "oglan2_yan",
+  "oglan2_arka",
+  "oglan3_yan",
+  "oglan3_arka"
+ ],
+ "set_gorunum_karakter_06": [
+  "bebek1_yan",
+  "bebek1_arka",
+  "bebek2_yan",
+  "bebek2_arka"
+ ],
+ "set_gorunum_karakter_07": [
+  "anne_yan",
+  "anne_arka",
+  "baba_yan",
+  "baba_arka"
+ ],
+ "set_gorunum_karakter_08": [
+  "nine_yan",
+  "nine_arka",
+  "dede_yan",
+  "dede_arka"
+ ],
+ "set_gorunum_karakter_09": [
+  "ogretmen_yan",
+  "ogretmen_arka"
  ]
 }

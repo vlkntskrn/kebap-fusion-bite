@@ -621,6 +621,36 @@ VAR_ROWS = [(f"{fam}_{i + 1:02d}", room, w, flat, f"{tr} {i + 1}" + (" (kilitli)
 ITEMS_ALL = [(c, r, w, f, tr, en, False) for c, r, w, f, tr, en in ITEMS] + VAR_ROWS
 
 
+# Yan ve arka görünümler: oyundaki "çevir" düğmesi önden -> yandan -> arkadan gösterir.
+VIEW_BASE = re.compile(r"^(kanepe|kosekanepe|v_kanepe_\d+|koltuk|berjer|v_koltuk_\d+|sandalye|v_sandalye_\d+|yatak|yuvarlakyatak|cibinlikliyatak|ranza|v_yatak_\d+|tv|v_tv_\d+|piyano)$")
+VIEW_TEXT = {
+    "yan": "now seen exactly from the side in a flat side profile view, facing to the right",
+    "arka": "now seen from directly behind, a flat back view showing only the back side",
+}
+VIEWS = []  # (kod, temel kod, Türkçe, tarif, karakter mi)
+# Referans resimle düzenleme istekleri (yüklenen resmi değiştirir; bire bir aynı eşya/karakter kalır).
+REF_TEXT = {
+    "yan": "Show this exact same {what} from the side, in a flat side profile view facing to the right.",
+    "arka": "Show this exact same {what} from behind, a flat back view.",
+    "otur": "Show this exact same character sitting on an invisible chair, seen from the front, knees bent, lower legs hanging down, hands on the lap.",
+    "yat": "Show this exact same character lying flat on their back asleep, seen from the side, body horizontal with the head on the left, eyes closed, peaceful smile, no bed, no pillow.",
+}
+REF_KEEP = (" Keep everything else identical: the same colors, the same shapes and details, the same clothes and hair, the same thick dark navy "
+            "outline and flat cartoon style, the same size. Plain pure white background, nothing else in the picture.")
+
+
+def ref_prompt(code: str, kind: str, what: str) -> str:
+    return f"{code} — " + REF_TEXT[kind].format(what=what) + REF_KEEP
+
+for _c, _r, _w, _f, _tr, _en, _l in ITEMS_ALL:
+    if VIEW_BASE.match(_c):
+        for _k, _t in VIEW_TEXT.items():
+            VIEWS.append((f"{_c}_{_k}", _c, f"{_tr} ({'yandan' if _k == 'yan' else 'arkadan'})", f"{_en}, {_t}, same colors, same style and same size", False))
+for _c, _w, _tr, _en in CHARACTERS:
+    for _k, _t in VIEW_TEXT.items():
+        VIEWS.append((f"{_c}_{_k}", _c, f"{_tr} ({'yandan' if _k == 'yan' else 'arkadan'})", f"a cute {_en.removeprefix('a ')}, standing, {_t}, the same hair and clothes", True))
+
+
 def main():
     for code, *_ in ITEMS_ALL + [(c[0],) for c in CHARACTERS] + [(p[0],) for p in PETS]:
         assert code.replace("_", "").isalnum() and code.islower(), code
@@ -629,7 +659,7 @@ def main():
     assert not missing, f"kelime tarifi eksik: {missing}"
     codes = ([i[0] for i in ITEMS_ALL] + [c[0] for c in CHARACTERS] + [p[0] for p in PETS] + [u[0] for u in UI]
              + [word_code(w) for w in words] + [f"cikartma_{i + 1:02d}" for i in range(len(STICKERS))] + [b[0] for b in BACKGROUNDS] + ["uygulama_ikonu"]
-             + [x[0] for x in SURFACES] + [x[0] for x in WINDOWS + DOORS] + [x[0] for x in MAP] + [c for c, _tr, _en in POSES] + [x[0] for x in INTERIORS])
+             + [x[0] for x in SURFACES] + [x[0] for x in WINDOWS + DOORS] + [x[0] for x in MAP] + [c for c, _tr, _en in POSES] + [x[0] for x in INTERIORS] + [x[0] for x in VIEWS])
     assert len(codes) == len(set(codes)), "tekrarlanan kod"
     item_style = STYLE_ITEM.replace("one single isolated object, the whole object fully visible and centered with generous empty margin around it, ", "")
     char_style = STYLE_CHAR.replace("centered with generous empty margin, ", "")
@@ -648,6 +678,8 @@ def main():
     sets += sheets([(f"cikartma_{i + 1:02d}", en) for i, en in enumerate(STICKERS)], 9, 3, STYLE_STICKER.replace("centered, ", ""), "cikartma")
     sets += sheets([(c, en) for c, _tr, en in WINDOWS + DOORS], 10, 5, item_style, "yapi")
     sets += sheets([(c, "a cute " + en) for c, _tr, en in POSES], 4, 2, pose_style(char_style), "poz")
+    sets += sheets([(c, en) for c, _b, _tr, en, ch in VIEWS if not ch], 9, 3, item_style.replace("straight-on front view at eye level with no perspective distortion, ", "no perspective distortion, "), "gorunum")
+    sets += sheets([(c, en) for c, _b, _tr, en, ch in VIEWS if ch], 4, 2, pose_style(char_style).replace("facing the viewer", ""), "gorunum_karakter")
     codes += [code for code, _c, _t in sets]
     (ROOT / "src" / "assets" / "codes.json").write_text(json.dumps(sorted(codes)) + "\n")
     (ROOT / "src" / "assets" / "sets.json").write_text(json.dumps({code: cs for code, cs, _t in sets}, indent=1) + "\n")
@@ -671,6 +703,9 @@ def main():
     # Dolaptan, buzdolabından çıkan küçük eşyalar: kelime resimleri (menüde görünmez).
     for code in INSIDE_WORDS:
         catalog.append({"id": code, "w": 6, "hide": True})
+    # Yan/arka görünümler menüde görünmez; boyları temel eşyanınkiyle aynıdır (scripts/sizes.py).
+    for code, *_ in VIEWS:
+        catalog.append({"id": code, "w": 10, "hide": True})
     (ROOT / "src" / "assets" / "items.json").write_text(json.dumps(catalog, ensure_ascii=False, indent=1) + "\n")
 
     out = []
@@ -717,6 +752,38 @@ def main():
 
 
     out.append(f"""
+## 🆕 Yandan ve arkadan görünümler ({len(VIEWS)} istek)
+
+### Bire bir aynı eşyayı/karakteri nasıl üretirsiniz
+
+Yalnızca metinle istenirse Firefly her seferinde biraz farklı bir kanepe/karakter çizer. Aynısını elde etmenin yolu
+**orijinal resmi yükleyip "bunu arkadan göster" diye düzenletmek**:
+
+1. `referans.zip` içindeki ilgili resmi (ör. `referans/kanepe.png`) Firefly'a yükleyin. Bu resimler oyundaki resimlerin
+   beyaz arka planlı hâlidir; kendi ürettiğiniz orijinal PNG'yi de kullanabilirsiniz.
+2. Firefly'da **yüklenen resmi düzenleyebilen** bir yöntem seçin: resim düzenleme / "prompt ile düzenle" ya da referans resim
+   kabul eden bir model (Firefly'daki iş ortağı modelleri bunu genelde Firefly Image'dan daha iyi yapar). Menü adları
+   sürüme göre değişebilir; önemli olan modelin **yüklediğiniz resmi değiştirmesi**, yeni bir resim uydurmaması.
+3. Aşağıdaki **"referans resimle"** isteğini yapıştırın. İstek kodla başlar; indirilen dosyanın adında kod kalırsa ben tanırım.
+4. Sonuç farklıysa aynı isteği 2–3 kez deneyin, en benzeyeni seçin.
+
+Yalnızca **Style reference** (stil referansı) yeterli olmaz: o sadece çizim tarzını taşır, eşyanın kendisini değil.
+**Structure/Composition reference** de uygun değil: önden duruşu kopyalar, yandan ya da arkadan göstermez.
+
+Oyunda eşyaya dokununca çıkan **🔄 Çevir** düğmesi eşyayı önden → yandan → arkadan gösterir; **⇋** sağa/sola çevirir.
+Bunun için aynı eşyanın yandan (`_yan`) ve arkadan (`_arka`) resmi gerekir. Hangi eşyanın resmi gelirse onda çalışır.
+- Kanepeler, koltuklar, sandalyeler, yataklar, televizyonlar, piyano ve bütün karakterler.
+- Ayar: **Square (1:1)**.
+- `_yan` resimlerinde eşya **sağa** baksın (sola bakanı oyun aynalayarak yapar).
+- Toplu istekler aşağıda `set_gorunum_…` (9'lu eşya) ve `set_gorunum_karakter_…` (4'lü karakter) sayfalarında.
+""")
+    for code, base, tr, en, ch in VIEWS:
+        out.append(f"### `{code}` — {tr}\n")
+        out.append(f"**Önerilen — referans resimle:** `referans/{base}.png` dosyasını yükleyin, şunu yazın:\n")
+        out.append("```\n" + ref_prompt(code, code.rsplit("_", 1)[1], "character" if ch else "piece of furniture") + "\n```\n")
+        out.append("Referans yüklemeden (yalnızca metinle):\n")
+        out.append("```\n" + prompt(code, en, pose_style(STYLE_CHAR).replace("facing the viewer", "") if ch else STYLE_ITEM.replace("straight-on front view at eye level with no perspective distortion, ", "no perspective distortion, ")) + "\n```\n")
+    out.append(f"""
 ## 🆕 Açılan eşyaların içi ({len(INTERIORS)} istek)
 
 Buzdolabı, gardırop, fırın gibi eşyalara dokununca kapakları açılır ve içi görünür; içindekiler raflara dizilir.
@@ -731,12 +798,15 @@ Bu resimler o iç görünümün arka planıdır (raflar boş olmalı, oyun eşya
 
 Oyunda karakter sandalyeye bırakılınca oturur, yatağa bırakılınca uyur. Bu resimler yoksa oyun ayakta duran resmi
 keserek ya da yatırarak gösterir; resimler gelince gerçek oturma ve uyuma pozları kullanılır.
-- Ayarlar: **Square (1:1)**, Art, Style reference yüklü. En iyi sonuç için Firefly'da **Structure/Style reference** olarak
-  aynı karakterin ayakta duran resmini (ör. `kiz1`) yükleyin; böylece yüz ve kıyafet aynı kalır.
+- En iyi sonuç: karakterin ayakta duran resmini (`referans/kiz1.png` gibi) yükleyip **"referans resimle"** isteğini
+  kullanın (nasıl yapılacağı "Yandan ve arkadan görünümler" bölümünün başında). Böylece yüz ve kıyafet aynı kalır.
 - `_yat` resimlerinde karakter **yatay**, başı **solda** olmalı. Toplu istekler aşağıda `set_poz_…` sayfalarında (4'lü).
 """)
     for code, tr, en in POSES:
         out.append(f"### `{code}` — {tr}\n")
+        out.append(f"**Önerilen — referans resimle:** `referans/{code.rsplit('_', 1)[0]}.png` dosyasını yükleyin, şunu yazın:\n")
+        out.append("```\n" + ref_prompt(code, code.rsplit("_", 1)[1], "character") + "\n```\n")
+        out.append("Referans yüklemeden (yalnızca metinle):\n")
         out.append("```\n" + prompt(code, "a cute " + en, pose_style(STYLE_CHAR)) + "\n```\n")
     out.append(f"""
 ## 🆕 Ev haritası ({len(MAP)} istek)
@@ -789,8 +859,8 @@ aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya
 - Kalite: tekli istek her eşyayı daha büyük ve detaylı çizer. Önemli eşyalar (yatak, kanepe, karakterler) için tekli,
   küçük eşyalar ve kelime resimleri için toplu üretim iyi bir denge.
 """)
-    new_sets = [x for x in sets if x[0].startswith(("set_cesit_", "set_yapi_", "set_poz_"))]
-    old_sets = [x for x in sets if not x[0].startswith(("set_cesit_", "set_yapi_", "set_poz_"))]
+    new_sets = [x for x in sets if x[0].startswith(("set_cesit_", "set_yapi_", "set_poz_", "set_gorunum"))]
+    old_sets = [x for x in sets if not x[0].startswith(("set_cesit_", "set_yapi_", "set_poz_", "set_gorunum"))]
     out.append(f"\n### 🆕 YENİ sayfalar: çeşit aileleri, pencere ve kapılar ({len(new_sets)} istek)\n")
     out.append("Bunlar yeni eklendi, henüz üretilmedi. Her ailede ilk 2 çeşit bedava, diğerleri oyunda okuma sorusuyla açılır.\n")
     for code, cs, text in new_sets:
