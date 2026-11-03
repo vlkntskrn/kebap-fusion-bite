@@ -1715,26 +1715,6 @@
   "ui_oda_makyaj",
   "ui_oda_oyunparki"
  ],
- "set_ff_aks2_ayak": [
-  "aks_ayak_01",
-  "aks_ayak_02",
-  "aks_ayak_03",
-  "aks_ayak_04",
-  "aks_ayak_05",
-  "aks_ayak_06"
- ],
- "set_ff_aks2_bas": [
-  "aks_bas_01",
-  "aks_bas_02",
-  "aks_bas_03",
-  "aks_bas_04",
-  "aks_bas_05",
-  "aks_bas_06",
-  "aks_bas_07",
-  "aks_bas_08",
-  "aks_bas_09",
-  "aks_bas_10"
- ],
  "set_ff_aks2_boyun": [
   "aks_boyun_01",
   "aks_boyun_02",
@@ -1742,21 +1722,6 @@
   "aks_boyun_04",
   "aks_boyun_05",
   "aks_boyun_06"
- ],
- "set_ff_aks2_bilek": [
-  "aks_bilek_01",
-  "aks_bilek_02",
-  "aks_bilek_03",
-  "aks_bilek_04",
-  "aks_bilek_05"
- ],
- "set_ff_aks2_el": [
-  "aks_el_01",
-  "aks_el_02",
-  "aks_el_03",
-  "aks_el_04",
-  "aks_el_05",
-  "aks_el_06"
  ],
  "set_gorunum_01": [
   "yatak_yan",

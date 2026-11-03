@@ -151,7 +151,9 @@ def plan(C):
             cols = 5 if len(items) > 6 else 3
             code = f"set_ff_aks2_{slot}"
             lst = "; ".join(f"{k + 1}) {en}" for k, en in enumerate(items))
-            text = (f"{code} — Use the attached character picture ONLY as a size and angle reference; do NOT draw the character. "
+            lead = ("Do not use any reference picture. " if slot == "boyun" else
+                    "Use the attached character picture ONLY as a size and angle reference; do NOT draw the character. ")
+            text = (f"{code} — " + lead +
                     f"Draw a 2D flat vector cartoon sticker sheet, NOT a photo: EXACTLY {len(items)} completely separate items, no extra or repeated items, "
                     f"in a neat {_grid(len(items), cols)} grid with wide empty white space between them, none touching. {how}. "
                     f"The items in order, left to right and top to bottom: {lst}. "
@@ -160,7 +162,8 @@ def plan(C):
                     "VERY IMPORTANT: draw ONLY the accessory objects themselves. NO skin, NO hands, NO fingers, NO arms, NO wrists, NO legs, NO feet, NO ankles, NO neck, NO shoulders, "
                     "NO hair, NO head, NO face. Where a body part would be inside or behind the accessory, leave it EMPTY WHITE background. "
                     "No white sticker outline around the items.")
-            redo_sets.append((code, codes, text, f"{title} — referans: `referans/kiz1.png` (yükleyin)"))
+            ref_note = "**referans YÜKLEMEYİN** (yüklenince boynu da çiziyor)" if slot == "boyun" else "referans: `referans/kiz1.png` (yükleyin)"
+            redo_sets.append((code, codes, text, f"{title} — {ref_note}"))
 
     frozen = C.ROOT / "scripts" / "ff_sets_ilk.json"
     if frozen.exists():
@@ -168,7 +171,9 @@ def plan(C):
         md = [] if redo_sets else ["# ✅ Bütün görseller tamam\n\nİlk teslimdeki 98 sayfa ve yeniden üretilen sayfalar oyunda. Şu an üretilecek görsel yok.\n"] if not redo_sets else []
         if redo_sets:
             md.append(f"# 🔁 YENİDEN ÜRETİLECEKLER ({len(redo_sets)} istek, {sum(len(x[1]) for x in redo_sets)} görsel)\n")
-            if redo.get("aks_v2"):
+            if redo.get("aks_v2") and set(redo.get("aks_v2_ok", [])) >= {"goz", "kulak", "yuz", "canta", "ayak", "bas", "bilek", "el"}:
+                md.append("Giydirme aksesuarlarından 8 sayfa tamam; yalnızca kolyeler kaldı. Bu sayfada karakter referansı **yüklemeyin**.\n")
+            elif redo.get("aks_v2"):
                 md.append("**Giydirme aksesuarları — karaktere göre yeniden.** Her istekte Gemini'ye `referans/kiz1.png` resmini de yükleyin "
                           "(referans.zip içinde; mor örgülü kız). Gemini aksesuarları bu karakterin üstünde duracağı açıda ve ölçüde çizer; "
                           "karakteri çizmez. Oyun her karaktere boyuna göre oturtur. Ayakkabılar **çift**, önden; küpeler **çift**; "

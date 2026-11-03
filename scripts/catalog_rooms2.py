@@ -528,8 +528,9 @@ DRESS_V2 = [
      ["pastel headphones", "a pair of small gem earrings", "a pair of star earrings", "a pair of moon earrings",
       "a pair of cherry earrings", "a pair of heart earrings"]),
     ("boyun", "Kolye ve atkılar (önden)",
-     "each item is seen straight from the front exactly as worn around this character's neck, the top edge shaped like this "
-     "character's neckline, sized to this character's shoulders",
+     "each necklace is drawn ALONE, hanging in a U shape as if around an invisible neck, seen from the front, the inside of the U "
+     "is EMPTY white (no neck, no chest, no shoulders, no skin, no mannequin); the scarf is a loop of knitted fabric with one end hanging, "
+     "also with an empty white inside",
      ["a pearl necklace", "a necklace with a heart pendant", "a necklace with a star pendant", "a flower garland necklace",
       "a gold medal on a ribbon", "a striped knitted scarf wrapped around the neck"]),
     ("bilek", "Saat ve bileklikler (önden)",
