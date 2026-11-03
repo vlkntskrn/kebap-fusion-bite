@@ -92,7 +92,7 @@ def anchors(path: Path, dark_lum: int = 75):
     foot = [float(left.mean() / w) if len(left) else 0.4, float(right.mean() / w) if len(right) else 0.6, float(bottom / h)]
     # Eller: gövdenin orta bandında en sol ve en sağ noktalar.
     # Eller: göz hizasının altında gövdenin her iki yanındaki en dış nokta; el, o dış çizgide en aşağıdaki nokta.
-    hy0, hy1 = int((ly + ry) / 2 + (bottom - top) * 0.12), top + int((bottom - top) * 0.82)
+    hy0, hy1 = int((ly + ry) / 2 + (bottom - top) * 0.22), top + int((bottom - top) * 0.82)
     L, Rr = [], []
     for y in range(hy0, hy1):
         xs = np.where(alpha[y])[0]

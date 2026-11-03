@@ -108,7 +108,7 @@ const FIT: Record<string, Fit> = {
   aks_bas_09: { at: 'tepe', w: 0.92, ay: 1, y: 0.5 },
   aks_bas_10: { at: 'tepe', w: 0.48, ay: 1, y: 0.24 },
   // elde: tutma noktası elin içine gelir
-  aks_el_01: { at: 'sagEl', w: 0.2, ay: 0.72 },
+  aks_el_01: { at: 'sagEl', w: 0.16, ay: 0.82, x: -0.05 },
   aks_el_02: { at: 'sagEl', w: 0.16, ay: 0.78 },
   aks_el_03: { at: 'sagEl', w: 0.24, ay: 0.9 },
   aks_el_04: { at: 'sagEl', w: 0.22, ax: 0.62, ay: 0.12 },
@@ -184,13 +184,13 @@ export function dressLayer(look: Look | undefined, key: string): string {
     const earY = ey + dy * 0.35;
     const hh = (earY - top) / 0.65;
     out.push(`<span class="dr kl kulaklik" style="left:${pc(ex)};top:${pc(top)};width:${pc(dx * 4.0)};height:${pc(hh)};transform:translate(-50%,0)">${art(kl)}</span>`);
-  } else if (kl) for (const x of [ex - dx * 1.08, ex + dx * 1.08]) put('kl', art(kl), x, ey + dy * 0.75, hw * 0.1, -10);
+  } else if (kl) for (const x of [ex - dx * 0.92, ex + dx * 0.92]) put('kl', art(kl), x, ey + dy * 0.85, hw * 0.08, -10);
   const bs = find('bas', look.bas);
   if (bs && !fit('bs', bs)) put('bs', art(bs), ex, a.top + dy * 0.12, dx * 1.5, -60);
   const by = find('boyun', look.boyun);
-  if (by) put('by', art(by), ex, ey + u * (by.id === 'aks_boyun_06' ? 0.62 : 0.68), hw * (by.id === 'aks_boyun_06' ? 0.5 : 0.4), -8);
+  if (by) put('by', art(by), ex, ey + u * (by.id === 'aks_boyun_06' ? 0.62 : 0.68), hw * (by.id === 'aks_boyun_06' ? 0.5 : 0.32), -8);
   const bl = find('bilek', look.bilek);
-  if (bl) put('bl', art(bl), a.hand[0] + hw * 0.03, a.hand[1] - u * 0.22, hw * 0.16);
+  if (bl) put('bl', art(bl), a.hand[0] + hw * 0.07, a.hand[1] - u * 0.32, hw * 0.15);
   const el = find('el', look.el);
   if (el && !fit('el', el)) put('el', art(el), a.hand[2], a.hand[3], dx * 0.55, -70);
   const ct = find('canta', look.canta);
