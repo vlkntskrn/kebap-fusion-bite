@@ -494,12 +494,62 @@ _DRESS = {
     "yuz": ["a tiny pink heart face sticker", "a tiny gold star face sticker", "a tiny butterfly face sticker", "a tiny rainbow face sticker",
             "a tiny flower face sticker", "a tiny sparkle face sticker"],
 }
-DRESS_ITEMS = [(f"aks_{k}_{i + 1:02d}", f"Aksesuar {k} {i + 1}", en) for k, lst in _DRESS.items() for i, en in enumerate(lst)]
+# Bileklik, ayakkabı, kulaklık ve atkı oyundan çıkarıldı (karakterlere düzgün oturmuyordu).
+IPTAL_YUVA = {"bilek", "ayak"}
+IPTAL_AKS = {"aks_kulak_01", "aks_boyun_06"}
+DRESS_ITEMS = [(f"aks_{k}_{i + 1:02d}", f"Aksesuar {k} {i + 1}", en) for k, lst in _DRESS.items() if k not in IPTAL_YUVA for i, en in enumerate(lst)
+               if f"aks_{k}_{i + 1:02d}" not in IPTAL_AKS]
 
 # Saç modelleri: kel karakterin üstüne giyilen saç parçaları (önden, yüz kısmı boş)
 HAIRS = ["long straight hair with bangs", "short bob hair", "two space buns", "a high ponytail", "long wavy hair", "two braids",
          "a curly afro puff", "a pixie cut", "a side braid", "long hair with a headband", "short curly hair", "a messy bun"]
 HAIR_ITEMS = [(f"aks_sac_{i + 1:02d}", f"Saç {i + 1}", f"a cartoon hairstyle piece only: {en}, seen from the front, with an empty space where the face goes, no face, no body, no head") for i, en in enumerate(HAIRS)]
+
+# Kıyafetler: karakterin kendisi yeni kıyafetle yeniden çizilir (oyun bütün resmi değiştirir, böylece tam oturur).
+# Kod: <karakter>_kiyafet_NN (ayakta) ve <karakter>_kiyafet_NN_otur (oturan). Her istek bir karakter için 2 kıyafet x 2 duruş.
+OUTFIT_GROUP = {**{f"kiz{i}": "kiz" for i in range(1, 8)}, "anne": "kadin", "nine": "kadin", "ogretmen": "kadin",
+                "oglan1": "oglan", "oglan2": "oglan", "oglan3": "oglan", "baba": "erkek", "dede": "erkek",
+                "bebek1": "bebek", "bebek2": "bebek"}
+OUTFITS = [
+    ("kiyafet_01", "Yazlık", "☀️", {
+        "kiz": "a light pastel summer sundress with a small flower print and simple sandals",
+        "kadin": "a light pastel summer dress with a small flower print and simple sandals",
+        "oglan": "a short-sleeved pastel summer shirt with shorts and simple sandals",
+        "erkek": "a short-sleeved pastel summer shirt with light trousers and simple sandals",
+        "bebek": "a sleeveless pastel summer romper with a small sun print, bare feet"}),
+    ("kiyafet_02", "Pijama", "🌙", {
+        "kiz": "soft pastel pajamas (long-sleeved top and long trousers) with a star and moon print, and fluffy slippers",
+        "kadin": "soft pastel pajamas (long-sleeved top and long trousers) with a star and moon print, and fluffy slippers",
+        "oglan": "soft striped pajamas (long-sleeved top and long trousers) and simple slippers",
+        "erkek": "soft striped pajamas (long-sleeved top and long trousers) and simple slippers",
+        "bebek": "a soft footed sleepsuit with a moon and star print"}),
+    ("kiyafet_03", "Yağmurluk", "☔", {
+        "kiz": "a shiny yellow raincoat with the hood down, and yellow rain boots",
+        "kadin": "a shiny yellow raincoat with the hood down, and yellow rain boots",
+        "oglan": "a shiny blue raincoat with the hood down, and blue rain boots",
+        "erkek": "a shiny blue raincoat with the hood down, and blue rain boots",
+        "bebek": "a soft yellow raincoat romper with the hood down, and tiny yellow rain boots"}),
+    ("kiyafet_04", "Kışlık", "❄️", {
+        "kiz": "a warm puffy pastel pink winter coat, warm trousers and snow boots",
+        "kadin": "a warm puffy pastel winter coat, warm trousers and snow boots",
+        "oglan": "a warm puffy pastel blue winter coat, warm trousers and snow boots",
+        "erkek": "a warm puffy dark blue winter coat, warm trousers and snow boots",
+        "bebek": "a puffy pastel winter snowsuit with tiny boots"}),
+    ("kiyafet_05", "Parti", "🎉", {
+        "kiz": "a sparkly pastel party dress with a tulle skirt and shiny party shoes",
+        "kadin": "an elegant pastel party dress and shiny shoes",
+        "oglan": "a smart white shirt with a bow tie, a little vest, trousers and shiny shoes",
+        "erkek": "a smart shirt with a bow tie, a jacket, trousers and shiny shoes",
+        "bebek": "a cute party bodysuit with a little bow tie and a tulle frill"}),
+    ("kiyafet_06", "Spor", "⚽", {
+        "kiz": "a pastel tracksuit (zip jacket and jogging trousers) and sneakers",
+        "kadin": "a pastel tracksuit (zip jacket and jogging trousers) and sneakers",
+        "oglan": "a sporty football kit (jersey and shorts), long socks and sneakers",
+        "erkek": "a comfortable tracksuit (zip jacket and jogging trousers) and sneakers",
+        "bebek": "a cozy onesie with a little bear face on the tummy"}),
+]
+OUTFIT_PAIRS = [(0, 1), (2, 3), (4, 5)]
+OUTFIT_CODES = [f"{ch}_{oc}{suf}" for ch in OUTFIT_GROUP for oc, *_ in OUTFITS for suf in ("", "_otur")]
 
 
 # ------------------------------------------------------------------ giydirme v2: karaktere göre, giyildiği açıda
@@ -551,3 +601,4 @@ DRESS_V2 = [
      "each item is a tiny face sticker, seen straight from the front, sized for this character's cheek",
      ["a tiny pink heart", "a tiny gold star", "a tiny butterfly", "a tiny rainbow", "a tiny flower", "a tiny sparkle"]),
 ]
+DRESS_V2 = [d for d in DRESS_V2 if d[0] not in IPTAL_YUVA]

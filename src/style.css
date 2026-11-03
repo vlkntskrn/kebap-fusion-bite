@@ -3742,20 +3742,6 @@ body {
   height: auto;
   overflow: visible;
 }
-.dr.mk {
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  mix-blend-mode: multiply;
-  filter: blur(0.4px);
-}
-.dr.mk.round {
-  filter: blur(1.5px);
-}
-.dr.lips {
-  border-radius: 40% 40% 50% 50% / 30% 30% 70% 70%;
-  mix-blend-mode: normal;
-  opacity: 0.85;
-}
 .pose-otur:not(.pose-img):not(.baby) > .dress-layer {
   transform: translateY(30%);
   clip-path: inset(0 0 30% 0);
@@ -3888,12 +3874,6 @@ body {
 .map-garden .map-room {
   aspect-ratio: 1.35;
 }
-.dr.kulaklik img,
-.dr.kulaklik svg {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-}
 /* Harita: ev neredeyse tam ekran */
 .house-map {
   gap: 1.2vw;
@@ -3963,15 +3943,4 @@ body {
 .dr.tall svg {
   height: 100%;
   width: auto;
-}
-.dr.shoe img,
-.dr.shoe svg {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: 50% 100%;
-}
-.dr.shoe.side img {
-  object-fit: contain;
-  object-position: 50% 100%;
 }

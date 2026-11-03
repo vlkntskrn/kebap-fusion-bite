@@ -133,7 +133,9 @@ def anchors(path: Path, dark_lum: int = 75):
 def main():
     out = {}
     for code in PEOPLE:
-        for suffix in ("", "_otur"):
+        # Kıyafetli resimler (<karakter>_kiyafet_NN, _otur) da: aksesuarlar kıyafetli resme göre oturur.
+        outfits = sorted({p.stem.removesuffix("_otur").removeprefix(code) for p in ITEMS.glob(f"{code}_kiyafet_*.*")})
+        for suffix in ["", "_otur"] + [o + s for o in outfits for s in ("", "_otur")]:
             p = next(iter(ITEMS.glob(f"{code}{suffix}.*")), None)
             if not p:
                 continue

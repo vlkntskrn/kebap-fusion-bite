@@ -13,7 +13,7 @@ import { Pose, isDoor, isPerson, isBaby, babyOnly, petOnly, canMakeup, isPet, po
 import { readingChallenge } from './challenge';
 import { imgTag, img } from './assets';
 import { roomIcon, MODE_ICONS } from './icons';
-import { Look, Slot, DRESS, dressLayer, dressThumb } from './dress';
+import { Look, Slot, DRESS, dressLayer, dressThumb, outfitImage, outfitsFor, outfitScale, anchorKey } from './dress';
 
 type RoomId = 'yatak' | 'mutfak' | 'banyo' | 'salon' | 'havuz' | 'oyun' | 'bebekodasi' | 'giyinme' | 'atolye' | 'muzik' | 'kutuphane' | 'petrevir' | 'makyaj' | 'oyunparki';
 const ROOM_IDS: RoomId[] = ['yatak', 'bebekodasi', 'giyinme', 'banyo', 'oyun', 'atolye', 'muzik', 'kutuphane', 'salon', 'mutfak', 'makyaj', 'petrevir', 'havuz', 'oyunparki'];
@@ -404,12 +404,18 @@ function thingHtml(inst: Inst, room: RoomId): string {
   const t = THINGS[vid] ?? THINGS[inst.id];
   const src = itemImage(vid);
   if (!t || !src) return '';
-  const pimg = inst.v ? undefined : poseImage(inst.id, p);
+  const pimg0 = inst.v ? undefined : poseImage(inst.id, p);
+  // Kıyafet: karakterin kıyafetli resmi (oturuyorsa oturan hâli; yatarken ve yandan/arkadan kendi kıyafeti).
+  const kf = !inst.v && p !== 'yat' ? inst.dr?.kiyafet : undefined;
+  const otur = !!pimg0 && p === 'otur';
+  const kimg = outfitImage(inst.id, kf, otur);
+  const pimg = otur ? kimg ?? pimg0 : pimg0;
+  const ksc = kimg ? outfitScale(inst.id, kf, otur) : 1;
   // Ocaktaki yemekten buhar çıkar.
   const cooking = host && isStove(host.id) && !inst.hd ? '<span class="fx-steam"><i></i><i></i><i></i></span>' : '';
-  return `<div class="thing img-thing ${t.bob ? 'bob' : ''} ${inst.on ? 'on' : ''} ${cls} ${pimg ? 'pose-img' : ''}" data-u="${inst.u}" style="--w:${((pimg && p === 'yat' ? t.w * ar * fit : t.w) * scOf(inst)) / WORLD}%;${vars}"><img src="${pimg ?? src}" alt="" draggable="false"/>${
+  return `<div class="thing img-thing ${t.bob ? 'bob' : ''} ${inst.on ? 'on' : ''} ${cls} ${pimg ? 'pose-img' : ''}" data-u="${inst.u}" style="--w:${((pimg && p === 'yat' ? t.w * ar * fit : t.w) * scOf(inst) * ksc) / WORLD}%;${vars}"><img src="${pimg ?? kimg ?? src}" alt="" draggable="false"/>${
     inst.c ? `<span class="tint" style="background:${inst.c};-webkit-mask-image:url('${src}');mask-image:url('${src}')"></span>` : ''
-  }${fx}${mood}${cooking}${inst.dr && !inst.v && p !== 'yat' ? dressLayer(inst.dr, pimg && p === 'otur' ? `${inst.id}_otur` : inst.id) : ''}</div>`;
+  }${fx}${mood}${cooking}${inst.dr && !inst.v && p !== 'yat' ? dressLayer(inst.dr, anchorKey(inst.id, kf, otur)) : ''}</div>`;
 }
 
 function placeStyle(el: HTMLElement, inst: Inst, list: Inst[]) {
@@ -962,11 +968,9 @@ function showRoom(backToHome: () => void) {
   const STAGE = /^(kucuk_sahne|isikli_kurs)$/;
   /** Karaktere giyilen eşyalar -> [yuva, aksesuar]. */
   const WEAR: Record<string, [Slot, string]> = {
-    kulaklik: ['kulak', 'aks_kulak_01'], giysi_tac: ['bas', 'aks_bas_10'], tac_standi: ['bas', 'aks_bas_10'], kelime_sapka: ['bas', 'aks_bas_03'],
-    sac_bandi: ['bas', 'aks_bas_08'], giysi_kolye: ['boyun', 'aks_boyun_02'], giysi_atki: ['boyun', 'aks_boyun_06'], deniz_gozlugu: ['goz', 'aks_goz_03'],
-    mikrofon: ['el', 'aks_el_02'], giysi_canta: ['canta', 'aks_canta_02'], kelime_canta: ['canta', 'aks_canta_01'], giysi_ayakkabi: ['ayak', 'aks_ayak_02'],
-    v_ayakkabi_01: ['ayak', 'aks_ayak_01'], v_ayakkabi_02: ['ayak', 'aks_ayak_03'], v_ayakkabi_04: ['ayak', 'aks_ayak_01'], giysi_bot: ['ayak', 'aks_ayak_04'],
-    terlik: ['ayak', 'aks_ayak_05'],
+    giysi_tac: ['bas', 'aks_bas_10'], tac_standi: ['bas', 'aks_bas_10'], kelime_sapka: ['bas', 'aks_bas_03'],
+    sac_bandi: ['bas', 'aks_bas_08'], giysi_kolye: ['boyun', 'aks_boyun_02'], deniz_gozlugu: ['goz', 'aks_goz_03'],
+    mikrofon: ['el', 'aks_el_02'], giysi_canta: ['canta', 'aks_canta_02'], kelime_canta: ['canta', 'aks_canta_01'],
   };
   /** Oturan/yatan karakterin y'si: eşyanın resminden bulunan oturma yüzeyi (yoksa eşya türüne göre tahmin). */
   const seatY = (ch: Inst, host: Inst) => {
@@ -1284,7 +1288,8 @@ function showRoom(backToHome: () => void) {
   root.appendChild(dressEl);
   let dressing: Inst | null = null;
   let dslot: Slot = 'bas';
-  const slotsFor = (inst: Inst) => DRESS.filter((d) => !d.makeup || canMakeup(inst.id));
+  const slotsFor = (inst: Inst) =>
+    DRESS.filter((d) => (!d.makeup || canMakeup(inst.id)) && (!d.outfit || outfitsFor(inst.id).length)).map((d) => (d.outfit ? { ...d, items: outfitsFor(inst.id) } : d));
   const renderDress = () => {
     const inst = dressing;
     if (!inst) return;
@@ -1294,11 +1299,11 @@ function showRoom(backToHome: () => void) {
     const cur = inst.dr?.[s.k];
     const opts = s.colors
       ? s.colors.map((c) => `<button class="dress-item color ${cur === c ? 'on' : ''}" data-v="${c}" style="--c:${c}"></button>`).join('')
-      : (s.items ?? []).map((i) => `<button class="dress-item ${cur === i.id ? 'on' : ''}" data-v="${i.id}">${dressThumb(i)}</button>`).join('');
+      : (s.items ?? []).map((i) => `<button class="dress-item ${s.outfit ? 'outfit' : ''} ${cur === i.id ? 'on' : ''}" data-v="${i.id}">${s.outfit ? `<img src="${outfitImage(inst.id, i.id)}" alt="" draggable="false"/>` : dressThumb(i)}</button>`).join('');
     dressEl.innerHTML = `<div class="cabinet dress-box">
         <div class="cab-top"><span class="dress-title">👗</span><button class="cab-close" data-act="dress-close" aria-label="Kapat">✕</button></div>
         <div class="dress-main">
-          <div class="dress-prev"><div class="dress-char"><img src="${itemImage(inst.id)}" alt="" draggable="false"/>${dressLayer(inst.dr, inst.id)}</div></div>
+          <div class="dress-prev"><div class="dress-char"><img src="${outfitImage(inst.id, inst.dr?.kiyafet) ?? itemImage(inst.id)}" alt="" draggable="false"/>${dressLayer(inst.dr, anchorKey(inst.id, inst.dr?.kiyafet))}</div></div>
           <div class="dress-side">
             <div class="dress-tabs">${slots.map((d) => `<button class="dress-tab ${d.k === dslot ? 'on' : ''}" data-slot="${d.k}">${d.icon}</button>`).join('')}</div>
             <div class="dress-items"><button class="dress-item none ${cur ? '' : 'on'}" data-v="">🚫</button>${opts}</div>

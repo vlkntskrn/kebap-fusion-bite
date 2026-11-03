@@ -165,6 +165,35 @@ def plan(C):
             ref_note = "**referans YÜKLEMEYİN** (yüklenince boynu da çiziyor)" if slot == "boyun" else "referans: `referans/kiz1.png` (yükleyin)"
             redo_sets.append((code, codes, text, f"{title} — {ref_note}"))
 
+    # Kıyafetler (redo.json: "kiyafet": true): karakter kendi resmi referans verilerek yeni kıyafetle yeniden çizilir.
+    if redo.get("kiyafet"):
+        have = lambda c: any((C.ROOT / "src" / "assets" / "items").glob(f"{c}.*"))  # noqa: E731
+        names = {c: tr for c, _w, tr, _en in C.CHARACTERS}
+        for ch, grp in R2.OUTFIT_GROUP.items():
+            for a, b in R2.OUTFIT_PAIRS:
+                oa, ob = R2.OUTFITS[a], R2.OUTFITS[b]
+                codes = [f"{ch}_{oa[0]}", f"{ch}_{oa[0]}_otur", f"{ch}_{ob[0]}", f"{ch}_{ob[0]}_otur"]
+                if all(have(c) for c in codes):
+                    continue
+                code = f"set_kiyafet_{ch}_{a + 1}{b + 1}"
+                text = (f"{code} — Edit the two attached reference pictures. They show ONE cartoon character: picture 1 STANDING, picture 2 SITTING. "
+                        "Draw a 2 by 2 grid on a plain pure white background (#FFFFFF): four separate full-body figures of this SAME character, "
+                        "one per cell, with wide empty white space between them, none touching, nothing cut off at the edges. "
+                        f"Top-left: STANDING exactly like picture 1, wearing {oa[3][grp]}. "
+                        f"Top-right: SITTING exactly like picture 2, wearing the very same {oa[1].lower()} outfit design ({oa[3][grp]}). "
+                        f"Bottom-left: STANDING exactly like picture 1, wearing {ob[3][grp]}. "
+                        f"Bottom-right: SITTING exactly like picture 2, wearing the very same outfit design ({ob[3][grp]}). "
+                        "VERY IMPORTANT: keep the character IDENTICAL to the reference pictures: same face, same eyes, same smile, same hair style, "
+                        "same hair color and hair length, same skin tone, same head size, same body proportions, same pose, same arm, hand, leg and foot "
+                        "positions, same front view. Change ONLY the clothes and the shoes. Hair, face, hands and pose stay exactly as in the references. "
+                        "Nothing on the head (no hat, no hood up, no hair accessory unless the character already has one), no bag, nothing held in the hands, "
+                        "no glasses unless the character already wears them. The sitting figures sit in the air exactly like picture 2, with NO chair, NO seat, "
+                        "NO floor and NO shadow. Same drawing style as the references: flat 2D vector cartoon, thick dark navy outline (#3D3553), "
+                        "soft pastel colors, soft gentle shading. No text, no letters, no numbers, no frames, no grid lines.")
+                why = (f"{names.get(ch, ch)} — {oa[2]} {oa[1]} + {ob[2]} {ob[1]} · referans: `kiyafet-referans/{ch}.png` ve "
+                       f"`kiyafet-referans/{ch}_otur.png` (ikisini de yükleyin)")
+                redo_sets.append((code, codes, text, why))
+
     frozen = C.ROOT / "scripts" / "ff_sets_ilk.json"
     if frozen.exists():
         ilk = _json.loads(frozen.read_text())
@@ -178,6 +207,12 @@ def plan(C):
                           "(referans.zip içinde; mor örgülü kız). Gemini aksesuarları bu karakterin üstünde duracağı açıda ve ölçüde çizer; "
                           "karakteri çizmez. Oyun her karaktere boyuna göre oturtur. Ayakkabılar **çift**, önden; küpeler **çift**; "
                           "sırt çantasından yalnızca önden görünen iki askı.\n")
+            if redo.get("kiyafet"):
+                md.append("**Kıyafetler — her karakter kendi resmiyle.** Her istekte Gemini'ye o karakterin **iki** resmini yükleyin: "
+                          "`kiyafet-referans.zip` içindeki ayakta (`kiz1.png`) ve oturan (`kiz1_otur.png`) hâli. Gemini aynı karakteri yalnızca "
+                          "kıyafetini değiştirerek yeniden çizer; oyun karakterin resmini bu resimle değiştirdiği için kıyafet tam oturur. "
+                          "Kızlara kız, erkeklere erkek, bebeklere bebek kıyafeti yazılı. Her istek 2 kıyafet × (ayakta + oturan) = 4 figür. "
+                          "Yüz, saç ya da duruş değişmişse o sayfayı tekrar üretin; geleni ben kontrol ederim.\n")
             md.append("Ayarlar aynı (kare 1:1, 2K).\n")
             for code, codes, text, why in redo_sets:
                 md.append(f"### `{code}`\n")

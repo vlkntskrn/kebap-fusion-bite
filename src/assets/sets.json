@@ -1715,6 +1715,312 @@
   "ui_oda_makyaj",
   "ui_oda_oyunparki"
  ],
+ "set_kiyafet_kiz1_12": [
+  "kiz1_kiyafet_01",
+  "kiz1_kiyafet_01_otur",
+  "kiz1_kiyafet_02",
+  "kiz1_kiyafet_02_otur"
+ ],
+ "set_kiyafet_kiz1_34": [
+  "kiz1_kiyafet_03",
+  "kiz1_kiyafet_03_otur",
+  "kiz1_kiyafet_04",
+  "kiz1_kiyafet_04_otur"
+ ],
+ "set_kiyafet_kiz1_56": [
+  "kiz1_kiyafet_05",
+  "kiz1_kiyafet_05_otur",
+  "kiz1_kiyafet_06",
+  "kiz1_kiyafet_06_otur"
+ ],
+ "set_kiyafet_kiz2_12": [
+  "kiz2_kiyafet_01",
+  "kiz2_kiyafet_01_otur",
+  "kiz2_kiyafet_02",
+  "kiz2_kiyafet_02_otur"
+ ],
+ "set_kiyafet_kiz2_34": [
+  "kiz2_kiyafet_03",
+  "kiz2_kiyafet_03_otur",
+  "kiz2_kiyafet_04",
+  "kiz2_kiyafet_04_otur"
+ ],
+ "set_kiyafet_kiz2_56": [
+  "kiz2_kiyafet_05",
+  "kiz2_kiyafet_05_otur",
+  "kiz2_kiyafet_06",
+  "kiz2_kiyafet_06_otur"
+ ],
+ "set_kiyafet_kiz3_12": [
+  "kiz3_kiyafet_01",
+  "kiz3_kiyafet_01_otur",
+  "kiz3_kiyafet_02",
+  "kiz3_kiyafet_02_otur"
+ ],
+ "set_kiyafet_kiz3_34": [
+  "kiz3_kiyafet_03",
+  "kiz3_kiyafet_03_otur",
+  "kiz3_kiyafet_04",
+  "kiz3_kiyafet_04_otur"
+ ],
+ "set_kiyafet_kiz3_56": [
+  "kiz3_kiyafet_05",
+  "kiz3_kiyafet_05_otur",
+  "kiz3_kiyafet_06",
+  "kiz3_kiyafet_06_otur"
+ ],
+ "set_kiyafet_kiz4_12": [
+  "kiz4_kiyafet_01",
+  "kiz4_kiyafet_01_otur",
+  "kiz4_kiyafet_02",
+  "kiz4_kiyafet_02_otur"
+ ],
+ "set_kiyafet_kiz4_34": [
+  "kiz4_kiyafet_03",
+  "kiz4_kiyafet_03_otur",
+  "kiz4_kiyafet_04",
+  "kiz4_kiyafet_04_otur"
+ ],
+ "set_kiyafet_kiz4_56": [
+  "kiz4_kiyafet_05",
+  "kiz4_kiyafet_05_otur",
+  "kiz4_kiyafet_06",
+  "kiz4_kiyafet_06_otur"
+ ],
+ "set_kiyafet_kiz5_12": [
+  "kiz5_kiyafet_01",
+  "kiz5_kiyafet_01_otur",
+  "kiz5_kiyafet_02",
+  "kiz5_kiyafet_02_otur"
+ ],
+ "set_kiyafet_kiz5_34": [
+  "kiz5_kiyafet_03",
+  "kiz5_kiyafet_03_otur",
+  "kiz5_kiyafet_04",
+  "kiz5_kiyafet_04_otur"
+ ],
+ "set_kiyafet_kiz5_56": [
+  "kiz5_kiyafet_05",
+  "kiz5_kiyafet_05_otur",
+  "kiz5_kiyafet_06",
+  "kiz5_kiyafet_06_otur"
+ ],
+ "set_kiyafet_kiz6_12": [
+  "kiz6_kiyafet_01",
+  "kiz6_kiyafet_01_otur",
+  "kiz6_kiyafet_02",
+  "kiz6_kiyafet_02_otur"
+ ],
+ "set_kiyafet_kiz6_34": [
+  "kiz6_kiyafet_03",
+  "kiz6_kiyafet_03_otur",
+  "kiz6_kiyafet_04",
+  "kiz6_kiyafet_04_otur"
+ ],
+ "set_kiyafet_kiz6_56": [
+  "kiz6_kiyafet_05",
+  "kiz6_kiyafet_05_otur",
+  "kiz6_kiyafet_06",
+  "kiz6_kiyafet_06_otur"
+ ],
+ "set_kiyafet_kiz7_12": [
+  "kiz7_kiyafet_01",
+  "kiz7_kiyafet_01_otur",
+  "kiz7_kiyafet_02",
+  "kiz7_kiyafet_02_otur"
+ ],
+ "set_kiyafet_kiz7_34": [
+  "kiz7_kiyafet_03",
+  "kiz7_kiyafet_03_otur",
+  "kiz7_kiyafet_04",
+  "kiz7_kiyafet_04_otur"
+ ],
+ "set_kiyafet_kiz7_56": [
+  "kiz7_kiyafet_05",
+  "kiz7_kiyafet_05_otur",
+  "kiz7_kiyafet_06",
+  "kiz7_kiyafet_06_otur"
+ ],
+ "set_kiyafet_anne_12": [
+  "anne_kiyafet_01",
+  "anne_kiyafet_01_otur",
+  "anne_kiyafet_02",
+  "anne_kiyafet_02_otur"
+ ],
+ "set_kiyafet_anne_34": [
+  "anne_kiyafet_03",
+  "anne_kiyafet_03_otur",
+  "anne_kiyafet_04",
+  "anne_kiyafet_04_otur"
+ ],
+ "set_kiyafet_anne_56": [
+  "anne_kiyafet_05",
+  "anne_kiyafet_05_otur",
+  "anne_kiyafet_06",
+  "anne_kiyafet_06_otur"
+ ],
+ "set_kiyafet_nine_12": [
+  "nine_kiyafet_01",
+  "nine_kiyafet_01_otur",
+  "nine_kiyafet_02",
+  "nine_kiyafet_02_otur"
+ ],
+ "set_kiyafet_nine_34": [
+  "nine_kiyafet_03",
+  "nine_kiyafet_03_otur",
+  "nine_kiyafet_04",
+  "nine_kiyafet_04_otur"
+ ],
+ "set_kiyafet_nine_56": [
+  "nine_kiyafet_05",
+  "nine_kiyafet_05_otur",
+  "nine_kiyafet_06",
+  "nine_kiyafet_06_otur"
+ ],
+ "set_kiyafet_ogretmen_12": [
+  "ogretmen_kiyafet_01",
+  "ogretmen_kiyafet_01_otur",
+  "ogretmen_kiyafet_02",
+  "ogretmen_kiyafet_02_otur"
+ ],
+ "set_kiyafet_ogretmen_34": [
+  "ogretmen_kiyafet_03",
+  "ogretmen_kiyafet_03_otur",
+  "ogretmen_kiyafet_04",
+  "ogretmen_kiyafet_04_otur"
+ ],
+ "set_kiyafet_ogretmen_56": [
+  "ogretmen_kiyafet_05",
+  "ogretmen_kiyafet_05_otur",
+  "ogretmen_kiyafet_06",
+  "ogretmen_kiyafet_06_otur"
+ ],
+ "set_kiyafet_oglan1_12": [
+  "oglan1_kiyafet_01",
+  "oglan1_kiyafet_01_otur",
+  "oglan1_kiyafet_02",
+  "oglan1_kiyafet_02_otur"
+ ],
+ "set_kiyafet_oglan1_34": [
+  "oglan1_kiyafet_03",
+  "oglan1_kiyafet_03_otur",
+  "oglan1_kiyafet_04",
+  "oglan1_kiyafet_04_otur"
+ ],
+ "set_kiyafet_oglan1_56": [
+  "oglan1_kiyafet_05",
+  "oglan1_kiyafet_05_otur",
+  "oglan1_kiyafet_06",
+  "oglan1_kiyafet_06_otur"
+ ],
+ "set_kiyafet_oglan2_12": [
+  "oglan2_kiyafet_01",
+  "oglan2_kiyafet_01_otur",
+  "oglan2_kiyafet_02",
+  "oglan2_kiyafet_02_otur"
+ ],
+ "set_kiyafet_oglan2_34": [
+  "oglan2_kiyafet_03",
+  "oglan2_kiyafet_03_otur",
+  "oglan2_kiyafet_04",
+  "oglan2_kiyafet_04_otur"
+ ],
+ "set_kiyafet_oglan2_56": [
+  "oglan2_kiyafet_05",
+  "oglan2_kiyafet_05_otur",
+  "oglan2_kiyafet_06",
+  "oglan2_kiyafet_06_otur"
+ ],
+ "set_kiyafet_oglan3_12": [
+  "oglan3_kiyafet_01",
+  "oglan3_kiyafet_01_otur",
+  "oglan3_kiyafet_02",
+  "oglan3_kiyafet_02_otur"
+ ],
+ "set_kiyafet_oglan3_34": [
+  "oglan3_kiyafet_03",
+  "oglan3_kiyafet_03_otur",
+  "oglan3_kiyafet_04",
+  "oglan3_kiyafet_04_otur"
+ ],
+ "set_kiyafet_oglan3_56": [
+  "oglan3_kiyafet_05",
+  "oglan3_kiyafet_05_otur",
+  "oglan3_kiyafet_06",
+  "oglan3_kiyafet_06_otur"
+ ],
+ "set_kiyafet_baba_12": [
+  "baba_kiyafet_01",
+  "baba_kiyafet_01_otur",
+  "baba_kiyafet_02",
+  "baba_kiyafet_02_otur"
+ ],
+ "set_kiyafet_baba_34": [
+  "baba_kiyafet_03",
+  "baba_kiyafet_03_otur",
+  "baba_kiyafet_04",
+  "baba_kiyafet_04_otur"
+ ],
+ "set_kiyafet_baba_56": [
+  "baba_kiyafet_05",
+  "baba_kiyafet_05_otur",
+  "baba_kiyafet_06",
+  "baba_kiyafet_06_otur"
+ ],
+ "set_kiyafet_dede_12": [
+  "dede_kiyafet_01",
+  "dede_kiyafet_01_otur",
+  "dede_kiyafet_02",
+  "dede_kiyafet_02_otur"
+ ],
+ "set_kiyafet_dede_34": [
+  "dede_kiyafet_03",
+  "dede_kiyafet_03_otur",
+  "dede_kiyafet_04",
+  "dede_kiyafet_04_otur"
+ ],
+ "set_kiyafet_dede_56": [
+  "dede_kiyafet_05",
+  "dede_kiyafet_05_otur",
+  "dede_kiyafet_06",
+  "dede_kiyafet_06_otur"
+ ],
+ "set_kiyafet_bebek1_12": [
+  "bebek1_kiyafet_01",
+  "bebek1_kiyafet_01_otur",
+  "bebek1_kiyafet_02",
+  "bebek1_kiyafet_02_otur"
+ ],
+ "set_kiyafet_bebek1_34": [
+  "bebek1_kiyafet_03",
+  "bebek1_kiyafet_03_otur",
+  "bebek1_kiyafet_04",
+  "bebek1_kiyafet_04_otur"
+ ],
+ "set_kiyafet_bebek1_56": [
+  "bebek1_kiyafet_05",
+  "bebek1_kiyafet_05_otur",
+  "bebek1_kiyafet_06",
+  "bebek1_kiyafet_06_otur"
+ ],
+ "set_kiyafet_bebek2_12": [
+  "bebek2_kiyafet_01",
+  "bebek2_kiyafet_01_otur",
+  "bebek2_kiyafet_02",
+  "bebek2_kiyafet_02_otur"
+ ],
+ "set_kiyafet_bebek2_34": [
+  "bebek2_kiyafet_03",
+  "bebek2_kiyafet_03_otur",
+  "bebek2_kiyafet_04",
+  "bebek2_kiyafet_04_otur"
+ ],
+ "set_kiyafet_bebek2_56": [
+  "bebek2_kiyafet_05",
+  "bebek2_kiyafet_05_otur",
+  "bebek2_kiyafet_06",
+  "bebek2_kiyafet_06_otur"
+ ],
  "set_gorunum_01": [
   "yatak_yan",
   "yatak_arka",
