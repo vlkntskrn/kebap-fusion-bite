@@ -106,6 +106,10 @@ HOSTS += [r"^manikur_masasi$", r"^parti_masasi$", r"^havuz_bari$", r"^semsiyeli_
           r"^oyuncak_dolabi$", r"^oyuncak_mutfak$", r"^bebek_dolabi$", r"^sanat_dolabi$"]
 
 
+# Üst yüzeyi otomatik bulunamayan eşyalar (resmin tepesinden 0..1): sahnede perde değil zemin.
+TOP_FIX = {"kucuk_sahne": 0.66}
+
+
 def spec(code):
     # Yan/arka görünüm: temel eşyanın gerçek boyu.
     m = re.match(r"^(.+)_(yan|arka|otur|yat)$", code)
@@ -163,7 +167,7 @@ def main():
         e["w"] = round(width_units / 4, 2)
         e["ar"] = round(ar, 3)
         if any(re.match(p, code) for p in HOSTS):
-            e["top"] = round(top_inset(im), 3)
+            e["top"] = TOP_FIX.get(code, round(top_inset(im), 3))
         else:
             e.pop("top", None)
     path.write_text(json.dumps(items, ensure_ascii=False, indent=1) + "\n")

@@ -47,7 +47,7 @@ def blobs(mask: np.ndarray):
     return out
 
 
-def anchors(path: Path):
+def anchors(path: Path, dark_lum: int = 75):
     im = np.array(Image.open(path).convert("RGBA")).astype(int)
     h, w = im.shape[:2]
     alpha = im[:, :, 3] > 40
@@ -55,7 +55,7 @@ def anchors(path: Path):
     top = rows.min()
     bottom = rows.max()
     lum = 0.3 * im[:, :, 0] + 0.59 * im[:, :, 1] + 0.11 * im[:, :, 2]
-    dark = alpha & (lum < 75)
+    dark = alpha & (lum < dark_lum)
     # Göz arama bölgesi: başın üst yarısı (boyun %45'inden yukarısı), ortadaki %80.
     region = np.zeros_like(dark)
     y1 = top + int((bottom - top) * 0.45)
@@ -109,7 +109,8 @@ def main():
             p = next(iter(ITEMS.glob(f"{code}{suffix}.*")), None)
             if not p:
                 continue
-            a = anchors(p)
+            # Gözlüklü karakterlerde (nine) gözler daha açık tonda çıkabiliyor: eşik yükseltilerek yeniden denenir.
+            a = anchors(p) or anchors(p, 110)
             if a:
                 out[code + suffix] = a
             else:

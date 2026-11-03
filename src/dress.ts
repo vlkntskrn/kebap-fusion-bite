@@ -97,7 +97,9 @@ export function dressLayer(look: Look | undefined, key: string): string {
   const gz = find('goz', look.goz);
   if (gz) put('gz', art(gz), ex, ey, dx * 2.1);
   const kl = find('kulak', look.kulak);
-  if (kl) for (const x of [lx - dx * 0.55, rx + dx * 0.55]) put('kl', art(kl), x, ey + dy * 0.35, dx * 0.3);
+  // Kulaklık başın üstünden iki kulağı kaplar; küpeler her kulağa ayrı.
+  if (kl && kl.id === 'aks_kulak_01') put('kl kulaklik', art(kl), ex, ey + dy * 0.2, dx * 2.75, -62);
+  else if (kl) for (const x of [lx - dx * 0.55, rx + dx * 0.55]) put('kl', art(kl), x, ey + dy * 0.35, dx * 0.3);
   const bs = find('bas', look.bas);
   if (bs) put('bs', art(bs), ex, a.top + dy * 0.12, dx * 1.5, -60);
   const by = find('boyun', look.boyun);

@@ -316,6 +316,18 @@ function house(): Record<string, Inst[]> {
     progress.houseV = 5;
     commit();
   }
+  if ((progress.houseV ?? 1) < 6) {
+    // Defne'nin bebeği tek: ilk bulunduğu oda dışındaki kopyalar kalkar.
+    let seen = false;
+    for (const rid of ROOMS.map((r) => r.id)) {
+      const list = progress.house[rid];
+      if (!list) continue;
+      if (seen) progress.house[rid] = list.filter((i) => i.id !== 'bebek');
+      else if (list.some((i) => i.id === 'bebek')) seen = true;
+    }
+    progress.houseV = 6;
+    commit();
+  }
   // Yeni odaların eşya görselleri sonradan gelince, odaya henüz eklenmemiş ilk eşyalar bir kez eklenir.
   if (!progress.seed2 && itemImage('oyun_cadiri')) {
     for (const r of ROOMS) {
@@ -331,7 +343,7 @@ function house(): Record<string, Inst[]> {
     if (!progress.house[r.id]) {
       created = true;
       const list: Inst[] = r.start.filter(([id]) => keep(id)).map(([id, x, y], i) => ({ u: i + 1, id, x: x + 100, y }));
-      list.push({ u: 999, id: 'bebek', x: 150, y: 97 });
+      if (!Object.values(progress.house).some((l) => l.some((i) => i.id === 'bebek'))) list.push({ u: 999, id: 'bebek', x: 150, y: 97 });
       if (!OUTDOOR.includes(r.id)) {
         const w = winOf(r.id);
         [75, 150, 225].forEach((x, k) => list.push({ u: 1000 + k, id: w, x, y: w === 'pencere' ? 33 : WIN_Y }));
@@ -880,13 +892,19 @@ function showRoom(backToHome: () => void) {
       const th = e.closest<HTMLElement>('.thing');
       if (!th || !layer.contains(th)) continue;
       const im = th.querySelector<HTMLImageElement>(':scope > img');
+      const inst = list().find((i) => i.u === Number(th.dataset.u));
+      // Oturan/banyodaki karakterin kesilip gizlenen alt kısmı dokunuşu tutmasın: alttaki sandalye/küvet seçilsin.
+      const body = im ?? th.querySelector<SVGElement>(':scope > svg');
+      if (inst?.p && inst.p !== 'yat' && body && !th.classList.contains('pose-img') && !th.classList.contains('baby')) {
+        const br = body.getBoundingClientRect();
+        if ((cy - br.top) / br.height > (inst.p === 'otur' ? 0.7 : 0.54)) continue;
+      }
       if (!im) return th;
       if (e !== im) continue;
       const r = im.getBoundingClientRect();
-      const inst = list().find((i) => i.u === Number(th.dataset.u));
       let fx = (cx - r.left) / r.width;
       if (inst?.fl) fx = 1 - fx;
-      if (inst?.r || inst?.p || alphaAt(im, fx, (cy - r.top) / r.height)) return th;
+      if (inst?.r || inst?.p === 'yat' || alphaAt(im, fx, (cy - r.top) / r.height)) return th;
     }
     return null;
   };
@@ -907,6 +925,16 @@ function showRoom(backToHome: () => void) {
   const isChar = (id: string) => id === 'bebek' || isCharAsset(id);
   const widthOf = (i: Inst) => (i.id === 'bebek' ? 26 : THINGS[i.id]?.w ?? 10);
   const heightOf = (i: Inst) => (i.id === 'bebek' ? ((26 * 4 * 1.6) / 440) * 100 : heightPct(i.id));
+  /** Sahne olan eşyalar (üstüne çıkan karakter mikrofon alır). */
+  const STAGE = /^(kucuk_sahne|isikli_kurs)$/;
+  /** Karaktere giyilen eşyalar -> [yuva, aksesuar]. */
+  const WEAR: Record<string, [Slot, string]> = {
+    kulaklik: ['kulak', 'aks_kulak_01'], giysi_tac: ['bas', 'aks_bas_10'], tac_standi: ['bas', 'aks_bas_10'], kelime_sapka: ['bas', 'aks_bas_03'],
+    sac_bandi: ['bas', 'aks_bas_08'], giysi_kolye: ['boyun', 'aks_boyun_02'], giysi_atki: ['boyun', 'aks_boyun_06'], deniz_gozlugu: ['goz', 'aks_goz_03'],
+    mikrofon: ['el', 'aks_el_02'], giysi_canta: ['canta', 'aks_canta_02'], kelime_canta: ['canta', 'aks_canta_01'], giysi_ayakkabi: ['ayak', 'aks_ayak_02'],
+    v_ayakkabi_01: ['ayak', 'aks_ayak_01'], v_ayakkabi_02: ['ayak', 'aks_ayak_03'], v_ayakkabi_04: ['ayak', 'aks_ayak_01'], giysi_bot: ['ayak', 'aks_ayak_04'],
+    terlik: ['ayak', 'aks_ayak_05'],
+  };
   /** Oturan karakter eşyanın görünümüne uyar: eşya arkadan görünüyorsa karakterin de sırtı görünür. */
   const syncView = (ch: Inst, host: Inst) => {
     if (ch.p !== 'yat' && host.v && itemImage(`${ch.id}_${host.v}`)) ch.v = host.v;
@@ -963,6 +991,23 @@ function showRoom(backToHome: () => void) {
     // Karakter: yatağa yatar, sandalyeye oturur, küvete girer, havuzda yüzer.
     if (isChar(inst.id)) {
       const person = isPerson(inst.id);
+      // Sahneye çıkan karakter sahnenin üstünde durur ve mikrofonu eline alır.
+      const stage = person ? under(inst.x, inst.y, (h) => STAGE.test(h.id), inst) : null;
+      const stTop = stage ? surfaceTop(stage.id) : undefined;
+      if (stage && stTop !== undefined) {
+        inst.s = stage.u;
+        delete inst.p;
+        inst.y = stage.y - heightPct(stage.id) * (1 - stTop) + 0.6;
+        inst.dr = { ...(inst.dr ?? {}), el: 'aks_el_02' };
+        // Sahnede duran mikrofon varsa karakter onu alır.
+        const mic = list().find((i) => i.id === 'mikrofon' && i.s === stage.u);
+        if (mic) house()[current] = list().filter((i) => i !== mic);
+        commit();
+        renderLayer();
+        sfx.sing();
+        mood(inst.u, '🎤', 1500);
+        return true;
+      }
       const host = under(inst.x, inst.y, (h) => !!poseFor(h.id) && !isChar(h.id) && (!babyOnly(h.id) || isBaby(inst.id)) && (!petOnly(h.id) || isPet(inst.id)), inst);
       if (host) {
         const pf = poseFor(host.id)!;
@@ -1003,6 +1048,20 @@ function showRoom(backToHome: () => void) {
       return false;
     }
     // Küçük eşya karaktere verilince eline alır; yiyecek ağzına götürülünce yer.
+    // Takılan eşyalar (kulaklık, taç, kolye, gözlük…) karaktere giyilir.
+    const wear = WEAR[inst.id];
+    if (wear) {
+      const ch = under(inst.x, inst.y - heightPct(inst.id) / 2, (h) => isPerson(h.id) && h.id !== 'bebek', inst);
+      if (ch) {
+        house()[current] = list().filter((i) => i !== inst);
+        ch.dr = { ...(ch.dr ?? {}), [wear[0]]: wear[1] };
+        commit();
+        renderLayer();
+        sfx.paint();
+        mood(ch.u, '😍', 1100);
+        return true;
+      }
+    }
     if (isHoldable(inst.id) || isFood(inst.id)) {
       const cy = inst.y - heightPct(inst.id) / 2;
       const ch = under(inst.x, cy, (h) => isPerson(h.id), inst);
@@ -1223,7 +1282,7 @@ function showRoom(backToHome: () => void) {
         moved = true;
         snapshot();
         // Kalkınca oturma/yatma biter, elden alınan eşya serbest kalır.
-        if (inst.p || inst.hd) {
+        if (inst.p || inst.hd || (isChar(inst.id) && inst.s)) {
           delete inst.p;
           delete inst.hd;
           delete inst.s;
@@ -1438,6 +1497,8 @@ function showRoom(backToHome: () => void) {
   });
 
   const addInst = (id: string, x: number, y: number): [HTMLElement, Inst] => {
+    // Bebek tek: başka odadaysa oradan bu odaya gelir.
+    if (id === 'bebek') for (const [rid, l] of Object.entries(house())) if (rid !== current) house()[rid] = l.filter((i) => i.id !== 'bebek');
     const [y0, y1] = yRange(id);
     const inst: Inst = { u: nextU(list()), id, x, y: Math.max(y0, Math.min(y1, y)) };
     settle(inst);
