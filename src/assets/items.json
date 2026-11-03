@@ -188,12 +188,12 @@
  },
  {
   "id": "komodin",
-  "w": 17.44,
+  "w": 15.01,
   "rooms": [
    "yatak"
   ],
-  "ar": 1.358,
-  "top": 0.502
+  "ar": 1.579,
+  "top": 0.469
  },
  {
   "id": "gecelambasi",
@@ -279,12 +279,12 @@
  },
  {
   "id": "tezgah",
-  "w": 71.55,
+  "w": 53.18,
   "rooms": [
    "mutfak"
   ],
-  "ar": 0.429,
-  "top": 0.258
+  "ar": 0.577,
+  "top": 0.237
  },
  {
   "id": "ocak",
@@ -1654,12 +1654,12 @@
  },
  {
   "id": "buzdolabi_05",
-  "w": 22.93,
+  "w": 30.76,
   "rooms": [
    "mutfak"
   ],
   "lock": true,
-  "ar": 2.128
+  "ar": 1.586
  },
  {
   "id": "buzdolabi_06",
@@ -3302,10 +3302,11 @@
  },
  {
   "id": "emzik",
-  "w": 10,
+  "w": 1.95,
   "rooms": [
    "bebekodasi"
-  ]
+  ],
+  "ar": 0.836
  },
  {
   "id": "cingirak",
@@ -3751,10 +3752,11 @@
  },
  {
   "id": "hoparlor",
-  "w": 10,
+  "w": 17.75,
   "rooms": [
    "muzik"
-  ]
+  ],
+  "ar": 1.413
  },
  {
   "id": "nota_sehpasi",
@@ -3839,11 +3841,11 @@
  },
  {
   "id": "buyuk_kitaplik",
-  "w": 48.78,
+  "w": 38.79,
   "rooms": [
    "kutuphane"
   ],
-  "ar": 1.143
+  "ar": 1.437
  },
  {
   "id": "okuma_koltugu",
@@ -3989,11 +3991,11 @@
  },
  {
   "id": "kaydirakli_yatak",
-  "w": 60.89,
+  "w": 45.16,
   "rooms": [
    "oyun"
   ],
-  "ar": 0.641
+  "ar": 0.864
  },
  {
   "id": "oyuncak_market",
@@ -6851,7 +6853,7 @@
  },
  {
   "id": "v_parti_pastasi_01",
-  "w": 10,
+  "w": 10.38,
   "rooms": [
    "salon",
    "mutfak",
@@ -6860,7 +6862,8 @@
    "muzik",
    "havuz",
    "oyunparki"
-  ]
+  ],
+  "ar": 0.94
  },
  {
   "id": "v_parti_pastasi_02",
@@ -7614,14 +7617,15 @@
  },
  {
   "id": "komodin_yan",
-  "w": 10,
-  "hide": true
+  "w": 12.77,
+  "hide": true,
+  "ar": 1.855
  },
  {
   "id": "komodin_arka",
-  "w": 14.81,
+  "w": 15.07,
   "hide": true,
-  "ar": 1.6
+  "ar": 1.572
  },
  {
   "id": "oyuncaksandigi_yan",
@@ -7661,14 +7665,15 @@
  },
  {
   "id": "tezgah_yan",
-  "w": 10,
-  "hide": true
+  "w": 21.38,
+  "hide": true,
+  "ar": 1.434
  },
  {
   "id": "tezgah_arka",
-  "w": 70.73,
+  "w": 56.5,
   "hide": true,
-  "ar": 0.433
+  "ar": 0.543
  },
  {
   "id": "ocak_yan",
@@ -7996,14 +8001,15 @@
  },
  {
   "id": "buzdolabi_05_yan",
-  "w": 10,
-  "hide": true
+  "w": 27.8,
+  "hide": true,
+  "ar": 1.755
  },
  {
   "id": "buzdolabi_05_arka",
-  "w": 26.16,
+  "w": 30.12,
   "hide": true,
-  "ar": 1.865
+  "ar": 1.62
  },
  {
   "id": "buzdolabi_06_yan",
@@ -8655,14 +8661,15 @@
  },
  {
   "id": "buyuk_kitaplik_yan",
-  "w": 10,
-  "hide": true
+  "w": 20.35,
+  "hide": true,
+  "ar": 2.739
  },
  {
   "id": "buyuk_kitaplik_arka",
-  "w": 49.3,
+  "w": 38.64,
   "hide": true,
-  "ar": 1.131
+  "ar": 1.443
  },
  {
   "id": "okuma_koltugu_yan",
@@ -8678,14 +8685,15 @@
  },
  {
   "id": "kaydirakli_yatak_yan",
-  "w": 60.68,
+  "w": 29.12,
   "hide": true,
-  "ar": 0.643
+  "ar": 1.34
  },
  {
   "id": "kaydirakli_yatak_arka",
-  "w": 10,
-  "hide": true
+  "w": 48.9,
+  "hide": true,
+  "ar": 0.798
  },
  {
   "id": "nota_dolabi_yan",

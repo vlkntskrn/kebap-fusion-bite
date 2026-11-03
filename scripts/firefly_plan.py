@@ -144,7 +144,7 @@ def plan(C):
     frozen = C.ROOT / "scripts" / "ff_sets_ilk.json"
     if frozen.exists():
         ilk = _json.loads(frozen.read_text())
-        md = []
+        md = ["# ✅ Bütün görseller tamam\n\nİlk teslimdeki 98 sayfa ve yeniden üretilen sayfalar oyunda. Şu an üretilecek görsel yok.\n"] if not redo_sets else []
         if redo_sets:
             md.append(f"# 🔁 YENİDEN ÜRETİLECEKLER ({len(redo_sets)} istek, {sum(len(x[1]) for x in redo_sets)} görsel)\n")
             md.append("İlk teslimdeki 98 sayfa oyuna eklendi. Aşağıdakiler kullanılamayan görseller. Ayarlar aynı (kare 1:1, 2K). "
