@@ -143,7 +143,10 @@ def plan(C):
     # İlk teslim tamamlandı: sayfa kodları ilk plandaki gibi sabit kalır (scripts/ff_sets_ilk.json), md'de yalnızca tekrarlar listelenir.
     # Giydirme v2: aksesuarlar karakter referansıyla, giyildiği açıda (redo.json: "aks_v2": true)
     if redo.get("aks_v2"):
+        ok_slots = set(redo.get("aks_v2_ok", []))
         for slot, title, how, items in R2.DRESS_V2:
+            if slot in ok_slots:
+                continue
             codes = [f"aks_{slot}_{i + 1:02d}" for i in range(len(items))]
             cols = 5 if len(items) > 6 else 3
             code = f"set_ff_aks2_{slot}"
@@ -154,7 +157,7 @@ def plan(C):
                     f"The items in order, left to right and top to bottom: {lst}. "
                     "Same drawing style as the character: flat vector, thick dark navy outline (#3D3553), soft pastel colors, soft gentle shading, "
                     "no people, no text, no letters, plain pure white background (#FFFFFF). "
-                    "VERY IMPORTANT: draw ONLY the accessory objects themselves. NO skin, NO legs, NO feet, NO ankles, NO neck, NO shoulders, "
+                    "VERY IMPORTANT: draw ONLY the accessory objects themselves. NO skin, NO hands, NO fingers, NO arms, NO wrists, NO legs, NO feet, NO ankles, NO neck, NO shoulders, "
                     "NO hair, NO head, NO face. Where a body part would be inside or behind the accessory, leave it EMPTY WHITE background. "
                     "No white sticker outline around the items.")
             redo_sets.append((code, codes, text, f"{title} — referans: `referans/kiz1.png` (yükleyin)"))

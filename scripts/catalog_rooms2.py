@@ -533,10 +533,10 @@ DRESS_V2 = [
      ["a pearl necklace", "a necklace with a heart pendant", "a necklace with a star pendant", "a flower garland necklace",
       "a gold medal on a ribbon", "a striped knitted scarf wrapped around the neck"]),
     ("bilek", "Saat ve bileklikler (önden)",
-     "each item is seen from the front exactly as worn around this character's small wrist, sized to the wrist",
+     "each item is seen from the front as an empty loop exactly as it would sit around this character's small wrist, sized to the wrist, with NO wrist or arm inside (empty white inside the loop)",
      ["a kids wrist watch", "a sparkly ring", "a rainbow bead bracelet", "a gem bracelet", "a bracelet with a bow"]),
     ("el", "Elde tutulanlar",
-     "each item is held upright in a small closed hand: draw ONLY the object, sized for this character's hand, the part that is "
+     "each item stands upright by itself, NOT held by any hand: draw ONLY the object, sized for this character's hand, the part that would be "
      "gripped at the bottom center",
      ["a smartphone in a pink case, screen facing the viewer", "a sparkly microphone", "a swirl lollipop", "a closed umbrella held by the handle",
       "a magic wand with a star", "a red balloon on a string (string end at the bottom)"]),

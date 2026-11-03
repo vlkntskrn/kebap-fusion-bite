@@ -1735,22 +1735,6 @@
   "aks_bas_09",
   "aks_bas_10"
  ],
- "set_ff_aks2_goz": [
-  "aks_goz_01",
-  "aks_goz_02",
-  "aks_goz_03",
-  "aks_goz_04",
-  "aks_goz_05",
-  "aks_goz_06"
- ],
- "set_ff_aks2_kulak": [
-  "aks_kulak_01",
-  "aks_kulak_02",
-  "aks_kulak_03",
-  "aks_kulak_04",
-  "aks_kulak_05",
-  "aks_kulak_06"
- ],
  "set_ff_aks2_boyun": [
   "aks_boyun_01",
   "aks_boyun_02",
@@ -1773,22 +1757,6 @@
   "aks_el_04",
   "aks_el_05",
   "aks_el_06"
- ],
- "set_ff_aks2_canta": [
-  "aks_canta_01",
-  "aks_canta_02",
-  "aks_canta_03",
-  "aks_canta_04",
-  "aks_canta_05",
-  "aks_canta_06"
- ],
- "set_ff_aks2_yuz": [
-  "aks_yuz_01",
-  "aks_yuz_02",
-  "aks_yuz_03",
-  "aks_yuz_04",
-  "aks_yuz_05",
-  "aks_yuz_06"
  ],
  "set_gorunum_01": [
   "yatak_yan",
