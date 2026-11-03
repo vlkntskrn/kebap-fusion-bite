@@ -7948,6 +7948,546 @@
   "ar": 0.783
  },
  {
+  "id": "sallanan_at_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "sallanan_at_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "oyuncak_dolabi_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "oyuncak_dolabi_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "sallanan_besik_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "sallanan_besik_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "alt_degistirme_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "alt_degistirme_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "emzirme_koltugu_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "emzirme_koltugu_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "bebek_arabasi_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "bebek_arabasi_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "bebek_dolabi_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "bebek_dolabi_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "acik_gardirop_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "acik_gardirop_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "kapitone_puf_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "kapitone_puf_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "ada_dolap_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "ada_dolap_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "sanat_dolabi_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "sanat_dolabi_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "kuyruklu_piyano_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "kuyruklu_piyano_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "buyuk_kitaplik_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "buyuk_kitaplik_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "okuma_koltugu_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "okuma_koltugu_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "kaydirakli_yatak_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "kaydirakli_yatak_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "nota_dolabi_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "nota_dolabi_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "hikaye_sandalyesi_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "hikaye_sandalyesi_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "veteriner_dolabi_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "veteriner_dolabi_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "bekleme_sandalyesi_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "bekleme_sandalyesi_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "kuafor_koltugu_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "kuafor_koltugu_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "bekleme_koltugu_salon_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "bekleme_koltugu_salon_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "isikli_dolap_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "isikli_dolap_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_besik_01_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_besik_01_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_besik_02_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_besik_02_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_besik_03_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_besik_03_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_besik_04_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_besik_04_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_besik_05_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_besik_05_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_besik_06_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_besik_06_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_bebek_arabasi_01_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_bebek_arabasi_01_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_bebek_arabasi_02_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_bebek_arabasi_02_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_bebek_arabasi_03_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_bebek_arabasi_03_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_bebek_arabasi_04_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_bebek_arabasi_04_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_bebek_arabasi_05_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_bebek_arabasi_05_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kitaplik_01_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kitaplik_01_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kitaplik_02_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kitaplik_02_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kitaplik_03_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kitaplik_03_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kitaplik_04_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kitaplik_04_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kitaplik_05_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kitaplik_05_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kitaplik_06_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kitaplik_06_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_okuma_koltugu_01_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_okuma_koltugu_01_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_okuma_koltugu_02_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_okuma_koltugu_02_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_okuma_koltugu_03_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_okuma_koltugu_03_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_okuma_koltugu_04_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_okuma_koltugu_04_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_okuma_koltugu_05_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_okuma_koltugu_05_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_pet_kafesi_01_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_pet_kafesi_01_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_pet_kafesi_02_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_pet_kafesi_02_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_pet_kafesi_03_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_pet_kafesi_03_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_pet_kafesi_04_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_pet_kafesi_04_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_pet_kafesi_05_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_pet_kafesi_05_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kuafor_koltugu_01_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kuafor_koltugu_01_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kuafor_koltugu_02_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kuafor_koltugu_02_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kuafor_koltugu_03_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kuafor_koltugu_03_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kuafor_koltugu_04_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kuafor_koltugu_04_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kuafor_koltugu_05_yan",
+  "w": 10,
+  "hide": true
+ },
+ {
+  "id": "v_kuafor_koltugu_05_arka",
+  "w": 10,
+  "hide": true
+ },
+ {
   "id": "kiz1_yan",
   "w": 13.07,
   "hide": true,

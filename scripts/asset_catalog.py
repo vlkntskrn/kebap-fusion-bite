@@ -10,6 +10,7 @@ Her kayıt: (kod, oda, genişlik_yüzde, yere_serili_mi, Türkçe ad, İngilizce
   - genişlik: odanın genişliğine göre eşyanın oyundaki genişliği (%)
 """
 import json
+import sys
 import re
 from pathlib import Path
 
@@ -660,8 +661,10 @@ REF_KEEP = (" Keep everything else identical: the same colors, the same shapes a
 def ref_prompt(code: str, kind: str, what: str) -> str:
     return f"{code} — " + REF_TEXT[kind].format(what=what) + REF_KEEP
 
+import firefly_plan as FP  # noqa: E402
+
 for _c, _r, _w, _f, _tr, _en, _l in ITEMS_ALL:
-    if VIEW_BASE.match(_c):
+    if VIEW_BASE.match(_c) or FP.TURN_NEW.match(_c):
         for _k, _t in VIEW_TEXT.items():
             VIEWS.append((f"{_c}_{_k}", _c, f"{_tr} ({'yandan' if _k == 'yan' else 'arkadan'})", f"{_en}, {_t}, same colors, same style and same size", False))
 for _c, _w, _tr, _en in CHARACTERS:
@@ -696,10 +699,10 @@ def main():
     sets += sheets([(f"cikartma_{i + 1:02d}", en) for i, en in enumerate(STICKERS)], 9, 3, STYLE_STICKER.replace("centered, ", ""), "cikartma")
     sets += sheets([(c, en) for c, _tr, en in WINDOWS + DOORS], 10, 5, item_style, "yapi")
     sets += sheets([(c, "a cute " + en) for c, _tr, en in POSES], 4, 2, pose_style(char_style), "poz")
-    for room in GROUP_IDS:
-        sets += sheets([(c, en) for c, r, _w, _f, _tr, en, _l in NEW_ROWS if r == room], 9, 3, item_style, "yeni_" + room)
-        sets += sheets([(c, en) for c, r, _w, _f, _tr, en, _l in NEW_VAR_ROWS if r == room], 9, 3, item_style, "yeni_cesit_" + room)
-    sets += sheets([(c, en) for c, _tr, en in ROOM_ICONS2], 6, 3, STYLE_UI.replace("the symbol fills about 80 percent of the canvas and is perfectly centered, ", ""), "yeni_oda_simge")
+    # Yeni odalar, aileler, görünümler ve aksesuarlar için Firefly sayfaları: FIREFLY.md (scripts/firefly_plan.py)
+    ff_sets, ff_md = FP.plan(sys.modules[__name__])
+    sets += ff_sets
+    (ROOT / "FIREFLY.md").write_text(ff_md)
     sets += sheets([(c, en) for c, _b, _tr, en, ch in VIEWS if not ch], 9, 3, item_style.replace("straight-on front view at eye level with no perspective distortion, ", "no perspective distortion, "), "gorunum")
     sets += sheets([(c, en) for c, _b, _tr, en, ch in VIEWS if ch], 4, 2, pose_style(char_style).replace("facing the viewer", ""), "gorunum_karakter")
     codes += [code for code, _c, _t in sets]
@@ -783,7 +786,7 @@ def main():
 
 Altı yeni oda ve eşyaları. Her odada temel eşyalar ve çeşit aileleri var (her ailede ilk {FREE} çeşit bedava, gerisi okuma
 sorusuyla açılır). Ayarlar eşyalarla aynı: **Square (1:1)**, Art, Style reference yüklü, beyaz arka plan.
-Toplu istekler `set_yeni_…` sayfalarında (9'lu).
+Toplu istekler (tek resimde birden çok görsel) **FIREFLY.md** dosyasında.
 """)
     out.append("### Oda düğmeleri\n")
     for code, tr, en in ROOM_ICONS2:
