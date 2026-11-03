@@ -971,7 +971,8 @@ aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya
     # En üstte: Firefly'da üretilecek yeni sayfalar (FIREFLY.md ile aynı).
     ff_body = ff_md.split("\n", 1)[1]
     out = [out[0], f"\n# 🔥 ŞİMDİ ÜRETİLECEKLER: Firefly sayfaları ({len(ff_sets)} istek, {sum(len(x[1]) for x in ff_sets)} görsel)\n", ff_body,
-           "\n---\n\n# Önceki listeler (tek tek istekler ve eski sayfalar)\n"] + out[1:]
+           "\n---\n\n# ⛔ BURADAN SONRASI YEDEK — ÜRETMEYİN\n\nYukarıdaki sayfalar bu görsellerin hepsini zaten kapsıyor. Aşağıdakiler eski tek tek istekler ve "
+           "önceden üretilmiş sayfalar; yalnızca bir parçayı tek başına yeniden üretmek gerekirse kullanılır.\n"] + [x.replace("## 🆕 ", "## (yedek) ") for x in out[1:]]
     (ROOT / "ASSETS.md").write_text("\n".join(out))
     print(f"{len(codes)} görsel kodu -> ASSETS.md, src/assets/items.json, src/assets/codes.json")
 

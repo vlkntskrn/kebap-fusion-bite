@@ -1021,7 +1021,9 @@ set_ff_simge_01 — 2D flat vector cartoon sticker sheet, NOT a photo: 9 complet
 
 ---
 
-# Önceki listeler (tek tek istekler ve eski sayfalar)
+# ⛔ BURADAN SONRASI YEDEK — ÜRETMEYİN
+
+Yukarıdaki sayfalar bu görsellerin hepsini zaten kapsıyor. Aşağıdakiler eski tek tek istekler ve önceden üretilmiş sayfalar; yalnızca bir parçayı tek başına yeniden üretmek gerekirse kullanılır.
 
 Toplam **815 eşya** (232 tanesi çeşit ailelerinden, ilk 2 çeşit bedava, gerisi okuma sorusuyla açılır), **17 karakter**, **12 evcil hayvan**, **38 buton/simge**, **101 kelime resmi**, **30 çıkartma**, **4 arka plan** ve uygulama ikonu. Her isteği olduğu gibi kopyalayıp Firefly'a yapıştırın. Stil, arka plan, açı ve boyut bilgisi isteğin içinde.
 
@@ -1062,7 +1064,7 @@ Toplam **815 eşya** (232 tanesi çeşit ailelerinden, ilk 2 çeşit bedava, ger
    Benim çizdiğim aynı adlı eşya varsa, Firefly görseli onun yerine geçer.
 
 
-## 🆕 Yeni odalar: Oyun odası, Bebek odası, Giyinme odası, Sanat atölyesi, Müzik odası, Kütüphane, Pet revir, Makyaj odası, Oyun parkı (461 istek)
+## (yedek) Yeni odalar: Oyun odası, Bebek odası, Giyinme odası, Sanat atölyesi, Müzik odası, Kütüphane, Pet revir, Makyaj odası, Oyun parkı (461 istek)
 
 Altı yeni oda ve eşyaları. Her odada temel eşyalar ve çeşit aileleri var (her ailede ilk 2 çeşit bedava, gerisi okuma
 sorusuyla açılır). Ayarlar eşyalarla aynı: **Square (1:1)**, Art, Style reference yüklü, beyaz arka plan.
@@ -4349,7 +4351,7 @@ v_sisme_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean sh
 ```
 
 
-## 🆕 Giydirme aksesuarları (57 istek)
+## (yedek) Giydirme aksesuarları (57 istek)
 
 Evdeki karakterlere takılan aksesuarlar (taç, gözlük, küpe, kolye, saat, eldeki eşya, çanta, ayakkabı, yüz süsü) **Square (1:1)**, beyaz arka plan; arka planı ben silerim. Ayakkabılar **tek tek** (tek ayakkabı, önden).
 
@@ -4696,7 +4698,7 @@ aks_yuz_06 — 2D flat vector cartoon illustration, NOT a photo, simple clean sh
 ```
 
 
-## 🆕 Yandan ve arkadan görünümler (304 istek)
+## (yedek) Yandan ve arkadan görünümler (304 istek)
 
 ### Bire bir aynı eşyayı/karakteri nasıl üretirsiniz
 
@@ -8978,7 +8980,7 @@ ogretmen_arka — 2D flat vector cartoon illustration, NOT a photo, simple clean
 ```
 
 
-## 🆕 Açılan eşyaların içi (7 istek)
+## (yedek) Açılan eşyaların içi (7 istek)
 
 Buzdolabı, gardırop, fırın gibi eşyalara dokununca kapakları açılır ve içi görünür; içindekiler raflara dizilir.
 Bu resimler o iç görünümün arka planıdır (raflar boş olmalı, oyun eşyaları kendisi koyar). Yoksa oyun düz renkli bir iç çizer.
@@ -9027,7 +9029,7 @@ ic_cekmece — 2D flat vector cartoon background illustration, NOT a photo: the 
 ```
 
 
-## 🆕 Karakter pozları: oturan ve uyuyan hâller (34 istek)
+## (yedek) Karakter pozları: oturan ve uyuyan hâller (34 istek)
 
 Oyunda karakter sandalyeye bırakılınca oturur, yatağa bırakılınca uyur. Bu resimler yoksa oyun ayakta duran resmi
 keserek ya da yatırarak gösterir; resimler gelince gerçek oturma ve uyuma pozları kullanılır.
@@ -9512,7 +9514,7 @@ ogretmen_yat — 2D flat vector cartoon illustration, NOT a photo, simple clean 
 ```
 
 
-## 🆕 Ev haritası (5 istek)
+## (yedek) Ev haritası (5 istek)
 
 Ev haritası (odaların seçildiği ekran) bu parçalardan kurulur: arkada manzara, odaların üstünde çatı, çatıda isim
 tabelası (yazıyı oyun kendisi yazar), önde çalı şeridi ve yanda ağaç. Odaların içi oyundan canlı gösterilir; o yüzden
@@ -9550,7 +9552,7 @@ harita_agac — 2D flat vector cartoon illustration, NOT a photo, simple clean s
 ```
 
 
-## 🆕 Oda yüzeyleri: duvar kâğıtları, zeminler, bahçe ve havuz (24 istek)
+## (yedek) Oda yüzeyleri: duvar kâğıtları, zeminler, bahçe ve havuz (24 istek)
 
 Bunlar odanın **boş** zemini ve duvarıdır; içinde eşya olmamalı. Oyun bunları fayans gibi yan yana döşer.
 
@@ -9705,7 +9707,7 @@ bahce_manzara — 2D flat vector cartoon background illustration, NOT a photo: a
 ```
 
 
-## 🆕 Pencereler ve kapılar (10 istek)
+## (yedek) Pencereler ve kapılar (10 istek)
 
 Eşya gibi üretilir (**Square 1:1**, beyaz arka plan; arka planı ben silerim). Pencereler duvara, kapılar yere oturur;
 ikisi de oyunda sürüklenip yeri değiştirilebilir. Toplu istek: aşağıdaki `set_yapi_01` (10'lu sayfa).
@@ -9783,7 +9785,7 @@ aralarında boşluk bırakarak çizer; ben sayfayı otomatik keser, her parçaya
   küçük eşyalar ve kelime resimleri için toplu üretim iyi bir denge.
 
 
-### 🆕 YENİ sayfalar: çeşit aileleri, pencere ve kapılar (78 istek)
+### (yedek) YENİ sayfalar: çeşit aileleri, pencere ve kapılar (78 istek)
 
 Bunlar yeni eklendi, henüz üretilmedi. Her ailede ilk 2 çeşit bedava, diğerleri oyunda okuma sorusuyla açılır.
 
