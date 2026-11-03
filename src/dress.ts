@@ -24,6 +24,7 @@ export type Slot = keyof Look;
 interface Anchor {
   ar: number;
   head?: [number, number];
+  shoes?: [number, number, number][];
   footw?: number;
   eye: [number, number, number, number];
   top: number;
@@ -196,7 +197,21 @@ export function dressLayer(look: Look | undefined, key: string): string {
   const ct = find('canta', look.canta);
   if (ct && !fit('ct', ct)) put('ct', art(ct), a.hand[0], a.hand[1] + dy * 0.2, dx * 1.0, -20);
   const ay = find('ayak', look.ayak);
-  if (ay) for (const x of [a.foot[0], a.foot[1]]) put('ay', art(ay), x, a.foot[2] + 0.004, Math.min(Math.max(a.footw ?? 0, hw * 0.2), hw * 0.27) * 1.12, -92);
+  if (ay) {
+    // Ayakkabı karakterin kendi ayakkabısının kutusuna oturur (biraz büyük, tabanı yerde).
+    const boxes = a.shoes?.length === 2 ? a.shoes : [a.foot[0], a.foot[1]].map((x) => [x - hw * 0.1, x + hw * 0.1, a.foot[2] - 0.05] as [number, number, number]);
+    const side = ay.id === 'aks_ayak_04';
+    // Kıyafet ayakları kapatıyorsa (yere kadar etek) ayakkabı da görünmez.
+    const covered = boxes.some(([x0, x1]) => x1 - x0 > 0.3);
+    if (!covered)
+      boxes.forEach(([x0, x1, y0], k) => {
+        const bw = (x1 - x0) * (side ? 1.5 : 1.3);
+        const bh = (a.foot[2] - y0) * (side ? 3.2 : 2.3);
+        // Çizme yandan çizildi: sol ayaktaki aynalanır, iki burun da dışa bakar.
+        const flip = side && k === 0 ? ' scaleX(-1)' : '';
+        out.push(`<span class="dr ay shoe ${side ? 'side' : ''}" style="left:${pc((x0 + x1) / 2)};top:${pc(a.foot[2] + 0.008)};width:${pc(bw)};height:${pc(bh)};transform:translate(-50%,-100%)${flip}">${art(ay)}</span>`);
+      });
+  }
   return out.length ? `<span class="dress-layer">${out.join('')}</span>` : '';
 }
 
