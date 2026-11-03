@@ -500,3 +500,53 @@ DRESS_ITEMS = [(f"aks_{k}_{i + 1:02d}", f"Aksesuar {k} {i + 1}", en) for k, lst 
 HAIRS = ["long straight hair with bangs", "short bob hair", "two space buns", "a high ponytail", "long wavy hair", "two braids",
          "a curly afro puff", "a pixie cut", "a side braid", "long hair with a headband", "short curly hair", "a messy bun"]
 HAIR_ITEMS = [(f"aks_sac_{i + 1:02d}", f"Saç {i + 1}", f"a cartoon hairstyle piece only: {en}, seen from the front, with an empty space where the face goes, no face, no body, no head") for i, en in enumerate(HAIRS)]
+
+
+# ------------------------------------------------------------------ giydirme v2: karaktere göre, giyildiği açıda
+# (yuva, Türkçe başlık, açı/oturuş tarifi, [parçalar]) — kodlar aynı kalır (aks_<yuva>_NN), resimler değişir.
+DRESS_V2 = [
+    ("ayak", "Ayakkabılar (çift, önden)",
+     "each item is a PAIR of shoes exactly as worn by this character, seen straight from the front at the character's eye level, "
+     "toes pointing toward the viewer, the two shoes side by side with the same small gap as this character's feet, the opening of "
+     "each shoe at the top where the ankle goes, flat bottoms resting on one line",
+     ["white sneakers with laces", "red party shoes with a strap", "pink ballet flats with a bow", "mint rain boots",
+      "lilac ballet slippers with crossed ribbons", "light blue flip flops"]),
+    ("bas", "Başa takılanlar (önden)",
+     "each item is seen straight from the front exactly as it sits on this character's head, sized to fit this character's head width, "
+     "the bottom edge shaped to sit on top of the hair",
+     ["a small golden crown", "a big red hair bow", "a straw sun hat with a ribbon", "a pastel baseball cap facing forward",
+      "a pink flower hair clip", "a yellow star hair clip", "a unicorn horn headband", "a cat ears headband", "a daisy flower crown",
+      "a sparkly gem tiara"]),
+    ("goz", "Gözlükler (önden)",
+     "each item is a pair of glasses seen straight from the front exactly as worn on this character's face, the two lenses spaced "
+     "exactly like this character's eyes, temples hidden behind",
+     ["black sunglasses", "round glasses", "swim goggles", "heart shaped glasses", "star shaped glasses", "rainbow glasses"]),
+    ("kulak", "Kulaklık ve küpeler (önden)",
+     "the headphones are seen straight from the front exactly as worn on this character's head: the band over the top of the head and "
+     "the two ear cups on the sides at ear height, with an EMPTY space in the middle where the face goes; each earring is a PAIR, "
+     "seen from the front, hanging, spaced like this character's ears",
+     ["pastel headphones", "a pair of small gem earrings", "a pair of star earrings", "a pair of moon earrings",
+      "a pair of cherry earrings", "a pair of heart earrings"]),
+    ("boyun", "Kolye ve atkılar (önden)",
+     "each item is seen straight from the front exactly as worn around this character's neck, the top edge shaped like this "
+     "character's neckline, sized to this character's shoulders",
+     ["a pearl necklace", "a necklace with a heart pendant", "a necklace with a star pendant", "a flower garland necklace",
+      "a gold medal on a ribbon", "a striped knitted scarf wrapped around the neck"]),
+    ("bilek", "Saat ve bileklikler (önden)",
+     "each item is seen from the front exactly as worn around this character's small wrist, sized to the wrist",
+     ["a kids wrist watch", "a sparkly ring", "a rainbow bead bracelet", "a gem bracelet", "a bracelet with a bow"]),
+    ("el", "Elde tutulanlar",
+     "each item is held upright in a small closed hand: draw ONLY the object, sized for this character's hand, the part that is "
+     "gripped at the bottom center",
+     ["a smartphone in a pink case, screen facing the viewer", "a sparkly microphone", "a swirl lollipop", "a closed umbrella held by the handle",
+      "a magic wand with a star", "a red balloon on a string (string end at the bottom)"]),
+    ("canta", "Çantalar",
+     "each bag is seen from the front exactly as carried by this character: hand bags hang straight down from the handle (handle at "
+     "the top center), the backpack is seen from the FRONT showing only its two shoulder straps (as worn on the back), the suitcase "
+     "is upright on its wheels with the extended handle at the top, sized for this character",
+     ["a small pink handbag", "a little mint coin purse", "the two front shoulder straps of a light blue backpack", "a lilac rolling suitcase",
+      "a picnic basket", "a mint shopping bag"]),
+    ("yuz", "Yüz süsleri",
+     "each item is a tiny face sticker, seen straight from the front, sized for this character's cheek",
+     ["a tiny pink heart", "a tiny gold star", "a tiny butterfly", "a tiny rainbow", "a tiny flower", "a tiny sparkle"]),
+]

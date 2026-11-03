@@ -141,14 +141,33 @@ def plan(C):
         redo_sets.append((code, es, text, " · ".join(f"{tr[c]}: {redo['esya'][c]}" for c in es)))
 
     # İlk teslim tamamlandı: sayfa kodları ilk plandaki gibi sabit kalır (scripts/ff_sets_ilk.json), md'de yalnızca tekrarlar listelenir.
+    # Giydirme v2: aksesuarlar karakter referansıyla, giyildiği açıda (redo.json: "aks_v2": true)
+    if redo.get("aks_v2"):
+        for slot, title, how, items in R2.DRESS_V2:
+            codes = [f"aks_{slot}_{i + 1:02d}" for i in range(len(items))]
+            cols = 5 if len(items) > 6 else 3
+            code = f"set_ff_aks2_{slot}"
+            lst = "; ".join(f"{k + 1}) {en}" for k, en in enumerate(items))
+            text = (f"{code} — Use the attached character picture ONLY as a size and angle reference; do NOT draw the character. "
+                    f"Draw a 2D flat vector cartoon sticker sheet, NOT a photo: EXACTLY {len(items)} completely separate items, no extra or repeated items, "
+                    f"in a neat {_grid(len(items), cols)} grid with wide empty white space between them, none touching. {how}. "
+                    f"The items in order, left to right and top to bottom: {lst}. "
+                    "Same drawing style as the character: flat vector, thick dark navy outline (#3D3553), soft pastel colors, soft gentle shading, "
+                    "no people, no body parts, no text, no letters, plain pure white background (#FFFFFF).")
+            redo_sets.append((code, codes, text, f"{title} — referans: `referans/kiz1.png` (yükleyin)"))
+
     frozen = C.ROOT / "scripts" / "ff_sets_ilk.json"
     if frozen.exists():
         ilk = _json.loads(frozen.read_text())
-        md = ["# ✅ Bütün görseller tamam\n\nİlk teslimdeki 98 sayfa ve yeniden üretilen sayfalar oyunda. Şu an üretilecek görsel yok.\n"] if not redo_sets else []
+        md = [] if redo_sets else ["# ✅ Bütün görseller tamam\n\nİlk teslimdeki 98 sayfa ve yeniden üretilen sayfalar oyunda. Şu an üretilecek görsel yok.\n"] if not redo_sets else []
         if redo_sets:
             md.append(f"# 🔁 YENİDEN ÜRETİLECEKLER ({len(redo_sets)} istek, {sum(len(x[1]) for x in redo_sets)} görsel)\n")
-            md.append("İlk teslimdeki 98 sayfa oyuna eklendi. Aşağıdakiler kullanılamayan görseller. Ayarlar aynı (kare 1:1, 2K). "
-                      "Çevirme sayfalarında satırın üçü birden yeniden üretilir; önden, yandan ve arkadan resim birbirine uysun diye.\n")
+            if redo.get("aks_v2"):
+                md.append("**Giydirme aksesuarları — karaktere göre yeniden.** Her istekte Gemini'ye `referans/kiz1.png` resmini de yükleyin "
+                          "(referans.zip içinde; mor örgülü kız). Gemini aksesuarları bu karakterin üstünde duracağı açıda ve ölçüde çizer; "
+                          "karakteri çizmez. Oyun her karaktere boyuna göre oturtur. Ayakkabılar **çift**, önden; küpeler **çift**; "
+                          "sırt çantasından yalnızca önden görünen iki askı.\n")
+            md.append("Ayarlar aynı (kare 1:1, 2K).\n")
             for code, codes, text, why in redo_sets:
                 md.append(f"### `{code}`\n")
                 md.append(f"**Neden:** {why}\n")
