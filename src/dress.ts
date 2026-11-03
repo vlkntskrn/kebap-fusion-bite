@@ -184,8 +184,8 @@ export function dressLayer(look: Look | undefined, key: string): string {
     const top = a.top - 0.01;
     const earY = ey + dy * 0.35;
     const hh = (earY - top) / 0.65;
-    out.push(`<span class="dr kl kulaklik" style="left:${pc(ex)};top:${pc(top)};width:${pc(dx * 4.0)};height:${pc(hh)};transform:translate(-50%,0)">${art(kl)}</span>`);
-  } else if (kl) for (const x of [ex - dx * 0.92, ex + dx * 0.92]) put('kl', art(kl), x, ey + dy * 0.85, hw * 0.08, -10);
+    out.push(`<span class="dr kl kulaklik" style="left:${pc(ex)};top:${pc(top)};width:${pc(Math.min(dx * 3.2, hw * 1.12))};height:${pc(hh)};transform:translate(-50%,0)">${art(kl)}</span>`);
+  } else if (kl) for (const x of [ex - dx * 0.92, ex + dx * 0.92]) put('kl', art(kl), x, ey + dy * 0.7, hw * 0.13, -8);
   const bs = find('bas', look.bas);
   if (bs && !fit('bs', bs)) put('bs', art(bs), ex, a.top + dy * 0.12, dx * 1.5, -60);
   const by = find('boyun', look.boyun);
@@ -200,17 +200,17 @@ export function dressLayer(look: Look | undefined, key: string): string {
   if (ay) {
     // Ayakkabı karakterin kendi ayakkabısının kutusuna oturur (biraz büyük, tabanı yerde).
     const boxes = a.shoes?.length === 2 ? a.shoes : [a.foot[0], a.foot[1]].map((x) => [x - hw * 0.1, x + hw * 0.1, a.foot[2] - 0.05] as [number, number, number]);
-    const side = ay.id === 'aks_ayak_04';
     // Kıyafet ayakları kapatıyorsa (yere kadar etek) ayakkabı da görünmez.
     const covered = boxes.some(([x0, x1]) => x1 - x0 > 0.3);
-    if (!covered)
-      boxes.forEach(([x0, x1, y0], k) => {
-        const bw = (x1 - x0) * (side ? 1.5 : 1.3);
-        const bh = (a.foot[2] - y0) * (side ? 3.2 : 2.3);
-        // Çizme yandan çizildi: sol ayaktaki aynalanır, iki burun da dışa bakar.
-        const flip = side && k === 0 ? ' scaleX(-1)' : '';
-        out.push(`<span class="dr ay shoe ${side ? 'side' : ''}" style="left:${pc((x0 + x1) / 2)};top:${pc(a.foot[2] + 0.008)};width:${pc(bw)};height:${pc(bh)};transform:translate(-50%,-100%)${flip}">${art(ay)}</span>`);
-      });
+    if (!covered) {
+      // Resim bir çift ayakkabı (önden): iki ayağın kutusunu birlikte kaplar, tabanı yerde.
+      const x0 = boxes[0][0];
+      const x1 = boxes[1][1];
+      const y0 = Math.min(boxes[0][2], boxes[1][2]);
+      const bw = (x1 - x0) * 1.18;
+      const bh = (a.foot[2] - y0) * (ay.id === 'aks_ayak_04' ? 3.2 : 2.2);
+      out.push(`<span class="dr ay shoe" style="left:${pc((x0 + x1) / 2)};top:${pc(a.foot[2] + 0.008)};width:${pc(bw)};height:${pc(bh)};transform:translate(-50%,-100%)">${art(ay)}</span>`);
+    }
   }
   return out.length ? `<span class="dress-layer">${out.join('')}</span>` : '';
 }

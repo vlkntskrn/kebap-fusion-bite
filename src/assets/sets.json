@@ -1715,14 +1715,6 @@
   "ui_oda_makyaj",
   "ui_oda_oyunparki"
  ],
- "set_ff_aks2_boyun": [
-  "aks_boyun_01",
-  "aks_boyun_02",
-  "aks_boyun_03",
-  "aks_boyun_04",
-  "aks_boyun_05",
-  "aks_boyun_06"
- ],
  "set_gorunum_01": [
   "yatak_yan",
   "yatak_arka",
