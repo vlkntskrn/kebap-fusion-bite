@@ -91,14 +91,34 @@ def anchors(path: Path, dark_lum: int = 75):
     right = cols[cols >= mid]
     foot = [float(left.mean() / w) if len(left) else 0.4, float(right.mean() / w) if len(right) else 0.6, float(bottom / h)]
     # Eller: gövdenin orta bandında en sol ve en sağ noktalar.
-    hy0, hy1 = top + int((bottom - top) * 0.45), top + int((bottom - top) * 0.7)
-    hb = alpha[hy0:hy1]
-    lcol = np.where(hb.any(axis=0))[0]
-    lxh, rxh = lcol.min(), lcol.max()
-    lyh = hy0 + np.where(hb[:, lxh])[0].mean()
-    ryh = hy0 + np.where(hb[:, rxh])[0].mean()
+    # Eller: göz hizasının altında gövdenin her iki yanındaki en dış nokta; el, o dış çizgide en aşağıdaki nokta.
+    hy0, hy1 = int((ly + ry) / 2 + (bottom - top) * 0.12), top + int((bottom - top) * 0.82)
+    L, Rr = [], []
+    for y in range(hy0, hy1):
+        xs = np.where(alpha[y])[0]
+        if len(xs):
+            L.append((y, xs.min()))
+            Rr.append((y, xs.max()))
+    minL = min(x for _y, x in L)
+    maxR = max(x for _y, x in Rr)
+    tol = w * 0.035
+    lyh = max(y for y, x in L if x <= minL + tol)
+    ryh = max(y for y, x in Rr if x >= maxR - tol)
+    lxh = min(x for y, x in L if y == lyh)
+    rxh = max(x for y, x in Rr if y == ryh)
+    # Baş: tepe ile göz arasında en geniş satır (saç dahil) -> şapka/taç ölçüsü.
+    ey_ = int((ly + ry) / 2)
+    hw_best = (0, 0, 0)
+    for y in range(top, ey_ + 1):
+        xs = np.where(alpha[y])[0]
+        if len(xs) and xs.max() - xs.min() > hw_best[0]:
+            hw_best = (xs.max() - xs.min(), xs.min(), xs.max())
+    # Ayak genişliği: alt şeritteki her kümenin genişliği.
+    fw = max((left.max() - left.min()) if len(left) else 0, (right.max() - right.min()) if len(right) else 0)
+    # Omuz: göz ile el arası; boyun altında gövdenin en dar-sonra-genişleyen yeri yerine basitçe göz-el ortası.
     r = lambda v, d: round(float(v) / d, 4)  # noqa: E731
-    return {"ar": round(h / w, 4), "eye": [r(lx, w), r(ly, h), r(rx, w), r(ry, h)], "top": r(top, h), "foot": [round(x, 4) for x in foot],
+    return {"head": [r(hw_best[1], w), r(hw_best[2], w)], "footw": r(fw, w),
+            "ar": round(h / w, 4), "eye": [r(lx, w), r(ly, h), r(rx, w), r(ry, h)], "top": r(top, h), "foot": [round(x, 4) for x in foot],
             "hand": [r(lxh, w), r(lyh, h), r(rxh, w), r(ryh, h)]}
 
 

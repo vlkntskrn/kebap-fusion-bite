@@ -3952,3 +3952,15 @@ body {
   height: 100%;
   object-fit: contain;
 }
+/* Sırt çantası karakterin arkasında; valiz boyuna göre */
+.dr.back {
+  z-index: -1;
+}
+.dress-layer:has(.back) {
+  z-index: auto;
+}
+.dr.tall img,
+.dr.tall svg {
+  height: 100%;
+  width: auto;
+}

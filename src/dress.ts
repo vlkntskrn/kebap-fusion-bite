@@ -23,6 +23,8 @@ export type Slot = keyof Look;
 
 interface Anchor {
   ar: number;
+  head?: [number, number];
+  footw?: number;
   eye: [number, number, number, number];
   top: number;
   foot: [number, number, number];
@@ -76,6 +78,55 @@ const find = (slot: Slot, id?: string) => DRESS.find((d) => d.k === slot)?.items
  * Giydirme katmanı (karakterin kutusuna göre % ile).
  * @param key anchors.json anahtarı (ör. "kiz1" ya da oturuyorsa "kiz1_otur")
  */
+/**
+ * Aksesuarın karaktere oturuşu. w: genişlik (baş genişliğine göre); ax/ay: aksesuarın resmindeki tutma/oturma noktası (0..1);
+ * at: karakterde hangi noktaya geldiği; y/x: o noktaya göre kaydırma (u = tepe-göz arası, hw = baş genişliği birimiyle).
+ */
+type At = 'tepe' | 'goz' | 'sagEl' | 'solEl' | 'sirt' | 'boyun' | 'yanak' | 'sacSag';
+interface Fit {
+  at: At;
+  w: number;
+  ax?: number;
+  ay?: number;
+  x?: number;
+  y?: number;
+  /** Karakterin arkasında (sırt çantası). */
+  back?: boolean;
+  /** Yere kadar uzar (tekerlekli valiz): genişlik yerine boy el ile ayak arası. */
+  floor?: boolean;
+}
+const FIT: Record<string, Fit> = {
+  // baş: tepe noktası ile göz çizgisi arası 'u' birimi
+  aks_bas_01: { at: 'tepe', w: 0.42, ay: 1, y: 0.2 },
+  aks_bas_02: { at: 'tepe', w: 0.46, ay: 1, y: 0.22 },
+  aks_bas_03: { at: 'tepe', w: 1.2, ay: 1, y: 0.68 },
+  aks_bas_04: { at: 'tepe', w: 1.0, ay: 1, y: 0.72 },
+  aks_bas_05: { at: 'sacSag', w: 0.3 },
+  aks_bas_06: { at: 'sacSag', w: 0.3 },
+  aks_bas_07: { at: 'tepe', w: 0.9, ay: 1, y: 0.62 },
+  aks_bas_08: { at: 'tepe', w: 0.9, ay: 1, y: 0.6 },
+  aks_bas_09: { at: 'tepe', w: 0.92, ay: 1, y: 0.5 },
+  aks_bas_10: { at: 'tepe', w: 0.48, ay: 1, y: 0.24 },
+  // elde: tutma noktası elin içine gelir
+  aks_el_01: { at: 'sagEl', w: 0.2, ay: 0.72 },
+  aks_el_02: { at: 'sagEl', w: 0.16, ay: 0.78 },
+  aks_el_03: { at: 'sagEl', w: 0.24, ay: 0.9 },
+  aks_el_04: { at: 'sagEl', w: 0.22, ax: 0.62, ay: 0.12 },
+  aks_el_05: { at: 'sagEl', w: 0.26, ay: 0.86 },
+  aks_el_06: { at: 'sagEl', w: 0.34, ay: 0.98 },
+  // çantalar: sap ele, sırt çantası sırta, valiz yerde
+  aks_canta_01: { at: 'solEl', w: 0.42, ay: 0.06 },
+  aks_canta_02: { at: 'solEl', w: 0.34, ay: 0.08 },
+  aks_canta_03: { at: 'sirt', w: 0.78, ay: 0, back: true },
+  aks_canta_04: { at: 'solEl', w: 0, ay: 0.03, floor: true },
+  aks_canta_05: { at: 'solEl', w: 0.46, ay: 0.06 },
+  aks_canta_06: { at: 'solEl', w: 0.42, ay: 0.05 },
+};
+
+/**
+ * Giydirme katmanı (karakterin kutusuna göre % ile).
+ * @param key anchors.json anahtarı (ör. "kiz1" ya da oturuyorsa "kiz1_otur")
+ */
 export function dressLayer(look: Look | undefined, key: string): string {
   const a = ANCHORS[key];
   if (!look || !a) return '';
@@ -85,10 +136,40 @@ export function dressLayer(look: Look | undefined, key: string): string {
   const ey = (ly + ry) / 2;
   const dx = rx - lx; // gözler arası, genişliğe göre
   const dy = dx / ar; // aynı uzunluk, yüksekliğe göre
+  const hw = a.head ? a.head[1] - a.head[0] : dx * 2.6; // baş genişliği (genişliğe göre)
+  const u = Math.max(0.02, ey - a.top); // tepe ile göz arası (yüksekliğe göre)
   const out: string[] = [];
   /** Merkezi (x,y), genişliği w olan kare parça. oy: dikey hizalama (-50 = ortası, -100 = altı). */
   const put = (cls: string, html: string, x: number, y: number, w: number, oy = -50) =>
     out.push(`<span class="dr ${cls}" style="left:${pc(x)};top:${pc(y)};width:${pc(w)};transform:translate(-50%,${oy}%)">${html}</span>`);
+  /** Tabloya göre oturtur. */
+  const fit = (cls: string, item: DressItem) => {
+    const f = FIT[item.id];
+    if (!f) return false;
+    const pt: Record<At, [number, number]> = {
+      tepe: [ex, a.top],
+      goz: [ex, ey],
+      sagEl: [a.hand[2], a.hand[3]],
+      solEl: [a.hand[0], a.hand[1]],
+      sirt: [ex, ey + u * 0.62],
+      boyun: [ex, ey + u * 1.25],
+      yanak: [rx + dx * 0.2, ry + dy * 0.5],
+      sacSag: [ex + hw * 0.34, a.top + u * 0.5],
+    };
+    const [px, py] = pt[f.at];
+    const x = px + (f.x ?? 0) * hw;
+    const y = py + (f.y ?? 0) * u;
+    const ax = (f.ax ?? 0.5) * 100;
+    const ay = (f.ay ?? 0.5) * 100;
+    if (f.floor) {
+      // Valiz: sapı elde, tekerlekleri yerde.
+      const hh = Math.max(0.05, a.foot[2] - y);
+      out.push(`<span class="dr ${cls} tall" style="left:${pc(x - hw * 0.02)};top:${pc(y)};height:${pc(hh)};transform:translate(-${ax}%,-${ay}%)">${art(item)}</span>`);
+      return true;
+    }
+    out.push(`<span class="dr ${cls} ${f.back ? 'back' : ''}" style="left:${pc(x)};top:${pc(y)};width:${pc(hw * f.w)};transform:translate(-${ax}%,-${ay}%)">${art(item)}</span>`);
+    return true;
+  };
   if (look.far) for (const x of [lx, rx]) out.push(`<span class="dr mk" style="left:${pc(x)};top:${pc((x === lx ? ly : ry) - dy * 0.28)};width:${pc(dx * 0.46)};height:${pc(dy * 0.2)};background:${look.far};opacity:.55"></span>`);
   if (look.allik) for (const [x, y] of [[lx - dx * 0.12, ly + dy * 0.45], [rx + dx * 0.12, ry + dy * 0.45]]) out.push(`<span class="dr mk round" style="left:${pc(x)};top:${pc(y)};width:${pc(dx * 0.42)};height:${pc(dy * 0.42)};background:${look.allik};opacity:.45"></span>`);
   if (look.ruj) out.push(`<span class="dr mk lips" style="left:${pc(ex)};top:${pc(ey + dy * 0.64)};width:${pc(dx * 0.34)};height:${pc(dy * 0.13)};background:${look.ruj}"></span>`);
@@ -97,27 +178,25 @@ export function dressLayer(look: Look | undefined, key: string): string {
   const gz = find('goz', look.goz);
   if (gz) put('gz', art(gz), ex, ey, dx * 2.1);
   const kl = find('kulak', look.kulak);
-  // Kulaklık başın üstünden iki kulağı kaplar; küpeler her kulağa ayrı.
   if (kl && kl.id === 'aks_kulak_01') {
     // Kulaklık: bant başın tepesinde, kulaklar yüzün iki yanında (resim gerilerek yerleşir, yüzü kapatmaz).
     const top = a.top - 0.01;
     const earY = ey + dy * 0.35;
     const hh = (earY - top) / 0.65;
-    out.push(`<span class="dr kl kulaklik" style="left:${pc(ex)};top:${pc(top)};width:${pc(dx * 4.5)};height:${pc(hh)};transform:translate(-50%,0)">${art(kl)}</span>`);
-  }
-  else if (kl) for (const x of [lx - dx * 0.55, rx + dx * 0.55]) put('kl', art(kl), x, ey + dy * 0.35, dx * 0.3);
+    out.push(`<span class="dr kl kulaklik" style="left:${pc(ex)};top:${pc(top)};width:${pc(dx * 4.0)};height:${pc(hh)};transform:translate(-50%,0)">${art(kl)}</span>`);
+  } else if (kl) for (const x of [ex - dx * 1.08, ex + dx * 1.08]) put('kl', art(kl), x, ey + dy * 0.75, hw * 0.1, -10);
   const bs = find('bas', look.bas);
-  if (bs) put('bs', art(bs), ex, a.top + dy * 0.12, dx * 1.5, -60);
+  if (bs && !fit('bs', bs)) put('bs', art(bs), ex, a.top + dy * 0.12, dx * 1.5, -60);
   const by = find('boyun', look.boyun);
-  if (by) put('by', art(by), ex, ey + dy * 1.5, dx * 1.05);
+  if (by) put('by', art(by), ex, ey + u * (by.id === 'aks_boyun_06' ? 0.62 : 0.68), hw * (by.id === 'aks_boyun_06' ? 0.5 : 0.4), -8);
   const bl = find('bilek', look.bilek);
-  if (bl) put('bl', art(bl), a.hand[0] + dx * 0.08, a.hand[1] - dy * 0.12, dx * 0.42);
+  if (bl) put('bl', art(bl), a.hand[0] + hw * 0.03, a.hand[1] - u * 0.22, hw * 0.16);
   const el = find('el', look.el);
-  if (el) put('el', art(el), a.hand[2], a.hand[3], dx * 0.55, -70);
+  if (el && !fit('el', el)) put('el', art(el), a.hand[2], a.hand[3], dx * 0.55, -70);
   const ct = find('canta', look.canta);
-  if (ct) put('ct', art(ct), a.hand[0], a.hand[1] + dy * 0.2, dx * 1.0, -20);
+  if (ct && !fit('ct', ct)) put('ct', art(ct), a.hand[0], a.hand[1] + dy * 0.2, dx * 1.0, -20);
   const ay = find('ayak', look.ayak);
-  if (ay) for (const x of [a.foot[0], a.foot[1]]) put('ay', art(ay), x, a.foot[2], dx * 0.62, -88);
+  if (ay) for (const x of [a.foot[0], a.foot[1]]) put('ay', art(ay), x, a.foot[2] + 0.004, Math.min(Math.max(a.footw ?? 0, hw * 0.2), hw * 0.27) * 1.12, -92);
   return out.length ? `<span class="dress-layer">${out.join('')}</span>` : '';
 }
 
