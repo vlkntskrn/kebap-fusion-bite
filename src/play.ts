@@ -23,6 +23,7 @@ const PET_ONLY = R('muayene_masasi$|pet_yatagi_yuvarlak$|v_pet_yatagi_|pet_kuvet
 export const petOnly = (id: string) => PET_ONLY.test(id);
 /** Makyaj yapılabilen karakterler (kızlar ve kadınlar). */
 export const canMakeup = (id: string) => /^(kiz\d|anne|nine|ogretmen|bebek2)$/.test(id);
+export const isDoor = (id: string) => /^kapi_/.test(id);
 export const isPet = (id: string) => PET.test(id);
 
 const BED = R('pet_kafesi$|v_pet_kafesi_|hamak$|sisme_yatak$|muayene_masasi$|pet_yatagi_yuvarlak$|v_pet_yatagi_|besik$|kaydirakli_yatak$|sallanan_besik$|v_besik_|oyun_parki$|yatak$|yuvarlakyatak$|cibinlikliyatak$|ranza$|v_yatak_|kediyatagi$|v_evcil_esya_01$');

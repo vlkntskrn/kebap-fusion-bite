@@ -19,6 +19,8 @@ export interface Progress {
   night?: boolean;
   /** Yeni odaların ilk eşyaları eklendi mi. */
   seed2?: boolean;
+  /** Odalara kapı konuldu mu. */
+  doors?: boolean;
   /** Ev kayıt biçimi (2: geniş oda). */
   houseV?: number;
   /** Odaların duvar deseni/rengi, zemini ve pencere manzarası. */

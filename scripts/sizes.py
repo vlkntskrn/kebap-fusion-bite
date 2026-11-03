@@ -110,6 +110,32 @@ HOSTS += [r"^manikur_masasi$", r"^parti_masasi$", r"^havuz_bari$", r"^semsiyeli_
 TOP_FIX = {"kucuk_sahne": 0.66}
 
 
+# Oturulan/yatılan eşyalar: oturma yüzeyi (resmin tepesinden 0..1) hesaplanır.
+SEATLIKE = re.compile(r"(sandalye|koltu|kanepe|berjer|puf|armut|oturak|tabure|sezlong|minder|yatak|besik|ranza|kuvet|jakuzi|salincak|tahterevalli|"
+                      r"yayli_at|banki|sallanan|hamak|sisme|pet_yatagi|kediyatagi|evcil_esya_01|muayene|pet_kafesi|bebek_arabasi|top_havuzu|kitap_kosesi|"
+                      r"tuvalet|atlikarinca|dev_ayi|akulu|mamasandalyesi|oyun_parki|okuma_cadiri|hikaye)")
+
+
+def seat_line(im: Image.Image, bed: bool = False) -> float:
+    """En geniş yatay band: yatakta üst kenarı (şilte), koltukta ortası (kolçak değil minder)."""
+    a = im.getchannel("A")
+    w, h = a.size
+    px = a.load()
+    widths = []
+    for y in range(int(h * 0.25), int(h * 0.92)):
+        xs = [x for x in range(0, w, 2) if px[x, y] > 40]
+        widths.append((y, (xs[-1] - xs[0]) if xs else 0))
+    mx = max(wd for _y, wd in widths) or 1
+    band = [y for y, wd in widths if wd >= 0.93 * mx]
+    if not band:
+        return 0.55
+    top, bot = band[0], band[-1]
+    return round((top if bed else top + (bot - top) * 0.45) / h, 3)
+
+
+BEDLIKE = re.compile(r"(sandalye|tabure|banki|mamasandalyesi|yatak|besik|ranza|kuvet|jakuzi|sisme|hamak|muayene|pet_kafesi|kediyatagi|evcil_esya_01|top_havuzu)")
+
+
 def spec(code):
     # Yan/arka görünüm: temel eşyanın gerçek boyu.
     m = re.match(r"^(.+)_(yan|arka|otur|yat)$", code)
@@ -166,6 +192,14 @@ def main():
             items.append(e)
         e["w"] = round(width_units / 4, 2)
         e["ar"] = round(ar, 3)
+        if SEATLIKE.search(code) and not re.search(r"_(yan|arka)$", code):
+            sl = seat_line(im, bool(BEDLIKE.search(code)))
+            if sl <= 0.75:
+                e["seat"] = sl
+            else:
+                e.pop("seat", None)
+        else:
+            e.pop("seat", None)
         if any(re.match(p, code) for p in HOSTS):
             e["top"] = TOP_FIX.get(code, round(top_inset(im), 3))
         else:

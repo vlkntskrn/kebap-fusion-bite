@@ -248,6 +248,8 @@ interface ExtraItem {
   ar?: number;
   /** Üstüne eşya konabiliyorsa üst yüzeyin tepeden uzaklığı (0..1). */
   top?: number;
+  /** Oturulan/yatılan eşyada oturma yüzeyi (tepeden 0..1). */
+  seat?: number;
 }
 const EXTRA = (Object.values(import.meta.glob('./assets/items.json', { eager: true, import: 'default' }))[0] ?? []) as ExtraItem[];
 
@@ -276,6 +278,8 @@ export function heightPct(id: string): number {
   if (!e?.ar || !t) return 0;
   return ((t.w * 4 * e.ar) / 440) * 100;
 }
+/** Oturma yüzeyi (resmin tepesinden 0..1), bilinmiyorsa undefined. */
+export const seatOf = (id: string) => META.get(id)?.seat;
 /** Resmin yükseklik/genişlik oranı (yoksa 1). */
 export const aspectOf = (id: string) => META.get(id)?.ar ?? 1;
 /** Üstüne eşya konabilen eşyanın üst yüzeyi (0..1, resmin tepesinden), değilse undefined. */

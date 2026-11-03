@@ -98,7 +98,13 @@ export function dressLayer(look: Look | undefined, key: string): string {
   if (gz) put('gz', art(gz), ex, ey, dx * 2.1);
   const kl = find('kulak', look.kulak);
   // Kulaklık başın üstünden iki kulağı kaplar; küpeler her kulağa ayrı.
-  if (kl && kl.id === 'aks_kulak_01') put('kl kulaklik', art(kl), ex, ey + dy * 0.2, dx * 2.75, -62);
+  if (kl && kl.id === 'aks_kulak_01') {
+    // Kulaklık: bant başın tepesinde, kulaklar yüzün iki yanında (resim gerilerek yerleşir, yüzü kapatmaz).
+    const top = a.top - 0.01;
+    const earY = ey + dy * 0.35;
+    const hh = (earY - top) / 0.65;
+    out.push(`<span class="dr kl kulaklik" style="left:${pc(ex)};top:${pc(top)};width:${pc(dx * 4.5)};height:${pc(hh)};transform:translate(-50%,0)">${art(kl)}</span>`);
+  }
   else if (kl) for (const x of [lx - dx * 0.55, rx + dx * 0.55]) put('kl', art(kl), x, ey + dy * 0.35, dx * 0.3);
   const bs = find('bas', look.bas);
   if (bs) put('bs', art(bs), ex, a.top + dy * 0.12, dx * 1.5, -60);
