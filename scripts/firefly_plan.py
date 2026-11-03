@@ -153,7 +153,10 @@ def plan(C):
                     f"in a neat {_grid(len(items), cols)} grid with wide empty white space between them, none touching. {how}. "
                     f"The items in order, left to right and top to bottom: {lst}. "
                     "Same drawing style as the character: flat vector, thick dark navy outline (#3D3553), soft pastel colors, soft gentle shading, "
-                    "no people, no body parts, no text, no letters, plain pure white background (#FFFFFF).")
+                    "no people, no text, no letters, plain pure white background (#FFFFFF). "
+                    "VERY IMPORTANT: draw ONLY the accessory objects themselves. NO skin, NO legs, NO feet, NO ankles, NO neck, NO shoulders, "
+                    "NO hair, NO head, NO face. Where a body part would be inside or behind the accessory, leave it EMPTY WHITE background. "
+                    "No white sticker outline around the items.")
             redo_sets.append((code, codes, text, f"{title} — referans: `referans/kiz1.png` (yükleyin)"))
 
     frozen = C.ROOT / "scripts" / "ff_sets_ilk.json"

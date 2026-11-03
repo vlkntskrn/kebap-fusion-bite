@@ -508,12 +508,12 @@ DRESS_V2 = [
     ("ayak", "Ayakkabılar (çift, önden)",
      "each item is a PAIR of shoes exactly as worn by this character, seen straight from the front at the character's eye level, "
      "toes pointing toward the viewer, the two shoes side by side with the same small gap as this character's feet, the opening of "
-     "each shoe at the top where the ankle goes, flat bottoms resting on one line",
+     "each shoe at the top is EMPTY (no foot, no leg, no sock inside), flat bottoms resting on one line",
      ["white sneakers with laces", "red party shoes with a strap", "pink ballet flats with a bow", "mint rain boots",
       "lilac ballet slippers with crossed ribbons", "light blue flip flops"]),
     ("bas", "Başa takılanlar (önden)",
      "each item is seen straight from the front exactly as it sits on this character's head, sized to fit this character's head width, "
-     "the bottom edge shaped to sit on top of the hair",
+     "the bottom edge shaped to sit on top of a head, but the head and hair themselves are NOT drawn (empty white below the accessory)",
      ["a small golden crown", "a big red hair bow", "a straw sun hat with a ribbon", "a pastel baseball cap facing forward",
       "a pink flower hair clip", "a yellow star hair clip", "a unicorn horn headband", "a cat ears headband", "a daisy flower crown",
       "a sparkly gem tiara"]),
