@@ -1,0 +1,14 @@
+{
+ "cevir": {
+  "komodin": "yandan görünüm çizilmemiş (hepsi önden/arkadan)",
+  "buzdolabi_05": "yandan görünüm çizilmemiş; önden resmin rengi farklı",
+  "buyuk_kitaplik": "yandan görünüm çizilmemiş",
+  "kaydirakli_yatak": "arkadan görünüm çizilmemiş",
+  "tezgah": "yandan görünüm başka bir tezgâh olmuş"
+ },
+ "esya": {
+  "v_parti_pastasi_01": "pastanın üstüne İngilizce yazı yazılmış (okuma oyununda yazı olmamalı)",
+  "emzik": "sayfada çizilmemiş",
+  "hoparlor": "gitarla birlikte tek parça çizilmiş"
+ }
+}

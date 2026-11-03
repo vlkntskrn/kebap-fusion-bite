@@ -46,7 +46,7 @@ EXACT = {
     "kanepe": (H, 85), "kosekanepe": (H, 85), "berjer": (H, 90), "tv": (H, 100), "tvunitesi": (H, 70), "sehpa": (H, 60),
     "oyunrafi": (H, 100), "kediagaci": (H, 150), "akvaryum": (H, 40), "piyano": (H, 130), "somine": (H, 120), "kuskafesi": (H, 70),
     "v_koltuk_01": (H, 100), "v_koltuk_04": (H, 180), "v_koltuk_05": (H, 70), "v_tv_02": (H, 120), "v_tv_03": (H, 55),
-    "v_tv_04": (H, 110), "v_tv_05": (H, 180), "v_sehpa_04": (H, 62), "v_muzik_01": (H, 90), "v_muzik_02": (H, 95),
+    "v_tv_01": (H, 95), "v_tv_04": (H, 110), "v_tv_05": (H, 180), "v_sehpa_04": (H, 62), "v_muzik_01": (H, 90), "v_muzik_02": (H, 95),
     "v_muzik_04": (H, 90), "v_muzik_05": (H, 170), "v_muzik_06": (H, 150), "v_evcil_esya_01": (W, 60), "v_evcil_esya_02": (H, 150),
     "v_evcil_esya_03": (H, 50), "v_evcil_esya_04": (H, 70), "v_evcil_esya_05": (H, 90), "v_evcil_esya_06": (H, 40), "kediyatagi": (W, 60),
     # her oda
@@ -144,7 +144,7 @@ def main():
     missing = []
     for f in sorted(ITEMS.glob("*.webp")):
         code = f.stem
-        if code.startswith(("ui_", "cikartma_", "arka_", "uygulama", "duvar_", "zemin_", "harita_", "havuz_su", "bahce_manzara")):
+        if code.startswith(("ui_", "aks_", "ic_", "cikartma_", "arka_", "uygulama", "duvar_", "zemin_", "harita_", "havuz_su", "bahce_manzara")):
             continue
         if (code.startswith("kelime_") or re.match(r"^.+_(yan|arka|otur|yat)$", code)) and code not in by_id:
             continue

@@ -1,0 +1,941 @@
+{
+ "set_ff_cevir_01": [
+  "dolap",
+  "dolap_yan",
+  "dolap_arka",
+  "sifonyer",
+  "sifonyer_yan",
+  "sifonyer_arka",
+  "kitaplik",
+  "kitaplik_yan",
+  "kitaplik_arka"
+ ],
+ "set_ff_cevir_02": [
+  "komodin",
+  "komodin_yan",
+  "komodin_arka",
+  "oyuncaksandigi",
+  "oyuncaksandigi_yan",
+  "oyuncaksandigi_arka",
+  "retrobuzdolabi",
+  "retrobuzdolabi_yan",
+  "retrobuzdolabi_arka"
+ ],
+ "set_ff_cevir_03": [
+  "buzdolabi",
+  "buzdolabi_yan",
+  "buzdolabi_arka",
+  "tezgah",
+  "tezgah_yan",
+  "tezgah_arka",
+  "ocak",
+  "ocak_yan",
+  "ocak_arka"
+ ],
+ "set_ff_cevir_04": [
+  "firin",
+  "firin_yan",
+  "firin_arka",
+  "tabakdolabi",
+  "tabakdolabi_yan",
+  "tabakdolabi_arka",
+  "v_dolap_01",
+  "v_dolap_01_yan",
+  "v_dolap_01_arka"
+ ],
+ "set_ff_cevir_05": [
+  "v_dolap_02",
+  "v_dolap_02_yan",
+  "v_dolap_02_arka",
+  "v_dolap_03",
+  "v_dolap_03_yan",
+  "v_dolap_03_arka",
+  "v_dolap_04",
+  "v_dolap_04_yan",
+  "v_dolap_04_arka"
+ ],
+ "set_ff_cevir_06": [
+  "v_dolap_05",
+  "v_dolap_05_yan",
+  "v_dolap_05_arka",
+  "v_dolap_06",
+  "v_dolap_06_yan",
+  "v_dolap_06_arka",
+  "buzdolabi_01",
+  "buzdolabi_01_yan",
+  "buzdolabi_01_arka"
+ ],
+ "set_ff_cevir_07": [
+  "buzdolabi_02",
+  "buzdolabi_02_yan",
+  "buzdolabi_02_arka",
+  "buzdolabi_03",
+  "buzdolabi_03_yan",
+  "buzdolabi_03_arka",
+  "buzdolabi_04",
+  "buzdolabi_04_yan",
+  "buzdolabi_04_arka"
+ ],
+ "set_ff_cevir_08": [
+  "buzdolabi_05",
+  "buzdolabi_05_yan",
+  "buzdolabi_05_arka",
+  "buzdolabi_06",
+  "buzdolabi_06_yan",
+  "buzdolabi_06_arka",
+  "buzdolabi_07",
+  "buzdolabi_07_yan",
+  "buzdolabi_07_arka"
+ ],
+ "set_ff_cevir_09": [
+  "buzdolabi_08",
+  "buzdolabi_08_yan",
+  "buzdolabi_08_arka",
+  "v_ocak_01",
+  "v_ocak_01_yan",
+  "v_ocak_01_arka",
+  "v_ocak_02",
+  "v_ocak_02_yan",
+  "v_ocak_02_arka"
+ ],
+ "set_ff_cevir_10": [
+  "v_ocak_03",
+  "v_ocak_03_yan",
+  "v_ocak_03_arka",
+  "v_ocak_04",
+  "v_ocak_04_yan",
+  "v_ocak_04_arka",
+  "v_ocak_05",
+  "v_ocak_05_yan",
+  "v_ocak_05_arka"
+ ],
+ "set_ff_cevir_11": [
+  "v_ocak_06",
+  "v_ocak_06_yan",
+  "v_ocak_06_arka",
+  "v_tezgah_01",
+  "v_tezgah_01_yan",
+  "v_tezgah_01_arka",
+  "v_tezgah_02",
+  "v_tezgah_02_yan",
+  "v_tezgah_02_arka"
+ ],
+ "set_ff_cevir_12": [
+  "v_tezgah_03",
+  "v_tezgah_03_yan",
+  "v_tezgah_03_arka",
+  "v_tezgah_04",
+  "v_tezgah_04_yan",
+  "v_tezgah_04_arka",
+  "v_tezgah_05",
+  "v_tezgah_05_yan",
+  "v_tezgah_05_arka"
+ ],
+ "set_ff_cevir_13": [
+  "v_tezgah_06",
+  "v_tezgah_06_yan",
+  "v_tezgah_06_arka",
+  "v_koltuk_06",
+  "v_koltuk_06_yan",
+  "v_koltuk_06_arka",
+  "v_tv_01",
+  "v_tv_01_yan",
+  "v_tv_01_arka"
+ ],
+ "set_ff_cevir_14": [
+  "sallanan_at",
+  "sallanan_at_yan",
+  "sallanan_at_arka",
+  "oyuncak_dolabi",
+  "oyuncak_dolabi_yan",
+  "oyuncak_dolabi_arka",
+  "sallanan_besik",
+  "sallanan_besik_yan",
+  "sallanan_besik_arka"
+ ],
+ "set_ff_cevir_15": [
+  "alt_degistirme",
+  "alt_degistirme_yan",
+  "alt_degistirme_arka",
+  "emzirme_koltugu",
+  "emzirme_koltugu_yan",
+  "emzirme_koltugu_arka",
+  "bebek_arabasi",
+  "bebek_arabasi_yan",
+  "bebek_arabasi_arka"
+ ],
+ "set_ff_cevir_16": [
+  "bebek_dolabi",
+  "bebek_dolabi_yan",
+  "bebek_dolabi_arka",
+  "acik_gardirop",
+  "acik_gardirop_yan",
+  "acik_gardirop_arka",
+  "kapitone_puf",
+  "kapitone_puf_yan",
+  "kapitone_puf_arka"
+ ],
+ "set_ff_cevir_17": [
+  "ada_dolap",
+  "ada_dolap_yan",
+  "ada_dolap_arka",
+  "sanat_dolabi",
+  "sanat_dolabi_yan",
+  "sanat_dolabi_arka",
+  "kuyruklu_piyano",
+  "kuyruklu_piyano_yan",
+  "kuyruklu_piyano_arka"
+ ],
+ "set_ff_cevir_18": [
+  "buyuk_kitaplik",
+  "buyuk_kitaplik_yan",
+  "buyuk_kitaplik_arka",
+  "okuma_koltugu",
+  "okuma_koltugu_yan",
+  "okuma_koltugu_arka",
+  "kaydirakli_yatak",
+  "kaydirakli_yatak_yan",
+  "kaydirakli_yatak_arka"
+ ],
+ "set_ff_cevir_19": [
+  "nota_dolabi",
+  "nota_dolabi_yan",
+  "nota_dolabi_arka",
+  "hikaye_sandalyesi",
+  "hikaye_sandalyesi_yan",
+  "hikaye_sandalyesi_arka",
+  "veteriner_dolabi",
+  "veteriner_dolabi_yan",
+  "veteriner_dolabi_arka"
+ ],
+ "set_ff_cevir_20": [
+  "bekleme_sandalyesi",
+  "bekleme_sandalyesi_yan",
+  "bekleme_sandalyesi_arka",
+  "kuafor_koltugu",
+  "kuafor_koltugu_yan",
+  "kuafor_koltugu_arka",
+  "bekleme_koltugu_salon",
+  "bekleme_koltugu_salon_yan",
+  "bekleme_koltugu_salon_arka"
+ ],
+ "set_ff_cevir_21": [
+  "isikli_dolap",
+  "isikli_dolap_yan",
+  "isikli_dolap_arka",
+  "v_besik_01",
+  "v_besik_01_yan",
+  "v_besik_01_arka",
+  "v_besik_02",
+  "v_besik_02_yan",
+  "v_besik_02_arka"
+ ],
+ "set_ff_cevir_22": [
+  "v_besik_03",
+  "v_besik_03_yan",
+  "v_besik_03_arka",
+  "v_besik_04",
+  "v_besik_04_yan",
+  "v_besik_04_arka",
+  "v_besik_05",
+  "v_besik_05_yan",
+  "v_besik_05_arka"
+ ],
+ "set_ff_cevir_23": [
+  "v_besik_06",
+  "v_besik_06_yan",
+  "v_besik_06_arka",
+  "v_bebek_arabasi_01",
+  "v_bebek_arabasi_01_yan",
+  "v_bebek_arabasi_01_arka",
+  "v_bebek_arabasi_02",
+  "v_bebek_arabasi_02_yan",
+  "v_bebek_arabasi_02_arka"
+ ],
+ "set_ff_cevir_24": [
+  "v_bebek_arabasi_03",
+  "v_bebek_arabasi_03_yan",
+  "v_bebek_arabasi_03_arka",
+  "v_bebek_arabasi_04",
+  "v_bebek_arabasi_04_yan",
+  "v_bebek_arabasi_04_arka",
+  "v_bebek_arabasi_05",
+  "v_bebek_arabasi_05_yan",
+  "v_bebek_arabasi_05_arka"
+ ],
+ "set_ff_cevir_25": [
+  "v_kitaplik_01",
+  "v_kitaplik_01_yan",
+  "v_kitaplik_01_arka",
+  "v_kitaplik_02",
+  "v_kitaplik_02_yan",
+  "v_kitaplik_02_arka",
+  "v_kitaplik_03",
+  "v_kitaplik_03_yan",
+  "v_kitaplik_03_arka"
+ ],
+ "set_ff_cevir_26": [
+  "v_kitaplik_04",
+  "v_kitaplik_04_yan",
+  "v_kitaplik_04_arka",
+  "v_kitaplik_05",
+  "v_kitaplik_05_yan",
+  "v_kitaplik_05_arka",
+  "v_kitaplik_06",
+  "v_kitaplik_06_yan",
+  "v_kitaplik_06_arka"
+ ],
+ "set_ff_cevir_27": [
+  "v_okuma_koltugu_01",
+  "v_okuma_koltugu_01_yan",
+  "v_okuma_koltugu_01_arka",
+  "v_okuma_koltugu_02",
+  "v_okuma_koltugu_02_yan",
+  "v_okuma_koltugu_02_arka",
+  "v_okuma_koltugu_03",
+  "v_okuma_koltugu_03_yan",
+  "v_okuma_koltugu_03_arka"
+ ],
+ "set_ff_cevir_28": [
+  "v_okuma_koltugu_04",
+  "v_okuma_koltugu_04_yan",
+  "v_okuma_koltugu_04_arka",
+  "v_okuma_koltugu_05",
+  "v_okuma_koltugu_05_yan",
+  "v_okuma_koltugu_05_arka",
+  "v_pet_kafesi_01",
+  "v_pet_kafesi_01_yan",
+  "v_pet_kafesi_01_arka"
+ ],
+ "set_ff_cevir_29": [
+  "v_pet_kafesi_02",
+  "v_pet_kafesi_02_yan",
+  "v_pet_kafesi_02_arka",
+  "v_pet_kafesi_03",
+  "v_pet_kafesi_03_yan",
+  "v_pet_kafesi_03_arka",
+  "v_pet_kafesi_04",
+  "v_pet_kafesi_04_yan",
+  "v_pet_kafesi_04_arka"
+ ],
+ "set_ff_cevir_30": [
+  "v_pet_kafesi_05",
+  "v_pet_kafesi_05_yan",
+  "v_pet_kafesi_05_arka",
+  "v_kuafor_koltugu_01",
+  "v_kuafor_koltugu_01_yan",
+  "v_kuafor_koltugu_01_arka",
+  "v_kuafor_koltugu_02",
+  "v_kuafor_koltugu_02_yan",
+  "v_kuafor_koltugu_02_arka"
+ ],
+ "set_ff_cevir_31": [
+  "v_kuafor_koltugu_03",
+  "v_kuafor_koltugu_03_yan",
+  "v_kuafor_koltugu_03_arka",
+  "v_kuafor_koltugu_04",
+  "v_kuafor_koltugu_04_yan",
+  "v_kuafor_koltugu_04_arka",
+  "v_kuafor_koltugu_05",
+  "v_kuafor_koltugu_05_yan",
+  "v_kuafor_koltugu_05_arka"
+ ],
+ "set_ff_aile_cadir": [
+  "v_cadir_01",
+  "v_cadir_02",
+  "v_cadir_03",
+  "v_cadir_04",
+  "v_cadir_05"
+ ],
+ "set_ff_aile_pelus": [
+  "v_pelus_01",
+  "v_pelus_02",
+  "v_pelus_03",
+  "v_pelus_04",
+  "v_pelus_05",
+  "v_pelus_06"
+ ],
+ "set_ff_aile_manken": [
+  "v_manken_01",
+  "v_manken_02",
+  "v_manken_03",
+  "v_manken_04",
+  "v_manken_05"
+ ],
+ "set_ff_aile_elbise": [
+  "v_elbise_01",
+  "v_elbise_02",
+  "v_elbise_03",
+  "v_elbise_04",
+  "v_elbise_05",
+  "v_elbise_06"
+ ],
+ "set_ff_aile_sovale": [
+  "v_sovale_01",
+  "v_sovale_02",
+  "v_sovale_03",
+  "v_sovale_04",
+  "v_sovale_05"
+ ],
+ "set_ff_aile_cocuk_resmi": [
+  "v_cocuk_resmi_01",
+  "v_cocuk_resmi_02",
+  "v_cocuk_resmi_03",
+  "v_cocuk_resmi_04",
+  "v_cocuk_resmi_05",
+  "v_cocuk_resmi_06"
+ ],
+ "set_ff_aile_gitar": [
+  "v_gitar_01",
+  "v_gitar_02",
+  "v_gitar_03",
+  "v_gitar_04",
+  "v_gitar_05",
+  "v_gitar_06"
+ ],
+ "set_ff_aile_top_havuzu": [
+  "v_top_havuzu_01",
+  "v_top_havuzu_02",
+  "v_top_havuzu_03",
+  "v_top_havuzu_04",
+  "v_top_havuzu_05"
+ ],
+ "set_ff_aile_donence": [
+  "v_donence_01",
+  "v_donence_02",
+  "v_donence_03",
+  "v_donence_04",
+  "v_donence_05"
+ ],
+ "set_ff_aile_ayakkabi": [
+  "v_ayakkabi_01",
+  "v_ayakkabi_02",
+  "v_ayakkabi_03",
+  "v_ayakkabi_04",
+  "v_ayakkabi_05"
+ ],
+ "set_ff_aile_boya_masasi": [
+  "v_boya_masasi_01",
+  "v_boya_masasi_02",
+  "v_boya_masasi_03",
+  "v_boya_masasi_04",
+  "v_boya_masasi_05"
+ ],
+ "set_ff_aile_davul": [
+  "v_davul_01",
+  "v_davul_02",
+  "v_davul_03",
+  "v_davul_04",
+  "v_davul_05"
+ ],
+ "set_ff_aile_kitap_kosesi": [
+  "v_kitap_kosesi_01",
+  "v_kitap_kosesi_02",
+  "v_kitap_kosesi_03",
+  "v_kitap_kosesi_04",
+  "v_kitap_kosesi_05"
+ ],
+ "set_ff_aile_pet_yatagi": [
+  "v_pet_yatagi_01",
+  "v_pet_yatagi_02",
+  "v_pet_yatagi_03",
+  "v_pet_yatagi_04",
+  "v_pet_yatagi_05",
+  "v_pet_yatagi_06"
+ ],
+ "set_ff_aile_oje": [
+  "v_oje_01",
+  "v_oje_02",
+  "v_oje_03",
+  "v_oje_04",
+  "v_oje_05",
+  "v_oje_06"
+ ],
+ "set_ff_aile_salincak": [
+  "v_salincak_01",
+  "v_salincak_02",
+  "v_salincak_03",
+  "v_salincak_04",
+  "v_salincak_05"
+ ],
+ "set_ff_aile_kaydirak": [
+  "v_kaydirak_01",
+  "v_kaydirak_02",
+  "v_kaydirak_03",
+  "v_kaydirak_04",
+  "v_kaydirak_05"
+ ],
+ "set_ff_aile_sisme": [
+  "v_sisme_01",
+  "v_sisme_02",
+  "v_sisme_03",
+  "v_sisme_04",
+  "v_sisme_05",
+  "v_sisme_06"
+ ],
+ "set_ff_aile_avize": [
+  "v_avize_01",
+  "v_avize_02",
+  "v_avize_03",
+  "v_avize_04",
+  "v_avize_05",
+  "v_avize_06"
+ ],
+ "set_ff_aile_aplik": [
+  "v_aplik_01",
+  "v_aplik_02",
+  "v_aplik_03",
+  "v_aplik_04",
+  "v_aplik_05"
+ ],
+ "set_ff_aile_yastik": [
+  "v_yastik_01",
+  "v_yastik_02",
+  "v_yastik_03",
+  "v_yastik_04",
+  "v_yastik_05",
+  "v_yastik_06"
+ ],
+ "set_ff_aile_vazo": [
+  "v_vazo_01",
+  "v_vazo_02",
+  "v_vazo_03",
+  "v_vazo_04",
+  "v_vazo_05",
+  "v_vazo_06"
+ ],
+ "set_ff_aile_cerceve": [
+  "v_cerceve_01",
+  "v_cerceve_02",
+  "v_cerceve_03",
+  "v_cerceve_04",
+  "v_cerceve_05",
+  "v_cerceve_06"
+ ],
+ "set_ff_aile_parti_pastasi": [
+  "v_parti_pastasi_01",
+  "v_parti_pastasi_02",
+  "v_parti_pastasi_03",
+  "v_parti_pastasi_04",
+  "v_parti_pastasi_05",
+  "v_parti_pastasi_06"
+ ],
+ "set_ff_aile_hediye": [
+  "v_hediye_01",
+  "v_hediye_02",
+  "v_hediye_03",
+  "v_hediye_04",
+  "v_hediye_05",
+  "v_hediye_06"
+ ],
+ "set_ff_aile_balon": [
+  "v_balon_01",
+  "v_balon_02",
+  "v_balon_03",
+  "v_balon_04",
+  "v_balon_05",
+  "v_balon_06"
+ ],
+ "set_ff_esya_oyun_01": [
+  "oyun_cadiri",
+  "top_havuzu",
+  "oyuncak_mutfak",
+  "tren_rayi",
+  "lego_masasi",
+  "puzzle_minder",
+  "buyuk_bebek_evi",
+  "tirmanma_ucgeni",
+  "kukla_tiyatrosu"
+ ],
+ "set_ff_esya_oyun_02": [
+  "akulu_araba",
+  "dev_ayi",
+  "balon_demeti",
+  "oyuncak_kutusu",
+  "oyuncak_market",
+  "ic_salincak",
+  "yarisa_araba_pisti",
+  "bowling_seti",
+  "kostum_sandigi"
+ ],
+ "set_ff_esya_oyun_03": [
+  "robot_oyuncak",
+  "uzay_roketi",
+  "oyuncak_bebek_arabasi",
+  "top_sepeti",
+  "hula_hop",
+  "oyuncak_piyano",
+  "kale_cadiri"
+ ],
+ "set_ff_esya_bebekodasi_01": [
+  "donence",
+  "oyun_parki",
+  "bebek_kuveti",
+  "biberon",
+  "emzik",
+  "cingirak",
+  "bez_yigini",
+  "ayicik_rafi",
+  "bulut_hali"
+ ],
+ "set_ff_esya_bebekodasi_02": [
+  "ay_gece_lambasi",
+  "bebek_yatagi_tavan",
+  "oyun_halisi_bebek",
+  "puset_cantasi",
+  "bebek_terazisi",
+  "muzik_kutusu",
+  "bebek_kitabi",
+  "emekleme_tuneli",
+  "bebek_salincagi"
+ ],
+ "set_ff_esya_bebekodasi_03": [
+  "bebek_aynasi",
+  "bebek_pelus_seti",
+  "bebek_ayakkabisi",
+  "bebek_sallanir_tavsan",
+  "bebek_kitapligi"
+ ],
+ "set_ff_esya_giyinme_01": [
+  "ayakkabi_rafi",
+  "canta_rafi",
+  "isikli_boy_aynasi",
+  "taki_kutusu",
+  "sapka_standi",
+  "manken",
+  "parfum_seti",
+  "deneme_kabini",
+  "sac_kurutma"
+ ],
+ "set_ff_esya_giyinme_02": [
+  "tac_vitrini",
+  "giysi_elbise",
+  "giysi_tisort",
+  "giysi_kot",
+  "giysi_mont",
+  "giysi_pijama",
+  "giysi_ayakkabi",
+  "giysi_bot",
+  "giysi_canta"
+ ],
+ "set_ff_esya_giyinme_03": [
+  "giysi_atki",
+  "giysi_tac",
+  "giysi_kolye",
+  "gozluk_standi",
+  "toka_kutusu",
+  "utu_masasi",
+  "kiyafet_sepeti",
+  "terlik",
+  "giysi_yagmurluk"
+ ],
+ "set_ff_esya_giyinme_04": [
+  "giysi_mayo",
+  "giysi_sort",
+  "aksesuar_kutusu",
+  "tac_standi",
+  "canta_koleksiyonu",
+  "ayakkabi_kutusu"
+ ],
+ "set_ff_esya_atolye_01": [
+  "sovale",
+  "boya_masasi",
+  "boya_paleti",
+  "firca_kupasi",
+  "boya_tupleri",
+  "comlek_carki",
+  "heykel_kaidesi",
+  "kagit_rulosu",
+  "resim_ipi"
+ ],
+ "set_ff_esya_atolye_02": [
+  "pastel_kutusu",
+  "makas_yapistirici",
+  "boya_kovasi",
+  "onluk_askisi",
+  "sanat_taburesi",
+  "isik_masasi",
+  "simli_kavanozlar",
+  "dikis_makinesi",
+  "yun_sepeti"
+ ],
+ "set_ff_esya_atolye_03": [
+  "oyun_hamuru",
+  "boncuk_kutusu",
+  "cizim_tableti",
+  "sanat_ruloyu_kurutucu",
+  "cocuk_sergisi",
+  "boya_rafi",
+  "kolaj_masasi",
+  "sanat_onlugu",
+  "heykel_seti"
+ ],
+ "set_ff_esya_muzik_01": [
+  "kucuk_sahne",
+  "mikrofon",
+  "davul_seti",
+  "elektro_gitar",
+  "keman",
+  "hoparlor",
+  "nota_sehpasi",
+  "plak_calar",
+  "kulaklik"
+ ],
+ "set_ff_esya_muzik_02": [
+  "sahne_isigi",
+  "tef",
+  "trompet",
+  "flut",
+  "karaoke_makinesi",
+  "nota_posteri",
+  "ksilofon_buyuk",
+  "marakas",
+  "cello"
+ ],
+ "set_ff_esya_muzik_03": [
+  "dj_masasi",
+  "akordeon",
+  "baglama",
+  "darbuka",
+  "mikrofon_standi",
+  "gitar_standi",
+  "notalar",
+  "isikli_kurs",
+  "plak_rafi"
+ ],
+ "set_ff_esya_kutuphane_01": [
+  "kitap_yigini",
+  "acik_kitap",
+  "okuma_minderi",
+  "kure",
+  "masa_lambasi",
+  "yazi_masasi",
+  "kitaplik_merdiveni",
+  "agac_kitaplik",
+  "okuma_cadiri"
+ ],
+ "set_ff_esya_kutuphane_02": [
+  "kitap_sepeti",
+  "teleskop",
+  "dunya_haritasi",
+  "kum_saati",
+  "baykus_lamba",
+  "kitap_arabasi",
+  "kitap_ayraci_seti",
+  "okuma_lambasi",
+  "dinozor_kitaplik"
+ ],
+ "set_ff_esya_kutuphane_03": [
+  "mektup_kutusu",
+  "sessiz_tabelasi",
+  "fil_kitap_destegi",
+  "kitap_kosesi_minder",
+  "bilgi_kuresi_lamba",
+  "harf_bloklari",
+  "kitap_okuyan_ayi",
+  "posta_kutusu_kitap"
+ ],
+ "set_ff_esya_petrevir_01": [
+  "muayene_masasi",
+  "pet_kafesi",
+  "pet_tartisi",
+  "pet_yatagi_yuvarlak",
+  "mama_kabi",
+  "su_kabi",
+  "ilk_yardim_cantasi",
+  "stetoskop",
+  "pet_tasima_cantasi"
+ ],
+ "set_ff_esya_petrevir_02": [
+  "pet_kuveti",
+  "pet_oyuncaklari",
+  "pet_odul_kavanozu",
+  "kedi_tirmalama",
+  "tasma_askisi",
+  "pati_posteri",
+  "bandaj_rulosu"
+ ],
+ "set_ff_esya_makyaj_01": [
+  "kurutma_kaski",
+  "ayna_istasyonu",
+  "oje_rafi",
+  "manikur_masasi",
+  "makyaj_cantasi",
+  "ruj_seti",
+  "far_paleti",
+  "fon_makinesi",
+  "tarak_firca"
+ ],
+ "set_ff_esya_makyaj_02": [
+  "spa_ayak_kuveti",
+  "havlu_rafi_salon",
+  "yuz_maskesi_seti",
+  "sac_bandi",
+  "parfum_vitrini",
+  "oje_kurutucu",
+  "sac_yikama_lavabosu"
+ ],
+ "set_ff_esya_oyunparki_01": [
+  "kaydirak_buyuk",
+  "salincak_seti",
+  "tahterevalli",
+  "kum_havuzu",
+  "tirmanma_duvari",
+  "atlikarinca",
+  "park_banki",
+  "su_cesmesi",
+  "agac_ev"
+ ],
+ "set_ff_esya_oyunparki_02": [
+  "tunel_kaydirak",
+  "yayli_at",
+  "basket_potasi",
+  "seksek",
+  "ucurtma",
+  "dondurma_arabasi",
+  "park_cop_kutusu"
+ ],
+ "set_ff_esya_hepsi_01": [
+  "tavan_lambasi_yildiz",
+  "duvar_apligi",
+  "neon_kalp",
+  "neon_gokkusagi",
+  "bulut_lamba",
+  "mantar_lamba",
+  "fener_lamba",
+  "mum_seti",
+  "yastik_seti"
+ ],
+ "set_ff_esya_hepsi_02": [
+  "orgu_battaniye",
+  "kedi_saat",
+  "terrarium",
+  "cerceve_seti",
+  "dekor_sepet",
+  "seramik_kus",
+  "boncuk_perde",
+  "ruya_kapani",
+  "duvar_yildizlari"
+ ],
+ "set_ff_esya_parti_01": [
+  "balon_kemeri",
+  "flama",
+  "parti_masasi",
+  "dogum_gunu_pastasi",
+  "hediye_yigini",
+  "konfeti_patlatici",
+  "parti_sapkasi",
+  "pinata",
+  "kapkek_kulesi"
+ ],
+ "set_ff_esya_parti_02": [
+  "limonata_surahisi",
+  "kagit_fener",
+  "balon_hayvan",
+  "parti_duduk",
+  "yildiz_balon",
+  "dans_isigi",
+  "sac_kulahi_pasta"
+ ],
+ "set_ff_esya_bahce_01": [
+  "havuz_merdiveni",
+  "sisme_yatak",
+  "semsiyeli_masa",
+  "havuz_dusu",
+  "havuz_bari",
+  "hamak",
+  "cardak",
+  "havuz_lambasi",
+  "su_tabancasi"
+ ],
+ "set_ff_esya_bahce_02": [
+  "deniz_gozlugu",
+  "havlu_sezlong"
+ ],
+ "set_ff_aks_bas": [
+  "aks_bas_01",
+  "aks_bas_02",
+  "aks_bas_03",
+  "aks_bas_04",
+  "aks_bas_05",
+  "aks_bas_06",
+  "aks_bas_07",
+  "aks_bas_08",
+  "aks_bas_09",
+  "aks_bas_10"
+ ],
+ "set_ff_aks_goz": [
+  "aks_goz_01",
+  "aks_goz_02",
+  "aks_goz_03",
+  "aks_goz_04",
+  "aks_goz_05",
+  "aks_goz_06"
+ ],
+ "set_ff_aks_kulak": [
+  "aks_kulak_01",
+  "aks_kulak_02",
+  "aks_kulak_03",
+  "aks_kulak_04",
+  "aks_kulak_05",
+  "aks_kulak_06"
+ ],
+ "set_ff_aks_boyun": [
+  "aks_boyun_01",
+  "aks_boyun_02",
+  "aks_boyun_03",
+  "aks_boyun_04",
+  "aks_boyun_05",
+  "aks_boyun_06"
+ ],
+ "set_ff_aks_bilek": [
+  "aks_bilek_01",
+  "aks_bilek_02",
+  "aks_bilek_03",
+  "aks_bilek_04",
+  "aks_bilek_05"
+ ],
+ "set_ff_aks_el": [
+  "aks_el_01",
+  "aks_el_02",
+  "aks_el_03",
+  "aks_el_04",
+  "aks_el_05",
+  "aks_el_06"
+ ],
+ "set_ff_aks_canta": [
+  "aks_canta_01",
+  "aks_canta_02",
+  "aks_canta_03",
+  "aks_canta_04",
+  "aks_canta_05",
+  "aks_canta_06"
+ ],
+ "set_ff_aks_ayak": [
+  "aks_ayak_01",
+  "aks_ayak_02",
+  "aks_ayak_03",
+  "aks_ayak_04",
+  "aks_ayak_05",
+  "aks_ayak_06"
+ ],
+ "set_ff_aks_yuz": [
+  "aks_yuz_01",
+  "aks_yuz_02",
+  "aks_yuz_03",
+  "aks_yuz_04",
+  "aks_yuz_05",
+  "aks_yuz_06"
+ ],
+ "set_ff_simge_01": [
+  "ui_oda_oyun",
+  "ui_oda_bebekodasi",
+  "ui_oda_giyinme",
+  "ui_oda_atolye",
+  "ui_oda_muzik",
+  "ui_oda_kutuphane",
+  "ui_oda_petrevir",
+  "ui_oda_makyaj",
+  "ui_oda_oyunparki"
+ ]
+}

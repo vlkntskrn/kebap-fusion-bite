@@ -22,16 +22,16 @@ ITEM_STYLE = ("Cute cozy 2D illustration for a children's dollhouse game, flat v
               "yellow, sky blue, cream), no perspective distortion, no floor, no cast shadow, no text, no letters, no logo, no watermark, no "
               "people, plain solid pure white background (#FFFFFF).")
 
-TURN_LEAD = ("2D flat vector cartoon sticker sheet, NOT a photo: {n} completely separate drawings in a neat {rows} by 3 grid with wide empty "
+TURN_LEAD = ("2D flat vector cartoon sticker sheet, NOT a photo: EXACTLY {n} completely separate drawings, no more, in a neat grid of {rows} rows and EXACTLY 3 columns with wide empty "
              "white space between them, none touching or overlapping, every drawing fully visible. Each ROW shows ONE object three times: "
              "exactly the same object with identical shape, colors, details and size in all three; LEFT = front view, MIDDLE = side view "
              "facing right, RIGHT = back view. ")
-FAMILY_LEAD = ("2D flat vector cartoon sticker sheet, NOT a photo: {n} completely separate items in a neat {grid} grid with wide empty white "
+FAMILY_LEAD = ("2D flat vector cartoon sticker sheet, NOT a photo: EXACTLY {n} completely separate items, no extra or repeated items, in a neat {grid} grid with wide empty white "
                "space between them, none touching or overlapping, every item fully visible. All items are variations of the SAME kind of "
                "object, one product family: drawn at exactly the same scale, the same straight-on front view at eye level, the same "
                "outline thickness and the same style; only the design and colors change. The items in order, left to right and top to "
                "bottom: ")
-ITEM_LEAD = ("2D flat vector cartoon sticker sheet, NOT a photo: {n} completely separate items in a neat {grid} grid with wide empty white "
+ITEM_LEAD = ("2D flat vector cartoon sticker sheet, NOT a photo: EXACTLY {n} completely separate items, no extra or repeated items, in a neat {grid} grid with wide empty white "
              "space between them, none touching or overlapping, every item fully visible, all drawn in the same consistent style, "
              "straight-on front view. The items in order, left to right and top to bottom: ")
 
@@ -121,8 +121,55 @@ def plan(C):
             return None
         return f"{'boy' if sp[0] == 'h' else 'en'} {sp[1]} cm"
 
+    # Yeniden üretilecekler (scripts/redo.json): ayrı sayfalar, en üstte gösterilir.
+    import json as _json
+    redo = _json.loads((C.ROOT / "scripts" / "redo.json").read_text()) if (C.ROOT / "scripts" / "redo.json").exists() else {}
+    redo_sets = []
+    turn_r = list(redo.get("cevir", {}))
+    for i in range(0, len(turn_r), 3):
+        chunk = turn_r[i:i + 3]
+        code = f"set_ff_tekrar_cevir_{i // 3 + 1:02d}"
+        rows = "; ".join(f"Row {k + 1}: {desc[c]}" for k, c in enumerate(chunk))
+        text = f"{code} — " + TURN_LEAD.format(n=3 * len(chunk), rows=len(chunk)) + rows + ". " + ITEM_STYLE
+        why = " · ".join(f"{tr[c]}: {redo['cevir'][c]}" for c in chunk)
+        redo_sets.append((code, [x for c in chunk for x in (c, f"{c}_yan", f"{c}_arka")], text, why))
+    es = list(redo.get("esya", {}))
+    if es:
+        code = "set_ff_tekrar_esya_01"
+        items = "; ".join(f"{k + 1}) {desc[c]}" for k, c in enumerate(es))
+        text = f"{code} — " + ITEM_LEAD.format(n=len(es), grid=_grid(len(es), 3)) + items + ". " + ITEM_STYLE + " Absolutely no text, no letters and no numbers anywhere."
+        redo_sets.append((code, es, text, " · ".join(f"{tr[c]}: {redo['esya'][c]}" for c in es)))
+
+    # İlk teslim tamamlandı: sayfa kodları ilk plandaki gibi sabit kalır (scripts/ff_sets_ilk.json), md'de yalnızca tekrarlar listelenir.
+    frozen = C.ROOT / "scripts" / "ff_sets_ilk.json"
+    if frozen.exists():
+        ilk = _json.loads(frozen.read_text())
+        md = []
+        if redo_sets:
+            md.append(f"# 🔁 YENİDEN ÜRETİLECEKLER ({len(redo_sets)} istek, {sum(len(x[1]) for x in redo_sets)} görsel)\n")
+            md.append("İlk teslimdeki 98 sayfa oyuna eklendi. Aşağıdakiler kullanılamayan görseller. Ayarlar aynı (kare 1:1, 2K). "
+                      "Çevirme sayfalarında satırın üçü birden yeniden üretilir; önden, yandan ve arkadan resim birbirine uysun diye.\n")
+            for code, codes, text, why in redo_sets:
+                md.append(f"### `{code}`\n")
+                md.append(f"**Neden:** {why}\n")
+                md.append(f"**Ebat:** Square 1:1, 2K · **Kodlar sırayla:** {', '.join(codes)}\n")
+                md.append("```\n" + text + "\n```\n")
+            md.append("\n---\n")
+        return [(k, v, "") for k, v in ilk.items()] + [(c, cs, t) for c, cs, t, _ in redo_sets], "\n".join(md)
+
     total = sum(len(s[1]) for s in sets)
-    md = [f"# Firefly sayfaları: {len(sets)} istek, {total} görsel\n",
+    md = []
+    if redo_sets:
+        md.append(f"# 🔁 YENİDEN ÜRETİLECEKLER ({len(redo_sets)} istek, {sum(len(x[1]) for x in redo_sets)} görsel)\n")
+        md.append("İlk teslimde kullanılamayan görseller. Ayarlar aynı (kare 1:1, 2K). Çevirme sayfalarında satırın üçü birden "
+                  "yeniden üretilir, böylece önden, yandan ve arkadan resim birbirine uyar.\n")
+        for code, codes, text, why in redo_sets:
+            md.append(f"### `{code}`\n")
+            md.append(f"**Neden:** {why}\n")
+            md.append(f"**Ebat:** Square 1:1, 2K · **Kodlar sırayla:** {', '.join(codes)}\n")
+            md.append("```\n" + text + "\n```\n")
+        md.append("\n---\n")
+    md += [f"# Firefly sayfaları: {len(sets)} istek, {total} görsel\n",
           """Bu dosyadaki her istek **tek bir resimde birden çok görsel** üretir; ben sayfayı keserim ve her parçaya doğru kodu veririm.
 Aynı eşyanın açıları ve aynı ailenin çeşitleri aynı resimde istendiği için birbirinden sapmaz.
 
@@ -172,4 +219,4 @@ Aynı eşyanın açıları ve aynı ailenin çeşitleri aynı resimde istendiği
             if sizes_:
                 md.append(f"<sub>Gerçek boylar (oyun kendisi ölçekler, istekte yazmanıza gerek yok): {' · '.join(sizes_)}</sub>\n")
             md.append("```\n" + text + "\n```\n")
-    return [(c, cs, t) for c, cs, t, _ in sets], "\n".join(md)
+    return [(c, cs, t) for c, cs, t, _ in sets + redo_sets], "\n".join(md)

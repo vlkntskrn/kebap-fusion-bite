@@ -22,7 +22,11 @@ from pathlib import Path
 
 from PIL import Image
 
-OUT = Path(__file__).resolve().parent.parent / "src" / "assets" / "items"
+import os
+
+ASSETS = Path(__file__).resolve().parent.parent / "src" / "assets"
+# HAZIRLA_HEDEF verilirse görseller önce oraya yazılır (oyuna koymadan önce incelemek için).
+OUT = Path(os.environ["HAZIRLA_HEDEF"]) if os.environ.get("HAZIRLA_HEDEF") else ASSETS / "items"
 TOL = 28  # arka plana ne kadar yakın renkler silinsin
 
 
@@ -65,9 +69,9 @@ def remove_background(img: Image.Image) -> Image.Image:
     return img
 
 
-CODES = json.loads((OUT.parent / "codes.json").read_text())
-SETS = json.loads((OUT.parent / "sets.json").read_text())
-PARTS = OUT.parent.parent.parent / "parcalar"  # sayısı tutmayan sayfaların parçaları (elle adlandırmak için)
+CODES = json.loads((ASSETS / "codes.json").read_text())
+SETS = json.loads((ASSETS / "sets.json").read_text())
+PARTS = Path(os.environ.get("HAZIRLA_PARCA", ASSETS.parent.parent / "parcalar"))  # sayısı tutmayan sayfaların parçaları (elle adlandırmak için)
 
 
 def save_item(name: str, img: Image.Image) -> Path:

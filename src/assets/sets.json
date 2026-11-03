@@ -1715,6 +1715,30 @@
   "ui_oda_makyaj",
   "ui_oda_oyunparki"
  ],
+ "set_ff_tekrar_cevir_01": [
+  "komodin",
+  "komodin_yan",
+  "komodin_arka",
+  "buzdolabi_05",
+  "buzdolabi_05_yan",
+  "buzdolabi_05_arka",
+  "buyuk_kitaplik",
+  "buyuk_kitaplik_yan",
+  "buyuk_kitaplik_arka"
+ ],
+ "set_ff_tekrar_cevir_02": [
+  "kaydirakli_yatak",
+  "kaydirakli_yatak_yan",
+  "kaydirakli_yatak_arka",
+  "tezgah",
+  "tezgah_yan",
+  "tezgah_arka"
+ ],
+ "set_ff_tekrar_esya_01": [
+  "v_parti_pastasi_01",
+  "emzik",
+  "hoparlor"
+ ],
  "set_gorunum_01": [
   "yatak_yan",
   "yatak_arka",
