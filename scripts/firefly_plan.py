@@ -109,6 +109,18 @@ def plan(C):
         text = f"{code} — " + ITEM_LEAD.format(n=len(icons), grid=_grid(len(icons), 3)) + items + ". " + C.STYLE_UI
         sets.append((code, [c for c, _ in icons], text, f"Oda düğmeleri ({len(icons)})"))
 
+    # Gerçek boylar (scripts/sizes.py): oyun görselleri bu boylara göre kendisi ölçekler.
+    import importlib.util
+    spec_ = importlib.util.spec_from_file_location("sizes", C.ROOT / "scripts" / "sizes.py")
+    SZ = importlib.util.module_from_spec(spec_)
+    spec_.loader.exec_module(SZ)
+
+    def real(c):
+        sp = SZ.spec(c)
+        if not sp:
+            return None
+        return f"{'boy' if sp[0] == 'h' else 'en'} {sp[1]} cm"
+
     total = sum(len(s[1]) for s in sets)
     md = [f"# Firefly sayfaları: {len(sets)} istek, {total} görsel\n",
           """Bu dosyadaki her istek **tek bir resimde birden çok görsel** üretir; ben sayfayı keserim ve her parçaya doğru kodu veririm.
@@ -119,7 +131,8 @@ Aynı eşyanın açıları ve aynı ailenin çeşitleri aynı resimde istendiği
 | Ayar | Değer |
 |---|---|
 | Model | Firefly Image (en yeni) |
-| Aspect ratio | **Square (1:1)** |
+| Aspect ratio | **Square (1:1)** — her sayfa kare |
+| Boyut | İndirirken **en büyük** (2048×2048 px). Daha küçük olursa kesilen parçalar bulanık olur |
 | Content type | **Art** |
 | Style reference | `firefly-stil-referansi.png`, güç yüksek |
 | İndirme | PNG, en büyük boyut |
@@ -150,6 +163,13 @@ Aynı eşyanın açıları ve aynı ailenin çeşitleri aynı resimde istendiği
         md.append(f"\n## {t} ({len(part)} istek)\n")
         for code, codes, text, title in part:
             md.append(f"### `{code}` — {title}\n")
-            md.append(f"Kodlar sırayla: {', '.join(codes)}\n")
+            sizes_ = []
+            for c in codes:
+                r = real(c)
+                if r and not c.endswith(("_yan", "_arka")):
+                    sizes_.append(f"{c}: {r}")
+            md.append(f"**Ebat:** Square 1:1, en büyük boyut (2048×2048) · **Kodlar sırayla:** {', '.join(codes)}\n")
+            if sizes_:
+                md.append(f"<sub>Gerçek boylar (oyun kendisi ölçekler, istekte yazmanıza gerek yok): {' · '.join(sizes_)}</sub>\n")
             md.append("```\n" + text + "\n```\n")
     return [(c, cs, t) for c, cs, t, _ in sets], "\n".join(md)
