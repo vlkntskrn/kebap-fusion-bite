@@ -116,8 +116,16 @@ def anchors(path: Path, dark_lum: int = 75):
     # Ayak genişliği: alt şeritteki her kümenin genişliği.
     fw = max((left.max() - left.min()) if len(left) else 0, (right.max() - right.min()) if len(right) else 0)
     # Omuz: göz ile el arası; boyun altında gövdenin en dar-sonra-genişleyen yeri yerine basitçe göz-el ortası.
+    # Ayakkabılar: her ayağın en alttaki %3'lük şeritteki genişliği; boy figür boyunun ~%5,5'i.
+    shoes = []
+    midx = int((lx + rx) / 2)
+    sb = alpha[bottom - max(2, int((bottom - top) * 0.03)):bottom + 1]
+    for x0, x1 in ((0, midx), (midx, w)):
+        xs = np.where(sb[:, x0:x1].any(axis=0))[0]
+        if len(xs):
+            shoes.append([round((xs.min() + x0) / w, 4), round((xs.max() + x0) / w, 4), round((bottom - (bottom - top) * 0.055) / h, 4)])
     r = lambda v, d: round(float(v) / d, 4)  # noqa: E731
-    return {"head": [r(hw_best[1], w), r(hw_best[2], w)], "footw": r(fw, w),
+    return {"shoes": shoes, "head": [r(hw_best[1], w), r(hw_best[2], w)], "footw": r(fw, w),
             "ar": round(h / w, 4), "eye": [r(lx, w), r(ly, h), r(rx, w), r(ry, h)], "top": r(top, h), "foot": [round(x, 4) for x in foot],
             "hand": [r(lxh, w), r(lyh, h), r(rxh, w), r(ryh, h)]}
 
