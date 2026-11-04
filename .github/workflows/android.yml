@@ -1,0 +1,59 @@
+# Defne'nin Evi (Godot) için Android APK üretir. APK, çalışmanın "Artifacts" bölümünden indirilir.
+name: Android APK (Godot)
+
+on:
+  push:
+    branches: [main]
+    paths: ['godot/**', '.github/workflows/android.yml']
+  workflow_dispatch:
+
+env:
+  GODOT_VERSION: 4.7.2
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Godot ve dışa aktarma şablonları
+        run: |
+          base="https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable"
+          curl -sSL -o godot.zip "$base/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q godot.zip && mv "Godot_v${GODOT_VERSION}-stable_linux.x86_64" godot-bin && chmod +x godot-bin
+          curl -sSL -o tpl.tpz "$base/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          dir="$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
+          mkdir -p "$dir" && unzip -q tpl.tpz -d tpl && mv tpl/templates/* "$dir/"
+
+      - name: Android ayarları ve hata ayıklama anahtarı
+        run: |
+          mkdir -p "$HOME/.config/godot"
+          for f in editor_settings-4.tres "editor_settings-${GODOT_VERSION%.*}.tres"; do
+            printf '[gd_resource type="EditorSettings" format=3]\n\n[resource]\nexport/android/android_sdk_path = "%s"\nexport/android/java_sdk_path = "%s"\n' \
+              "$ANDROID_SDK_ROOT" "$JAVA_HOME" > "$HOME/.config/godot/$f"
+          done
+          keytool -genkeypair -v -keystore "$RUNNER_TEMP/debug.keystore" -storepass android -alias androiddebugkey -keypass android \
+            -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_PATH=$RUNNER_TEMP/debug.keystore" >> "$GITHUB_ENV"
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_USER=androiddebugkey" >> "$GITHUB_ENV"
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD=android" >> "$GITHUB_ENV"
+
+      - name: Görselleri içe aktar
+        run: ./godot-bin --headless --path godot --import
+
+      - name: APK üret
+        run: |
+          mkdir -p godot/build
+          ./godot-bin --headless --path godot --export-debug "Android" build/defne-evi.apk
+          ls -la godot/build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: defne-evi-apk
+          path: godot/build/defne-evi.apk
+          if-no-files-found: error

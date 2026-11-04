@@ -1672,3 +1672,33 @@ function showRoom(backToHome: () => void) {
 }
 
 export const houseTitle = () => `${genitive(progress.name)} Evi`;
+
+/**
+ * Godot sürümü için veri: odalar, ilk yerleşim, harita, kategoriler ve eşya bilgileri (scripts/godot_export.cjs okur).
+ * Oyunda kullanılmaz; yalnızca geliştirme sunucusunda çağrılır.
+ */
+export function godotExport() {
+  const start = house();
+  const ids = new Set<string>([...Object.values(start).flat().map((i) => i.id)]);
+  for (const r of ROOMS) for (const id of itemsForRoom(r.id)) ids.add(id);
+  for (const id of [...ids]) for (const c of contentsOf(id) ?? []) ids.add(c);
+  ids.add('bebek');
+  const items: Record<string, unknown> = {};
+  for (const id of ids) {
+    if (!itemImage(id)) continue;
+    const t = THINGS[id];
+    const pf = poseFor(id);
+    items[id] = {
+      w: t?.w ?? 10, h: heightPct(id), ar: aspectOf(id), place: placeOf(id), y: yRange(id), flat: !!t?.flat, seat: seatOf(id), top: surfaceTop(id),
+      cat: catOf(id), views: viewsOf(id).filter(Boolean), pose: pf ?? undefined, box: boxKind(id) ?? undefined, contents: contentsOf(id) ?? undefined,
+      food: isFood(id) || undefined, stove: isStove(id) || undefined, lamp: isLamp(id) || undefined, hold: isHoldable(id) || undefined,
+      person: isPerson(id) || undefined, baby: isBaby(id) || undefined, pet: isPet(id) || undefined, door: isDoor(id) || undefined,
+      char: isCharAsset(id) || undefined, toggle: t?.toggle || undefined, bob: t?.bob || undefined, locked: isLockedItem(id) || undefined,
+    };
+  }
+  return {
+    rooms: ROOMS.map((r) => ({ id: r.id, icon: r.icon, style: r.style, win: winOf(r.id), outdoor: OUTDOOR.includes(r.id), menu: itemsForRoom(r.id).filter((id) => itemImage(id)) })),
+    map: FLOORS_MAP, outdoor: OUTDOOR, cats: CATS.map((c) => ({ id: c.id, icon: c.icons.find((i) => itemImage(i)) })),
+    house: start, items,
+  };
+}
