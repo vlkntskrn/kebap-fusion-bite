@@ -29,6 +29,7 @@ func show_room(id: String) -> void:
 	var r := RoomScreen.new()
 	r.room_id = id
 	r.back.connect(show_map)
+	r.go_room.connect(show_room)
 	_swap(r)
 
 

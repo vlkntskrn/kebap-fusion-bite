@@ -7,6 +7,7 @@ extends Control
 ## Tek parmak/fare fare olaylarıyla (telefonda dokunma fareye çevrilir), iki parmak dokunma olaylarıyla izlenir.
 
 signal back
+signal go_room(id: String)
 
 var room_id := ""
 var world: RoomWorld
@@ -30,13 +31,15 @@ var _undo: Array = []  # odanın önceki hâlleri (JSON)
 var _tools: PanelContainer
 var _tool_buttons: Dictionary = {}
 var _undo_btn: Button
+var _overlay: Control  # açık dolap ya da kapı paneli
+var _tapped_u := -1  # dokunarak seçilen eşya (ikinci dokunuş onu açar)
 
 const ZOOM_MIN := 0.6
 const ZOOM_MAX := 2.2
 const BTN := 96.0
 const UI_Z := 4000
 const TOOL := 74.0
-const TOOLS := ["flip", "turn", "left", "right", "big", "small", "reset", "trash"]
+const TOOLS := ["open", "flip", "turn", "left", "right", "big", "small", "reset", "trash"]
 
 
 func _ready() -> void:
@@ -261,11 +264,15 @@ func _on_up(_p: Vector2) -> void:
 	if _dragging:
 		_finish_drag()
 		_select(_press)
+		_tapped_u = -1
 	elif not _moved:
 		if _press.is_empty():
 			_deselect()
+		elif _tapped_u == int(_press.u) and _can_open(_press):
+			_open(_press)
 		else:
 			_select(_press)
+			_tapped_u = int(_press.u)
 			_bounce(_press)
 	_press = {}
 
@@ -279,6 +286,9 @@ func _move_drag(p: Vector2) -> void:
 	var yr: Array = Data.item(inst.id).get("y", [70, 100])
 	inst.x = clampf(a.x / Data.WORLD_W * 300.0, 0.0, 300.0)
 	inst.y = clampf(a.y / Data.ROOM_H * 100.0, float(yr[0]), float(yr[1]))
+	# Kapı hep duvarın dibinde durur.
+	if Data.item(inst.id).get("door", false):
+		inst.y = Layout.DOOR_Y
 	world.refresh(inst)
 	var s: Sprite2D = world.sprites.get(int(inst.u))
 	if s:
@@ -318,6 +328,7 @@ func _select(inst: Dictionary) -> void:
 	var small: bool = it.get("hold", false) or it.get("food", false) or it.get("place", "") in ["surface", "wall"]
 	var host := _host_of(inst)
 	var views: Array = Data.item((host if not host.is_empty() else inst).id).get("views", [])
+	_tool_buttons["open"].visible = _can_open(inst)
 	_tool_buttons["turn"].visible = views.size() > 0
 	_tool_buttons["left"].visible = small or inst.has("r")
 	_tool_buttons["right"].visible = small or inst.has("r")
@@ -329,6 +340,7 @@ func _select(inst: Dictionary) -> void:
 
 func _deselect() -> void:
 	_selected = {}
+	_tapped_u = -1
 	_tools.visible = false
 
 
@@ -369,6 +381,9 @@ func _riders(host: Dictionary) -> Array:
 
 func _on_tool(t: String) -> void:
 	if _selected.is_empty():
+		return
+	if t == "open":
+		_open(_selected)
 		return
 	_snapshot()
 	var picked := _selected
@@ -476,3 +491,188 @@ func _update_undo() -> void:
 	if _undo_btn:
 		_undo_btn.disabled = _undo.is_empty()
 		_undo_btn.modulate.a = 0.45 if _undo.is_empty() else 1.0
+
+
+# ------------------------------------------------------------------ dolap içi ve kapı
+
+func _can_open(inst: Dictionary) -> bool:
+	var it := Data.item(inst.id)
+	return it.get("door", false) or not _contents(inst).is_empty()
+
+
+func _contents(inst: Dictionary) -> Array:
+	var out: Array = []
+	for id in inst.get("in", []) + Data.item(inst.id).get("contents", []):
+		if Data.has_image(id) and not out.has(id):
+			out.append(id)
+	return out
+
+
+func _open(inst: Dictionary) -> void:
+	_deselect()
+	if Data.item(inst.id).get("door", false):
+		_door_panel()
+	else:
+		_inside_panel(inst)
+
+
+## Ekranı karartan, dışına dokununca kapanan katman ve ortasında beyaz kutu.
+func _panel(title_tex: Texture2D, title: String) -> VBoxContainer:
+	_close_overlay()
+	_overlay = Control.new()
+	_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_overlay.z_index = UI_Z + 10
+	_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	var dim := ColorRect.new()
+	dim.color = Color(0.15, 0.12, 0.2, 0.45)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.gui_input.connect(func(e: InputEvent):
+		if e is InputEventMouseButton and e.button_index == MOUSE_BUTTON_LEFT and not e.pressed:
+			_close_overlay())
+	_overlay.add_child(dim)
+	var box := PanelContainer.new()
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color("#fff8ee")
+	sb.set_corner_radius_all(28)
+	sb.set_content_margin_all(16)
+	sb.shadow_color = Color(0, 0, 0, 0.25)
+	sb.shadow_size = 16
+	box.add_theme_stylebox_override("panel", sb)
+	_overlay.add_child(box)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 12)
+	box.add_child(col)
+	var head := HBoxContainer.new()
+	col.add_child(head)
+	if title_tex:
+		var t := TextureRect.new()
+		t.texture = title_tex
+		t.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		t.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		t.custom_minimum_size = Vector2(84, 84)
+		head.add_child(t)
+	var lbl := Label.new()
+	lbl.text = title
+	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	lbl.add_theme_font_size_override("font_size", 34)
+	lbl.add_theme_color_override("font_color", Color("#3d3553"))
+	head.add_child(lbl)
+	var close := UI.round_button("", "X", 72)
+	close.pressed.connect(_close_overlay)
+	head.add_child(close)
+	add_child(_overlay)
+	box.set_meta("fit", true)
+	_overlay.set_meta("box", box)
+	return col
+
+
+func _fit_panel() -> void:
+	if _overlay == null:
+		return
+	var box: PanelContainer = _overlay.get_meta("box")
+	box.reset_size()
+	var ms := box.get_combined_minimum_size()
+	box.size = ms
+	box.position = (size - ms) / 2.0
+
+
+func _close_overlay() -> void:
+	if _overlay:
+		_overlay.queue_free()
+		_overlay = null
+
+
+func _item_button(id: String, s: float) -> Button:
+	var b := Button.new()
+	b.custom_minimum_size = Vector2(s, s)
+	b.focus_mode = Control.FOCUS_NONE
+	b.icon = Data.tex(id)
+	b.expand_icon = true
+	b.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	b.vertical_icon_alignment = VERTICAL_ALIGNMENT_CENTER
+	for st in ["normal", "hover", "pressed", "focus"]:
+		var sb := StyleBoxFlat.new()
+		sb.bg_color = Color(1, 1, 1, 0.85 if st != "pressed" else 1.0)
+		sb.set_corner_radius_all(18)
+		sb.set_content_margin_all(s * 0.1)
+		b.add_theme_stylebox_override(st, sb)
+	return b
+
+
+## Dolap, buzdolabı, sandık… içi: raflardaki eşyaya dokununca dolabın önüne çıkar.
+func _inside_panel(inst: Dictionary) -> void:
+	var col := _panel(Data.tex(inst.id), "")
+	var kind: String = Data.item(inst.id).get("box", "dolap")
+	var body := PanelContainer.new()
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color("#f6e3cf")
+	sb.set_corner_radius_all(20)
+	sb.set_content_margin_all(18)
+	body.add_theme_stylebox_override("panel", sb)
+	var bg := Data.tex("ic_" + kind)
+	if bg:
+		var st := StyleBoxTexture.new()
+		st.texture = bg
+		st.set_content_margin_all(26)
+		body.add_theme_stylebox_override("panel", st)
+	col.add_child(body)
+	var items := _contents(inst)
+	var grid := GridContainer.new()
+	grid.columns = clampi(int(ceil(sqrt(items.size() * 1.8))), 3, 7)
+	grid.add_theme_constant_override("h_separation", 10)
+	grid.add_theme_constant_override("v_separation", 10)
+	body.add_child(grid)
+	var cell := clampf((size.y * 0.62) / ceil(float(items.size()) / grid.columns) - 10.0, 64.0, 120.0)
+	for id in items:
+		var b := _item_button(id, cell)
+		b.name = id
+		b.pressed.connect(_take_out.bind(inst, id))
+		grid.add_child(b)
+	_fit_panel.call_deferred()
+
+
+## Dolaptan alınan eşya dolabın önüne konur ve seçilir.
+func _take_out(box: Dictionary, id: String) -> void:
+	_snapshot()
+	var stored: Array = box.get("in", [])
+	if stored.has(id):
+		stored.erase(id)
+		if stored.is_empty():
+			box.erase("in")
+	var list := Store.room(room_id)
+	var u := 1
+	for i in list:
+		u = maxi(u, int(i.u) + 1)
+	var yr: Array = Data.item(id).get("y", [70, 100])
+	var inst := {"u": u, "id": id, "x": float(box.x), "y": clampf(float(box.y) + 4.0, float(yr[0]), float(yr[1]))}
+	list.append(inst)
+	world.rebuild()
+	_close_overlay()
+	Store.save()
+	_select(inst)
+	_bounce(inst)
+
+
+## Kapı: başka odaya geçiş.
+func _door_panel() -> void:
+	var col := _panel(null, "Hangi odaya gidelim?")
+	var grid := GridContainer.new()
+	grid.columns = 7
+	grid.add_theme_constant_override("h_separation", 12)
+	grid.add_theme_constant_override("v_separation", 12)
+	col.add_child(grid)
+	for r in Data.rooms:
+		if r.id == room_id:
+			continue
+		var b := _item_button("ui_oda_" + r.id, 110)
+		b.name = "oda_" + r.id
+		b.pressed.connect(func():
+			Store.save()
+			go_room.emit(r.id))
+		grid.add_child(b)
+	_fit_panel.call_deferred()
+
+
+func panel_open() -> bool:
+	return _overlay != null

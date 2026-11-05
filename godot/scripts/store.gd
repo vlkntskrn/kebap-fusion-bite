@@ -6,7 +6,8 @@ extends Node
 ##   sc: boyut çarpanı, fl: aynalı, r: dönme açısı, v: "yan"/"arka" görünüm, s/p: üstünde oturduğu eşya ve duruş
 
 const PATH := "user://ev.json"
-const VERSION := 1
+## 2: düzenli ilk yerleşim ve karakterler (eski kayıtlar baştan başlar).
+const VERSION := 2
 
 var player_name := "Defne"
 var house: Dictionary = {}
@@ -30,7 +31,7 @@ func load_state() -> void:
 	# Eksik odalar web'deki ilk yerleşimle başlar; resmi olmayan eşyalar çıkarılır.
 	for r in Data.rooms:
 		if not house.has(r.id):
-			house[r.id] = Data.start_house.get(r.id, []).duplicate(true)
+			house[r.id] = Layout.arrange(r.id, Data.start_house.get(r.id, []))
 		house[r.id] = house[r.id].filter(func(i): return Data.has_image(i.id))
 
 

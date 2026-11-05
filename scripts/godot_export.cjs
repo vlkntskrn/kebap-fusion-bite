@@ -48,7 +48,7 @@ const URL = process.argv[2] || 'http://localhost:5199/';
   const byCode = new Map(files.map((f) => [f.replace(/\.(webp|png|jpg)$/, ''), f]));
   const want = new Set();
   for (const id of Object.keys(data.items)) for (const s of ['', '_yan', '_arka', '_otur', '_yat']) if (byCode.has(id + s)) want.add(id + s);
-  for (const c of byCode.keys()) if (/^(duvar_\d+|zemin_\d+|ui_\w+|harita_\w+|bahce_manzara|havuz_su|uygulama_ikonu)$/.test(c)) want.add(c);
+  for (const c of byCode.keys()) if (/^(duvar_\d+|zemin_\d+|ui_\w+|harita_\w+|ic_\w+|bahce_manzara|havuz_su|uygulama_ikonu)$/.test(c)) want.add(c);
   const artDir = path.join(OUT, 'art', 'items');
   fs.mkdirSync(artDir, { recursive: true });
   const keep = new Set();
