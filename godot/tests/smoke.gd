@@ -69,18 +69,18 @@ func _check(ok: bool, what: String) -> void:
 
 
 func _touch(target: Control, p: Vector2, pressed: bool) -> void:
-	var e := InputEventScreenTouch.new()
-	e.index = 0
+	var e := InputEventMouseButton.new()
+	e.button_index = MOUSE_BUTTON_LEFT
 	e.position = p
 	e.pressed = pressed
 	target._gui_input(e)
 
 
 func _drag(target: Control, p: Vector2, rel: Vector2) -> void:
-	var e := InputEventScreenDrag.new()
-	e.index = 0
+	var e := InputEventMouseMotion.new()
 	e.position = p
 	e.relative = rel
+	e.button_mask = MOUSE_BUTTON_MASK_LEFT
 	target._gui_input(e)
 
 

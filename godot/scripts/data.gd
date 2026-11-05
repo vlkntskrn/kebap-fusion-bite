@@ -40,13 +40,15 @@ func has_image(code: String) -> bool:
 	return files.has(code)
 
 
-## Görselin dokusu (yoksa null). Bir kez yüklenir.
+## Görselin dokusu (yoksa null). Bir kez yüklenir. "tool_*" araç simgeleri art/ui klasöründen gelir.
 func tex(code: String) -> Texture2D:
 	if _tex.has(code):
 		return _tex[code]
 	var t: Texture2D = null
 	if files.has(code):
 		t = load("res://art/items/" + files[code])
+	elif code.begins_with("tool_") and ResourceLoader.exists("res://art/ui/" + code + ".png"):
+		t = load("res://art/ui/" + code + ".png")
 	_tex[code] = t
 	return t
 

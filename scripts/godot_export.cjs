@@ -25,6 +25,22 @@ const URL = process.argv[2] || 'http://localhost:5199/';
     const H = await import('/src/house.ts');
     return H.godotExport();
   });
+  // Araç simgeleri: Godot'un yazı tipinde emoji ve ok işaretleri yok; Chromium ile resme çevrilir.
+  const ICONS = {
+    tool_flip: ['⇋', 'text'], tool_turn: ['🔄', 'emoji'], tool_left: ['↺', 'text'], tool_right: ['↻', 'text'],
+    tool_big: ['➕', 'emoji'], tool_small: ['➖', 'emoji'], tool_reset: ['✨', 'emoji'], tool_trash: ['🗑️', 'emoji'],
+    tool_undo: ['↶', 'text'], tool_open: ['🚪', 'emoji'], tool_dress: ['👗', 'emoji'], tool_night: ['🌙', 'emoji'], tool_day: ['☀️', 'emoji'],
+  };
+  const iconDir = path.join(OUT, 'art', 'ui');
+  fs.mkdirSync(iconDir, { recursive: true });
+  const ip = await b.newPage({ viewport: { width: 200, height: 200 } });
+  for (const [code, [ch, kind]] of Object.entries(ICONS)) {
+    const style = kind === 'emoji'
+      ? "font: 104px 'Noto Color Emoji'"
+      : "font: 900 120px 'DejaVu Sans', sans-serif; color: #3d3553";
+    await ip.setContent(`<html><body style="margin:0;background:transparent"><div id="i" style="width:128px;height:128px;display:flex;align-items:center;justify-content:center;line-height:1;${style}">${ch}</div></body></html>`);
+    await (await ip.$('#i')).screenshot({ path: path.join(iconDir, code + '.png'), omitBackground: true });
+  }
   await b.close();
 
   // Görseller: eşyalar ve görünümleri (_yan, _arka, _otur, _yat), duvar/zemin dokuları, oda simgeleri, manzara.
